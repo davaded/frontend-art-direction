@@ -1,0 +1,4 @@
+interface:
+  display_name: "Frontend Art Direction"
+  short_description: "Art-direction workflow for premium frontend UI."
+  default_prompt: "Use $frontend-art-direction to improve this frontend surface with stronger visual direction, interaction polish, and product-level implementation."
