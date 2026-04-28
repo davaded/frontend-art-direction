@@ -21,7 +21,7 @@ This skill is not a document generator and not a generic component cookbook. Its
 
 1. Identify the product character and canvas: product type, audience, device class, input method, viewing distance, density, and usage context.
 2. Inspect the existing UI before changing it: current components, tokens, theme files, screenshots, live page, or device surface.
-3. Gather or infer high-quality references. Prefer design systems, real products, and same-category examples over generic inspiration screenshots. See `references/reference-quality.md`.
+3. Gather or infer high-quality references. Prefer design systems, real products, and same-category examples over generic inspiration screenshots. See `references/reference-quality.md`. For concrete component, motion, and icon sources, see `references/frontend-resource-catalog.md`.
 4. Form a short Art Direction Brief before implementation. Use it as the visual compass, not as a stopping point. See `references/art-direction-brief.md`.
 5. Implement with existing project patterns and mature components. Improve primitives first when weak buttons, inputs, lists, dialogs, or cards would drag down the whole UI.
 6. Treat every visible state change as a design moment: hover, focus, press, loading, empty, error, success, navigation, filtering, and transitions.
@@ -46,7 +46,7 @@ Prioritize these quality dimensions:
 
 Use existing project components, design tokens, and theme conventions first. Do not introduce a new component language unless the current one is clearly blocking quality.
 
-For web surfaces, prefer appropriate mature primitives such as shadcn/ui, Radix, Tailwind, lucide icons, Framer Motion, TanStack Table, Recharts, or the project's existing equivalents. Add dependencies only when they fit the stack and task.
+For web surfaces, prefer appropriate mature primitives such as shadcn/ui, Radix, Tailwind, lucide icons, Motion, TanStack Table, Recharts, or the project's existing equivalents. Add dependencies only when they fit the stack and task. Use `references/frontend-resource-catalog.md` to choose concrete motion, component, and icon resources when the existing stack needs support.
 
 For mobile, Android, embedded, or car/head-unit UI, prefer platform components, existing app components, Material/Compose/XML theme tokens, and device-appropriate control sizing.
 
