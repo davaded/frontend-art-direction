@@ -1,6 +1,8 @@
 # Art Direction Brief
 
-Use this brief before meaningful UI implementation. Keep it short enough to guide building, not long enough to replace building.
+Use this brief before meaningful UI implementation, including frontend work built from scratch from plain requirements. Keep it short enough to guide building, not long enough to replace building.
+
+For substantial or direction-sensitive UI work, expose a concise version of the brief before or alongside the implementation plan. Do not let the brief remain only an internal thought when the visual direction is ambiguous, newly invented, or likely to affect many components.
 
 ## Template
 
@@ -47,5 +49,6 @@ Device translation: desktop supports density; mobile collapses into a task-first
 ## When to Show It
 
 - Show the brief when the user is discussing direction or has asked not to edit code yet.
-- Keep the brief internal or summarize it briefly when the user asked for direct implementation.
+- Show or summarize the brief before implementation when building a new UI, changing a major screen, choosing a new visual language, or using strong references/components.
+- Keep the brief internal only for tiny local fixes where the product character and component language are already obvious.
 - Save the direction into `DESIGN.md` when the project needs persistent visual memory.

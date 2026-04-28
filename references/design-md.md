@@ -7,6 +7,12 @@ Google Labs' DESIGN.md project is a useful reference format for describing visua
 - Repository: https://github.com/google-labs-code/design.md
 - Specification: https://stitch.withgoogle.com/docs/design-md/specification
 
+VoltAgent's Awesome DESIGN.md collection is useful for studying concrete `DESIGN.md` examples inspired by recognizable public brand systems:
+
+- Repository: https://github.com/VoltAgent/awesome-design-md
+
+Use it for document structure, token naming, layout principles, typography hierarchy, color roles, component states, responsive behavior, and do/don't guardrails. Do not copy another brand identity wholesale unless the user explicitly wants that brand direction.
+
 Treat the format as optional and evolving. Use it when it helps the project, not as a required output for every UI task.
 
 ## When to Create or Update
@@ -19,6 +25,8 @@ Create or update `DESIGN.md` when:
 - existing styles are inconsistent
 - the user asks for a design system, style guide, or persistent UI direction
 - future agents or teammates need a stable reference
+
+Before creating a new `DESIGN.md`, search GitHub for public `DESIGN.md` files, design systems, token files, themes, screenshots, and same-category UI repos. Use those findings to calibrate structure and naming, then write a product-specific document.
 
 Skip or postpone it when:
 
