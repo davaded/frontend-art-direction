@@ -10,6 +10,7 @@ Google Labs' DESIGN.md project is a useful reference format for describing visua
 VoltAgent's Awesome DESIGN.md collection is useful for studying concrete `DESIGN.md` examples inspired by recognizable public brand systems:
 
 - Repository: https://github.com/VoltAgent/awesome-design-md
+- Gallery: https://getdesign.md/
 
 Use it for document structure, token naming, layout principles, typography hierarchy, color roles, component states, responsive behavior, and do/don't guardrails. Do not copy another brand identity wholesale unless the user explicitly wants that brand direction.
 
