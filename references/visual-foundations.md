@@ -6,10 +6,13 @@ Use these references for layout, typography, and color decisions before choosing
 
 Start with GitHub when internet access is available:
 
-- Search for public `DESIGN.md` files in similar products, design systems, UI kits, and open-source apps.
-- Search the product category plus terms like `design system`, `tokens`, `theme`, `layout`, `typography`, `color`, and `dashboard`.
+- Use getdesign.md and public `DESIGN.md` collections as foundation references for design-system structure, token naming, layout, typography, color, accessibility, and component consistency.
+- Search for public `DESIGN.md` files in design systems, UI kits, open-source apps, and similar products only when they expose foundation decisions.
+- Search for the product category plus foundation terms like `design system`, `tokens`, `theme`, `layout`, `typography`, `color`, and `dashboard`, not competitor screenshots.
 - Prefer repos that include real implementation, tokens, screenshots, Storybook, docs, or a mature component system.
 - Use GitHub findings to understand how real teams name tokens, structure layout, and apply colors in code.
+
+These are foundation references, not the visual direction by themselves. Use `visual-language.md` for art-direction mood, identity, image treatment, material, and brand-like references. Use product/category screenshots only as optional flow or state checks.
 
 Useful GitHub searches:
 
@@ -27,7 +30,7 @@ site:github.com "tailwind.config" "colors" "fontFamily" "spacing"
 ### Awesome DESIGN.md
 
 - URL: https://github.com/VoltAgent/awesome-design-md
-- Use for: reusable `DESIGN.md` examples inspired by recognizable products and brand systems.
+- Use for: reusable `DESIGN.md` and getdesign.md examples that collect design-system and foundation patterns from recognizable products and brand systems.
 - Borrow: document structure, token naming, color roles, typography hierarchy, layout principles, component styling, responsive rules, and do/don't guardrails.
 - Avoid: copying another brand identity wholesale, especially when the product category, audience, or content model differs.
 - Check: whether the selected example matches the product's category, density, device, and interaction model.
@@ -69,44 +72,37 @@ site:github.com "tailwind.config" "colors" "fontFamily" "spacing"
 - Borrow: proximity, common region, chunking, Hick's Law, Fitts's Law, and Jakob's Law as layout checks.
 - Avoid: treating UX laws as decoration rules rather than task-flow constraints.
 
-## Product Pattern Sources
+## Optional Pattern and Flow Checks
+
+These sources are useful only when workflow, states, navigation, density, or platform expectations need evidence. They should not lead art direction by default because same-category patterns can push the UI toward an average category look.
 
 ### Mobbin
 
 - URL: https://mobbin.com/
-- Use for: real mobile and web app screenshots, patterns, and category-specific UI conventions.
-- Borrow: layout structure, information density, screen sequencing, and mobile patterns.
-- Avoid: copying only the visual skin without understanding the flow.
+- Use for: real mobile and web app screenshots, state inventory, screen sequencing, and mobile/web pattern checks.
+- Borrow: required states, information density checks, navigation affordances, and flow order.
+- Avoid: copying category visual skin or treating common competitor patterns as the desired art direction.
 
 ### Page Flows
 
 - URL: https://pageflows.com/
 - Use for: full user journeys, onboarding, upgrade, checkout, settings, and task flows.
-- Borrow: sequence, progressive disclosure, state transitions, and content order.
-- Avoid: replacing product thinking with isolated screenshot copying.
+- Borrow: sequence, progressive disclosure, state transitions, content order, and missing-state evidence.
+- Avoid: replacing product thinking with isolated screenshot copying or using the average flow as visual identity.
 
 ### Nicelydone
 
 - URL: https://nicelydone.club/
 - Use for: real SaaS/web app UI patterns such as dashboards, onboarding, billing, settings, tables, and empty states.
-- Borrow: workflow-specific layout patterns and product-grade density.
+- Borrow: workflow-specific state coverage, product-grade density checks, and practical empty/loading/error patterns.
 - Avoid: generic SaaS sameness when the product needs a stronger identity.
 
 ### SaaS Interface
 
 - URL: https://saasinterface.com/
 - Use for: dashboard and SaaS page patterns.
-- Borrow: dashboard grid patterns, KPIs, navigation, filters, and data grouping.
-- Avoid: using dashboard patterns for products that are not metric or workflow driven.
-
-### Landbook and Godly
-
-- URLs:
-  - https://land-book.com/
-  - https://godly.website/
-- Use for: marketing pages, landing pages, portfolios, and brand-led web surfaces.
-- Borrow: composition ideas, visual rhythm, hero/media treatment, and page-section sequencing.
-- Avoid: using landing-page aesthetics for dense tools, admin apps, or repeated-work interfaces.
+- Borrow: KPI, navigation, filter, table, and data-grouping checks when the product is truly workflow or metric driven.
+- Avoid: using dashboard patterns for products that are not metric or workflow driven, or letting SaaS convention override art direction.
 
 ## Typography
 

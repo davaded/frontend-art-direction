@@ -2,6 +2,8 @@
 
 Use this reference when a UI needs motion, animation, 3D, model viewers, spatial storytelling, or interactive visual systems. Motion and models are part of art direction, not decoration.
 
+For resources such as transitions.dev, React Bits, Aceternity UI, HeroUI, Spectrum UI, and ElevenLabs UI, treat component structure and motion together. Use this guide to define how those animated components fit the product's broader motion grammar, spatial behavior, media, or animation system.
+
 ## Motion Lock
 
 For meaningful motion or model work, define this before implementation:

@@ -25,7 +25,7 @@ Device translation:
 ## Field Guidance
 
 - **Product character**: Define the intended feeling and identity. Examples: precise productivity tool, immersive music library, quiet enterprise console, fast command surface, low-distraction car display.
-- **Reference direction**: Name 2-4 references and state what to borrow from each. Borrow principles, not the whole look.
+- **Reference direction**: Name 2-4 inspected references, classify each reference's role, and state what to borrow from each. Borrow principles, not the whole look.
 - **Visual hierarchy**: Define what the user should notice first, second, and third.
 - **Layout rhythm**: Specify whether the surface is split-panel, dense dashboard, open editorial, content-led, toolbelt, cockpit, or focused single-task flow.
 - **Composition signature**: Define the visual anchor, asymmetry, density contrast, product-specific motif, or typographic move that prevents the UI from feeling generic.
@@ -42,7 +42,7 @@ Device translation:
 ```text
 Art Direction Brief:
 Product character: calm, precise, premium productivity workspace.
-Reference direction: borrow Linear's hierarchy and density, Apple HIG's restraint, and Raycast's command clarity.
+Reference direction: foundation reference uses Apple HIG's restraint; visual/product references borrow Linear's hierarchy and Raycast's command clarity without copying their brand skin.
 Visual hierarchy: active work item first, primary actions second, metadata third.
 Layout rhythm: split-panel workspace with dense controls and generous internal spacing.
 Composition signature: active work object anchors the left pane, with tighter metadata and command regions orbiting it.

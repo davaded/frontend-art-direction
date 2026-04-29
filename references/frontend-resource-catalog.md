@@ -1,8 +1,8 @@
 # Frontend Resource Catalog
 
-Use this catalog when a UI task needs concrete components, animation patterns, icon sources, or implementation references. These are resources for execution and taste calibration, not a substitute for product-specific art direction. `Use for` describes common strong fits, not exclusive boundaries; choose resources by judging product goals, interaction value, implementation fit, and how well the pattern can be translated.
+Use this catalog when a UI task needs concrete components, animated component patterns, motion behavior, icon sources, or implementation references. Components and motion belong together here because many modern component resources include state transitions as part of their quality. These are resources for execution and taste calibration, not a substitute for product-specific art direction. `Use for` describes common strong fits, not exclusive boundaries; choose resources by judging product goals, interaction value, implementation fit, and how well the pattern can be translated.
 
-## Motion and Interaction
+## Component, Motion, and Interaction Resources
 
 ### Motion
 
@@ -100,7 +100,17 @@ Use this catalog when a UI task needs concrete components, animation patterns, i
 - Avoid: using assets without checking license, attribution, optimization, and fit with the product's visual language.
 - Check: license, polycount, texture size, format availability, attribution, and whether the model needs cleanup.
 
-## Animated Component References
+## Animated Component and Transition Patterns
+
+These examples combine component structure, state, and motion. Use them as component/motion references together.
+
+### Transitions.dev
+
+- URL: https://transitions.dev/
+- Use for: minimal web components and UI state patterns with built-in transitions, such as card resize, number changes, badges, text swaps, menu/modal/panel reveals, page transitions, and icon swaps.
+- Borrow: compact component structure, state-to-state continuity, restrained transition details, and copy-adaptable CSS/React patterns.
+- Avoid: treating transition demos as complete product components, applying effects before the component's role and state model are clear, or letting motion compensate for weak layout.
+- Check: keyboard and touch behavior, reduced-motion fallback, layout shift, text fit during state changes, and whether the transition improves component comprehension.
 
 ### React Bits
 
@@ -120,7 +130,7 @@ Use this catalog when a UI task needs concrete components, animation patterns, i
 - Avoid: hover-only critical interactions, generic SaaS hero composition, overuse of glow/beam/sparkle effects, and ornamental backgrounds in dense tools.
 - Check: keyboard focus parity, touch fallback, dark/light theme fit, and whether the block matches the existing component system.
 
-## Component Systems
+## Component Systems and Effectful UI Kits
 
 ### shadcn/ui
 
@@ -182,10 +192,11 @@ Use this catalog when a UI task needs concrete components, animation patterns, i
 
 ## Selection Rules
 
-- Start with the product need: component system, motion behavior, or asset source.
+- Start with the product need: component system, animated component pattern, motion behavior, or asset source.
 - Prefer the product's existing component and icon stack before adding a new dependency.
 - Use copy-paste component libraries as implementation accelerators, not art-direction replacements.
 - Use shadcn/ui, Spectrum UI, and similar block libraries as owned implementation material: adapt tokens, spacing, content, states, and interaction to the selected art direction.
+- Treat transitions.dev, React Bits, Aceternity UI, and similar effectful component catalogs as component/motion references: adapt the component state, density, timing, and accessibility to the product.
 - Evaluate specialty libraries such as ElevenLabs UI by their transferable interaction ideas and implementation fit, not by a fixed category whitelist.
 - Choose the lightest motion or spatial medium that expresses the intended state or product idea.
 - Use 3D models only when they help inspect, understand, demonstrate, sell, or embody the product.

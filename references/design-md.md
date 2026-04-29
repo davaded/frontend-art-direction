@@ -7,12 +7,12 @@ Google Labs' DESIGN.md project is a useful reference format for describing visua
 - Repository: https://github.com/google-labs-code/design.md
 - Specification: https://stitch.withgoogle.com/docs/design-md/specification
 
-VoltAgent's Awesome DESIGN.md collection is useful for studying concrete `DESIGN.md` examples inspired by recognizable public brand systems:
+VoltAgent's Awesome DESIGN.md and getdesign.md are useful as collected design-system and foundation references, including concrete `DESIGN.md` examples inspired by recognizable public brand systems:
 
 - Repository: https://github.com/VoltAgent/awesome-design-md
 - Gallery: https://getdesign.md/
 
-Use it for document structure, token naming, layout principles, typography hierarchy, color roles, component states, responsive behavior, and do/don't guardrails. Do not copy another brand identity wholesale unless the user explicitly wants that brand direction.
+Use them for document structure, token naming, layout principles, typography hierarchy, color roles, component states, responsive behavior, accessibility expectations, and do/don't guardrails. Treat them as quality and consistency constraints, not as moodboards. Do not copy another brand identity wholesale unless the user explicitly wants that brand direction.
 
 Treat the format as optional and evolving. Use it when it helps the project, not as a required output for every UI task.
 
@@ -27,7 +27,7 @@ Create or update `DESIGN.md` when:
 - the user asks for a design system, style guide, or persistent UI direction
 - future agents or teammates need a stable reference
 
-Before creating a new `DESIGN.md`, search GitHub for public `DESIGN.md` files, design systems, token files, themes, screenshots, and same-category UI repos. Use those findings to calibrate structure and naming, then write a product-specific document.
+Before creating a new `DESIGN.md`, inspect user-provided references first and classify what each one is for. Use getdesign.md, public `DESIGN.md` files, design systems, token files, themes, and foundation references to calibrate structure and naming. Use visual-language references only for product character, motif, material, imagery, and atmosphere. Use component examples only for state and implementation detail. Then write a product-specific document.
 
 Skip or postpone it when:
 

@@ -17,18 +17,47 @@ For new UI, define the first screen's job, the primary user action, and what the
 
 ## Gate 2: Reference Lock
 
-Select 2-4 references before meaningful implementation. When internet access is available, search GitHub first for public `DESIGN.md` files, design systems, tokens, themes, UI repos, screenshots, and same-category products. Include `references/visual-foundations.md` when layout, typography, or color choices are not already settled. Include `references/visual-language.md` when imagery, material, motif, atmosphere, brand feeling, or visual identity is not already settled. Include `references/motion-spatial-language.md` when motion, animation, 3D, model viewers, spatial interaction, or immersive effects are part of the direction.
+Select and inspect 2-4 references before meaningful implementation. Use `reference-ingestion.md` to classify each reference by role before using it. User-provided references come first; do not skip them to search for easier examples. When internet access is available and the user has not already supplied enough direction, search for the missing role: foundation/quality systems, project visual memory, visual-language/art-direction references, component/motion implementation resources, or asset/icon sources.
+
+Use getdesign.md, public `DESIGN.md`, Apple HIG, Material, Carbon, Polaris, Radix, typography, color, layout, accessibility, and token references as foundation constraints for quality and consistency. Do not treat them as moodboards.
+
+Use Mobbin, Page Flows, Nicelydone, SaaS Interface, same-category products, and real-product screenshots only as optional pattern/flow checks when workflow, states, density, or platform expectations are unclear. They should not lead art direction unless the user explicitly chose one as visual direction.
+
+Include `references/visual-foundations.md` when layout, typography, color, tokens, or accessibility choices are not already settled. Include `references/visual-language.md` when imagery, material, motif, atmosphere, brand feeling, or visual identity is not already settled. Include `references/motion-spatial-language.md` when motion, animation, 3D, model viewers, spatial interaction, or immersive effects are part of the direction.
 
 For each reference, record:
 
 ```text
 Reference:
-Borrow:
-Avoid:
-Why it fits:
+Role:
+Evidence inspected:
+What this reference is for:
+What to borrow:
+What not to borrow:
+Applicable surface:
+Concrete translation into this UI:
+Verification check:
 ```
 
-Use references for judgment, not surface copying. A component library, animation library, or icon source is not a complete reference by itself unless its product behavior and visual system fit the task.
+Use references for judgment and implementation translation, not surface copying. A component library, animation library, or icon source is not a complete reference by itself unless its product behavior and visual system fit the task. A reference that was only named, not inspected, is tentative and should not drive implementation.
+
+Combine the selected cards into a short Reference Translation Brief:
+
+```text
+Primary direction reference:
+Supporting references:
+Foundation/quality reference:
+Visual-language reference:
+Component/motion resource reference:
+Optional flow/state check:
+Borrowed layout decisions:
+Borrowed typography/color/component decisions:
+Borrowed visual-language decisions:
+Borrowed interaction/motion/state decisions:
+Explicitly not borrowing:
+Implementation mapping:
+Verification checks:
+```
 
 For substantial UI work, lock the foundations explicitly:
 
@@ -42,7 +71,7 @@ Derived color decisions:
 Avoid:
 ```
 
-Do not proceed from component or animation references alone when layout, type, and color are still unresolved.
+Do not proceed from component/motion implementation references alone when layout, type, color, and visual language are still unresolved. Do not claim a reference was used unless the final UI can point to visible evidence from the card.
 
 ## Gate 3: Art Direction Brief
 
@@ -121,10 +150,12 @@ If weak primitives drag down the whole surface, improve the primitives before po
 
 Use `frontend-resource-catalog.md` as an execution catalog, not as a taste shortcut.
 
+- Classify component/motion, model, and icon resources with `reference-ingestion.md` before importing or copying them.
+- Treat effectful component libraries as component/motion references. transitions.dev, React Bits, Aceternity UI, HeroUI, Spectrum UI, ElevenLabs UI, and Reacticx provide components or component patterns whose motion belongs to state, feedback, and perceived quality.
 - React Bits and Aceternity UI can provide motion or component ideas, but they must be adapted to the product character and density.
+- shadcn/ui, HeroUI, Spectrum UI, ElevenLabs UI, Reacticx, and similar libraries can accelerate implementation, but defaults should not become the product identity.
 - Motion should communicate feedback, continuity, reveal, product meaning, or spatial relationship.
 - Vivus should be limited to SVG moments where drawing supports meaning.
-- HeroUI can support component completeness, but defaults should not define the whole product identity.
 - Reacticx is useful for React Native and touch-first interaction ideas.
 - Icon sources must stay visually coherent; do not mix many icon systems on one surface.
 
@@ -144,6 +175,14 @@ Verify the real surface when possible:
 - console/build errors and obvious performance issues
 
 For existing UI, compare before and after. For new UI, compare the result against the brief and references.
+
+Reference-backed verification:
+
+- Which Reference Evidence Card is visible in the result?
+- Which role did each reference play, and was that role respected?
+- Which borrowed decisions are present in layout, typography, component states, visual language, or motion?
+- Which borrowed decisions were dropped, and why?
+- Did any reference get misapplied to the wrong product type, density, or device?
 
 ## Gate 10: Self-Iteration Before Final
 

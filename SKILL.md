@@ -17,12 +17,24 @@ This skill is not a document generator and not a generic component cookbook. Its
 - **Direction-only mode**: Use when the user asks to discuss, plan, compare styles, or not edit code yet. Produce an art direction brief, reference analysis, or design options.
 - **Visual memory mode**: Use when the project will continue, the user asks for a design system, or the UI direction should persist. Create or update `DESIGN.md`, then continue implementation if development was requested.
 
+## Scope Calibration
+
+Use the full workflow for new screens, redesigns, direction changes, visually weak demos, or work that affects several components. Use a fast path for small polish tasks such as one control, one dialog, a local spacing/type/color issue, or a minor state fix.
+
+Fast path:
+
+1. Inspect the affected surface and existing component or token pattern.
+2. Name the visible problem and the intended correction in one or two sentences.
+3. Skip external reference search unless the local pattern is weak or the user asks for broader direction.
+4. Make the smallest visible improvement that preserves the product's current visual language.
+5. Verify the changed state on the real surface when possible.
+
 ## Core Workflow
 
 1. Identify the product character and canvas: product type, audience, device class, input method, viewing distance, density, usage context, and primary workflow.
 2. Inspect the existing UI before changing it: current components, tokens, theme files, screenshots, live page, or device surface. If building from scratch, inspect the app shell, tech stack, routes, content model, and realistic data needs before choosing a visual direction.
-3. Lock 2-4 references before meaningful implementation. Start with GitHub search when internet access is available: look for public `DESIGN.md` files, design systems, UI repos, tokens, themes, screenshots, and same-category products. For each reference, state what to borrow, what to avoid, and why it fits this product. Prefer design systems, real products, and same-category examples over generic inspiration screenshots. See `references/reference-quality.md`. For layout, typography, and color foundations, see `references/visual-foundations.md`. For imagery, material, atmosphere, motif, and brand-like visual language, see `references/visual-language.md`. For motion, animation, 3D, models, and spatial interaction, see `references/motion-spatial-language.md`. For concrete component, motion, model, and icon sources, see `references/frontend-resource-catalog.md`.
-4. Form a short Art Direction Brief before implementation and expose it when the work is substantial or direction-sensitive. Use it as the visual compass, not as a stopping point. See `references/art-direction-brief.md`.
+3. Ingest 2-4 references before meaningful implementation and classify each by role. Use user-provided references first, then decide whether each source is foundation/quality evidence, project visual memory, visual-language direction, component/motion implementation, spatial/media execution, asset/icon material, or an optional flow/state check. getdesign.md, public `DESIGN.md`, Apple HIG, Material, Carbon, Polaris, Radix, typography, color, layout, accessibility, and token references are foundation constraints for quality and consistency, not moodboards. Use same-category products, Mobbin, Page Flows, Nicelydone, and SaaS Interface only as optional pattern/flow checks unless the user explicitly chose one as visual direction. Inspect each reference enough to create a Reference Evidence Card; do not proceed from named references only. See `references/reference-ingestion.md` and `references/reference-quality.md`. For layout, typography, and color foundations, see `references/visual-foundations.md`. For imagery, material, atmosphere, motif, and brand-like visual language, see `references/visual-language.md`. For motion, animation, 3D, models, and spatial interaction, see `references/motion-spatial-language.md`. For concrete component, motion, model, and icon sources, see `references/frontend-resource-catalog.md`.
+4. Form a short Art Direction Brief and Reference Translation Brief before implementation when the work is substantial or direction-sensitive. Use them as the visual compass, not as a stopping point. See `references/art-direction-brief.md` and `references/reference-ingestion.md`.
 5. Run the quality gates in `references/visual-quality-gates.md`: diagnosis, reference lock, brief, expressive composition, visual language, motion/spatial language, component/state pass, resource discipline, visual QA, and self-iteration.
 6. Implement composition before decoration: visual anchor, layout, density, proportion, hierarchy, content grouping, typographic rhythm, visual language, motion/spatial language, and primary workflow come before color, shadow, gradients, or animation. If the result feels mechanical, use `references/expressive-composition.md`. If the result feels visually generic or lifeless, use `references/visual-language.md`. If motion, animation, or models feel decorative or generic, use `references/motion-spatial-language.md`.
 7. Implement with existing project patterns and mature components. Improve primitives first when weak buttons, inputs, lists, dialogs, or cards would drag down the whole UI.
@@ -108,6 +120,16 @@ Before finishing UI development, verify the visible result where possible:
 - Do one self-iteration before final delivery when the first visible result has obvious composition, density, hierarchy, or taste problems.
 
 If full verification is blocked, state the blocker and provide the closest completed evidence.
+
+## Minimum Done Criteria
+
+For UI development, do not finish with design intent only. A complete pass should usually include:
+
+- a brief reference or direction decision appropriate to the task size, backed by inspected evidence
+- real code edits to the visible surface
+- a desktop and target-device or target-viewport check when runnable
+- at least one interaction or state check beyond the default screen
+- one self-iteration when the first visible result has obvious hierarchy, spacing, text-fit, motion, or generic-template problems
 
 ## Feedback Loop
 
