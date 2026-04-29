@@ -1,4 +1,4 @@
 interface:
   display_name: "Frontend Art Direction"
   short_description: "Art-direction workflow for creating or improving premium frontend UI."
-  default_prompt: "Use $frontend-art-direction to create or improve this frontend surface with explicit references, a concise art direction brief, composition-first implementation, interaction polish, and visual QA."
+  default_prompt: "Use $frontend-art-direction to create or improve this frontend surface with explicit references, a concise art direction brief, expressive composition, coherent visual language, motion/spatial language, interaction polish, and visual QA. Avoid mechanical layouts, generic template rhythm, lifeless stock visual treatment, and decorative animation or models without product meaning."

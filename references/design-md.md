@@ -46,6 +46,9 @@ Short description of the intended visual and interaction identity.
 ## Reference Direction
 What to borrow from selected references, and what not to borrow.
 
+## Visual Language
+Imagery, graphic motif, material, depth, texture, icon/illustration/3D direction, and what visual treatments to avoid.
+
 ## Tokens
 - Colors and roles
 - Typography scale
@@ -61,6 +64,9 @@ Buttons, inputs, lists, cards, dialogs, tabs, menus, charts, media, toolbars.
 
 ## Motion and Interaction
 Feedback, transitions, loading, empty, error, success, and device-specific input.
+
+## Motion, Animation, and Spatial Media
+Motion grammar, timing, easing, scroll behavior, Rive/Lottie/SVG rules, 3D/model usage, asset pipeline, performance budgets, and reduced-motion fallbacks.
 
 ## Cross-Device Translation
 Desktop, mobile, car/head-unit, big screen, embedded, or other target surfaces.

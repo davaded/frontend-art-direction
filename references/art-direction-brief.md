@@ -12,6 +12,9 @@ Product character:
 Reference direction:
 Visual hierarchy:
 Layout rhythm:
+Composition signature:
+Visual language:
+Motion/spatial language:
 Color/material:
 Typography:
 Component language:
@@ -25,6 +28,9 @@ Device translation:
 - **Reference direction**: Name 2-4 references and state what to borrow from each. Borrow principles, not the whole look.
 - **Visual hierarchy**: Define what the user should notice first, second, and third.
 - **Layout rhythm**: Specify whether the surface is split-panel, dense dashboard, open editorial, content-led, toolbelt, cockpit, or focused single-task flow.
+- **Composition signature**: Define the visual anchor, asymmetry, density contrast, product-specific motif, or typographic move that prevents the UI from feeling generic.
+- **Visual language**: Define imagery, material, graphic motif, depth, texture, icon/illustration/3D approach, and the product-specific metaphor behind them.
+- **Motion/spatial language**: Define motion purpose, timing/easing, animation grammar, 3D/model role, triggers, and reduced-motion fallback.
 - **Color/material**: Define base, accent, contrast, depth, imagery, borders, shadow, translucency, or texture.
 - **Typography**: Define scale, weight, density, labels, numbers, headings, and content voice.
 - **Component language**: Define how controls, cards, lists, dialogs, navigation, charts, media, or toolbars should feel.
@@ -39,6 +45,9 @@ Product character: calm, precise, premium productivity workspace.
 Reference direction: borrow Linear's hierarchy and density, Apple HIG's restraint, and Raycast's command clarity.
 Visual hierarchy: active work item first, primary actions second, metadata third.
 Layout rhythm: split-panel workspace with dense controls and generous internal spacing.
+Composition signature: active work object anchors the left pane, with tighter metadata and command regions orbiting it.
+Visual language: quiet instrument-panel surfaces, precise separators, sparse iconography, no generic gradients or decorative blobs.
+Motion/spatial language: short feedback transitions, continuity between work item states, no decorative loops unless they communicate live status.
 Color/material: neutral base, subtle borders, restrained depth, one confident accent.
 Typography: compact readable scale, strong section labels, tabular numbers for metrics.
 Component language: quiet buttons, crisp inputs, clear tabs, precise menus, no ornamental chrome.

@@ -1,6 +1,6 @@
 ---
 name: frontend-art-direction
-description: "Use when Codex is asked to create or improve a frontend surface that should feel beautiful, premium, polished, coherent, or product-grade. Applies to new UI built from requirements, web apps, dashboards, landing pages, mobile UI, embedded displays, car/head-unit UI, design-system refreshes, UI redesigns, and rough/demo UI that must become a refined real product. Use when the task needs visual hierarchy, art direction, interaction feel, component craft, responsive/cross-device presentation, or DESIGN.md visual memory."
+description: "Use when Codex is asked to create or improve a frontend surface that should feel beautiful, premium, polished, coherent, or product-grade. Applies to new UI built from requirements, web apps, dashboards, landing pages, mobile UI, embedded displays, car/head-unit UI, design-system refreshes, UI redesigns, and rough/demo UI that must become a refined real product. Use when the task needs visual hierarchy, art direction, interaction feel, motion/animation, 3D or model-based visual experiences, component craft, responsive/cross-device presentation, or DESIGN.md visual memory."
 ---
 
 # Frontend Art Direction
@@ -21,10 +21,10 @@ This skill is not a document generator and not a generic component cookbook. Its
 
 1. Identify the product character and canvas: product type, audience, device class, input method, viewing distance, density, usage context, and primary workflow.
 2. Inspect the existing UI before changing it: current components, tokens, theme files, screenshots, live page, or device surface. If building from scratch, inspect the app shell, tech stack, routes, content model, and realistic data needs before choosing a visual direction.
-3. Lock 2-4 references before meaningful implementation. Start with GitHub search when internet access is available: look for public `DESIGN.md` files, design systems, UI repos, tokens, themes, screenshots, and same-category products. For each reference, state what to borrow, what to avoid, and why it fits this product. Prefer design systems, real products, and same-category examples over generic inspiration screenshots. See `references/reference-quality.md`. For layout, typography, and color foundations, see `references/visual-foundations.md`. For concrete component, motion, and icon sources, see `references/frontend-resource-catalog.md`.
+3. Lock 2-4 references before meaningful implementation. Start with GitHub search when internet access is available: look for public `DESIGN.md` files, design systems, UI repos, tokens, themes, screenshots, and same-category products. For each reference, state what to borrow, what to avoid, and why it fits this product. Prefer design systems, real products, and same-category examples over generic inspiration screenshots. See `references/reference-quality.md`. For layout, typography, and color foundations, see `references/visual-foundations.md`. For imagery, material, atmosphere, motif, and brand-like visual language, see `references/visual-language.md`. For motion, animation, 3D, models, and spatial interaction, see `references/motion-spatial-language.md`. For concrete component, motion, model, and icon sources, see `references/frontend-resource-catalog.md`.
 4. Form a short Art Direction Brief before implementation and expose it when the work is substantial or direction-sensitive. Use it as the visual compass, not as a stopping point. See `references/art-direction-brief.md`.
-5. Run the quality gates in `references/visual-quality-gates.md`: diagnosis, reference lock, brief, composition-first pass, component/state pass, resource discipline, visual QA, and self-iteration.
-6. Implement composition before decoration: layout, density, proportion, hierarchy, content grouping, and primary workflow come before color, shadow, gradients, or animation.
+5. Run the quality gates in `references/visual-quality-gates.md`: diagnosis, reference lock, brief, expressive composition, visual language, motion/spatial language, component/state pass, resource discipline, visual QA, and self-iteration.
+6. Implement composition before decoration: visual anchor, layout, density, proportion, hierarchy, content grouping, typographic rhythm, visual language, motion/spatial language, and primary workflow come before color, shadow, gradients, or animation. If the result feels mechanical, use `references/expressive-composition.md`. If the result feels visually generic or lifeless, use `references/visual-language.md`. If motion, animation, or models feel decorative or generic, use `references/motion-spatial-language.md`.
 7. Implement with existing project patterns and mature components. Improve primitives first when weak buttons, inputs, lists, dialogs, or cards would drag down the whole UI.
 8. Treat every visible state change as a design moment: hover, focus, press, loading, empty, error, success, navigation, filtering, and transitions.
 9. Translate the same aesthetic across devices instead of merely scaling the layout.
@@ -36,12 +36,12 @@ Prioritize these quality dimensions:
 
 - **Product character**: The UI should have a clear identity: calm, precise, immersive, premium, warm, editorial, utilitarian, playful, cinematic, or another intentional character.
 - **Reference taste**: Use references to raise judgment. Borrow principles, not screenshots. A resource catalog entry is not enough by itself; translate it through the product's character and workflow.
-- **Proportion and composition**: Tune scale, density, spacing, rhythm, balance, and focal areas before decorative styling.
+- **Proportion and composition**: Tune scale, density, spacing, rhythm, balance, focal areas, and one product-specific visual anchor before decorative styling.
 - **Visual hierarchy**: Make the first read, primary action, secondary information, and detail layer obvious.
-- **Color and material**: Use color roles, contrast, background/foreground depth, borders, shadow, imagery, and texture as one visual system.
-- **Typography**: Set readable type scale, weight, line height, numeric treatment, labels, and content tone. Avoid oversized type as a substitute for design.
+- **Color and material**: Use color roles, contrast, background/foreground depth, borders, shadow, imagery, material, motif, and texture as one visual system.
+- **Typography**: Set readable type scale, weight, line height, numeric treatment, labels, and content tone. Use typographic contrast and rhythm to create character. Avoid oversized type as a substitute for design.
 - **Component craft**: Use mature components for consistency and behavior, then customize composition and styling to fit the art direction.
-- **Interaction feel**: Make interactions fast, legible, restrained, and responsive to the device and input method.
+- **Interaction feel**: Make interactions fast, legible, restrained, and responsive to the device and input method. Motion, animation, and 3D should express state, continuity, product meaning, or spatial understanding.
 - **Real content**: Design with realistic copy, data, media, states, and edge cases. Avoid placeholder-only beauty.
 
 ## Component Craft
@@ -111,4 +111,4 @@ If full verification is blocked, state the blocker and provide the closest compl
 
 ## Feedback Loop
 
-When the user says the result is ugly or the direction is wrong, treat it as art-direction calibration. Do not defend the previous aesthetic. Quickly identify whether the problem is product character, reference choice, proportion, color/material, density, component language, or interaction feel, then revise or roll back the affected surface with a clear scope.
+When the user says the result is ugly, generic, lifeless, static, gimmicky, or the direction is wrong, treat it as art-direction calibration. Do not defend the previous aesthetic. Quickly identify whether the problem is product character, reference choice, proportion, expressive composition, visual language, motion/spatial language, color/material, density, component language, or interaction feel, then revise or roll back the affected surface with a clear scope.
