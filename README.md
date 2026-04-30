@@ -11,16 +11,24 @@ Recommended one-command install:
 Windows PowerShell:
 
 ```powershell
-npx -y skills add davaded/frontend-art-direction --skill frontend-art-direction -a codex -g -y
+npx -y frontend-art-direction
 ```
 
 macOS/Linux:
 
 ```bash
-npx -y skills add davaded/frontend-art-direction --skill frontend-art-direction -a codex -g -y
+npx -y frontend-art-direction
 ```
 
 Restart Codex after installing.
+
+### Skills CLI
+
+If you prefer calling the Skills CLI directly:
+
+```bash
+npx -y skills add davaded/frontend-art-direction -a codex -g -y
+```
 
 ### Codex Skill Installer
 

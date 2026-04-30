@@ -1,0 +1,38 @@
+{
+  "name": "frontend-art-direction",
+  "version": "0.1.1",
+  "description": "One-command installer for the frontend-art-direction Codex skill.",
+  "bin": {
+    "frontend-art-direction": "bin/frontend-art-direction.js",
+    "install-frontend-art-direction": "bin/frontend-art-direction.js"
+  },
+  "files": [
+    "SKILL.md",
+    "README.md",
+    "agents",
+    "references",
+    "bin"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/davaded/frontend-art-direction.git"
+  },
+  "bugs": {
+    "url": "https://github.com/davaded/frontend-art-direction/issues"
+  },
+  "homepage": "https://github.com/davaded/frontend-art-direction#readme",
+  "keywords": [
+    "codex",
+    "skill",
+    "agent-skill",
+    "frontend",
+    "design",
+    "art-direction"
+  ],
+  "engines": {
+    "node": ">=18"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}
