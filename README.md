@@ -6,7 +6,43 @@ Use it when you want Codex to create or improve a frontend surface, not just mak
 
 ## Install
 
-Clone this repository into your Codex skills directory.
+Recommended one-command install:
+
+Windows PowerShell:
+
+```powershell
+npx -y skills add davaded/frontend-art-direction --skill frontend-art-direction -a codex -g -y
+```
+
+macOS/Linux:
+
+```bash
+npx -y skills add davaded/frontend-art-direction --skill frontend-art-direction -a codex -g -y
+```
+
+Restart Codex after installing.
+
+### Codex Skill Installer
+
+If you prefer Codex's built-in installer:
+
+Windows PowerShell:
+
+```powershell
+python "$env:USERPROFILE\.codex\skills\.system\skill-installer\scripts\install-skill-from-github.py" --repo davaded/frontend-art-direction --path . --name frontend-art-direction
+```
+
+macOS/Linux:
+
+```bash
+python ~/.codex/skills/.system/skill-installer/scripts/install-skill-from-github.py --repo davaded/frontend-art-direction --path . --name frontend-art-direction
+```
+
+Restart Codex after installing.
+
+### Manual Install
+
+Clone this repository into your Codex skills directory:
 
 Windows PowerShell:
 
@@ -62,6 +98,12 @@ For ready-made visual direction references, you can also browse [getdesign.md](h
 - animation or 3D that does not serve the product
 
 ## Update
+
+If installed with `npx skills`:
+
+```bash
+npx -y skills update frontend-art-direction -g -y
+```
 
 If installed with `git clone`, update with:
 
