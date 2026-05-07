@@ -33,10 +33,10 @@ Fast path:
 
 1. Identify the product character and canvas: product type, audience, device class, input method, viewing distance, density, usage context, and primary workflow.
 2. Inspect the existing UI before changing it: current components, tokens, theme files, screenshots, live page, or device surface. If building from scratch, inspect the app shell, tech stack, routes, content model, and realistic data needs before choosing a visual direction.
-3. Ingest 2-4 references before meaningful implementation and classify each by role. Use user-provided references first, then decide whether each source is foundation/quality evidence, project visual memory, visual-language direction, component/motion implementation, spatial/media execution, asset/icon material, or an optional flow/state check. getdesign.md, public `DESIGN.md`, Apple HIG, Material, Carbon, Polaris, Radix, typography, color, layout, accessibility, and token references are foundation constraints for quality and consistency, not moodboards. Use same-category products, Mobbin, Page Flows, Nicelydone, and SaaS Interface only as optional pattern/flow checks unless the user explicitly chose one as visual direction. Inspect each reference enough to create a Reference Evidence Card; do not proceed from named references only. See `references/reference-ingestion.md` and `references/reference-quality.md`. For layout, typography, and color foundations, see `references/visual-foundations.md`. For imagery, material, atmosphere, motif, and brand-like visual language, see `references/visual-language.md`. For motion, animation, 3D, models, and spatial interaction, see `references/motion-spatial-language.md`. For concrete component, motion, model, and icon sources, see `references/frontend-resource-catalog.md`.
+3. Ingest 2-4 references before meaningful implementation and classify each by role. Use user-provided references first, then decide whether each source is foundation/quality evidence, project visual memory, visual-language direction, component/motion implementation, spatial/media execution, asset/icon material, or an optional flow/state check. getdesign.md, public `DESIGN.md`, Apple HIG, Material, Carbon, Polaris, Radix, typography, color, layout, accessibility, and token references are foundation constraints for quality and consistency, not moodboards. Use same-category products, Mobbin, Page Flows, Nicelydone, and SaaS Interface only as optional pattern/flow checks unless the user explicitly chose one as visual direction. Inspect each reference enough to create a Reference Evidence Card; do not proceed from named references only. See `references/reference-ingestion.md` and `references/reference-quality.md`. For layout, typography, type scale, and color foundations, see `references/visual-foundations.md`. For imagery, material, atmosphere, motif, and brand-like visual language, see `references/visual-language.md`. For motion, animation, 3D, models, and spatial interaction, see `references/motion-spatial-language.md`. For concrete component, motion, model, and icon sources, see `references/frontend-resource-catalog.md`.
 4. Form a short Art Direction Brief and Reference Translation Brief before implementation when the work is substantial or direction-sensitive. Use them as the visual compass, not as a stopping point. See `references/art-direction-brief.md` and `references/reference-ingestion.md`.
 5. Run the quality gates in `references/visual-quality-gates.md`: diagnosis, reference lock, brief, expressive composition, visual language, motion/spatial language, component/state pass, resource discipline, visual QA, and self-iteration.
-6. Implement composition before decoration: visual anchor, layout, density, proportion, hierarchy, content grouping, typographic rhythm, visual language, motion/spatial language, and primary workflow come before color, shadow, gradients, or animation. If the result feels mechanical, use `references/expressive-composition.md`. If the result feels visually generic or lifeless, use `references/visual-language.md`. If motion, animation, or models feel decorative or generic, use `references/motion-spatial-language.md`.
+6. Implement composition before decoration: visual anchor, layout, density, proportion, hierarchy, content grouping, typographic rhythm, visual language, motion/spatial language, and primary workflow come before color, shadow, gradients, or animation. Lock type scale before styling: display-size text is only for true hero/editorial surfaces, not compact tools, dashboards, settings, tables, forms, or dense app panels. If the result feels mechanical, use `references/expressive-composition.md`. If the result feels visually generic or lifeless, use `references/visual-language.md`. If motion, animation, or models feel absent, decorative, or generic, use `references/motion-spatial-language.md`.
 7. Implement with existing project patterns and mature components. Improve primitives first when weak buttons, inputs, lists, dialogs, or cards would drag down the whole UI.
 8. Treat every visible state change as a design moment: hover, focus, press, loading, empty, error, success, navigation, filtering, and transitions.
 9. Translate the same aesthetic across devices instead of merely scaling the layout.
@@ -51,7 +51,7 @@ Prioritize these quality dimensions:
 - **Proportion and composition**: Tune scale, density, spacing, rhythm, balance, focal areas, and one product-specific visual anchor before decorative styling.
 - **Visual hierarchy**: Make the first read, primary action, secondary information, and detail layer obvious.
 - **Color and material**: Use color roles, contrast, background/foreground depth, borders, shadow, imagery, material, motif, and texture as one visual system.
-- **Typography**: Set readable type scale, weight, line height, numeric treatment, labels, and content tone. Use typographic contrast and rhythm to create character. Avoid oversized type as a substitute for design.
+- **Typography**: Set readable type scale, weight, line height, numeric treatment, labels, and content tone from foundation references or project tokens. Use typographic contrast and rhythm to create character. Avoid oversized type as a substitute for design. In product tools, prefer dense, role-based type over hero-scale headings unless the reference evidence explicitly supports a display moment.
 - **Component craft**: Use mature components for consistency and behavior, then customize composition and styling to fit the art direction.
 - **Interaction feel**: Make interactions fast, legible, restrained, and responsive to the device and input method. Motion, animation, and 3D should express state, continuity, product meaning, or spatial understanding.
 - **Real content**: Design with realistic copy, data, media, states, and edge cases. Avoid placeholder-only beauty.
@@ -70,6 +70,8 @@ Good component use should produce complete states, accessible controls, coherent
 
 High-end interaction is not spectacle. It is clear, immediate, and well-paced state change.
 
+In direct development mode, a polished UI should not be static. Implement at least one meaningful motion or transition layer unless the user, platform, or accessibility context rules it out. Minimum acceptable motion is stateful and visible: press/focus feedback, panel reveal, route or tab continuity, loading/empty transition, list filtering continuity, drag/selection feedback, media/voice state feedback, or success/error response. A color-only hover change is not enough for substantial UI work.
+
 Check:
 
 - Does every click, hover, focus, touch, drag, submit, and navigation have appropriate feedback?
@@ -78,6 +80,8 @@ Check:
 - Are mobile, touch, remote, rotary, or car-display flows free from hover-only affordances?
 - Does motion remain performant on the target device?
 - Do microcopy and state labels sound like a real product rather than template filler?
+
+When using component/motion resources such as transitions.dev, React Bits, Aceternity UI, HeroUI, or Spectrum UI, borrow both component structure and state behavior. Do not strip the motion away and leave a static clone.
 
 ## Cross-Device Translation
 
@@ -113,7 +117,9 @@ Before finishing UI development, verify the visible result where possible:
 - Run the app or open the page.
 - Check desktop and relevant mobile/device viewports.
 - Inspect screenshots for hierarchy, spacing, overflow, contrast, alignment, visual coherence, and template-like or generic AI aesthetics.
+- Inspect type scale specifically: no hero-sized heading, giant number, or marketing headline should dominate a compact product surface unless the locked typography reference and product context justify it.
 - Exercise interaction states, not only the default screen.
+- Confirm at least one meaningful state transition or motion moment is implemented and visible, with reduced-motion behavior when appropriate.
 - Check console/build errors and performance red flags.
 - For existing UI, capture or inspect the before state and compare against the after state.
 - For new UI, compare the implemented surface against the Art Direction Brief and the selected references.
@@ -129,6 +135,8 @@ For UI development, do not finish with design intent only. A complete pass shoul
 - real code edits to the visible surface
 - a desktop and target-device or target-viewport check when runnable
 - at least one interaction or state check beyond the default screen
+- at least one implemented stateful motion or transition layer for substantial UI work, unless explicitly inappropriate
+- a typography scale check against foundation references or project tokens, especially for oversized headings and numbers
 - one self-iteration when the first visible result has obvious hierarchy, spacing, text-fit, motion, or generic-template problems
 
 ## Feedback Loop

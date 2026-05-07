@@ -21,6 +21,20 @@ What to avoid:
 
 Motion purpose must be concrete: feedback, state change, continuity, reveal, instruction, comparison, progress, attention guidance, product demonstration, spatial understanding, brand memory, or delight after task success.
 
+## Default Motion Requirement
+
+For substantial frontend work, the default expectation is not a static screen. Implement a small motion system unless the user, platform, performance budget, or reduced-motion requirement makes that inappropriate.
+
+Minimum viable motion should include at least one of:
+
+- press, focus, selected, loading, success, error, drag, or media-state feedback
+- panel, drawer, tab, route, filter, sort, expand, collapse, or detail-view continuity
+- reveal sequencing that clarifies reading order
+- data/status update transition that preserves object identity
+- product-specific animation, model, or spatial moment tied to the core object
+
+Do not count static visual styling, color-only hover, decorative background loops, or generic fade-in-on-scroll as sufficient motion for a meaningful UI pass.
+
 ## Motion Grammar
 
 Define a small set of repeated rules:

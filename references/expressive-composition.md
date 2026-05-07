@@ -47,6 +47,8 @@ Choose one or two, not all of them:
 
 Type should carry hierarchy and personality before decoration does.
 
+Scale contrast does not mean "make the headline huge." For product UI, hierarchy should often come from placement, grouping, weight, density, whitespace, numeric treatment, and component state before display-size text.
+
 Check:
 
 - Does the type scale create a clear first, second, and third read?
@@ -61,6 +63,7 @@ Avoid:
 - one-size-fits-all heading blocks
 - negative letter spacing everywhere
 - huge type inside compact tools
+- hero-scale headings in dashboards, settings, tables, forms, and dense workflow screens
 - weak labels that look like placeholder text
 - font choices that fail with CJK or mixed-language content
 

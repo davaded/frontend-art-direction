@@ -86,6 +86,7 @@ Create a concise Art Direction Brief before changing the visible surface. It mus
 - motion/spatial language
 - color and material
 - typography
+- type scale restraint: whether display-size text is allowed, largest text role, and what must not become oversized
 - component language
 - interaction feel
 - device translation
@@ -133,7 +134,9 @@ Define motion and model rules before implementing effects:
 - technology choice: CSS, Motion, GSAP, Rive, Lottie, Three.js, React Three Fiber, model-viewer, Spline, or another fit
 - fallback: reduced motion, static poster, simplified interaction, or non-3D layout
 
-Use `motion-spatial-language.md` when motion, animation, or models are central to the experience, or when existing motion feels static, gimmicky, generic, too busy, or disconnected from state.
+For substantial UI work, implement at least one meaningful motion or transition layer unless the context explicitly rules it out. It can be simple, but it must be stateful and visible: interaction feedback, panel/route continuity, reveal sequence, filtering/list continuity, loading/empty/error/success response, drag/selection feedback, media/voice state, product inspection, or spatial understanding. Do not count static styling, color-only hover, decorative loops, or generic fade-in-on-scroll as sufficient.
+
+Use `motion-spatial-language.md` when motion, animation, or models are central to the experience, when existing motion feels absent, static, gimmicky, generic, too busy, or disconnected from state, or when a component/motion resource is being used.
 
 ## Gate 7: Component and State Pass
 
@@ -168,6 +171,7 @@ Verify the real surface when possible:
 - desktop viewport
 - mobile or target device viewport
 - screenshot inspection for hierarchy, spacing, overflow, contrast, alignment, text fit, and visual coherence
+- type-scale inspection: oversized headings, giant numbers, hero-sized words inside compact tools, marketing-page typography used in product UI, or type not justified by the foundation/reference lock
 - mechanical-layout inspection: repeated equal cards, average spacing everywhere, weak visual anchor, generic hero pattern, flat type rhythm, or random SaaS-template feel
 - visual-language inspection: stock imagery, random decoration, inconsistent icon/illustration/photo treatment, weak material logic, generic gradient background, or no recognizable product motif
 - motion/spatial inspection: decorative loops, too many moving elements, weak state meaning, scroll hijacking, unoptimized model assets, poor camera framing, missing poster/loading state, or no reduced-motion fallback
@@ -196,6 +200,7 @@ Before final delivery, ask:
 - Are animation/model choices performant, accessible, and framed correctly on the target device?
 - Is the rhythm varied, or are all regions/cards the same weight?
 - Does typography create character beyond a tidy scale?
+- Is the largest text role appropriate for this product surface, or did the UI become a big-word poster?
 - Is there a clear product character?
 - Are controls and states complete enough for real use?
 - Does anything look like a generic AI-generated landing page or copied component demo?

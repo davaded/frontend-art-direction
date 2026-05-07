@@ -148,6 +148,30 @@ These sources are useful only when workflow, states, navigation, density, or pla
 - Borrow: typographic fundamentals and reading comfort.
 - Avoid: novelty fonts or oversized headings as a substitute for hierarchy.
 
+## Type Scale Restraint
+
+Before implementing UI type, choose a role-based scale from project tokens or foundation references. Do not invent large display sizes just to make the screen feel designed.
+
+Default restraint:
+
+- Dashboards, admin tools, forms, settings, tables, developer tools, CRM, commerce admin, and operational UI should usually use compact title scales, strong weights, grouping, and spacing instead of huge headings.
+- Landing pages, editorial pages, immersive product introductions, campaigns, and brand moments may use display type, but only when the first screen is truly a hero and the reference evidence supports it.
+- Metrics can be large only when the metric is the primary object of the workflow; otherwise use tabular numeric treatment, grouping, and contrast.
+- CJK or mixed-language UI needs extra restraint because oversized Chinese text quickly becomes heavy and awkward at short line lengths.
+
+Type scale lock:
+
+```text
+Surface type:
+Typography reference:
+Display text allowed? yes/no and why:
+Largest text role and approximate size:
+Heading/body/label/numeric roles:
+What must not be oversized:
+```
+
+Reject a type scale when the screenshot reads as a poster, generic landing hero, or large-word composition instead of a usable product surface.
+
 ### Typewolf and Fonts In Use
 
 - URLs:
@@ -234,6 +258,7 @@ For meaningful UI work, record these before implementation:
 Layout reference:
 Typography reference:
 Color reference:
+Type scale lock:
 Derived layout decisions:
 Derived typography decisions:
 Derived color decisions:
