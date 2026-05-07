@@ -190,6 +190,39 @@ These examples combine component structure, state, and motion. Use them as compo
 - Avoid: mixing icons from many libraries on one surface, using unverified brand marks, or pasting inaccessible SVGs.
 - Check: original icon library license, stroke/fill consistency, accessible labels, sizing, and theme color control.
 
+## Functional Frontend Utilities (Low Direction Weight)
+
+Use these only when the product requires the capability. They are front-end implementation references, not primary visual direction references.
+
+### Canvas, Drawing, and Diagramming
+
+- Fabric.js: object-based Canvas/SVG editing, annotation, lightweight image/layout editors, and product customizers. Check serialization, selection handles, text editing, export, and mobile pointer behavior.
+- Konva and react-konva: interactive canvas scenes, whiteboards, diagrams, editors, map-like layers, drag/resize handles, and React-owned canvas components. Check hit testing, high-DPI rendering, accessibility alternatives, and responsive scaling.
+- p5.js: generative visuals, creative coding, lightweight visual experiments, and interactive sketches. Use carefully in production tools; avoid making generative sketches the product identity unless that is the concept.
+- Atrament and react-native-sketch-canvas: drawing, signature, sketch, and touch-first input surfaces. Check pressure/touch behavior, undo/redo, export, and device performance.
+
+### Lightweight Spatial, Physics, and Inspection
+
+- Zdog: designer-friendly pseudo-3D Canvas/SVG objects for lightweight playful product objects or diagrams. Avoid using it where real model inspection is needed.
+- Curtains.js: WebGL effects that map DOM/media into interactive planes. Use for media-driven editorial/product surfaces, not dense tools.
+- Matter.js and Planck.js: 2D physics for tactile demos, games, playful configurators, or constrained interaction moments. Avoid physics as decoration.
+- Pannellum and JS-Cloudimage-360-View: panorama, 360 view, and product inspection. Check asset size, controls, keyboard/touch behavior, loading state, and fallback imagery.
+
+### Data, Chart, and Media Rendering
+
+- ECharts, Chart.js, ApexCharts, Vega, and Lightweight Charts: data visualization engines for dashboards, finance, scientific, and operational UI. Borrow interaction patterns and rendering capability, then apply local tokens, density, typography, and accessibility.
+- wavesurfer.js: audio waveform display and interaction for media, voice, podcast, transcription, and music tools. Check waveform meaning, seek/selection behavior, loading state, and reduced-motion or static fallback.
+- Canvid: canvas playback for short video-like sequences when normal video or Lottie is not suitable. Check file weight, playback controls, and accessibility.
+
+### Image Editing, Filters, Capture, and Export
+
+- TUI Image Editor, DarkroomJS, and canvasfilters: image editing, crop, transform, annotation, and filter features. Treat their UI as old/default unless restyled into the product system.
+- html2canvas, dom-to-image, html-to-image, and html2pdf.js: screenshot, poster, image, and PDF export pipelines. Use for output features only; they are not visual or motion references. Check font loading, cross-origin images, canvas tainting, output scale, pagination, and dark/light theme rendering.
+
+### Single-Purpose Effects
+
+- canvas-confetti and particle button effects: state-specific celebration or completion feedback. Use only for meaningful success moments; keep duration short and provide a reduced-motion fallback.
+
 ## Selection Rules
 
 - Start with the product need: component system, animated component pattern, motion behavior, or asset source.
@@ -198,6 +231,7 @@ These examples combine component structure, state, and motion. Use them as compo
 - Use shadcn/ui, Spectrum UI, and similar block libraries as owned implementation material: adapt tokens, spacing, content, states, and interaction to the selected art direction.
 - Treat transitions.dev, React Bits, Aceternity UI, and similar effectful component catalogs as component/motion references: adapt the component state, density, timing, and accessibility to the product.
 - Evaluate specialty libraries such as ElevenLabs UI by their transferable interaction ideas and implementation fit, not by a fixed category whitelist.
+- Treat functional utilities as low-weight implementation references: useful for capabilities, not for visual identity.
 - Choose the lightest motion or spatial medium that expresses the intended state or product idea.
 - Use 3D models only when they help inspect, understand, demonstrate, sell, or embody the product.
 - Keep motion purposeful: feedback, continuity, reveal, or spatial understanding.

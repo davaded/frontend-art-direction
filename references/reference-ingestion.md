@@ -73,6 +73,18 @@ Includes shadcn/ui, Radix, HeroUI, Spectrum UI, ElevenLabs UI, Reacticx, React B
 - Avoid: importing demo aesthetics as the whole product identity, adding decorative loops, using scroll tricks in task-heavy tools, or adding 3D that does not clarify the product.
 - Translate: state the local component, route, interaction, transition, or spatial/media moment where the resource will be adapted and which defaults will be overwritten.
 
+### Functional Frontend Utilities
+
+Includes canvas/drawing libraries, image editors, charting engines, screenshot/export tools, image filters, audio waveform tools, video-on-canvas utilities, physics engines, panorama/360 viewers, and single-purpose effects such as confetti.
+
+This role has low visual-direction weight. These references can solve real frontend functionality, but they should not lead art direction, typography, layout, color, density, or component language.
+
+- Use for: implementing a required frontend capability such as drawing, annotation, diagramming, image editing, export, PDF/image capture, data visualization, audio visualization, 360/product inspection, physics interaction, or state-specific celebration.
+- Inspect: API shape, framework fit, maintenance, license, bundle cost, performance, mobile/touch behavior, accessibility, export quality, and how the tool handles real content.
+- Borrow: functional primitives, interaction mechanics, rendering approach, data/media handling, export pipeline, and implementation constraints.
+- Avoid: treating a utility demo as a visual reference, importing old plugin aesthetics, adding novelty effects without product state meaning, or letting a functional library override the selected component system.
+- Translate: state the exact feature it supports and the quality boundaries it must respect: visual system, accessibility, responsive behavior, reduced motion, performance, and fallback.
+
 ### Asset and Icon Sources
 
 Includes Developer Icons, All SVG Icons, brand-logo packs, illustration sources, model asset sources, and media asset libraries.
@@ -103,7 +115,8 @@ For substantial work, build a small reference stack:
 2. Add a foundation or quality-system reference when layout, type, color, tokens, states, or accessibility are not already settled.
 3. Add a visual-language reference when the UI must become more memorable, less generic, or more brand/product-specific.
 4. Add component/motion implementation references or asset references only for the concrete execution layer they support.
-5. Add an optional pattern/flow check only if state coverage, workflow order, density, or platform behavior is unclear.
+5. Add functional frontend utility references only when a concrete feature needs that capability. They do not replace foundation, visual-language, or component/motion references.
+6. Add an optional pattern/flow check only if state coverage, workflow order, density, or platform behavior is unclear.
 
 Do not use component/motion implementation references alone when layout, typography, color, and visual language are still unresolved.
 
