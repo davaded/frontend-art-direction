@@ -55,11 +55,47 @@ Define a small set of repeated rules:
 - Use for React/JS/Vue motion primitives, layout transitions, gestures, drag, hover, press, and route continuity.
 - Good fit when UI state and component identity matter more than timeline-heavy choreography.
 
+### View Transitions API
+
+- URL: https://developer.mozilla.org/en-US/docs/Web/API/View_Transition_API
+- Use for browser-native route, page, gallery, detail, filter, and list continuity.
+- Good fit when old/new DOM state snapshots communicate object identity better than manual enter/exit animation.
+
+### CSS Scroll-Driven Animations
+
+- URL: https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Scroll-driven_animations
+- Use for scroll-linked timelines, reading/progress indicators, view progress, and lightweight scrollytelling.
+- Good fit when motion should be controlled by actual scroll position and can remain transform/opacity-based.
+
+### AutoAnimate
+
+- URL: https://auto-animate.formkit.com/
+- Use for quick add/remove/reorder/layout-change transitions in lists, forms, chips, rows, menus, and validation messages.
+- Good fit when small state changes need polish and the project does not need a bespoke motion system.
+
+### React Spring
+
+- URL: https://react-spring.dev/docs/getting-started
+- Use for React spring physics, tactile feedback, gesture-adjacent motion, SVG, and Three.js animation.
+- Good fit when UI should feel physical, interruptible, or data-driven.
+
+### Anime.js
+
+- URL: https://animejs.com/documentation/
+- Use for DOM/SVG/text/timeline choreography and WAAPI-backed focused motion.
+- Good fit when CSS or component primitives are too limited but GSAP would be heavier than needed.
+
 ### GSAP
 
 - URL: https://gsap.com/docs/v3/
 - Use for advanced timeline choreography, scroll-driven sequences, pinned storytelling, SVG morphing/drawing, text reveals, and complex cross-element animation.
 - Good fit when motion is a central part of the page narrative or visual identity.
+
+### Theatre.js
+
+- URL: https://www.theatrejs.com/docs/latest
+- Use for authored motion design, HTML/SVG/Three.js sequence design, and cinematic product explanation.
+- Good fit when the motion itself needs a designer/developer timeline workflow.
 
 ### Rive
 
@@ -103,6 +139,12 @@ Define a small set of repeated rules:
 - Use for designer-authored interactive 3D scenes, lightweight product explainers, web-ready 3D visuals, and rapid spatial prototypes.
 - Good fit when the team needs visual 3D authoring faster than custom scene engineering.
 
+### Lenis
+
+- URL: https://github.com/darkroomengineering/lenis
+- Use for smooth scrolling, scroll-to behavior, WebGL scroll syncing, and creative scroll narratives.
+- Good fit when scroll feel is a deliberate part of the product or editorial experience; poor fit for dense tools, modals, and utility screens that need native predictability.
+
 ### glTF
 
 - URL: https://www.khronos.org/gltf/
@@ -118,10 +160,17 @@ Define a small set of repeated rules:
 ## Choosing the Medium
 
 - Use CSS transitions for simple state feedback.
+- Use View Transitions API for browser-native page, route, list, gallery, and detail-state continuity.
+- Use CSS scroll-driven animations for scroll-linked effects that should follow actual scroll position.
+- Use AutoAnimate for quick add/remove/reorder and layout-change transitions.
 - Use Motion for component-level UI motion and layout continuity.
+- Use React Spring for tactile, physics-like, interruptible React motion.
+- Use Anime.js for focused DOM/SVG/text/timeline choreography when CSS is too limited.
 - Use GSAP for timeline choreography, scroll narrative, SVG/text animation, and cross-element sequences.
+- Use Theatre.js for authored designer/developer motion sequences.
 - Use Rive for interactive state-machine vector animation.
 - Use Lottie for pre-authored lightweight vector playback.
+- Use Lenis only when smooth scroll itself is part of the experience.
 - Use model-viewer for simple product/model inspection.
 - Use Three.js or React Three Fiber for custom interactive 3D scenes.
 - Use Spline for designer-authored interactive 3D visuals.

@@ -46,6 +46,62 @@ Use this catalog when a UI task needs concrete components, animated component pa
 - Avoid: long decorative SVG intros, animated body text, or paths that distract from the primary task.
 - Check: SVG path quality, timing on low-power devices, replay/rewind controls where useful, and static fallback.
 
+### View Transitions API
+
+- URL: https://developer.mozilla.org/en-US/docs/Web/API/View_Transition_API
+- Use for: browser-native continuity between route, page, list, detail, filter, gallery, and state changes in SPAs or same-origin MPAs.
+- Borrow: old/new view snapshots, `startViewTransition()`, `view-transition-name`, and browser-managed transition lifecycle for object continuity.
+- Avoid: using it as a generic page fade, ignoring focus/reading-position issues, or stacking it with other route animations that fight the browser snapshot.
+- Check: browser support, feature detection, skipped transitions, same-origin constraints for cross-document use, focus behavior, reduced motion, and fallback.
+
+### CSS Scroll-Driven Animations
+
+- URL: https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Scroll-driven_animations
+- Use for: lightweight scroll progress indicators, reveal tied to reading progress, pinned explanatory moments, data/storytelling sequences, and element-in-view emphasis.
+- Borrow: CSS timelines, `animation-timeline`, scroll progress, and view progress when motion should be coupled to real scroll position.
+- Avoid: scroll hijacking, hiding core reading behind choreography, using scroll effects in dense task tools, or animating properties that cause layout jank.
+- Check: browser support, fallback, accessibility, scroll container behavior, transform/opacity performance, and whether scrolling still feels user-controlled.
+
+### AutoAnimate
+
+- URL: https://auto-animate.formkit.com/
+- Use for: fast list, table row, form message, drawer, menu, chip, validation, filter, add/remove, and reorder transitions when the project needs small state motion quickly.
+- Borrow: parent-level drop-in transitions for layout changes across React, Vue, Svelte, Angular, Solid, Preact, and native JS.
+- Avoid: using default motion where custom state choreography is needed, applying it to large complex layouts, or hiding poor information architecture behind automatic transitions.
+- Check: unique keys, reduced motion, duration tuning, layout shift, nested animated regions, and whether the transition clarifies state.
+
+### React Spring
+
+- URL: https://react-spring.dev/docs/getting-started
+- Use for: React interaction motion, tactile spring feedback, drag/gesture-adjacent UI, SVG, Three.js, and data-driven animated components.
+- Borrow: spring-based component state, `useSpring`, `animated`, and event-driven animation control for UI that should feel physical or responsive.
+- Avoid: using spring motion for every transition, creating bouncy operational tools, or choosing it when simple CSS/Motion transitions are enough.
+- Check: React version, bundle cost, interruption behavior, accessibility, reduced motion, and whether spring physics match product character.
+
+### Anime.js
+
+- URL: https://animejs.com/documentation/
+- Use for: DOM, SVG, text, timeline, WAAPI-backed, and choreographed microanimation where CSS or simple component motion is too limited.
+- Borrow: timelines, stagger, SVG/text animation, and WAAPI options for focused interface moments.
+- Avoid: character-by-character text gimmicks, long intro animations, or choreography that slows task completion.
+- Check: API version, tree-shaking, autoplay/RAF behavior, reduced motion, cleanup on route changes, and whether animation still communicates state.
+
+### Theatre.js
+
+- URL: https://www.theatrejs.com/docs/latest
+- Use for: authored motion design, cinematic product explanation, WebGL/Three.js scenes, HTML/SVG choreography, and design-led timeline work.
+- Borrow: designer/developer animation workflow, sequence authoring, and cross-medium choreography when motion is central to the surface.
+- Avoid: adding a professional timeline tool for ordinary hover, list, or route transitions.
+- Check: runtime/editor split, bundle cost, team workflow, export/replay behavior, reduced motion, and whether the authored sequence supports product meaning.
+
+### Lenis
+
+- URL: https://github.com/darkroomengineering/lenis
+- Use for: smooth scrolling, scroll-to behavior, WebGL scroll sync, parallax/editorial pages, creative product narratives, and scroll-linked visual systems.
+- Borrow: controlled scroll engine, RAF integration, GSAP ScrollTrigger syncing, anchors, and nested-scroll prevention patterns.
+- Avoid: applying smooth scroll to dense dashboards, forms, modals, car/head-unit surfaces, or tools where native scroll predictability is more important.
+- Check: nested scroll, modals, anchors, scroll reset on navigation, touch behavior, performance, `prevent` rules, and reduced-motion/native-scroll fallback.
+
 ## 3D, Models, and Spatial Interfaces
 
 ### Three.js
@@ -216,12 +272,12 @@ Use these only when the product requires the capability. They are front-end impl
 
 ### Image Editing, Filters, Capture, and Export
 
-- TUI Image Editor, DarkroomJS, and canvasfilters: image editing, crop, transform, annotation, and filter features. Treat their UI as old/default unless restyled into the product system.
-- html2canvas, dom-to-image, html-to-image, and html2pdf.js: screenshot, poster, image, and PDF export pipelines. Use for output features only; they are not visual or motion references. Check font loading, cross-origin images, canvas tainting, output scale, pagination, and dark/light theme rendering.
+- TUI Image Editor, DarkroomJS, and canvasfilters: low-weight functional references for image editing, crop, transform, annotation, and filter features. Treat their UI as old/default unless restyled into the product system.
+- html2canvas, dom-to-image, html-to-image, and html2pdf.js: low-weight functional references for screenshot, poster, image, and PDF export pipelines. Use for output features only; they are not primary visual or motion references. Check font loading, cross-origin images, canvas tainting, output scale, pagination, and dark/light theme rendering.
 
 ### Single-Purpose Effects
 
-- canvas-confetti and particle button effects: state-specific celebration or completion feedback. Use only for meaningful success moments; keep duration short and provide a reduced-motion fallback.
+- canvas-confetti and react-particle-effect-button-style effects: low-weight functional references for state-specific celebration or completion feedback. Use only for meaningful success moments; keep duration short and provide a reduced-motion fallback.
 
 ## Selection Rules
 
