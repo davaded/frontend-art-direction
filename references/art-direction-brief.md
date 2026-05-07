@@ -9,14 +9,18 @@ For substantial or direction-sensitive UI work, expose a concise version of the 
 ```text
 Art Direction Brief:
 Product character:
+Design stance:
 Reference direction:
 Visual hierarchy:
 Layout rhythm:
 Composition signature:
+Signature interaction:
+Medium decision:
 Visual language:
 Motion/spatial language:
 Color/material:
 Typography:
+Type ceiling:
 Component language:
 Interaction feel:
 Device translation:
@@ -25,14 +29,18 @@ Device translation:
 ## Field Guidance
 
 - **Product character**: Define the intended feeling and identity. Examples: precise productivity tool, immersive music library, quiet enterprise console, fast command surface, low-distraction car display.
+- **Design stance**: Choose a visible stance such as quiet precision, kinetic product, visual object, editorial authority, instrument panel, or consumer character. Avoid vague "clean modern premium."
 - **Reference direction**: Name 2-4 inspected references, classify each reference's role, and state what to borrow from each. Borrow principles, not the whole look.
 - **Visual hierarchy**: Define what the user should notice first, second, and third.
 - **Layout rhythm**: Specify whether the surface is split-panel, dense dashboard, open editorial, content-led, toolbelt, cockpit, or focused single-task flow.
 - **Composition signature**: Define the visual anchor, asymmetry, density contrast, product-specific motif, or typographic move that prevents the UI from feeling generic.
+- **Signature interaction**: Define one stateful interaction or motion moment that makes the product feel alive without becoming gimmicky.
+- **Medium decision**: Choose static interface, image/photo, illustration, motion/animation, 3D/model, or a hybrid. State why this medium best serves the product, workflow, device, and state changes, and what obvious alternatives are being rejected.
 - **Visual language**: Define imagery, material, graphic motif, depth, texture, icon/illustration/3D approach, and the product-specific metaphor behind them.
 - **Motion/spatial language**: Define motion purpose, timing/easing, animation grammar, 3D/model role, triggers, and reduced-motion fallback.
 - **Color/material**: Define base, accent, contrast, depth, imagery, borders, shadow, translucency, or texture.
 - **Typography**: Define scale, weight, density, labels, numbers, headings, and content voice.
+- **Type ceiling**: Define the largest allowed type role for the surface. In tools, dashboards, tables, forms, settings, and compact panels, display type is usually not allowed.
 - **Component language**: Define how controls, cards, lists, dialogs, navigation, charts, media, or toolbars should feel.
 - **Interaction feel**: Define feedback speed, motion restraint, state treatment, loading, empty, error, and navigation continuity.
 - **Device translation**: Define how the direction changes for desktop, mobile, touch, car/head-unit, big screen, or embedded surfaces.
@@ -46,6 +54,7 @@ Reference direction: foundation reference uses Apple HIG's restraint; visual/pro
 Visual hierarchy: active work item first, primary actions second, metadata third.
 Layout rhythm: split-panel workspace with dense controls and generous internal spacing.
 Composition signature: active work object anchors the left pane, with tighter metadata and command regions orbiting it.
+Medium decision: mostly static dense UI with short stateful transitions; no stock imagery or decorative 3D because the product value is task focus and continuity.
 Visual language: quiet instrument-panel surfaces, precise separators, sparse iconography, no generic gradients or decorative blobs.
 Motion/spatial language: short feedback transitions, continuity between work item states, no decorative loops unless they communicate live status.
 Color/material: neutral base, subtle borders, restrained depth, one confident accent.

@@ -159,6 +159,8 @@ Define a small set of repeated rules:
 
 ## Choosing the Medium
 
+Before choosing a library or effect, make the medium decision: static interface, image/photo, illustration, motion/animation, 3D/model, or hybrid. The winning choice should be the clearest way to express product meaning, state, continuity, inspection, atmosphere, or user understanding on the target device.
+
 - Use CSS transitions for simple state feedback.
 - Use View Transitions API for browser-native page, route, list, gallery, and detail-state continuity.
 - Use CSS scroll-driven animations for scroll-linked effects that should follow actual scroll position.

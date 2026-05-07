@@ -78,14 +78,18 @@ Do not proceed from component/motion implementation references alone when layout
 Create a concise Art Direction Brief before changing the visible surface. It must answer:
 
 - product character
+- design stance
 - reference direction
 - visual hierarchy
 - layout rhythm
 - composition signature
+- signature interaction
+- medium decision: static interface, image/photo, illustration, motion/animation, 3D/model, or hybrid
 - visual language
 - motion/spatial language
 - color and material
 - typography
+- type ceiling
 - type scale restraint: whether display-size text is allowed, largest text role, and what must not become oversized
 - component language
 - interaction feel
@@ -93,7 +97,25 @@ Create a concise Art Direction Brief before changing the visible surface. It mus
 
 Expose the brief when the direction is ambiguous, the UI is new, or the work affects a major screen. If the user asked for direct implementation, keep it concise and move into implementation after the brief is clear.
 
-## Gate 4: Expressive Composition First
+## Gate 4: Taste Positioning
+
+Use `taste-positioning.md` before composition work when the task is substantial, the UI is new, or prior output felt bland, generic, over-safe, static, or overly dependent on large text.
+
+Create a Taste Positioning Card:
+
+```text
+Design stance:
+Personality axis:
+Signature move:
+Signature interaction:
+Type ceiling:
+What stays restrained:
+What gets removed because it is generic:
+```
+
+Do not proceed with a vague stance such as "clean modern premium." If the UI is meant to be restrained, make restraint feel intentional through density, alignment, state behavior, and material discipline. If it is meant to be expressive, make one expressive move strong enough to remember.
+
+## Gate 5: Expressive Composition First
 
 Do this before decorative styling:
 
@@ -109,10 +131,11 @@ Do this before decorative styling:
 
 Do not start with gradients, shadows, glow, animated backgrounds, glassmorphism, or decorative cards when the layout and hierarchy are unresolved. If the result looks like an evenly spaced card template, use `expressive-composition.md` before continuing.
 
-## Gate 5: Visual Language Pass
+## Gate 6: Visual Language Pass
 
 Define the visual system before polishing surfaces:
 
+- medium decision: static interface, image/photo, illustration, motion/animation, 3D/model, or hybrid
 - visual metaphor or product object
 - imagery, photo, illustration, 3D, chart, or media treatment
 - graphic motif such as crop, frame, line, grid, waveform, coordinate, mask, contour, corner, or symbol
@@ -123,7 +146,19 @@ Define the visual system before polishing surfaces:
 
 Use `visual-language.md` when the UI is clean but looks generic, stock-like, or visually lifeless. Do not add unrelated decorative effects; create one coherent product-specific visual idea and extend it lightly.
 
-## Gate 6: Motion and Spatial Language Pass
+For substantial UI work, record a Medium Decision before implementation:
+
+```text
+Selected medium:
+Why this medium fits the product, workflow, and device:
+What alternatives were rejected:
+How the medium appears in the interface:
+Performance/accessibility fallback:
+```
+
+Static UI, photography, illustration, motion, animation, 3D/model, and hybrids are all valid. The chosen medium must be the strongest way to express product meaning, state, continuity, inspection, atmosphere, or user understanding. Do not choose a medium because it is trendy, available in a catalog, or easier to decorate with.
+
+## Gate 7: Motion and Spatial Language Pass
 
 Define motion and model rules before implementing effects:
 
@@ -138,7 +173,7 @@ For substantial UI work, implement at least one meaningful motion or transition 
 
 Use `motion-spatial-language.md` when motion, animation, or models are central to the experience, when existing motion feels absent, static, gimmicky, generic, too busy, or disconnected from state, or when a component/motion resource is being used.
 
-## Gate 7: Component and State Pass
+## Gate 8: Component and State Pass
 
 Unify the component language:
 
@@ -149,7 +184,7 @@ Unify the component language:
 
 If weak primitives drag down the whole surface, improve the primitives before polishing individual screens.
 
-## Gate 8: Resource Discipline
+## Gate 9: Resource Discipline
 
 Use `frontend-resource-catalog.md` as an execution catalog, not as a taste shortcut.
 
@@ -164,13 +199,15 @@ Use `frontend-resource-catalog.md` as an execution catalog, not as a taste short
 
 Reject resource choices that make the UI look like a generic template, animation demo, or component-gallery page.
 
-## Gate 9: Visual QA
+## Gate 10: Visual QA
 
 Verify the real surface when possible:
 
 - desktop viewport
 - mobile or target device viewport
 - screenshot inspection for hierarchy, spacing, overflow, contrast, alignment, text fit, and visual coherence
+- taste inspection: bland middle-ground, no design stance, no signature move, no signature interaction, generic "clean modern premium" result, or personality coming only from color/glow/large type
+- medium inspection: chosen static, image, illustration, motion, animation, 3D/model, or hybrid treatment fits the product better than the rejected alternatives
 - type-scale inspection: oversized headings, giant numbers, hero-sized words inside compact tools, marketing-page typography used in product UI, or type not justified by the foundation/reference lock
 - mechanical-layout inspection: repeated equal cards, average spacing everywhere, weak visual anchor, generic hero pattern, flat type rhythm, or random SaaS-template feel
 - visual-language inspection: stock imagery, random decoration, inconsistent icon/illustration/photo treatment, weak material logic, generic gradient background, or no recognizable product motif
@@ -188,11 +225,14 @@ Reference-backed verification:
 - Which borrowed decisions were dropped, and why?
 - Did any reference get misapplied to the wrong product type, density, or device?
 
-## Gate 10: Self-Iteration Before Final
+## Gate 11: Self-Iteration Before Final
 
 Before final delivery, ask:
 
 - Is the first read obvious?
+- Is the design stance visible without explanation?
+- Is there a signature interaction, not just hover color?
+- Was the visual medium chosen deliberately, or did the UI default to static layout, stock imagery, component-demo animation, or ornamental 3D?
 - Does the layout feel composed before it feels decorated?
 - Is there a memorable visual anchor or composition signature?
 - Is there a coherent visual language: imagery, motif, material, depth, texture, and icon style?
