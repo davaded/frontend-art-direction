@@ -1,6 +1,6 @@
 {
   "name": "frontend-art-direction",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "One-command installer for the frontend-art-direction Codex skill.",
   "bin": {
     "frontend-art-direction": "bin/frontend-art-direction.js",
