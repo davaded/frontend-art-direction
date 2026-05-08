@@ -91,6 +91,7 @@ Create a concise Art Direction Brief before changing the visible surface. It mus
 - typography
 - type ceiling
 - type scale restraint: whether display-size text is allowed, largest text role, and what must not become oversized
+- display support: content, image/photo, illustration, animation, model, data object, or editorial material that justifies large type, if any
 - component language
 - interaction feel
 - device translation
@@ -109,11 +110,14 @@ Personality axis:
 Signature move:
 Signature interaction:
 Type ceiling:
+Display support:
 What stays restrained:
 What gets removed because it is generic:
 ```
 
 Do not proceed with a vague stance such as "clean modern premium." If the UI is meant to be restrained, make restraint feel intentional through density, alignment, state behavior, and material discipline. If it is meant to be expressive, make one expressive move strong enough to remember.
+
+Do not use oversized type as the expressive move unless the type is supported by strong content, imagery, animation, model, data object, or editorial material. If that support is weak or missing, choose a restrained type ceiling and create memorability through composition, state behavior, material, or a real product object.
 
 ## Gate 5: Expressive Composition First
 
@@ -209,6 +213,7 @@ Verify the real surface when possible:
 - taste inspection: bland middle-ground, no design stance, no signature move, no signature interaction, generic "clean modern premium" result, or personality coming only from color/glow/large type
 - medium inspection: chosen static, image, illustration, motion, animation, 3D/model, or hybrid treatment fits the product better than the rejected alternatives
 - type-scale inspection: oversized headings, giant numbers, hero-sized words inside compact tools, marketing-page typography used in product UI, or type not justified by the foundation/reference lock
+- display-support inspection: large text without strong copy/content, high-quality asset, meaningful animation, framed model, data object, or editorial material; large text plus generic background effects; CJK text that feels heavy or awkward
 - mechanical-layout inspection: repeated equal cards, average spacing everywhere, weak visual anchor, generic hero pattern, flat type rhythm, or random SaaS-template feel
 - visual-language inspection: stock imagery, random decoration, inconsistent icon/illustration/photo treatment, weak material logic, generic gradient background, or no recognizable product motif
 - motion/spatial inspection: decorative loops, too many moving elements, weak state meaning, scroll hijacking, unoptimized model assets, poor camera framing, missing poster/loading state, or no reduced-motion fallback
@@ -241,6 +246,7 @@ Before final delivery, ask:
 - Is the rhythm varied, or are all regions/cards the same weight?
 - Does typography create character beyond a tidy scale?
 - Is the largest text role appropriate for this product surface, or did the UI become a big-word poster?
+- If large text is present, what content or visual medium earns that size?
 - Is there a clear product character?
 - Are controls and states complete enough for real use?
 - Does anything look like a generic AI-generated landing page or copied component demo?

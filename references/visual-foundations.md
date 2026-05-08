@@ -155,9 +155,24 @@ Before implementing UI type, choose a role-based scale from project tokens or fo
 Default restraint:
 
 - Dashboards, admin tools, forms, settings, tables, developer tools, CRM, commerce admin, and operational UI should usually use compact title scales, strong weights, grouping, and spacing instead of huge headings.
-- Landing pages, editorial pages, immersive product introductions, campaigns, and brand moments may use display type, but only when the first screen is truly a hero and the reference evidence supports it.
+- Landing pages, editorial pages, immersive product introductions, campaigns, and brand moments may use display type, but only when the first screen is truly a hero, the reference evidence supports it, and the layout has high-quality content, imagery, animation, model, data, or editorial material to carry that scale.
 - Metrics can be large only when the metric is the primary object of the workflow; otherwise use tabular numeric treatment, grouping, and contrast.
 - CJK or mixed-language UI needs extra restraint because oversized Chinese text quickly becomes heavy and awkward at short line lengths.
+
+Practical ceilings unless the project tokens or inspected foundation reference justify otherwise:
+
+- dense tools, dashboards, settings, tables, forms: 24-32px page title, 16-22px section headings
+- compact cards, panels, sidebars, dialogs: 15-20px headings, 12-14px labels and metadata
+- mobile app screens: 22-28px screen title, 16-20px section headings
+- landing/editorial/brand hero without strong media or editorial content: avoid display type; keep the main headline closer to 32-44px desktop and 28-36px mobile
+- landing/editorial/brand hero with strong supporting media: display type can exceed this, but only when text fit, line length, and responsive framing are verified
+
+Display Support Gate:
+
+- No display-size text without a supporting medium: strong copy/content, product image, illustration, animation, model, chart/data object, or editorial material.
+- If the available content is generic, placeholder-like, or thin, lower the type scale and create quality through layout, grouping, component states, and interaction.
+- If the available media is stock-like, low-resolution, generic, or unrelated, it does not justify large type.
+- If the design relies on large words plus generic background effects, reject it as AI-looking and recompose.
 
 Type scale lock:
 
@@ -166,6 +181,7 @@ Surface type:
 Typography reference:
 Display text allowed? yes/no and why:
 Largest text role and approximate size:
+Display support material:
 Heading/body/label/numeric roles:
 What must not be oversized:
 ```

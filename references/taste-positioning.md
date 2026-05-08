@@ -14,6 +14,7 @@ Personality axis:
 Signature move:
 Signature interaction:
 Type ceiling:
+Display support:
 What stays restrained:
 What gets removed because it is generic:
 ```
@@ -40,6 +41,7 @@ Reject the first pass if:
 - the UI could be pasted into any generic SaaS template
 - every module has the same size, radius, border, and spacing
 - the only "personality" is color, glow, or a large headline
+- large type appears without strong content, image, animation, model, data object, or editorial material supporting it
 - there is no signature interaction or state change
 - typography is either oversized or all the same weight
 - icons, charts, images, and cards feel sourced from unrelated systems
@@ -83,8 +85,10 @@ Rules:
 
 - If a heading can be 40% smaller with no loss of meaning, make it smaller.
 - Do not use huge words to create drama in a dashboard, settings page, table, or expert tool.
+- Do not use huge words to compensate for missing copy, weak assets, absent motion, missing model quality, or generic background treatment.
 - Use hierarchy through grouping, position, contrast, rhythm, and labels before increasing font size.
 - Make numbers intentional: tabular, aligned, scoped, and paired with context.
+- Large display type must be earned by one of these supports: strong editorial copy, a product object, a high-quality image/illustration, a meaningful animation, a framed 3D/model moment, or a data/media object that users care about.
 
 ## Recovery Recipe
 
@@ -95,5 +99,6 @@ When the UI feels "食之无味，弃之可惜":
 3. Pick one visual anchor or object.
 4. Add one signature interaction tied to state or workflow.
 5. Set a type ceiling before restyling.
-6. Recompose the screen around the anchor and interaction.
-7. Verify that the screenshot has a recognizable first read without needing explanation.
+6. If large text was used, name the support material; if none exists, shrink the text and strengthen content, media, or interaction first.
+7. Recompose the screen around the anchor and interaction.
+8. Verify that the screenshot has a recognizable first read without needing explanation.

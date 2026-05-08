@@ -21,6 +21,7 @@ Motion/spatial language:
 Color/material:
 Typography:
 Type ceiling:
+Display support:
 Component language:
 Interaction feel:
 Device translation:
@@ -41,6 +42,7 @@ Device translation:
 - **Color/material**: Define base, accent, contrast, depth, imagery, borders, shadow, translucency, or texture.
 - **Typography**: Define scale, weight, density, labels, numbers, headings, and content voice.
 - **Type ceiling**: Define the largest allowed type role for the surface. In tools, dashboards, tables, forms, settings, and compact panels, display type is usually not allowed.
+- **Display support**: If display-size text is allowed, name what supports it: real content, strong image/photo, illustration, animation, model, data object, or editorial material. If the support is weak or missing, lower the type scale.
 - **Component language**: Define how controls, cards, lists, dialogs, navigation, charts, media, or toolbars should feel.
 - **Interaction feel**: Define feedback speed, motion restraint, state treatment, loading, empty, error, and navigation continuity.
 - **Device translation**: Define how the direction changes for desktop, mobile, touch, car/head-unit, big screen, or embedded surfaces.
@@ -59,6 +61,8 @@ Visual language: quiet instrument-panel surfaces, precise separators, sparse ico
 Motion/spatial language: short feedback transitions, continuity between work item states, no decorative loops unless they communicate live status.
 Color/material: neutral base, subtle borders, restrained depth, one confident accent.
 Typography: compact readable scale, strong section labels, tabular numbers for metrics.
+Type ceiling: page title stays compact; no hero-scale text because the product value is task focus, not a marketing moment.
+Display support: none needed because display type is not used.
 Component language: quiet buttons, crisp inputs, clear tabs, precise menus, no ornamental chrome.
 Interaction feel: fast feedback, clear hover/focus, short transitions, non-disruptive loading and errors.
 Device translation: desktop supports density; mobile collapses into a task-first flow with larger touch targets.
