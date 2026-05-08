@@ -14,6 +14,7 @@ Personality axis:
 Signature move:
 Signature interaction:
 Type ceiling:
+Display need:
 Display support:
 What stays restrained:
 What gets removed because it is generic:
@@ -41,6 +42,7 @@ Reject the first pass if:
 - the UI could be pasted into any generic SaaS template
 - every module has the same size, radius, border, and spacing
 - the only "personality" is color, glow, or a large headline
+- large type appears because good assets exist, not because the surface actually needs display scale
 - large type appears without strong content, image, animation, model, data object, or editorial material supporting it
 - there is no signature interaction or state change
 - typography is either oversized or all the same weight
@@ -88,7 +90,8 @@ Rules:
 - Do not use huge words to compensate for missing copy, weak assets, absent motion, missing model quality, or generic background treatment.
 - Use hierarchy through grouping, position, contrast, rhythm, and labels before increasing font size.
 - Make numbers intentional: tabular, aligned, scoped, and paired with context.
-- Large display type must be earned by one of these supports: strong editorial copy, a product object, a high-quality image/illustration, a meaningful animation, a framed 3D/model moment, or a data/media object that users care about.
+- Strong editorial copy, a product object, a high-quality image/illustration, a meaningful animation, a framed 3D/model moment, or a data/media object can support large display type, but it does not automatically make large type appropriate.
+- Large display type must be needed by the surface and earned by its support. When unsure, make it smaller.
 
 ## Recovery Recipe
 
@@ -99,6 +102,6 @@ When the UI feels "食之无味，弃之可惜":
 3. Pick one visual anchor or object.
 4. Add one signature interaction tied to state or workflow.
 5. Set a type ceiling before restyling.
-6. If large text was used, name the support material; if none exists, shrink the text and strengthen content, media, or interaction first.
+6. If large text was used, name the display need and support material; if either is weak, shrink the text and strengthen content, media, or interaction first.
 7. Recompose the screen around the anchor and interaction.
 8. Verify that the screenshot has a recognizable first read without needing explanation.

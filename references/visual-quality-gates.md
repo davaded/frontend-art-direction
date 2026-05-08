@@ -2,6 +2,8 @@
 
 Use these gates for meaningful frontend work, whether improving an existing UI or building a new UI from requirements. The goal is to prevent shallow styling, template-like output, and late discovery that the result is visually weak.
 
+Preferred sequence: reference evidence -> content/media readiness -> surface mode -> expression budget -> implementation -> visual evidence pack.
+
 ## Gate 1: Product and Surface Diagnosis
 
 Before implementation, identify:
@@ -15,7 +17,7 @@ For existing UI, name the top 3 visible problems. Prefer issues like weak hierar
 
 For new UI, define the first screen's job, the primary user action, and what the user should understand in the first 3 seconds.
 
-## Gate 2: Reference Lock
+## Gate 2: Reference Stack
 
 Select and inspect 2-4 references before meaningful implementation. Use `reference-ingestion.md` to classify each reference by role before using it. User-provided references come first; do not skip them to search for easier examples. When internet access is available and the user has not already supplied enough direction, search for the missing role: foundation/quality systems, project visual memory, visual-language/art-direction references, component/motion implementation resources, or asset/icon sources.
 
@@ -37,6 +39,7 @@ What not to borrow:
 Applicable surface:
 Concrete translation into this UI:
 Verification check:
+Transferable evidence:
 ```
 
 Use references for judgment and implementation translation, not surface copying. A component library, animation library, or icon source is not a complete reference by itself unless its product behavior and visual system fit the task. A reference that was only named, not inspected, is tentative and should not drive implementation.
@@ -73,13 +76,49 @@ Avoid:
 
 Do not proceed from component/motion implementation references alone when layout, type, color, and visual language are still unresolved. Do not claim a reference was used unless the final UI can point to visible evidence from the card.
 
-## Gate 3: Art Direction Brief
+## Gate 3: Content / Media Readiness and Expression Budget
+
+Use `content-media-readiness.md` before choosing display type, cinematic layout, heavy motion, 3D, or strong visual expression. Do this before composition work, not only at final QA.
+
+Create a short readiness card:
+
+```text
+Content / Media Readiness:
+Real content:
+Data and workflow:
+Product/media object:
+Image/video/model/chart/canvas/audio assets:
+Motion candidates:
+Reference evidence that can actually transfer:
+Readiness level: L0/L1/L2/L3
+Surface mode: Productive App UI / Editorial Marketing / Spatial Experiential
+Expression budget: low / medium / high / exceptional
+Type ceiling:
+Display text: off by default; proposed only if needed and supported
+Primary visual medium:
+Downgrade rule:
+Evidence pack to collect:
+```
+
+Use the level to constrain expression:
+
+- **L0** placeholder or thin content: no display type, fake hero, cinematic layout, ornamental 3D, or decorative motion. Use restrained product UI, realistic states, grouping, component quality, and micro-interaction.
+- **L1** real data/forms/workflow: Productive App UI first. Use density, hierarchy, state coverage, and useful motion.
+- **L2** strong product/data/media object: a local visual anchor or hybrid treatment is acceptable, but display type is still usually off.
+- **L3** high-quality editorial/model/animation/media: stronger expression may be considered, but only when the surface truly needs it and references, support, performance, and fallback all line up.
+
+If content or media is weaker than the intended expression, downgrade the expression budget before implementation. Good assets support expression; they do not automatically justify large type, immersive heroes, or strong motion.
+
+## Gate 4: Art Direction Brief
 
 Create a concise Art Direction Brief before changing the visible surface. It must answer:
 
 - product character
 - design stance
 - reference direction
+- content/media readiness
+- surface mode
+- expression budget
 - visual hierarchy
 - layout rhythm
 - composition signature
@@ -91,14 +130,15 @@ Create a concise Art Direction Brief before changing the visible surface. It mus
 - typography
 - type ceiling
 - type scale restraint: whether display-size text is allowed, largest text role, and what must not become oversized
-- display support: content, image/photo, illustration, animation, model, data object, or editorial material that justifies large type, if any
+- display need: why the surface truly needs display-size text, if any
+- display support: content, image/photo, illustration, animation, model, data object, or editorial material that supports large type, if display type is still justified
 - component language
 - interaction feel
 - device translation
 
 Expose the brief when the direction is ambiguous, the UI is new, or the work affects a major screen. If the user asked for direct implementation, keep it concise and move into implementation after the brief is clear.
 
-## Gate 4: Taste Positioning
+## Gate 5: Taste Positioning
 
 Use `taste-positioning.md` before composition work when the task is substantial, the UI is new, or prior output felt bland, generic, over-safe, static, or overly dependent on large text.
 
@@ -110,6 +150,7 @@ Personality axis:
 Signature move:
 Signature interaction:
 Type ceiling:
+Display need:
 Display support:
 What stays restrained:
 What gets removed because it is generic:
@@ -117,9 +158,9 @@ What gets removed because it is generic:
 
 Do not proceed with a vague stance such as "clean modern premium." If the UI is meant to be restrained, make restraint feel intentional through density, alignment, state behavior, and material discipline. If it is meant to be expressive, make one expressive move strong enough to remember.
 
-Do not use oversized type as the expressive move unless the type is supported by strong content, imagery, animation, model, data object, or editorial material. If that support is weak or missing, choose a restrained type ceiling and create memorability through composition, state behavior, material, or a real product object.
+Do not use oversized type as the expressive move unless the surface truly needs display scale and the type is supported by strong content, imagery, animation, model, data object, or editorial material. Good support is necessary but not sufficient. If need or support is weak, choose a restrained type ceiling and create memorability through composition, state behavior, material, or a real product object.
 
-## Gate 5: Expressive Composition First
+## Gate 6: Expressive Composition First
 
 Do this before decorative styling:
 
@@ -135,7 +176,7 @@ Do this before decorative styling:
 
 Do not start with gradients, shadows, glow, animated backgrounds, glassmorphism, or decorative cards when the layout and hierarchy are unresolved. If the result looks like an evenly spaced card template, use `expressive-composition.md` before continuing.
 
-## Gate 6: Visual Language Pass
+## Gate 7: Visual Language Pass
 
 Define the visual system before polishing surfaces:
 
@@ -162,7 +203,7 @@ Performance/accessibility fallback:
 
 Static UI, photography, illustration, motion, animation, 3D/model, and hybrids are all valid. The chosen medium must be the strongest way to express product meaning, state, continuity, inspection, atmosphere, or user understanding. Do not choose a medium because it is trendy, available in a catalog, or easier to decorate with.
 
-## Gate 7: Motion and Spatial Language Pass
+## Gate 8: Motion and Spatial Language Pass
 
 Define motion and model rules before implementing effects:
 
@@ -177,7 +218,7 @@ For substantial UI work, implement at least one meaningful motion or transition 
 
 Use `motion-spatial-language.md` when motion, animation, or models are central to the experience, when existing motion feels absent, static, gimmicky, generic, too busy, or disconnected from state, or when a component/motion resource is being used.
 
-## Gate 8: Component and State Pass
+## Gate 9: Component and State Pass
 
 Unify the component language:
 
@@ -188,7 +229,7 @@ Unify the component language:
 
 If weak primitives drag down the whole surface, improve the primitives before polishing individual screens.
 
-## Gate 9: Resource Discipline
+## Gate 10: Resource Discipline
 
 Use `frontend-resource-catalog.md` as an execution catalog, not as a taste shortcut.
 
@@ -203,17 +244,18 @@ Use `frontend-resource-catalog.md` as an execution catalog, not as a taste short
 
 Reject resource choices that make the UI look like a generic template, animation demo, or component-gallery page.
 
-## Gate 10: Visual QA
+## Gate 11: Visual Evidence Pack
 
 Verify the real surface when possible:
 
 - desktop viewport
 - mobile or target device viewport
+- readiness inspection: final expression matches the L0/L1/L2/L3 content/media level, selected surface mode, and expression budget
 - screenshot inspection for hierarchy, spacing, overflow, contrast, alignment, text fit, and visual coherence
 - taste inspection: bland middle-ground, no design stance, no signature move, no signature interaction, generic "clean modern premium" result, or personality coming only from color/glow/large type
 - medium inspection: chosen static, image, illustration, motion, animation, 3D/model, or hybrid treatment fits the product better than the rejected alternatives
 - type-scale inspection: oversized headings, giant numbers, hero-sized words inside compact tools, marketing-page typography used in product UI, or type not justified by the foundation/reference lock
-- display-support inspection: large text without strong copy/content, high-quality asset, meaningful animation, framed model, data object, or editorial material; large text plus generic background effects; CJK text that feels heavy or awkward
+- display-need/support inspection: large text without a real display job; large text used only because good media exists; large text without strong copy/content, high-quality asset, meaningful animation, framed model, data object, or editorial material; large text plus generic background effects; CJK text that feels heavy or awkward
 - mechanical-layout inspection: repeated equal cards, average spacing everywhere, weak visual anchor, generic hero pattern, flat type rhythm, or random SaaS-template feel
 - visual-language inspection: stock imagery, random decoration, inconsistent icon/illustration/photo treatment, weak material logic, generic gradient background, or no recognizable product motif
 - motion/spatial inspection: decorative loops, too many moving elements, weak state meaning, scroll hijacking, unoptimized model assets, poor camera framing, missing poster/loading state, or no reduced-motion fallback
@@ -230,7 +272,21 @@ Reference-backed verification:
 - Which borrowed decisions were dropped, and why?
 - Did any reference get misapplied to the wrong product type, density, or device?
 
-## Gate 11: Self-Iteration Before Final
+For substantial UI work, collect a concise evidence pack:
+
+```text
+Visual Evidence Pack:
+Readiness level / surface mode / expression budget:
+References visibly used:
+Largest text role and approximate/computed size:
+Display need/support if large type exists:
+Screenshot or viewport/device check:
+Motion trigger and state purpose:
+Reduced-motion or fallback:
+Known verification blocker:
+```
+
+## Gate 12: Self-Iteration Before Final
 
 Before final delivery, ask:
 
@@ -246,7 +302,7 @@ Before final delivery, ask:
 - Is the rhythm varied, or are all regions/cards the same weight?
 - Does typography create character beyond a tidy scale?
 - Is the largest text role appropriate for this product surface, or did the UI become a big-word poster?
-- If large text is present, what content or visual medium earns that size?
+- If large text is present, why does the surface need it, and what content or visual medium earns that size?
 - Is there a clear product character?
 - Are controls and states complete enough for real use?
 - Does anything look like a generic AI-generated landing page or copied component demo?

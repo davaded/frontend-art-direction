@@ -134,9 +134,12 @@ What not to borrow:
 Applicable surface:
 Concrete translation into this UI:
 Verification check:
+Transferable evidence:
 ```
 
 Evidence can be a URL, screenshot, rendered page, component demo, file section, token file, or user-provided asset. If the evidence was not inspected, mark the reference as tentative instead of treating it as direction.
+
+Transferable evidence should be concrete enough to implement or verify: type role/scale, layout density, spacing rhythm, component states, motion trigger/timing, image/model/media quality, content structure, accessibility behavior, or an explicit "do not borrow" constraint.
 
 ## Reference Translation Brief
 
@@ -154,6 +157,9 @@ Borrowed typography/color/component decisions:
 Borrowed visual-language decisions:
 Borrowed interaction/motion/state decisions:
 Explicitly not borrowing:
+Content/media readiness impact:
+Surface mode impact:
+Expression budget impact:
 Implementation mapping:
 Verification checks:
 ```
