@@ -2,24 +2,60 @@
 
 Use these gates for meaningful frontend work, whether improving an existing UI or building a new UI from requirements. The goal is to prevent shallow styling, template-like output, and late discovery that the result is visually weak.
 
-Preferred sequence: reference evidence -> content/media readiness -> surface mode -> expression budget -> implementation -> visual evidence pack.
+Preferred sequence: requirement frame -> local evidence scan -> gap-driven external references -> reference translation -> content/media readiness -> surface mode -> expression budget -> implementation contract -> implementation -> visual evidence pack.
 
-## Gate 1: Product and Surface Diagnosis
+## Gate 1: Requirement and Surface Diagnosis
 
 Before implementation, identify:
 
+- user goal, primary workflow, and surface type
 - product type, audience, and primary workflow
 - device class, input method, viewing distance, and density target
+- user frequency and information density
+- critical states and risk if wrong
 - realistic content, data states, and edge cases
 - existing components, tokens, routes, screenshots, or app shell
+
+Use `requirement-evidence-workflow.md` to create a Requirement Frame for substantial UI work. Do not choose art direction, motion, large type, 3D, or a component library until the requirement and scene are clear.
 
 For existing UI, name the top 3 visible problems. Prefer issues like weak hierarchy, poor grouping, wrong density, unclear navigation, generic component language, bad content rhythm, or touch/desktop mismatch over vague statements like "needs polish."
 
 For new UI, define the first screen's job, the primary user action, and what the user should understand in the first 3 seconds.
 
-## Gate 2: Reference Stack
+## Gate 2: Local Evidence Scan
 
-Select and inspect 2-4 references before meaningful implementation. Use `reference-ingestion.md` to classify each reference by role before using it. User-provided references come first; do not skip them to search for easier examples. When internet access is available and the user has not already supplied enough direction, search for the missing role: foundation/quality systems, project visual memory, visual-language/art-direction references, component/motion implementation resources, or asset/icon sources.
+Inspect the project before looking outward unless the user has supplied a must-use external reference.
+
+Look for:
+
+- `DESIGN.md`, `AGENTS.md`, `.cursor/rules`, project rules, design docs, README design notes
+- `package.json` and installed UI, motion, chart, icon, canvas, or 3D libraries
+- existing components, routes, app shell, page layouts, story files, token/theme/style files
+- local assets, logos, fonts, screenshots, sample data, images, video, audio, or models
+- weak primitives that would make the new UI feel cheap if reused as-is
+
+Record:
+
+```text
+Local Evidence Scan:
+Component system found:
+Token/theme source:
+Relevant existing screens:
+Installed UI/motion/chart/icon/model libraries:
+Available real content/data/assets:
+Reusable layout or interaction patterns:
+Weak or missing primitives:
+Local constraints:
+Decision: preserve / extend / replace / add external support
+```
+
+This gate decides whether the implementation should preserve, extend, repair, or supplement the local system. Do not import a new component language or visual language before this decision.
+
+## Gate 3: Gap-Driven Reference Stack
+
+Select and inspect 2-4 references before meaningful implementation. Use `reference-ingestion.md` to classify each reference by role before using it. User-provided references come first; do not skip them to search for easier examples. After the local evidence scan, search only for missing jobs: foundation/quality systems, project visual memory, visual-language/art-direction references, component/motion implementation resources, asset/icon sources, or optional flow/state checks.
+
+Search exact scene needs rather than generic beauty. Examples: dashboard filtering and chart states, editor toolbar and inspector behavior, app settings validation, command palette interaction, route/list continuity, product-media treatment, model inspection, or mobile touch controls.
 
 Use getdesign.md, public `DESIGN.md`, Apple HIG, Material, Carbon, Polaris, Radix, typography, color, layout, accessibility, and token references as foundation constraints for quality and consistency. Do not treat them as moodboards.
 
@@ -80,7 +116,34 @@ Before implementation, also create the `Reference Website Pass` and `Component A
 
 Do not continue into composition if the plan is only "custom CSS" or "make it beautiful" without a component/resource source. Choose existing project primitives or a mature component/resource source first.
 
-## Gate 3: Content / Media Readiness and Expression Budget
+## Gate 4: Scene Fit Decision
+
+Before composition or code, convert the requirement, local scan, and references into a scene-fit decision:
+
+```text
+Scene Fit Decision:
+Layout model:
+Component source:
+State coverage:
+Motion purpose:
+Motion source:
+Visual medium:
+Typography ceiling:
+Expression budget:
+External references used:
+Local patterns preserved:
+What is intentionally not used:
+```
+
+Layout, components, motion, and type scale are not optional decorations selected only when the user names them. They are required or rejected by the scene:
+
+- high-frequency tools need density, clear states, keyboard/touch behavior, and restrained motion
+- dashboards need tables/charts/filter states and data-change feedback
+- editors need selection, tool state, inspector rhythm, and undoable interaction feel
+- marketing/editorial surfaces need real copy and media support before large type or cinematic rhythm
+- model/spatial surfaces need assets, performance budget, loading/poster states, and fallback
+
+## Gate 5: Content / Media Readiness and Expression Budget
 
 Use `content-media-readiness.md` before choosing display type, cinematic layout, heavy motion, 3D, or strong visual expression. Do this before composition work, not only at final QA.
 
@@ -113,11 +176,13 @@ Use the level to constrain expression:
 
 If content or media is weaker than the intended expression, downgrade the expression budget before implementation. Good assets support expression; they do not automatically justify large type, immersive heroes, or strong motion.
 
-## Gate 4: Art Direction Brief
+## Gate 6: Art Direction Brief
 
 Create a concise Art Direction Brief before changing the visible surface. It must answer:
 
 - product character
+- requirement frame
+- local evidence scan
 - design stance
 - reference direction
 - content/media readiness
@@ -142,7 +207,7 @@ Create a concise Art Direction Brief before changing the visible surface. It mus
 
 Expose the brief when the direction is ambiguous, the UI is new, or the work affects a major screen. If the user asked for direct implementation, keep it concise and move into implementation after the brief is clear.
 
-## Gate 5: Taste Positioning
+## Gate 7: Taste Positioning
 
 Use `taste-positioning.md` before composition work when the task is substantial, the UI is new, or prior output felt bland, generic, over-safe, static, or overly dependent on large text.
 
@@ -164,7 +229,7 @@ Do not proceed with a vague stance such as "clean modern premium." If the UI is 
 
 Do not use oversized type as the expressive move unless the surface truly needs display scale and the type is supported by strong content, imagery, animation, model, data object, or editorial material. Good support is necessary but not sufficient. If need or support is weak, choose a restrained type ceiling and create memorability through composition, state behavior, material, or a real product object.
 
-## Gate 6: Expressive Composition First
+## Gate 8: Expressive Composition First
 
 Do this before decorative styling:
 
@@ -180,7 +245,7 @@ Do this before decorative styling:
 
 Do not start with gradients, shadows, glow, animated backgrounds, glassmorphism, or decorative cards when the layout and hierarchy are unresolved. If the result looks like an evenly spaced card template, use `expressive-composition.md` before continuing.
 
-## Gate 7: Visual Language Pass
+## Gate 9: Visual Language Pass
 
 Define the visual system before polishing surfaces:
 
@@ -207,7 +272,7 @@ Performance/accessibility fallback:
 
 Static UI, photography, illustration, motion, animation, 3D/model, and hybrids are all valid. The chosen medium must be the strongest way to express product meaning, state, continuity, inspection, atmosphere, or user understanding. Do not choose a medium because it is trendy, available in a catalog, or easier to decorate with.
 
-## Gate 8: Motion and Spatial Language Pass
+## Gate 10: Motion and Spatial Language Pass
 
 Define motion and model rules before implementing effects:
 
@@ -222,7 +287,7 @@ For substantial UI work, implement at least one meaningful motion or transition 
 
 Use `motion-spatial-language.md` when motion, animation, or models are central to the experience, when existing motion feels absent, static, gimmicky, generic, too busy, or disconnected from state, or when a component/motion resource is being used.
 
-## Gate 9: Component and State Pass
+## Gate 11: Component and State Pass
 
 Unify the component language:
 
@@ -250,7 +315,7 @@ Why no external component is needed, if skipped:
 
 Reject component-less implementation when mature local or external primitives are available. Common controls, navigation, dialogs, tables, charts, forms, filters, cards, and state feedback should come from the project's component system or an inspected component/resource source, then be customized to the selected art direction.
 
-## Gate 10: Resource Discipline
+## Gate 12: Resource Discipline
 
 Use `frontend-resource-catalog.md` as an execution catalog, not as a taste shortcut.
 
@@ -265,12 +330,14 @@ Use `frontend-resource-catalog.md` as an execution catalog, not as a taste short
 
 Reject resource choices that make the UI look like a generic template, animation demo, or component-gallery page.
 
-## Gate 11: Visual Evidence Pack
+## Gate 13: Visual Evidence Pack
 
 Verify the real surface when possible:
 
 - desktop viewport
 - mobile or target device viewport
+- requirement-fit inspection: final layout, density, components, motion, and visual medium match the user goal, workflow, surface type, device, and risk
+- local-evidence inspection: existing components, tokens, assets, or shipped patterns were preserved, extended, repaired, or intentionally replaced
 - readiness inspection: final expression matches the L0/L1/L2/L3 content/media level, selected surface mode, and expression budget
 - screenshot inspection for hierarchy, spacing, overflow, contrast, alignment, text fit, and visual coherence
 - taste inspection: bland middle-ground, no design stance, no signature move, no signature interaction, generic "clean modern premium" result, or personality coming only from color/glow/large type
@@ -299,6 +366,8 @@ For substantial UI work, collect a concise evidence pack:
 
 ```text
 Visual Evidence Pack:
+Requirement frame:
+Local evidence used:
 Readiness level / surface mode / expression budget:
 References visibly used:
 Reference websites/demos/files inspected:
@@ -312,10 +381,12 @@ Reduced-motion or fallback:
 Known verification blocker:
 ```
 
-## Gate 12: Self-Iteration Before Final
+## Gate 14: Self-Iteration Before Final
 
 Before final delivery, ask:
 
+- Does the result answer the actual requirement and workflow, or only look styled?
+- Did we inspect the local project before importing references/components?
 - Is the first read obvious?
 - Is the design stance visible without explanation?
 - Is there a signature interaction, not just hover color?

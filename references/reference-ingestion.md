@@ -1,6 +1,6 @@
 # Reference Ingestion
 
-Use this guide when selecting or using references. The goal is to make references operational: inspect them, classify their job, extract useful evidence, translate that evidence into the current UI, and verify that the implementation actually used it.
+Use this guide when selecting or using references. The goal is to make references operational: inspect them, classify their job, extract useful evidence, translate that evidence into the current UI, and verify that the implementation actually used it. References should answer the requirement and local evidence gaps; they are not a substitute for understanding the product scene.
 
 Do not proceed from named references only. A reference only counts when it has been inspected enough to produce a concrete evidence card.
 
@@ -17,7 +17,7 @@ Do not proceed from named references only. A reference only counts when it has b
 
 Classify references by role, not by fame or category similarity. A beautiful site, a component library, and a design-system guideline solve different problems. Mixing those jobs is one of the easiest ways to produce generic or self-satisfied UI.
 
-For meaningful UI work, select 2-4 references that cover the missing jobs in the task. User-provided references come first, but still classify what each one is for. At least one reference should be a visibly inspectable website, product surface, design-system page, component demo, or screenshot when the task is substantial.
+For meaningful UI work, select 2-4 references that cover the missing jobs in the task. User-provided references come first, but still classify what each one is for. Inspect the local project before external search unless the user supplied a must-use external reference. At least one reference should be a visibly inspectable website, product surface, design-system page, component demo, or screenshot when the task is substantial.
 
 ## Reference Role Map
 
@@ -113,16 +113,20 @@ This role is optional and should not lead art direction by default. Same-categor
 
 For substantial work, build a small reference stack:
 
-1. Start with user-supplied references and classify each one by role.
-2. Add a foundation or quality-system reference when layout, type, color, tokens, states, or accessibility are not already settled.
-3. Add a visual-language reference when the UI must become more memorable, less generic, or more brand/product-specific.
-4. Add component/motion implementation references or asset references only for the concrete execution layer they support.
-5. Add functional frontend utility references only when a concrete feature needs that capability. They do not replace foundation, visual-language, or component/motion references.
-6. Add an optional pattern/flow check only if state coverage, workflow order, density, or platform behavior is unclear.
+1. Frame the requirement: surface type, workflow, density, input model, device, critical states, and real content/assets.
+2. Scan local evidence: components, tokens, theme, installed libraries, existing screens, assets, stories, and design memory.
+3. Start with user-supplied references and classify each one by role.
+4. Add a foundation or quality-system reference when layout, type, color, tokens, states, or accessibility are not already settled.
+5. Add a visual-language reference when the UI must become more memorable, less generic, or more brand/product-specific.
+6. Add component/motion implementation references or asset references only for the concrete execution layer they support.
+7. Add functional frontend utility references only when a concrete feature needs that capability. They do not replace foundation, visual-language, or component/motion references.
+8. Add an optional pattern/flow check only if state coverage, workflow order, density, or platform behavior is unclear.
 
 Do not use component/motion implementation references alone when layout, typography, color, and visual language are still unresolved.
 
 Do not implement substantial new UI without a component/motion implementation reference or an explicit reason why the existing local component system is sufficient.
+
+Do not perform broad internet inspiration search until the local scan has named what is missing. Search for the missing job, such as "React data table filter states", "dashboard chart empty state", "route transition detail view continuity", or "editor inspector panel component pattern", not generic "beautiful dashboard UI."
 
 ## Reference Evidence Card
 
@@ -151,6 +155,8 @@ Before major implementation, combine the cards into a brief:
 
 ```text
 Reference Translation:
+Requirement frame:
+Local evidence summary:
 Primary direction reference:
 Foundation/quality reference:
 Visual-language reference:

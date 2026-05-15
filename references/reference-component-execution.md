@@ -1,21 +1,22 @@
 # Reference and Component Execution
 
-Use this before implementing substantial frontend work. The goal is to make the UI depend on inspected reference websites, mature components, and real interaction states instead of freehand styling.
+Use this before implementing substantial frontend work. The goal is to make the UI depend on the requirement, local project evidence, inspected reference websites, mature components, and real interaction states instead of freehand styling.
 
 ## Non-Negotiable Rule
 
-Do not build a substantial UI from imagination alone. Before implementation, inspect reference websites or demos, select component primitives, and map the inspected decisions into code.
+Do not build a substantial UI from imagination alone. Before implementation, frame the requirement, inspect the local component/token/asset reality, inspect reference websites or demos for the missing jobs, select component primitives, and map the inspected decisions into code.
 
 If browser or web access is blocked, say so and use the closest local evidence: project screenshots, existing components, token files, installed docs, bundled references, or user-provided screenshots. Do not pretend a website was inspected.
 
 ## Reference Website Pass
 
-For substantial UI work, inspect at least one real reference website, product surface, component demo, design-system page, or user-provided visual reference before changing the visible surface. Prefer 2-4 references when the direction is unclear.
+For substantial UI work, inspect at least one real reference website, product surface, component demo, design-system page, or user-provided visual reference before changing the visible surface. Prefer 2-4 references when the direction is unclear. Choose references from the requirement and local evidence gaps, not from generic "beautiful UI" search.
 
 Record:
 
 ```text
 Reference Website Pass:
+Requirement/job this reference answers:
 Inspected URLs or files:
 What was actually visible:
 Layout/density borrowed:
@@ -30,11 +31,13 @@ Named references do not count. "Use Apple-like", "use shadcn", "make it like Ace
 
 ## Component Adoption Plan
 
-Before building new UI, choose the implementation source for common primitives.
+Before building new UI, choose the implementation source for common primitives. Start with the local system, then add external resources only when the local system is missing, weak, incomplete, or inappropriate for the scene.
 
 ```text
 Component Adoption Plan:
+Requirement/job:
 Existing component system:
+Local components/tokens/assets to preserve:
 External component/resource source:
 Components or blocks to use:
 States to implement:
@@ -52,6 +55,8 @@ Default choices:
 - For React apps that need a fuller kit, inspect HeroUI, Spectrum UI, or similar resources before hand-rolling complex controls.
 - For animated component patterns, inspect transitions.dev, React Bits, Aceternity UI, Motion, AutoAnimate, View Transitions API, or similar demos and adapt the specific state behavior.
 - For mobile/native work, use platform components and established native primitives first, then borrow web/React patterns only as interaction inspiration.
+
+Do not choose a component library because it is fashionable. Choose it because it fits the framework, density, input model, states, accessibility needs, and implementation cost of the current requirement.
 
 ## No Freehand Primitive Rule
 
@@ -86,10 +91,11 @@ Color-only hover, generic fade-in-on-scroll, decorative background loops, or sta
 If the output is ugly, incoherent, static, component-less, or disconnected from references:
 
 1. Stop polishing the current surface.
-2. Re-run the Reference Website Pass with at least one concrete visual/component source.
-3. Create or revise the Component Adoption Plan.
-4. Replace freehand primitives with mature components or stronger local primitives.
-5. Add one meaningful state transition or interaction pattern.
-6. Re-verify with screenshot/viewport evidence and name where references/components are visible.
+2. Re-run the Requirement Frame and Local Evidence Scan.
+3. Re-run the Reference Website Pass with at least one concrete visual/component source that answers a named gap.
+4. Create or revise the Component Adoption Plan.
+5. Replace freehand primitives with mature components or stronger local primitives.
+6. Add one meaningful state transition or interaction pattern tied to the workflow.
+7. Re-verify with screenshot/viewport evidence and name where requirement fit, local evidence, references, components, and motion are visible.
 
 Do not defend the prior result as "premium", "clean", or "modern" if it lacks reference evidence, component craft, and interaction behavior.

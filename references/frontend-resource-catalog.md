@@ -1,12 +1,13 @@
 # Frontend Resource Catalog
 
-Use this catalog when a UI task needs concrete components, animated component patterns, motion behavior, icon sources, or implementation references. Components and motion belong together here because many modern component resources include state transitions as part of their quality. These are resources for execution and taste calibration, not a substitute for product-specific art direction. `Use for` describes common strong fits, not exclusive boundaries; choose resources by judging product goals, interaction value, implementation fit, and how well the pattern can be translated.
+Use this catalog when a UI task needs concrete components, animated component patterns, motion behavior, icon sources, or implementation references. Components and motion belong together here because many modern component resources include state transitions as part of their quality. These are resources for execution and taste calibration, not a substitute for requirement analysis, local project evidence, or product-specific art direction. `Use for` describes common strong fits, not exclusive boundaries; choose resources by judging product goals, interaction value, implementation fit, and how well the pattern can be translated.
 
-For substantial UI work, use this catalog with `reference-component-execution.md` to create a Component Adoption Plan before implementation. Do not build common controls, cards, menus, dialogs, tables, charts, forms, or state feedback as isolated freehand CSS when a local or external component/resource source can provide stronger primitives.
+For substantial UI work, use this catalog with `requirement-evidence-workflow.md` and `reference-component-execution.md` to create a Component Adoption Plan before implementation. First inspect the local stack and installed dependencies; then use this catalog only for missing or weak jobs. Do not build common controls, cards, menus, dialogs, tables, charts, forms, or state feedback as isolated freehand CSS when a local or external component/resource source can provide stronger primitives.
 
 Minimum resource decision:
 
 ```text
+Requirement/job:
 Component/resource source:
 Specific components or demos inspected:
 Local components to preserve:
