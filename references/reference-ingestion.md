@@ -17,7 +17,7 @@ Do not proceed from named references only. A reference only counts when it has b
 
 Classify references by role, not by fame or category similarity. A beautiful site, a component library, and a design-system guideline solve different problems. Mixing those jobs is one of the easiest ways to produce generic or self-satisfied UI.
 
-For meaningful UI work, select 2-4 references that cover the missing jobs in the task. User-provided references come first, but still classify what each one is for.
+For meaningful UI work, select 2-4 references that cover the missing jobs in the task. User-provided references come first, but still classify what each one is for. At least one reference should be a visibly inspectable website, product surface, design-system page, component demo, or screenshot when the task is substantial.
 
 ## Reference Role Map
 
@@ -73,6 +73,8 @@ Includes shadcn/ui, Radix, HeroUI, Spectrum UI, ElevenLabs UI, Reacticx, React B
 - Avoid: importing demo aesthetics as the whole product identity, adding decorative loops, using scroll tricks in task-heavy tools, or adding 3D that does not clarify the product.
 - Translate: state the local component, route, interaction, transition, or spatial/media moment where the resource will be adapted and which defaults will be overwritten.
 
+For substantial work, do not treat component/motion resources as optional if the local project lacks strong primitives. Choose a component or motion source and map it into the Component Adoption Plan in `reference-component-execution.md`.
+
 ### Functional Frontend Utilities
 
 Includes canvas/drawing libraries, image editors, charting engines, screenshot/export tools, image filters, audio waveform tools, video-on-canvas utilities, physics engines, panorama/360 viewers, and single-purpose effects such as confetti.
@@ -119,6 +121,8 @@ For substantial work, build a small reference stack:
 6. Add an optional pattern/flow check only if state coverage, workflow order, density, or platform behavior is unclear.
 
 Do not use component/motion implementation references alone when layout, typography, color, and visual language are still unresolved.
+
+Do not implement substantial new UI without a component/motion implementation reference or an explicit reason why the existing local component system is sufficient.
 
 ## Reference Evidence Card
 

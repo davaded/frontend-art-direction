@@ -76,6 +76,10 @@ Avoid:
 
 Do not proceed from component/motion implementation references alone when layout, type, color, and visual language are still unresolved. Do not claim a reference was used unless the final UI can point to visible evidence from the card.
 
+Before implementation, also create the `Reference Website Pass` and `Component Adoption Plan` from `reference-component-execution.md`. Substantial UI work must inspect at least one real reference website, product surface, component demo, design-system page, or user-provided visual reference. If web/browser access is blocked, name the blocker and use local screenshots, components, docs, tokens, or user-provided visuals as substitute evidence.
+
+Do not continue into composition if the plan is only "custom CSS" or "make it beautiful" without a component/resource source. Choose existing project primitives or a mature component/resource source first.
+
 ## Gate 3: Content / Media Readiness and Expression Budget
 
 Use `content-media-readiness.md` before choosing display type, cinematic layout, heavy motion, 3D, or strong visual expression. Do this before composition work, not only at final QA.
@@ -229,6 +233,23 @@ Unify the component language:
 
 If weak primitives drag down the whole surface, improve the primitives before polishing individual screens.
 
+For substantial new UI, enforce a Component Adoption Plan:
+
+```text
+Component Adoption Plan:
+Existing component system:
+External component/resource source:
+Components or blocks to use:
+States to implement:
+Motion/transition source:
+Icon/source system:
+What will be customized:
+What will not be hand-rolled:
+Why no external component is needed, if skipped:
+```
+
+Reject component-less implementation when mature local or external primitives are available. Common controls, navigation, dialogs, tables, charts, forms, filters, cards, and state feedback should come from the project's component system or an inspected component/resource source, then be customized to the selected art direction.
+
 ## Gate 10: Resource Discipline
 
 Use `frontend-resource-catalog.md` as an execution catalog, not as a taste shortcut.
@@ -267,6 +288,8 @@ For existing UI, compare before and after. For new UI, compare the result agains
 Reference-backed verification:
 
 - Which Reference Evidence Card is visible in the result?
+- Which Reference Website Pass decision is visible in the result?
+- Which Component Adoption Plan decisions are visible in the result?
 - Which role did each reference play, and was that role respected?
 - Which borrowed decisions are present in layout, typography, component states, visual language, or motion?
 - Which borrowed decisions were dropped, and why?
@@ -278,6 +301,9 @@ For substantial UI work, collect a concise evidence pack:
 Visual Evidence Pack:
 Readiness level / surface mode / expression budget:
 References visibly used:
+Reference websites/demos/files inspected:
+Components/resources used:
+States and interactions implemented:
 Largest text role and approximate/computed size:
 Display need/support if large type exists:
 Screenshot or viewport/device check:

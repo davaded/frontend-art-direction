@@ -11,6 +11,8 @@ Art Direction Brief:
 Product character:
 Design stance:
 Reference direction:
+Reference website pass:
+Component adoption plan:
 Content/media readiness:
 Surface mode:
 Expression budget:
@@ -36,6 +38,8 @@ Device translation:
 - **Product character**: Define the intended feeling and identity. Examples: precise productivity tool, immersive music library, quiet enterprise console, fast command surface, low-distraction car display.
 - **Design stance**: Choose a visible stance such as quiet precision, kinetic product, visual object, editorial authority, instrument panel, or consumer character. Avoid vague "clean modern premium."
 - **Reference direction**: Name 2-4 inspected references, classify each reference's role, and state what to borrow from each. Borrow principles, not the whole look.
+- **Reference website pass**: Name the inspected URL/demo/screenshot/file evidence and what visible decisions will appear in the target UI.
+- **Component adoption plan**: Name the existing or external component/resource source, the primitives or blocks to use, the states to implement, and what will not be hand-rolled.
 - **Content/media readiness**: Classify the available content and assets as L0/L1/L2/L3 from `content-media-readiness.md`.
 - **Surface mode**: Choose Productive App UI, Editorial Marketing, Spatial Experiential, or a primary mode with a subordinate secondary mode.
 - **Expression budget**: Set low, medium, high, or exceptional. This determines whether the UI should rely on restrained product craft, a focused object/media anchor, or rare stronger expression.
@@ -61,6 +65,8 @@ Device translation:
 Art Direction Brief:
 Product character: calm, precise, premium productivity workspace.
 Reference direction: foundation reference uses Apple HIG's restraint; visual/product references borrow Linear's hierarchy and Raycast's command clarity without copying their brand skin.
+Reference website pass: inspect the product/reference surface for split-panel density, command action placement, and compact keyboard-friendly feedback.
+Component adoption plan: use existing app shell primitives plus mature buttons, tabs, menus, dialogs, command/list states, lucide-style icons, and short state transitions; do not hand-roll bare controls.
 Content/media readiness: L1 because the workflow, data, and controls are real, but there is no strong media/model object.
 Surface mode: Productive App UI.
 Expression budget: medium; use density, state, and interaction quality, not a cinematic hero.
