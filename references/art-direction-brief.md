@@ -11,6 +11,8 @@ Art Direction Brief:
 Requirement frame:
 Local evidence scan:
 Product character:
+Design read:
+Context dials:
 Design stance:
 Style anchor:
 Reference direction:
@@ -27,11 +29,14 @@ Medium decision:
 Visual language:
 Motion/spatial language:
 Color/material:
+Type identity:
 Typography:
 Type ceiling:
 Display need:
 Display support:
 Component language:
+Component context decisions:
+Component shape language:
 Interaction feel:
 Device translation:
 ```
@@ -39,6 +44,8 @@ Device translation:
 ## Field Guidance
 
 - **Product character**: Define the intended feeling and identity. Examples: precise productivity tool, immersive music library, quiet enterprise console, fast command surface, low-distraction car display.
+- **Design read**: Summarize how you are reading the task before choosing style: surface, audience, workflow, surface mode, constraints, and style anchor. Use `design-read-and-dials.md`.
+- **Context dials**: Set design variance, motion intensity, information density, and component distinctiveness from the requirement and references. These dials constrain layout, type scale, motion, and component form.
 - **Requirement frame**: Summarize user goal, primary workflow, surface type, density, input model, device, critical states, and real content/assets. This decides what the UI must be before any aesthetic move.
 - **Local evidence scan**: Name existing components, tokens, theme, installed UI/motion/chart/icon libraries, relevant screens, assets, and weak primitives. State whether the local system should be preserved, extended, repaired, or supplemented.
 - **Design stance**: Choose a visible stance such as quiet precision, kinetic product, visual object, editorial authority, instrument panel, or consumer character. Avoid vague "clean modern premium."
@@ -57,11 +64,14 @@ Device translation:
 - **Visual language**: Define imagery, material, graphic motif, depth, texture, icon/illustration/3D approach, and the product-specific metaphor behind them.
 - **Motion/spatial language**: Define motion purpose, timing/easing, animation grammar, 3D/model role, triggers, and reduced-motion fallback.
 - **Color/material**: Define base, accent, contrast, depth, imagery, borders, shadow, translucency, or texture.
+- **Type identity**: Define UI/body, display/editorial, numeric/code, and language support choices from `type-and-component-identity.md`. If using one font family, state why that is intentional and not a default.
 - **Typography**: Define scale, weight, density, labels, numbers, headings, and content voice.
 - **Type ceiling**: Define the largest allowed type role for the surface. In tools, dashboards, tables, forms, settings, and compact panels, display type is usually not allowed.
 - **Display need**: If display-size text is proposed, state why the surface actually needs it. Good content or assets can support display type, but they do not make it necessary.
 - **Display support**: If display-size text is still justified, name what supports it: real content, strong image/photo, illustration, animation, model, data object, or editorial material. If the support is weak or missing, lower the type scale.
-- **Component language**: Define how controls, cards, lists, dialogs, navigation, charts, media, or toolbars should feel.
+- **Component language**: Define how controls, cards, lists, dialogs, navigation, charts, media, toolbars, state feedback, and product objects should feel.
+- **Component context decisions**: For major component families, name their job, input model, density, existing primitive, chosen form, state cycle, motion/feedback, accessibility constraint, and default pattern rejected.
+- **Component shape language**: Define primary/secondary surface forms, card budget, radius/depth/material logic, and what should not become a card or generic block. Avoid repeated same-size square blocks unless the workflow truly requires them.
 - **Interaction feel**: Define feedback speed, motion restraint, state treatment, loading, empty, error, and navigation continuity.
 - **Device translation**: Define how the direction changes for desktop, mobile, touch, car/head-unit, big screen, or embedded surfaces.
 
@@ -72,6 +82,8 @@ Art Direction Brief:
 Requirement frame: high-frequency task workspace for creating, filtering, and acting on work items; dense desktop first, keyboard/mouse input, needs loading/empty/error and selection states.
 Local evidence scan: existing app shell and tokens are preserved; current buttons/lists are usable but need stronger command/list states; no high-quality media/model assets.
 Product character: calm, precise, premium productivity workspace.
+Design read: reading this as a high-frequency task workspace for operators, not a marketing landing page.
+Context dials: design variance low-medium, motion intensity low-medium, information density high, component distinctiveness medium because the product value is task focus and confidence.
 Style anchor: Modern Builder Tool anchored by Linear/Raycast; borrow command clarity, dense panels, crisp states, and fast feedback; avoid generic dark SaaS clones and purple-blue AI gradients.
 Reference direction: foundation reference uses Apple HIG's restraint; visual/product references borrow Linear's hierarchy and Raycast's command clarity without copying their brand skin.
 Reference website pass: inspect the product/reference surface for split-panel density, command action placement, and compact keyboard-friendly feedback.
@@ -86,11 +98,14 @@ Medium decision: mostly static dense UI with short stateful transitions; no stoc
 Visual language: quiet instrument-panel surfaces, precise separators, sparse iconography, no generic gradients or decorative blobs.
 Motion/spatial language: short feedback transitions, continuity between work item states, no decorative loops unless they communicate live status.
 Color/material: neutral base, subtle borders, restrained depth, one confident accent.
+Type identity: compact UI sans from local tokens, tabular numbers for metrics, restrained mono only for shortcuts and command hints; one family is acceptable only if token-backed and still role-rich.
 Typography: compact readable scale, strong section labels, tabular numbers for metrics.
 Type ceiling: page title stays compact; no hero-scale text because the product value is task focus, not a marketing moment.
 Display need: none; the screen should communicate task focus and operational hierarchy, not poster impact.
 Display support: none needed because display type is not used.
 Component language: quiet buttons, crisp inputs, clear tabs, precise menus, no ornamental chrome.
+Component context decisions: command bar handles action search and keyboard input; list rows handle scanning/selection; detail panel handles inspection/editing; status strips handle feedback; default feature cards and modal-for-everything patterns are rejected.
+Component shape language: split panes, list rows, command bar, detail panel, and status strips; cards only for discrete work-item summaries, not every section.
 Interaction feel: fast feedback, clear hover/focus, short transitions, non-disruptive loading and errors.
 Device translation: desktop supports density; mobile collapses into a task-first flow with larger touch targets.
 ```

@@ -2,7 +2,7 @@
 
 Use these gates for meaningful frontend work, whether improving an existing UI or building a new UI from requirements. The goal is to prevent shallow styling, template-like output, and late discovery that the result is visually weak.
 
-Preferred sequence: requirement frame -> local evidence scan -> direction checkpoint decision -> gap-driven external references -> reference translation -> content/media readiness -> surface mode -> expression budget -> implementation contract -> implementation -> visual evidence pack.
+Preferred sequence: requirement frame -> local evidence scan -> design read and context dials -> direction checkpoint decision -> gap-driven external references -> reference translation -> content/media readiness -> surface mode -> expression budget -> implementation contract -> implementation -> visual evidence pack.
 
 ## Gate 1: Requirement and Surface Diagnosis
 
@@ -21,6 +21,25 @@ Use `requirement-evidence-workflow.md` to create a Requirement Frame for substan
 For existing UI, name the top 3 visible problems. Prefer issues like weak hierarchy, poor grouping, wrong density, unclear navigation, generic component language, bad content rhythm, or touch/desktop mismatch over vague statements like "needs polish."
 
 For new UI, define the first screen's job, the primary user action, and what the user should understand in the first 3 seconds.
+
+For substantial or vague work, also create a Design Read from `design-read-and-dials.md`:
+
+```text
+Design Read:
+Reading this as:
+Audience:
+Primary workflow:
+Surface mode:
+Context constraints:
+Style anchor:
+Design variance:
+Motion intensity:
+Information density:
+Component distinctiveness:
+Why these dials fit:
+```
+
+The dials are constraints for layout, component choice, typography, motion, and density. They are not decoration and not user-facing ceremony unless the direction is ambiguous.
 
 ## Gate 2: Local Evidence Scan
 
@@ -149,6 +168,11 @@ Before composition or code, convert the requirement, local scan, and references 
 
 ```text
 Scene Fit Decision:
+Design read:
+Design variance:
+Motion intensity:
+Information density:
+Component distinctiveness:
 Layout model:
 Component source:
 State coverage:
@@ -210,6 +234,7 @@ Create a concise Art Direction Brief before changing the visible surface. It mus
 - product character
 - requirement frame
 - local evidence scan
+- design read and context dials
 - design stance
 - reference direction
 - content/media readiness
@@ -223,12 +248,15 @@ Create a concise Art Direction Brief before changing the visible surface. It mus
 - visual language
 - motion/spatial language
 - color and material
+- type identity: font family roles, pairing, numeric/code treatment, and language/script support
 - typography
 - type ceiling
 - type scale restraint: whether display-size text is allowed, largest text role, and what must not become oversized
 - display need: why the surface truly needs display-size text, if any
 - display support: content, image/photo, illustration, animation, model, data object, or editorial material that supports large type, if display type is still justified
 - component language
+- component context decisions: job, input model, density, state cycle, feedback, and rejected default pattern for major component families
+- component shape language: primary surface form, secondary surface form, card budget, and what must not become a card
 - interaction feel
 - device translation
 
@@ -299,7 +327,52 @@ Performance/accessibility fallback:
 
 Static UI, photography, illustration, motion, animation, 3D/model, and hybrids are all valid. The chosen medium must be the strongest way to express product meaning, state, continuity, inspection, atmosphere, or user understanding. Do not choose a medium because it is trendy, available in a catalog, or easier to decorate with.
 
-## Gate 11: Motion and Spatial Language Pass
+## Gate 11: Type and Component Identity Pass
+
+Use `type-and-component-identity.md` before finalizing typography or component surfaces. This is required when building from scratch, changing a visual direction, or when the result risks looking like one-font, square-block UI.
+
+Record:
+
+```text
+Type identity:
+Product scene:
+Language/script needs:
+Primary UI/body family:
+Display/editorial family:
+Numeric/code family:
+Why one family is enough, if using one:
+Pairing logic:
+What this avoids:
+
+Component shape language:
+Primary surface form:
+Secondary surface form:
+Object/media form:
+Navigation/control form:
+Radius/depth/material logic:
+Card budget:
+What should not be a card:
+What breaks the square-block pattern:
+
+Component context decisions:
+Component / component family:
+Job:
+Scene:
+Input model:
+Density:
+Existing primitive:
+Chosen form:
+State cycle:
+Motion / feedback:
+Accessibility constraint:
+What default pattern is rejected:
+```
+
+Reject outputs where every product category uses the same default font or where the page silhouette is just repeated equal rectangles. A single font or strict rectangular grid is acceptable only when it is intentional, tied to local tokens or the style anchor, and still produces clear type roles and component hierarchy.
+
+Reject major components chosen by habit: generic button pairs, pill badges, accordions, modals, spinners, testimonial carousels, left sidebars, split headers, equal tiles, and card grids all need context evidence. They are allowed only when they fit the requirement and component context decision.
+
+## Gate 12: Motion and Spatial Language Pass
 
 Define motion and model rules before implementing effects:
 
@@ -314,14 +387,16 @@ For substantial UI work, implement at least one meaningful motion or transition 
 
 Use `motion-spatial-language.md` when motion, animation, or models are central to the experience, when existing motion feels absent, static, gimmicky, generic, too busy, or disconnected from state, or when a component/motion resource is being used.
 
-## Gate 12: Component and State Pass
+## Gate 13: Component and State Pass
 
-Unify the component language:
+Unify the component language and shape language:
 
 - buttons, icon buttons, inputs, selects, tabs, menus, dialogs, lists, cards, tables, charts, media, and navigation
 - hover, focus, pressed, disabled, loading, empty, error, success, selected, and partial-data states
 - labels, numbers, dates, helper text, and error text
 - keyboard and touch affordances
+- surface forms: panels, rows, rails, docks, command bars, canvases, media frames, tables, timelines, product/object areas, and cards only where cards fit
+- component context: job, input model, density, state cycle, feedback, and default pattern rejected for each major component family
 
 If weak primitives drag down the whole surface, improve the primitives before polishing individual screens.
 
@@ -342,7 +417,7 @@ Why no external component is needed, if skipped:
 
 Reject component-less implementation when mature local or external primitives are available. Common controls, navigation, dialogs, tables, charts, forms, filters, cards, and state feedback should come from the project's component system or an inspected component/resource source, then be customized to the selected art direction.
 
-## Gate 13: Resource Discipline
+## Gate 14: Resource Discipline
 
 Use `frontend-resource-catalog.md` as an execution catalog, not as a taste shortcut.
 
@@ -357,21 +432,25 @@ Use `frontend-resource-catalog.md` as an execution catalog, not as a taste short
 
 Reject resource choices that make the UI look like a generic template, animation demo, or component-gallery page.
 
-## Gate 14: Visual Evidence Pack
+## Gate 15: Visual Evidence Pack
 
 Verify the real surface when possible:
 
 - desktop viewport
 - mobile or target device viewport
 - requirement-fit inspection: final layout, density, components, motion, and visual medium match the user goal, workflow, surface type, device, and risk
+- design-read inspection: design variance, motion intensity, information density, and component distinctiveness are visible in the final result and fit the task
 - local-evidence inspection: existing components, tokens, assets, or shipped patterns were preserved, extended, repaired, or intentionally replaced
 - readiness inspection: final expression matches the L0/L1/L2/L3 content/media level, selected surface mode, and expression budget
 - screenshot inspection for hierarchy, spacing, overflow, contrast, alignment, text fit, and visual coherence
 - taste inspection: bland middle-ground, no design stance, no signature move, no signature interaction, generic "clean modern premium" result, or personality coming only from color/glow/large type
 - medium inspection: chosen static, image, illustration, motion, animation, 3D/model, or hybrid treatment fits the product better than the rejected alternatives
 - type-scale inspection: oversized headings, giant numbers, hero-sized words inside compact tools, marketing-page typography used in product UI, or type not justified by the foundation/reference lock
+- type-identity inspection: one default font used by habit, missing font pairing logic, numeric/code/CJK treatment ignored, or typography that does not fit the product scene
 - display-need/support inspection: large text without a real display job; large text used only because good media exists; large text without strong copy/content, high-quality asset, meaningful animation, framed model, data object, or editorial material; large text plus generic background effects; CJK text that feels heavy or awkward
 - mechanical-layout inspection: repeated equal cards, average spacing everywhere, weak visual anchor, generic hero pattern, flat type rhythm, or random SaaS-template feel
+- component-shape inspection: every module is the same square or rounded rectangle, cards or default components are used for the wrong jobs, no visible shape language, or component-library defaults define the whole page
+- component-context inspection: navigation, controls, forms, tables/lists, media, panels, dialogs, charts, models, and states were selected by context rather than habit
 - visual-language inspection: stock imagery, random decoration, inconsistent icon/illustration/photo treatment, weak material logic, generic gradient background, or no recognizable product motif
 - motion/spatial inspection: decorative loops, too many moving elements, weak state meaning, scroll hijacking, unoptimized model assets, poor camera framing, missing poster/loading state, or no reduced-motion fallback
 - interaction states, not only the default screen
@@ -394,12 +473,16 @@ For substantial UI work, collect a concise evidence pack:
 ```text
 Visual Evidence Pack:
 Requirement frame:
+Design read / context dials:
 Local evidence used:
 Readiness level / surface mode / expression budget:
 References visibly used:
 Style anchor and misuse risk:
 Reference websites/demos/files inspected:
 Components/resources used:
+Type identity and pairing logic:
+Component shape language and card budget:
+Component context decisions:
 States and interactions implemented:
 Largest text role and approximate/computed size:
 Display need/support if large type exists:
@@ -409,11 +492,12 @@ Reduced-motion or fallback:
 Known verification blocker:
 ```
 
-## Gate 15: Self-Iteration Before Final
+## Gate 16: Self-Iteration Before Final
 
 Before final delivery, ask:
 
 - Does the result answer the actual requirement and workflow, or only look styled?
+- Did the Design Read correctly identify the surface, audience, workflow, density, motion, and component distinctiveness?
 - Did we inspect the local project before importing references/components?
 - Is the first read obvious?
 - Is the design stance visible without explanation?
@@ -427,10 +511,15 @@ Before final delivery, ask:
 - Are animation/model choices performant, accessible, and framed correctly on the target device?
 - Is the rhythm varied, or are all regions/cards the same weight?
 - Does typography create character beyond a tidy scale?
+- Does the font choice fit this product scene, or is it the same default family used everywhere?
+- If only one font family is used, is that a deliberate token-backed decision with enough role contrast?
 - Is the largest text role appropriate for this product surface, or did the UI become a big-word poster?
 - If large text is present, why does the surface need it, and what content or visual medium earns that size?
 - Is there a clear product character?
 - Are controls and states complete enough for real use?
+- Does the component silhouette avoid repeated same-size square blocks and default component-gallery rhythm?
+- What surfaces are intentionally not cards, modals, accordions, pill badges, or generic button pairs?
+- Did each major component family earn its form from context?
 - Does anything look like a generic AI-generated landing page or copied component demo?
 - Does the result hold up on the target device size?
 
