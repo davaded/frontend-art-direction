@@ -12,6 +12,7 @@ Requirement frame:
 Local evidence scan:
 Product character:
 Design stance:
+Style anchor:
 Reference direction:
 Reference website pass:
 Component adoption plan:
@@ -41,6 +42,7 @@ Device translation:
 - **Requirement frame**: Summarize user goal, primary workflow, surface type, density, input model, device, critical states, and real content/assets. This decides what the UI must be before any aesthetic move.
 - **Local evidence scan**: Name existing components, tokens, theme, installed UI/motion/chart/icon libraries, relevant screens, assets, and weak primitives. State whether the local system should be preserved, extended, repaired, or supplemented.
 - **Design stance**: Choose a visible stance such as quiet precision, kinetic product, visual object, editorial authority, instrument panel, or consumer character. Avoid vague "clean modern premium."
+- **Style anchor**: Name the anchor or custom recipe from `style-anchor-recipes.md`, including signature move, borrow, avoid, scene fit, and misuse risk. Do not use a style label without an anchor.
 - **Reference direction**: Name 2-4 inspected references, classify each reference's role, and state what to borrow from each. Borrow principles, not the whole look.
 - **Reference website pass**: Name the inspected URL/demo/screenshot/file evidence and what visible decisions will appear in the target UI.
 - **Component adoption plan**: Name the existing or external component/resource source, the primitives or blocks to use, the states to implement, and what will not be hand-rolled.
@@ -70,6 +72,7 @@ Art Direction Brief:
 Requirement frame: high-frequency task workspace for creating, filtering, and acting on work items; dense desktop first, keyboard/mouse input, needs loading/empty/error and selection states.
 Local evidence scan: existing app shell and tokens are preserved; current buttons/lists are usable but need stronger command/list states; no high-quality media/model assets.
 Product character: calm, precise, premium productivity workspace.
+Style anchor: Modern Builder Tool anchored by Linear/Raycast; borrow command clarity, dense panels, crisp states, and fast feedback; avoid generic dark SaaS clones and purple-blue AI gradients.
 Reference direction: foundation reference uses Apple HIG's restraint; visual/product references borrow Linear's hierarchy and Raycast's command clarity without copying their brand skin.
 Reference website pass: inspect the product/reference surface for split-panel density, command action placement, and compact keyboard-friendly feedback.
 Component adoption plan: use existing app shell primitives plus mature buttons, tabs, menus, dialogs, command/list states, lucide-style icons, and short state transitions; do not hand-roll bare controls.

@@ -2,7 +2,7 @@
 
 Use these gates for meaningful frontend work, whether improving an existing UI or building a new UI from requirements. The goal is to prevent shallow styling, template-like output, and late discovery that the result is visually weak.
 
-Preferred sequence: requirement frame -> local evidence scan -> gap-driven external references -> reference translation -> content/media readiness -> surface mode -> expression budget -> implementation contract -> implementation -> visual evidence pack.
+Preferred sequence: requirement frame -> local evidence scan -> direction checkpoint decision -> gap-driven external references -> reference translation -> content/media readiness -> surface mode -> expression budget -> implementation contract -> implementation -> visual evidence pack.
 
 ## Gate 1: Requirement and Surface Diagnosis
 
@@ -51,7 +51,32 @@ Decision: preserve / extend / replace / add external support
 
 This gate decides whether the implementation should preserve, extend, repair, or supplement the local system. Do not import a new component language or visual language before this decision.
 
-## Gate 3: Gap-Driven Reference Stack
+## Gate 3: Direction Checkpoint Decision
+
+Use `direction-advisor-checkpoints.md` after the requirement frame and local evidence scan, before locking references or implementation.
+
+Decide:
+
+```text
+Checkpoint required: yes / no
+Reasoning:
+User clarity:
+Local evidence:
+Direction risk:
+Cost of being wrong:
+Reversibility:
+Known direction:
+Missing direction evidence:
+Next action: continue with Direction Assumption / present Direction Lock / present three Direction Advisor options / build v0 preview
+```
+
+Require user confirmation only when ambiguity and cost-of-wrong-direction are both meaningfully high. Broad requests, from-scratch work, brand surfaces, cinematic heroes, unusual motion, 3D/model media, and multiple credible directions are signals to evaluate, not automatic stop signs. If the user clearly requested a direction or asked the agent to decide, record the assumption and proceed.
+
+When presenting direction options, use `style-anchor-recipes.md`. Each option must include a Style Anchor Card with anchor, school, best fit, signature move, medium/motion fit, type behavior, borrow, avoid, misuse risk, and verification clue. Three options must be materially different, not variations of one "clean modern premium" direction.
+
+If the checkpoint is required, stop after presenting the compact Direction Lock, three differentiated direction options, or a v0 direction preview. Continue only after the user chooses a direction, asks the agent to choose, or narrows the scope. If the checkpoint is not required, continue and keep the decision visible enough to audit later.
+
+## Gate 4: Gap-Driven Reference Stack
 
 Select and inspect 2-4 references before meaningful implementation. Use `reference-ingestion.md` to classify each reference by role before using it. User-provided references come first; do not skip them to search for easier examples. After the local evidence scan, search only for missing jobs: foundation/quality systems, project visual memory, visual-language/art-direction references, component/motion implementation resources, asset/icon sources, or optional flow/state checks.
 
@@ -79,6 +104,8 @@ Transferable evidence:
 ```
 
 Use references for judgment and implementation translation, not surface copying. A component library, animation library, or icon source is not a complete reference by itself unless its product behavior and visual system fit the task. A reference that was only named, not inspected, is tentative and should not drive implementation.
+
+When the reference is being used as a visual direction rather than a narrow component or state source, also record the Style Anchor Card from `style-anchor-recipes.md` or a custom equivalent. Do not let an anchor become a copied skin; it must translate into layout, type, medium, component behavior, motion, or visual language.
 
 Combine the selected cards into a short Reference Translation Brief:
 
@@ -116,7 +143,7 @@ Before implementation, also create the `Reference Website Pass` and `Component A
 
 Do not continue into composition if the plan is only "custom CSS" or "make it beautiful" without a component/resource source. Choose existing project primitives or a mature component/resource source first.
 
-## Gate 4: Scene Fit Decision
+## Gate 5: Scene Fit Decision
 
 Before composition or code, convert the requirement, local scan, and references into a scene-fit decision:
 
@@ -143,7 +170,7 @@ Layout, components, motion, and type scale are not optional decorations selected
 - marketing/editorial surfaces need real copy and media support before large type or cinematic rhythm
 - model/spatial surfaces need assets, performance budget, loading/poster states, and fallback
 
-## Gate 5: Content / Media Readiness and Expression Budget
+## Gate 6: Content / Media Readiness and Expression Budget
 
 Use `content-media-readiness.md` before choosing display type, cinematic layout, heavy motion, 3D, or strong visual expression. Do this before composition work, not only at final QA.
 
@@ -176,7 +203,7 @@ Use the level to constrain expression:
 
 If content or media is weaker than the intended expression, downgrade the expression budget before implementation. Good assets support expression; they do not automatically justify large type, immersive heroes, or strong motion.
 
-## Gate 6: Art Direction Brief
+## Gate 7: Art Direction Brief
 
 Create a concise Art Direction Brief before changing the visible surface. It must answer:
 
@@ -207,7 +234,7 @@ Create a concise Art Direction Brief before changing the visible surface. It mus
 
 Expose the brief when the direction is ambiguous, the UI is new, or the work affects a major screen. If the user asked for direct implementation, keep it concise and move into implementation after the brief is clear.
 
-## Gate 7: Taste Positioning
+## Gate 8: Taste Positioning
 
 Use `taste-positioning.md` before composition work when the task is substantial, the UI is new, or prior output felt bland, generic, over-safe, static, or overly dependent on large text.
 
@@ -229,7 +256,7 @@ Do not proceed with a vague stance such as "clean modern premium." If the UI is 
 
 Do not use oversized type as the expressive move unless the surface truly needs display scale and the type is supported by strong content, imagery, animation, model, data object, or editorial material. Good support is necessary but not sufficient. If need or support is weak, choose a restrained type ceiling and create memorability through composition, state behavior, material, or a real product object.
 
-## Gate 8: Expressive Composition First
+## Gate 9: Expressive Composition First
 
 Do this before decorative styling:
 
@@ -245,7 +272,7 @@ Do this before decorative styling:
 
 Do not start with gradients, shadows, glow, animated backgrounds, glassmorphism, or decorative cards when the layout and hierarchy are unresolved. If the result looks like an evenly spaced card template, use `expressive-composition.md` before continuing.
 
-## Gate 9: Visual Language Pass
+## Gate 10: Visual Language Pass
 
 Define the visual system before polishing surfaces:
 
@@ -272,7 +299,7 @@ Performance/accessibility fallback:
 
 Static UI, photography, illustration, motion, animation, 3D/model, and hybrids are all valid. The chosen medium must be the strongest way to express product meaning, state, continuity, inspection, atmosphere, or user understanding. Do not choose a medium because it is trendy, available in a catalog, or easier to decorate with.
 
-## Gate 10: Motion and Spatial Language Pass
+## Gate 11: Motion and Spatial Language Pass
 
 Define motion and model rules before implementing effects:
 
@@ -287,7 +314,7 @@ For substantial UI work, implement at least one meaningful motion or transition 
 
 Use `motion-spatial-language.md` when motion, animation, or models are central to the experience, when existing motion feels absent, static, gimmicky, generic, too busy, or disconnected from state, or when a component/motion resource is being used.
 
-## Gate 11: Component and State Pass
+## Gate 12: Component and State Pass
 
 Unify the component language:
 
@@ -315,7 +342,7 @@ Why no external component is needed, if skipped:
 
 Reject component-less implementation when mature local or external primitives are available. Common controls, navigation, dialogs, tables, charts, forms, filters, cards, and state feedback should come from the project's component system or an inspected component/resource source, then be customized to the selected art direction.
 
-## Gate 12: Resource Discipline
+## Gate 13: Resource Discipline
 
 Use `frontend-resource-catalog.md` as an execution catalog, not as a taste shortcut.
 
@@ -330,7 +357,7 @@ Use `frontend-resource-catalog.md` as an execution catalog, not as a taste short
 
 Reject resource choices that make the UI look like a generic template, animation demo, or component-gallery page.
 
-## Gate 13: Visual Evidence Pack
+## Gate 14: Visual Evidence Pack
 
 Verify the real surface when possible:
 
@@ -370,6 +397,7 @@ Requirement frame:
 Local evidence used:
 Readiness level / surface mode / expression budget:
 References visibly used:
+Style anchor and misuse risk:
 Reference websites/demos/files inspected:
 Components/resources used:
 States and interactions implemented:
@@ -381,7 +409,7 @@ Reduced-motion or fallback:
 Known verification blocker:
 ```
 
-## Gate 14: Self-Iteration Before Final
+## Gate 15: Self-Iteration Before Final
 
 Before final delivery, ask:
 
@@ -389,6 +417,7 @@ Before final delivery, ask:
 - Did we inspect the local project before importing references/components?
 - Is the first read obvious?
 - Is the design stance visible without explanation?
+- Is the selected style anchor visible, and did the result avoid that anchor's misuse risk?
 - Is there a signature interaction, not just hover color?
 - Was the visual medium chosen deliberately, or did the UI default to static layout, stock imagery, component-demo animation, or ornamental 3D?
 - Does the layout feel composed before it feels decorated?
