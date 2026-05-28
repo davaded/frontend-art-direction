@@ -90,6 +90,7 @@ Define a small set of repeated rules:
 - URL: https://gsap.com/docs/v3/
 - Use for advanced timeline choreography, scroll-driven sequences, pinned storytelling, SVG morphing/drawing, text reveals, and complex cross-element animation.
 - Good fit when motion is a central part of the page narrative or visual identity.
+- ScrollTrigger is a good fit when a title, product object, or 3D layer must pin while another layer moves independently. Use it for authored scroll narrative, not generic reveal-on-scroll.
 
 ### Theatre.js
 
@@ -118,6 +119,7 @@ Define a small set of repeated rules:
   - https://threejs.org/examples/
 - Use for custom WebGL/WebGPU 3D scenes, shaders, particles, spatial data, product visualization, immersive hero scenes, and interactive model systems.
 - Good fit when the 3D scene is a primary product experience or visual anchor.
+- ShaderMaterial is a good fit for procedural materials such as iridescence, liquid color, distortion, lighting response, or cursor-reactive surfaces. Use it when the shader expresses a product idea or spatial state, not as a replacement for missing media.
 
 ### React Three Fiber and Drei
 
@@ -138,6 +140,7 @@ Define a small set of repeated rules:
 - URL: https://spline.design/
 - Use for designer-authored interactive 3D scenes, lightweight product explainers, web-ready 3D visuals, and rapid spatial prototypes.
 - Good fit when the team needs visual 3D authoring faster than custom scene engineering.
+- Good fit for interactive organic shapes, simple product-like 3D scenes, and brand objects when the team does not need custom modeling, custom shaders, or a precise GLB pipeline.
 
 ### Lenis
 
@@ -176,6 +179,7 @@ Before choosing a library or effect, make the medium decision: static interface,
 - Use model-viewer for simple product/model inspection.
 - Use Three.js or React Three Fiber for custom interactive 3D scenes.
 - Use Spline for designer-authored interactive 3D visuals.
+- Use route or section prefetching as a performance layer for predictable next views; treat it as interaction quality, not a visual effect.
 
 Do not choose a heavier medium when a lighter one communicates the state clearly.
 

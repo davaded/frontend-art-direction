@@ -8,6 +8,8 @@ Do not start from a style label such as "premium", "cinematic", "Apple-like", or
 
 Good copy, high-quality imagery, animation, models, charts, audio, canvas objects, or editorial material can support expression, but they do not create the need for it. Display-size text, immersive heroes, and strong motion remain rare exceptions.
 
+Strong media is a first-class input. For visual or experiential surfaces, the main image, video, model, character, product object, chart, canvas, or gameplay state must carry real product meaning. Do not substitute missing media with a few abstract SVG shapes, generic gradients, noise, decorative blobs, or arbitrary CSS effects and call it art direction.
+
 ## Readiness Card
 
 Create this card before major visual decisions:
@@ -46,6 +48,7 @@ Default treatment:
 - no display-size text, fake hero, cinematic composition, ornamental 3D, or large decorative motion
 - improve information architecture, grouping, labels, realistic sample states, component states, and micro-interaction
 - use restrained type and compact hierarchy
+- acquire, generate, search for, or request real media before attempting a media-led or cinematic direction
 
 ### L1: Real Data, Forms, or Workflow
 

@@ -192,6 +192,32 @@ What must not be oversized:
 
 Reject a type scale when the screenshot reads as a poster, generic landing hero, or large-word composition instead of a usable product surface.
 
+### Fluid Display Sizing
+
+Use CSS `clamp()` for display text, hero objects, and fixed-format visual elements only after a type ceiling and responsive bounds are known.
+
+Good fit:
+
+- media-led landing pages where a headline or ghost word must scale across mobile, tablet, and desktop
+- portfolio or editorial pages with a verified display role
+- object stages where text and media need bounded proportional scaling
+
+Rules:
+
+- set a real minimum, preferred viewport-based value, and maximum
+- verify the longest word, CJK text, and mixed-language labels
+- do not let viewport math replace semantic type roles inside app UI
+- prefer container-aware sizing or layout changes when a component has a fixed parent
+- reduce the size if text competes with the primary media object or CTA
+
+Example intent:
+
+```css
+.hero-title {
+  font-size: clamp(3rem, 12vw, 10rem);
+}
+```
+
 ### Typewolf and Fonts In Use
 
 - URLs:
