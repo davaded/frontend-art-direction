@@ -91,6 +91,7 @@ Define a small set of repeated rules:
 - Use for advanced timeline choreography, scroll-driven sequences, pinned storytelling, SVG morphing/drawing, text reveals, and complex cross-element animation.
 - Good fit when motion is a central part of the page narrative or visual identity.
 - ScrollTrigger is a good fit when a title, product object, or 3D layer must pin while another layer moves independently. Use it for authored scroll narrative, not generic reveal-on-scroll.
+- When GSAP is the selected implementation medium, load `gsap-execution-patterns.md` for React/Next setup, timelines, ScrollTrigger, plugins, cleanup, performance, and verification.
 
 ### Theatre.js
 
@@ -181,7 +182,7 @@ Before choosing a library or effect, make the medium decision: static interface,
 - Use Spline for designer-authored interactive 3D visuals.
 - Use route or section prefetching as a performance layer for predictable next views; treat it as interaction quality, not a visual effect.
 
-Do not choose a heavier medium when a lighter one communicates the state clearly.
+Do not choose a heavier medium when a lighter one communicates the state clearly. When the heavier medium creates a visibly better, more controllable, or more reliable experience, choose it and verify the added cost.
 
 ## Spatial and Model Quality Checks
 

@@ -42,6 +42,13 @@ Checks:
 - loop transition is acceptable or custom-faded
 - foreground glass does not become the visual gimmick
 
+Reference-style systems:
+
+- space-travel or aerospace hero with full-bleed video, glass nav, blur-in display type, compact stat cards, partner proof, and a second video-backed capabilities section
+- studio or creative collective hero with inset rounded video, warm cream type, pull-up word animation, and structured feature cards
+
+These systems are allowed to be visually heavy when the video and copy justify it. Build them with real media, not synthetic decoration.
+
 ### Object / Character Stage
 
 Primary object:
@@ -67,6 +74,14 @@ Checks:
 - keyboard/touch/reduced-motion behavior remains usable
 - object does not hide the key CTA or brand label
 
+Reference-style systems:
+
+- figurine or character carousel where four assets rotate through center, side, and back roles
+- product variant stage where the active item changes background color, scale, blur, and z-order
+- collectible/game/avatar hero where oversized ghost type creates depth behind the object
+
+The important part is the role system. Do not implement this as a generic carousel with sliding cards.
+
 ### Creator / Portfolio Editorial
 
 Primary object:
@@ -91,6 +106,13 @@ Checks:
 - sticky effects do not trap mobile scroll
 - the page still works when a project image loads late
 
+Reference-style systems:
+
+- 3D creator portfolio with a hero portrait/object, scroll-driven project marquee, full-height about section, service rows, and sticky project case-study cards
+- creative studio landing page where typography, proof media, feature cards, and editorial copy work as one brand system
+
+The proof media must appear early. A portfolio without real project imagery should use restrained layout and ask for assets.
+
 ### Trust-Sensitive Media Hero
 
 Primary object:
@@ -114,6 +136,38 @@ Checks:
 - the user benefit is not hidden behind atmosphere
 - motion does not reduce perceived trust
 - contrast and legibility pass without heavy overlays
+
+Reference-style systems:
+
+- assistive/prosthetics product hero with full-screen real-life video, neutral nav pills, small bottom-left copy, and one CTA
+- healthcare or accessibility hero where calm product proof matters more than cinematic spectacle
+
+This can still be media-led, but the expression budget is spent on trust, not visual drama.
+
+## Reference Capture Format
+
+For a user-provided media-led prompt, capture it before adapting:
+
+```text
+Reference name:
+Page type:
+Sections:
+Primary media:
+Secondary media:
+Typeface system:
+Color/material system:
+Signature layout:
+Signature interaction:
+Motion/scroll system:
+Component families:
+Responsive-specific rules:
+Asset risks:
+Performance risks:
+What must transfer:
+What can change:
+```
+
+If the reference is strong, keep the component and motion specificity. If the target product differs, change the medium or intensity, not the level of craft.
 
 ## Durable Building Blocks
 

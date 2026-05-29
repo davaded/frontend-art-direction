@@ -35,6 +35,7 @@ What will not be hand-rolled:
 - Borrow: timeline discipline, ScrollTrigger-style sequencing, precise control over easing, stagger, pinning, and cross-element motion.
 - Avoid: hiding core content behind choreography, adding scroll tricks to task-heavy apps, or animating many elements without hierarchy.
 - Check: reduced-motion fallback, scroll control, CPU/GPU cost, cleanup on route changes, and whether motion improves comprehension.
+- Deep implementation: use `gsap-execution-patterns.md` when GSAP is chosen for a real build. Heavy GSAP is acceptable when it materially improves the result; the cost must buy visible quality, controllable timelines, reliable scroll scenes, or plugin capabilities.
 
 ### Rive
 
