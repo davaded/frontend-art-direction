@@ -1,0 +1,115 @@
+{
+  "version": 1,
+  "styles": [
+    {
+      "id": "evidence-led-neutral",
+      "label": "Evidence-Led Neutral",
+      "keywords": ["adaptive", "general", "neutral", "evidence", "通用", "适配", "中性"],
+      "bestFor": ["adaptive-surface"],
+      "signature": "real content, object hierarchy, and task evidence decide the visual register",
+      "borrow": ["clear primary object", "measured type and spacing", "one owned detail after the structure proves itself"],
+      "avoid": ["premature dashboard skin", "empty editorial theater", "commerce template without a transaction", "effects standing in for direction"],
+      "misuse": "treating neutrality as an excuse to remove all character or product-specific detail"
+    },
+    {
+      "id": "quiet-precision",
+      "label": "Quiet Precision",
+      "keywords": ["calm", "precise", "tool", "enterprise", "productivity", "清晰", "克制"],
+      "bestFor": ["productive-app", "data-workbench"],
+      "signature": "alignment, hierarchy, and state clarity carry the personality",
+      "borrow": ["dense but breathable grouping", "crisp dividers", "fast state feedback"],
+      "avoid": ["generic dark SaaS", "glow as identity", "display type in compact tools"],
+      "misuse": "becoming visually empty because every distinction was removed"
+    },
+    {
+      "id": "instrument-panel",
+      "label": "Instrument Panel",
+      "keywords": ["expert", "operator", "control", "editor", "devtool", "cockpit", "仪表盘", "专业"],
+      "bestFor": ["command-tool", "data-workbench", "media-experience"],
+      "signature": "rails, rows, and focused controls orbit a primary work object",
+      "borrow": ["role-based surfaces", "status strips", "keyboard/touch feedback"],
+      "avoid": ["card wall", "ornamental chrome", "remote-hostile tiny controls"],
+      "misuse": "turning every surface into a dark control room"
+    },
+    {
+      "id": "data-first-clarity",
+      "label": "Data-First Clarity",
+      "keywords": ["data", "analytics", "finance", "research", "monitoring", "数据", "分析"],
+      "bestFor": ["data-workbench", "productive-app"],
+      "signature": "comparison and context stay visible while data changes",
+      "borrow": ["tabular numbers", "stable row identity", "semantic color"],
+      "avoid": ["giant KPI tiles", "rainbow charts", "animation without a data event"],
+      "misuse": "sacrificing comprehension for density"
+    },
+    {
+      "id": "editorial-authority",
+      "label": "Editorial Authority",
+      "keywords": ["editorial", "report", "launch", "brand", "story", "trust", "内容", "权威"],
+      "bestFor": ["editorial-marketing", "portfolio-studio"],
+      "signature": "copy, image, and rhythm create a confident reading path",
+      "borrow": ["proof early", "intentional type contrast", "caption and crop discipline"],
+      "avoid": ["headline-only design", "stock atmosphere", "repeated split sections"],
+      "misuse": "making a task product slow and self-important"
+    },
+    {
+      "id": "quiet-luxury",
+      "label": "Quiet Material Luxury",
+      "keywords": ["premium", "high-end", "luxury", "refined", "craft", "finish", "quiet", "flagship", "material", "brand", "editorial", "website", "premium finish", "质感", "高级", "高端", "高级感", "有质感", "精致", "工艺", "旗舰", "品牌", "官网"],
+      "bestFor": ["hardware-product-story"],
+      "signature": "material truth, optical hierarchy, authored spacing, and one restrained detail create authority",
+      "borrow": ["measured type scale", "tonal surface contrast", "precise media framing", "asymmetric but controlled spacing", "tactile state feedback", "short specific copy"],
+      "avoid": ["black-and-gold cliché", "unearned empty luxury whitespace", "glassmorphism as identity", "gradient/glow as hierarchy", "uniform rounded cards", "generic stock atmosphere"],
+      "misuse": "using luxury gestures where product information, accessibility, or task speed should lead"
+    },
+    {
+      "id": "visual-object",
+      "label": "Visual Object",
+      "keywords": ["product", "object", "media", "image", "model", "catalog", "产品", "对象"],
+      "bestFor": ["commerce-flow", "portfolio-studio", "spatial-product"],
+      "signature": "one real object anchors layout, state, and information hierarchy",
+      "borrow": ["stable object identity", "staged media frame", "contextual controls"],
+      "avoid": ["object as decoration", "fake product image", "media hiding the action"],
+      "misuse": "using a visual object where the workflow needs comparison or speed"
+    },
+    {
+      "id": "premium-industrial",
+      "label": "Premium Industrial Editorial",
+      "keywords": ["hardware", "device", "industrial", "engineering", "material", "finish", "premium", "product", "硬件", "工业", "工程", "材质", "质感", "高端"],
+      "bestFor": ["hardware-product-story", "spatial-product"],
+      "signature": "a real object, restrained type, and progressive proof create authority without a card wall",
+      "borrow": ["object-first composition", "one product promise per chapter", "material and performance as evidence", "late comparison and purchase clarity"],
+      "avoid": ["generic white ecommerce", "hero-only product render", "unearned luxury whitespace", "feature icon grid without proof"],
+      "misuse": "turning a product page into a cinematic scroll that makes the object and buying decision harder to understand"
+    },
+    {
+      "id": "kinetic-product",
+      "label": "Kinetic Product",
+      "keywords": ["motion", "realtime", "playback", "interaction", "dynamic", "动效", "实时"],
+      "bestFor": ["media-experience", "command-tool"],
+      "signature": "state changes have a shared rhythm and remain interruptible",
+      "borrow": ["continuity", "tactile response", "meaningful transitions"],
+      "avoid": ["autoplay spectacle", "scroll trap", "animation as background"],
+      "misuse": "making high-frequency work feel slow"
+    },
+    {
+      "id": "warm-humanist",
+      "label": "Warm Humanist",
+      "keywords": ["warm", "friendly", "education", "wellness", "community", "温暖", "亲和"],
+      "bestFor": ["productive-app", "editorial-marketing"],
+      "signature": "human copy, generous rhythm, and tactile feedback reduce friction",
+      "borrow": ["friendly type roles", "clear reassurance", "soft but structured controls"],
+      "avoid": ["childish illustration by default", "beige everything", "weak contrast"],
+      "misuse": "trading operational clarity for friendliness"
+    },
+    {
+      "id": "spatial-model-led",
+      "label": "Spatial / Model-Led",
+      "keywords": ["3d", "spatial", "model", "immersive", "camera", "空间", "沉浸"],
+      "bestFor": ["spatial-product", "portfolio-studio"],
+      "signature": "object, camera, and copy explain one spatial relationship",
+      "borrow": ["framing discipline", "poster/loading state", "inspection controls"],
+      "avoid": ["generic rotating object", "heavy canvas without fallback", "unbounded render loop"],
+      "misuse": "choosing 3D when a photo or static interface explains the product better"
+    }
+  ]
+}

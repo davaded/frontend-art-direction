@@ -1,0 +1,85 @@
+{
+  "version": 1,
+  "motions": [
+    {
+      "id": "purposeful-motion",
+      "label": "Purposeful Motion",
+      "keywords": ["adaptive", "purpose", "state", "continuity", "feedback", "通用", "状态", "连续性"],
+      "purpose": "add motion only when it clarifies state, continuity, feedback, or a spatial relationship",
+      "range": "80-420ms by job",
+      "tools": ["CSS", "View Transitions", "local component motion"],
+      "fallback": "preserve the complete final state and normal document flow with motion disabled",
+      "avoid": ["generic page fade", "ambient loops", "motion before the product relationship is known"]
+    },
+    {
+      "id": "micro-feedback",
+      "label": "Micro Feedback",
+      "keywords": ["button", "focus", "press", "hover", "selection", "按钮", "焦点"],
+      "purpose": "make an input or state change legible",
+      "range": "80-180ms",
+      "tools": ["CSS", "local component motion"],
+      "fallback": "retain visible state with no movement",
+      "avoid": ["color-only critical feedback", "bouncy controls", "delayed action"]
+    },
+    {
+      "id": "panel-continuity",
+      "label": "Panel Continuity",
+      "keywords": ["panel", "drawer", "sheet", "tab", "filter", "inspector", "editor", "canvas", "touch", "面板", "抽屉", "编辑"],
+      "purpose": "show where a panel or detail view came from",
+      "range": "160-320ms",
+      "tools": ["CSS", "Motion", "View Transitions"],
+      "fallback": "instant layout with focus moved correctly",
+      "avoid": ["modal for every edit", "layout jank", "focus loss"]
+    },
+    {
+      "id": "list-preserve-context",
+      "label": "List Context Preservation",
+      "keywords": ["table", "list", "filter", "sort", "data", "row", "列表", "筛选"],
+      "purpose": "preserve object identity while data changes",
+      "range": "140-280ms",
+      "tools": ["CSS", "AutoAnimate", "Motion", "FLIP"],
+      "fallback": "stable ordering and selection without animation",
+      "avoid": ["reflow without keys", "animating hundreds of rows", "scroll reset"]
+    },
+    {
+      "id": "route-object",
+      "label": "Route Object Continuity",
+      "keywords": ["route", "detail", "gallery", "product", "project", "页面", "详情"],
+      "purpose": "keep the selected object legible across list/detail transitions",
+      "range": "220-420ms",
+      "tools": ["View Transitions", "Motion", "GSAP when choreography is real"],
+      "fallback": "preserve object position and focus with a normal route change",
+      "avoid": ["generic page fade", "hidden content while waiting", "route animation without prefetch discipline"]
+    },
+    {
+      "id": "scroll-narrative",
+      "label": "Scroll Narrative",
+      "keywords": ["scroll", "story", "landing", "launch", "pinned", "滚动", "叙事"],
+      "purpose": "explain a sequence, comparison, or spatial relationship",
+      "range": "scroll-controlled",
+      "tools": ["CSS scroll-driven", "GSAP ScrollTrigger"],
+      "fallback": "normal document flow with visible sections",
+      "avoid": ["scroll hijacking", "core copy behind choreography", "mobile trap"]
+    },
+    {
+      "id": "media-state",
+      "label": "Media State",
+      "keywords": ["audio", "video", "player", "voice", "playback", "媒体", "播放"],
+      "purpose": "communicate playing, buffering, recording, permission, or error state",
+      "range": "state-dependent",
+      "tools": ["CSS", "Motion", "Rive", "Web Audio visualization when meaningful"],
+      "fallback": "explicit text/status and usable controls",
+      "avoid": ["ambient waveform", "autoplay surprise", "permission state hidden"]
+    },
+    {
+      "id": "model-inspection",
+      "label": "Model Inspection",
+      "keywords": ["3d", "model", "viewer", "camera", "product", "模型", "查看"],
+      "purpose": "help the user inspect, configure, or understand a spatial object",
+      "range": "direct manipulation",
+      "tools": ["model-viewer", "Three.js", "React Three Fiber", "Spline"],
+      "fallback": "poster image plus ordinary controls and metadata",
+      "avoid": ["rotating decoration", "unbounded render loop", "missing loading/poster state"]
+    }
+  ]
+}

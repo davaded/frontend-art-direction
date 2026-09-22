@@ -1,0 +1,169 @@
+{
+  "version": 1,
+  "treatments": [
+    {
+      "id": "quiet-editorial-studio",
+      "label": "Quiet Editorial Studio",
+      "directionIds": ["adaptive-asymmetric", "narrative-chapters"],
+      "profileIds": ["adaptive-surface", "editorial-marketing", "portfolio-studio"],
+      "styleIds": ["evidence-led-neutral", "editorial-authority", "visual-object"],
+      "keywords": ["website", "site", "general", "studio", "content", "brand", "company", "website", "网站", "官网", "内容", "品牌", "公司", "工作室"],
+      "signature": "tonal canvas, one authored graphic device, restrained type contrast, and an object-led reading rhythm",
+      "palette": "Use an off-white or ink-toned canvas with one owned accent and visible hairline rules; choose the temperature from real content and never default to beige or a rainbow accent set.",
+      "typography": "Use one dependable UI/body face plus one earned display role for a short title or section marker; keep body measure readable and use explicit line breaks instead of oversized type.",
+      "composition": "Use a 12-column asymmetric grid, a narrow index or caption rail, one dominant content/object field, and a visible next chapter; let one edge repeat across sections.",
+      "material": "Build depth from canvas, object surface, rule, crop, and one active tone; keep radius and shadow vocabulary small so the page feels authored rather than decorated.",
+      "signatureDevice": "Choose one repeatable device such as a numbered index, hairline rule, cropped color field, oversized section marker, or offset caption; repeat it with restraint.",
+      "assetStrategy": "Use real target media when it carries meaning. If the domain object is unknown, make a complete typographic/graphic composition or generate a target-specific asset; never use a generic stock hero as identity.",
+      "expressionBudget": "medium-high: one clear visual thesis and one repeatable device, not a pile of effects",
+      "antiAiChecks": [
+        "No centered slogan floating over an empty background.",
+        "No beige editorial skin without a content or material reason.",
+        "No three-card feature row used as the page's only structure.",
+        "No second display face, effect, or accent added without a named job.",
+        "No abstract brand adjectives standing in for a real subject or action."
+      ],
+      "renderChecks": [
+        "The page has a recognizable silhouette in grayscale and at thumbnail size.",
+        "The signature device appears consistently without becoming decoration.",
+        "The first viewport identifies the subject before the visual style is admired.",
+        "Desktop and mobile preserve the same thesis through deliberate restaging."
+      ]
+    },
+    {
+      "id": "material-object-studio",
+      "label": "Material Object Studio",
+      "directionIds": ["object-led-editorial", "spatial-inspection"],
+      "profileIds": ["hardware-product-story", "spatial-product", "commerce-flow"],
+      "styleIds": ["premium-industrial", "quiet-luxury", "visual-object", "spatial-model-led"],
+      "keywords": ["hardware", "device", "product", "material", "industrial", "object", "hardware", "设备", "产品", "材质", "工业", "对象"],
+      "signature": "material contrast and object continuity carry the identity while copy and proof stay practical",
+      "palette": "Use studio neutrals or a target-owned dark/light contrast; let the object's finish provide color and reserve the accent for action or state.",
+      "typography": "Pair quiet utility type with one short product/chapter role; specs and controls remain compact and measurable.",
+      "composition": "Give the object a stable stage, offset the copy/action rail, and change crop or scale between chapters instead of repeating a 50/50 split.",
+      "material": "Use crop, edge, reflection, tonal field, and object detail as depth; avoid floating-card theater and unearned glass.",
+      "signatureDevice": "One material cue or object detail repeats across the page: edge highlight, macro crop, finish swatch, measured rule, or controlled shadow.",
+      "assetStrategy": "Use official/authorized or target-specific product media; a static object, poster, or specification path must survive missing media and reduced motion.",
+      "expressionBudget": "high only when the object and proof are real; otherwise medium and information-led",
+      "antiAiChecks": [
+        "No fake product render presented as evidence.",
+        "No repeated image-left/text-right chapter template.",
+        "No luxury palette without material or performance proof.",
+        "No scroll choreography hiding specs, compatibility, or action."
+      ],
+      "renderChecks": [
+        "Object silhouette and focal crop remain legible at mobile width.",
+        "At least three chapters change composition, crop, or scale.",
+        "The practical decision path works with motion and color removed."
+      ]
+    },
+    {
+      "id": "warm-humanist-editorial",
+      "label": "Warm Humanist Editorial",
+      "directionIds": ["adaptive-asymmetric", "narrative-chapters"],
+      "profileIds": [],
+      "styleIds": ["warm-humanist", "editorial-authority"],
+      "keywords": ["warm", "friendly", "education", "wellness", "community", "people", "human", "温暖", "亲和", "教育", "健康", "社区", "人"],
+      "signature": "human-scale type, specific reassurance, and tactile structure without turning the surface childish",
+      "palette": "Use a warm but high-contrast canvas with one grounded accent; keep warmth in material and copy, not in low-contrast beige wash.",
+      "typography": "Use a humanist body face with comfortable line-height and a restrained title role; keep labels conversational but precise.",
+      "composition": "Use a clear reading edge, generous but purposeful sections, real people/content early, and a strong action near the relevant story or task.",
+      "material": "Use paper-like tonal shifts, rules, soft image crops, and tactile control states; avoid childish blobs and decorative illustration filler.",
+      "signatureDevice": "A recurring reassurance marker, editorial caption, hand-sized control, or human quote fragment gives the surface character.",
+      "assetStrategy": "Use real people, places, work, or target-specific illustrations; do not use generic lifestyle stock to fake trust.",
+      "expressionBudget": "medium: warm, specific, and tactile without losing contrast or task speed",
+      "antiAiChecks": [
+        "No beige-only palette with weak contrast.",
+        "No generic friendly adjectives without a concrete reassurance.",
+        "No decorative illustration replacing the real person, task, or outcome.",
+        "No oversized playful type in a high-frequency workflow."
+      ],
+      "renderChecks": [
+        "The subject and next action remain clear in grayscale.",
+        "Text, controls, and image crops remain comfortable on mobile.",
+        "Warmth survives without relying on low contrast or motion."
+      ]
+    },
+    {
+      "id": "ink-state-instrument",
+      "label": "Ink State Instrument",
+      "directionIds": ["rail-canvas-workbench", "stateful-instrument"],
+      "profileIds": ["productive-app", "command-tool", "media-experience"],
+      "styleIds": ["quiet-precision", "instrument-panel", "kinetic-product"],
+      "keywords": ["app", "tool", "workflow", "ai", "agent", "streaming", "state", "command", "应用", "工具", "流程", "状态", "代理"],
+      "signature": "ink, rules, and state markers make the active object feel like an instrument rather than a card dashboard",
+      "palette": "Use ink or restrained neutral surfaces with one semantic/action accent; every state also gets text, position, or shape support.",
+      "typography": "Use a compact UI face, optional mono for traces/IDs, and no display role in the chrome; hierarchy comes from weight, alignment, and state.",
+      "composition": "Keep a live work object, rail/timeline, and next action on one stable axis; collapse the rail deliberately on mobile.",
+      "material": "Use dividers, selected rows, tonal surfaces, and focus rings before glow or glass; stable geometry matters more than atmosphere.",
+      "signatureDevice": "A state rail, timeline marker, status strip, or selected-object highlight repeats through the workflow.",
+      "assetStrategy": "Use the live process, trace, media object, or deterministic state as the visual material; do not fabricate a cinematic hero around an empty workflow.",
+      "expressionBudget": "medium: authored through state choreography and geometry, not decorative effects",
+      "antiAiChecks": [
+        "No glowing AI orb or generic chat shell.",
+        "No dashboard tile wall before the work object.",
+        "No status communicated only by color or animation.",
+        "No dark mode chosen only to look technical."
+      ],
+      "renderChecks": [
+        "A user can explain the current state without motion.",
+        "Selected, waiting, success, and error states differ structurally.",
+        "Rail, object, and action remain reachable at mobile width."
+      ]
+    },
+    {
+      "id": "data-graphic-clarity",
+      "label": "Data Graphic Clarity",
+      "directionIds": ["data-detail-workbench"],
+      "profileIds": ["data-workbench"],
+      "styleIds": ["data-first-clarity"],
+      "keywords": ["data", "analytics", "monitoring", "research", "table", "chart", "数据", "分析", "监控", "研究", "表格", "图表"],
+      "signature": "a strict information grid with one restrained graphic accent makes comparison feel designed rather than decorated",
+      "palette": "Use a quiet canvas, one analytical accent, and semantic colors only where the data model earns them; preserve grayscale legibility.",
+      "typography": "Use aligned tabular numbers, compact labels, and a readable explanatory measure; no display headline before the data relationship.",
+      "composition": "Put filter/context above the dominant table, chart, map, or detail relationship; use selected rows and open work surfaces instead of metric cards.",
+      "material": "Use dividers, tonal bands, selection treatment, and precise column rhythm; avoid chart glow and rainbow decoration.",
+      "signatureDevice": "A consistent data cursor, selected-row rule, unit marker, or comparison band gives the surface a visual identity.",
+      "assetStrategy": "The data relationship is the primary visual; use realistic units, freshness, partial states, and meaningful sample values.",
+      "expressionBudget": "medium-low: visual character comes from precision and comparison, not spectacle",
+      "antiAiChecks": [
+        "No four-KPI preamble by default.",
+        "No rainbow chart palette without a data model.",
+        "No chart detached from table/detail context.",
+        "No tiny gray labels as the only explanation."
+      ],
+      "renderChecks": [
+        "Numbers, units, long labels, and selected context do not collide.",
+        "The hierarchy survives grayscale and reduced contrast.",
+        "Partial, stale, and empty states retain the same composition."
+      ]
+    },
+    {
+      "id": "specimen-graphic-system",
+      "label": "Specimen Graphic System",
+      "directionIds": ["specimen-catalog"],
+      "profileIds": [],
+      "styleIds": [],
+      "keywords": ["component", "gallery", "showcase", "library", "demo", "组件", "展示", "画廊", "目录"],
+      "signature": "stable preview frames and a quiet index let the working specimen provide the visual interest",
+      "palette": "Use a restrained canvas and let each specimen own its internal color; page chrome should not compete with the demo.",
+      "typography": "Use a clear specimen title, compact metadata, and restrained mono for code/props; avoid marketing copy before the first working example.",
+      "composition": "Use index + strong specimen + visible next example; only use a grid when comparison is genuinely the job.",
+      "material": "Preview frame contrast and stable geometry carry the system; avoid wrapping every demo in another decorative card.",
+      "signatureDevice": "A consistent frame header, index marker, or install/action rail repeats across specimens.",
+      "assetStrategy": "Use working components and realistic states; never use screenshots or copied demo filler as the primary proof.",
+      "expressionBudget": "medium: the specimen behavior is the expression",
+      "antiAiChecks": [
+        "No unrelated effect collage.",
+        "No identical demo cards with only headings changed.",
+        "No dark-glow source skin inherited by default.",
+        "No hero copy before the first working specimen."
+      ],
+      "renderChecks": [
+        "The specimen is legible before the caption is read.",
+        "Frames remain stable while states change.",
+        "At least one specimen shows a non-default state."
+      ]
+    }
+  ]
+}

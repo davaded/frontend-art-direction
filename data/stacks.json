@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "stacks": [
+    {"id": "react", "keywords": ["react", "jsx", "tsx"], "notes": "Prefer the existing component system; use refs and scoped effects for motion; keep state ownership explicit."},
+    {"id": "next", "keywords": ["next", "nextjs", "app router", "pages router"], "notes": "Keep browser-only animation client-side, preserve server/client boundaries, and verify route transitions after hydration."},
+    {"id": "vue", "keywords": ["vue", "nuxt", "vue3"], "notes": "Use local composables and component primitives; clean watchers, listeners, and animation instances on unmount."},
+    {"id": "svelte", "keywords": ["svelte", "sveltekit"], "notes": "Prefer native transitions and actions where enough; clean browser-only effects during destroy."},
+    {"id": "vanilla", "keywords": ["html", "css", "javascript", "vanilla", "vite"], "notes": "Keep semantics and state ownership explicit; avoid creating a component abstraction for one use."},
+    {"id": "native-embedded", "keywords": ["swiftui", "compose", "android", "ios", "car", "head unit", "embedded", "原生", "车机"], "notes": "Use platform primitives, viewing-distance sizing, touch/remote behavior, and device evidence before web patterns."}
+  ]
+}

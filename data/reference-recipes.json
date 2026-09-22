@@ -1,0 +1,488 @@
+{
+  "version": 1,
+  "recipes": [
+    {
+      "id": "rare-ui",
+      "referenceId": "rare-ui",
+      "archetype": "editorial-component-gallery",
+      "firstViewport": {
+        "layout": "centered hero with a compact dark pill navigation, generous side margins, and the next specimen section visibly entering the viewport",
+        "mustShow": ["the product or component object", "one confident action", "a short proof sentence"],
+        "belowFoldPeek": "the first row of real interactive specimens"
+      },
+      "sections": [
+        {
+          "id": "hero",
+          "purpose": "name the collection and establish the visual thesis",
+          "layout": "centered single column with restrained supporting copy",
+          "content": "specific component or media collection, not generic feature claims",
+          "components": ["compact navigation", "display heading", "install or copy action", "single accent action"]
+        },
+        {
+          "id": "specimen-grid",
+          "purpose": "prove the product through working objects",
+          "layout": "stable three-column grid on desktop, one-column sequence on small screens",
+          "content": "realistic states and short captions",
+          "components": ["preview frame", "interactive specimen", "caption", "arrow action"]
+        },
+        {
+          "id": "proof",
+          "purpose": "add social or ecosystem confidence after product evidence",
+          "layout": "quiet full-width band with compact testimonials or sponsors",
+          "content": "verified social proof only",
+          "components": ["quote", "sponsor row", "footer navigation"]
+        }
+      ],
+      "componentGrammar": [
+        {
+          "id": "preview-frame",
+          "shape": "soft low-radius light frame around a dark or high-contrast specimen tile",
+          "states": ["idle", "hover", "active", "loading", "reduced-motion"],
+          "behavior": "keep frame dimensions stable while the inner specimen changes"
+        },
+        {
+          "id": "specimen-action",
+          "shape": "small text or icon-plus-text action with one accent color",
+          "states": ["idle", "hover", "focus", "pressed", "disabled"],
+          "behavior": "copy, open, or replay the specimen without moving surrounding content"
+        }
+      ],
+      "motionContract": {
+        "intensity": "medium-local",
+        "triggers": ["hover or focus preview", "direct specimen manipulation", "route or filter continuity"],
+        "review": "motion must reveal the object or state being demonstrated",
+        "apply": "animate the specimen or its contained state, not the whole grid",
+        "polish": "keep timing quiet, preserve frame geometry, and remove orphaned listeners",
+        "reducedMotion": "show the final specimen state with no looping or spatial travel",
+        "fallback": "the static specimen remains complete and understandable"
+      },
+      "responsive": {
+        "desktop": "centered hero plus three stable specimen columns",
+        "tablet": "two columns with captions kept visible",
+        "mobile": "single specimen sequence, navigation compressed, actions within thumb reach"
+      },
+      "assetStrategy": {
+        "hero": "use the actual product object or a restrained surface texture; do not invent a blob when the object is missing",
+        "specimens": "prefer live components or recorded states over decorative screenshots",
+        "fallback": "poster or static final state with explicit loading and empty handling"
+      },
+      "tokenSeed": {
+        "canvas": "#F4F1F8",
+        "surface": "#FFFDFC",
+        "ink": "#111014",
+        "muted": "#77717E",
+        "accent": "#F06B35",
+        "border": "#E5DFE9",
+        "container": "1180px",
+        "radius": { "nav": "999px", "frame": "20px", "specimen": "14px", "control": "10px" },
+        "spacing": { "pageDesktop": "64px", "pageMobile": "20px", "section": "112px", "grid": "20px" },
+        "type": { "displayDesktop": "88px", "displayMobile": "48px", "body": "16px", "meta": "12px" },
+        "note": "starting values; compare the rendered first viewport and tune against the observed reference"
+      },
+      "buildOrder": ["hero hierarchy", "preview frame geometry", "real specimen states", "responsive grid", "local motion", "proof band"],
+      "acceptance": ["the first viewport identifies the collection without a marketing essay", "the specimen carries meaning before its caption", "grid geometry does not jump during interaction", "the page still works with reduced motion"]
+    },
+    {
+      "id": "rewamp-ui",
+      "referenceId": "rewamp-ui",
+      "archetype": "indexed-component-workbench",
+      "firstViewport": {
+        "layout": "searchable category rail plus one dominant neutral preview stage and a compact action dock; on mobile, replace the rail with a selected-component capsule and menu above the stage",
+        "mustShow": ["the selected component identity", "one live working specimen", "source, install, information, or theme actions tied to that specimen"],
+        "belowFoldPeek": "the next component stays discoverable through the category index instead of appearing as a generic card row"
+      },
+      "sections": [
+        {
+          "id": "component-index",
+          "purpose": "make a large component set searchable and navigable without competing with the active specimen",
+          "layout": "persistent categorized rail on desktop; selected-component capsule and explicit menu or sheet on mobile",
+          "content": "real component names grouped by interaction or object type",
+          "components": ["search field", "category marker", "component row", "documentation entry", "mobile menu"]
+        },
+        {
+          "id": "preview-stage",
+          "purpose": "give one working component enough visual space to be understood and manipulated",
+          "layout": "one stable, softly bounded stage with a centered specimen frame; no competing preview grid",
+          "content": "the actual target component with realistic copy, assets, and interactive states",
+          "components": ["stage", "specimen frame", "variant or demo-content control", "loading and error surface"]
+        },
+        {
+          "id": "specimen-tools",
+          "purpose": "keep implementation and inspection actions attached to the selected component",
+          "layout": "vertical action dock beside the stage on desktop and bottom dock within thumb reach on mobile",
+          "content": "install command, source or usage, component information, theme, replay, or reset where applicable",
+          "components": ["icon action", "tooltip", "source panel", "installation panel", "theme control"]
+        },
+        {
+          "id": "implementation-proof",
+          "purpose": "turn the live specimen into an inspectable implementation contract",
+          "layout": "drawer, sheet, or adjacent panel that preserves the preview while exposing source, dependencies, usage, and state notes",
+          "content": "target-owned source adaptation, dependencies, triggers, states, cleanup, accessibility, and fallback",
+          "components": ["package-manager switch", "copy command", "source code", "usage snippet", "dependency list"]
+        }
+      ],
+      "componentGrammar": [
+        {
+          "id": "component-index-row",
+          "shape": "compact text row with a small category path or marker and a restrained selected state",
+          "states": ["idle", "hover", "focus", "selected", "filtered", "no-results"],
+          "behavior": "selection changes the active specimen without shifting the rail or losing search context"
+        },
+        {
+          "id": "specimen-stage",
+          "shape": "one large neutral field containing a bounded live preview with stable dimensions",
+          "states": ["loading", "ready", "interacting", "error", "reduced-motion", "static-fallback"],
+          "behavior": "the stage remains stable while the selected component, theme, or variant changes"
+        },
+        {
+          "id": "specimen-action-dock",
+          "shape": "small grouped icon actions with labels or tooltips and one clear active state",
+          "states": ["idle", "hover", "focus", "active", "disabled"],
+          "behavior": "source, install, information, theme, and replay actions stay tied to the current specimen and never obscure it"
+        }
+      ],
+      "motionContract": {
+        "intensity": "medium-specimen",
+        "triggers": ["component selection", "direct specimen interaction", "source or information panel", "theme or variant change"],
+        "review": "name whether motion demonstrates the component, preserves selection continuity, or confirms a tool action",
+        "apply": "keep expressive motion inside the specimen and use quiet shell transitions for selection, panels, and theme",
+        "polish": "preserve stage geometry, clean pointer and animation listeners, and keep tool actions immediate",
+        "reducedMotion": "render the selected component's complete final state and replace travel or looping with direct state changes",
+        "fallback": "the component identity, controls, source path, and static preview remain usable when animation or canvas features are unavailable"
+      },
+      "responsive": {
+        "desktop": "use a 260-320px searchable rail, a dominant preview stage, and a small adjacent action dock",
+        "tablet": "collapse category depth, keep the stage dominant, and move tools into a compact edge or bottom dock",
+        "mobile": "show selected identity and menu first, then a full-width stage, with source and theme actions in a bottom dock or sheet"
+      },
+      "assetStrategy": {
+        "hero": "not applicable; the selected working component is the primary object",
+        "specimens": "use real target copy, licensed or generated production-quality media, and deterministic states; never leave placeholder art inside a polished component",
+        "fallback": "provide a static final-state poster or CSS-only state when WebGL, canvas, pointer input, or animation is unavailable"
+      },
+      "tokenSeed": {
+        "canvas": "#F8F8F7",
+        "surface": "#EAEAEB",
+        "ink": "#171717",
+        "muted": "#98989A",
+        "accent": "#C9B8EE",
+        "border": "#DDDDDE",
+        "container": "full viewport with a 260-320px navigation rail",
+        "radius": { "nav": "12px", "frame": "24-34px", "specimen": "20-24px", "control": "10-14px" },
+        "spacing": { "pageDesktop": "10-16px", "pageMobile": "6-18px", "section": "32-56px", "grid": "12-20px" },
+        "type": { "displayDesktop": "28-40px", "displayMobile": "24-34px", "body": "13-16px", "meta": "10-12px" },
+        "note": "starting values derived from an inspected desktop and mobile snapshot; the target project owns final tokens and the specimen may use a distinct local palette"
+      },
+      "buildOrder": ["component taxonomy and search", "stable preview stage", "one real working specimen", "tool dock and source path", "mobile re-staging", "motion, cleanup, and fallback"],
+      "acceptance": ["one selected component clearly owns the main canvas", "search and categories remain useful without competing with the preview", "source and install actions stay attached to the current specimen", "mobile replaces the desktop rail instead of shrinking it", "the selected component remains understandable with reduced motion and static fallback"]
+    },
+    {
+      "id": "beautiful-ui",
+      "referenceId": "beautiful-ui",
+      "archetype": "ai-state-instrument-catalog",
+      "firstViewport": {
+        "layout": "dark instrument surface with a compact index and a long, scannable state specimen rail",
+        "mustShow": ["the AI workflow object", "at least one live process state", "the state taxonomy or navigation"],
+        "belowFoldPeek": "the next state specimen, not a decorative feature card"
+      },
+      "sections": [
+        {
+          "id": "state-hero",
+          "purpose": "set the AI workflow context and show a credible live state",
+          "layout": "wide dark work surface with compact metadata and a strong state title",
+          "content": "agent task, current step, input, output, or approval object",
+          "components": ["state index", "task header", "status marker", "primary action"]
+        },
+        {
+          "id": "state-rail",
+          "purpose": "make process states inspectable and comparable",
+          "layout": "sticky index plus vertical specimen sections",
+          "content": "loading, thinking, streaming, tool call, approval, success, error",
+          "components": ["trace row", "streaming content", "tool chip", "approval card", "task row"]
+        },
+        {
+          "id": "implementation-proof",
+          "purpose": "make behavior and implementation visible without leaving the specimen",
+          "layout": "inline code or state metadata beside the working example",
+          "content": "real state labels, timing, and recovery path",
+          "components": ["code block", "metadata strip", "retry or cancel action"]
+        }
+      ],
+      "componentGrammar": [
+        {
+          "id": "state-row",
+          "shape": "dense horizontal row with a clear status marker, label, content preview, and trailing action",
+          "states": ["queued", "running", "waiting", "success", "error", "cancelled"],
+          "behavior": "preserve the row identity while status and content update"
+        },
+        {
+          "id": "approval-surface",
+          "shape": "contained decision surface with visible context, consequence, and explicit actions",
+          "states": ["pending", "approved", "rejected", "expired"],
+          "behavior": "never hide the decision behind a decorative animation"
+        }
+      ],
+      "motionContract": {
+        "intensity": "medium-stateful",
+        "triggers": ["streaming token arrival", "task step change", "approval open/close", "retry or error recovery"],
+        "review": "motion must communicate process, not simulate intelligence",
+        "apply": "keep the state object anchored while its content or status changes",
+        "polish": "use restrained opacity, height, and marker changes; clean subscriptions on unmount",
+        "reducedMotion": "show state labels and complete content immediately",
+        "fallback": "static state rows and explicit status text remain actionable"
+      },
+      "responsive": {
+        "desktop": "sticky index with a wide specimen rail",
+        "tablet": "collapsible index and full-width state specimens",
+        "mobile": "index becomes a select or horizontal tab strip; actions remain visible beside state context"
+      },
+      "assetStrategy": {
+        "hero": "use the real workflow object and realistic content; no abstract AI illustration required",
+        "specimens": "render actual state transitions with deterministic mock data when a backend is unavailable",
+        "fallback": "make stale, partial, and failed states visible rather than showing an always-loading shell"
+      },
+      "tokenSeed": {
+        "canvas": "#0B0C0F",
+        "surface": "#12151A",
+        "ink": "#F3F4F6",
+        "muted": "#9298A3",
+        "accent": "#9A91FF",
+        "border": "#2A2F38",
+        "container": "1240px",
+        "radius": { "nav": "10px", "frame": "14px", "specimen": "10px", "control": "8px" },
+        "spacing": { "pageDesktop": "40px", "pageMobile": "16px", "section": "72px", "grid": "16px" },
+        "type": { "displayDesktop": "56px", "displayMobile": "34px", "body": "14px", "meta": "11px" },
+        "note": "starting values; keep density and state contrast legible before adding texture"
+      },
+      "buildOrder": ["state taxonomy", "dense state primitives", "realistic mock state machine", "desktop rail", "mobile re-staging", "motion and recovery"],
+      "acceptance": ["a user can tell what the agent is doing without animation", "approval has context and recovery", "streaming and error states are distinct", "dark styling does not erase hierarchy or focus"]
+    },
+    {
+      "id": "beui",
+      "referenceId": "beui",
+      "archetype": "motion-native-component-registry",
+      "firstViewport": {
+        "layout": "minimal dark navigation, centered statement, one proof block, then interactive data or component examples",
+        "mustShow": ["one expressive object transition", "a real data relationship or chart", "the copy/install affordance"],
+        "belowFoldPeek": "the first categorized interactive example"
+      },
+      "sections": [
+        {
+          "id": "motion-hero",
+          "purpose": "state what kind of interaction is being demonstrated",
+          "layout": "centered heading with compact technical metadata",
+          "content": "specific interaction promise, not generic animation language",
+          "components": ["minimal nav", "headline", "proof count", "copy action"]
+        },
+        {
+          "id": "data-proof",
+          "purpose": "prove motion against a meaningful object or relationship",
+          "layout": "wide data panels with a clear primary chart or state object",
+          "content": "realistic data, labels, and interaction affordances",
+          "components": ["chart", "tooltip", "filter", "range or tab control"]
+        },
+        {
+          "id": "motion-catalog",
+          "purpose": "organize reusable motion primitives by job",
+          "layout": "categorized preview sections with stable dark frames",
+          "content": "modal, toast, tabs, drawer, drag, text, and navigation examples",
+          "components": ["preview frame", "state toggle", "copy control", "short metadata"]
+        }
+      ],
+      "componentGrammar": [
+        {
+          "id": "continuity-surface",
+          "shape": "dark contained surface whose layout persists while content morphs",
+          "states": ["collapsed", "expanded", "selected", "dragged", "loading", "reduced-motion"],
+          "behavior": "preserve object identity across layout and content changes"
+        },
+        {
+          "id": "data-specimen",
+          "shape": "clear chart or table panel with one primary relationship and minimal chrome",
+          "states": ["default", "hovered", "filtered", "empty", "partial", "error"],
+          "behavior": "use motion to explain data change, never to decorate a static chart"
+        }
+      ],
+      "motionContract": {
+        "intensity": "medium-expressive",
+        "triggers": ["layout change", "drag or direct manipulation", "tab or panel morph", "data filter"],
+        "review": "identify the object relationship before choosing spring or interpolation",
+        "apply": "animate shared geometry and content continuity only where the object remains conceptually the same",
+        "polish": "bound spring energy, avoid ambient glow loops, and keep input latency immediate",
+        "reducedMotion": "use instant layout/state replacement with the same semantic order",
+        "fallback": "all controls and data relationships remain usable without motion"
+      },
+      "responsive": {
+        "desktop": "wide hero, data proof panel, and categorized grid",
+        "tablet": "stack proof above catalog and reduce simultaneous specimens",
+        "mobile": "single active specimen, horizontal category navigation, no hover-only behavior"
+      },
+      "assetStrategy": {
+        "hero": "the interaction or data object is the visual asset",
+        "specimens": "use deterministic mock data and real state controls",
+        "fallback": "static chart/table and final layout state remain complete"
+      },
+      "tokenSeed": {
+        "canvas": "#07090A",
+        "surface": "#101516",
+        "ink": "#F1F7F3",
+        "muted": "#8D9B94",
+        "accent": "#A8F4D2",
+        "border": "#26332F",
+        "container": "1240px",
+        "radius": { "nav": "12px", "frame": "18px", "specimen": "14px", "control": "10px" },
+        "spacing": { "pageDesktop": "48px", "pageMobile": "18px", "section": "88px", "grid": "18px" },
+        "type": { "displayDesktop": "64px", "displayMobile": "38px", "body": "15px", "meta": "11px" },
+        "note": "starting values; reserve glow for active object edges and never for hierarchy"
+      },
+      "buildOrder": ["object identity", "data relationship", "state controls", "shared-layout motion", "reduced-motion path", "catalog polish"],
+      "acceptance": ["motion preserves object identity", "data remains readable at rest", "direct manipulation feels immediate", "no animation is required to understand the task"]
+    },
+    {
+      "id": "transitions",
+      "referenceId": "transitions",
+      "archetype": "motion-governance-demo",
+      "firstViewport": {
+        "layout": "dark documentation surface with a concrete demo and a clear generic-versus-intentional comparison",
+        "mustShow": ["the state relationship", "before/after or generic/intentional contrast", "the implementation contract"],
+        "belowFoldPeek": "the next recipe or command, not an abstract manifesto"
+      },
+      "sections": [
+        {
+          "id": "motion-demo",
+          "purpose": "show why the transition exists",
+          "layout": "contained demo with a visible trigger and final state",
+          "content": "one named state relationship",
+          "components": ["demo surface", "trigger", "state label", "fallback state"]
+        },
+        {
+          "id": "review-contract",
+          "purpose": "make motion decisions inspectable",
+          "layout": "short comparison and implementation checklist",
+          "content": "purpose, timing, cleanup, reduced motion, final state",
+          "components": ["comparison panel", "code block", "guardrail list"]
+        },
+        {
+          "id": "recipe-index",
+          "purpose": "make a small set of reusable transitions discoverable",
+          "layout": "compact command or recipe index",
+          "content": "named recipes tied to product states",
+          "components": ["recipe row", "copy command", "try action"]
+        }
+      ],
+      "componentGrammar": [
+        {
+          "id": "motion-demo",
+          "shape": "contained interactive panel with visible trigger and stable final state",
+          "states": ["before", "during", "after", "reduced-motion", "cancelled"],
+          "behavior": "cleanup and replay must be explicit"
+        }
+      ],
+      "motionContract": {
+        "intensity": "purpose-first",
+        "triggers": ["only named state relationships"],
+        "review": "state the purpose and relationship before timing or easing",
+        "apply": "implement the smallest transition that communicates the relationship",
+        "polish": "tune timing, cleanup, reduced-motion, and final-state fallback",
+        "reducedMotion": "skip travel and preserve the complete final state",
+        "fallback": "the interface must be understandable with motion disabled"
+      },
+      "responsive": {
+        "desktop": "side-by-side comparison where space permits",
+        "tablet": "stack the comparison panels while preserving labels",
+        "mobile": "single demo first, implementation notes below, no hidden trigger"
+      },
+      "assetStrategy": {
+        "hero": "the working state transition is the asset",
+        "specimens": "use code and deterministic UI state, not decorative video",
+        "fallback": "render the final state and guardrails even when animation is unavailable"
+      },
+      "tokenSeed": {
+        "canvas": "#0C0D0F",
+        "surface": "#15171A",
+        "ink": "#F4F5F7",
+        "muted": "#969AA3",
+        "accent": "#B3B7FF",
+        "positive": "#A9E6B2",
+        "warning": "#F2BA70",
+        "danger": "#F08383",
+        "border": "#2D3036",
+        "container": "1120px",
+        "radius": { "nav": "10px", "frame": "12px", "specimen": "10px", "control": "8px" },
+        "spacing": { "pageDesktop": "40px", "pageMobile": "16px", "section": "64px", "grid": "16px" },
+        "type": { "displayDesktop": "48px", "displayMobile": "32px", "body": "14px", "meta": "12px" },
+        "note": "starting values; motion comparison labels must remain readable without color alone"
+      },
+      "buildOrder": ["name state relationship", "static states", "apply transition", "cleanup and replay", "reduced-motion", "timing polish"],
+      "acceptance": ["purpose is stated in product terms", "cleanup is testable", "reduced motion preserves meaning", "static final state is complete"]
+    },
+    {
+      "id": "shadcn-ui",
+      "referenceId": "shadcn-ui",
+      "archetype": "source-owned-product-foundation",
+      "firstViewport": {
+        "layout": "composed product surface with a clear work object and a restrained primitive system",
+        "mustShow": ["the real workflow object", "primary action", "accessible component states"],
+        "belowFoldPeek": "the next workflow group or supporting detail"
+      },
+      "sections": [
+        {
+          "id": "product-shell",
+          "purpose": "establish task hierarchy before styling",
+          "layout": "navigation plus main work surface and optional detail region",
+          "content": "real product data and actions",
+          "components": ["navigation", "button", "form", "table", "dialog", "tabs"]
+        },
+        {
+          "id": "state-coverage",
+          "purpose": "make the primitive system trustworthy",
+          "layout": "workflow-specific state surfaces rather than a component wall",
+          "content": "loading, empty, error, success, selected, partial",
+          "components": ["alert", "popover", "skeleton", "empty state", "focus state"]
+        }
+      ],
+      "componentGrammar": [
+        {
+          "id": "source-owned-primitive",
+          "shape": "local tokens and product-specific composition around inspectable accessible behavior",
+          "states": ["idle", "hover", "focus", "pressed", "disabled", "loading", "error"],
+          "behavior": "keep semantics and state ownership in the target project"
+        }
+      ],
+      "motionContract": {
+        "intensity": "low-purposeful",
+        "triggers": ["focus and press feedback", "dialog or sheet continuity", "loading or success state"],
+        "review": "motion is reviewed every run; implementation remains optional until a state relationship needs it",
+        "apply": "prefer platform or CSS behavior for simple state changes",
+        "polish": "keep focus and input response immediate",
+        "reducedMotion": "remove travel and preserve state indication",
+        "fallback": "behavior and semantics remain complete without motion"
+      },
+      "responsive": {
+        "desktop": "use the product's actual navigation and work-object hierarchy",
+        "tablet": "collapse secondary detail while retaining primary action context",
+        "mobile": "re-stage navigation, forms, tables, and dialogs for touch rather than shrinking desktop"
+      },
+      "assetStrategy": {
+        "hero": "use the real workflow object; no decorative hero is required",
+        "specimens": "use local data and source-owned primitives",
+        "fallback": "explicit empty, error, and partial-data surfaces"
+      },
+      "tokenSeed": {
+        "canvas": "#FFFFFF",
+        "surface": "#FFFFFF",
+        "ink": "#0A0A0A",
+        "muted": "#71717A",
+        "accent": "product-owned semantic accent",
+        "border": "#E4E4E7",
+        "container": "product-owned",
+        "radius": { "nav": "8px", "frame": "8px", "specimen": "8px", "control": "6px" },
+        "spacing": { "pageDesktop": "32px", "pageMobile": "16px", "section": "48px", "grid": "16px" },
+        "type": { "displayDesktop": "32px", "displayMobile": "26px", "body": "14px", "meta": "12px" },
+        "note": "behavior seed only; replace neutral defaults with the target product's tokens"
+      },
+      "buildOrder": ["workflow hierarchy", "local tokens", "primitive states", "responsive re-staging", "meaningful motion", "visual polish"],
+      "acceptance": ["the default primitive skin is not the product identity", "keyboard and focus states are visible", "the primary action is clear", "critical states have recovery paths"]
+    }
+  ]
+}

@@ -1,7 +1,8 @@
 {
   "name": "frontend-art-direction",
-  "version": "0.1.4",
-  "description": "One-command installer for the frontend-art-direction Codex skill.",
+  "version": "1.0.0",
+  "description": "A compact, evidence-led Codex skill for product-specific frontend UI.",
+  "type": "module",
   "bin": {
     "frontend-art-direction": "bin/frontend-art-direction.js",
     "install-frontend-art-direction": "bin/frontend-art-direction.js"
@@ -10,9 +11,29 @@
     "SKILL.md",
     "README.md",
     "agents",
+    "bin",
+    "scripts",
+    "data",
     "references",
-    "bin"
+    "templates",
+    "docs"
   ],
+  "scripts": {
+    "check": "node scripts/check.mjs",
+    "test": "node scripts/check.mjs",
+    "inspect": "node scripts/inspect-project.mjs",
+    "map": "node scripts/project-map.mjs",
+    "graph": "node scripts/project-graph.mjs",
+    "brief": "node scripts/design-brief.mjs",
+    "direction": "node scripts/visual-direction.mjs",
+    "reference": "node scripts/reference-composition.mjs",
+    "scout": "node scripts/reference-scout.mjs",
+    "reference-build": "node scripts/reference-build.mjs",
+    "resource": "node scripts/resource-catalog.mjs",
+    "audit": "node scripts/audit.mjs",
+    "motion": "node scripts/transitions-adapter.mjs",
+    "pack:check": "npm pack --dry-run"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/davaded/frontend-art-direction.git"
@@ -27,7 +48,8 @@
     "agent-skill",
     "frontend",
     "design",
-    "art-direction"
+    "art-direction",
+    "ui-ux"
   ],
   "engines": {
     "node": ">=18"

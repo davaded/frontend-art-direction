@@ -1,0 +1,89 @@
+{
+  "version": 1,
+  "hardInvariants": [
+    {
+      "id": "semantic-accessibility",
+      "label": "Semantic accessibility",
+      "rule": "Keep semantic structure, keyboard and touch access, visible focus, readable contrast, labels, and text scaling intact."
+    },
+    {
+      "id": "task-and-state-completeness",
+      "label": "Task and state completeness",
+      "rule": "The primary task, important non-default states, recovery path, and final state must remain understandable and actionable."
+    },
+    {
+      "id": "responsive-usability",
+      "label": "Responsive usability",
+      "rule": "Re-stage the experience for the target viewport and input model; do not preserve a beautiful desktop composition by breaking mobile use."
+    },
+    {
+      "id": "asset-truth-and-rights",
+      "label": "Asset truth and rights",
+      "rule": "Use user-owned, attributable, authorized, generated, or deliberate assetless media; do not present placeholders, uncertain rights, or fabricated proof as real."
+    },
+    {
+      "id": "motion-safety-and-fallback",
+      "label": "Motion safety and fallback",
+      "rule": "Motion needs a purpose, cleanup, reduced-motion behavior, interruption handling, and a usable static or final-state fallback."
+    },
+    {
+      "id": "performance-and-runtime-integrity",
+      "label": "Performance and runtime integrity",
+      "rule": "Keep the target runnable, bounded, and honest about loading, failure, dependency, and performance tradeoffs."
+    },
+    {
+      "id": "rendered-proof",
+      "label": "Rendered proof",
+      "rule": "Do not claim visual quality from prose or a build alone; verify the relevant rendered states and label unverified claims."
+    }
+  ],
+  "advisoryDefaults": [
+    {
+      "id": "ai-default-composition",
+      "label": "AI-default composition warnings",
+      "rule": "Centered heroes, equal-card walls, repeated split sections, and uniform rounded wrappers are warnings to inspect, not universal bans."
+    },
+    {
+      "id": "ai-default-effect-stack",
+      "label": "AI-default effect warnings",
+      "rule": "Gradients, glow, glass, blur, noise, oversized type, and cinematic choreography need a job, but a deliberate visual language may use them."
+    },
+    {
+      "id": "ai-default-copy-and-type",
+      "label": "AI-default copy and type warnings",
+      "rule": "Generic copy, display scale, and compressed metadata are suspect until the product, content, audience, and chosen direction justify them."
+    },
+    {
+      "id": "local-candidate-selection",
+      "label": "Local candidate selection",
+      "rule": "Profiles, treatments, references, and recipes are candidates that fill gaps; they do not outrank a stronger project-owned or user-owned direction."
+    }
+  ],
+  "authorityOrder": [
+    "hard-invariants",
+    "explicit-creative-direction",
+    "reference-led-direction",
+    "project-owned-design-memory",
+    "accepted-concept",
+    "model-proposed-direction",
+    "local-adaptive-default"
+  ],
+  "overrideProtocol": {
+    "rule": "A deliberate direction may override an advisory default when its authority source, reason, evidence, risk, preserved invariants, and rendered proof are recorded.",
+    "fields": [
+      "authority source",
+      "default being overridden",
+      "deliberate reason",
+      "reference, concept, or project evidence",
+      "risk and mitigation",
+      "hard invariants preserved",
+      "desktop/mobile/state proof"
+    ],
+    "proof": [
+      "same-viewport reference or concept comparison when applicable",
+      "grayscale or thumbnail hierarchy check",
+      "target mobile or narrow-input check",
+      "non-default state and reduced-motion/static fallback check"
+    ]
+  }
+}

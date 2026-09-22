@@ -1,0 +1,461 @@
+{
+  "version": 1,
+  "directions": [
+    {
+      "id": "adaptive-asymmetric",
+      "label": "Adaptive Asymmetric",
+      "profileIds": ["adaptive-surface"],
+      "keywords": ["adaptive", "general", "neutral", "website", "web", "site", "通用", "网站", "网页", "官网"],
+      "signature": "one offset primary object or task with a visible counterweight and a deliberate next-step reveal",
+      "firstViewport": {
+        "layout": "asymmetric two-region composition; dominant object/work surface gets 55-65% of the visual weight and the supporting rail gets the rest",
+        "alignmentAxis": "one strong left or right edge; title, object, and action share an axis instead of floating in a centered stack",
+        "dominant": "the real object, content, or task supplied by the brief",
+        "counterweight": "short specific title, one action, and one proof/state cue",
+        "belowFoldPeek": "one next proof relationship enters the viewport; never a row of identical cards"
+      },
+      "layoutRules": [
+        "Choose an intentional offset before choosing a color palette.",
+        "Keep one dominant region and one counterweight; do not split attention across equal panels.",
+        "Use a list, rail, strip, or open canvas before inventing a card for every section.",
+        "Reserve the first viewport for object, meaning, and action; move secondary explanation below."
+      ],
+      "typeRules": {
+        "roles": "one UI/body family with eyebrow, title, body, label, and action roles; add a display face only after real content earns it",
+        "title": "desktop 48-64px, mobile 34-42px, 1-3 lines, no all-caps paragraph headlines",
+        "body": "45-72ch measure, 16-18px desktop, 15-17px mobile, line-height 1.45-1.65",
+        "hierarchy": "three dominant text levels maximum in the first viewport; metadata stays visibly subordinate",
+        "tracking": "default tracking first; never tighten text to rescue a weak width decision"
+      },
+      "spacingRules": {
+        "rhythm": "4/8/12/20/32/48/72px base rhythm",
+        "container": "max-width 1180-1280px with 24-32px mobile-safe gutters",
+        "section": "64-120px vertical sections, adjusted by content proof rather than empty theater",
+        "alignment": "repeat one axis across title, object, caption, and action; break it once deliberately"
+      },
+      "surfaceRules": {
+        "cardBudget": "0-2 framed cards per viewport; repeated content uses rows, open sections, or a single frame",
+        "radius": "one primary radius family, usually 0-16px; pills only for compact status or navigation",
+        "elevation": "one surface lift plus one active/focus treatment; no shadow ladder",
+        "contrast": "separate canvas, object, and action by tone before adding effects"
+      },
+      "contentRules": [
+        "Replace abstract value claims with one object, fact, constraint, or outcome.",
+        "Do not invent a product category, workflow, or commerce path when the request did not supply one.",
+        "A missing asset is a direction decision: generate/find a real one or design a complete assetless surface."
+      ],
+      "antiAiChecks": [
+        "No centered-everything hero.",
+        "No default three-column card grid.",
+        "No interchangeable 'beautiful, powerful, seamless' copy.",
+        "No gradient, glass, glow, or oversized type used as the point of view.",
+        "No more than two competing accents in the first viewport."
+      ],
+      "renderChecks": [
+        "The first read is identifiable in a grayscale screenshot.",
+        "The title does not wrap into an accidental orphan line on mobile.",
+        "The next section is visibly related to the primary object, not generic filler.",
+        "The page still has a recognizable silhouette with color and motion removed."
+      ]
+    },
+    {
+      "id": "object-led-editorial",
+      "label": "Object-Led Editorial",
+      "profileIds": ["hardware-product-story", "portfolio-studio", "commerce-flow"],
+      "keywords": ["product", "hardware", "device", "brand", "portfolio", "launch", "object", "material", "产品", "硬件", "品牌", "作品"],
+      "signature": "the product or work object carries the visual identity while copy and proof arrive in measured chapters",
+      "firstViewport": {
+        "layout": "large object field with an offset title/action rail; use the next chapter as a visible edge or caption, not a hero-only void",
+        "alignmentAxis": "object axis and copy axis are related but not mechanically centered",
+        "dominant": "real product, work, or authored media with visible material/detail",
+        "counterweight": "short claim, context label, and one inspect/continue action",
+        "belowFoldPeek": "first feature/material/work proof with a different crop or scale"
+      },
+      "layoutRules": [
+        "Show the object before explaining it, but keep the action and practical path visible.",
+        "Use one promise per chapter; do not repeat the same split hero pattern down the page.",
+        "Alternate scale or alignment to create rhythm; keep the object identity continuous.",
+        "Use comparison or purchase details after understanding, not as the opening grid."
+      ],
+      "typeRules": {
+        "roles": "quiet UI/body face plus one earned display role for product names or chapter claims",
+        "title": "desktop 56-88px only for short, specific claims; mobile 36-52px with explicit line breaks",
+        "body": "42-66ch, 16-18px, generous line-height; specs use compact utility type",
+        "hierarchy": "one display claim, one supporting explanation, one factual caption; do not create five headline scales",
+        "tracking": "neutral or slightly open display tracking; never use negative tracking as a luxury shortcut"
+      },
+      "spacingRules": {
+        "rhythm": "8/16/24/40/64/96/144px chapter rhythm",
+        "container": "1180-1440px when media needs room; preserve readable copy measure inside it",
+        "section": "96-160px when a new object/proof relationship starts; tighter around specs and decisions",
+        "alignment": "one asymmetry per chapter; do not repeat identical 50/50 splits"
+      },
+      "surfaceRules": {
+        "cardBudget": "cards only for discrete variants, specs, or work items; never for every feature chapter",
+        "radius": "object frames may be square or restrained; controls share one smaller radius",
+        "elevation": "material comes from crop, tone, edge, and object detail; avoid floating-card theater",
+        "contrast": "let product finish or image treatment carry identity; keep chrome quiet"
+      },
+      "contentRules": [
+        "Every visual claim needs an object, material, performance, or use-context proof.",
+        "Use real product facts and specific verbs; do not write generic premium language.",
+        "Show compatibility, variants, specs, or next action before a decorative social-proof band."
+      ],
+      "antiAiChecks": [
+        "No fake product render or atmosphere-only hero.",
+        "No repeated 50/50 image-text blocks.",
+        "No generic luxury palette without material evidence.",
+        "No purchase/spec path hidden behind scroll choreography.",
+        "No stock image used as product proof."
+      ],
+      "renderChecks": [
+        "Object silhouette and focal crop remain legible on desktop and mobile.",
+        "At least three chapters have different composition or scale, not just different copy.",
+        "Practical information survives with motion and color disabled.",
+        "The first viewport shows the object, claim, and next proof relationship together."
+      ]
+    },
+    {
+      "id": "rail-canvas-workbench",
+      "label": "Rail And Canvas Workbench",
+      "profileIds": ["productive-app", "command-tool", "creative-editor"],
+      "keywords": ["app", "editor", "builder", "command", "settings", "tool", "workspace", "canvas", "编辑器", "工具", "工作台", "设置"],
+      "signature": "a primary work object stays visually dominant while navigation and inspection controls form a quiet rail",
+      "firstViewport": {
+        "layout": "rail + primary canvas/work surface + optional inspector; use one clear work object rather than a dashboard header and tile wall",
+        "alignmentAxis": "work object owns the main axis; controls align to its edges and state changes stay local",
+        "dominant": "active canvas, selected record, document, or media object",
+        "counterweight": "compact navigation, inspector, or command affordance",
+        "belowFoldPeek": "the next object state, detail group, or history/feedback path"
+      },
+      "layoutRules": [
+        "Put the work object above decorative or explanatory chrome.",
+        "Use rows, sections, and rails for repeated controls; reserve cards for actual objects.",
+        "Make selection, preview, and inspector move as one object through transitions.",
+        "On mobile, collapse the rail into an explicit sheet/tab path instead of shrinking desktop chrome."
+      ],
+      "typeRules": {
+        "roles": "one readable UI face; mono only for code, IDs, shortcuts, or machine state",
+        "title": "24-40px desktop, 22-32px mobile; compact enough to leave room for work",
+        "body": "45-75ch for help/copy; 13-16px for controls according to density",
+        "hierarchy": "selected object > active action > context > navigation; do not use display type in chrome",
+        "tracking": "normal tracking; use weight and spacing rather than condensed uppercase labels"
+      },
+      "spacingRules": {
+        "rhythm": "4/8/12/16/24/32/48px operational rhythm",
+        "container": "full available viewport with explicit rail, canvas, and inspector minimums",
+        "section": "24-64px between work groups; avoid marketing-scale voids",
+        "alignment": "controls align to work-object bounds; preserve stable rows during updates"
+      },
+      "surfaceRules": {
+        "cardBudget": "0-3 cards; prefer pane, row, strip, table, and canvas primitives",
+        "radius": "4-12px for controls and panes; no pill-shaped buttons unless the action is compact status/navigation",
+        "elevation": "use dividers and surface contrast before shadows",
+        "contrast": "focus and selection must be obvious without relying on color alone"
+      },
+      "contentRules": [
+        "Name the active object and next action in the first read.",
+        "Keep labels concrete and short; expose recovery, dirty, saved, and error states.",
+        "Do not turn a work surface into a marketing hero."
+      ],
+      "antiAiChecks": [
+        "No hero heading above the work object.",
+        "No KPI tile row unless metrics are the actual work object.",
+        "No rounded-card wrapper around every panel.",
+        "No hover-only command discovery.",
+        "No dark mode chosen solely to look technical."
+      ],
+      "renderChecks": [
+        "The active work object is visible before navigation explanation.",
+        "Rail, canvas, and inspector remain distinguishable in grayscale.",
+        "Mobile has a deliberate list/sheet order, not accidental wrapping.",
+        "A non-default state can be understood without animation."
+      ]
+    },
+    {
+      "id": "data-detail-workbench",
+      "label": "Data And Detail Workbench",
+      "profileIds": ["data-workbench"],
+      "keywords": ["analytics", "data", "monitoring", "research", "finance", "table", "chart", "分析", "数据", "监控", "研究"],
+      "signature": "comparison, detail, and context remain visible while the data changes",
+      "firstViewport": {
+        "layout": "compact filter/context bar above a dominant table or chart-detail relationship; avoid a headline and KPI tile preamble",
+        "alignmentAxis": "columns, numbers, headers, and selected detail share a strict grid",
+        "dominant": "table, chart, map, or live status object",
+        "counterweight": "filter/sort context and selected-detail explanation",
+        "belowFoldPeek": "one deeper row/detail state or comparison path"
+      },
+      "layoutRules": [
+        "Show the data relationship before decorative summary cards.",
+        "Preserve row/object identity during filter, sort, and selection changes.",
+        "Use semantic color sparingly and pair it with labels, position, or shape.",
+        "Put definitions, freshness, units, and partial/error state close to the data."
+      ],
+      "typeRules": {
+        "roles": "one UI face with tabular-number support; no display role for dashboard chrome",
+        "title": "24-36px desktop, 22-30px mobile; title must not push the data below the fold",
+        "body": "14-16px for dense surfaces, 45-80ch for explanation, 12-13px only for metadata",
+        "hierarchy": "data object > selected context > controls > explanatory metadata",
+        "tracking": "normal tracking; align numeric columns mechanically and optically"
+      },
+      "spacingRules": {
+        "rhythm": "4/8/12/16/24/32px data rhythm",
+        "container": "full-width work area with readable detail measure; avoid excessive max-width around tables",
+        "section": "24-56px between data relationships; no empty hero band",
+        "alignment": "headers, values, units, and selected detail share predictable columns"
+      },
+      "surfaceRules": {
+        "cardBudget": "0-2 summary cards; table/chart/detail should be open work surfaces",
+        "radius": "4-10px for controls and panels; avoid pill metrics",
+        "elevation": "dividers, selected row treatment, and tonal surfaces before shadows",
+        "contrast": "states must remain legible in grayscale and at reduced contrast"
+      },
+      "contentRules": [
+        "Every metric needs unit, time context, freshness, or comparison context.",
+        "Name empty, partial, stale, permission, and error states before styling the chart.",
+        "Do not use a colorful chart to compensate for a missing analytical relationship."
+      ],
+      "antiAiChecks": [
+        "No four-KPI hero row by default.",
+        "No rainbow chart palette without a data model.",
+        "No chart detached from table/detail context.",
+        "No tiny gray labels as the only explanation.",
+        "No animated data changes without a real event."
+      ],
+      "renderChecks": [
+        "The data object and current context are readable at first glance.",
+        "Long labels, numbers, units, and mixed language do not collide.",
+        "Selection/filtering preserves identity and scroll context.",
+        "Partial and empty states retain the same hierarchy as the ready state."
+      ]
+    },
+    {
+      "id": "stateful-instrument",
+      "label": "Stateful Instrument",
+      "profileIds": ["media-experience"],
+      "keywords": ["ai", "agent", "assistant", "streaming", "thinking", "audio", "video", "realtime", "player", "voice", "代理", "流式", "实时", "播放"],
+      "signature": "process state is the product object; the interface makes waiting, change, and recovery legible",
+      "firstViewport": {
+        "layout": "one live state surface with a compact context rail and visible next action; no generic hero before the process object",
+        "alignmentAxis": "state marker, current object, content stream, and action share a timeline or row axis",
+        "dominant": "conversation, playback object, task trace, waveform, or live process",
+        "counterweight": "status context, controls, and recovery action",
+        "belowFoldPeek": "next state specimen, history, or implementation proof"
+      },
+      "layoutRules": [
+        "Treat loading/thinking/streaming/approval/error as designed states, not skeleton decoration.",
+        "Keep the object anchored while content or status changes.",
+        "Make cancel, retry, pause, permission, and final state visible.",
+        "Use a stable rail or timeline instead of stacking conversational cards by default."
+      ],
+      "typeRules": {
+        "roles": "compact UI sans with optional mono for traces, IDs, or machine output; display type only for a short product/state claim",
+        "title": "28-48px for the main object/state; 22-34px mobile; never let a decorative title hide process context",
+        "body": "14-17px with clear state labels; stream content gets readable 45-72ch measure",
+        "hierarchy": "current state > content/result > next action > trace metadata",
+        "tracking": "normal tracking; distinguish states through labels and structure, not letter spacing"
+      },
+      "spacingRules": {
+        "rhythm": "4/8/12/16/24/32/48px state rhythm",
+        "container": "900-1240px depending on stream/detail split; protect reading measure",
+        "section": "32-72px between state specimens; tighter within a live trace",
+        "alignment": "state markers and content rows share a stable origin"
+      },
+      "surfaceRules": {
+        "cardBudget": "use contained surfaces for decisions or discrete states; avoid a stack of identical chat cards",
+        "radius": "6-14px; avoid excessive pill badges and floating glass",
+        "elevation": "status contrast and border rhythm before glow",
+        "contrast": "state text and icon/shape cues must survive reduced motion and color loss"
+      },
+      "contentRules": [
+        "Never imply intelligence with an always-loading placeholder.",
+        "Show what changed, what is waiting, and what the user can do next.",
+        "Use deterministic mock state only when the backend is unavailable, and label it honestly."
+      ],
+      "antiAiChecks": [
+        "No generic AI gradient orb or glowing chat shell.",
+        "No endless typing indicator as the main state model.",
+        "No status communicated only through color or animation.",
+        "No assistant persona copy without a concrete workflow.",
+        "No card stack that hides the current task."
+      ],
+      "renderChecks": [
+        "A user can explain the current state without motion.",
+        "Streaming, waiting, success, and error differ structurally, not only chromatically.",
+        "The primary action and recovery path remain visible at mobile width.",
+        "Interrupted or reduced-motion states retain the same information hierarchy."
+      ]
+    },
+    {
+      "id": "specimen-catalog",
+      "label": "Specimen Catalog",
+      "profileIds": [],
+      "keywords": ["component", "gallery", "showcase", "catalog", "demo", "library", "组件", "展示", "画廊", "目录"],
+      "signature": "the working specimen is the content; browsing structure stays quiet and the examples keep stable geometry",
+      "firstViewport": {
+        "layout": "compact index plus one strong specimen and a visible next example; use a gallery grid only when comparison is the job",
+        "alignmentAxis": "index, specimen title, preview frame, and install/action affordance share a consistent axis",
+        "dominant": "real interactive component or target workflow specimen",
+        "counterweight": "category/index and concise implementation entry point",
+        "belowFoldPeek": "one contrasting specimen with the same frame grammar"
+      },
+      "layoutRules": [
+        "Show the component working before explaining it.",
+        "Keep preview frame dimensions stable; let the inner specimen carry variation.",
+        "Use one strong visual language across examples without flattening their content.",
+        "Keep copy short and implementation entry points near the working object."
+      ],
+      "typeRules": {
+        "roles": "bold but controlled specimen title plus compact neutral metadata and action labels",
+        "title": "40-72px for the catalog thesis; 24-40px for specimen titles; mobile steps down explicitly",
+        "body": "14-17px, short and concrete; code/props use restrained mono",
+        "hierarchy": "specimen > action > implementation metadata; never let a marketing title dominate the demo",
+        "tracking": "use default or slightly open display tracking; avoid dense uppercase labels"
+      },
+      "spacingRules": {
+        "rhythm": "8/16/24/40/64/96px catalog rhythm",
+        "container": "1120-1280px with stable preview frame widths",
+        "section": "72-120px between specimen groups; captions stay close to their object",
+        "alignment": "preview geometry is consistent; text can vary without moving the frame"
+      },
+      "surfaceRules": {
+        "cardBudget": "preview frames are allowed; decorative cards around them are not",
+        "radius": "one frame radius plus one control radius; avoid pill overload",
+        "elevation": "contained preview contrast, not page-wide glass or glow",
+        "contrast": "the specimen must remain legible with the page effects removed"
+      },
+      "contentRules": [
+        "Use realistic states and target-specific labels; never copy demo copy blindly.",
+        "Each specimen needs a trigger, response, final state, and fallback.",
+        "A catalog is not a substitute for a usable product workflow."
+      ],
+      "antiAiChecks": [
+        "No unrelated effect collage.",
+        "No identical demo cards with different headings only.",
+        "No dark-glow skin inherited from a component source by default.",
+        "No pointer-only specimen without keyboard/touch behavior.",
+        "No hero copy before the first working specimen."
+      ],
+      "renderChecks": [
+        "The specimen is legible before its caption is read.",
+        "Frames do not jump when states change.",
+        "The index and install/action path remain usable on mobile.",
+        "At least one specimen shows a non-default state."
+      ]
+    },
+    {
+      "id": "narrative-chapters",
+      "label": "Narrative Chapters",
+      "profileIds": ["editorial-marketing"],
+      "keywords": ["landing", "launch", "marketing", "campaign", "story", "brand", "官网", "发布", "宣传", "故事"],
+      "signature": "a controlled sequence of claims, proof, and breathing space; every chapter changes the reading relationship",
+      "firstViewport": {
+        "layout": "one strong claim paired with real proof media and a visible continuation cue; avoid an empty centered hero",
+        "alignmentAxis": "a clear editorial edge or baseline carries title, caption, and media",
+        "dominant": "real product, work, person, place, or authored media",
+        "counterweight": "specific claim, caption, and one action",
+        "belowFoldPeek": "the next proof chapter with a changed crop, scale, or alignment"
+      },
+      "layoutRules": [
+        "Each chapter must add a new proof relationship, not just a new background.",
+        "Alternate composition, crop, scale, or alignment to avoid a repeated split template.",
+        "Keep the next section visible enough to create rhythm without hiding the current action.",
+        "Use display type sparingly and only where the media can carry the claim."
+      ],
+      "typeRules": {
+        "roles": "body/UI face plus one editorial display role; captions and navigation remain compact",
+        "title": "52-96px for short earned claims; mobile 36-56px with explicit line breaks and no orphan words",
+        "body": "42-68ch, 16-19px, strong line-height; captions 12-14px with adequate contrast",
+        "hierarchy": "one claim, one proof, one caption; avoid six competing headline treatments",
+        "tracking": "display tracking is neutral or open; never compress to manufacture drama"
+      },
+      "spacingRules": {
+        "rhythm": "8/16/32/64/96/144px narrative rhythm",
+        "container": "1200-1440px for media with 60-72ch text measure",
+        "section": "112-180px only when a new proof chapter earns the space",
+        "alignment": "repeat one editorial edge, then break it once for emphasis"
+      },
+      "surfaceRules": {
+        "cardBudget": "0-3 cards; use image fields, rules, captions, and open bands instead",
+        "radius": "use media-specific framing; do not round every section",
+        "elevation": "image crop and tonal separation before overlays or blur",
+        "contrast": "copy must remain readable over media without a permanent dark veil"
+      },
+      "contentRules": [
+        "A headline must name a thing, action, material, or outcome, not only an adjective.",
+        "Real media appears early and has a recorded source/generation path.",
+        "Keep proof, constraints, and next action visible; atmosphere is supplementary."
+      ],
+      "antiAiChecks": [
+        "No giant headline over an empty gradient.",
+        "No repeated image-left/text-right sections.",
+        "No generic inspirational copy.",
+        "No dark overlay hiding weak or low-quality media.",
+        "No scroll choreography that removes normal document access."
+      ],
+      "renderChecks": [
+        "The first viewport communicates what the thing is before the slogan is interpreted.",
+        "Every chapter has a distinct visual reason to exist.",
+        "Text remains readable and intentional at mobile width.",
+        "The page still works as a static sequence with motion removed."
+      ]
+    },
+    {
+      "id": "spatial-inspection",
+      "label": "Spatial Inspection",
+      "profileIds": ["spatial-product"],
+      "keywords": ["3d", "model", "viewer", "configurator", "vehicle", "spatial", "camera", "空间", "模型", "车辆", "配置器"],
+      "signature": "camera, object state, and supporting information explain one inspectable spatial relationship",
+      "firstViewport": {
+        "layout": "unframed or lightly framed object stage with compact controls and a clear poster/loading state",
+        "alignmentAxis": "object framing and control cluster share a predictable origin",
+        "dominant": "real model or spatial object",
+        "counterweight": "inspection/configuration controls and concise metadata",
+        "belowFoldPeek": "a detail, configuration, or static proof path"
+      },
+      "layoutRules": [
+        "Frame the object before adding camera or effect complexity.",
+        "Keep controls close to the relationship they change.",
+        "Use bounded interaction and a normal-flow fallback; never make the canvas the only information path.",
+        "Show the object in a meaningful state, not an aimless rotation."
+      ],
+      "typeRules": {
+        "roles": "stable UI face plus restrained technical labels for object/state values",
+        "title": "28-56px for the object claim; controls stay compact and readable",
+        "body": "14-17px, concise metadata, explicit units and state labels",
+        "hierarchy": "object > action/control > metadata > implementation detail",
+        "tracking": "normal tracking; do not use futuristic letter spacing as a substitute for object quality"
+      },
+      "spacingRules": {
+        "rhythm": "8/16/24/40/64/96px spatial rhythm",
+        "container": "full-width stage with bounded content/control regions",
+        "section": "64-120px around object/configuration relationships",
+        "alignment": "camera, object, and control bounds remain stable through state changes"
+      },
+      "surfaceRules": {
+        "cardBudget": "0-2 control surfaces; the object stage is not a card stack",
+        "radius": "frame and controls use restrained, consistent geometry",
+        "elevation": "lighting, object material, and stage contrast before decorative glow",
+        "contrast": "poster, loading, error, and ready states are all legible"
+      },
+      "contentRules": [
+        "Name what the user can inspect or configure and what changes as a result.",
+        "Provide object media, poster, loading, error, and low-power fallback evidence.",
+        "Technical claims need visible object or specification support."
+      ],
+      "antiAiChecks": [
+        "No generic rotating object with no task.",
+        "No unbounded canvas or effect-only hero.",
+        "No controls hidden inside the scene.",
+        "No spatial effect without a static and reduced-motion path.",
+        "No invented object media presented as real product evidence."
+      ],
+      "renderChecks": [
+        "Object scale and camera framing are intentional at desktop and mobile sizes.",
+        "The first frame is useful before interaction begins.",
+        "Controls remain reachable and understandable without hover.",
+        "The static fallback preserves the object and decision path."
+      ]
+    }
+  ]
+}

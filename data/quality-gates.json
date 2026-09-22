@@ -1,0 +1,226 @@
+{
+  "version": 1,
+  "sceneDials": [
+    {
+      "id": "workflow-first",
+      "label": "Workflow First",
+      "keywords": ["app", "dashboard", "editor", "form", "settings", "tool", "workflow", "后台", "工具", "流程"],
+      "question": "What object is the user trying to inspect, change, compare, or confirm?",
+      "checks": ["primary object is visible before decoration", "primary action has a complete state model", "navigation does not compete with the work surface"]
+    },
+    {
+      "id": "proof-first",
+      "label": "Proof First",
+      "keywords": ["landing", "launch", "marketing", "portfolio", "brand", "case study", "官网", "作品", "发布"],
+      "question": "What real product, work, person, place, or media proves the claim in the first viewport?",
+      "checks": ["real proof appears early", "copy does not carry the entire hero", "media has loading, fallback, and licensing evidence"]
+    },
+    {
+      "id": "state-first",
+      "label": "State First",
+      "keywords": ["data", "monitoring", "realtime", "audio", "video", "payment", "error", "loading", "数据", "实时", "支付"],
+      "question": "Which states change the user's decision or trust?",
+      "checks": ["loading, empty, partial, error, and success states are named", "semantic color is not the only signal", "stale or permission states remain actionable"]
+    },
+    {
+      "id": "object-first",
+      "label": "Object First",
+      "keywords": ["product", "model", "3d", "vehicle", "image", "photo", "media", "viewer", "产品", "车辆", "模型"],
+      "question": "What real object should remain legible while the interface changes around it?",
+      "checks": ["object identity survives route or filter changes", "camera or crop has bounds", "poster or static fallback exists"]
+    }
+  ],
+  "qualityGates": [
+    {
+      "id": "first-screen-signal",
+      "label": "First-screen signal",
+      "keywords": ["hero", "landing", "dashboard", "app", "product", "screen"],
+      "passWhen": "The product or primary work object is identifiable without reading a marketing essay.",
+      "evidence": "Rendered first viewport on desktop and target mobile width."
+    },
+    {
+      "id": "state-completeness",
+      "label": "State completeness",
+      "keywords": ["form", "table", "data", "media", "editor", "checkout", "workflow"],
+      "passWhen": "The critical non-default state remains understandable and actionable.",
+      "evidence": "One exercised loading, empty, error, partial, selected, or success state."
+    },
+    {
+      "id": "type-discipline",
+      "label": "Type discipline",
+      "keywords": ["type", "font", "headline", "editorial", "dashboard", "dense"],
+      "passWhen": "Type scale reflects reading distance, content density, and the actual hierarchy.",
+      "evidence": "Long labels, mixed language, and mobile line breaks checked in the rendered surface."
+    },
+    {
+      "id": "dependency-boundary",
+      "label": "Dependency boundary",
+      "keywords": ["library", "component", "motion", "chart", "3d", "resource", "依赖"],
+      "passWhen": "A dependency solves a named technical gap and local code owns product styling and states.",
+      "evidence": "Current docs/version, bundle or runtime cost, accessibility, license, and fallback recorded."
+    },
+    {
+      "id": "motion-purpose",
+      "label": "Motion purpose",
+      "keywords": ["motion", "animation", "transition", "scroll", "modal", "route", "动效", "动画"],
+      "passWhen": "Motion explains state, continuity, feedback, or spatial relationship and can be removed without losing the task.",
+      "evidence": "Review -> Apply -> Polish notes plus cleanup, reduced-motion, and static fallback checks."
+    },
+    {
+      "id": "visual-proof",
+      "label": "Visual proof",
+      "keywords": ["verify", "screenshot", "browser", "mobile", "render", "视觉", "截图"],
+      "passWhen": "The result has rendered evidence, not only a successful build or static test.",
+      "evidence": "Desktop/mobile screenshots or equivalent runtime inspection with console/build status."
+    },
+    {
+      "id": "asset-readiness",
+      "label": "Asset readiness",
+      "keywords": ["asset", "image", "photo", "video", "media", "illustration", "texture", "素材", "图片", "视频", "媒体"],
+      "passWhen": "Every primary visible asset is user-provided, existing/official, high-quality and attributable, or deliberately generated for the target; no placeholder or low-quality filler remains.",
+      "evidence": "Asset source/provenance, rendered desktop/mobile sharpness and crop, loading behavior, and a visual inspection of generated or searched media."
+    },
+    {
+      "id": "premium-finish",
+      "label": "Premium finish",
+      "keywords": ["premium", "high-end", "luxury", "refined", "material", "finish", "craft", "质感", "高级", "高端", "精致", "工艺"],
+      "passWhen": "The surface feels authored through optical hierarchy, type discipline, material logic, precise spacing, specific content, and restrained interaction rather than decorative effects.",
+      "evidence": "Rendered grayscale and color comparisons at desktop/mobile, real copy and assets, surface/token review, one purposeful interaction, and a recorded list of removed effects."
+    },
+    {
+      "id": "reference-fidelity",
+      "label": "Reference fidelity",
+      "keywords": ["reference", "similar", "inspired", "borrow", "fidelity", "visual genome", "视觉基因", "参考", "类似"],
+      "passWhen": "A named or selected reference is visible through at least three translated decisions: composition, material/type, and interaction cadence; the target content and workflow remain its own.",
+      "evidence": "Reference/build contract, side-by-side desktop and mobile renders, three named fidelity anchors, and one rejected source trait recorded."
+    },
+    {
+      "id": "visual-direction",
+      "label": "Visual direction",
+      "keywords": ["layout", "composition", "typography", "hierarchy", "spacing", "alignment", "visual", "排版", "构图", "层级", "间距", "视觉"],
+      "passWhen": "The build names a composition grammar, alignment axis, dominant/counterweight, type ceiling, spacing rhythm, and surface/card budget before decorative styling.",
+      "evidence": "Visual Direction Contract plus grayscale desktop/mobile render, thumbnail silhouette check, and explicit AI-default rejection list."
+    },
+    {
+      "id": "constraint-authority",
+      "label": "Constraint authority",
+      "keywords": ["authority", "design md", "design system", "direction", "reference", "override", "自由度", "规则", "方向"],
+      "passWhen": "Hard product and accessibility invariants are preserved while a project-owned, user-owned, reference-led, concept-led, or evidence-backed model direction can override advisory visual defaults.",
+      "evidence": "Authority source, inherited rules, intentional overrides, reason, evidence, risk, preserved invariants, and rendered desktop/mobile/state proof."
+    }
+  ],
+  "antiPatterns": [
+    {
+      "id": "card-wall",
+      "label": "Card wall",
+      "signals": ["card", "cards", "tile", "grid", "metric"],
+      "rejectWhen": "Repeated equal cards carry the whole composition without a primary object.",
+      "repair": "Promote the work object, group related facts, and reserve cards for discrete repeated items."
+    },
+    {
+      "id": "centered-hero-template",
+      "label": "Centered hero template",
+      "signals": ["centered", "hero", "headline", "cta", "three-column", "居中", "首屏", "标题"],
+      "rejectWhen": "The first viewport defaults to a centered eyebrow, giant heading, button, and equal feature row without a product-specific reason.",
+      "repair": "Choose a dominant object, a counterweight, and one alignment axis; let the next proof relationship enter the viewport."
+    },
+    {
+      "id": "pill-everything",
+      "label": "Pill everything",
+      "signals": ["pill", "badge", "tag", "rounded", "胶囊", "圆角"],
+      "rejectWhen": "Controls, labels, statuses, navigation, and containers all use the same pill silhouette.",
+      "repair": "Separate buttons, rows, status tags, inputs, and frames by job; reserve pills for compact status or navigation."
+    },
+    {
+      "id": "type-scale-collapse",
+      "label": "Type scale collapse",
+      "signals": ["type", "font", "headline", "label", "hierarchy", "字阶", "字体", "层级"],
+      "rejectWhen": "Everything is the same size and weight, or a giant title is paired with tiny gray copy to simulate hierarchy.",
+      "repair": "Name title, body, label, metadata, and action roles; set a type ceiling and verify real copy at mobile width."
+    },
+    {
+      "id": "generic-copy",
+      "label": "Generic copy",
+      "signals": ["beautiful", "powerful", "seamless", "innovative", "premium", "美观", "强大", "无缝", "高级"],
+      "rejectWhen": "Abstract adjectives carry the page because the object, fact, constraint, or outcome is missing.",
+      "repair": "Replace adjectives with a specific object, action, measurable fact, limitation, or user outcome."
+    },
+    {
+      "id": "equal-grid",
+      "label": "Equal grid",
+      "signals": ["grid", "columns", "tiles", "均分", "网格", "卡片"],
+      "rejectWhen": "Every region has equal weight, so the user cannot tell what to inspect or do first.",
+      "repair": "Promote one dominant region, use a rail or open section for context, and reserve equal grids for genuine comparison."
+    },
+    {
+      "id": "default-library-skin",
+      "label": "Default library skin",
+      "signals": ["shadcn", "radix", "mui", "heroui", "component library", "默认组件"],
+      "rejectWhen": "The imported primitive's demo styling becomes the product identity.",
+      "repair": "Keep behavior and semantics, then replace tokens, density, states, and composition locally."
+    },
+    {
+      "id": "decorative-motion",
+      "label": "Decorative motion",
+      "signals": ["loop", "ambient", "bounce", "parallax", "marquee", "glow", "循环", "装饰"],
+      "rejectWhen": "Animation does not clarify a state, relationship, or spatial action.",
+      "repair": "Tie motion to a real transition, or remove it and preserve the final state."
+    },
+    {
+      "id": "hero-without-proof",
+      "label": "Hero without proof",
+      "signals": ["hero", "cinematic", "gradient", "stock", "placeholder", "氛围"],
+      "rejectWhen": "The first screen promises a product or object that is not actually shown.",
+      "repair": "Use real media or downgrade to a usable product surface until proof exists."
+    },
+    {
+      "id": "filler-media",
+      "label": "Filler media",
+      "signals": ["placeholder", "thumbnail", "low-res", "stock", "watermark", "generic image", "占位", "低清", "库存图"],
+      "rejectWhen": "An asset is present only to occupy space, is visibly low quality, lacks provenance, or does not prove the product or experience.",
+      "repair": "Use the user's material, find a high-quality attributable source, generate target-specific media, or redesign the surface without the asset."
+    },
+    {
+      "id": "effect-stack",
+      "label": "Effect stack",
+      "signals": ["gradient", "glow", "glass", "blur", "noise", "aurora", "大标题", "渐变", "光晕", "玻璃"],
+      "rejectWhen": "Several decorative treatments are doing the work of hierarchy, material, or product proof.",
+      "repair": "Remove at least one treatment, restore object/type/surface hierarchy, and keep only the effect that explains a real product relationship."
+    },
+    {
+      "id": "luxury-cliche",
+      "label": "Luxury cliché",
+      "signals": ["black and gold", "gold", "beige", "serif", "luxury", "奢华", "黑金"],
+      "rejectWhen": "A generic luxury palette or editorial pose is being used without material, product, or copy evidence.",
+      "repair": "Return to the actual object, finish, use context, and specific language; let the product earn the visual register."
+    },
+    {
+      "id": "reference-name-only",
+      "label": "Reference name only",
+      "signals": ["reference", "inspired", "like", "类似", "参考"],
+      "rejectWhen": "A reference is named in the prompt or brief but its visible hierarchy, material/type decision, or interaction rhythm does not survive into the rendered target.",
+      "repair": "Write three fidelity anchors, implement the first viewport against them, and compare rendered desktop/mobile states before adding unrelated polish."
+    },
+    {
+      "id": "unbounded-canvas",
+      "label": "Unbounded canvas",
+      "signals": ["3d", "canvas", "model", "webgl", "three", "模型", "画布"],
+      "rejectWhen": "A heavy canvas has no loading, camera bounds, interaction limits, or fallback.",
+      "repair": "Add poster/loading/error states and a bounded static path before increasing scene complexity."
+    }
+  ],
+  "implementationChecks": [
+    "Primary object and primary action are named before visual polish.",
+    "The smallest local primitive or platform capability was checked before installing a dependency.",
+    "Critical states include accessible text or structure, not color alone.",
+    "Responsive re-staging is explicit instead of relying on accidental wrapping.",
+    "Rendered evidence covers a default state and one non-default state.",
+    "Primary assets have a recorded source or generation path, survive desktop/mobile crop, and are not placeholders or low-quality filler.",
+    "A premium finish pass checks grayscale hierarchy, optical alignment, type ceiling, material layers, copy specificity, and the effects deliberately removed.",
+    "A named reference has three visible fidelity anchors in the rendered target: composition, material/type, and interaction cadence.",
+    "The Visual Direction Contract names composition, alignment axis, dominant/counterweight, type roles, spacing rhythm, and card/radius/elevation budget.",
+    "The first viewport is checked as a thumbnail, grayscale silhouette, and blurred hierarchy before decorative effects are accepted.",
+    "The first viewport has no more than three dominant text levels and no accidental orphan line in the target mobile width.",
+    "Copy names a concrete object, action, fact, constraint, or outcome instead of relying on interchangeable adjectives."
+  ]
+}

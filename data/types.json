@@ -1,0 +1,53 @@
+{
+  "version": 1,
+  "types": [
+    {
+      "id": "adaptive-hierarchy",
+      "label": "Adaptive Hierarchy",
+      "keywords": ["adaptive", "general", "neutral", "evidence", "通用", "适配"],
+      "roles": "one readable UI/body family; introduce display or mono roles only when the content, object, or workflow earns them",
+      "ceiling": "restrained title until the real content establishes reading distance and hierarchy",
+      "check": "real copy, mixed language, user text scaling, truncation, and the first mobile breakpoints"
+    },
+    {
+      "id": "system-utility",
+      "label": "System Utility",
+      "keywords": ["app", "tool", "dashboard", "native", "utility", "photo", "image", "editor", "系统", "工具", "图像"],
+      "roles": "one reliable UI/body family, weight and spacing carry hierarchy, tabular numbers where alignment matters",
+      "ceiling": "compact title; display type off by default",
+      "check": "real labels, mixed language, user text scaling, dense rows"
+    },
+    {
+      "id": "humanist-ui",
+      "label": "Humanist UI",
+      "keywords": ["warm", "friendly", "wellness", "education", "community", "温暖", "教育"],
+      "roles": "humanist UI/body family with open counters and comfortable short-copy rhythm",
+      "ceiling": "moderate headings; avoid decorative display faces in controls",
+      "check": "small sizes, long labels, CJK/Latin mixing, error copy"
+    },
+    {
+      "id": "ui-plus-mono",
+      "label": "UI Sans + Restrained Mono",
+      "keywords": ["developer", "code", "builder", "command", "logs", "代码", "开发"],
+      "roles": "readable UI sans plus mono only for code, ids, shortcuts, or machine state",
+      "ceiling": "compact title; mono is not a substitute for hierarchy",
+      "check": "code wrapping, tabular values, keyboard hints, CJK labels"
+    },
+    {
+      "id": "editorial-pair",
+      "label": "Editorial Pair",
+      "keywords": ["editorial", "report", "launch", "portfolio", "story", "brand", "hardware", "product", "报告", "作品", "品牌", "硬件", "产品"],
+      "roles": "body/UI face plus a restrained editorial face for earned titles only",
+      "ceiling": "display is allowed only when copy and media carry a narrative job",
+      "check": "mobile line breaks, captions, navigation, dense metadata"
+    },
+    {
+      "id": "technical-display",
+      "label": "Technical Display",
+      "keywords": ["instrument", "spatial", "vehicle", "media", "product", "仪表", "车辆"],
+      "roles": "stable UI face with a narrow or technical display role for object/state labels",
+      "ceiling": "display role stays local to the object, not the whole interface",
+      "check": "viewing distance, contrast, touch targets, fallback state"
+    }
+  ]
+}

@@ -1,0 +1,368 @@
+{
+  "version": 1,
+  "references": [
+    {
+      "id": "rare-ui",
+      "label": "Rare UI",
+      "url": "https://www.rareui.com/",
+      "sourceType": "live-site",
+      "roles": ["visual-language", "component-showcase", "motion-proof"],
+      "keywords": ["rare", "animated", "components", "showcase", "gallery", "minimal", "editorial", "react", "shadcn", "catalog", "组件", "展示"],
+      "bestFor": ["component library", "creative developer tool", "visual catalog", "media-led landing", "showcase"],
+      "visual": {
+        "family": "light editorial component gallery",
+        "palette": "paper-lilac canvas, ink demos, one orange action accent",
+        "typography": "bold grotesk display with compact neutral supporting copy",
+        "layout": "centered hero, wide whitespace, single-column sections, three-column preview grid",
+        "surfaces": "pale canvas, black preview tiles, soft light frames, restrained pills",
+        "motion": "localized hover-play demos, direct manipulation, soft route transition blur"
+      },
+      "borrow": [
+        "show the real object or component in action before explaining it",
+        "use one confident action accent instead of a rainbow palette",
+        "keep repeated preview frames dimensionally stable",
+        "use short copy and let the specimen carry the meaning",
+        "place proof and social confidence after product evidence"
+      ],
+      "reject": [
+        "do not make every product a light lavender component catalog",
+        "do not use an abstract hero blob when the real product object is missing",
+        "do not turn every interaction into a novelty animation"
+      ],
+      "useWhen": ["the user must browse or compare visible UI objects", "a component or media specimen is the product proof"],
+      "avoidWhen": ["dense operations", "safety-critical controls", "data comparison is more important than visual discovery"]
+    },
+    {
+      "id": "rewamp-ui",
+      "label": "Rewamp UI",
+      "url": "https://www.rewampui.com/components",
+      "sourceType": "source-owned-showcase",
+      "roles": ["component-showcase", "component-anatomy", "visual-language", "micro-interaction"],
+      "keywords": ["rewamp", "rewamp ui", "component workbench", "showcase dashboard", "animated backgrounds", "buttons", "text animation", "toggles", "cursors", "navbars", "search bars", "sidebars", "cards", "ui for ai", "search", "install", "source", "preview", "组件", "组件库", "工作台", "预览"],
+      "bestFor": ["interactive component registry", "creative UI primitive catalog", "single-specimen inspection", "component source and installation presentation", "visual effect comparison"],
+      "visual": {
+        "family": "light indexed component workbench",
+        "palette": "warm white navigation shell, pale gray preview stage, ink labels, restrained lavender selection marker; each specimen may own its local palette",
+        "typography": "compact system UI for browsing chrome while the selected specimen keeps its own product typography",
+        "layout": "searchable categorized left rail, one large centered preview canvas, compact right action dock; mobile becomes a title capsule, menu, full-width stage, and bottom action dock",
+        "surfaces": "quiet shell controls, one large softly rounded stage, a bounded specimen frame, and a small floating tool dock",
+        "motion": "motion stays inside the selected specimen; shell transitions selection, menu, source, and theme without changing the preview geometry"
+      },
+      "borrow": [
+        "separate component discovery chrome from the live specimen so one object owns the canvas",
+        "keep categories and search persistent while the selected preview remains dimensionally stable",
+        "place install, source, information, and theme actions in one compact dock around the specimen",
+        "on mobile, re-stage the rail into a title/menu control and move the action dock within thumb reach",
+        "show the working component before implementation details, then keep source and usage close to the same object"
+      ],
+      "reject": [
+        "do not combine unrelated showcase effects into one product surface",
+        "do not inherit the pale canvas, lavender marker, or large radius as a universal product identity",
+        "do not put an effect-first component into a dense or safety-critical workflow without a real state job",
+        "do not shrink the desktop rail and action dock onto mobile"
+      ],
+      "useWhen": ["a component library or visual primitive catalog needs fast browsing and focused live inspection", "the user names Rewamp UI or asks for a component showcase workbench"],
+      "avoidWhen": ["the main product is a workflow rather than a component collection", "the selected effect would outrank the task, content, or accessibility path"]
+    },
+    {
+      "id": "beautiful-ui",
+      "label": "Beautiful UI",
+      "url": "https://beautifului.dev/",
+      "sourceType": "live-site",
+      "roles": ["visual-language", "ai-product-patterns", "state-showcase"],
+      "keywords": ["beautiful", "ai", "agent", "loading", "thinking", "streaming", "approval", "chat", "task", "dark", "instrument", "AI", "代理", "状态"],
+      "bestFor": ["AI-native interface", "agent workspace", "developer tool", "streaming product", "workflow state showcase"],
+      "visual": {
+        "family": "dark AI-native instrument editorial",
+        "palette": "near-black surfaces, graphite borders, small blue-violet identity accents, restrained warm signals",
+        "typography": "compact UI sans, small metadata labels, high-contrast specimen titles",
+        "layout": "sticky left component index with a long vertical specimen rail",
+        "surfaces": "thin dividers, dark panels, subtle diagonal texture, low-radius frames",
+        "motion": "stateful loaders, expandable traces, streaming text, task progress, interactive controls"
+      },
+      "borrow": [
+        "treat loading, thinking, streaming, approval, and tool execution as designed product states",
+        "use a persistent index when the page is a long component or workflow catalog",
+        "make code, content, and state visible in the specimen itself",
+        "use texture and border rhythm to create depth without large decorative gradients"
+      ],
+      "reject": [
+        "do not default every application to near-black",
+        "do not make a static placeholder look like a live agent state",
+        "do not hide primary actions inside a component showcase"
+      ],
+      "useWhen": ["agent state is the product object", "the interface needs to communicate process and progress"],
+      "avoidWhen": ["simple consumer flows", "light editorial storytelling", "low-frequency forms with no process state"]
+    },
+    {
+      "id": "beui",
+      "label": "beUI",
+      "url": "https://beui.dev/",
+      "sourceType": "live-site",
+      "roles": ["motion-language", "component-showcase", "data-showcase"],
+      "keywords": ["beui", "motion", "spring", "layout", "morph", "toast", "drawer", "tabs", "chart", "blocks", "react", "next", "动画", "弹簧"],
+      "bestFor": ["motion component library", "interactive dashboard specimen", "charts", "rich React product surface", "agent blocks"],
+      "visual": {
+        "family": "dark motion-native component registry",
+        "palette": "near-black canvas, off-white type, mint/iridescent action highlights, occasional chart color",
+        "typography": "large centered grotesk hero with compact technical labels and specimen metadata",
+        "layout": "minimal top navigation, centered hero, proof blocks, then categorized interactive examples",
+        "surfaces": "dark cards, soft glass edges, controlled glow, data panels with clear hierarchy",
+        "motion": "spring layout, morphing panels, blur cross-fade, drag/inertia, layout-preserving tabs"
+      },
+      "borrow": [
+        "use motion to preserve the identity of the object as its state changes",
+        "show charts and real data relationships as interaction specimens",
+        "keep install/copy entry points close to the working example",
+        "use a small number of expressive motion primitives repeatedly"
+      ],
+      "reject": [
+        "do not apply spring physics to every hover or text change",
+        "do not let glow and glass replace information hierarchy",
+        "do not ship a heavy animation runtime for a state CSS can express"
+      ],
+      "useWhen": ["continuity and direct manipulation are central", "the product benefits from expressive but bounded state transitions"],
+      "avoidWhen": ["high-frequency data entry", "reduced-motion or low-power constraints dominate", "the interaction has no meaningful object relationship"]
+    },
+    {
+      "id": "bencho",
+      "label": "Bencho",
+      "url": "https://bencho.dev/",
+      "sourceType": "interaction-playground",
+      "roles": ["micro-interaction", "motion-language", "component-showcase"],
+      "keywords": ["bencho", "micro interaction", "microinteraction", "hover", "cursor", "button", "playground", "interaction", "motion", "微交互", "悬停", "光标"],
+      "bestFor": ["micro-interaction research", "button and cursor behavior", "interaction playground", "polish pass"],
+      "visual": {
+        "family": "focused interactive playground",
+        "palette": "neutral canvas with the demonstrated object carrying most of the contrast",
+        "typography": "compact labels that keep attention on the interaction result",
+        "layout": "small, isolated specimens with direct controls and clear replay affordances",
+        "surfaces": "stable demo frames with enough space for cursor, hover, press, and focus feedback",
+        "motion": "short local feedback loops for hover, press, pointer, and component state"
+      },
+      "borrow": [
+        "study one interaction at a time instead of decorating the whole page",
+        "make the trigger, response, and final state easy to replay",
+        "keep micro feedback local to the object that changed",
+        "use stable geometry so polish does not create layout shift"
+      ],
+      "reject": [
+        "do not turn a playground effect into the product's entire visual language",
+        "do not make cursor or hover behavior the only way to understand an action",
+        "do not add pointer choreography where touch or keyboard has no equivalent"
+      ],
+      "useWhen": ["the visible problem is interaction polish", "a small state response needs to feel more legible or intentional"],
+      "avoidWhen": ["the primary issue is information hierarchy", "the interaction must work only through hover or a pointer device"]
+    },
+    {
+      "id": "magic-ui",
+      "label": "Magic UI",
+      "url": "https://magicui.design/",
+      "sourceType": "source-owned-showcase",
+      "roles": ["component-showcase", "motion-language", "visual-language"],
+      "keywords": ["magic ui", "animated components", "react", "tailwind", "copy paste", "landing", "hero", "motion", "components", "组件", "动效"],
+      "bestFor": ["React marketing surface", "animated component starting point", "copy-adapt landing section", "interaction specimen"],
+      "visual": {
+        "family": "dark developer-facing animated component catalog",
+        "palette": "dark neutral surfaces with bright gradient or accent treatment reserved for the demonstrated object",
+        "typography": "large marketing display paired with compact implementation metadata",
+        "layout": "category navigation, high-signal hero, then copyable interactive component specimens",
+        "surfaces": "contained dark demos, soft borders, and effects that stay inside the specimen bounds",
+        "motion": "component-local entrance, hover, scroll, text, and background effects"
+      },
+      "borrow": [
+        "keep the working component visible beside its copy or implementation entry point",
+        "use one expressive effect as a product-specific anchor",
+        "keep motion contained so the surrounding page remains readable",
+        "treat source ownership as an opportunity to replace tokens and states"
+      ],
+      "reject": [
+        "do not assemble a page from unrelated gradient demos",
+        "do not inherit a default dark-glow skin as the product identity",
+        "do not add an animated component before naming the state or content it clarifies"
+      ],
+      "useWhen": ["a React surface needs one or two expressive primitives", "a marketing or showcase section needs a working visual specimen"],
+      "avoidWhen": ["a dense workflow needs low-distraction controls", "CSS or a local primitive already solves the state" ]
+    },
+    {
+      "id": "react-bits",
+      "label": "React Bits",
+      "url": "https://reactbits.dev/",
+      "sourceType": "source-owned-showcase",
+      "roles": ["component-showcase", "micro-interaction", "visual-language"],
+      "keywords": ["react bits", "react", "components", "text", "background", "cursor", "interactive", "animation", "copy paste", "微交互", "组件"],
+      "bestFor": ["React visual primitives", "text and cursor effects", "background treatment", "interactive landing detail"],
+      "visual": {
+        "family": "categorized React visual-effects library",
+        "palette": "effect-dependent; the source catalog keeps the page neutral enough to compare specimens",
+        "typography": "short specimen labels with implementation-oriented metadata",
+        "layout": "categorized browsing with isolated demos and copy/install affordances",
+        "surfaces": "stable preview panels that make the effect's bounds and input obvious",
+        "motion": "text, cursor, background, scroll, and component-level interaction effects"
+      },
+      "borrow": [
+        "select one effect by product job rather than browsing until the page looks busy",
+        "keep a visual primitive independently testable and removable",
+        "show its reduced-motion and touch behavior before calling it finished",
+        "use the category structure to name the missing visual job"
+      ],
+      "reject": [
+        "do not combine unrelated effects into a generic showcase aesthetic",
+        "do not use pointer-only effects as essential information",
+        "do not copy demo content or assume every effect is production-ready for the target stack"
+      ],
+      "useWhen": ["the missing job is a small React visual primitive", "the interface needs a controlled text, cursor, background, or scroll accent"],
+      "avoidWhen": ["the product object is not yet clear", "the effect adds more cognitive load than feedback"]
+    },
+    {
+      "id": "aceternity-ui",
+      "label": "Aceternity UI",
+      "url": "https://ui.aceternity.com/",
+      "sourceType": "source-owned-showcase",
+      "roles": ["visual-language", "component-showcase", "motion-language"],
+      "keywords": ["aceternity", "react", "tailwind", "framer motion", "hero", "scroll", "3d", "animated", "blocks", "组件", "滚动"],
+      "bestFor": ["high-impact landing section", "hero composition", "scroll narrative", "visual block adaptation"],
+      "visual": {
+        "family": "high-contrast animated landing-block catalog",
+        "palette": "dark canvas with luminous gradients, glow, and high-contrast foreground objects",
+        "typography": "large display statements with short supporting implementation copy",
+        "layout": "hero-first blocks, layered visual anchors, and composed sections rather than dense application chrome",
+        "surfaces": "dark layered panels, glow edges, masks, grids, and controlled depth cues",
+        "motion": "scroll reveals, shared-layout movement, spotlight, parallax, and 3D-adjacent effects"
+      },
+      "borrow": [
+        "use a strong visual anchor when the product has real media or a meaningful object",
+        "translate one block's composition into the target content and responsive order",
+        "bound scroll and parallax to a readable document flow",
+        "keep implementation ownership local instead of treating a block as a finished page"
+      ],
+      "reject": [
+        "do not use glow, gradients, or 3D as a substitute for product proof",
+        "do not put every section in a cinematic hero treatment",
+        "do not make scroll choreography hide copy, controls, or mobile content"
+      ],
+      "useWhen": ["a real object or media can carry a landing section", "the product needs one high-impact visual block"],
+      "avoidWhen": ["the surface is a dense operational tool", "the visual effect would be the only evidence of value"]
+    },
+    {
+      "id": "obsidian-ui",
+      "label": "Obsidian UI",
+      "url": "https://www.obsidianui.dev/",
+      "sourceType": "source-owned-showcase",
+      "roles": ["motion-language", "micro-interaction", "component-showcase"],
+      "keywords": ["obsidian ui", "react", "tailwind", "motion", "cursor", "scroll", "hover", "interaction", "agent", "微交互", "滚动"],
+      "bestFor": ["micro-interaction system", "cursor and scroll behavior", "dark product surface", "agent or developer UI polish"],
+      "visual": {
+        "family": "dark interaction-first React component collection",
+        "palette": "near-black surfaces with restrained luminous accents and high-contrast specimens",
+        "typography": "compact UI labels supporting a strong interactive object",
+        "layout": "working demo first, implementation entry point nearby, grouped by interaction job",
+        "surfaces": "contained frames designed to expose pointer, scroll, focus, and state feedback",
+        "motion": "cursor, hover, scroll, layout, and local state transitions with direct manipulation"
+      },
+      "borrow": [
+        "organize effects by the user interaction they clarify",
+        "keep pointer and scroll behavior bounded to a target object",
+        "make the source and implementation surface inspectable",
+        "provide keyboard, touch, reduced-motion, and no-JS fallbacks"
+      ],
+      "reject": [
+        "do not treat a dark canvas or glow as a required theme",
+        "do not ship pointer effects without touch and keyboard equivalents",
+        "do not hide a primary action behind a showcase interaction"
+      ],
+      "useWhen": ["the interface needs direct-manipulation polish", "a developer or agent surface benefits from bounded interaction detail"],
+      "avoidWhen": ["the target audience needs maximum visual quiet", "the effect cannot be explained without a pointer"]
+    },
+    {
+      "id": "design-spells",
+      "label": "Design Spells",
+      "url": "https://designspells.com/",
+      "sourceType": "curated-inspiration-gallery",
+      "roles": ["visual-language", "motion-proof", "micro-interaction"],
+      "keywords": ["design spells", "micro interaction", "interaction", "hover", "scroll", "gesture", "mobile", "desktop", "inspiration", "灵感", "微交互"],
+      "bestFor": ["micro-interaction research", "interaction vocabulary", "mobile and desktop behavior comparison", "polish review"],
+      "visual": {
+        "family": "curated interaction pattern gallery",
+        "palette": "varies by specimen; the value is the interaction pattern rather than a shared theme",
+        "typography": "catalog labels and short pattern descriptions",
+        "layout": "filterable or categorized pattern browsing with focused examples",
+        "surfaces": "specimen-led examples where trigger, response, and context can be compared",
+        "motion": "hover, scroll, gesture, navigation, feedback, and mobile-specific micro behavior"
+      },
+      "borrow": [
+        "use the gallery to name the interaction pattern before implementing it",
+        "compare desktop, mobile, keyboard, and touch equivalents",
+        "study timing, trigger, response, and context separately",
+        "bring only the smallest pattern that improves comprehension or feedback"
+      ],
+      "reject": [
+        "do not treat a gallery entry as production code or license proof",
+        "do not copy a visual trick without its content and state context",
+        "do not add a pattern because it is memorable if it delays the task"
+      ],
+      "useWhen": ["the team needs interaction vocabulary or a polish reference", "the same state must work across pointer and touch contexts"],
+      "avoidWhen": ["the core layout or product object is still unresolved", "the pattern is decorative and has no state relationship"]
+    },
+    {
+      "id": "transitions",
+      "label": "Transitions.dev",
+      "url": "https://transitions.dev/skill",
+      "sourceType": "motion-reference",
+      "roles": ["motion-governance", "motion-language", "quality-reference"],
+      "keywords": ["transition", "motion", "review", "apply", "refine", "polish", "cleanup", "reduced motion", "fallback", "modal", "panel", "tabs", "动效", "过渡"],
+      "bestFor": ["named UI transition", "route continuity", "modal", "panel", "tabs", "motion audit"],
+      "visual": {
+        "family": "dark documentation and before/after motion comparison",
+        "palette": "near-black documentation surface with high-contrast demo panels and status colors",
+        "typography": "compact documentation type with command-like labels",
+        "layout": "comparison split, demo first, then installation, commands, and try-it prompts",
+        "surfaces": "contained interactive demos, clear good/bad labels, code command blocks",
+        "motion": "purposeful continuity, state feedback, cleanup, reduced-motion, final-state fallback"
+      },
+      "borrow": [
+        "review purpose and state relationship before tuning timing",
+        "separate apply from polish",
+        "make cleanup and reduced-motion part of the implementation contract",
+        "compare generic output with intentional output"
+      ],
+      "reject": [
+        "do not treat a transition recipe as a whole visual identity",
+        "do not add a runtime dependency for a CSS-level state change",
+        "do not use motion to cover weak layout or missing content"
+      ],
+      "useWhen": ["motion changes comprehension, continuity, or feedback", "the team needs a reviewable motion decision"],
+      "avoidWhen": ["no state relationship exists", "a static state is already clear"]
+    },
+    {
+      "id": "shadcn-ui",
+      "label": "shadcn/ui",
+      "url": "https://ui.shadcn.com/",
+      "sourceType": "source-owned-foundation",
+      "roles": ["foundation", "component-anatomy", "accessibility-reference"],
+      "keywords": ["shadcn", "accessible", "composable", "source", "component", "button", "dialog", "form", "table", "tailwind", "组件", "可访问性"],
+      "bestFor": ["React product UI", "source-owned component system", "forms", "dialogs", "navigation", "state coverage"],
+      "visual": {
+        "family": "neutral source-owned design-system foundation",
+        "palette": "black/white/gray baseline with semantic accents owned by the product",
+        "typography": "practical UI type with hierarchy carried by scale, weight, and spacing",
+        "layout": "component composition, dashboard blocks, and reusable navigation groups",
+        "surfaces": "simple primitives whose tokens can be replaced by the target product",
+        "motion": "behavior-first; motion is added only when the state relationship needs it"
+      },
+      "borrow": [
+        "copy behavior and component anatomy, not the demo skin",
+        "preserve keyboard, focus, semantics, and state coverage",
+        "let the target project own tokens, density, composition, and visual identity",
+        "use source ownership to keep the implementation inspectable"
+      ],
+      "reject": [
+        "do not install the whole catalog for one missing primitive",
+        "do not call the default neutral theme an art direction",
+        "do not confuse accessible behavior with finished visual hierarchy"
+      ],
+      "useWhen": ["a product needs reliable primitives or a source-owned React foundation", "state and accessibility coverage are the current gap"],
+      "avoidWhen": ["the project already has equivalent primitives", "the default skin would erase a deliberate visual language"]
+    }
+  ]
+}

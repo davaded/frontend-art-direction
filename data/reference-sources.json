@@ -1,0 +1,162 @@
+{
+  "version": 1,
+  "reviewedOn": "2026-09-21",
+  "selectionPolicy": {
+    "principles": [
+      "Match the product job and visual quality before matching geography, popularity, or market proximity.",
+      "Official product pages are stronger sources for product storytelling than generic inspiration galleries.",
+      "Use one source for object and brand narrative, another for feature proof or workflow, and a third only when it adds a distinct material, technical, or commerce lens.",
+      "A source is a candidate until its live page is inspected; the catalog never proves that a site is current or good for the target product."
+    ],
+    "tiers": [
+      {"id": "official-product", "weight": 5, "label": "official product or brand site"},
+      {"id": "official-system", "weight": 5, "label": "official design or platform system"},
+      {"id": "maintainer-showcase", "weight": 4, "label": "maintainer-run component or motion showcase"},
+      {"id": "curated-gallery", "weight": 2, "label": "curated inspiration gallery; discovery only"}
+    ]
+  },
+  "categories": [
+    {
+      "id": "hardware-product",
+      "label": "Hardware Product Story",
+      "keywords": ["hardware", "device", "laptop", "computer", "phone", "monitor", "camera", "audio", "speaker", "headphone", "peripheral", "keyboard", "mouse", "外设", "硬件", "设备", "电脑", "手机", "显示器", "键盘", "鼠标", "耳机", "音箱"],
+      "jobs": ["product-object", "material-story", "feature-proof", "comparison-path"],
+      "searchQueries": ["official hardware product page object first feature proof", "premium computer peripheral product page material performance", "official product comparison and buy flow hardware"]
+    },
+    {
+      "id": "peripheral",
+      "label": "Computer Peripheral",
+      "keywords": ["peripheral", "keyboard", "mouse", "trackpad", "webcam", "microphone", "stream deck", "dock", "desk setup", "外设", "键盘", "鼠标", "麦克风", "桌面"],
+      "jobs": ["product-object", "workflow-context", "feature-proof", "comparison-path"],
+      "searchQueries": ["official keyboard mouse peripheral product page workflow context", "premium desk setup hardware product page", "creator hardware product page feature proof"]
+    },
+    {
+      "id": "premium-consumer",
+      "label": "Premium Consumer Product",
+      "keywords": ["premium", "luxury", "design", "material", "finish", "craft", "高端", "材质", "工艺", "设计", "质感"],
+      "jobs": ["product-object", "material-story", "lifestyle-proof", "commerce-path"],
+      "searchQueries": ["official premium consumer hardware product story material lifestyle", "high end product website product object editorial proof"]
+    },
+    {
+      "id": "gaming-hardware",
+      "label": "Gaming Hardware",
+      "keywords": ["gaming", "esports", "rgb", "performance", "latency", "fps", "游戏", "电竞", "性能", "灯效"],
+      "jobs": ["performance-proof", "product-object", "configuration", "commerce-path"],
+      "searchQueries": ["official gaming peripheral product page performance proof", "gaming hardware configuration product website"]
+    },
+    {
+      "id": "general-product",
+      "label": "General Product Website",
+      "keywords": ["product", "brand", "launch", "landing", "官网", "产品", "品牌", "发布"],
+      "jobs": ["product-object", "feature-proof", "comparison-path"],
+      "searchQueries": ["official product website product object feature proof comparison"]
+    }
+  ],
+  "sources": [
+    {
+      "id": "apple-product",
+      "label": "Apple Mac / iPhone",
+      "sourceType": "official-product",
+      "qualityTier": 5,
+      "official": true,
+      "urls": ["https://www.apple.com/mac/", "https://www.apple.com/iphone/"],
+      "categories": ["hardware-product", "premium-consumer", "computing"],
+      "roles": ["product-object", "material-story", "feature-proof", "comparison-path", "commerce-path"],
+      "keywords": ["apple", "mac", "iphone", "laptop", "computer", "phone", "hardware", "minimal", "premium", "product", "官网", "电脑", "手机"],
+      "visualSignals": ["product object appears before explanation", "single-claim feature chapters", "large but controlled product imagery", "material and performance proof are separated", "comparison and buying path arrive after product understanding", "lifestyle imagery shows a use case instead of acting as decoration"],
+      "borrow": ["object-first first viewport", "one idea per scroll chapter", "feature proof follows the product claim", "late comparison and purchase guidance", "real product and lifestyle media with a clear job"],
+      "reject": ["do not copy Apple branding, copy, product framing, or white-space ratios literally", "do not hide practical information behind cinematic scrolling"],
+      "inspect": ["what is visible before the first scroll", "how each section names one product promise", "where specs, comparison, trade-in, and buy actions enter", "how mobile re-stages object, copy, and controls"]
+    },
+    {
+      "id": "teenage-engineering",
+      "label": "Teenage Engineering",
+      "sourceType": "official-product",
+      "qualityTier": 5,
+      "official": true,
+      "urls": ["https://teenage.engineering/products"],
+      "categories": ["hardware-product", "peripheral", "premium-consumer", "creator-hardware"],
+      "roles": ["product-object", "industrial-character", "material-story", "creator-workflow"],
+      "keywords": ["teenage engineering", "hardware", "synth", "computer", "creator", "industrial", "playful", "object", "产品", "硬件", "创作者"],
+      "visualSignals": ["strong industrial character", "product object carries brand identity", "compact copy with unusual but deliberate rhythm", "color and form are treated as product facts"],
+      "borrow": ["give the physical object a recognizable silhouette", "use a small set of product-specific visual rules", "let material, color, and interaction carry personality"],
+      "reject": ["do not add novelty color or playful copy without a real product character", "do not trade technical clarity for art direction"],
+      "inspect": ["object silhouette", "product detail scale", "how playful language is restrained by product facts", "whether the purchase path remains legible"]
+    },
+    {
+      "id": "logitech-mx",
+      "label": "Logitech MX",
+      "sourceType": "official-product",
+      "qualityTier": 5,
+      "official": true,
+      "urls": ["https://www.logitech.com/en-us/shop/p/mx-master-4"],
+      "categories": ["hardware-product", "peripheral", "productivity-hardware"],
+      "roles": ["product-object", "workflow-context", "feature-proof", "comparison-path"],
+      "keywords": ["logitech", "mx", "mouse", "keyboard", "desk", "productivity", "workflow", "peripheral", "鼠标", "键盘", "办公"],
+      "visualSignals": ["device shown in hand and desk context", "feature explanations connect to work outcomes", "product variants and buying choices remain discoverable", "technical detail is subordinate to use"],
+      "borrow": ["show the peripheral in the workflow it improves", "translate features into concrete user outcomes", "keep variants, compatibility, and purchase decisions close to the object"],
+      "reject": ["do not build a generic accessory grid", "do not use productivity claims without a visible interaction or compatibility proof"],
+      "inspect": ["hand and desk scale", "feature-to-benefit sequence", "compatibility and configuration information", "buy CTA placement"]
+    },
+    {
+      "id": "elgato-creator-hardware",
+      "label": "Elgato Creator Hardware",
+      "sourceType": "official-product",
+      "qualityTier": 5,
+      "official": true,
+      "urls": ["https://www.elgato.com/us/en/s/stream-deck"],
+      "categories": ["hardware-product", "peripheral", "creator-hardware"],
+      "roles": ["product-object", "creator-workflow", "feature-proof", "configuration"],
+      "keywords": ["elgato", "stream deck", "creator", "streaming", "control", "workflow", "macro", "hardware", "创作", "直播", "控制"],
+      "visualSignals": ["hardware and software relationship is explicit", "controls are shown as a workflow system", "configuration is a product benefit", "feature proof uses real states rather than abstract claims"],
+      "borrow": ["show the device inside the workflow system", "make configuration and extensibility visible", "use stateful product demos as evidence"],
+      "reject": ["do not present a static hardware render without the software relationship", "do not turn every control into a glowing dashboard"],
+      "inspect": ["hardware-software pairing", "workflow before specification", "configuration proof", "stateful demo fallback"]
+    },
+    {
+      "id": "bang-olufsen",
+      "label": "Bang & Olufsen",
+      "sourceType": "official-product",
+      "qualityTier": 5,
+      "official": true,
+      "urls": ["https://www.bang-olufsen.com/en/us"],
+      "categories": ["hardware-product", "premium-consumer", "audio"],
+      "roles": ["product-object", "material-story", "lifestyle-proof", "commerce-path"],
+      "keywords": ["bang olufsen", "audio", "speaker", "headphone", "material", "craft", "premium", "耳机", "音箱", "材质"],
+      "visualSignals": ["material and finish are treated as primary product content", "quiet editorial pacing", "lifestyle context supports the physical object", "commerce remains available without dominating the story"],
+      "borrow": ["use close material proof when material is a product differentiator", "make finish and object identity part of navigation", "keep commerce visible but subordinate to product understanding"],
+      "reject": ["do not use luxury whitespace when the product lacks material evidence", "do not replace specs or compatibility with atmosphere"],
+      "inspect": ["material close-ups", "finish selection", "object-to-room scale", "purchase path and technical detail balance"]
+    },
+    {
+      "id": "framework-computer",
+      "label": "Framework Computer",
+      "sourceType": "official-product",
+      "qualityTier": 5,
+      "official": true,
+      "urls": ["https://frame.work/"],
+      "categories": ["hardware-product", "computing", "technical-product"],
+      "roles": ["product-object", "technical-proof", "comparison-path", "trust-proof"],
+      "keywords": ["framework", "laptop", "repairable", "modular", "upgrade", "technical", "透明", "模块化", "可维修"],
+      "visualSignals": ["technical transparency is part of brand value", "components and upgrade paths are made legible", "product claims are supported by concrete details", "trust is built through information rather than decoration"],
+      "borrow": ["make construction, compatibility, or serviceability visible when it matters", "turn technical proof into a readable product story", "show the long-term ownership argument"],
+      "reject": ["do not overload a consumer page with engineering detail before the product is understood", "do not make modularity a visual gimmick without real support"],
+      "inspect": ["proof hierarchy", "technical disclosure timing", "upgrade or configuration comparison", "trust and support path"]
+    },
+    {
+      "id": "razer-gaming-hardware",
+      "label": "Razer Gaming Hardware",
+      "sourceType": "official-product",
+      "qualityTier": 5,
+      "official": true,
+      "urls": ["https://www.razer.com/"],
+      "categories": ["gaming-hardware", "peripheral"],
+      "roles": ["product-object", "performance-proof", "configuration", "commerce-path"],
+      "keywords": ["razer", "gaming", "esports", "rgb", "latency", "performance", "mouse", "keyboard", "电竞", "游戏", "灯效"],
+      "visualSignals": ["performance and identity are expressed together", "configuration and compatibility are prominent", "high contrast is used for a specific audience rather than as a default"],
+      "borrow": ["make performance measurable", "connect customization to a real use case", "use a stronger accent only when the audience expects it"],
+      "reject": ["do not import RGB, glow, or aggressive contrast into a calm productivity product", "do not let spectacle hide compatibility and purchase facts"],
+      "inspect": ["performance evidence", "configuration surface", "audience-specific contrast", "mobile commerce behavior"]
+    }
+  ]
+}

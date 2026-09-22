@@ -1,0 +1,61 @@
+{
+  "version": 1,
+  "palettes": [
+    {
+      "id": "adaptive-neutral",
+      "label": "Adaptive Neutral",
+      "keywords": ["adaptive", "general", "neutral", "evidence", "通用", "适配", "中性"],
+      "roles": {"canvas": "#F4F4F2", "surface": "#FFFFFF", "text": "#1B1B1A", "muted": "#70706B", "border": "#D8D8D3", "accent": "product-owned", "positive": "#2E7D5A", "danger": "#B84A4A"},
+      "note": "Keep the base quiet while the real product, content, or object supplies the identity; do not turn the neutral base into a default brand."
+    },
+    {
+      "id": "neutral-ink",
+      "label": "Neutral Ink",
+      "keywords": ["precision", "app", "data", "enterprise", "克制", "数据"],
+      "roles": {"canvas": "#F6F7F9", "surface": "#FFFFFF", "text": "#17202A", "muted": "#65717D", "border": "#D9E0E7", "accent": "#2557D6", "positive": "#16855B", "danger": "#C43D3D"},
+      "note": "Use semantic accents sparingly; validate contrast in every state."
+    },
+    {
+      "id": "warm-paper",
+      "label": "Warm Paper",
+      "keywords": ["editorial", "warm", "humanist", "portfolio", "photo", "image", "creative", "温暖", "内容", "图像"],
+      "roles": {"canvas": "#F5F0E8", "surface": "#FFFDF9", "text": "#28241F", "muted": "#756C61", "border": "#D8CEC0", "accent": "#A94D2C", "positive": "#3B775A", "danger": "#B53A3A"},
+      "note": "Do not let warmth collapse into low contrast or beige-only UI."
+    },
+    {
+      "id": "cool-technical",
+      "label": "Cool Technical",
+      "keywords": ["developer", "monitoring", "research", "technical", "技术", "监控"],
+      "roles": {"canvas": "#EEF3F7", "surface": "#FBFDFF", "text": "#122230", "muted": "#5B7080", "border": "#C9D7E1", "accent": "#087F9B", "positive": "#257C56", "danger": "#B33D49"},
+      "note": "Use color to explain state or category, not to decorate every row."
+    },
+    {
+      "id": "dark-instrument",
+      "label": "Dark Instrument",
+      "keywords": ["instrument", "media", "command", "night", "dark", "仪表", "媒体"],
+      "roles": {"canvas": "#11161B", "surface": "#1A2128", "text": "#F1F5F7", "muted": "#9BAAB4", "border": "#33404A", "accent": "#74C7B8", "positive": "#71C78E", "danger": "#F08080"},
+      "note": "Keep the light surface and focus states explicit; do not hide boundaries in black."
+    },
+    {
+      "id": "high-contrast-accent",
+      "label": "High Contrast Accent",
+      "keywords": ["consumer", "commerce", "action", "bold", "consumer", "消费"],
+      "roles": {"canvas": "#F8F8F6", "surface": "#FFFFFF", "text": "#151515", "muted": "#656565", "border": "#D7D7D2", "accent": "#D94724", "positive": "#247A57", "danger": "#B32736"},
+      "note": "One confident accent is enough; reserve semantic colors for semantic states."
+    },
+    {
+      "id": "studio-neutral",
+      "label": "Studio Neutral",
+      "keywords": ["hardware", "device", "product", "industrial", "studio", "material", "硬件", "设备", "产品", "工业", "材质"],
+      "roles": {"canvas": "#F5F5F7", "surface": "#FFFFFF", "text": "#1D1D1F", "muted": "#6E6E73", "border": "#D2D2D7", "accent": "product-owned", "positive": "#248A3D", "danger": "#D70015"},
+      "note": "Keep the canvas quiet and let the actual product finish or brand accent own the identity; do not copy a platform's exact palette."
+    },
+    {
+      "id": "tonal-studio",
+      "label": "Tonal Studio",
+      "keywords": ["premium", "high-end", "luxury", "refined", "finish", "flagship", "studio", "material", "brand", "质感", "高级", "高端", "精致", "工艺", "旗舰", "品牌"],
+      "roles": {"canvas": "#F3F3F1", "surface": "#FFFFFF", "text": "#171717", "muted": "#70706C", "border": "#D9D9D5", "accent": "product-owned", "positive": "#2E7D5A", "danger": "#B84A4A"},
+      "note": "Use quiet neutral tones, not beige atmosphere; let the real product finish or one owned accent carry identity."
+    }
+  ]
+}

@@ -1,173 +1,208 @@
 ---
 name: frontend-art-direction
-description: "Use when Codex is asked to create or improve a frontend surface that should feel beautiful, premium, polished, coherent, or product-grade. Applies to new UI built from requirements, web apps, dashboards, landing pages, mobile UI, embedded displays, car/head-unit UI, design-system refreshes, UI redesigns, and rough/demo UI that must become a refined real product. Use when the task needs visual hierarchy, art direction, interaction feel, motion/animation, 3D or model-based visual experiences, component craft, responsive/cross-device presentation, or DESIGN.md visual memory."
+description: Use when building or improving frontend UI that must feel intentional, product-specific, and visually verified instead of generic, especially when the user names a reference website or asks for a similar visual experience. Covers apps, dashboards, editors, marketing surfaces, mobile or embedded UI, and meaningful motion or 3D. It is not for backend-only work or a tiny CSS fix unless explicitly invoked.
+metadata:
+  version: "1.0.0"
 ---
 
 # Frontend Art Direction
 
-## Mission
+Make the visible product better without making the process expensive, vague, or theatrical. The default outcome is working UI with a clear point of view, complete states, useful motion, and visual proof.
 
-Elevate frontend UI and interaction quality with art-direction thinking, high-quality references, visual hierarchy, motion taste, component craft, and real implementation. Think like an art director, then build like a product engineer.
+## Operating Contract
 
-This skill is not a document generator and not a generic component cookbook. Its purpose is to make the visible product more beautiful, premium, coherent, and interaction-polished. If the user gives only product requirements and asks to build a frontend from scratch, treat art direction as part of product definition instead of waiting for a separate "make it beautiful" request. If the user asks for development, deliver working UI, not only a brief or DESIGN.md.
+- Inspect the project before choosing a style, library, font, animation, or hero layout.
+- Treat the user's workflow, content, device, and existing system as the source of truth. External references fill named gaps; they do not replace product understanding.
+- Use a restrained product surface when content or media is weak. Strong expression must be earned by a real product, data, media, or spatial object.
+- Asset priority is user-provided -> existing/official -> high-quality searched -> generated -> deliberate assetless composition. Never hand off placeholders, low-resolution filler, random stock, or visibly flawed generated media.
+- Every substantial surface gets a premium-finish pass: grayscale hierarchy, optical alignment, type ceiling, material layers, specific copy, and one restrained authored detail. “Premium” is not a gradient, glass layer, giant heading, or empty whitespace.
+- Reuse and repair local primitives first. Use mature components for common controls and adapt their tokens, density, and states instead of shipping their default look.
+- Do not add a dependency to create a mood. Name the missing job, inspect the current library/docs, and choose the lightest compatible resource before installing anything.
+- Every substantial pass has at least one meaningful state transition and a reduced-motion or static fallback.
+- Before code, emit a Visual Direction Contract: composition grammar, alignment axis, dominant/counterweight, type ceiling, spacing rhythm, surface budget, visual treatment, signature device, authority source, and advisory AI-default checks.
+- Separate hard invariants from visual preferences. Accessibility, task/state completeness, responsive usability, asset truth, motion fallback, runtime integrity, and rendered proof are hard; local anti-AI checks are advisory and may be overridden by a project-owned `DESIGN.md`, an inspected reference, an accepted concept, explicit user direction, or a strong model proposal with an override record.
+- Run a creative-divergence check before implementation: if the model, artist, project memory, or reference yields a stronger coherent thesis than the local candidate, promote that thesis instead of preserving the candidate for consistency.
+- Verify the rendered surface. Static code or a successful build is not visual acceptance.
+- State facts, assumptions, missing evidence, and blockers. Do not spend the user's token budget on generic praise or a long design essay.
 
-## Operating Modes
+## Route The Request
 
-- **Direct development mode**: Use by default when the user asks to build, redesign, beautify, polish, or improve UI. This includes building a new frontend from plain requirements. Do the art-direction thinking explicitly enough to guide the work, edit the product, run it when possible, and verify the visible result.
-- **Direction-only mode**: Use when the user asks to discuss, plan, compare styles, or not edit code yet. Produce an art direction brief, reference analysis, or design options.
-- **Direction checkpoint mode**: Use when agent judgment, the user's request, and available evidence show the visual direction is uncertain and expensive to undo. Present a compact direction lock or v0 preview and wait for user confirmation before full implementation.
-- **Visual memory mode**: Use when the project will continue, the user asks for a design system, or the UI direction should persist. Create or update `DESIGN.md`, then continue implementation if development was requested.
+Use the smallest mode that can answer the request:
 
-## Scope Calibration
+1. **Fast polish**: one component, one state, or one local spacing/type/color problem. Inspect the local pattern, make the smallest visible change, and verify that state.
+2. **Product UI**: app, dashboard, editor, settings, commerce, developer tool, or embedded surface. Optimize for task clarity, density, trust, state coverage, and responsive input behavior.
+3. **Media-led**: landing, portfolio, launch, product story, model viewer, or spatial surface. Use this only when real media or a meaningful object can carry the first screen; otherwise downgrade to Product UI.
+4. **Reference-led build**: the user says “像/类似/参考某个网站” or names a URL and expects a working result. Treat this as implementation work, not a moodboard request.
+5. **Direction-only**: the user asks for options, a plan, or analysis without implementation. Return a compact direction decision and implementation contract.
 
-Use the full workflow for new screens, redesigns, direction changes, visually weak demos, or work that affects several components. Use direction checkpoints only when ambiguity plus cost-of-wrong-direction justify stopping; if the user gave a clear direction or asked the agent to decide, proceed with a short recorded assumption. Use a fast path for small polish tasks such as one control, one dialog, a local spacing/type/color issue, or a minor state fix.
+Read [references/operating-modes.md](references/operating-modes.md) when the work is substantial, ambiguous, or likely to affect several screens.
 
-Fast path:
+## The Four Passes
 
-1. Inspect the affected surface and existing component or token pattern.
-2. Name the visible problem and the intended correction in one or two sentences.
-3. Skip external reference search unless the local pattern is weak or the user asks for broader direction.
-4. Make the smallest visible improvement that preserves the product's current visual language.
-5. Verify the changed state on the real surface when possible.
+### 1. Inspect
 
-## Core Workflow
+For every frontend request, start with the decision pipeline. Keep the scan and response compact for a tiny local fix, but do not skip the capability checks. `<skill-root>` means the directory containing this `SKILL.md`; if the installer does not expose it directly, resolve that directory before running the command:
 
-1. Identify the product character and canvas: product type, audience, device class, input method, viewing distance, density, usage context, and primary workflow.
-2. Inspect the existing UI before changing it: current components, tokens, theme files, screenshots, live page, or device surface. If building from scratch, inspect the app shell, tech stack, routes, content model, real content/data availability, and media/assets before choosing a visual direction.
-3. Run the requirement-first evidence workflow before meaningful implementation. First frame the requirement and scene: user goal, workflow, surface type, density, input model, device, critical states, real content/data/assets, and risk if wrong. Then inspect local evidence: `DESIGN.md`, `AGENTS.md`, rules, `package.json`, components, tokens, themes, existing screens, stories, assets, installed UI/motion/chart/icon/model libraries, and weak primitives. For substantial or vague work, create a short Design Read and context dials for design variance, motion intensity, information density, and component distinctiveness before choosing style or components. Use `references/requirement-evidence-workflow.md` and `references/design-read-and-dials.md`.
-4. Decide whether a direction checkpoint is required by combining agent judgment, the user's request, local evidence, direction spread, implementation cost, and reversibility. Use `references/direction-advisor-checkpoints.md`: if uncertainty is high and the cost of being wrong is high, propose three differentiated direction options or a compact Direction Lock, each grounded by a Style Anchor Card from `references/style-anchor-recipes.md`, then wait for user confirmation before full implementation. If the user clearly requested a direction or asked the agent to decide, record a Direction Assumption and continue.
-5. Search externally only for gaps discovered by the requirement frame and local evidence scan. Search exact needs rather than generic beauty: dashboard density, editor toolbars, chart interaction, list reordering, route continuity, form validation, command surfaces, product media, 3D inspection, or component states. Prefer user-provided references first; then add GitHub/npm/component demos/design-system pages/real product references when the local system is insufficient or missing evidence. External references should fill a job, not become a moodboard by default.
-6. Ingest 2-4 references before meaningful implementation and classify each by role. Use user-provided references first, then decide whether each source is foundation/quality evidence, project visual memory, visual-language direction, component/motion implementation, spatial/media execution, functional frontend utility, asset/icon material, or an optional flow/state check. getdesign.md, public `DESIGN.md`, Apple HIG, Material, Carbon, Polaris, Radix, typography, color, layout, accessibility, and token references are foundation constraints for quality and consistency, not moodboards. Use same-category products, Mobbin, Page Flows, Nicelydone, and SaaS Interface only as optional pattern/flow checks unless the user explicitly chose one as visual direction. Inspect each reference enough to create a Reference Evidence Card; do not proceed from named references only. For substantial work, inspect at least one real reference website, product surface, component demo, design-system page, or user-provided visual reference before implementation. See `references/reference-ingestion.md` and `references/reference-quality.md`. For direction advisor and checkpoint rules, see `references/direction-advisor-checkpoints.md`. For lightweight style anchors and recipe discipline, see `references/style-anchor-recipes.md`. For design read and context dials, see `references/design-read-and-dials.md`. For type identity, font pairing, component context decisions, component shape language, and avoiding repeated default UI, see `references/type-and-component-identity.md`. For reference website/component execution, see `references/reference-component-execution.md`. For content/media readiness, surface mode, and expression budget, see `references/content-media-readiness.md`. For avoiding bland middle-ground output, see `references/taste-positioning.md`. For layout, typography, type scale, and color foundations, see `references/visual-foundations.md`. For imagery, material, atmosphere, motif, and brand-like visual language, see `references/visual-language.md`. For motion, animation, 3D, models, and spatial interaction, see `references/motion-spatial-language.md`. For GSAP timeline, ScrollTrigger, plugin, React/Next, cleanup, and performance implementation patterns, see `references/gsap-execution-patterns.md`. For concrete component, motion, model, functional utility, and icon sources, see `references/frontend-resource-catalog.md`.
+```bash
+node <skill-root>/scripts/audit.mjs <project-root> \
+  --query "<product, screen, or implementation question>" --format md
+```
 
-When the user provides detailed UI build prompts or asks whether prompt examples have reference value, use `references/high-fidelity-prompt-patterns.md` to extract implementation-grade prompt structure. When those prompts are media-led, cinematic, object/character-led, portfolio-editorial, or experiential landing pages, use `references/media-led-experiential-patterns.md`. Treat these as style-specific references, not default aesthetics.
+It runs the full local pipeline on every substantial pass: local evidence, dependency graph, design intelligence, all saved reference lenses, resource provenance, the reference/build contract, the internal Transitions.dev motion review, and the compact `Decision / Changed / Proof / Open` contract. Motion is on by default; add `--offline` only when the private motion cache must not be refreshed.
 
-7. Form a short Requirement Frame, Local Evidence Scan, Design Read, Context Dials, optional Direction Options or Direction Lock, Style Anchor Card, Type Identity Decision, Component Context Decisions, Component Shape Language, External Evidence set, Scene Fit Decision, Reference Translation Brief, Reference Website Pass, Component Adoption Plan, Content/Media Readiness Card, Surface Mode, Expression Budget, Art Direction Brief, Taste Positioning Card, Medium Decision, and Implementation Contract before implementation when the work is substantial or direction-sensitive. Use them as the visual compass and execution contract, not as a stopping point. See `references/requirement-evidence-workflow.md`, `references/design-read-and-dials.md`, `references/direction-advisor-checkpoints.md`, `references/style-anchor-recipes.md`, `references/type-and-component-identity.md`, `references/reference-ingestion.md`, `references/reference-component-execution.md`, `references/content-media-readiness.md`, `references/art-direction-brief.md`, and `references/taste-positioning.md`.
-8. Run the quality gates in `references/visual-quality-gates.md`: requirement diagnosis, local evidence scan, design read and context dials, direction checkpoint decision, reference stack, component execution, content/media readiness, surface mode, expression budget, brief, taste positioning, composition, visual language, type/component identity, motion/spatial language, component/state pass, resource discipline, visual evidence pack, and self-iteration.
-9. Choose the strongest visual medium before implementation: static interface, image/photo, illustration, animation/motion, 3D/model, or a hybrid. Pick the medium that best serves the product character, workflow, state changes, content, device, and performance budget; briefly note why the obvious alternatives are weaker. Then implement a stance before decoration: design stance, visual anchor, signature move, signature interaction, layout, density, proportion, hierarchy, content grouping, typographic rhythm, visual language, motion/spatial language, and primary workflow come before color, shadow, gradients, or animation. Lock type scale before styling: display-size text is off by default and is only a rare exception for surfaces that genuinely need a display role. Good copy, imagery, animation, models, data objects, or editorial material are necessary support for large type, not permission to use it. Use display-size text only when the product job, reference evidence, content role, and supporting medium all justify that scale; otherwise use restrained type and create quality through composition, density, state, and interaction. If the result feels bland, safe, or middle-ground, use `references/taste-positioning.md`. If it feels mechanical, use `references/expressive-composition.md`. If it feels visually generic or lifeless, use `references/visual-language.md`. If motion, animation, or models feel absent, decorative, or generic, use `references/motion-spatial-language.md`.
-10. Implement with existing project patterns and mature components. Improve primitives first when weak buttons, inputs, lists, dialogs, or cards would drag down the whole UI.
-11. Treat every visible state change as a design moment: hover, focus, press, loading, empty, error, success, navigation, filtering, and transitions.
-12. Translate the same aesthetic across devices instead of merely scaling the layout.
-13. Verify the real surface with browser, screenshot, emulator, device, or canvas checks when available. For existing UI, compare before and after. For new UI, compare the result against the requirement frame, local evidence, scene fit decision, brief, and references. Fix obvious visual defects before finishing.
+For a narrower read, run the local scanner directly:
 
-## Art-Direction Priorities
+```bash
+node <skill-root>/scripts/inspect-project.mjs <project-root> --format md
+```
 
-Prioritize these quality dimensions:
+When the repository is large or the question is specific, query the local map before reading broadly:
 
-- **Product character**: The UI should have a clear identity: calm, precise, immersive, premium, warm, editorial, utilitarian, playful, cinematic, or another intentional character.
-- **Requirement fit**: Layout, density, component choice, motion, visual medium, and typography should come from the user's workflow, surface type, device, content, and risk. Do not choose expressive styling before the requirement is understood.
-- **Checkpoint discipline**: Pause for direction confirmation only when ambiguity or visual risk is high. Do not ask ritual questions for small, clear, local UI work.
-- **Style anchor discipline**: For vague or new visual directions, use a concrete anchor with signature move, borrow, avoid, applicable scene, and misuse risk. Do not proceed from style labels like "clean modern premium."
-- **Local evidence first**: Existing components, tokens, themes, routes, assets, and shipped screens are the first design system. Preserve, extend, or repair them before importing a new visual language.
-- **Taste stance**: Choose a visible stance. Do not average references into "clean modern premium." The result should be clearly restrained, clearly expressive, kinetic, object-led, editorial, instrument-like, or consumer-characterful.
-- **Design read and dials**: Read the scene before choosing a look. Let design variance, motion intensity, information density, and component distinctiveness come from the user's requirement, product workflow, references, and local evidence.
-- **Type identity**: Font family, pairing, numeric treatment, and CJK/multilingual behavior should come from the scene and style anchor. Do not use one default font across every product category unless it is an intentional token-backed decision.
-- **Component morphology**: Define a context-driven shape language for every major component family: navigation, controls, forms, tables, lists, panels, dialogs, media, charts, models, state feedback, and cards. Do not default every region to the same square or rounded rectangle.
-- **Content/media readiness**: Before expressive styling, classify whether the project has placeholder content, real data/workflow, a strong product/data/media object, or high-quality editorial/model/animation media. Let readiness set the surface mode and expression budget.
-- **Medium fit**: Choose static UI, photography, illustration, motion, 3D/model, or a hybrid because it best serves the scene. Do not default to screenshots, stock imagery, component animation, or 3D decoration when another medium communicates the product better. If high-quality material is unavailable, use restrained interface craft instead of pretending the surface is a cinematic hero.
-- **Reference taste**: Use references to raise judgment. Borrow principles, not screenshots. A resource catalog entry is not enough by itself; translate it through the product's character and workflow.
-- **Reference/component execution**: Substantial UI work must inspect actual reference pages or demos and use mature local or external components for common primitives. Do not hand-roll a component-less screen unless the task is tiny or the product requires custom primitives.
-- **Proportion and composition**: Tune scale, density, spacing, rhythm, balance, focal areas, and one product-specific visual anchor before decorative styling.
-- **Visual hierarchy**: Make the first read, primary action, secondary information, and detail layer obvious.
-- **Color and material**: Use color roles, contrast, background/foreground depth, borders, shadow, imagery, material, motif, and texture as one visual system.
-- **Typography**: Set readable type scale, weight, line height, numeric treatment, labels, and content tone from foundation references or project tokens. Use typographic contrast and rhythm to create character. Avoid oversized type as a substitute for design. In product tools, prefer dense, role-based type over hero-scale headings. Strong content or media can support a rare display moment, but it does not create the need for one; the surface must still require that scale.
-- **Component craft**: Use mature components for consistency and behavior, then customize composition and styling to fit the art direction.
-- **Interaction feel**: Make interactions fast, legible, restrained, and responsive to the device and input method. Motion, animation, and 3D should express state, continuity, product meaning, or spatial understanding.
-- **Real content**: Design with realistic copy, data, media, states, and edge cases. Avoid placeholder-only beauty.
+```bash
+node <skill-root>/scripts/project-map.mjs <project-root> \
+  --query "where is the settings form and its validation state?" \
+  --format md
+```
 
-## Component Craft
+Record only what is evidenced: framework and scripts, routes, components, tokens, assets, existing design memory, weak primitives, and constraints. If a project is not runnable, say so and keep the scan static.
 
-Use existing project components, design tokens, and theme conventions first. Do not introduce a new component language unless the current one is clearly blocking quality. For substantial new UI, create a Component Adoption Plan before implementation; common primitives should come from the local system or mature components, not ad hoc divs and one-off styles.
+When file relationships matter, query the repository graph instead of relying on path names:
 
-For web surfaces, prefer appropriate mature primitives such as shadcn/ui, Radix, Tailwind, lucide icons, Motion, TanStack Table, Recharts, or the project's existing equivalents. Add dependencies only when they fit the stack and task. Use `references/frontend-resource-catalog.md` to choose concrete motion, component, and icon resources when the existing stack needs support. Never let a copy-paste component library determine the product's visual identity.
+```bash
+node <skill-root>/scripts/project-graph.mjs <project-root> \
+  --query "where is the settings form and its validation state?" \
+  --format md
+```
 
-For mobile, Android, embedded, or car/head-unit UI, prefer platform components, existing app components, Material/Compose/XML theme tokens, and device-appropriate control sizing.
+For external inspiration, load the complete local reference inventory after the scan, then choose at most 2-4 implementation lenses by distinct job. All references are considered; only evidenced, non-redundant decisions are applied. Write what to borrow, reject, and translate:
 
-Good component use should produce complete states, accessible controls, coherent spacing, consistent icons, predictable behavior, and a recognizable component silhouette. Do not let a library's default look replace the product's art direction. For every major component family, ask what job it does, what input model it serves, what density it needs, what state cycle it has, and what motion or feedback makes it legible. Avoid a page where every section, feature, stat, form, and media area is the same component shape; choose panels, rows, rails, docks, canvases, media frames, tables, strips, drawers, sheets, timelines, charts, product objects, or cards only when those fit the workflow better.
+```bash
+node <skill-root>/scripts/reference-composition.mjs \
+  --query "<product, screen, or implementation question>" \
+  --profile "<product profile>" --style "<candidate stance>" \
+  --motion "<motion intent>" --format md
+```
 
-## Interaction Quality
+Read [references/reference-composition.md](references/reference-composition.md) for the role model. Rare UI, Rewamp UI, Beautiful UI, beUI, Magic UI, React Bits, Aceternity UI, and Obsidian UI are visual or specimen lenses; Rewamp UI is the focused component-workbench lens. Bencho and Design Spells are micro-interaction research; Transitions.dev is motion governance; shadcn/ui is a source-owned foundation. The selector decides which of them matter for this job rather than forcing a fixed bundle.
 
-High-end interaction is not spectacle. It is clear, immediate, and well-paced state change.
+When the user gives only a product type and no case, infer a provisional profile from the query and local evidence, label confidence and open evidence, and leave `selected` empty when no reference job is justified. When the request is only “做一个网站” or equivalent, use the adaptive default and do not infer commerce, dashboard, or editorial structure. Do not invent a visual skin from the saved examples.
 
-In direct development mode, a polished UI should not be static. Implement at least one meaningful motion or transition layer unless the user, platform, or accessibility context rules it out. Minimum acceptable motion is stateful and visible: press/focus feedback, panel reveal, route or tab continuity, loading/empty transition, list filtering continuity, drag/selection feedback, media/voice state feedback, or success/error response. A color-only hover change is not enough for substantial UI work.
+For product, brand, hardware, or peripheral work without a named case, run `scripts/reference-scout.mjs` and read [references/reference-discovery.md](references/reference-discovery.md). Choose live sources by product fit and demonstrated quality, not by geography or popularity; inspect official pages before borrowing any visible decision. When the scout returns a category source, pass it into the reference/build contract as the primary product direction; component and motion lenses support the build but cannot replace its object, material, proof, or first-viewport hierarchy.
 
-Check:
+For a greenfield, visually-led surface with no screenshot or live target, use a concept-first pass with the installed image-generation skill before coding. Treat the accepted concept as a visual hypothesis to translate into tokens, assets, sections, and states; skip it for small fixes or an established local design system.
 
-- Does every click, hover, focus, touch, drag, submit, and navigation have appropriate feedback?
-- Are loading, empty, error, disabled, success, and partial-data states designed rather than incidental?
-- Are transitions short and purposeful, generally using opacity, transform, or layout continuity rather than heavy effects?
-- Are mobile, touch, remote, rotary, or car-display flows free from hover-only affordances?
-- Does motion remain performant on the target device?
-- Do microcopy and state labels sound like a real product rather than template filler?
+Read [references/assets.md](references/assets.md) whenever visible media matters. User-provided assets are authoritative; otherwise find a high-quality attributable source or generate target-specific media. If nothing passes the quality bar, use a complete assetless composition or report the blocker instead of inserting a placeholder.
 
-When using component/motion resources such as transitions.dev, React Bits, Aceternity UI, HeroUI, or Spectrum UI, borrow both component structure and state behavior. Do not strip the motion away and leave a static clone.
+When the request names a reference website or says “make something like this”, generate an implementation contract before editing:
 
-## Cross-Device Translation
+```bash
+node <skill-root>/scripts/reference-build.mjs \
+  --query "<one-sentence request>" --project <project-root> --format md
+```
 
-Keep the same art direction across devices, but translate layout, density, control size, interaction feedback, and motion according to:
+Read [references/reference-build.md](references/reference-build.md). The contract is a construction input: visual genome, first viewport, page plan, component grammar, state/motion contract, responsive re-staging, asset fallback, build order, and acceptance gates. Continue into the target project's code and browser proof; do not stop after producing the contract.
 
-- viewing distance
-- input method
-- attention level
-- screen size and aspect ratio
-- performance constraints
-- task frequency and information density
+For a substantial request, create a short frame:
 
-Do not treat responsive design as shrinking. Reorganize hierarchy, navigation, and density for the canvas.
+```text
+Goal / workflow:
+Surface / device / input:
+Density / frequency:
+Real content, data, and media:
+Critical states:
+Top visible problems:
+Risk if wrong:
+```
 
-## DESIGN.md
+### 2. Choose
 
-Use `DESIGN.md` as project visual memory when it helps ongoing work. It is not the primary deliverable unless the user asks specifically for it.
+Use the local brief generator to get candidates, not authority:
 
-Create or update it when:
+```bash
+node <skill-root>/scripts/design-brief.mjs \
+  --query "<product and screen>" \
+  --project <project-root> \
+  --format md
+```
 
-- the project will keep evolving
-- a new visual direction has been established
-- styles are inconsistent across screens
-- the user asks for a design system, visual language, or persistent UI guidance
-- future agents or teammates need a stable art-direction source
+Read [references/design-system.md](references/design-system.md) when choosing type, color, component shape, content readiness, or a persistent `DESIGN.md`. The brief must expose:
 
-If `DESIGN.md` conflicts with visible product quality, improve the UI and update the document afterward. Do not obey stale design notes blindly. See `references/design-md.md`.
+- product profile and surface mode
+- design stance and one signature move
+- type ceiling and type roles
+- component shape language and card budget
+- Visual Direction Contract: first-viewport composition, alignment, dominant/counterweight, spacing rhythm, surface budget, visual stance/signature device, authority source, and advisory AI-default checks
+- motion purpose and fallback
+- what is intentionally not used
+- confidence and evidence gaps
+- scene dials, quality gates, anti-pattern watchlist, and implementation checks
+- a role-based reference composition with borrow, reject, and translate decisions
 
-## Verification
+Read [references/constraint-authority.md](references/constraint-authority.md) when a project has a `DESIGN.md`, the user supplies a strong visual direction, or a reference conflicts with a local default. Treat the strongest evidenced direction as authority and use local datasets to fill gaps, not to normalize the design.
 
-Before finishing UI development, verify the visible result where possible:
+Read [references/premium-finish.md](references/premium-finish.md) when the user asks for high-end, premium, refined, luxury, 高级, 质感, or when the first render feels generic. Run the finish pass before adding another reference or dependency.
 
-- Run the app or open the page.
-- Check desktop and relevant mobile/device viewports.
-- Inspect screenshots for hierarchy, spacing, overflow, contrast, alignment, visual coherence, and template-like or generic AI aesthetics.
-- Verify the content/media readiness decision: the final expression should match the readiness level, surface mode, and expression budget.
-- Inspect type scale specifically: no hero-sized heading, giant number, or marketing headline should dominate a compact product surface. For any display-size text, verify display need first, then locked typography reference, product context, and supporting content/media.
-- Exercise interaction states, not only the default screen.
-- Confirm at least one meaningful state transition or motion moment is implemented and visible, with reduced-motion behavior when appropriate.
-- Check console/build errors and performance red flags.
-- For existing UI, capture or inspect the before state and compare against the after state.
-- For new UI, compare the implemented surface against the Art Direction Brief and the selected references.
-- Do one self-iteration before final delivery when the first visible result has obvious composition, density, hierarchy, or taste problems.
+Pause for a direction lock only when the direction is genuinely ambiguous and expensive to undo. Otherwise record a Direction Assumption and continue. Never present three cosmetic variations of the same generic style.
 
-If full verification is blocked, state the blocker and provide the closest completed evidence.
+### 3. Build
 
-## Minimum Done Criteria
+Read [references/implementation.md](references/implementation.md) for substantial work. Build the composition and interaction model before decorative styling:
 
-For UI development, do not finish with design intent only. A complete pass should usually include:
+- first read, primary action, information hierarchy, and responsive re-staging
+- local or mature primitives with complete hover, focus, pressed, disabled, loading, empty, error, success, selected, and partial-data states where relevant
+- realistic copy/data and the actual product or workflow object
+- one signature interaction tied to a real state, not a decorative loop
+- accessible keyboard/touch behavior and reduced-motion behavior
 
-- a Requirement Frame, Local Evidence Scan, and Design Read for substantial work: surface type, workflow, density, local components/tokens/assets, weak primitives, context dials, and gaps to fill
-- a brief reference or direction decision appropriate to the task size, backed by inspected evidence
-- external references chosen to fill named gaps, not generic "beautiful UI" inspiration
-- a Reference Website Pass for substantial work: inspected URL/demo/screenshot/file evidence and the exact decisions borrowed
-- a Component Adoption Plan for substantial work: local/external components, states, motion source, icon source, and what was not hand-rolled
-- a content/media readiness level, surface mode, and expression budget for substantial UI work
-- an explicit medium decision for substantial UI: static, image/photo, illustration, motion/animation, 3D/model, or hybrid, with a reason tied to the product
-- real code edits to the visible surface
-- a desktop and target-device or target-viewport check when runnable
-- at least one interaction or state check beyond the default screen
-- at least one implemented stateful motion or transition layer for substantial UI work, unless explicitly inappropriate
-- a typography scale check against foundation references or project tokens, especially for oversized headings and numbers
-- a display-need and display-support check when large type is used: explain why the surface truly needs that scale, then name the content, image, animation, model, data object, or editorial material that makes it feel earned
-- an evidence pack when the work is substantial: requirement frame, design read/context dials, local evidence used, references used, components/resources used, type identity, component context decisions, largest text role/size, viewport or screenshot check, motion trigger, and reduced-motion or fallback note
-- one self-iteration when the first visible result has obvious hierarchy, spacing, text-fit, motion, generic-template, component-less, or reference-disconnected problems
+For a reference-led build, preserve the target product's content and workflow while borrowing the reference's visual grammar. Do not copy logos, brand names, proprietary assets, source code, exact copy, or an indistinguishable full-page clone. “Similar” means comparable hierarchy, material, rhythm, specimen behavior, and motion purpose translated into the target product.
 
-When feedback says the result has no beauty, no coordination, poor interaction, poor visuals, no components, samey components, wrong font, no reference-site influence, or a one-font/square-block look, treat it as an execution failure, not a subjective disagreement. Re-run the Design Read, Reference Website Pass, Component Context Decisions, and Component Adoption Plan before continuing, replace weak freehand primitives with mature components or stronger local primitives, and verify where references/components/motion are visible in the rendered result.
+Read [references/resources.md](references/resources.md) before adding a component, motion, chart, icon, media, or 3D dependency. Use the executable catalog to narrow the choice. Treat Bencho and Design Spells as inspiration-only unless source, license, and implementation evidence say otherwise; treat Rewamp UI, Magic UI, React Bits, Aceternity UI, and Obsidian UI as copy-and-adapt candidates, never as default skins:
 
-## Feedback Loop
+```bash
+node <skill-root>/scripts/resource-catalog.mjs \
+  --query "<missing technical job>" --stack <detected-stack> --format md
+```
 
-When the user says the result is ugly, generic, bland, lifeless, static, gimmicky, "食之无味", or the direction is wrong, treat it as art-direction calibration. Do not defend the previous aesthetic. Quickly identify whether the problem is taste stance, product character, reference choice, proportion, expressive composition, visual language, motion/spatial language, color/material, density, type scale, component language, or interaction feel, then revise or roll back the affected surface with a clear scope.
+The full audit always opens the internal motion bridge. Read [references/motion.md](references/motion.md) when the implementation needs detailed rules for motion, scroll, route continuity, GSAP, 3D, or model behavior; the final surface may still remain static when the reviewed state relationship does not justify animation.
+
+For every substantial pass, run the internal Transitions.dev bridge before editing, even when the final decision is to keep a state static. It fetches the pinned upstream Skill into a private cache when needed and returns the recipe source plus the `Review -> Apply -> Polish` contract; the user does not install or invoke another skill:
+
+```bash
+node <skill-root>/scripts/transitions-adapter.mjs \
+  --intent "<state or relationship>" --project <project-root> --phase all --format md
+```
+
+Read the returned upstream reference before applying it. Copy only the needed recipe into the target project, preserve cleanup and replay behavior, keep its reduced-motion guard, and provide a static/final-state fallback. Never add a motion dependency merely to reproduce a recipe.
+
+### 4. Prove
+
+Read [references/verification.md](references/verification.md). Run the product, inspect desktop and target mobile/device viewports, exercise one non-default state, and check console/build output. Capture the closest available evidence. Keep static checks, runtime checks, and visual checks separate in the report.
+
+For this skill itself, run:
+
+```bash
+npm test
+```
+
+The reference integrations are executable rather than name-only documentation: design intelligence (`brief`), visual direction (`direction`), repository graph (`graph`), role-based reference composition (`reference`), one-sentence implementation contracts (`reference-build`), compact response pipeline (`audit`), curated resources (`resource`), and the internal motion bridge (`motion`).
+
+## Output Contract
+
+Default to a short, decision-oriented response:
+
+```text
+Decision: <what changed and why>
+Changed: <files or surface>
+Proof: <commands, screenshots, states, or runtime evidence>
+Open: <only real blockers or unverified claims>
+```
+
+Use a longer brief only when the user asks for it, the direction is high-risk, or the artifact will be reused by another agent. Read [references/response-contract.md](references/response-contract.md) for the terse/deep modes.
+
+## Hard Invariants And Advisory Biases
+
+Hard invariants are never traded away for style: preserve semantic accessibility, task and state completeness, responsive usability, asset truth and rights, motion cleanup/reduced-motion/fallback, runtime integrity, and honest rendered proof.
+
+The following are advisory bias checks, not universal style bans: oversized type, equal-card walls, centered hero templates, default library skins, effect stacks, generic luxury palettes, weak media, and decorative motion. A project-owned `DESIGN.md`, inspected reference, accepted concept, explicit user direction, or evidence-backed model proposal may deliberately override them. Record the source, reason, evidence, risk, preserved invariants, and rendered proof in the direction contract.
+
+When feedback says the result is ugly, bland, generic, static, or expensive, do not defend the prior pass. Re-run Inspect, replace the weak decision, and verify the visible result again.
