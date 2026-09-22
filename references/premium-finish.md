@@ -12,6 +12,7 @@ Primary action:
 One authored visual idea:
 Type hierarchy and ceiling:
 Surface/material logic:
+Edge character, separation, and line policy:
 Spacing rhythm and alignment axis:
 Asset provenance and crop:
 State feedback and motion purpose:
@@ -32,9 +33,9 @@ Typography, spacing, alignment, and contrast are tuned by eye after the mechanic
 
 ### 3. Material discipline
 
-Use a small surface system: canvas, object surface, elevated/active surface, divider, and semantic states. Depth should come from tonal contrast, edge treatment, shadow behavior, and material-specific detail. Do not stack glass, blur, glow, noise, and gradients to manufacture depth.
+Use a small surface system: canvas, object surface, elevated/active surface, necessary divider, and semantic states. Depth should come from tonal contrast, edge treatment, inset, overlap, shadow behavior, and material-specific detail. Do not stack glass, blur, glow, noise, and gradients to manufacture depth.
 
-Use no more than two primary corner radii and three elevation treatments unless the product object requires more. Keep borders, shadows, and translucency optically consistent; a button, card, dialog, and hero should not each invent a different material language.
+Use a related corner hierarchy rather than one radius everywhere: the dominant stage is usually softest, secondary regions step down, and controls remain compact. Prefer spacing and tonal separation before borders. Keep borders, shadows, and translucency optically consistent; a button, card, dialog, and hero should not each invent a different material language. Sharper geometry remains valid when a technical task, object silhouette, inspected reference, or explicit direction requires it.
 
 ### 4. Composition with tension
 
@@ -57,6 +58,7 @@ Downgrade and recompose when the first pass relies on:
 - oversized display type carrying a weak concept;
 - a full-page gradient, glow, blur, noise, or glass layer;
 - identical rounded cards for hero, sections, metrics, and controls;
+- nested rectangles, repeated full-width dividers, or exposed 1px right-angle scaffolding carrying the whole layout;
 - black-and-gold or beige “luxury” styling without material evidence;
 - stock atmosphere, fake product renders, or generic AI copy;
 - excessive empty space hiding missing content;

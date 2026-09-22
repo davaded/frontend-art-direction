@@ -47,19 +47,18 @@ node <skill-root>/scripts/reference-composition.mjs \
 
 ### Rare UI
 
-Rare UI 的核心不是“浅紫色 + 大标题”，而是 **light editorial component gallery**：
+Rare UI 当前更接近 **dark organic component showcase**（2026-09-22 已检查桌面和移动端）：
 
-- 纸张感的浅色或淡紫画布，黑色/深色 specimen，单个橙色行动强调；
-- 粗体 grotesk display 与紧凑的中性说明文字形成层级；
-- 居中的首屏、宽留白、单列节奏，随后进入三列组件预览网格；
-- 先展示真实组件，再补短说明、复制入口或安装入口；
-- 动效局部发生在组件内部，强调直接操作、hover/play 和对象本身；
-- 组件外框尺寸稳定，避免交互时页面跳动；
+- 页面先用接近满屏、带明显大曲率的深色外壳建立整体轮廓，而不是靠多条直线切分首屏；
+- 顶部导航、安装命令和行动按钮是不同层级的圆润对象，不共享一个机械的圆角数值；
+- 主标题背后的有机形体既是视觉锚点，也是组件能力的证明，不是额外套上的装饰卡片；
+- 下方组件区不是平均三列，而是一个大 specimen 配合右侧较小 specimen 的非对称 mosaic；
+- preview frame 使用低对比边界和柔和圆角，内部组件承担主要视觉差异；
 - 产品证据先于评价、赞助和社交证明。
 
-适合借：组件展示方式、构图节奏、短文案、单一强调色、局部 specimen 动效。
+适合借：大/中/小三级曲率、有机主体代替分割线、漂浮式导航、命令与 CTA 组合、非对称 specimen mosaic、单一强调色和局部组件动效。
 
-不应照搬：浅紫画布作为万能主题、抽象 blob 作为缺少真实产品对象的替代品、把每个控件都做成新奇动画。
+不应照搬：默认黑底橙色、没有真实对象时硬造有机 blob、把所有控件都做成胶囊、或把每个交互都变成新奇动画。
 
 ### Rewamp UI
 
@@ -74,6 +73,10 @@ Rewamp UI 更像 **light indexed component workbench**，不是传统 landing pa
 适合借：大型组件库的信息架构、单 specimen 舞台、搜索/分类、稳定预览几何、工具轨、桌面到移动端的结构重排，以及“效果 -> 源码/安装/状态”的连续检查路径。
 
 不应照搬：把淡灰舞台、淡紫标记和大圆角变成任何产品的默认视觉；把多个背景、cursor、text effect 或卡片特效同时塞进一个业务页面；让视觉效果替代任务、语义、键盘/触摸路径或静态 fallback。
+
+### Shared Geometry Lesson
+
+Rare UI 和 Rewamp UI 的共同点不是“圆角越大越高级”，而是清楚的几何层级：最大舞台最柔和，内部 specimen 次之，控件更紧凑；开放区域主要靠留白、色阶、内嵌和重叠分组，直线只在索引、代码、表格或真实边界里出现。借鉴时优先翻译这种关系，不要复制某个固定 radius。
 
 ### Beautiful UI
 
@@ -139,7 +142,7 @@ shadcn/ui 是 source-owned foundation，不是成品视觉风格。借组件 ana
 | --- | --- | --- |
 | 一般产品 UI | shadcn/ui + 一个 visual language + Transitions.dev（仅在需要动效时） | 先保证行为和系统性，再确定个性 |
 | AI 工作台 | Beautiful UI + shadcn/ui + Transitions.dev | 状态可见、基础可靠、动效可审查 |
-| 组件/动效展示站 | Rare UI 或 Rewamp UI + beUI + Transitions.dev | Rare UI 偏编辑型 gallery；Rewamp UI 偏可搜索的单 specimen 工作台；beUI/Transitions 负责连续性与治理 |
+| 组件/动效展示站 | Rare UI 或 Rewamp UI + beUI + Transitions.dev | Rare UI 偏深色有机展示与非对称 specimen mosaic；Rewamp UI 偏可搜索的单 specimen 工作台；beUI/Transitions 负责连续性与治理 |
 | 数据工具 | shadcn/ui + Beautiful UI 或 beUI 的数据展示视角 | 信息层级优先，只有有意义的图表交互才借动效 |
 | 微交互打磨 | Bencho 或 Design Spells + 一个源码参考 + Transitions.dev | 先命名触发/反馈，再实现和验收，不把灵感库当依赖 |
 | 高影响力营销区块 | Aceternity UI 或 Magic UI + 真实产品媒体 + Transitions.dev | 借一个视觉锚点，保留内容、性能和 fallback |

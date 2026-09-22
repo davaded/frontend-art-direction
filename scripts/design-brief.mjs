@@ -70,7 +70,7 @@ function qualitySelection(queryTokens) {
   const quality = loadDataset("quality-gates.json");
   const dials = rankQualityRecords(quality.sceneDials, queryTokens, 2).filter((item) => item.score > 0);
   const rankedGates = rankQualityRecords(quality.qualityGates, queryTokens, 6);
-  const mandatoryGates = ["visual-direction", "constraint-authority"]
+  const mandatoryGates = ["visual-direction", "geometry-language", "constraint-authority"]
     .map((id) => quality.qualityGates.find((gate) => gate.id === id))
     .filter(Boolean);
   const gates = [...rankedGates];
@@ -85,7 +85,7 @@ function qualitySelection(queryTokens) {
     })
     .sort((left, right) => right.score - left.score || left.id.localeCompare(right.id))
     .slice(0, 4);
-  const baselineAntiPatterns = ["centered-hero-template", "card-wall", "type-scale-collapse", "generic-copy"]
+  const baselineAntiPatterns = ["centered-hero-template", "card-wall", "hard-edge-scaffolding", "type-scale-collapse", "generic-copy"]
     .map((id) => quality.antiPatterns.find((record) => record.id === id))
     .filter(Boolean);
   const antiPatterns = [...rankedAntiPatterns];
@@ -212,7 +212,7 @@ export function buildBrief({ query, projectRoot, overrides = {} }) {
       signatureMove: style.record.signature,
       signatureInteraction: motion.record.purpose,
       typeCeiling: profile.record.typeCeiling,
-      componentShape: "Use the profile layout and real workflow object; cards only for discrete repeated objects.",
+      componentShape: `${visualDirection.geometryRules.edgeCharacter}; ${visualDirection.geometryRules.cornerHierarchy}`,
       medium: profile.record.surfaceMode === "Spatial Experiential" ? "hybrid spatial object + usable controls" : profile.record.surfaceMode === "Editorial Marketing" ? "media-led or restrained editorial hybrid, pending asset check" : adaptiveDefault ? "adaptive surface with one primary object or task and a normal-flow fallback" : "static product UI with stateful transitions",
       intentionalOmissions: [...new Set([...style.record.avoid, ...profile.record.avoid])].slice(0, 8),
       sceneDials: quality.dials,
@@ -301,9 +301,15 @@ Local evidence: **${brief.evidence.localStatus}**${brief.evidence.localProject ?
 - First viewport: ${brief.visualDirection.firstViewport.layout}
 - Alignment: ${brief.visualDirection.firstViewport.alignmentAxis}
 - Card budget: ${brief.visualDirection.surfaceRules.cardBudget}
+- Edge character: ${brief.visualDirection.geometryRules.edgeCharacter}
+- Corner hierarchy: ${brief.visualDirection.geometryRules.cornerHierarchy}
+- Separation: ${brief.visualDirection.geometryRules.separation}
+- Line policy: ${brief.visualDirection.geometryRules.linePolicy}
+- Sharp exception: ${brief.visualDirection.geometryRules.sharpException}
 - Type rule: ${brief.visualDirection.typeRules.title}
 - Spacing rhythm: ${brief.visualDirection.spacingRules.rhythm}
 - Palette/material: ${visualTreatment.palette ?? "not recorded"}
+- Treatment geometry: ${visualTreatment.geometry ?? "not recorded"}
 - Signature device: ${visualTreatment.signatureDevice ?? "not recorded"}
 - Expression budget: ${visualTreatment.expressionBudget ?? "not recorded"}
 

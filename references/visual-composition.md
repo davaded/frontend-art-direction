@@ -13,6 +13,7 @@ Write these decisions before choosing colors, shadows, gradients, or animation:
 - **Below-fold peek**: the next proof or state that enters the first viewport and explains why the page continues.
 - **Type ceiling**: the largest title role the content and viewing distance can justify.
 - **Surface budget**: the maximum framed surfaces, radius family, and elevation levels allowed in the first viewport.
+- **Geometry contract**: edge character, corner hierarchy, separation strategy, line policy, and any localized sharp exception.
 - **Visual treatment**: the palette temperature, type relationship, material logic, media behavior, and one repeatable signature device that make the otherwise ordinary surface feel authored.
 
 If these are not named, the build is still choosing a template by accident.
@@ -44,6 +45,10 @@ Fix the largest silhouette problem first. Do not add another effect to a failed 
 Cards are a semantic choice, not a default wrapper. Prefer rows, rails, open bands, tables, media fields, drawers, sheets, timelines, and canvases when they describe the job more accurately.
 
 Use one primary radius family and a small elevation vocabulary. Pills are for compact status or navigation; they should not become the silhouette of every control. Establish canvas/object/action contrast before adding glass, glow, blur, noise, or gradients.
+
+For ordinary surfaces, default to soft structural geometry rather than hard-edge scaffolding. Keep the page field open, make the dominant stage the softest large contour, step down through panels and controls, and attempt spacing, alignment, tone, inset, crop, overlap, or depth before borders and dividers. Do not confuse this with rounding every section into a card. Read [geometry-language.md](geometry-language.md) for the full edge hierarchy and exceptions.
+
+Use straight rules only when they carry a scanning, comparison, focus, safety, code, table, or intentional art-direction job. Prefer local low-contrast separators over page-wide rules, and avoid several 1px lines meeting at exposed right angles unless the precise grid is the point.
 
 ## AI-Default Bias List
 

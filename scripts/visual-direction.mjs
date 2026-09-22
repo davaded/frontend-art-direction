@@ -70,6 +70,7 @@ function scoreTreatment(treatment, queryTokens, contextTokens, { profileId, styl
     ...(treatment.profileIds ?? []),
     ...(treatment.styleIds ?? []),
     treatment.signature,
+    treatment.geometry,
   ].join(" ")));
   const queryHits = queryTokens.filter((token) => searchable.has(token));
   const contextHits = contextTokens.filter((token) => searchable.has(token));
@@ -152,6 +153,7 @@ export function selectVisualTreatment(query = "frontend interface", {
     typography: selected.typography,
     composition: selected.composition,
     material: selected.material,
+    geometry: selected.geometry,
     signatureDevice: selected.signatureDevice,
     assetStrategy: selected.assetStrategy,
     expressionBudget: selected.expressionBudget,
@@ -232,6 +234,7 @@ export function selectVisualDirection(query = "frontend interface", {
     typeRules: selected.typeRules,
     spacingRules: selected.spacingRules,
     surfaceRules: selected.surfaceRules,
+    geometryRules: selected.geometryRules,
     contentRules: selected.contentRules,
     antiAiChecks: selected.antiAiChecks,
     advisoryChecks: advisoryChecks(selected.antiAiChecks, visualTreatment.antiAiChecks),
@@ -274,6 +277,7 @@ ${direction.directionLock}
 - Typography: ${treatment.typography ?? "not recorded"}
 - Composition: ${treatment.composition ?? "not recorded"}
 - Material: ${treatment.material ?? "not recorded"}
+- Geometry: ${treatment.geometry ?? "not recorded"}
 - Signature device: ${treatment.signatureDevice ?? "not recorded"}
 - Expression budget: ${treatment.expressionBudget ?? "not recorded"}
 
@@ -296,6 +300,10 @@ ${map(direction.spacingRules)}
 ## Surface Rules
 
 ${map(direction.surfaceRules)}
+
+## Geometry Rules
+
+${map(direction.geometryRules)}
 
 ## Content Rules
 

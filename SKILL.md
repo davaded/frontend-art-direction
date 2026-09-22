@@ -19,7 +19,7 @@ Make the visible product better without making the process expensive, vague, or 
 - Reuse and repair local primitives first. Use mature components for common controls and adapt their tokens, density, and states instead of shipping their default look.
 - Do not add a dependency to create a mood. Name the missing job, inspect the current library/docs, and choose the lightest compatible resource before installing anything.
 - Every substantial pass has at least one meaningful state transition and a reduced-motion or static fallback.
-- Before code, emit a Visual Direction Contract: composition grammar, alignment axis, dominant/counterweight, type ceiling, spacing rhythm, surface budget, visual treatment, signature device, authority source, and advisory AI-default checks.
+- Before code, emit a Visual Direction Contract: composition grammar, alignment axis, dominant/counterweight, type ceiling, spacing rhythm, surface budget, edge character, corner hierarchy, separation and line policy, visual treatment, signature device, authority source, and advisory AI-default checks.
 - Separate hard invariants from visual preferences. Accessibility, task/state completeness, responsive usability, asset truth, motion fallback, runtime integrity, and rendered proof are hard; local anti-AI checks are advisory and may be overridden by a project-owned `DESIGN.md`, an inspected reference, an accepted concept, explicit user direction, or a strong model proposal with an override record.
 - Run a creative-divergence check before implementation: if the model, artist, project memory, or reference yields a stronger coherent thesis than the local candidate, promote that thesis instead of preserving the candidate for consistency.
 - Verify the rendered surface. Static code or a successful build is not visual acceptance.
@@ -130,13 +130,15 @@ Read [references/design-system.md](references/design-system.md) when choosing ty
 - product profile and surface mode
 - design stance and one signature move
 - type ceiling and type roles
-- component shape language and card budget
-- Visual Direction Contract: first-viewport composition, alignment, dominant/counterweight, spacing rhythm, surface budget, visual stance/signature device, authority source, and advisory AI-default checks
+- component shape language, geometry hierarchy, and card budget
+- Visual Direction Contract: first-viewport composition, alignment, dominant/counterweight, spacing rhythm, surface budget, edge character, corner hierarchy, separation/line policy, visual stance/signature device, authority source, and advisory AI-default checks
 - motion purpose and fallback
 - what is intentionally not used
 - confidence and evidence gaps
 - scene dials, quality gates, anti-pattern watchlist, and implementation checks
 - a role-based reference composition with borrow, reject, and translate decisions
+
+Read [references/geometry-language.md](references/geometry-language.md) before a substantial generic build or whenever feedback says the result is square, rigid, over-divided, or too sharp. Default to softened structural geometry and non-border grouping, not rounded cards everywhere; preserve sharp geometry when the product or stronger authority source justifies it.
 
 Read [references/constraint-authority.md](references/constraint-authority.md) when a project has a `DESIGN.md`, the user supplies a strong visual direction, or a reference conflicts with a local default. Treat the strongest evidenced direction as authority and use local datasets to fill gaps, not to normalize the design.
 

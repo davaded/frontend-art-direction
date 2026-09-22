@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+- Added an executable geometry contract with softened structural defaults, corner hierarchy, non-border separation, line-purpose checks, sharp-context exceptions, and hard-edge scaffolding rejection.
+- Refreshed the Rare UI reference lens and recipe from live desktop/mobile inspection, including its dark organic shell, asymmetric specimen mosaic, and tiered edge hierarchy.
 - Added a dependency-aware `graph` command and queryable repository neighborhoods.
 - Added executable design quality gates, scene dials, anti-pattern checks, and implementation checks to `brief`.
 - Added a provenance-aware `resource` catalog with trust tiers, license boundaries, and rejection conditions.

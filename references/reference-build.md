@@ -42,7 +42,7 @@ Open the live reference or inspect the supplied image before writing UI code. Re
 - first-viewport composition and what enters below the fold;
 - navigation shape, content hierarchy, and section rhythm;
 - type roles, approximate scale, line length, and text density;
-- palette roles, material, border, radius, shadow, texture, and contrast;
+- palette roles, material, edge character, corner hierarchy, separation method, border/line purpose, shadow, texture, and contrast;
 - repeated component silhouettes and fixed-format frames;
 - interaction states, object continuity, and motion triggers;
 - desktop/mobile differences and any real media or data object.
@@ -91,9 +91,10 @@ Run the target app and capture at least:
 
 Compare hierarchy, not pixel identity: first read, object prominence, density, type rhythm, surface contrast, responsive order, interaction latency, and whether the borrowed idea is visible in the result. Iterate the largest visible mismatch first.
 
-For a named or selected reference, record and verify at least three fidelity anchors before polish:
+For a named or selected reference, record and verify four fidelity anchors before polish:
 
 - composition: first-viewport hierarchy, section rhythm, or specimen geometry;
+- geometry: edge hierarchy, separation strategy, line policy, and localized sharp exceptions;
 - material/type: surface contrast, type roles, spacing, borders, or media treatment;
 - interaction cadence: trigger, response, continuity, final state, and reduced-motion behavior.
 

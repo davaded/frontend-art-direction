@@ -4,24 +4,24 @@
     {
       "id": "rare-ui",
       "referenceId": "rare-ui",
-      "archetype": "editorial-component-gallery",
+      "archetype": "dark-organic-component-showcase",
       "firstViewport": {
-        "layout": "centered hero with a compact dark pill navigation, generous side margins, and the next specimen section visibly entering the viewport",
-        "mustShow": ["the product or component object", "one confident action", "a short proof sentence"],
+        "layout": "a near-full-viewport dark shell inset from the page edge with a generous outer radius, floating pill navigation, centered title/action, and an organic or object-led component form behind the content",
+        "mustShow": ["the product or component object", "one install/primary action pair", "a short proof sentence", "one soft visual anchor that belongs to the product"],
         "belowFoldPeek": "the first row of real interactive specimens"
       },
       "sections": [
         {
           "id": "hero",
           "purpose": "name the collection and establish the visual thesis",
-          "layout": "centered single column with restrained supporting copy",
+          "layout": "centered single column inside a broad rounded shell, with floating capsule navigation and an organic component silhouette behind the copy",
           "content": "specific component or media collection, not generic feature claims",
-          "components": ["compact navigation", "display heading", "install or copy action", "single accent action"]
+          "components": ["floating capsule navigation", "display heading", "install or copy command", "single accent action", "working organic/object component"]
         },
         {
-          "id": "specimen-grid",
+          "id": "specimen-mosaic",
           "purpose": "prove the product through working objects",
-          "layout": "stable three-column grid on desktop, one-column sequence on small screens",
+          "layout": "one dominant large specimen plus smaller stacked specimens on desktop; a deliberate one-column sequence on small screens",
           "content": "realistic states and short captions",
           "components": ["preview frame", "interactive specimen", "caption", "arrow action"]
         },
@@ -36,13 +36,13 @@
       "componentGrammar": [
         {
           "id": "preview-frame",
-          "shape": "soft low-radius light frame around a dark or high-contrast specimen tile",
+          "shape": "soft 16-24px dark frame around a contrasting live specimen; mosaic sizes vary but each frame keeps a stable local geometry",
           "states": ["idle", "hover", "active", "loading", "reduced-motion"],
           "behavior": "keep frame dimensions stable while the inner specimen changes"
         },
         {
           "id": "specimen-action",
-          "shape": "small text or icon-plus-text action with one accent color",
+          "shape": "compact command capsule or text/icon action paired with one vivid accent action",
           "states": ["idle", "hover", "focus", "pressed", "disabled"],
           "behavior": "copy, open, or replay the specimen without moving surrounding content"
         }
@@ -57,30 +57,30 @@
         "fallback": "the static specimen remains complete and understandable"
       },
       "responsive": {
-        "desktop": "centered hero plus three stable specimen columns",
-        "tablet": "two columns with captions kept visible",
-        "mobile": "single specimen sequence, navigation compressed, actions within thumb reach"
+        "desktop": "inset rounded hero shell plus an asymmetric large/small specimen mosaic",
+        "tablet": "reduce the mosaic to one dominant and one supporting column with captions visible",
+        "mobile": "preserve the soft outer shell, replace navigation with a menu, stack actions and specimens, and keep the main form visibly behind the content"
       },
       "assetStrategy": {
-        "hero": "use the actual product object or a restrained surface texture; do not invent a blob when the object is missing",
+        "hero": "use the actual product/component object or a target-owned organic form that demonstrates it; do not invent a generic blob when the object is missing",
         "specimens": "prefer live components or recorded states over decorative screenshots",
         "fallback": "poster or static final state with explicit loading and empty handling"
       },
       "tokenSeed": {
-        "canvas": "#F4F1F8",
-        "surface": "#FFFDFC",
-        "ink": "#111014",
-        "muted": "#77717E",
-        "accent": "#F06B35",
-        "border": "#E5DFE9",
-        "container": "1180px",
-        "radius": { "nav": "999px", "frame": "20px", "specimen": "14px", "control": "10px" },
-        "spacing": { "pageDesktop": "64px", "pageMobile": "20px", "section": "112px", "grid": "20px" },
-        "type": { "displayDesktop": "88px", "displayMobile": "48px", "body": "16px", "meta": "12px" },
-        "note": "starting values; compare the rendered first viewport and tune against the observed reference"
+        "canvas": "#000000",
+        "surface": "#121212",
+        "ink": "#F5F5F5",
+        "muted": "#A7A7A7",
+        "accent": "#FF4F0A",
+        "border": "#2B2B2B",
+        "container": "near-full viewport shell with an inner content measure around 1152px",
+        "radius": { "nav": "999px", "frame": "40-48px", "specimen": "16-24px", "control": "12-18px" },
+        "spacing": { "pageDesktop": "10px outer inset", "pageMobile": "6px outer inset", "section": "112-144px", "grid": "16-20px" },
+        "type": { "displayDesktop": "68-76px", "displayMobile": "42-48px", "body": "16-18px", "meta": "11-13px" },
+        "note": "starting values from the live desktop and mobile reference inspected on 2026-09-22; translate the edge hierarchy and object relationship, not the brand skin"
       },
-      "buildOrder": ["hero hierarchy", "preview frame geometry", "real specimen states", "responsive grid", "local motion", "proof band"],
-      "acceptance": ["the first viewport identifies the collection without a marketing essay", "the specimen carries meaning before its caption", "grid geometry does not jump during interaction", "the page still works with reduced motion"]
+      "buildOrder": ["outer shell and organic/object anchor", "hero hierarchy and command/action pair", "asymmetric preview mosaic", "real specimen states", "mobile re-staging", "local motion and proof band"],
+      "acceptance": ["the first viewport identifies the collection without a marketing essay", "large and small contours form a deliberate edge hierarchy instead of nested sharp boxes", "the specimen carries meaning before its caption", "mosaic geometry does not jump during interaction", "the page still works with reduced motion"]
     },
     {
       "id": "rewamp-ui",

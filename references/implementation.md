@@ -58,6 +58,9 @@ Below-fold proof:
 Type ceiling and roles:
 Spacing rhythm:
 Surface/card/radius/elevation budget:
+Edge character and corner hierarchy:
+Separation strategy and line policy:
+Localized sharp exceptions:
 Direction authority and source:
 Rules inherited from the authority source:
 Advisory defaults intentionally overridden:
@@ -66,7 +69,7 @@ Hard invariants preserved:
 Rendered proof required:
 ```
 
-Treat hard invariants as construction constraints. Treat the local visual direction and AI-default list as a starting hypothesis. A component can be technically correct and still fail if it breaks the authoritative axis, equalizes the visual weights without intent, exceeds the authority source's type ceiling, or spends the surface budget on decorative wrappers. It can also be correct to break a local heuristic when the stronger authority source makes the exception coherent and the rendered proof supports it.
+Treat hard invariants as construction constraints. Treat the local visual direction, geometry contract, and AI-default list as a starting hypothesis. A component can be technically correct and still fail if it breaks the authoritative axis, equalizes the visual weights without intent, exceeds the authority source's type ceiling, spends the surface budget on decorative wrappers, or rebuilds the page as nested border boxes. It can also be correct to break a local heuristic when the stronger authority source makes the exception coherent and the rendered proof supports it.
 
 ## Content And Media Contract
 
@@ -109,6 +112,7 @@ Preserve semantic controls, visible focus, keyboard order, touch targets, labels
 ```text
 Existing system: local tokens and list primitives preserved.
 Layout: split workspace with selected object and detail pane.
+Geometry: open workspace field, softly contoured preview stage, compact controls, tonal grouping before dividers.
 Components: local tabs, table, command menu; new product-specific preview frame.
 States: loading, empty, selected, filtered, error, success.
 Motion: selected row and preview continuity; 180-260ms; reduced motion keeps content visible.

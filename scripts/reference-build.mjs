@@ -569,6 +569,7 @@ export function buildReferenceBuild({
     },
     fidelityAnchors: {
       composition: visual.layout,
+      geometry: `${visualDirection.geometryRules.edgeCharacter}; ${visualDirection.geometryRules.separation}; ${visualDirection.geometryRules.linePolicy}`,
       material: visual.surfaces,
       type: visual.typography,
       interaction: visual.motion,
@@ -594,8 +595,9 @@ export function buildReferenceBuild({
       "Run the full local capability pipeline on every frontend pass: inspect, graph, brief, all reference lenses, product-reference scouting when a category exists, resource provenance, internal motion review, and rendered verification.",
       "When a product-reference scout returns a candidate, let its object/material/proof grammar lead the visual build; component and motion references may support it but must not replace its first-viewport direction.",
       "Inspect the live reference or supplied screenshot before coding and record the visible decisions that are actually borrowed.",
-      "Before polishing, name three fidelity anchors: composition, material/type, and interaction cadence; verify each in the rendered result.",
+      "Before polishing, name four fidelity anchors: composition, geometry, material/type, and interaction cadence; verify each in the rendered result.",
       `Use the visual direction contract (${visualDirection.label}) as the starting point for layout/type/spacing. If ${visualDirection.constraintAuthority.source} defines a different visual language, preserve that source and use this contract only to fill gaps.`,
+      `Use its geometry contract. Edge character: ${visualDirection.geometryRules.edgeCharacter}. Corner hierarchy: ${visualDirection.geometryRules.cornerHierarchy}. Separation: ${visualDirection.geometryRules.separation}. Line policy: ${visualDirection.geometryRules.linePolicy}. Sharp exception: ${visualDirection.geometryRules.sharpException}.`,
       "Treat the visual direction and treatment anti-AI checks as advisory smell detectors; record an authority-backed override instead of rejecting a deliberate choice.",
       `Use the visual treatment (${visualDirection.visualTreatment.label}) to make the ordinary surface visibly authored: apply its palette/material, type relationship, composition cue, and signature device unless the authority source deliberately defines another language.`,
       "Keep the hard invariants: accessibility, task/state completeness, responsive usability, asset truth/rights, motion fallback, runtime integrity, and rendered proof.",
@@ -670,6 +672,11 @@ ${sourceEvidence}
 - First viewport: ${contract.visualDirection.firstViewport.layout}
 - Alignment: ${contract.visualDirection.firstViewport.alignmentAxis}
 - Card budget: ${contract.visualDirection.surfaceRules.cardBudget}
+- Edge character: ${contract.visualDirection.geometryRules.edgeCharacter}
+- Corner hierarchy: ${contract.visualDirection.geometryRules.cornerHierarchy}
+- Separation: ${contract.visualDirection.geometryRules.separation}
+- Line policy: ${contract.visualDirection.geometryRules.linePolicy}
+- Sharp exception: ${contract.visualDirection.geometryRules.sharpException}
 - Type: ${contract.visualDirection.typeRules.title}
 - Spacing: ${contract.visualDirection.spacingRules.rhythm}
 
@@ -682,6 +689,7 @@ ${list(contract.visualDirection.advisoryChecks?.map((item) => `${item.source}: $
 ## Fidelity Anchors
 
 - Composition: ${contract.fidelityAnchors.composition}
+- Geometry: ${contract.fidelityAnchors.geometry}
 - Material: ${contract.fidelityAnchors.material}
 - Type: ${contract.fidelityAnchors.type}
 - Interaction: ${contract.fidelityAnchors.interaction}

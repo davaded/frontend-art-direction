@@ -45,6 +45,15 @@ Use this file as project-specific visual memory. Keep it true to the shipped pro
 - Semantic states:
 - Radius / depth / translucency rules:
 
+## Geometry And Edges
+
+- Edge character:
+- Corner hierarchy: page field / dominant stage / secondary panel / control / pill:
+- Separation order: spacing / tone / inset / overlap / depth / border / divider:
+- Line policy and permitted jobs:
+- Localized sharp exceptions and why:
+- Desktop / mobile silhouette reviewed:
+
 ## Assets
 
 - User-provided assets and required handling:

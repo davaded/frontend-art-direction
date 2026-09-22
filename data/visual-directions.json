@@ -35,9 +35,16 @@
       },
       "surfaceRules": {
         "cardBudget": "0-2 framed cards per viewport; repeated content uses rows, open sections, or a single frame",
-        "radius": "one primary radius family, usually 0-16px; pills only for compact status or navigation",
-        "elevation": "one surface lift plus one active/focus treatment; no shadow ladder",
+        "radius": "default to a softened hierarchy: 24-40px for the dominant stage or media field, 14-24px for secondary regions, and 8-16px for controls; pills only for compact status or navigation",
+        "elevation": "use open space, tonal fields, inset, or one soft lift before borders; no shadow ladder",
         "contrast": "separate canvas, object, and action by tone before adding effects"
+      },
+      "geometryRules": {
+        "edgeCharacter": "soft structural geometry with one broad contour or offset field; avoid building the page from nested orthogonal boxes",
+        "cornerHierarchy": "dominant stage 24-40px, secondary surface 14-24px, control 8-16px; related but not identical",
+        "separation": "spacing and alignment first, then tonal shift, inset, overlap, crop, or soft depth; borders are a late choice",
+        "linePolicy": "avoid page-wide dividers and hard right-angle intersections; any line is local, low-contrast, and visually terminated",
+        "sharpException": "allow sharper geometry only when an inspected reference, object silhouette, technical task, or explicit direction earns it"
       },
       "contentRules": [
         "Replace abstract value claims with one object, fact, constraint, or outcome.",
@@ -92,9 +99,16 @@
       },
       "surfaceRules": {
         "cardBudget": "cards only for discrete variants, specs, or work items; never for every feature chapter",
-        "radius": "object frames may be square or restrained; controls share one smaller radius",
+        "radius": "use a generous product stage or crop contour by default, with smaller related control radii; square framing is reserved for a genuinely sharp object or brand language",
         "elevation": "material comes from crop, tone, edge, and object detail; avoid floating-card theater",
         "contrast": "let product finish or image treatment carry identity; keep chrome quiet"
+      },
+      "geometryRules": {
+        "edgeCharacter": "object-led and softly framed; the product silhouette may break or reshape the container instead of sitting in a hard rectangle",
+        "cornerHierarchy": "stage or media field 28-48px when framed, supporting proof 16-28px, controls 10-16px",
+        "separation": "use crop, scale, material tone, overlap, and chapter spacing before rules or boxed sections",
+        "linePolicy": "use measured rules only for specs or comparison; keep them short and subordinate to the object",
+        "sharpException": "preserve a sharp industrial silhouette or brand system when it is real product evidence, not a generic precision aesthetic"
       },
       "contentRules": [
         "Every visual claim needs an object, material, performance, or use-context proof.",
@@ -149,9 +163,16 @@
       },
       "surfaceRules": {
         "cardBudget": "0-3 cards; prefer pane, row, strip, table, and canvas primitives",
-        "radius": "4-12px for controls and panes; no pill-shaped buttons unless the action is compact status/navigation",
-        "elevation": "use dividers and surface contrast before shadows",
+        "radius": "use an operational soft hierarchy: 18-28px for the main canvas or shell, 12-20px for panes and sheets, and 8-14px for controls; pills remain compact status/navigation",
+        "elevation": "use gutters, tonal inset surfaces, selection fill, and a soft active lift before repeated dividers or shadows",
         "contrast": "focus and selection must be obvious without relying on color alone"
+      },
+      "geometryRules": {
+        "edgeCharacter": "soft operational geometry: precise alignment inside a calmer rounded shell, without turning every row into a card",
+        "cornerHierarchy": "canvas/shell 18-28px, pane/sheet 12-20px, control 8-14px; dense rows may remain open",
+        "separation": "gutters, background steps, inset groups, sticky regions, and selection treatment before border boxes",
+        "linePolicy": "avoid boxing rails, panes, and inspectors on all four sides; use one local edge or subtle row separator only when scanning needs it",
+        "sharpException": "code, timeline, measurement, or precision regions may stay rectilinear while the surrounding shell remains softer"
       },
       "contentRules": [
         "Name the active object and next action in the first read.",
@@ -206,9 +227,16 @@
       },
       "surfaceRules": {
         "cardBudget": "0-2 summary cards; table/chart/detail should be open work surfaces",
-        "radius": "4-10px for controls and panels; avoid pill metrics",
-        "elevation": "dividers, selected row treatment, and tonal surfaces before shadows",
+        "radius": "use 16-24px for the outer data surface, 10-16px for detail panels, and 8-12px for controls; avoid pill metrics and do not round every row",
+        "elevation": "use column rhythm, tonal bands, selected-row treatment, and inset detail before borders or shadows",
         "contrast": "states must remain legible in grayscale and at reduced contrast"
+      },
+      "geometryRules": {
+        "edgeCharacter": "a soft outer instrument with precise internal alignment; data can be rectilinear without making the whole page a spreadsheet box",
+        "cornerHierarchy": "outer work surface 16-24px, detail/filters 10-16px, controls 8-12px; table rows usually remain open",
+        "separation": "column alignment, whitespace, zebra or tonal bands, selected state, and sticky context before cell borders",
+        "linePolicy": "prefer horizontal row separators or no lines; avoid full cell grids, boxed metrics, and multiple rules meeting at every cell",
+        "sharpException": "exact measurement, spreadsheet editing, or regulated comparison may use stronger rules inside the data region only"
       },
       "contentRules": [
         "Every metric needs unit, time context, freshness, or comparison context.",
@@ -263,9 +291,16 @@
       },
       "surfaceRules": {
         "cardBudget": "use contained surfaces for decisions or discrete states; avoid a stack of identical chat cards",
-        "radius": "6-14px; avoid excessive pill badges and floating glass",
-        "elevation": "status contrast and border rhythm before glow",
+        "radius": "use 18-28px for the active process surface, 12-20px for decisions or traces, and 8-14px for controls; avoid excessive pill badges and floating glass",
+        "elevation": "use state fill, inset grouping, continuity, and a soft active edge before border rhythm or glow",
         "contrast": "state text and icon/shape cues must survive reduced motion and color loss"
+      },
+      "geometryRules": {
+        "edgeCharacter": "soft state containers and rounded continuity paths keep process changes tactile without becoming chat-card bubbles",
+        "cornerHierarchy": "active object 18-28px, decision/trace 12-20px, control 8-14px; status pills stay small",
+        "separation": "state grouping, indentation, tonal change, and continuity before repeated outlines",
+        "linePolicy": "timeline or trace lines are thin, softly terminated, and never the only state signal; avoid sharp connector grids",
+        "sharpException": "logs, code, and machine traces may use a tighter rectilinear sub-surface while the process shell stays softer"
       },
       "contentRules": [
         "Never imply intelligence with an always-loading placeholder.",
@@ -320,9 +355,16 @@
       },
       "surfaceRules": {
         "cardBudget": "preview frames are allowed; decorative cards around them are not",
-        "radius": "one frame radius plus one control radius; avoid pill overload",
+        "radius": "use a generous 24-40px stage contour, 16-28px specimen frame, and 8-16px controls; avoid pill overload",
         "elevation": "contained preview contrast, not page-wide glass or glow",
         "contrast": "the specimen must remain legible with the page effects removed"
+      },
+      "geometryRules": {
+        "edgeCharacter": "a quiet, softly contoured stage holds one specimen; browsing chrome stays open and secondary",
+        "cornerHierarchy": "stage 24-40px, specimen 16-28px, control 8-16px; component-local geometry may differ inside the preview",
+        "separation": "stage tone, generous inset, specimen contrast, and floating/local tools before border scaffolding",
+        "linePolicy": "category paths or index guides may curve or use rounded caps; avoid hard grid lines around every specimen and label",
+        "sharpException": "the demonstrated component may intentionally be sharp, but the catalog shell should not amplify that into a universal skin"
       },
       "contentRules": [
         "Use realistic states and target-specific labels; never copy demo copy blindly.",
@@ -377,9 +419,16 @@
       },
       "surfaceRules": {
         "cardBudget": "0-3 cards; use image fields, rules, captions, and open bands instead",
-        "radius": "use media-specific framing; do not round every section",
+        "radius": "use broad 28-48px or image-specific contours for major media fields and smaller tactile controls; leave sections open instead of rounding every band",
         "elevation": "image crop and tonal separation before overlays or blur",
         "contrast": "copy must remain readable over media without a permanent dark veil"
+      },
+      "geometryRules": {
+        "edgeCharacter": "soft editorial fields, shaped crops, and open page bands; geometry should flow between chapters rather than stop at hard boxes",
+        "cornerHierarchy": "major media field 28-48px or content-led contour, supporting object 16-28px, control 10-16px",
+        "separation": "chapter spacing, crop, background temperature, overlap, and caption placement before horizontal rules",
+        "linePolicy": "editorial rules are short, offset, or locally anchored; avoid full-width separators between every chapter",
+        "sharpException": "print-grid, archival, or brutalist references may use deliberate hard cuts when typography and content support them"
       },
       "contentRules": [
         "A headline must name a thing, action, material, or outcome, not only an adjective.",
@@ -434,9 +483,16 @@
       },
       "surfaceRules": {
         "cardBudget": "0-2 control surfaces; the object stage is not a card stack",
-        "radius": "frame and controls use restrained, consistent geometry",
+        "radius": "use a 24-40px stage contour, 12-20px control surfaces, and 8-14px controls unless the inspected object or technical system requires sharper geometry",
         "elevation": "lighting, object material, and stage contrast before decorative glow",
         "contrast": "poster, loading, error, and ready states are all legible"
+      },
+      "geometryRules": {
+        "edgeCharacter": "a softly bounded inspection stage with compact floating controls; let the object silhouette provide the strongest geometry",
+        "cornerHierarchy": "stage 24-40px, control surface 12-20px, control 8-14px; overlays remain compact and visually detached",
+        "separation": "camera framing, stage tone, object lighting, floating control placement, and depth before borders",
+        "linePolicy": "technical guides, axes, or measurements are local overlays with clear purpose; avoid permanent rectangular scaffolding around the scene",
+        "sharpException": "CAD, engineering, measurement, or industrial configuration may use precise hard overlays while the surrounding viewing shell remains calm"
       },
       "contentRules": [
         "Name what the user can inspect or configure and what changes as a result.",

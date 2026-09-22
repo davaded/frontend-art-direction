@@ -102,6 +102,13 @@
       "evidence": "Visual Direction Contract plus grayscale desktop/mobile render, thumbnail silhouette check, and explicit AI-default rejection list."
     },
     {
+      "id": "geometry-language",
+      "label": "Geometry language",
+      "keywords": ["geometry", "edge", "radius", "border", "divider", "line", "soft", "sharp", "square", "shape", "几何", "边界", "圆角", "边框", "分隔", "直线", "柔和", "方正", "锋利"],
+      "passWhen": "The surface has an intentional edge hierarchy: large regions use a softer or object-led contour, controls use a related smaller family, and spacing or tonal separation does more work than hard border scaffolding. Sharp geometry is localized and justified.",
+      "evidence": "Desktop/mobile edge-map review, corner hierarchy, count of full-width dividers and hard intersections, grayscale or blurred grouping check, and one dense/non-default state."
+    },
+    {
       "id": "constraint-authority",
       "label": "Constraint authority",
       "keywords": ["authority", "design md", "design system", "direction", "reference", "override", "自由度", "规则", "方向"],
@@ -130,6 +137,13 @@
       "signals": ["pill", "badge", "tag", "rounded", "胶囊", "圆角"],
       "rejectWhen": "Controls, labels, statuses, navigation, and containers all use the same pill silhouette.",
       "repair": "Separate buttons, rows, status tags, inputs, and frames by job; reserve pills for compact status or navigation."
+    },
+    {
+      "id": "hard-edge-scaffolding",
+      "label": "Hard-edge scaffolding",
+      "signals": ["border", "divider", "rule", "line", "square", "sharp", "grid", "边框", "分割", "分隔", "直线", "方正", "锋利", "网格"],
+      "rejectWhen": "Nested rectangles, repeated 1px rules, or hard 90-degree intersections carry the whole layout even though spacing, tone, inset, overlap, or a softer stage could group the content more clearly.",
+      "repair": "Remove non-semantic lines, open the page field, introduce a stage/panel/control corner hierarchy, and keep only local low-contrast dividers or exact data/safety boundaries with a named job."
     },
     {
       "id": "type-scale-collapse",
@@ -219,6 +233,7 @@
     "A premium finish pass checks grayscale hierarchy, optical alignment, type ceiling, material layers, copy specificity, and the effects deliberately removed.",
     "A named reference has three visible fidelity anchors in the rendered target: composition, material/type, and interaction cadence.",
     "The Visual Direction Contract names composition, alignment axis, dominant/counterweight, type roles, spacing rhythm, and card/radius/elevation budget.",
+    "The Geometry Contract names edge character, corner hierarchy, separation strategy, line policy, and any justified sharp exception.",
     "The first viewport is checked as a thumbnail, grayscale silhouette, and blurred hierarchy before decorative effects are accepted.",
     "The first viewport has no more than three dominant text levels and no accidental orphan line in the target mobile width.",
     "Copy names a concrete object, action, fact, constraint, or outcome instead of relying on interchangeable adjectives."

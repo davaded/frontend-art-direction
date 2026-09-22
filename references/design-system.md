@@ -49,7 +49,7 @@ Avoid choosing a default sans by habit, but do not add a second family just to l
 
 ## Shape Language
 
-Name the job of the surface before naming its radius:
+Name the job and edge character of the surface before naming its radius. Read [geometry-language.md](geometry-language.md) when the layout feels square, rigid, over-divided, or too sharp:
 
 
 ```text
@@ -57,12 +57,19 @@ Primary surface: pane / canvas / table / frame / rail / page
 Secondary surface: row / strip / drawer / sheet / panel
 Object/media surface:
 Navigation and controls:
+Edge character: soft structural / precise / technical / organic / authored sharp
+Corner hierarchy: field / stage / panel / control / pill
+Separation strategy: spacing / tone / inset / overlap / depth / border / divider
+Line policy and permitted jobs:
+Sharp exceptions and authority:
 Radius/depth/material logic:
 Card budget:
 What must not become a card:
 ```
 
 Cards are for discrete repeated objects, summaries, media, or selectable items. Do not wrap every section, toolbar, hero, statistic, and state in the same rounded rectangle. A recognizable silhouette should survive a grayscale screenshot.
+
+For an ordinary surface without stronger evidence, use soft structural geometry: keep the page field open, give the dominant stage the most generous contour, step down through secondary panels and controls, and group through spacing or tone before drawing a border. This is a relationship, not a fixed radius preset. Preserve a sharper language when an inspected reference, project-owned direction, or technical task makes it intentional.
 
 ## Color And Material
 
@@ -105,6 +112,7 @@ Signature move:
 Signature interaction:
 Type ceiling:
 Component shape language:
+Geometry contract:
 Medium decision:
 What is intentionally not used:
 Confidence:

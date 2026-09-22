@@ -54,6 +54,11 @@
       "rule": "Generic copy, display scale, and compressed metadata are suspect until the product, content, audience, and chosen direction justify them."
     },
     {
+      "id": "default-soft-geometry",
+      "label": "Default soft geometry",
+      "rule": "Unless the product, inspected reference, or explicit direction calls for precision or sharpness, use a softened edge hierarchy and separate regions through spacing, tone, inset, overlap, or depth before drawing hard borders and full-width dividers. This is not permission to wrap every region in a rounded card."
+    },
+    {
       "id": "local-candidate-selection",
       "label": "Local candidate selection",
       "rule": "Profiles, treatments, references, and recipes are candidates that fill gaps; they do not outrank a stronger project-owned or user-owned direction."
