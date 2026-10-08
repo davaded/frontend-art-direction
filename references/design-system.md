@@ -18,7 +18,7 @@ If the project has a substantive `DESIGN.md`, treat it as project-owned visual m
 
 Use the lowest level that describes the actual surface:
 
-- **L0**: placeholders, invented claims, missing product object, or thin media. Use restrained UI craft; do not fake a cinematic hero.
+- **L0**: placeholders, invented claims, missing subject/proof, or thin media. Use restrained craft; do not fake a cinematic or product claim.
 - **L1**: real workflows, entities, forms, tables, settings, or operational data. Use productive UI, compact type, complete states, and useful feedback motion.
 - **L2**: a strong product/data/media object users inspect, compare, configure, or manipulate. Give it a focused visual anchor.
 - **L3**: authored copy plus high-quality image/video/model/motion/media system where storytelling or immersion is the actual job. Consider stronger expression only after proving fit, performance, and fallback.

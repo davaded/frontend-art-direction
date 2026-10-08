@@ -77,6 +77,11 @@ function checkData() {
   if (!(datasets["quality-gates.json"]?.qualityGates ?? []).some((gate) => gate.id === "visual-direction")) fail("quality gates are missing visual-direction");
   if (!(datasets["quality-gates.json"]?.qualityGates ?? []).some((gate) => gate.id === "geometry-language")) fail("quality gates are missing geometry-language");
   if (!(datasets["quality-gates.json"]?.qualityGates ?? []).some((gate) => gate.id === "constraint-authority")) fail("quality gates are missing constraint-authority");
+  if (!(datasets["quality-gates.json"]?.qualityGates ?? []).some((gate) => gate.id === "product-signal")) fail("quality gates are missing product-signal");
+  if (!(datasets["quality-gates.json"]?.qualityGates ?? []).some((gate) => gate.id === "surface-completeness")) fail("quality gates are missing surface-completeness");
+  if (!(datasets["quality-gates.json"]?.antiPatterns ?? []).some((item) => item.id === "presentation-shell")) fail("quality gates are missing presentation-shell rejection");
+  if (!(datasets["quality-gates.json"]?.antiPatterns ?? []).some((item) => item.id === "first-viewport-only")) fail("quality gates are missing first-viewport-only rejection");
+  if (!(datasets["quality-gates.json"]?.antiPatterns ?? []).some((item) => item.id === "unfinished-surface")) fail("quality gates are missing unfinished-surface rejection");
   if (!(datasets["constraint-policy.json"]?.hardInvariants ?? []).some((item) => item.id === "semantic-accessibility")) fail("constraint policy is missing semantic-accessibility");
   if (!(datasets["constraint-policy.json"]?.advisoryDefaults ?? []).some((item) => item.id === "ai-default-composition")) fail("constraint policy is missing advisory AI-default composition policy");
   if (!(datasets["constraint-policy.json"]?.advisoryDefaults ?? []).some((item) => item.id === "default-soft-geometry")) fail("constraint policy is missing the default soft-geometry policy");
@@ -194,6 +199,11 @@ async function checkSmoke() {
     const noReference = selectReferenceComposition("我要一个网站");
     const transactionBrief = buildBrief({ query: "商品支付与订单流程" });
     const genericBrief = buildBrief({ query: "我要一个网站" });
+    const narrativeBrief = buildBrief({ query: "实验性品牌叙事网页" });
+    const editorialBrief = buildBrief({ query: "editorial photography website" });
+    const brandToolBrief = buildBrief({ query: "brand design editor tool" });
+    if ([narrativeBrief, editorialBrief].some((item) => item.productSignal.mode !== "authored-experience" || item.productSignal.primaryAction !== null)) fail("local profile fallback overrode an explicit authored intent");
+    if (brandToolBrief.productSignal.mode !== "product" || !brandToolBrief.productSignal.primaryAction) fail("authored vocabulary removed the workflow from an explicit tool request");
     const genericScout = scoutReferences("我要一个网站");
     const hardwareScout = scoutReferences("高端硬件外设官网", { limit: 4 });
     const hardwareBrief = buildBrief({ query: "高端硬件外设官网" });
@@ -225,6 +235,32 @@ async function checkSmoke() {
       modelProposal: true,
       creativeDirection: "A sparse, typographic, intentionally asymmetric reading instrument.",
     });
+    const authoredDirection = selectVisualDirection("a reading tool for field notes", {
+      authoredDirection: {
+        id: "folded-field",
+        label: "Folded Field",
+        signature: "A continuous reading field carries the object across a clipped index.",
+        rationale: "The product is a sequence of evidence, so the page should unfold around the artifact.",
+        firstViewport: {
+          layout: "A continuous off-axis reading field with an attached index.",
+          alignmentAxis: "The artifact edge and index share a vertical datum.",
+          dominant: "The real artifact.",
+          counterweight: "A compact index.",
+          belowFoldPeek: "The next artifact enters as a continuation.",
+        },
+        geometryRules: {
+          edgeCharacter: "Soft folded surfaces.",
+          cornerHierarchy: "Field broad, index tighter, controls compact.",
+          separation: "Fold, crop, tone, whitespace before borders.",
+          linePolicy: "Short index marks only.",
+          sharpException: "Exact sequence marks may stay sharp.",
+        },
+        build: {
+          buildOrder: ["artifact field", "attached index"],
+          acceptance: ["artifact reads before explanation"],
+        },
+      },
+    });
     const authorityFixture = mkdtempSync(join(tmpdir(), "frontend-art-direction-authority-"));
     try {
       writeFileSync(join(authorityFixture, "DESIGN.md"), `# DESIGN.md\n\n## Direction\n- Design stance: brutalist editorial instrument\n- Signature move: oversized index and hard rules\n- What is intentionally not used: soft cards\n`);
@@ -238,6 +274,22 @@ async function checkSmoke() {
     const referenceBuild = buildReferenceBuild({
       query: "Build a component gallery for our analytics SDK like Rare UI",
       projectRoot: root,
+    });
+    const authoredBuild = buildReferenceBuild({
+      query: "Build a reading tool for field notes",
+      authoredDirection: {
+        id: "folded-field",
+        label: "Folded Field",
+        signature: "A continuous reading field carries the object across a clipped index.",
+        rationale: "The product is a sequence of evidence, so the page should unfold around the artifact.",
+        firstViewport: {
+          layout: "A continuous off-axis reading field with an attached index.",
+          alignmentAxis: "The artifact edge and index share a vertical datum.",
+          dominant: "The real artifact.",
+          counterweight: "A compact index.",
+          belowFoldPeek: "The next artifact enters as a continuation.",
+        },
+      },
     });
     const magicBuild = buildReferenceBuild({
       query: "Build a high-impact landing block like Magic UI",
@@ -253,6 +305,7 @@ async function checkSmoke() {
     const hardwareAudit = await buildAudit({ projectRoot: root, query: "高端硬件外设类网站", offline: true, limit: 4 });
     const motionAudit = await buildAudit({ projectRoot: root, query: "modal transition cleanup", motion: true, offline: true, limit: 4 });
     if (!brief.recommendation.profile?.id || !brief.recommendation.motion?.id) fail("brief smoke output is incomplete");
+    if (!brief.productSignal?.object || !brief.productSignal?.primaryAction || !brief.productSignal?.visibleResult || !brief.completionContract?.requirements?.length || !brief.quality.gates.some((gate) => gate.id === "product-signal") || !brief.quality.gates.some((gate) => gate.id === "surface-completeness") || !brief.quality.antiPatterns.some((item) => item.id === "presentation-shell")) fail("brief did not expose the product and completion contracts");
     if (!map.results.some((item) => item.path === "package.json")) fail("project map did not rank package.json for a package query");
     if (graph.scan.graphNodes === 0 || graph.scan.graphEdges === 0) fail("project graph smoke output is empty");
     if (graphQuery.results.length === 0) fail("project graph query returned no results");
@@ -274,36 +327,46 @@ async function checkSmoke() {
     if (hardwareBrief.recommendation.profile.id !== "hardware-product-story" || hardwareBrief.recommendation.style.id !== "premium-industrial") fail("hardware request did not resolve the hardware product direction");
     if (premiumBrief.recommendation.style.id !== "quiet-luxury" || premiumBrief.recommendation.palette.id !== "tonal-studio" || !premiumBrief.quality.gates.some((gate) => gate.id === "premium-finish")) fail("premium request did not resolve the premium finish direction");
     if (genericDirection.id !== "adaptive-asymmetric" || genericDirection.mode !== "adaptive" || genericDirection.visualTreatment?.id !== "quiet-editorial-studio" || genericDirection.visualTreatment?.confidence !== "provisional" || genericDirection.constraintAuthority?.mode !== "adaptive-default" || !genericDirection.constraintAuthority?.canOverrideAdvisory || genericDirection.constraintAuthority?.creativeFreedom !== "open-with-proof") fail("generic visual direction did not stay adaptive with an overrideable provisional authority");
+    if (authoredDirection.id !== "folded-field" || authoredDirection.selectionStatus !== "authored-proposal" || authoredDirection.constraintAuthority?.mode !== "model-proposed" || authoredDirection.firstViewport.layout.includes("55-65%")) fail("authored direction did not replace the local composition candidate");
     if (hardwareDirection.id !== "object-led-editorial" || analyticsDirection.id !== "data-detail-workbench" || agentDirection.id !== "stateful-instrument" || galleryDirection.id !== "specimen-catalog" || rewampDirection.id !== "specimen-catalog") fail("visual direction routing did not resolve the product-specific grammar");
     if (companyDirection.visualTreatment?.id !== "quiet-editorial-studio") fail("ordinary company site did not resolve a visual treatment");
     if (projectOwnedDirection.constraintAuthority?.mode !== "project-owned" || projectOwnedDirection.constraintAuthority?.source !== "DESIGN.md") fail("project-owned DESIGN.md did not outrank local defaults");
     if (inspectedReferenceDirection.constraintAuthority?.mode !== "reference-led" || inspectedReferenceDirection.constraintAuthority?.evidenceStatus !== "observed") fail("inspected reference did not become creative authority");
     if (modelDirection.constraintAuthority?.mode !== "model-proposed" || !modelDirection.constraintAuthority?.canOverrideAdvisory) fail("model-proposed direction did not receive controlled creative freedom");
-    if ([genericDirection, hardwareDirection, analyticsDirection, agentDirection, galleryDirection].some((direction) => direction.antiAiChecks.length < 3 || !direction.advisoryChecks?.length || !direction.typeRules?.hierarchy || !direction.surfaceRules?.cardBudget || !direction.geometryRules?.edgeCharacter || !direction.geometryRules?.linePolicy || !direction.visualTreatment?.geometry || !direction.visualTreatment?.signatureDevice)) fail("visual direction contract is incomplete");
+    if ([genericDirection, hardwareDirection, analyticsDirection, agentDirection, galleryDirection].some((direction) => direction.antiAiChecks.length < 3 || !direction.advisoryChecks?.length || !direction.typeRules?.hierarchy || !direction.surfaceRules?.cardBudget || !direction.geometryRules?.edgeCharacter || !direction.geometryRules?.linePolicy || !direction.visualTreatment?.geometry || !direction.visualTreatment?.signatureDevice || !direction.productSignal?.mode)) fail("visual direction contract is incomplete");
+    if ([analyticsDirection, agentDirection, galleryDirection].some((direction) => direction.productSignal.mode !== "product" || !direction.productSignal.primaryAction)) fail("functional visual directions did not expose a product signal");
+    if ([genericDirection, hardwareDirection].some((direction) => !["authored-experience", "open-experience", "product"].includes(direction.productSignal.mode) || (direction.productSignal.mode !== "product" && !direction.productSignal.experience?.creativeThesis))) fail("open visual directions did not expose an experience signal");
+    if (!renderVisualDirection(genericDirection).includes("no preset product type") || !renderBriefMarkdown(genericBrief).includes("Experience Signal Contract")) fail("open requests were still rendered as a fixed product contract");
     if (!brief.visualDirection?.id || !hardwareBrief.visualDirection?.firstViewport?.alignmentAxis) fail("brief did not expose the visual direction contract");
     if (!brief.quality.gates.some((gate) => gate.id === "constraint-authority")) fail("brief did not expose the constraint-authority quality gate");
     if (!brief.quality.gates.some((gate) => gate.id === "geometry-language") || !brief.quality.antiPatterns.some((item) => item.id === "hard-edge-scaffolding")) fail("brief did not expose the geometry language gate and hard-edge warning");
-    if (referenceBuild.primaryReference.id !== "rare-ui" || referenceBuild.pagePlan.length === 0 || referenceBuild.componentGrammar.length === 0 || !referenceBuild.fidelityAnchors?.composition || !referenceBuild.fidelityAnchors?.geometry) fail("reference build contract did not resolve the named primary reference and geometry anchor");
+    if (referenceBuild.primaryReference.id !== "rare-ui" || referenceBuild.pagePlan.length === 0 || referenceBuild.componentGrammar.length === 0 || !referenceBuild.fidelityAnchors?.composition || !referenceBuild.fidelityAnchors?.geometry || !referenceBuild.productSignal?.prototypeInteraction || !referenceBuild.completionContract?.requirements?.length || !referenceBuild.completionContract?.plannedRegions) fail("reference build contract did not resolve the named primary reference, product signal, completion, and geometry anchor");
+    for (const direction of [genericDirection, authoredDirection, hardwareDirection, agentDirection, brief.visualDirection, referenceBuild.visualDirection]) {
+      const iteration = direction.creativeProcess?.visualIteration;
+      if (iteration?.status !== "planned-not-executed" || iteration.evidence?.acceptanceSource !== "actual-render" || iteration.evidence?.generatedImageRole !== "proposal-or-asset") fail("visual iteration plan confused a proposal or planned tool call with rendered acceptance");
+    }
+    if (authoredBuild.visualDirection?.selectionStatus !== "authored-proposal" || authoredBuild.firstViewport.layout !== "A continuous off-axis reading field with an attached index." || authoredBuild.creativeProcess?.status !== "authored-proposal") fail("reference build did not preserve the authored creative direction");
     if (magicBuild.primaryReference.id !== "magic-ui" || magicBuild.pagePlan.length === 0 || magicBuild.motionContract.fallback.length === 0) fail("reference build did not resolve the new source-owned lens");
     if (rewampBuild.primaryReference.id !== "rewamp-ui" || !rewampBuild.pagePlan.some((section) => section.id === "component-index") || !rewampBuild.componentGrammar.some((item) => item.id === "specimen-stage") || !rewampBuild.responsivePlan.mobile.includes("selected identity")) fail("reference build did not apply the Rewamp UI component-workbench recipe");
     if (!externalBuild.primaryReference.id.startsWith("external-") || externalBuild.visualGenome.family !== "unknown until live inspection") fail("reference build did not preserve an unknown URL as an inspect-first reference");
     if (!audit.referenceCoverage.some((item) => item.id === "graphify") || !audit.referenceCoverage.some((item) => item.id === "reference-lenses") || !audit.referenceCoverage.some((item) => item.id === "visual-treatment") || !audit.referenceCoverage.some((item) => item.id === "geometry-language") || !audit.referenceCoverage.some((item) => item.id === "constraint-authority")) fail("audit reference coverage is incomplete");
-    if (audit.pipeline?.length < 8 || !audit.pipeline.some((item) => item.id === "transitions" && item.status !== "skipped") || audit.referenceInventory?.length < 8 || audit.resourceMatrix?.length < 12) fail("full audit did not execute the complete capability pipeline");
+    if (audit.pipeline?.length < 8 || !audit.pipeline.some((item) => item.id === "product-signal") || !audit.pipeline.some((item) => item.id === "surface-completeness") || !audit.pipeline.some((item) => item.id === "transitions" && item.status !== "skipped") || audit.referenceInventory?.length < 8 || audit.resourceMatrix?.length < 12) fail("full audit did not execute the complete capability pipeline");
+    if (!audit.pipeline.some((item) => item.id === "visual-iteration" && item.status === "pending") || audit.visualIteration?.status !== "planned-not-executed") fail("static audit incorrectly reported screenshot or image iteration as completed");
     if (!audit.pipeline.some((item) => item.id === "visual-direction") || !audit.proof.direction.visualDirection?.surfaceRules?.cardBudget || !audit.proof.direction.visualDirection?.geometryRules?.edgeCharacter || !audit.controlDials?.linePolicy) fail("full audit did not expose the visual direction and geometry contract");
-    if (audit.referenceBuild?.referenceMode !== "adaptive-no-reference" || !audit.controlDials?.referenceFidelity) fail("full audit did not keep an unnamed request adaptive while producing the reference fidelity and control-dial contract");
+    if (audit.referenceBuild?.referenceMode !== "adaptive-no-reference" || !audit.controlDials?.referenceFidelity || !audit.proof.productSignal?.object || !audit.proof.completionContract?.requirements?.length) fail("full audit did not keep an unnamed request adaptive while producing the product and completion contracts");
     if (referenceAudit.proof.referenceBuild?.primaryReference?.id !== "rare-ui") fail("audit did not activate the reference build path");
     if (hardwareAudit.referenceBuild?.referenceMode !== "scouted-reference" || !["apple-product", "bang-olufsen", "teenage-engineering", "logitech-mx"].includes(hardwareAudit.referenceBuild?.primaryReference?.id) || !hardwareAudit.referenceInventory?.some((item) => item.id === hardwareAudit.referenceBuild.primaryReference.id && item.status === "primary-product")) fail("product reference scouting did not feed the visual build contract");
     if (!motionAudit.proof.motion?.workflow?.includes("review") || !motionAudit.proof.motion.workflow.includes("polish")) fail("audit motion integration did not return the full workflow");
     if (renderScanMarkdown(report).includes("[object Object]")) fail("inspect markdown renderer returned [object Object]");
-    if (renderBriefMarkdown(brief).includes("[object Object]")) fail("brief markdown renderer returned [object Object]");
+    if (renderBriefMarkdown(brief).includes("[object Object]") || !renderBriefMarkdown(brief).includes("Product Signal Contract") || !renderBriefMarkdown(brief).includes("Completion Contract")) fail("brief markdown renderer returned incomplete product and completion output");
     if (renderMapMarkdown(map).includes("[object Object]")) fail("project map markdown renderer returned [object Object]");
     if (renderGraphMarkdown(graph, graphQuery).includes("[object Object]")) fail("project graph markdown renderer returned [object Object]");
     if (renderResourceMarkdown(resources).includes("[object Object]")) fail("resource markdown renderer returned [object Object]");
     if (renderReferenceComposition(references).includes("[object Object]")) fail("reference markdown renderer returned [object Object]");
     if (renderReferenceScout(hardwareScout).includes("[object Object]")) fail("reference scout markdown renderer returned [object Object]");
-    if (renderReferenceBuild(referenceBuild).includes("[object Object]")) fail("reference build markdown renderer returned [object Object]");
-    if (renderVisualDirection(agentDirection).includes("[object Object]") || !renderVisualDirection(agentDirection).includes("Visual Treatment") || !renderVisualDirection(agentDirection).includes("Geometry Rules") || !renderVisualDirection(agentDirection).includes("AI-Default Checks (Advisory)") || !renderVisualDirection(agentDirection).includes("Constraint Authority")) fail("visual direction markdown renderer is incomplete");
-    if (renderAuditMarkdown(audit).includes("[object Object]")) fail("audit markdown renderer returned [object Object]");
+    if (renderReferenceBuild(referenceBuild).includes("[object Object]") || !renderReferenceBuild(referenceBuild).includes("Product Signal Contract") || !renderReferenceBuild(referenceBuild).includes("Completion Contract")) fail("reference build markdown renderer returned incomplete product and completion output");
+    if (renderVisualDirection(agentDirection).includes("[object Object]") || !renderVisualDirection(agentDirection).includes("Product Signal Contract") || !renderVisualDirection(agentDirection).includes("Completion Contract") || !renderVisualDirection(agentDirection).includes("Visual Treatment") || !renderVisualDirection(agentDirection).includes("Geometry Rules") || !renderVisualDirection(agentDirection).includes("AI-Default Checks (Advisory)") || !renderVisualDirection(agentDirection).includes("Constraint Authority")) fail("visual direction markdown renderer is incomplete");
+    if (renderAuditMarkdown(audit).includes("[object Object]") || !renderAuditMarkdown(audit).includes("Product Signal Contract") || !renderAuditMarkdown(audit).includes("Completion Contract")) fail("audit markdown renderer returned incomplete product and completion output");
     const inspectMd = execFileSync(process.execPath, [join(root, "scripts", "inspect-project.mjs"), root, "--format", "md"], { encoding: "utf8" });
     const briefMd = execFileSync(process.execPath, [join(root, "scripts", "design-brief.mjs"), "--query", "analytics dashboard", "--format", "md"], { encoding: "utf8" });
     const briefJson = execFileSync(process.execPath, [join(root, "scripts", "design-brief.mjs"), "--query", "analytics dashboard", "--format", "json"], { encoding: "utf8" });
@@ -320,12 +383,13 @@ async function checkSmoke() {
     const referenceBuildJson = execFileSync(process.execPath, [join(root, "scripts", "reference-build.mjs"), "--query", "Build a component gallery for our analytics SDK like Rare UI", "--format", "json"], { encoding: "utf8" });
     const externalBuildJson = execFileSync(process.execPath, [join(root, "scripts", "reference-build.mjs"), "--query", "Build a product like https://example.com/visual-tool for our workflow", "--format", "json"], { encoding: "utf8" });
     const auditJson = execFileSync(process.execPath, [join(root, "scripts", "audit.mjs"), root, "--query", "analytics dashboard", "--offline", "--format", "json"], { encoding: "utf8" });
+    if (JSON.parse(auditJson).visualIteration?.status !== "planned-not-executed") fail("CLI audit lost the unexecuted status of visual iteration");
     const referenceAuditJson = execFileSync(process.execPath, [join(root, "scripts", "audit.mjs"), root, "--query", "Build a component gallery like Rare UI", "--offline", "--format", "json"], { encoding: "utf8" });
     const motionMd = execFileSync(process.execPath, [join(root, "scripts", "transitions-adapter.mjs"), "--intent", "modal close cleanup", "--phase", "all", "--offline", "--format", "md"], { encoding: "utf8" });
     const motionJson = execFileSync(process.execPath, [join(root, "scripts", "transitions-adapter.mjs"), "--intent", "modal close cleanup", "--phase", "all", "--offline", "--format", "json"], { encoding: "utf8" });
     if (inspectMd.includes("[object Object]") || briefMd.includes("[object Object]") || directionMd.includes("[object Object]")) fail("CLI markdown smoke output returned [object Object]");
     if (!JSON.parse(briefJson).recommendation?.profile?.id) fail("CLI JSON smoke output is incomplete");
-    if (JSON.parse(directionJson).id !== "stateful-instrument" || !JSON.parse(directionJson).visualTreatment?.id || !JSON.parse(directionJson).visualTreatment?.geometry || !JSON.parse(directionJson).geometryRules?.edgeCharacter || !JSON.parse(directionJson).constraintAuthority?.mode || !directionMd.includes("Visual Treatment") || !directionMd.includes("Geometry Rules") || !directionMd.includes("AI-Default Checks (Advisory)")) fail("CLI visual direction output is incomplete");
+    if (JSON.parse(directionJson).id !== "stateful-instrument" || !JSON.parse(directionJson).productSignal?.primaryAction || !JSON.parse(directionJson).visualTreatment?.id || !JSON.parse(directionJson).visualTreatment?.geometry || !JSON.parse(directionJson).geometryRules?.edgeCharacter || !JSON.parse(directionJson).constraintAuthority?.mode || !directionMd.includes("Product Signal Contract") || !directionMd.includes("Visual Treatment") || !directionMd.includes("Geometry Rules") || !directionMd.includes("AI-Default Checks (Advisory)")) fail("CLI visual direction output is incomplete");
     if (!JSON.parse(mapJson).results?.some((item) => item.path === "package.json")) fail("CLI project map JSON output is incomplete");
     if (!JSON.parse(graphJson).nodes?.length || !JSON.parse(graphJson).query?.results?.length) fail("CLI project graph JSON output is incomplete");
     if (!JSON.parse(resourceJson).candidates?.length) fail("CLI resource JSON output is incomplete");
@@ -333,10 +397,10 @@ async function checkSmoke() {
     if (!JSON.parse(scoutJson).selected?.some((item) => item.id === "apple-product")) fail("CLI reference scout JSON output is incomplete");
     if (referenceMd.includes("[object Object]") || !referenceMd.includes("Borrow:") || !referenceMd.includes("Translate:")) fail("reference composition markdown smoke output is incomplete");
     if (scoutMd.includes("[object Object]") || !scoutMd.includes("Selection Policy") || !scoutMd.includes("Live Inspection Checklist")) fail("reference scout markdown smoke output is incomplete");
-    if (referenceBuildMd.includes("[object Object]") || !referenceBuildMd.includes("Visual Genome") || !referenceBuildMd.includes("Token Seed") || !referenceBuildMd.includes("Acceptance")) fail("reference build markdown smoke output is incomplete");
-    if (JSON.parse(referenceBuildJson).primaryReference?.id !== "rare-ui" || !JSON.parse(referenceBuildJson).fidelityAnchors?.composition || !JSON.parse(referenceBuildJson).fidelityAnchors?.geometry || !JSON.parse(referenceBuildJson).motionContract?.fallback) fail("reference build JSON output is incomplete");
+    if (referenceBuildMd.includes("[object Object]") || !referenceBuildMd.includes("Visual Genome") || !referenceBuildMd.includes("Product Signal Contract") || !referenceBuildMd.includes("Completion Contract") || !referenceBuildMd.includes("Token Seed") || !referenceBuildMd.includes("Acceptance")) fail("reference build markdown smoke output is incomplete");
+    if (JSON.parse(referenceBuildJson).primaryReference?.id !== "rare-ui" || !JSON.parse(referenceBuildJson).productSignal?.object || !JSON.parse(referenceBuildJson).completionContract?.requirements?.length || !JSON.parse(referenceBuildJson).fidelityAnchors?.composition || !JSON.parse(referenceBuildJson).fidelityAnchors?.geometry || !JSON.parse(referenceBuildJson).motionContract?.fallback) fail("reference build JSON output is incomplete");
     if (!JSON.parse(externalBuildJson).primaryReference?.id?.startsWith("external-")) fail("CLI reference build did not preserve an unknown URL");
-    if (!JSON.parse(auditJson).referenceCoverage?.length || !JSON.parse(auditJson).pipeline?.some((item) => item.id === "transitions")) fail("CLI audit JSON output is incomplete");
+    if (!JSON.parse(auditJson).referenceCoverage?.length || !JSON.parse(auditJson).productSignal?.object || !JSON.parse(auditJson).completionContract?.requirements?.length || !JSON.parse(auditJson).pipeline?.some((item) => item.id === "product-signal") || !JSON.parse(auditJson).pipeline?.some((item) => item.id === "surface-completeness") || !JSON.parse(auditJson).pipeline?.some((item) => item.id === "transitions")) fail("CLI audit JSON output is incomplete");
     if (JSON.parse(referenceAuditJson).proof?.referenceBuild?.primaryReference?.id !== "rare-ui") fail("CLI audit did not expose the reference build path");
     if (motionMd.includes("[object Object]") || !motionMd.includes("Review") || !motionMd.includes("Polish")) fail("motion adapter markdown smoke output is incomplete");
     const motion = JSON.parse(motionJson);
@@ -358,12 +422,18 @@ for (const path of [
   join(root, "references", "reference-build.md"),
   join(root, "references", "visual-composition.md"),
   join(root, "references", "constraint-authority.md"),
+  join(root, "references", "creative-direction.md"),
+  join(root, "references", "visual-iteration.md"),
+  join(root, "references", "product-prototype.md"),
   join(root, "templates", "DESIGN.md"), join(root, "scripts", "transitions-adapter.mjs"),
   join(root, "scripts", "project-graph.mjs"), join(root, "scripts", "resource-catalog.mjs"), join(root, "scripts", "audit.mjs"),
   join(root, "data", "quality-gates.json"), join(root, "data", "resources.json"), join(root, "data", "reference-lenses.json"), join(root, "data", "reference-recipes.json"), join(root, "data", "reference-sources.json"),
   join(root, "scripts", "reference-composition.mjs"), join(root, "scripts", "reference-scout.mjs"), join(root, "scripts", "reference-build.mjs"),
   join(root, "scripts", "visual-direction.mjs"),
   join(root, "scripts", "authority.mjs"),
+  join(root, "scripts", "creative-process.mjs"),
+  join(root, "scripts", "product-signal.mjs"),
+  join(root, "scripts", "completion-contract.mjs"),
   join(root, "data", "visual-directions.json"),
   join(root, "data", "visual-treatments.json"),
   join(root, "data", "constraint-policy.json"),

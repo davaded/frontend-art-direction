@@ -14,11 +14,17 @@ A proof at one layer must not be described as proof at another.
 
 ## Minimum Visual Pass
 
+Apply the [Product Or Experience Signal Gate](product-prototype.md) before judging polish. Functional surfaces must show their object, action, result, and exercised state. Narrative and art-directed surfaces must show their subject, thesis, attention path, authored proof, and chosen transition or ending. The selected mode stays open to the work's own visual language.
+
+Apply the Completion Contract to the declared scope. A full page, route, scene, component workbench, or single component has different boundaries, but each must finish its own regions, destinations, responsive path, states or ending, and fallback before handoff. A first-viewport screenshot is insufficient evidence for a larger scope.
+
 For a new or substantially changed surface:
 
 - run the real app or the closest available preview;
+- verify the complete declared scope, including lower sections, destinations, specimens, or ending, instead of checking only the first viewport;
 - inspect desktop and the target mobile/device size;
 - check the first screen before scrolling and one meaningful non-default state;
+- exercise the primary product action and capture the before/after state, or capture the authored transition, spatial relationship, or stable ending; reject only an unintentional presentation shell even when its styling is polished;
 - verify loading, empty, error, success, selected, or partial-data states that matter to the workflow;
 - inspect text wrapping, focus, touch targets, contrast, overflow, and console errors;
 - inspect every primary image/video/illustration/model at its rendered desktop and mobile size; confirm sharpness, focal crop, provenance, and absence of placeholder or filler media;
@@ -26,7 +32,7 @@ For a new or substantially changed surface:
 - verify reduced motion or the static fallback;
 - compare against the requirement frame, local evidence, and direction assumption.
 
-For an existing surface, capture before and after when the tooling allows it.
+For substantial work, use [visual-iteration.md](visual-iteration.md) for the screenshot-to-code and screenshot-to-image-to-code loops. Keep the baseline, named visible defects, code/asset repairs, and inspected recaptures. The workflow is complete when remaining material issues are resolved or honestly blocked; taking screenshots without using them to guide repairs is insufficient.
 
 ## Reference Or Concept QA
 
@@ -35,7 +41,7 @@ When the work started from a live reference, screenshot, or generated concept, v
 1. Keep the source visual and implementation screenshot available at the same time.
 2. Capture the implementation at the same viewport and relevant state.
 3. Inspect one full-page/first-viewport pair and focused surfaces for navigation, hero, primary object, section rhythm, and mobile re-staging.
-4. Classify mismatches as P0 unusable/broken, P1 major hierarchy or layout mismatch, P2 visible polish or responsive mismatch, and P3 optional refinement.
+4. Classify observed mismatches as P0 unusable/broken, P1 major hierarchy or layout mismatch, P2 visible polish or responsive mismatch, and P3 optional refinement. A deliberately translated difference is not a defect solely because it differs from the source.
 5. Fix P0-P2 issues and repeat the capture. Do not stop after the first pass merely because the app builds.
 
 Prioritize object prominence, hierarchy, composition, type scale, image crop, and section rhythm before shadows, border tint, or micro-spacing. When the reference conflicts with the target product's content or accessibility, preserve the product and document the translation instead of chasing pixel identity.
@@ -57,6 +63,8 @@ Asset source / generation path and quality proof:
 Static proof:
 Runtime proof:
 Visual proof:
+Iteration evidence: baseline -> observed problem -> code/asset change -> inspected recapture
+Generated proposal and prompt, if used: recorded separately from runtime proof
 Open gaps:
 ```
 

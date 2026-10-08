@@ -35,8 +35,22 @@
       "id": "first-screen-signal",
       "label": "First-screen signal",
       "keywords": ["hero", "landing", "dashboard", "app", "product", "screen"],
-      "passWhen": "The product or primary work object is identifiable without reading a marketing essay.",
+      "passWhen": "The product, subject, or primary work relationship is identifiable without reading a marketing essay.",
       "evidence": "Rendered first viewport on desktop and target mobile width."
+    },
+    {
+      "id": "product-signal",
+      "label": "Product or experience signal",
+      "keywords": ["product", "object", "workflow", "action", "result", "state", "prototype", "产品", "对象", "动作", "结果", "状态", "原型"],
+      "passWhen": "The output names the right evidence for its mode: functional products show an object, task, action, result, data, and state; narrative or art-directed work shows a subject, point of view, attention path, authored proof, and a deliberate transition or ending.",
+      "evidence": "Product or Experience Signal Contract plus desktop/mobile first viewport and an exercised state, transition, or stable ending."
+    },
+    {
+      "id": "surface-completeness",
+      "label": "Surface completeness",
+      "keywords": ["complete", "completion", "page", "screen", "section", "chapter", "route", "responsive", "完整", "页面", "章节", "交付"],
+      "passWhen": "The intended scope is declared and complete: every named region, chapter, specimen, or workflow step is implemented with real content, responsive behavior, relevant states, and a usable ending or fallback.",
+      "evidence": "Full-scope desktop/mobile renders, one end-to-end path or authored ending, console/build status, and asset/state evidence where applicable."
     },
     {
       "id": "state-completeness",
@@ -71,7 +85,7 @@
       "label": "Visual proof",
       "keywords": ["verify", "screenshot", "browser", "mobile", "render", "视觉", "截图"],
       "passWhen": "The result has rendered evidence, not only a successful build or static test.",
-      "evidence": "Desktop/mobile screenshots or equivalent runtime inspection with console/build status."
+      "evidence": "Inspected desktop/mobile captures across the declared scope, observed defects, implemented repairs and recapture comparison when issues were found, plus console/build status. Generated concepts are proposals rather than runtime proof."
     },
     {
       "id": "asset-readiness",
@@ -188,6 +202,27 @@
       "repair": "Use real media or downgrade to a usable product surface until proof exists."
     },
     {
+      "id": "presentation-shell",
+      "label": "Presentation shell",
+      "signals": ["slogan", "hero", "cta", "decorative", "feature", "shell", "草稿", "展示", "装饰"],
+      "rejectWhen": "A functional product claims usability but only has copy, color, a hero, and decorative treatment; or an art-directed surface has no subject, thesis, attention path, authored proof, or intentional ending.",
+      "repair": "Choose the correct mode first. For a product, build one usable vertical slice. For a narrative or experimental piece, establish the subject, point of view, formal relationship, and proof without importing a product template."
+    },
+    {
+      "id": "first-viewport-only",
+      "label": "First viewport only",
+      "signals": ["hero", "first screen", "viewport", "首屏", "第一屏", "above the fold"],
+      "rejectWhen": "The first viewport is polished but the stated page, route, scene, workflow, or experience scope stops there.",
+      "repair": "Declare the full scope and complete every named region, chapter, specimen, state, and ending before handoff."
+    },
+    {
+      "id": "unfinished-surface",
+      "label": "Unfinished surface",
+      "signals": ["todo", "placeholder", "empty block", "coming soon", "lorem", "占位", "待定", "空白"],
+      "rejectWhen": "Lower content, controls, destinations, assets, or states are represented by filler, dead actions, missing routes, or unexplained empty blocks.",
+      "repair": "Use real target content, a deliberate empty/fallback state, or reduce the declared scope honestly; do not imply completion through styling."
+    },
+    {
       "id": "filler-media",
       "label": "Filler media",
       "signals": ["placeholder", "thumbnail", "low-res", "stock", "watermark", "generic image", "占位", "低清", "库存图"],
@@ -224,7 +259,13 @@
     }
   ],
   "implementationChecks": [
-    "Primary object and primary action are named before visual polish.",
+    "For functional work, the primary object and action are named before visual polish; authored work names its subject and formal relationship instead.",
+    "The Product or Experience Signal Contract selects the appropriate evidence mode instead of imposing a product template on every surface.",
+    "Functional surfaces contain a usable object/task slice; narrative or art-directed surfaces contain a subject, thesis, attention path, authored proof, and deliberate transition or ending.",
+    "One meaningful product state, narrative transition, spatial relationship, or stable ending is proven before lower-page decoration, reference polish, or ambient motion.",
+    "The Completion Contract declares the full intended scope and lists every region, chapter, specimen, state, responsive path, and ending that must ship.",
+    "The first viewport is an acceptance anchor, not the definition of done; no lower section, CTA, navigation item, specimen control, or chapter marker is left as filler or a dead action.",
+    "Desktop and target-mobile proof covers the complete declared scope, not only the hero or first screen.",
     "The smallest local primitive or platform capability was checked before installing a dependency.",
     "Critical states include accessible text or structure, not color alone.",
     "Responsive re-staging is explicit instead of relying on accidental wrapping.",

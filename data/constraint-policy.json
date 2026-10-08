@@ -9,7 +9,7 @@
     {
       "id": "task-and-state-completeness",
       "label": "Task and state completeness",
-      "rule": "The primary task, important non-default states, recovery path, and final state must remain understandable and actionable."
+      "rule": "When the surface has a task or workflow, keep its primary task, important non-default states, recovery path, and final state understandable and actionable. When it is authored, narrative, or exploratory, keep its chosen attention path, transitions, spatial relationships, and ending coherent instead."
     },
     {
       "id": "responsive-usability",

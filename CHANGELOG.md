@@ -2,6 +2,11 @@
 
 ## Unreleased
 
+- Added actual screenshot repair/recapture and screenshot-to-image-to-code workflows, full-scope comparison, and an iteration ledger; CLI plans remain explicitly unexecuted and generated revisions cannot substitute for runtime evidence.
+- Added a scope-aware Completion Contract and first-viewport-only/unfinished-surface checks so generated work finishes its declared regions, states, responsive paths, destinations, assets, and endings.
+- Added a Product Signal Contract and vertical-slice gate so generated surfaces ship a usable product draft before decorative polish.
+- Added a creative-divergence pass that compares structurally different concepts before local candidates are selected, plus partial authored direction files accepted by `direction`, `brief`, `reference-build`, and `audit`.
+- Added `references/creative-direction.md` and `scripts/creative-process.mjs` so a model or designer can replace the local composition, geometry, treatment, and build plan while keeping hard invariants and rendered proof.
 - Added an executable geometry contract with softened structural defaults, corner hierarchy, non-border separation, line-purpose checks, sharp-context exceptions, and hard-edge scaffolding rejection.
 - Refreshed the Rare UI reference lens and recipe from live desktop/mobile inspection, including its dark organic shell, asymmetric specimen mosaic, and tiered edge hierarchy.
 - Added a dependency-aware `graph` command and queryable repository neighborhoods.

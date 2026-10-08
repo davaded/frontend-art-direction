@@ -21,6 +21,14 @@ Asset and content fallback:
 Acceptance evidence:
 ```
 
+Read [product-prototype.md](product-prototype.md) with this contract. Add the appropriate Product or Experience Signal Contract before visual styling so the reference is translated around the target's own intent:
+
+```text
+Product object / User and job / Core loop / Primary action / Visible result
+Concrete content/data / State matrix / First viewport proof / Prototype interaction
+or Subject / Audience intent / Attention path / Creative thesis / Proof / Transition or ending
+```
+
 The executable form is:
 
 ```bash
@@ -51,7 +59,7 @@ Do not infer hidden source code or claim a framework from appearance alone.
 
 ### 2. Translate The Grammar
 
-Keep the target product's object, copy, data, and workflow. Translate the reference through decisions rather than screenshots:
+Keep the target subject's object, copy, data, authorship, and workflow when one exists. Translate the reference through decisions rather than screenshots:
 
 ```text
 Borrow: hierarchy, rhythm, material, component behavior, motion purpose
@@ -63,13 +71,13 @@ If the target has weak content or missing media, acquire or generate suitable me
 
 ### 3. Implement The First Viewport First
 
-The first viewport is the acceptance anchor. Build its layout skeleton, real object, primary action, type roles, and major surfaces before filling the entire page. Make the next section visibly enter the desktop and mobile viewport when the reference relies on that rhythm.
+The first viewport is the acceptance anchor. For a functional target, build its layout skeleton, real object, primary action, visible result, one state transition, type roles, and major surfaces before filling the entire page. For an authored target, build the subject, formal relationship, attention path, proof, and chosen transition or ending. Make the next section or visual relationship visibly enter the desktop and mobile viewport when the reference relies on that rhythm.
 
-Do not build a page of equal cards because the reference is a gallery. Give the target product one primary object and use repeated frames only where comparison or discovery is the actual job.
+Do not build a page of equal cards because the reference is a gallery. Give the target work one visual anchor or attention relationship and use repeated frames only where comparison, discovery, or sequence is the actual job.
 
-### 4. Add States And Motion
+### 4. Add States, Transitions, And Motion
 
-Enumerate the real states before polishing:
+Enumerate the real states when the surface has a workflow; otherwise enumerate the meaningful transitions, reveals, spatial relationships, or stable ending before polishing:
 
 ```text
 idle / hover / focus / pressed / selected / disabled

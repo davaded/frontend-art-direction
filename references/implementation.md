@@ -36,16 +36,27 @@ Do not implement every state mechanically. Implement the relevant states with re
 
 ## Composition Before Decoration
 
+Use the [Product Or Experience Signal Gate](product-prototype.md) before the composition is polished. Functional surfaces need a concrete vertical slice; narrative and art-directed surfaces need their own subject, thesis, attention path, proof, and ending. This is an intent requirement, not a mandate for a dashboard, commerce, card, split-panel, or interaction-heavy layout.
+
+Use the Completion Contract as the definition of done. Declare whether the deliverable is a route, full page, scene, component, specimen workbench, or another bounded surface. Finish every named region and destination in that scope, then prove the complete scope at desktop and target mobile. The first viewport is where review begins; it is never permission to leave the rest as filler.
+
+Use [visual-iteration.md](visual-iteration.md) during implementation, not only after it. Let inspected screenshots guide repairs. For a composition or media problem, use an image revision to choose the visual delta, translate it into code and individual assets, and verify the next real capture. Text, controls, states, and responsive layout remain implemented elements rather than a flattened mockup image.
+
 Lock these decisions in order:
 
 1. first read and primary action;
-2. workflow order and information hierarchy;
-3. layout rhythm, density contrast, and responsive re-staging;
-4. visual anchor or product object;
-5. type roles and component silhouette;
-6. color, material, imagery, and motion polish.
+2. the correct product or experience signal for the chosen mode;
+3. workflow or attention order and information hierarchy;
+4. layout rhythm, density contrast, and responsive re-staging;
+5. visual anchor, subject, or formal relationship;
+6. type roles and component silhouette;
+7. color, material, imagery, and motion polish.
 
 If a page reads as equal boxes, remove a generic layer and recompose around the task, object, or data relationship. Do not add a gradient to hide a weak skeleton.
+
+Build the first viewport and one meaningful state, transition, or stable ending before lower-page decoration. A functional hero shell with no usable object and state feedback is a presentation shell; a narrative or experimental surface may remain intentionally still when its subject and thesis are clear.
+
+For substantial open work, write 2-3 structurally different concepts before locking the implementation frame. They must change the composition grammar, reading order, dominant object, or interaction relationship. Choose one with a concrete reason, then let the local direction data fill only missing implementation fields.
 
 Before touching JSX, CSS, or a component generator, copy the Visual Direction Contract into the implementation frame:
 

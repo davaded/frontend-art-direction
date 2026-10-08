@@ -4,12 +4,13 @@ The skill must protect the product without flattening the person designing it. V
 
 ## The Order Of Authority
 
-1. **Hard invariants** protect accessibility, task and state completeness, responsive usability, asset truth and rights, motion fallback, runtime integrity, and honest rendered proof. They are not style preferences.
+1. **Hard invariants** protect accessibility, the relevant task/state or authored-experience completeness, responsive usability, asset truth and rights, motion fallback, runtime integrity, and honest rendered proof. They are not style preferences.
 2. **Current user direction** wins when the user explicitly asks for a visual language, supplies a concept, or pins a direction for this pass.
 3. **A named or inspected reference** can define composition, material, type, rhythm, and interaction when those decisions are actually inspected and translated.
 4. **Project-owned `DESIGN.md`** is the default visual authority for an existing product. Read it before replacing its language. It may define a direction that does not exist in the local candidate data.
 5. **An accepted concept or model proposal** may establish a new direction when its rationale and rendered proof are recorded.
-6. **Local profiles, treatments, recipes, and AI-default checks** fill gaps. They are useful priors, not a universal style law.
+6. **A fresh model or designer thesis** can replace local candidates when it is specific, coherent, and rendered; record it as an authored proposal rather than forcing it into a saved style ID.
+7. **Local profiles, treatments, recipes, and AI-default checks** fill gaps. They are useful priors, not a universal style law.
 
 The current request can intentionally replace an existing project direction. Preserve the product's hard invariants and record that the current request superseded the inherited visual memory for this pass.
 
@@ -60,4 +61,4 @@ Freedom does not mean removing review. It means reviewing the right things:
 
 If the answer is yes, keep the direction even when it violates a local heuristic.
 
-Before implementation, run one creative-divergence check: temporarily ignore the local style IDs and ask what visual thesis the object, audience, reference, project memory, or current model capability actually supports. If that answer is stronger and coherent, promote it to the authority source. Consistency with the dataset is never a reason to keep a weaker direction.
+Before implementation, run one creative-divergence check: temporarily ignore the local style IDs and form 2-3 structurally different hypotheses from the object, audience, task, reference, project memory, or current model capability. If one is stronger and coherent, promote it to the authority source. Consistency with the dataset is never a reason to keep a weaker direction. Read [creative-direction.md](creative-direction.md) for the comparison frame and authored file format.

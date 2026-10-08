@@ -2,6 +2,9 @@
 
 import { isMainModule, isUnderspecifiedRequest, loadDataset, meaningfulTokens, option, parseArgs, tokenize, writeOutput } from "./lib.mjs";
 import { advisoryChecks, renderAuthorityMarkdown, resolveCreativeAuthority } from "./authority.mjs";
+import { applyAuthoredDirection, buildCreativeProcess, readAuthoredDirection, renderCreativeProcess } from "./creative-process.mjs";
+import { buildProductSignal, renderProductSignal } from "./product-signal.mjs";
+import { buildCompletionContract, renderCompletionContract } from "./completion-contract.mjs";
 
 const HELP = `visual-direction.mjs [options]
 
@@ -18,6 +21,7 @@ Options:
   --treatment <id>       Pin a visual treatment / expression layer
   --authority <mode>     adaptive|reference|project|artist|concept|model
   --creative-direction   Explicit visual direction supplied by the user/artist
+  --direction-file <path> Authored JSON composition and optional build plan
   --reference-inspected  Mark the reference as inspected evidence
   --concept-accepted     Mark a generated concept as approved direction
   --model-proposed       Mark the direction as an evidence-backed model proposal
@@ -179,6 +183,7 @@ export function selectVisualDirection(query = "frontend interface", {
   acceptedConcept = false,
   modelProposal = false,
   overrides = [],
+  authoredDirection = null,
 } = {}) {
   const directions = loadDataset("visual-directions.json").directions;
   const profileId = idOf(profile);
@@ -196,7 +201,7 @@ export function selectVisualDirection(query = "frontend interface", {
     : ranked[0]?.direction ?? directions.find((item) => item.id === "adaptive-asymmetric"));
   const selectedScore = explicit ? 99 : ranked.find((item) => item.direction.id === selected.id)?.score ?? 0;
   const selectedMatch = ranked.find((item) => item.direction.id === selected.id);
-  const visualTreatment = selectVisualTreatment(query, {
+  const candidateTreatment = selectVisualTreatment(query, {
     profile,
     style,
     direction: selected,
@@ -211,38 +216,55 @@ export function selectVisualDirection(query = "frontend interface", {
     referenceInspected,
     referenceEvidence,
     creativeDirection,
-    authority,
+    authority: authority || (authoredDirection ? "model" : ""),
     acceptedConcept,
-    modelProposal,
+    modelProposal: modelProposal || Boolean(authoredDirection),
     requestedDirection,
     overrides,
   });
+  const resolved = applyAuthoredDirection({ ...selected, visualTreatment: candidateTreatment }, authoredDirection);
+  const visualTreatment = resolved.visualTreatment;
+  const creativeProcess = buildCreativeProcess({ authored: authoredDirection, authority: constraintAuthority, candidate: selected });
+  const productSignal = buildProductSignal({
+    query,
+    profile: typeof profile === "object" ? profile : { id: idOf(profile), anchor: resolved.firstViewport.dominant },
+    visualDirection: resolved,
+  });
+  const completionContract = buildCompletionContract({
+    query,
+    productSignal,
+  });
   const directionLock = constraintAuthority.mode === "project-owned"
     ? `Respect ${constraintAuthority.source} as the project-owned visual authority. Use ${selected.label} only to fill fields the project direction does not define.`
-    : constraintAuthority.mode === "adaptive-default"
-      ? `Use ${selected.label} as a provisional visual hypothesis. A stronger reference, concept, project direction, or artist-led proposal may replace it.`
-      : `Use ${selected.label} under ${constraintAuthority.label}; local AI-default checks remain advisory and may be overridden with evidence.`;
+    : authoredDirection
+      ? `Implement ${resolved.label}: ${authoredDirection.rationale} Unspecified fields remain candidate suggestions; render proof is pending.`
+      : `Derive the composition from ${constraintAuthority.mode === "adaptive-default" ? "the content and a creative exploration" : constraintAuthority.source}. ${selected.label} is gap-fill vocabulary; its layout, type sizes, radii, and signature are suggestions, not a chosen design.`;
   return {
-    id: selected.id,
-    label: selected.label,
-    confidence: confidence(selectedScore, Boolean(explicit)),
-    mode: underspecified ? "adaptive" : "signal-led",
+    id: resolved.id,
+    label: resolved.label,
+    confidence: authoredDirection ? "proposed" : confidence(selectedScore, Boolean(explicit)),
+    mode: authoredDirection ? "authored" : underspecified ? "adaptive" : "signal-led",
+    selectionStatus: authoredDirection ? "authored-proposal" : "candidate",
     matched: [...new Set([...(selectedMatch?.queryHits ?? []), ...(selectedMatch?.contextHits ?? [])])],
-    directionLock: `${directionLock} Signature candidate: ${selected.signature}.`,
-    firstViewport: selected.firstViewport,
-    layoutRules: selected.layoutRules,
-    typeRules: selected.typeRules,
-    spacingRules: selected.spacingRules,
-    surfaceRules: selected.surfaceRules,
-    geometryRules: selected.geometryRules,
-    contentRules: selected.contentRules,
-    antiAiChecks: selected.antiAiChecks,
+    directionLock,
+    firstViewport: resolved.firstViewport,
+    layoutRules: resolved.layoutRules,
+    typeRules: resolved.typeRules,
+    spacingRules: resolved.spacingRules,
+    surfaceRules: resolved.surfaceRules,
+    geometryRules: resolved.geometryRules,
+    contentRules: resolved.contentRules,
+    antiAiChecks: resolved.antiAiChecks,
     advisoryChecks: advisoryChecks(selected.antiAiChecks, visualTreatment.antiAiChecks),
-    renderChecks: selected.renderChecks,
-    signature: selected.signature,
+    renderChecks: resolved.renderChecks,
+    signature: resolved.signature,
+    authoredBuild: resolved.authoredBuild,
+    creativeProcess,
+    productSignal,
+    completionContract,
     visualTreatment,
     constraintAuthority,
-    source: "data/visual-directions.json",
+    source: authoredDirection ? "authored direction; local data fills missing fields" : "data/visual-directions.json",
   };
 }
 
@@ -262,6 +284,14 @@ export function renderVisualDirection(direction) {
 Direction: **${direction.label}** (${direction.confidence})
 Mode: **${direction.mode}**
 Matched: ${direction.matched.join(", ") || "provisional evidence"}
+
+Selection: **${direction.selectionStatus}**; confidence measures routing fit, not visual quality.
+
+${renderCreativeProcess(direction.creativeProcess)}
+
+${renderProductSignal(direction.productSignal)}
+
+${renderCompletionContract(direction.completionContract)}
 
 ${renderAuthorityMarkdown(authority, { includeChecks: false })}
 
@@ -336,6 +366,7 @@ function main() {
     treatment: option(args, "treatment", ""),
     authority: option(args, "authority", ""),
     creativeDirection: option(args, "creative-direction", ""),
+    authoredDirection: readAuthoredDirection(option(args, "direction-file")),
     referenceInspected: Boolean(args.options["reference-inspected"]),
     acceptedConcept: Boolean(args.options["concept-accepted"]),
     modelProposal: Boolean(args.options["model-proposed"]),

@@ -13,16 +13,16 @@ Make the visible product better without making the process expensive, vague, or 
 
 - Inspect the project before choosing a style, library, font, animation, or hero layout.
 - Treat the user's workflow, content, device, and existing system as the source of truth. External references fill named gaps; they do not replace product understanding.
-- Use a restrained product surface when content or media is weak. Strong expression must be earned by a real product, data, media, or spatial object.
+- Use a restrained surface when content or media is weak. Strong expression must be earned by a real subject, authored material, meaningful data, media, or spatial relationship; it does not need to become a product template.
 - Asset priority is user-provided -> existing/official -> high-quality searched -> generated -> deliberate assetless composition. Never hand off placeholders, low-resolution filler, random stock, or visibly flawed generated media.
 - Every substantial surface gets a premium-finish pass: grayscale hierarchy, optical alignment, type ceiling, material layers, specific copy, and one restrained authored detail. “Premium” is not a gradient, glass layer, giant heading, or empty whitespace.
 - Reuse and repair local primitives first. Use mature components for common controls and adapt their tokens, density, and states instead of shipping their default look.
 - Do not add a dependency to create a mood. Name the missing job, inspect the current library/docs, and choose the lightest compatible resource before installing anything.
 - Every substantial pass has at least one meaningful state transition and a reduced-motion or static fallback.
-- Before code, emit a Visual Direction Contract: composition grammar, alignment axis, dominant/counterweight, type ceiling, spacing rhythm, surface budget, edge character, corner hierarchy, separation and line policy, visual treatment, signature device, authority source, and advisory AI-default checks.
-- Separate hard invariants from visual preferences. Accessibility, task/state completeness, responsive usability, asset truth, motion fallback, runtime integrity, and rendered proof are hard; local anti-AI checks are advisory and may be overridden by a project-owned `DESIGN.md`, an inspected reference, an accepted concept, explicit user direction, or a strong model proposal with an override record.
-- Run a creative-divergence check before implementation: if the model, artist, project memory, or reference yields a stronger coherent thesis than the local candidate, promote that thesis instead of preserving the candidate for consistency.
-- Verify the rendered surface. Static code or a successful build is not visual acceptance.
+- Before code, emit a Visual Direction Contract: composition grammar, alignment axis, dominant/counterweight, type ceiling, spacing rhythm, surface budget, edge character, corner hierarchy, separation and line policy, visual treatment, signature device, authority source, and advisory AI-default checks. Treat local direction records as candidates until a real subject-specific thesis is chosen.
+- Separate hard invariants from visual preferences. Accessibility, the relevant task/state or authored-experience completeness, responsive usability, asset truth, motion fallback, runtime integrity, and rendered proof are hard; local anti-AI checks are advisory and may be overridden by a project-owned `DESIGN.md`, an inspected reference, an accepted concept, explicit user direction, or a strong model proposal with an override record.
+- Run a creative-divergence check before implementation: for substantial open work, form 2-3 structurally different concepts from the real object, content, and task; compare their reading order, dominant object, silhouette, type/media relationship, interaction model, and responsive viability; promote the strongest coherent thesis instead of preserving a local candidate for consistency.
+- Iterate on the rendered surface: capture, inspect visible defects, change code or assets, then recapture and compare. Static code or a successful build is not visual acceptance.
 - State facts, assumptions, missing evidence, and blockers. Do not spend the user's token budget on generic praise or a long design essay.
 
 ## Route The Request
@@ -89,7 +89,7 @@ When the user gives only a product type and no case, infer a provisional profile
 
 For product, brand, hardware, or peripheral work without a named case, run `scripts/reference-scout.mjs` and read [references/reference-discovery.md](references/reference-discovery.md). Choose live sources by product fit and demonstrated quality, not by geography or popularity; inspect official pages before borrowing any visible decision. When the scout returns a category source, pass it into the reference/build contract as the primary product direction; component and motion lenses support the build but cannot replace its object, material, proof, or first-viewport hierarchy.
 
-For a greenfield, visually-led surface with no screenshot or live target, use a concept-first pass with the installed image-generation skill before coding. Treat the accepted concept as a visual hypothesis to translate into tokens, assets, sections, and states; skip it for small fixes or an established local design system.
+For a visually-led surface, read [references/creative-direction.md](references/creative-direction.md) and [references/visual-iteration.md](references/visual-iteration.md). Use available image generation to explore an unresolved composition or medium before coding, or edit the inspected browser screenshot when the first render is bland. Translate the selected revision into code and usable assets, then compare fresh real renders. Skip generation for a local fix or a settled design direction; a concept may replace the local direction entirely.
 
 Read [references/assets.md](references/assets.md) whenever visible media matters. User-provided assets are authoritative; otherwise find a high-quality attributable source or generate target-specific media. If nothing passes the quality bar, use a complete assetless composition or report the blocker instead of inserting a placeholder.
 
@@ -140,23 +140,26 @@ Read [references/design-system.md](references/design-system.md) when choosing ty
 
 Read [references/geometry-language.md](references/geometry-language.md) before a substantial generic build or whenever feedback says the result is square, rigid, over-divided, or too sharp. Default to softened structural geometry and non-border grouping, not rounded cards everywhere; preserve sharp geometry when the product or stronger authority source justifies it.
 
-Read [references/constraint-authority.md](references/constraint-authority.md) when a project has a `DESIGN.md`, the user supplies a strong visual direction, or a reference conflicts with a local default. Treat the strongest evidenced direction as authority and use local datasets to fill gaps, not to normalize the design.
+Read [references/constraint-authority.md](references/constraint-authority.md) when a project has a `DESIGN.md`, the user supplies a strong visual direction, or a reference conflicts with a local default. Read [references/creative-direction.md](references/creative-direction.md) for open-ended redesigns and authored proposals. Treat the strongest evidenced direction as authority and use local datasets to fill gaps, not to normalize the design.
 
 Read [references/premium-finish.md](references/premium-finish.md) when the user asks for high-end, premium, refined, luxury, 高级, 质感, or when the first render feels generic. Run the finish pass before adding another reference or dependency.
 
-Pause for a direction lock only when the direction is genuinely ambiguous and expensive to undo. Otherwise record a Direction Assumption and continue. Never present three cosmetic variations of the same generic style.
+Pause for a direction lock only when the direction is genuinely ambiguous and expensive to undo. Otherwise record a Direction Assumption and continue. When presenting alternatives, make them structurally different; never present three cosmetic variations of the same generic style.
 
 ### 3. Build
 
 Read [references/implementation.md](references/implementation.md) for substantial work. Build the composition and interaction model before decorative styling:
 
+- Apply [references/product-prototype.md](references/product-prototype.md) first: choose the evidence mode that belongs to the work. Functional products need a usable vertical slice; narrative, art-directed, and experimental work needs a subject, thesis, attention path, authored proof, and deliberate ending. No page genre is prescribed.
+- Declare the full completion scope before polishing. The first viewport is the acceptance anchor, never the definition of done; finish every intended region, state, responsive path, asset, destination, and ending.
+
 - first read, primary action, information hierarchy, and responsive re-staging
 - local or mature primitives with complete hover, focus, pressed, disabled, loading, empty, error, success, selected, and partial-data states where relevant
-- realistic copy/data and the actual product or workflow object
+- realistic copy/data and the actual subject, product, artifact, or workflow object when the chosen mode has one
 - one signature interaction tied to a real state, not a decorative loop
 - accessible keyboard/touch behavior and reduced-motion behavior
 
-For a reference-led build, preserve the target product's content and workflow while borrowing the reference's visual grammar. Do not copy logos, brand names, proprietary assets, source code, exact copy, or an indistinguishable full-page clone. “Similar” means comparable hierarchy, material, rhythm, specimen behavior, and motion purpose translated into the target product.
+For a reference-led build, preserve the target subject's content, authorship, and workflow when it has one while borrowing the reference's visual grammar. Do not copy logos, brand names, proprietary assets, source code, exact copy, or an indistinguishable full-page clone. “Similar” means comparable hierarchy, material, rhythm, specimen behavior, sequence, and motion purpose translated into the target work.
 
 Read [references/resources.md](references/resources.md) before adding a component, motion, chart, icon, media, or 3D dependency. Use the executable catalog to narrow the choice. Treat Bencho and Design Spells as inspiration-only unless source, license, and implementation evidence say otherwise; treat Rewamp UI, Magic UI, React Bits, Aceternity UI, and Obsidian UI as copy-and-adapt candidates, never as default skins:
 
@@ -178,7 +181,9 @@ Read the returned upstream reference before applying it. Copy only the needed re
 
 ### 4. Prove
 
-Read [references/verification.md](references/verification.md). Run the product, inspect desktop and target mobile/device viewports, exercise one non-default state, and check console/build output. Capture the closest available evidence. Keep static checks, runtime checks, and visual checks separate in the report.
+Read [references/verification.md](references/verification.md). Run the target, inspect the complete declared scope at desktop and target mobile/device viewports, exercise the relevant non-default state or authored ending, and check console/build output. Capture the closest available evidence. Keep static checks, runtime checks, and visual checks separate in the report.
+
+For substantial work, follow [references/visual-iteration.md](references/visual-iteration.md): inspect real screenshots, repair material defects, and compare new captures. When the visual thesis needs reworking, edit the screenshot through image generation, inspect the proposal, translate it into code, and return to browser proof; a generated image never proves implementation completeness.
 
 For this skill itself, run:
 
@@ -203,8 +208,10 @@ Use a longer brief only when the user asks for it, the direction is high-risk, o
 
 ## Hard Invariants And Advisory Biases
 
-Hard invariants are never traded away for style: preserve semantic accessibility, task and state completeness, responsive usability, asset truth and rights, motion cleanup/reduced-motion/fallback, runtime integrity, and honest rendered proof.
+Hard invariants are never traded away for style: preserve semantic accessibility, the relevant task/state or authored-experience completeness, responsive usability, asset truth and rights, motion cleanup/reduced-motion/fallback, runtime integrity, and honest rendered proof.
 
 The following are advisory bias checks, not universal style bans: oversized type, equal-card walls, centered hero templates, default library skins, effect stacks, generic luxury palettes, weak media, and decorative motion. A project-owned `DESIGN.md`, inspected reference, accepted concept, explicit user direction, or evidence-backed model proposal may deliberately override them. Record the source, reason, evidence, risk, preserved invariants, and rendered proof in the direction contract.
 
 When feedback says the result is ugly, bland, generic, static, or expensive, do not defend the prior pass. Re-run Inspect, replace the weak decision, and verify the visible result again.
+
+For an authored direction, use `--direction-file <path>` with `direction`, `brief`, `reference-build`, or `audit`. The JSON is a partial contract: supplied composition, geometry, treatment, and build fields win; omitted fields are filled from local evidence. See [references/creative-direction.md](references/creative-direction.md).

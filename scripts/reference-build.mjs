@@ -6,6 +6,9 @@ import { scanProject } from "./inspect-project.mjs";
 import { selectReferenceComposition } from "./reference-composition.mjs";
 import { selectVisualDirection } from "./visual-direction.mjs";
 import { renderAuthorityMarkdown } from "./authority.mjs";
+import { applyAuthoredBuild, readAuthoredDirection, renderCreativeProcess } from "./creative-process.mjs";
+import { buildProductSignal, renderProductSignal } from "./product-signal.mjs";
+import { buildCompletionContract, renderCompletionContract } from "./completion-contract.mjs";
 
 const HELP = `reference-build.mjs [options]
 
@@ -22,6 +25,7 @@ Options:
   --motion <text>        Motion intent or grammar
   --authority <mode>     adaptive|reference|project|artist|concept|model
   --creative-direction   Explicit visual direction supplied by the user/artist
+  --direction-file <path> Authored JSON composition and optional build plan
   --reference-inspected  Mark the reference as inspected evidence
   --concept-accepted     Mark a generated concept as approved direction
   --model-proposed       Mark the direction as an evidence-backed model proposal
@@ -489,6 +493,7 @@ export function buildReferenceBuild({
   acceptedConcept = false,
   modelProposal = false,
   directionOverrides = [],
+  authoredDirection = null,
 } = {}) {
   const references = loadDataset("reference-lenses.json").references;
   const recipes = loadDataset("reference-recipes.json").recipes;
@@ -527,6 +532,7 @@ export function buildReferenceBuild({
     acceptedConcept,
     modelProposal,
     overrides: directionOverrides,
+    authoredDirection,
   });
   const visual = chosen?.visual ?? {
     family: "evidence-led adaptive surface",
@@ -539,6 +545,33 @@ export function buildReferenceBuild({
   const mode = primary
     ? (explicit ? "named-reference" : productResolved ? "scouted-reference" : seeded ? "supporting-reference" : "inferred-reference")
     : "adaptive-no-reference";
+  const resolvedBuild = applyAuthoredBuild({
+    firstViewport: visualDirection.selectionStatus === "authored-proposal" ? visualDirection.firstViewport : recipe.firstViewport,
+    pagePlan: recipe.sections,
+    componentGrammar: recipe.componentGrammar,
+    tokenSeed: recipe.tokenSeed,
+    motionContract: recipe.motionContract,
+    responsivePlan: recipe.responsive,
+    assetStrategy: recipe.assetStrategy,
+    buildOrder: recipe.buildOrder,
+    acceptance: recipe.acceptance,
+  }, visualDirection.authoredBuild);
+  const productSignal = buildProductSignal({
+    query,
+    profile: typeof profile === "object" ? profile : { id: profile || "adaptive-surface", anchor: visualDirection.firstViewport.dominant },
+    visualDirection,
+    firstViewport: resolvedBuild.firstViewport,
+    componentGrammar: resolvedBuild.componentGrammar,
+    referenceMode: mode,
+  });
+  const completionContract = buildCompletionContract({
+    query,
+    productSignal,
+    pagePlan: resolvedBuild.pagePlan,
+    componentGrammar: resolvedBuild.componentGrammar,
+    buildOrder: resolvedBuild.buildOrder,
+    responsivePlan: resolvedBuild.responsivePlan,
+  });
 
   return {
     version: 1,
@@ -558,6 +591,9 @@ export function buildReferenceBuild({
     },
     selectedReferences: selected,
     visualDirection,
+    productSignal,
+    completionContract,
+    creativeProcess: visualDirection.creativeProcess,
     constraintAuthority: visualDirection.constraintAuthority,
     visualGenome: {
       family: visual.family,
@@ -580,15 +616,15 @@ export function buildReferenceBuild({
       inspect: primary.inspect ?? [],
       urls: primary.urls ?? (primary.url ? [primary.url] : []),
     } : null,
-    firstViewport: recipe.firstViewport,
-    pagePlan: recipe.sections,
-    componentGrammar: recipe.componentGrammar,
-    tokenSeed: recipe.tokenSeed,
-    motionContract: recipe.motionContract,
-    responsivePlan: recipe.responsive,
-    assetStrategy: recipe.assetStrategy,
-    buildOrder: recipe.buildOrder,
-    acceptance: recipe.acceptance,
+    firstViewport: resolvedBuild.firstViewport,
+    pagePlan: resolvedBuild.pagePlan,
+    componentGrammar: resolvedBuild.componentGrammar,
+    tokenSeed: resolvedBuild.tokenSeed,
+    motionContract: resolvedBuild.motionContract,
+    responsivePlan: resolvedBuild.responsivePlan,
+    assetStrategy: resolvedBuild.assetStrategy,
+    buildOrder: resolvedBuild.buildOrder,
+    acceptance: resolvedBuild.acceptance,
     project: projectEvidence(project),
     implementationRules: [
       "Treat the sentence as an implementation request; do not stop at a moodboard or prose brief.",
@@ -596,12 +632,16 @@ export function buildReferenceBuild({
       "When a product-reference scout returns a candidate, let its object/material/proof grammar lead the visual build; component and motion references may support it but must not replace its first-viewport direction.",
       "Inspect the live reference or supplied screenshot before coding and record the visible decisions that are actually borrowed.",
       "Before polishing, name four fidelity anchors: composition, geometry, material/type, and interaction cadence; verify each in the rendered result.",
-      `Use the visual direction contract (${visualDirection.label}) as the starting point for layout/type/spacing. If ${visualDirection.constraintAuthority.source} defines a different visual language, preserve that source and use this contract only to fill gaps.`,
+      `Use the creative authority and process first. ${visualDirection.label} is ${visualDirection.selectionStatus === "authored-proposal" ? "the authored direction" : "candidate vocabulary"}; let ${visualDirection.constraintAuthority.source} define the visual language when it is stronger, and use local fields only to fill gaps.`,
+      `Treat the creative process as ${visualDirection.creativeProcess.status}: ${visualDirection.creativeProcess.exploration}`,
       `Use its geometry contract. Edge character: ${visualDirection.geometryRules.edgeCharacter}. Corner hierarchy: ${visualDirection.geometryRules.cornerHierarchy}. Separation: ${visualDirection.geometryRules.separation}. Line policy: ${visualDirection.geometryRules.linePolicy}. Sharp exception: ${visualDirection.geometryRules.sharpException}.`,
       "Treat the visual direction and treatment anti-AI checks as advisory smell detectors; record an authority-backed override instead of rejecting a deliberate choice.",
       `Use the visual treatment (${visualDirection.visualTreatment.label}) to make the ordinary surface visibly authored: apply its palette/material, type relationship, composition cue, and signature device unless the authority source deliberately defines another language.`,
-      "Keep the hard invariants: accessibility, task/state completeness, responsive usability, asset truth/rights, motion fallback, runtime integrity, and rendered proof.",
-      "Use real target content, data, and workflow objects; deterministic mock data is acceptable only when the backend is unavailable.",
+      "Keep the hard invariants: accessibility, the relevant task/state or authored-experience completeness, responsive usability, asset truth/rights, motion fallback, runtime integrity, and rendered proof.",
+      "Use real target content, data, subject, media, and workflow objects when the chosen mode has them; deterministic mock data is acceptable only when the backend is unavailable.",
+      "Choose the Product or Experience Signal Contract before lower-page decoration: functional work needs a usable object/task slice; authored work needs a subject, thesis, attention path, proof, and deliberate ending.",
+      "Reject an unintentional presentation shell, but preserve a deliberate narrative or art-directed surface when its subject, thesis, and proof are visible.",
+      "Treat the Completion Contract as the definition of done. Finish every named region, state, responsive path, asset, destination, and ending in the declared scope; the first viewport is only the acceptance anchor.",
       "Do not copy logos, brand names, proprietary assets, source code, exact text, or an indistinguishable full-page clone.",
       "Treat user-provided assets as authoritative; otherwise find high-quality attributable media or generate target-specific assets, and never ship placeholders, low-resolution filler, random stock, or visibly flawed generated media.",
       "If no asset passes the quality bar, use a deliberate assetless composition or report the blocker instead of pretending the surface is finished.",
@@ -663,6 +703,7 @@ ${sourceEvidence}
 ## Visual Direction Contract
 
 - Direction: **${contract.visualDirection.label}** (${contract.visualDirection.confidence})
+- Selection: **${contract.visualDirection.selectionStatus}**; routing confidence does not measure visual quality.
 - Lock: ${contract.visualDirection.directionLock}
 - Visual stance: **${contract.visualDirection.visualTreatment?.label ?? "not resolved"}** (${contract.visualDirection.visualTreatment?.confidence ?? "unknown"})
 - Stance signature: ${contract.visualDirection.visualTreatment?.signature ?? "not recorded"}
@@ -681,6 +722,12 @@ ${sourceEvidence}
 - Spacing: ${contract.visualDirection.spacingRules.rhythm}
 
 ${renderAuthorityMarkdown(contract.constraintAuthority, { includeChecks: false })}
+
+${renderCreativeProcess(contract.creativeProcess)}
+
+${renderProductSignal(contract.productSignal)}
+
+${renderCompletionContract(contract.completionContract)}
 
 AI-default checks (advisory):
 
@@ -780,6 +827,7 @@ function main() {
     referenceInspected: Boolean(args.options["reference-inspected"]),
     acceptedConcept: Boolean(args.options["concept-accepted"]),
     modelProposal: Boolean(args.options["model-proposed"]),
+    authoredDirection: readAuthoredDirection(option(args, "direction-file")),
   });
   const format = option(args, "format", "md");
   writeOutput(format === "json" ? contract : renderReferenceBuild(contract), { format, output: option(args, "output") });

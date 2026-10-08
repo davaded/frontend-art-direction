@@ -9,6 +9,9 @@ import { buildMotionPlan } from "./transitions-adapter.mjs";
 import { scanProject } from "./inspect-project.mjs";
 import { buildReferenceBuild } from "./reference-build.mjs";
 import { renderAuthorityMarkdown } from "./authority.mjs";
+import { readAuthoredDirection, renderCreativeProcess } from "./creative-process.mjs";
+import { renderProductSignal } from "./product-signal.mjs";
+import { renderCompletionContract } from "./completion-contract.mjs";
 
 const HELP = `audit.mjs [project-root] [options]
 
@@ -27,6 +30,7 @@ Options:
   --output <path>        Write the audit instead of stdout
   --limit <number>       Graph/resource result count (default: 5)
   --max-files <number>   Scan limit (default: 3000)
+  --direction-file <path> Authored JSON composition and optional build plan
 `;
 
 export const REFERENCE_COVERAGE = [
@@ -236,6 +240,8 @@ function buildControlDials(brief, referenceBuild) {
     authorityMode: brief.visualDirection?.constraintAuthority?.mode ?? "not resolved",
     authoritySource: brief.visualDirection?.constraintAuthority?.source ?? "not resolved",
     advisoryDefaultGuard: brief.visualDirection?.antiAiChecks?.join(" | ") ?? "not resolved",
+    productSignal: brief.productSignal?.status ?? "not resolved",
+    completionStatus: (referenceBuild?.completionContract ?? brief.completionContract)?.status ?? "not resolved",
     guardrail: "Increase one dial at a time; never use motion, effects, or a reference skin to compensate for missing product evidence.",
   };
 }
@@ -256,12 +262,14 @@ export async function buildAudit({
   offline = false,
   maxFiles = 3000,
   limit = 5,
+  directionFile = "",
 } = {}) {
   const root = resolve(projectRoot ?? process.cwd());
+  const authoredDirection = readAuthoredDirection(directionFile);
   const scan = scanProject(root, { maxFiles });
   const graph = buildProjectGraph(root, { maxFiles });
   const graphQuery = queryProjectGraph(graph, query, { limit });
-  const brief = buildBrief({ query, projectRoot: root });
+  const brief = buildBrief({ query, projectRoot: root, authoredDirection });
   const namedReferenceRequest = hasReferenceBuildSignal(query);
   const scoutedProductReference = !namedReferenceRequest && brief.referenceScout.active
     ? brief.referenceScout.selected[0]
@@ -276,6 +284,7 @@ export async function buildAudit({
     allowInferred: namedReferenceRequest,
     referenceExplicit: namedReferenceRequest,
     productReference: scoutedProductReference,
+    authoredDirection,
   });
   const resources = queryResources(query, {
     stack: brief.recommendation.stack.id,
@@ -294,16 +303,23 @@ export async function buildAudit({
   const referenceInventory = buildReferenceInventory(brief.referenceComposition, referenceBuild, brief.referenceScout);
   const resourceMatrix = buildResourceMatrix(resources);
   const controlDials = buildControlDials(brief, referenceBuild);
+  const visualIteration = brief.visualDirection.creativeProcess.visualIteration;
+  const signalDecision = brief.productSignal.mode === "product"
+    ? `make the ${brief.productSignal.object} usable through ${brief.productSignal.primaryAction}, then polish around the resulting state`
+    : `make ${brief.productSignal.experience.subject} legible through ${brief.productSignal.experience.creativeThesis}, then polish around its chosen attention path`;
   const pipeline = [
     { id: "inspect", label: "local project inspection", status: "completed", evidence: `${scan.scan.fileCount} files scanned` },
     { id: "graphify", label: "repository graph and dependency context", status: "completed", evidence: `${graph.scan.graphNodes} nodes / ${graph.scan.graphEdges} edges` },
     { id: "design-intelligence", label: "design intelligence and quality gates", status: "completed", evidence: `${brief.quality.gates.length} gates / ${brief.quality.antiPatterns.length} anti-patterns` },
     { id: "visual-direction", label: `visual direction contract: ${brief.visualDirection.label} / ${brief.visualDirection.visualTreatment.label}`, status: "completed", evidence: `${brief.visualDirection.firstViewport.layout}; ${brief.visualDirection.visualTreatment.signatureDevice}` },
     { id: "direction-authority", label: `creative direction authority: ${brief.visualDirection.constraintAuthority.mode}`, status: "completed", evidence: `${brief.visualDirection.constraintAuthority.source}; advisory defaults remain overrideable` },
+    { id: "product-signal", label: "product or experience signal", status: "completed", evidence: `${brief.productSignal.status}; ${brief.productSignal.mode === "product" ? `${brief.productSignal.object}; ${brief.productSignal.primaryAction}` : `${brief.productSignal.experience.subject}; ${brief.productSignal.experience.creativeThesis}`}` },
+    { id: "surface-completeness", label: "surface completion contract", status: "completed", evidence: `${(referenceBuild?.completionContract ?? brief.completionContract).status}; ${(referenceBuild?.completionContract ?? brief.completionContract).scope}` },
     { id: "reference-lenses", label: "all saved reference lenses considered", status: "completed", evidence: `${referenceInventory.length} lenses cataloged; ${referenceInventory.filter((item) => item.status !== "considered").length} applied` },
     { id: "reference-build", label: "reference/build contract", status: "completed", evidence: `${referenceBuild.referenceMode} / ${referenceBuild.primaryReference.label}` },
     { id: "resource-catalog", label: "local decision resource classification", status: "completed", evidence: `${resourceMatrix.length} resources cataloged; ${resources.candidates.length} ranked for this query` },
     { id: "transitions", label: "Transitions.dev Review -> Apply -> Polish", status: motionPlan ? motionPlan.source.status === "unavailable" ? "completed-with-warning" : "completed" : "skipped", evidence: motionPlan ? `${motionPlan.selected.length} candidate recipes; source ${motionPlan.source.status}` : "explicitly disabled" },
+    { id: "visual-iteration", label: "actual screenshots and generated revision loop", status: "pending", evidence: `${visualIteration.status}; the implementing agent must inspect captures, repair defects, and recapture; generated images are proposals` },
     { id: "verification", label: "rendered verification contract", status: "completed", evidence: "desktop, mobile, non-default, reduced-motion, and console checks required" },
   ];
 
@@ -311,7 +327,7 @@ export async function buildAudit({
   const open = [
     ...brief.openEvidence.slice(0, 3),
     ...(unresolved > 0 ? [`${unresolved} unresolved relative import${unresolved === 1 ? "" : "s"} remain visible in the graph; verify aliases or generated files.`] : []),
-    "Static audit does not prove runtime behavior or visual quality; exercise the target surface and capture rendered evidence.",
+    "Visual iteration is planned, not executed by this audit: run the target, inspect screenshots, repair observed defects, and compare recaptures before claiming visual acceptance.",
   ];
   if (motionPlan?.source?.status !== "cached" && motionPlan?.source?.status !== "fetched") {
     open.push(`Motion source status is ${motionPlan?.source?.status ?? "unknown"}; inspect the returned source before applying a recipe.`);
@@ -321,10 +337,13 @@ export async function buildAudit({
     project: root,
     query,
     contract: "Decision / Changed / Proof / Open",
-    decision: `Run the full pipeline for ${brief.recommendation.profile.label} with ${brief.recommendation.style.label}; use ${brief.visualDirection.constraintAuthority.label} as the creative authority, keep ${brief.visualDirection.label} as a candidate where it does not conflict, then anchor the first pass on ${brief.recommendation.profile.anchor}.`,
+    decision: `Run the full pipeline for ${brief.recommendation.profile.label} with ${brief.recommendation.style.label}; use ${brief.visualDirection.constraintAuthority.label} as the creative authority, ${signalDecision}.`,
     changed: "No target project files changed; this full audit reads local evidence, evaluates every capability, and produces an implementation contract.",
     pipeline,
     controlDials,
+    visualIteration,
+    productSignal: brief.productSignal,
+    completionContract: referenceBuild?.completionContract ?? brief.completionContract,
     proof: {
       scan: {
         status: scan.status,
@@ -348,6 +367,8 @@ export async function buildAudit({
         antiPatterns: brief.quality.antiPatterns.slice(0, 3).map((item) => item.id),
         controlDials,
       },
+      productSignal: brief.productSignal,
+      completionContract: referenceBuild?.completionContract ?? brief.completionContract,
       referenceComposition: {
         policy: brief.referenceComposition.selectionPolicy,
         selected: brief.referenceComposition.selected.map((reference) => ({
@@ -383,6 +404,7 @@ export async function buildAudit({
         firstViewport: referenceBuild.firstViewport,
         sections: referenceBuild.pagePlan.map((section) => section.id),
         acceptance: referenceBuild.acceptance,
+        completionContract: referenceBuild.completionContract,
       } : null,
       referenceInventory: referenceInventory.map((reference) => ({
         id: reference.id,
@@ -415,6 +437,7 @@ export async function buildAudit({
       sceneDials: brief.quality.dials,
       qualityGates: brief.quality.gates,
       antiPatterns: brief.quality.antiPatterns,
+      productSignal: brief.productSignal,
     },
     referenceComposition: brief.referenceComposition,
     referenceBuild,
@@ -498,6 +521,12 @@ ${dials}
 
 ${renderAuthorityMarkdown(audit.proof.direction.constraintAuthority)}
 
+${renderCreativeProcess(audit.proof.direction.visualDirection?.creativeProcess)}
+
+${renderProductSignal(audit.proof.productSignal ?? audit.direction.productSignal)}
+
+${renderCompletionContract(audit.proof.completionContract ?? audit.completionContract)}
+
 ## AI-Default Checks (Advisory)
 
 ${aiDefaultRejections}
@@ -562,6 +591,7 @@ async function main() {
     offline: Boolean(args.options.offline),
     maxFiles: asNumber(option(args, "max-files", 3000), 3000),
     limit: asNumber(option(args, "limit", 5), 5),
+    directionFile: option(args, "direction-file", ""),
   });
   const format = option(args, "format", "md");
   writeOutput(format === "json" ? audit : renderAuditMarkdown(audit), { format, output: option(args, "output") });

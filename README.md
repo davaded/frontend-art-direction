@@ -49,6 +49,7 @@ frontend-art-direction map /path/to/project --query "where is the settings form?
 frontend-art-direction graph /path/to/project --query "where is the settings form?"
 frontend-art-direction brief --query "mobile editor for photographers"
 frontend-art-direction direction --query "AI agent dashboard with approval modal" --profile productive-app
+frontend-art-direction direction --query "a reading tool for field notes" --direction-file ./direction.json --format md
 frontend-art-direction reference --query "AI agent dashboard with approval modal" --profile "agent workspace" --motion "modal continuity"
 frontend-art-direction scout --query "premium hardware product website" --format md
 frontend-art-direction reference-build --query "Build a component gallery for our analytics SDK like Rare UI" --project /path/to/project
@@ -66,7 +67,15 @@ When a request only names a product type and gives no example, the skill infers 
 
 An adaptive default is not a bland default. Content structure stays provisional, but the visual layer still receives a concrete stance such as `Quiet Editorial Studio`: a tonal canvas, restrained type contrast, one repeatable graphic device, deliberate material rules, and a bounded expression budget. The stance remains provisional until real content, assets, and a rendered target confirm it.
 
-Visual rules are tiered. Accessibility, task/state completeness, responsive usability, asset truth, motion fallback, runtime integrity, and rendered proof are hard invariants. Profiles, treatments, anti-AI checks, and reference recipes are advisory defaults. A substantive project `DESIGN.md`, an inspected reference, an accepted concept, explicit user direction, or an evidence-backed model proposal can override those defaults when the direction remains coherent and the override is recorded and rendered.
+Visual rules are tiered. Accessibility, the relevant task/state or authored-experience completeness, responsive usability, asset truth, motion fallback, runtime integrity, and rendered proof are hard invariants. Profiles, treatments, anti-AI checks, and reference recipes are advisory defaults. A substantive project `DESIGN.md`, an inspected reference, an accepted concept, explicit user direction, an authored direction file, or an evidence-backed model proposal can override those defaults when the direction remains coherent and the override is recorded and rendered.
+
+Creativity is an explicit stage of the workflow. On a substantial open request, form 2-3 structurally different concepts before selecting a direction. Compare composition, reading order, dominant object, type/media relationship, interaction model, responsive viability, and implementation cost. Local datasets provide evidence and missing fields; they do not define the answer. Use `--direction-file` when the chosen proposal needs to survive across agents or iterations.
+
+Every substantial output also carries a Product or Experience Signal Contract. Functional work can name an object, task, action, result, data, state, and prototype interaction; narrative or art-directed work can name a subject, thesis, attention path, proof, and ending. The contract protects intent without forcing a dashboard, commerce layout, card grid, CTA, or interaction model. See [references/product-prototype.md](references/product-prototype.md).
+
+The output also includes a Completion Contract. It declares the delivery scope and rejects first-viewport-only work, dead destinations, filler sections, missing mobile composition, unimplemented states, and absent endings. It defines completeness for the chosen form rather than forcing every request into the same page type.
+
+Substantial work uses a visual iteration loop: capture the real render, inspect its defects, change code or assets, and recapture under comparable conditions. For an unresolved or bland composition, the agent can edit the inspected screenshot through available image generation, select a revision, translate it into code and usable assets, and return to browser comparison. Desktop/mobile coverage includes the full scope and ending. Generated images remain proposals or assets; the CLI emits a plan marked as unexecuted. See [references/visual-iteration.md](references/visual-iteration.md).
 
 The ordinary default is soft structural geometry: open page fields, a clearly softer dominant stage, tighter secondary panels and controls, and grouping through spacing, tone, inset, crop, overlap, or depth before borders and dividers. This is not a universal rounded-card style. Technical grids, industrial tools, brutalist directions, safety boundaries, and inspected sharp references remain valid when the exception is explicit and localized.
 
@@ -83,7 +92,7 @@ For machine-readable output through npm scripts, add npm's quiet flag: `npm run 
 - starts with the user's workflow, device, content, and existing UI evidence
 - keeps the core instructions small and loads detailed guidance only by mode
 - makes type, component shape, motion, media readiness, and verification explicit decisions
-- locks composition, alignment, type scale, spacing rhythm, surface/card budget, edge hierarchy, separation strategy, and line policy before decorative styling
+- locks composition, alignment, type scale, spacing rhythm, surface/card budget, edge hierarchy, separation strategy, and line policy before decorative styling, while allowing an authored concept to replace those candidates
 - runs a premium-finish pass for grayscale hierarchy, optical alignment, material layers, specific copy, and restrained interaction instead of equating “高级” with gradients, glass, glow, or oversized type
 - treats user-provided assets as authoritative and requires sourced or generated production-quality media instead of placeholders or low-quality filler
 - uses mature primitives without inheriting their default visual identity

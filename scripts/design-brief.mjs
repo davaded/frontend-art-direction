@@ -17,6 +17,9 @@ import { selectReferenceComposition } from "./reference-composition.mjs";
 import { scoutReferences } from "./reference-scout.mjs";
 import { selectVisualDirection } from "./visual-direction.mjs";
 import { renderAuthorityMarkdown } from "./authority.mjs";
+import { readAuthoredDirection, renderCreativeProcess } from "./creative-process.mjs";
+import { buildProductSignal, renderProductSignal } from "./product-signal.mjs";
+import { buildCompletionContract, renderCompletionContract } from "./completion-contract.mjs";
 
 const HELP = `design-brief.mjs [options]
 
@@ -33,6 +36,7 @@ Options:
   --stack <id>           Pin a stack note
   --authority <mode>     adaptive|reference|project|artist|concept|model
   --creative-direction   Explicit visual direction supplied by the user/artist
+  --direction-file <path> Authored JSON composition and optional build plan
   --reference-inspected  Mark the reference as inspected evidence
   --concept-accepted     Mark a generated concept as approved direction
   --model-proposed       Mark the direction as an evidence-backed model proposal
@@ -70,7 +74,7 @@ function qualitySelection(queryTokens) {
   const quality = loadDataset("quality-gates.json");
   const dials = rankQualityRecords(quality.sceneDials, queryTokens, 2).filter((item) => item.score > 0);
   const rankedGates = rankQualityRecords(quality.qualityGates, queryTokens, 6);
-  const mandatoryGates = ["visual-direction", "geometry-language", "constraint-authority"]
+  const mandatoryGates = ["visual-direction", "geometry-language", "constraint-authority", "product-signal", "surface-completeness"]
     .map((id) => quality.qualityGates.find((gate) => gate.id === id))
     .filter(Boolean);
   const gates = [...rankedGates];
@@ -85,7 +89,7 @@ function qualitySelection(queryTokens) {
     })
     .sort((left, right) => right.score - left.score || left.id.localeCompare(right.id))
     .slice(0, 4);
-  const baselineAntiPatterns = ["centered-hero-template", "card-wall", "hard-edge-scaffolding", "type-scale-collapse", "generic-copy"]
+  const baselineAntiPatterns = ["centered-hero-template", "card-wall", "hard-edge-scaffolding", "presentation-shell", "first-viewport-only", "unfinished-surface", "type-scale-collapse", "generic-copy"]
     .map((id) => quality.antiPatterns.find((record) => record.id === id))
     .filter(Boolean);
   const antiPatterns = [...rankedAntiPatterns];
@@ -121,7 +125,7 @@ function evidenceCards(project) {
   return cards;
 }
 
-export function buildBrief({ query, projectRoot, overrides = {} }) {
+export function buildBrief({ query, projectRoot, overrides = {}, authoredDirection = null }) {
   const datasets = {
     profiles: loadDataset("profiles.json").profiles,
     styles: loadDataset("styles.json").styles,
@@ -168,6 +172,17 @@ export function buildBrief({ query, projectRoot, overrides = {} }) {
     acceptedConcept: Boolean(overrides.acceptedConcept),
     modelProposal: Boolean(overrides.modelProposal),
     overrides: overrides.directionOverrides,
+    authoredDirection,
+  });
+  const productSignal = buildProductSignal({
+    query,
+    profile: profile.record,
+    visualDirection,
+  });
+  const completionContract = buildCompletionContract({
+    query,
+    productSignal,
+    componentGrammar: [],
   });
 
   const openEvidence = [
@@ -219,9 +234,14 @@ export function buildBrief({ query, projectRoot, overrides = {} }) {
       visualDirection: visualDirection.directionLock,
       visualTreatment: visualDirection.visualTreatment?.signature,
       constraintAuthority: visualDirection.constraintAuthority,
+      creativeProcess: visualDirection.creativeProcess,
+      productSignal,
+      completionContract,
     },
     quality,
     visualDirection,
+    productSignal,
+    completionContract,
     referenceComposition,
     referenceScout,
     openEvidence,
@@ -268,6 +288,14 @@ Query: **${brief.query || "(none)"}**
 Local evidence: **${brief.evidence.localStatus}**${brief.evidence.localProject ? ` at \`${brief.evidence.localProject}\`` : ""}
 
 ## Direction
+
+Selection: **${brief.visualDirection.selectionStatus}**; local candidates are routing vocabulary, not visual authority.
+
+${renderCreativeProcess(brief.visualDirection.creativeProcess)}
+
+${renderProductSignal(brief.productSignal)}
+
+${renderCompletionContract(brief.completionContract)}
 
 - Profile: **${rec.profile.label}** (${brief.confidence.profile})
 - Surface mode: **${brief.decisions.surfaceMode}**
@@ -387,6 +415,7 @@ function main() {
       acceptedConcept: Boolean(args.options["concept-accepted"]),
       modelProposal: Boolean(args.options["model-proposed"]),
     },
+    authoredDirection: readAuthoredDirection(option(args, "direction-file")),
   });
   const format = option(args, "format", "md");
   writeOutput(format === "json" ? brief : renderBriefMarkdown(brief), {

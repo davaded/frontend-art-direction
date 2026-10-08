@@ -17,6 +17,9 @@ Use this file as project-specific visual memory. Keep it true to the shipped pro
 - Signature move:
 - Signature interaction:
 - What is intentionally not used:
+- Independent concepts considered:
+- Chosen concept and why it belongs to this product:
+- Rejected concepts and reason:
 
 ## Authority And Exceptions
 
@@ -75,6 +78,30 @@ Use this file as project-specific visual memory. Keep it true to the shipped pro
 - Card budget:
 - States that must be designed:
 
+## Product Signal
+
+- Signal mode: functional product / narrative / art-directed / experimental:
+- Product object:
+- User and job:
+- Core loop:
+- Primary action:
+- Visible result:
+- Concrete content / data:
+- State matrix:
+- First viewport proof:
+- Prototype interaction:
+- Presentation shell rejected because:
+
+## Authored Experience Signal
+
+- Subject or world:
+- Audience intent:
+- Attention path:
+- Creative thesis:
+- Proof:
+- Transition or ending:
+- Why this form belongs to the work:
+
 ## Motion And Devices
 
 - Motion grammar:
@@ -86,6 +113,9 @@ Use this file as project-specific visual memory. Keep it true to the shipped pro
 ## Evidence
 
 - References inspected:
+- Selected concept or screenshot revision and source:
+- Visual decisions translated into implementation:
 - Screens or routes verified:
+- Actual baseline and revised captures:
 - Known gaps:
 - Last reviewed:
