@@ -2,6 +2,7 @@
 
 ## Unreleased
 
+- Fixed authored-direction Markdown output and partial first-viewport overrides; made experience build plans independent of functional controls and kept explicit tasks ahead of brand/style routing.
 - Added actual screenshot repair/recapture and screenshot-to-image-to-code workflows, full-scope comparison, and an iteration ledger; CLI plans remain explicitly unexecuted and generated revisions cannot substitute for runtime evidence.
 - Added a scope-aware Completion Contract and first-viewport-only/unfinished-surface checks so generated work finishes its declared regions, states, responsive paths, destinations, assets, and endings.
 - Added a Product Signal Contract and vertical-slice gate so generated surfaces ship a usable product draft before decorative polish.

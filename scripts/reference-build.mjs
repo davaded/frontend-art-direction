@@ -419,6 +419,50 @@ function recipeFor(reference, recipes) {
   return recipes.find((recipe) => recipe.referenceId === reference.id) ?? genericLensRecipe(reference);
 }
 
+function recipeForExperience(recipe) {
+  return {
+    ...recipe,
+    firstViewport: {
+      layout: "derive the opening from the real subject, chosen thesis, attention path, and inspected visual relationships; no task control is required unless the brief calls for one",
+      mustShow: ["the real subject or authored material", "a visible point of view", "proof of the chosen attention path or stable composition"],
+      belowFoldPeek: "introduce the next moment when the chosen form continues; a complete static composition may end within the viewport",
+    },
+    sections: [{
+      id: "chosen-experience",
+      purpose: "declare and finish the work's own form and complete scope",
+      layout: "use the chosen thesis and reference relationships; regions may share one continuous composition rather than become separate page sections",
+      content: "specific subject, real or deliberately authored text/media, development where relevant, and a deliberate ending or stable final composition",
+      components: ["subject or authored material", "visible proof", "deliberate ending or stable composition"],
+    }],
+    componentGrammar: [{
+      id: "experience-surface",
+      shape: "derive silhouette, spacing, material, and hierarchy from the chosen work and inspected reference; no product control system is prescribed",
+      states: ["complete", "reduced-motion", "fallback"],
+      behavior: "preserve the subject and attention path across the complete work; design controls and their states only when the chosen intent requires them",
+    }],
+    motionContract: {
+      ...recipe.motionContract,
+      triggers: ["a reveal, reframe, or continuity relationship when the chosen work uses one"],
+      review: "name the purpose in the chosen piece; a deliberate static composition is valid",
+      polish: "inspect the complete attention path and ending at desktop/mobile; test interruption and replay where motion is used",
+      reducedMotion: "preserve the full material, reading order, and ending without travel or looping",
+      fallback: "the complete chosen work remains legible in a static final composition",
+    },
+    responsive: {
+      desktop: "stage the subject and chosen attention path across the complete scope",
+      tablet: "adjust relationships and reading order without changing the work's thesis",
+      mobile: "recompose the subject, media, type, and ending for the target viewport; retain controls only where the chosen work has them",
+    },
+    assetStrategy: {
+      hero: "use authoritative user assets, high-quality sourced or generated material, or a deliberate assetless composition that belongs to the subject",
+      specimens: "use real or deliberately authored material throughout the chosen scope; a working product specimen is only relevant when the work calls for it",
+      fallback: "complete static material and a deliberate ending when media or motion is unavailable",
+    },
+    buildOrder: ["declare chosen form and complete scope", "real subject and authored material", "attention path and visible proof", "ending or stable composition", "responsive re-staging", "relevant fallback and visual iteration"],
+    acceptance: ["the subject and thesis are visible", "the chosen scope and ending are complete", "desktop/mobile preserve the intended attention path", "the work remains complete with reduced motion or unavailable media"],
+  };
+}
+
 function projectEvidence(project) {
   if (!project) return {
     status: "not-scanned",
@@ -517,7 +561,6 @@ export function buildReferenceBuild({
   // Supporting lenses can inform the contract, but they do not become the
   // primary visual authority when the request did not name a reference.
   const chosen = primary;
-  const recipe = chosen ? recipeFor(chosen, recipes) : ADAPTIVE_RECIPE;
   const project = projectRoot ? scanProject(resolve(projectRoot)) : null;
   const visualDirection = selectVisualDirection(query, {
     profile,
@@ -534,19 +577,24 @@ export function buildReferenceBuild({
     overrides: directionOverrides,
     authoredDirection,
   });
+  const mode = primary
+    ? (explicit ? "named-reference" : productResolved ? "scouted-reference" : seeded ? "supporting-reference" : "inferred-reference")
+    : "adaptive-no-reference";
+  const signalProfile = typeof profile === "object" ? profile : { id: profile || "adaptive-surface", anchor: visualDirection.firstViewport.dominant };
+  const initialSignal = buildProductSignal({ query, profile: signalProfile, visualDirection, referenceMode: mode });
+  const baseRecipe = chosen ? recipeFor(chosen, recipes) : ADAPTIVE_RECIPE;
+  const recipe = initialSignal.mode === "product" ? baseRecipe : recipeForExperience(baseRecipe);
   const visual = chosen?.visual ?? {
     family: "evidence-led adaptive surface",
     palette: "derive from local tokens, real content, and semantic roles",
     typography: "derive roles and scale from content, reading distance, and density",
-    layout: "derive hierarchy from the primary object/task and the next proof",
+    layout: "derive hierarchy from the actual subject, content, or task and the chosen attention path",
     surfaces: "use a restrained local material system with stable geometry",
     motion: "review state, continuity, feedback, reveal, comparison, progress, and inspection before adding motion",
   };
-  const mode = primary
-    ? (explicit ? "named-reference" : productResolved ? "scouted-reference" : seeded ? "supporting-reference" : "inferred-reference")
-    : "adaptive-no-reference";
+  const firstViewport = visualDirection.selectionStatus === "authored-proposal" ? visualDirection.firstViewport : recipe.firstViewport;
   const resolvedBuild = applyAuthoredBuild({
-    firstViewport: visualDirection.selectionStatus === "authored-proposal" ? visualDirection.firstViewport : recipe.firstViewport,
+    firstViewport,
     pagePlan: recipe.sections,
     componentGrammar: recipe.componentGrammar,
     tokenSeed: recipe.tokenSeed,
@@ -556,9 +604,17 @@ export function buildReferenceBuild({
     buildOrder: recipe.buildOrder,
     acceptance: recipe.acceptance,
   }, visualDirection.authoredBuild);
+  resolvedBuild.firstViewport = {
+    ...firstViewport,
+    ...resolvedBuild.firstViewport,
+    mustShow: resolvedBuild.firstViewport.mustShow ?? [...new Set([
+      resolvedBuild.firstViewport.dominant ?? firstViewport.dominant,
+      ...initialSignal.firstViewportProof,
+    ].filter(Boolean))],
+  };
   const productSignal = buildProductSignal({
     query,
-    profile: typeof profile === "object" ? profile : { id: profile || "adaptive-surface", anchor: visualDirection.firstViewport.dominant },
+    profile: signalProfile,
     visualDirection,
     firstViewport: resolvedBuild.firstViewport,
     componentGrammar: resolvedBuild.componentGrammar,
@@ -609,7 +665,7 @@ export function buildReferenceBuild({
       material: visual.surfaces,
       type: visual.typography,
       interaction: visual.motion,
-      proof: primary ? "make at least three observed reference decisions visible in the rendered target" : "make the target's own object, content, and state relationship visible before adding a borrowed style",
+      proof: primary ? "make at least three observed reference decisions visible in the rendered target" : "make the target's own subject, content, and chosen relationships visible before adding a borrowed style",
     },
     referenceEvidence: primary?.scouted ? {
       visualSignals: primary.visualSignals ?? [],
@@ -645,7 +701,7 @@ export function buildReferenceBuild({
       "Do not copy logos, brand names, proprietary assets, source code, exact text, or an indistinguishable full-page clone.",
       "Treat user-provided assets as authoritative; otherwise find high-quality attributable media or generate target-specific assets, and never ship placeholders, low-resolution filler, random stock, or visibly flawed generated media.",
       "If no asset passes the quality bar, use a deliberate assetless composition or report the blocker instead of pretending the surface is finished.",
-      "After implementation, verify desktop and mobile screenshots plus one non-default state, console output, and reduced-motion behavior.",
+      "After implementation, verify desktop and mobile screenshots plus a relevant non-default state or authored ending, console output, and reduced-motion behavior.",
     ],
     source: {
       lenses: "data/reference-lenses.json",

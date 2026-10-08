@@ -439,6 +439,83 @@ for (const path of [
   join(root, "data", "constraint-policy.json"),
 ]) assertExists(path);
 
+async function checkIntentRegressions() {
+  for (const query of ["brand settings", "marketing workflow", "portfolio form", "品牌设置", "品牌产品配置器"]) {
+    const brief = buildBrief({ query });
+    const build = buildReferenceBuild({ query });
+    const audit = await buildAudit({ projectRoot: root, query, motion: false, offline: true });
+    for (const signal of [brief.productSignal, build.productSignal, audit.productSignal, audit.referenceBuild.productSignal]) {
+      if (signal.mode !== "product" || !signal.primaryAction || !signal.visibleResult || signal.stateMatrix.length === 0) {
+        fail(`functional intent lost its task/result/state contract: ${query}`);
+        break;
+      }
+    }
+  }
+
+  for (const query of ["实验性品牌叙事网页", "experimental video story", "我要一个网站"]) {
+    for (const reference of ["", "https://example.com/reference", "rare-ui"]) {
+      const build = buildReferenceBuild({ query, reference });
+      const imposed = new Set([
+        ...build.firstViewport.mustShow,
+        ...build.pagePlan.flatMap((section) => section.components),
+        ...build.buildOrder,
+      ]);
+      if (build.productSignal.mode === "product" || build.productSignal.primaryAction !== null
+        || ["one usable primary action", "one usable action", "one clear primary action", "primary action", "state matrix"].some((requirement) => imposed.has(requirement))) {
+        fail(`non-functional work inherited mandatory task controls: ${query} / ${reference || "no reference"}`);
+      }
+      if (!build.completionContract.requirements.length || !build.completionContract.proof.length || !build.pagePlan.length) {
+        fail(`experience routing lost complete-scope requirements: ${query}`);
+      }
+      renderReferenceBuild(build);
+    }
+  }
+
+  const fixture = mkdtempSync(join(tmpdir(), "frontend-art-direction-authored-"));
+  try {
+    const guide = readFileSync(join(root, "references", "creative-direction.md"), "utf8");
+    const documented = JSON.parse(guide.match(/```json\n([\s\S]*?)\n```/)[1]);
+    const partial = {
+      label: "Authored Reading Field",
+      signature: "The artifact carries the composition.",
+      rationale: "Keep the real artifact ahead of the explanation.",
+      firstViewport: { layout: "A continuous reading field.", dominant: "The real artifact." },
+      build: { firstViewport: { layout: "The authored build refines the reading field." } },
+    };
+    for (const [name, authored] of [["documented", documented], ["partial", partial]]) {
+      const directionFile = join(fixture, `${name}.json`);
+      writeFileSync(directionFile, JSON.stringify(authored));
+      try {
+        const build = buildReferenceBuild({ query: "a reading tool for field notes", authoredDirection: authored });
+        const expectedLayout = authored.build?.firstViewport?.layout ?? authored.firstViewport.layout;
+        const rendered = renderReferenceBuild(build);
+        if (build.firstViewport.layout !== expectedLayout || !build.firstViewport.mustShow.length
+          || !rendered.includes(expectedLayout) || !rendered.includes(authored.label)) {
+          fail(`authored first viewport was lost in the rendered contract: ${name}`);
+        }
+        for (const command of ["direction", "brief", "reference-build", "audit"]) {
+          const args = [join(root, "bin", "frontend-art-direction.js"), command,
+            "--query", "a reading tool for field notes", "--direction-file", directionFile];
+          if (command === "audit") args.push("--project", root, "--no-motion", "--offline");
+          const output = execFileSync(process.execPath, args, { encoding: "utf8", stdio: "pipe" });
+          if (!output.includes(authored.label)) fail(`CLI ${command} lost the authored direction: ${name}`);
+        }
+        const output = execFileSync(process.execPath, [join(root, "bin", "frontend-art-direction.js"),
+          "reference-build", "--query", "a reading tool for field notes", "--direction-file", directionFile,
+          "--format", "json"], { encoding: "utf8", stdio: "pipe" });
+        const json = JSON.parse(output);
+        if (json.firstViewport.layout !== expectedLayout || !json.firstViewport.mustShow.length) {
+          fail(`CLI JSON did not preserve the authored first viewport: ${name}`);
+        }
+      } catch (error) {
+        fail(`authored direction could not produce CLI contracts (${name}): ${error.message}`);
+      }
+    }
+  } finally {
+    rmSync(fixture, { recursive: true, force: true });
+  }
+}
+
 async function main() {
   checkSkill();
   checkPackage();
@@ -446,6 +523,7 @@ async function main() {
   checkMarkdownLinks();
   checkScripts();
   await checkSmoke();
+  await checkIntentRegressions();
 
   if (errors.length > 0) {
     console.error(`FAIL ${errors.length} check(s)`);

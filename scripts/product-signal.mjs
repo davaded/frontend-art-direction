@@ -112,13 +112,16 @@ const FUNCTIONAL_PROFILES = new Set([
 
 const AUTHORING_TERMS = /\b(?:editorial|portfolio|landing|marketing|brand|campaign|story|narrative|experimental|art|artwork|visual)\b|官网|品牌|作品|叙事|实验|艺术|视觉|展览|海报/;
 const FUNCTIONAL_TERMS = /\b(?:app|dashboard|editor|tool|workflow|form|settings|builder|command|analytics|data|table|chart|monitoring|player|audio|video|component|specimen|sdk|checkout|payment|interaction)s?\b|应用|后台|工作台|工具|流程|表单|设置|编辑器|分析|数据|表格|图表|监控|播放器|组件|控件|支付|交互/;
+const TASK_TERMS = /\b(?:app|dashboard|editor|tool|workflow|form|settings|builder|command|analytics|monitoring|player|component|specimen|sdk|checkout|payment|configurator|viewer)s?\b|应用|后台|工作台|工具|流程|表单|设置|编辑器|分析|监控|播放器|组件|控件|支付|配置器|查看器/;
 
 function inferSignalMode(query, profileId, profile) {
   const text = String(query).toLocaleLowerCase();
-  if (AUTHORING_TERMS.test(text) && !FUNCTIONAL_TERMS.test(text)) return "authored-experience";
+  // Explicit tasks outrank style words; a medium alone can still carry authored work.
+  if (TASK_TERMS.test(text)) return "product";
+  if (AUTHORING_TERMS.test(text)) return "authored-experience";
   if (FUNCTIONAL_PROFILES.has(profileId)) return "product";
   if (profileId === "hardware-product-story" && FUNCTIONAL_TERMS.test(text)) return "product";
-  if (AUTHORING_TERMS.test(text) || profile?.surfaceMode === "Editorial Marketing") return "authored-experience";
+  if (profile?.surfaceMode === "Editorial Marketing") return "authored-experience";
   if (FUNCTIONAL_TERMS.test(text)) return "product";
   return "open-experience";
 }
