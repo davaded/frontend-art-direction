@@ -64,7 +64,7 @@ The Completion Contract sits after that signal and defines the actual delivery b
 | Product/experience signal and completion | `direction`, `brief`, `reference-build`, `audit` | chosen evidence mode, declared scope, complete regions/states/responsive paths, and rendered ending/fallback |
 | Visitor surface and design action | `surface-mode`, `design-operation`, `brief`, `audit` | per-route visitor job, explicit operation, evidence/confidence, and adaptive fallback |
 | Motion workflow | `motion`, `audit` | Review -> Apply -> Polish plus four guardrails on every full run |
-| Live visual iteration | `live` | baseline, bounded variants, acceptance decision, source diff, and after-capture proof |
+| Live visual iteration | `live` | baseline, two or more valid variants, acceptance decision, source diff, and after-capture proof |
 | Research atlas | `research-atlas`, `design-loop` | inspected references, section winners, synthesis, selected/unavailable skills, and template-risk decision |
 | Design production loop | `design-loop`, `brief`, `audit` | 20 checkpoints, linked research, persisted artifacts, quality rubric, rendered evidence, and scope-aware signoff |
 
