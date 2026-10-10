@@ -10,7 +10,7 @@ The loop has 20 checkpoints. They can be batched when their evidence is independ
 2. **Job**: determine whether this surface persuades, supports operation, supports reading, or creates an experience.
 3. **Constraints**: separate hard invariants from taste, risks, and reversible decisions.
 4. **Evidence**: inspect the real routes, components, tokens, content, assets, and runtime.
-5. **References**: choose references by missing job and record borrow, reject, and translate decisions.
+5. **References**: open the research atlas, inspect user references first, compare sources by section, and record borrow, reject, and translate decisions.
 6. **Vernacular**: derive visual material from the subject's own artifacts, culture, language, and physical world.
 7. **Defaults**: identify first-order and second-order AI defaults before choosing the direction.
 8. **Diverge**: generate three to five structurally different directions.
@@ -40,7 +40,7 @@ The loop has 20 checkpoints. They can be batched when their evidence is independ
 
 ## Persist The Loop
 
-For substantial work, create a session in the target project so the loop survives context changes and cannot be replaced by a verbal claim:
+For substantial work, create a session in the target project so the loop survives context changes and cannot be replaced by a verbal claim. `design-loop start` also creates a linked research atlas; read [research-atlas.md](research-atlas.md) and close it before sign-off:
 
 ```bash
 node <skill-root>/scripts/design-loop.mjs start \
@@ -48,6 +48,8 @@ node <skill-root>/scripts/design-loop.mjs start \
   --query "<one-sentence request>" \
   --format md
 ```
+
+Use the atlas for each inspected reference, section winner, and synthesis. A named URL without a local capture or research artifact is still only a candidate.
 
 Record each round in order. Early rounds may point to briefs, research notes, direction files, or design memory. From round 15 onward, every completed round needs at least one rendered or verification proof item:
 

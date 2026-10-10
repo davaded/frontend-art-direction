@@ -19,6 +19,7 @@ import { classifySurfaceMode } from "./surface-mode.mjs";
 import { resolveDesignOperation } from "./design-operation.mjs";
 import { buildDesignLoop, renderDesignLoop } from "./design-loop.mjs";
 import { closeDesignLoopSession, createDesignLoopSession, getDesignLoopSession, recordDesignLoopRound } from "./design-loop-session.mjs";
+import { ATLAS_SECTIONS, addResearchAtlasReference, closeResearchAtlas, recordResearchAtlasSection, recordResearchAtlasSkill, recordResearchAtlasSynthesis, renderResearchAtlas } from "./research-atlas.mjs";
 import { addLiveVariant, createLiveSession, decideLiveVariant, recordLiveEvent } from "./live-iteration.mjs";
 
 const root = REPO_ROOT;
@@ -163,7 +164,7 @@ function checkPackage() {
   }
   if (packageJson.type !== "module") fail("package.json must use type=module");
   if (!packageJson.scripts?.test) fail("package.json is missing the test script");
-  for (const script of ["graph", "brief", "direction", "reference", "scout", "reference-build", "resource", "audit", "motion", "surface-mode", "design-operation", "design-loop", "live"]) {
+  for (const script of ["graph", "brief", "direction", "reference", "scout", "reference-build", "resource", "audit", "motion", "surface-mode", "design-operation", "design-loop", "research-atlas", "live"]) {
     if (!packageJson.scripts?.[script]) fail(`package.json is missing the ${script} script`);
   }
 }
@@ -332,6 +333,58 @@ async function checkSmoke() {
       const createdLoop = createDesignLoopSession({ projectRoot: loopFixture, query: "rebuild a research dashboard" });
       let loopSession = createdLoop.session;
       mkdirSync(join(loopFixture, "artifacts"), { recursive: true });
+      writeFileSync(join(loopFixture, "artifacts", "reference-inspection.md"), "Inspected the primary reference at desktop and mobile; recorded strengths, weaknesses, and rejected traits.\n");
+      const atlasId = createdLoop.session.researchAtlas.id;
+      let rejectedMissingReferenceEvidence = false;
+      try {
+        addResearchAtlasReference({ projectRoot: loopFixture, session: atlasId, id: "missing-evidence", label: "Unproven selected reference", status: "selected" });
+      } catch (error) {
+        rejectedMissingReferenceEvidence = /local capture or research artifact/u.test(error.message);
+      }
+      if (!rejectedMissingReferenceEvidence) fail("research atlas accepted a selected reference without local evidence");
+      addResearchAtlasReference({
+        projectRoot: loopFixture,
+        session: atlasId,
+        id: "primary-reference",
+        label: "Primary inspected reference",
+        url: "https://example.com/reference",
+        kind: "user",
+        status: "selected",
+        role: "visual language",
+        evidence: "artifacts/reference-inspection.md",
+        strengths: "clear hierarchy,subject-specific material",
+        weaknesses: "brand-specific navigation",
+        borrow: "object-led sequence",
+        reject: "copying the shell",
+      });
+      for (const section of ATLAS_SECTIONS) {
+        recordResearchAtlasSection({
+          projectRoot: loopFixture,
+          session: atlasId,
+          section: section.id,
+          winner: "primary-reference",
+          decision: `${section.id} decision`,
+          evidence: "artifacts/reference-inspection.md",
+        });
+      }
+      recordResearchAtlasSkill({ projectRoot: loopFixture, session: atlasId, id: "frontend-visual-qa", status: "selected" });
+      recordResearchAtlasSkill({ projectRoot: loopFixture, session: atlasId, id: "browser-capture", status: "unavailable", reason: "No browser adapter in this package-level smoke fixture" });
+      recordResearchAtlasSynthesis({
+        projectRoot: loopFixture,
+        session: atlasId,
+        direction: "A research surface led by the actual evidence object",
+        visualLanguage: "quiet field with one high-contrast instrument",
+        composition: "asymmetric stage with a narrow evidence rail",
+        type: "display title with compact reading text",
+        material: "soft structural surfaces and deliberate crops",
+        motion: "state-bound reveal with static final state",
+        assets: "real capture and subject-specific diagrams",
+        templateRisk: "Do not collapse into an equal-card dashboard",
+        gaps: "actual content needs product-owner confirmation",
+        rejectedDefaults: "generic hero, decorative gradient blobs",
+      });
+      const closedAtlas = closeResearchAtlas({ projectRoot: loopFixture, session: atlasId });
+      if (closedAtlas.status !== "complete" || !renderResearchAtlas(closedAtlas).includes("Section Winners")) fail("research atlas did not close with section winners and synthesis");
       for (let round = 1; round <= 19; round += 1) {
         writeFileSync(join(loopFixture, "artifacts", `round-${round}.md`), `round ${round}\n`);
         loopSession = recordDesignLoopRound({ projectRoot: loopFixture, session: loopSession.id, round, decision: `round ${round} decision`, evidence: `artifacts/round-${round}.md`, proof: round >= 15 ? "desktop-capture" : "decision" });
@@ -389,7 +442,7 @@ async function checkSmoke() {
     if (magicBuild.primaryReference.id !== "magic-ui" || magicBuild.pagePlan.length === 0 || magicBuild.motionContract.fallback.length === 0) fail("reference build did not resolve the new source-owned lens");
     if (rewampBuild.primaryReference.id !== "rewamp-ui" || !rewampBuild.pagePlan.some((section) => section.id === "component-index") || !rewampBuild.componentGrammar.some((item) => item.id === "specimen-stage") || !rewampBuild.responsivePlan.mobile.includes("selected identity")) fail("reference build did not apply the Rewamp UI component-workbench recipe");
     if (!externalBuild.primaryReference.id.startsWith("external-") || externalBuild.visualGenome.family !== "unknown until live inspection") fail("reference build did not preserve an unknown URL as an inspect-first reference");
-    if (!audit.referenceCoverage.some((item) => item.id === "graphify") || !audit.referenceCoverage.some((item) => item.id === "reference-lenses") || !audit.referenceCoverage.some((item) => item.id === "visual-treatment") || !audit.referenceCoverage.some((item) => item.id === "geometry-language") || !audit.referenceCoverage.some((item) => item.id === "constraint-authority")) fail("audit reference coverage is incomplete");
+    if (!audit.referenceCoverage.some((item) => item.id === "graphify") || !audit.referenceCoverage.some((item) => item.id === "reference-lenses") || !audit.referenceCoverage.some((item) => item.id === "research-atlas") || !audit.referenceCoverage.some((item) => item.id === "visual-treatment") || !audit.referenceCoverage.some((item) => item.id === "geometry-language") || !audit.referenceCoverage.some((item) => item.id === "constraint-authority")) fail("audit reference coverage is incomplete");
     if (audit.pipeline?.length < 8 || !audit.pipeline.some((item) => item.id === "product-signal") || !audit.pipeline.some((item) => item.id === "surface-completeness") || !audit.pipeline.some((item) => item.id === "transitions" && item.status !== "skipped") || audit.referenceInventory?.length < 8 || audit.resourceMatrix?.length < 12) fail("full audit did not execute the complete capability pipeline");
     if (!audit.pipeline.some((item) => item.id === "visual-iteration" && item.status === "pending") || audit.visualIteration?.status !== "planned-not-executed") fail("static audit incorrectly reported screenshot or image iteration as completed");
     if (!audit.pipeline.some((item) => item.id === "visual-direction") || !audit.proof.direction.visualDirection?.surfaceRules?.cardBudget || !audit.proof.direction.visualDirection?.geometryRules?.edgeCharacter || !audit.controlDials?.linePolicy) fail("full audit did not expose the visual direction and geometry contract");
@@ -431,10 +484,14 @@ async function checkSmoke() {
     if (inspectMd.includes("[object Object]") || briefMd.includes("[object Object]") || directionMd.includes("[object Object]")) fail("CLI markdown smoke output returned [object Object]");
     if (!JSON.parse(briefJson).recommendation?.profile?.id) fail("CLI JSON smoke output is incomplete");
     if (JSON.parse(designLoopJson).rounds !== 20 || JSON.parse(designLoopJson).roundsDetail?.length !== 20) fail("CLI design production loop output is incomplete");
-    const loopStartJson = execFileSync(process.execPath, [join(root, "scripts", "design-loop.mjs"), "start", "--project", root, "--query", "create a research dashboard", "--format", "json"], { encoding: "utf8" });
-    const loopStart = JSON.parse(loopStartJson);
-    if (!loopStart.id?.startsWith("loop-") || loopStart.rounds?.length !== 20 || loopStart.status !== "in-progress") fail("CLI design loop session start is incomplete");
-    rmSync(loopStart.sessionPath, { force: true });
+    const cliLoopFixture = mkdtempSync(join(tmpdir(), "frontend-art-direction-cli-loop-"));
+    try {
+      const loopStartJson = execFileSync(process.execPath, [join(root, "scripts", "design-loop.mjs"), "start", "--project", cliLoopFixture, "--query", "create a research dashboard", "--format", "json"], { encoding: "utf8" });
+      const loopStart = JSON.parse(loopStartJson);
+      if (!loopStart.id?.startsWith("loop-") || loopStart.rounds?.length !== 20 || loopStart.status !== "in-progress" || !loopStart.researchAtlas?.id || !loopStart.researchAtlas?.path) fail("CLI design loop session start is incomplete");
+    } finally {
+      rmSync(cliLoopFixture, { recursive: true, force: true });
+    }
     if (JSON.parse(directionJson).id !== "stateful-instrument" || !JSON.parse(directionJson).productSignal?.primaryAction || !JSON.parse(directionJson).visualTreatment?.id || !JSON.parse(directionJson).visualTreatment?.geometry || !JSON.parse(directionJson).geometryRules?.edgeCharacter || !JSON.parse(directionJson).constraintAuthority?.mode || !directionMd.includes("Product Signal Contract") || !directionMd.includes("Visual Treatment") || !directionMd.includes("Geometry Rules") || !directionMd.includes("AI-Default Checks (Advisory)")) fail("CLI visual direction output is incomplete");
     if (!JSON.parse(mapJson).results?.some((item) => item.path === "package.json")) fail("CLI project map JSON output is incomplete");
     if (!JSON.parse(graphJson).nodes?.length || !JSON.parse(graphJson).query?.results?.length) fail("CLI project graph JSON output is incomplete");
@@ -446,7 +503,7 @@ async function checkSmoke() {
     if (referenceBuildMd.includes("[object Object]") || !referenceBuildMd.includes("Visual Genome") || !referenceBuildMd.includes("Product Signal Contract") || !referenceBuildMd.includes("Completion Contract") || !referenceBuildMd.includes("Token Seed") || !referenceBuildMd.includes("Acceptance")) fail("reference build markdown smoke output is incomplete");
     if (JSON.parse(referenceBuildJson).primaryReference?.id !== "rare-ui" || !JSON.parse(referenceBuildJson).productSignal?.object || !JSON.parse(referenceBuildJson).completionContract?.requirements?.length || !JSON.parse(referenceBuildJson).fidelityAnchors?.composition || !JSON.parse(referenceBuildJson).fidelityAnchors?.geometry || !JSON.parse(referenceBuildJson).motionContract?.fallback) fail("reference build JSON output is incomplete");
     if (!JSON.parse(externalBuildJson).primaryReference?.id?.startsWith("external-")) fail("CLI reference build did not preserve an unknown URL");
-    if (!JSON.parse(auditJson).referenceCoverage?.length || !JSON.parse(auditJson).productSignal?.object || !JSON.parse(auditJson).completionContract?.requirements?.length || !JSON.parse(auditJson).pipeline?.some((item) => item.id === "product-signal") || !JSON.parse(auditJson).pipeline?.some((item) => item.id === "surface-completeness") || !JSON.parse(auditJson).pipeline?.some((item) => item.id === "transitions")) fail("CLI audit JSON output is incomplete");
+    if (!JSON.parse(auditJson).referenceCoverage?.length || !JSON.parse(auditJson).productSignal?.object || !JSON.parse(auditJson).completionContract?.requirements?.length || !JSON.parse(auditJson).researchAtlas?.status || !JSON.parse(auditJson).pipeline?.some((item) => item.id === "research-atlas" && item.status === "required") || !JSON.parse(auditJson).pipeline?.some((item) => item.id === "product-signal") || !JSON.parse(auditJson).pipeline?.some((item) => item.id === "surface-completeness") || !JSON.parse(auditJson).pipeline?.some((item) => item.id === "transitions")) fail("CLI audit JSON output is incomplete");
     if (JSON.parse(referenceAuditJson).proof?.referenceBuild?.primaryReference?.id !== "rare-ui") fail("CLI audit did not expose the reference build path");
     if (motionMd.includes("[object Object]") || !motionMd.includes("Review") || !motionMd.includes("Polish")) fail("motion adapter markdown smoke output is incomplete");
     const motion = JSON.parse(motionJson);
@@ -472,6 +529,7 @@ for (const path of [
   join(root, "references", "visual-iteration.md"),
   join(root, "references", "product-prototype.md"),
   join(root, "references", "design-production-loop.md"),
+  join(root, "references", "research-atlas.md"),
   join(root, "references", "independent-critique.md"),
   join(root, "docs", "research-synthesis.md"),
   join(root, "templates", "DESIGN.md"), join(root, "scripts", "transitions-adapter.mjs"),
@@ -485,6 +543,7 @@ for (const path of [
   join(root, "scripts", "completion-contract.mjs"),
   join(root, "scripts", "design-loop.mjs"),
   join(root, "scripts", "design-loop-session.mjs"),
+  join(root, "scripts", "research-atlas.mjs"),
   join(root, "data", "quality-rubric.json"),
   join(root, "data", "visual-directions.json"),
   join(root, "data", "visual-treatments.json"),

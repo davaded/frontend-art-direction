@@ -13,7 +13,8 @@ scripts/ -> deterministic local evidence and validation
 data/ -> candidate profiles, styles, types, palettes, motion, stacks, visual directions, reference lenses, product reference sources, build recipes
 templates/ -> artifacts that persist project decisions
 live -> page-level surface mode, design action, browser-variant evidence protocol
-design-loop -> 20-round production plan, persisted session, quality rubric, and signoff gate
+research-atlas -> persisted inspection evidence, section winners, synthesis, and template-risk gate
+design-loop -> 20-round production plan, linked session, quality rubric, and signoff gate
 ```
 
 ## Reference Capabilities, Implemented Locally
@@ -37,6 +38,7 @@ The design was informed by public projects, but the package does not claim that 
 - Page-level visitor routing: `scripts/surface-mode.mjs` classifies the current route as `Persuade`, `Operate`, `Read`, or `Experience` with confidence and evidence, while `scripts/design-operation.mjs` translates visual feedback into one bounded action without forcing a product genre.
 - Live visual iteration: `scripts/live-iteration.mjs` persists a provider-neutral development session for baseline capture, bounded variants, accept/discard decisions, source diffs, and after-capture proof. It is an execution handoff and evidence journal; it does not pretend to capture a browser by itself.
 - Design production loop: `scripts/design-loop.mjs` turns the research synthesis into 20 executable checkpoints from context and divergent concepts through complete construction, rendered critique, responsive/state proof, fresh-eyes review, and signoff. `start`, `record`, and `close` persist the session and enforce evidence gates; the target project still supplies the actual browser captures and edits. `data/quality-rubric.json` keeps the quality bar explicit.
+- Research atlas: `scripts/research-atlas.mjs` persists inspected references, user-reference triage, section-level winners, selected/unavailable skills, synthesis, and template-risk decisions. It requires local inspection evidence for selected sources. `design-loop start` creates and links one automatically, and `design-loop close` requires the atlas to be closed first.
 
 The package remains dependency-free and local-only for `inspect`, `map`, `graph`, `brief`, `reference`, `scout`, `reference-build`, `resource`, `audit`, and `check`. Motion work is the deliberate exception: the internal adapter may fetch the pinned upstream Skill on first use, but it does not install an animation runtime or change the target project's dependency manifest.
 
@@ -62,7 +64,8 @@ The Completion Contract sits after that signal and defines the actual delivery b
 | Visitor surface and design action | `surface-mode`, `design-operation`, `brief`, `audit` | per-route visitor job, explicit operation, evidence/confidence, and adaptive fallback |
 | Motion workflow | `motion`, `audit` | Review -> Apply -> Polish plus four guardrails on every full run |
 | Live visual iteration | `live` | baseline, bounded variants, acceptance decision, source diff, and after-capture proof |
-| Design production loop | `design-loop`, `brief`, `audit` | 20 checkpoints, persisted artifacts, quality rubric, rendered evidence, and scope-aware signoff |
+| Research atlas | `research-atlas`, `design-loop` | inspected references, section winners, synthesis, selected/unavailable skills, and template-risk decision |
+| Design production loop | `design-loop`, `brief`, `audit` | 20 checkpoints, linked research, persisted artifacts, quality rubric, rendered evidence, and scope-aware signoff |
 
 ## Runtime Flow
 
@@ -76,9 +79,10 @@ The Completion Contract sits after that signal and defines the actual delivery b
 8. `reference-build.mjs` turns a named, scouted product, or supporting reference plus one sentence into an implementation contract; named references win, scouted product references lead category work, and component/motion lenses support rather than replace the primary visual grammar.
 9. `resource-catalog.mjs` returns a small shortlist; it never installs a dependency or treats a URL as current API proof.
 10. `transitions-adapter.mjs` resolves the pinned upstream source on every full audit and returns a project-specific `Review -> Apply -> Polish` plan, even when the final implementation chooses a static fallback.
-11. `design-loop` keeps the substantial pass ordered: create choices, choose a thesis, extract the system, build the complete scope, then judge actual renders and states.
-12. For a running development target, `live` records browser iteration evidence without claiming that a journal entry is a rendered pass.
-13. The implementation is verified at static, runtime, and visual layers.
+11. `research-atlas` keeps external references inspectable: candidates become evidence only after local capture, section winners are compared by job, and the synthesis records what is rejected as well as what is borrowed.
+12. `design-loop` keeps the substantial pass ordered: create choices, choose a thesis, extract the system, build the complete scope, then judge actual renders and states; its linked atlas must close before sign-off.
+13. For a running development target, `live` records browser iteration evidence without claiming that a journal entry is a rendered pass.
+14. The implementation is verified at static, runtime, and visual layers.
 
 ## Maintenance Rules
 
@@ -87,6 +91,7 @@ The Completion Contract sits after that signal and defines the actual delivery b
 - Add a dataset record only when it changes a decision and has an explicit misuse risk.
 - Keep scripts dependency-free unless a dependency removes substantial fragility.
 - Every new script needs a smoke path in `npm test`.
+- Every substantial design-loop session needs a closed research atlas with local evidence for selected references and an explicit synthesis before sign-off.
 - Every substantial request carries the 20-round design production contract; small local repairs may batch or skip rounds only with a recorded reason.
 - Every substantial output needs a scope-aware Completion Contract; do not use first-viewport proof as a substitute for full-scope proof.
 - Every visual-direction record needs a first-viewport contract, type/spacing/surface/geometry rules, anti-AI checks, and rendered checks.

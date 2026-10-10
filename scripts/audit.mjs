@@ -133,6 +133,14 @@ export const REFERENCE_COVERAGE = [
     status: "implemented-locally",
   },
   {
+    id: "research-atlas",
+    requestedName: "Research Atlas",
+    capability: "inspectable reference evidence, section winners, synthesis, and template-risk review",
+    implementation: "scripts/research-atlas.mjs + references/research-atlas.md",
+    command: "research-atlas / design-loop",
+    status: "implemented-locally",
+  },
+  {
     id: "visual-treatment",
     requestedName: "Ordinary-site visual expression",
     capability: "separate content structure from palette, typography relationship, material logic, signature device, and expression budget",
@@ -311,6 +319,13 @@ export async function buildAudit({
   const surfaceMode = classifySurfaceMode(query);
   const designOperation = resolveDesignOperation(query, { mode: surfaceMode.mode === "adaptive" ? "" : surfaceMode.mode });
   const designLoop = brief.designLoop;
+  const researchAtlas = {
+    protocol: "frontend-art-direction/research-atlas-v1",
+    status: "required-before-signoff",
+    command: `node <skill-root>/scripts/research-atlas.mjs start --project ${root} --query "${query}" --format md`,
+    evidence: "Inspect user references first; selected references require local captures or research artifacts; record section winners and synthesis.",
+    noReferenceMode: "Use adaptive-no-reference only when the request has no justified example or category; do not invent a visual skin.",
+  };
   const liveIteration = buildLiveIterationContract({
     query,
     url: "",
@@ -330,6 +345,7 @@ export async function buildAudit({
     { id: "product-signal", label: "product or experience signal", status: "completed", evidence: `${brief.productSignal.status}; ${brief.productSignal.mode === "product" ? `${brief.productSignal.object}; ${brief.productSignal.primaryAction}` : `${brief.productSignal.experience.subject}; ${brief.productSignal.experience.creativeThesis}`}` },
     { id: "surface-mode", label: `visitor mode: ${surfaceMode.label}`, status: "completed", evidence: `${surfaceMode.confidence}; ${surfaceMode.decision}` },
     { id: "design-operation", label: `design operation: ${designOperation.label}`, status: "completed", evidence: `${designOperation.confidence}; ${designOperation.purpose}` },
+    { id: "research-atlas", label: "reference research atlas and section synthesis", status: "required", evidence: researchAtlas.evidence },
     { id: "design-loop", label: "20-round design production loop", status: "ready", evidence: `${designLoop.scope}; choices, construction, rendered critique, responsive/state proof, and signoff are required` },
     { id: "surface-completeness", label: "surface completion contract", status: "completed", evidence: `${(referenceBuild?.completionContract ?? brief.completionContract).status}; ${(referenceBuild?.completionContract ?? brief.completionContract).scope}` },
     { id: "reference-lenses", label: "all saved reference lenses considered", status: "completed", evidence: `${referenceInventory.length} lenses cataloged; ${referenceInventory.filter((item) => item.status !== "considered").length} applied` },
@@ -346,6 +362,7 @@ export async function buildAudit({
     ...brief.openEvidence.slice(0, 3),
     ...(unresolved > 0 ? [`${unresolved} unresolved relative import${unresolved === 1 ? "" : "s"} remain visible in the graph; verify aliases or generated files.`] : []),
     "Visual iteration is planned, not executed by this audit: run the target, inspect screenshots, repair observed defects, and compare recaptures before claiming visual acceptance.",
+    "Research Atlas is required before design-loop signoff: inspect references, record section winners, and write the synthesis with template-risk.",
     "Live iteration is a ready protocol, not a browser run: start a session only when the target dev server and browser adapter are available, then record baseline, decision, source diff, and after-capture evidence.",
   ];
   if (motionPlan?.source?.status !== "cached" && motionPlan?.source?.status !== "fetched") {
@@ -363,6 +380,7 @@ export async function buildAudit({
     visualIteration,
     surfaceMode,
     designOperation,
+    researchAtlas,
     designLoop,
     liveIteration,
     productSignal: brief.productSignal,
@@ -393,6 +411,7 @@ export async function buildAudit({
       productSignal: brief.productSignal,
       surfaceMode,
       designOperation,
+      researchAtlas,
       designLoop,
       liveIteration,
       completionContract: referenceBuild?.completionContract ?? brief.completionContract,
@@ -477,6 +496,7 @@ export async function buildAudit({
     next: [
       `node <skill-root>/scripts/project-map.mjs ${root} --query "${query}" --format md`,
       includeMotion ? `node <skill-root>/scripts/transitions-adapter.mjs --intent "${query}" --project ${root} --phase all --format md` : "Run the target app and capture one default plus one non-default state.",
+      `node <skill-root>/scripts/research-atlas.mjs start --project ${root} --query "${query}" --format md`,
       `node <skill-root>/scripts/reference-scout.mjs --query "${query}" --format md`,
       `node <skill-root>/scripts/reference-build.mjs --query "${query}" --project ${root} --format md`,
     ],
@@ -492,6 +512,9 @@ export function renderAuditMarkdown(audit) {
     : "- No resource candidate; inspect local primitives first.";
   const motion = audit.proof.motion
     ? `\n## Motion\n\n- Source: **${audit.proof.motion.source}**\n- Recipes: ${audit.proof.motion.selected.map((item) => `\`${item.id}\` (${item.confidence})`).join(", ") || "none"}\n- Phases: ${audit.proof.motion.workflow.join(" -> ") || "review only"}\n- Guardrails: purpose, cleanup, reduced-motion, fallback are included.\n`
+    : "";
+  const researchAtlas = audit.proof.researchAtlas
+    ? `\n## Research Atlas\n\n- Status: **${audit.proof.researchAtlas.status}**\n- Start: \`${audit.proof.researchAtlas.command}\`\n- Evidence: ${audit.proof.researchAtlas.evidence}\n- Adaptive fallback: ${audit.proof.researchAtlas.noReferenceMode}\n`
     : "";
   const referenceComposition = audit.proof.referenceComposition;
   const references = referenceComposition?.selected?.length > 0
@@ -555,6 +578,8 @@ ${renderProductSignal(audit.proof.productSignal ?? audit.direction.productSignal
 ${renderSurfaceMode(audit.proof.surfaceMode ?? audit.surfaceMode)}
 
 ${renderDesignOperation(audit.proof.designOperation ?? audit.designOperation)}
+
+${researchAtlas}
 
 ${renderDesignLoop(audit.proof.designLoop ?? audit.designLoop, { compact: false })}
 

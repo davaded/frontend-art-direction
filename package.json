@@ -35,6 +35,7 @@
     "surface-mode": "node scripts/surface-mode.mjs",
     "design-operation": "node scripts/design-operation.mjs",
     "design-loop": "node scripts/design-loop.mjs",
+    "research-atlas": "node scripts/research-atlas.mjs",
     "live": "node scripts/live-iteration.mjs",
     "pack:check": "npm pack --dry-run"
   },

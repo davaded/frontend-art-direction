@@ -33,6 +33,7 @@ Usage:
   frontend-art-direction surface-mode --query "..." [--mode persuade|operate|read|experience]
   frontend-art-direction design-operation --query "..." [--mode <surface-mode>]
   frontend-art-direction design-loop [plan|start|status|record|close] [options]
+  frontend-art-direction research-atlas [start|status|add|section|synthesize|skill|close] [options]
   frontend-art-direction live <start|status|record|add-variant|accept|discard> [options]
   frontend-art-direction check
 
@@ -77,6 +78,7 @@ if (command === "motion") runNodeScript("transitions-adapter.mjs", argv.slice(1)
 if (command === "surface-mode") runNodeScript("surface-mode.mjs", argv.slice(1));
 if (command === "design-operation") runNodeScript("design-operation.mjs", argv.slice(1));
 if (command === "design-loop") runNodeScript("design-loop.mjs", argv.slice(1));
+if (command === "research-atlas") runNodeScript("research-atlas.mjs", argv.slice(1));
 if (command === "live") runNodeScript("live-iteration.mjs", argv.slice(1));
 if (command === "check") runNodeScript("check.mjs", argv.slice(1));
 

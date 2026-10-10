@@ -3,6 +3,7 @@ import { dirname, join, resolve } from "node:path";
 import { randomUUID } from "node:crypto";
 import { loadDataset, relativePath } from "./lib.mjs";
 import { buildDesignLoop } from "./design-loop.mjs";
+import { createResearchAtlas, getResearchAtlas } from "./research-atlas.mjs";
 
 const SESSION_DIR = ".art-direction/design-loop";
 const MODES = ["create", "rebuild", "refine", "fix", "audit", "resume"];
@@ -108,6 +109,7 @@ export function createDesignLoopSession({ projectRoot, query = "", mode = "", ac
   const id = `loop-${new Date().toISOString().replace(/[-:.TZ]/g, "").slice(0, 14)}-${randomUUID().slice(0, 8)}`;
   const path = sessionPath(root, id);
   const rubric = loadDataset("quality-rubric.json");
+  const research = createResearchAtlas({ projectRoot: root, query, mode: resolvedMode === "create" && !query ? "adaptive-no-reference" : "" });
   const session = {
     protocol: "frontend-art-direction/design-loop-session-v1",
     version: 1,
@@ -122,6 +124,11 @@ export function createDesignLoopSession({ projectRoot, query = "", mode = "", ac
     operation: plan.operation,
     surfaceMode: plan.surfaceMode,
     qualityBar: rubric,
+    researchAtlas: {
+      id: research.atlas.id,
+      path: relativePath(root, research.path),
+      status: research.atlas.status,
+    },
     currentRound: 1,
     rounds: plan.roundsDetail.map((item) => ({
       ...item,
@@ -192,6 +199,10 @@ export function closeDesignLoopSession({ projectRoot, session } = {}) {
   const root = resolve(projectRoot ?? process.cwd());
   const path = sessionPath(root, session);
   const current = readSession(path);
+  if (current.researchAtlas) {
+    const atlas = getResearchAtlas({ projectRoot: root, session: current.researchAtlas.path });
+    if (atlas.status !== "complete") throw new Error(`research atlas must be closed before design-loop signoff: ${current.researchAtlas.path}`);
+  }
   const pending = current.rounds.filter((item) => !CLOSED_STATUSES.has(item.status));
   if (pending.length > 0) throw new Error(`cannot sign off with open rounds: ${pending.map((item) => item.round).join(", ")}`);
   const signoff = findRound(current, 20);
@@ -205,7 +216,7 @@ export function closeDesignLoopSession({ projectRoot, session } = {}) {
   const calculatedScore = weightedQualityScore(signoff.dimensionScores, current.qualityBar.dimensions ?? []);
   const finalScore = signoff.score ?? calculatedScore;
   if (finalScore < current.qualityBar.targetScore || calculatedScore < current.qualityBar.targetScore) throw new Error(`signoff quality score must be at least ${current.qualityBar.targetScore}`);
-  return writeSession(path, { ...current, status: "complete", currentRound: 21, qualityScore: calculatedScore, completedAt: new Date().toISOString(), updatedAt: new Date().toISOString() });
+  return writeSession(path, { ...current, status: "complete", currentRound: 21, qualityScore: calculatedScore, researchAtlas: current.researchAtlas ? { ...current.researchAtlas, status: "complete" } : current.researchAtlas, completedAt: new Date().toISOString(), updatedAt: new Date().toISOString() });
 }
 
 export function renderDesignLoopSession(session, path = "") {
@@ -224,6 +235,7 @@ export function renderDesignLoopSession(session, path = "") {
 - Progress: ${counts.complete ?? 0} complete / ${counts.skipped ?? 0} skipped / ${counts.blocked ?? 0} blocked / ${counts.pending ?? 0} pending
 - Open rounds: ${open}
 - Quality target: **${session.qualityBar.targetScore}/10**
+- Research atlas: **${session.researchAtlas?.status ?? "legacy session"}** · \`${session.researchAtlas?.path ?? "not linked"}\`
 - Session file: \`${path || session.id}\`
 
 The session is visual proof only after its evidence paths point to inspected artifacts and round 20 includes static, runtime, visual, accessibility, and scope proof.

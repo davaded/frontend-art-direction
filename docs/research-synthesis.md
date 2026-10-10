@@ -49,6 +49,8 @@ The additional public skill review found a gap between a plan and a production s
 
 The resulting conclusion is operational: a skill cannot guarantee good taste with a larger list of styles. It can make weak output harder to accept by forcing subject-specific choices, real references, persistent decisions, rendered comparison, an independent critique, a largest-gap repair, and an evidence-backed signoff. The freedom layer remains intact because the rubric evaluates the chosen direction's coherence and fit rather than forcing one visual skin.
 
+The implementation now makes that research durable through `scripts/research-atlas.mjs` and `.art-direction/research-atlas/<id>.json`. The atlas triages user references first, requires local inspection evidence for selected sources, lets different sources win different sections, records selected and unavailable skills, and stores the synthesis with template-risk and rejected defaults. `design-loop start` creates and links the atlas; `design-loop close` refuses sign-off while the atlas is open. This closes the gap between mentioning a good reference and proving that it changed a visible design decision.
+
 ## Resulting Skill Contract
 
 ```text
