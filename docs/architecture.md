@@ -65,6 +65,7 @@ The Completion Contract sits after that signal and defines the actual delivery b
 | Visitor surface and design action | `surface-mode`, `design-operation`, `brief`, `audit` | per-route visitor job, explicit operation, evidence/confidence, and adaptive fallback |
 | Motion workflow | `motion`, `audit` | Review -> Apply -> Polish plus four guardrails on every full run |
 | Live visual iteration | `live` | baseline, two or more valid variants, acceptance decision, source diff, and after-capture proof |
+| Browser capture | `capture` | local Playwright/Puppeteer screenshot, viewport/state manifest, console messages, and page errors |
 | Research atlas | `research-atlas`, `design-loop` | inspected references, section winners, synthesis, selected/unavailable skills, and template-risk decision |
 | Design production loop | `design-loop`, `brief`, `audit` | 20 checkpoints, linked research, persisted artifacts, quality rubric, rendered evidence, and scope-aware signoff |
 
@@ -82,7 +83,7 @@ The Completion Contract sits after that signal and defines the actual delivery b
 10. `transitions-adapter.mjs` resolves the pinned upstream source on every full audit and returns a project-specific `Review -> Apply -> Polish` plan, even when the final implementation chooses a static fallback.
 11. `research-atlas` keeps external references inspectable: candidates become evidence only after local capture, section winners are compared by job, and the synthesis records what is rejected as well as what is borrowed.
 12. `design-loop` keeps the substantial pass ordered: create choices, choose a thesis, extract the system, build the complete scope, then judge actual renders and states; its linked atlas must close before sign-off.
-13. For a running development target, `live` records browser iteration evidence without claiming that a journal entry is a rendered pass.
+13. For a running development target, `live` records browser iteration evidence without claiming that a journal entry is a rendered pass. `scripts/browser-capture.mjs` is the optional local adapter for targets that already provide Playwright or Puppeteer; it writes a capture and manifest without adding a dependency.
 14. The implementation is verified at static, runtime, and visual layers.
 
 ## Maintenance Rules

@@ -34,6 +34,18 @@ For a new or substantially changed surface:
 
 For substantial work, use [visual-iteration.md](visual-iteration.md) for the screenshot-to-code and screenshot-to-image-to-code loops. Keep the baseline, named visible defects, code/asset repairs, and inspected recaptures. The workflow is complete when remaining material issues are resolved or honestly blocked; taking screenshots without using them to guide repairs is insufficient.
 
+When the target project already exposes Playwright or Puppeteer, create comparable local evidence with:
+
+```bash
+node <skill-root>/scripts/browser-capture.mjs \
+  --url http://localhost:5173 \
+  --output artifacts/desktop.png \
+  --manifest artifacts/desktop.json \
+  --viewport 1440x900 --full-page
+```
+
+Use `--click "<selector>"` for one meaningful state before capture and run the command again for the target mobile viewport. The command reuses the target's runner and writes console/page-error data to the manifest; it does not install a browser.
+
 ## Reference Or Concept QA
 
 When the work started from a live reference, screenshot, or generated concept, visual comparison is a blocking gate for substantial work:

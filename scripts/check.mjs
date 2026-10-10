@@ -165,7 +165,7 @@ function checkPackage() {
   }
   if (packageJson.type !== "module") fail("package.json must use type=module");
   if (!packageJson.scripts?.test) fail("package.json is missing the test script");
-  for (const script of ["graph", "brief", "direction", "reference", "scout", "reference-build", "resource", "audit", "motion", "surface-mode", "design-operation", "design-loop", "research-atlas", "live"]) {
+  for (const script of ["graph", "brief", "direction", "reference", "scout", "reference-build", "resource", "audit", "motion", "surface-mode", "design-operation", "design-loop", "research-atlas", "live", "capture"]) {
     if (!packageJson.scripts?.[script]) fail(`package.json is missing the ${script} script`);
   }
 }

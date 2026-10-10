@@ -46,6 +46,7 @@ npm run design-operation -- --query "现在太方正，排版没有质感" --for
 npm run design-loop -- --query "hardware product story with responsive states" --format md
 npm run design-loop -- start --project /path/to/project --query "rebuild this visual surface" --format md
 npm run live -- start --project /path/to/project --url http://localhost:5173 --target "[data-art-direction-target]"
+npm run capture -- --url http://localhost:5173 --output /path/to/project/artifacts/baseline.png --viewport 1440x900 --full-page
 ```
 
 The same commands are available through the package binary when it is resolved by npm:
@@ -72,6 +73,7 @@ frontend-art-direction live start --project /path/to/project --url http://localh
 frontend-art-direction live add-variant --project /path/to/project --session <id> --id variant-1 --path artifacts/variant-1.png --summary "tighter type and wider stage"
 frontend-art-direction live accept --project /path/to/project --session <id> --variant variant-1 --source-diff artifacts/variant-1.diff --path artifacts/after.png
 frontend-art-direction live close --project /path/to/project --session <id>
+frontend-art-direction capture --url http://localhost:5173 --output /path/to/project/artifacts/baseline.png --viewport 1440x900 --full-page
 frontend-art-direction check
 ```
 
@@ -97,7 +99,7 @@ The output also includes a Completion Contract. It declares the delivery scope a
 
 For substantial work, `design-loop start` creates a linked [Research Atlas](references/research-atlas.md). User references are inspected first, section winners can come from different sources, and selected references need local capture or research-artifact evidence before sign-off. A reference name alone never counts as research.
 
-Substantial work uses a visual iteration loop: capture the real render, inspect its defects, change code or assets, and recapture under comparable conditions. For an unresolved or bland composition, the agent can edit the inspected screenshot through available image generation, select a revision, translate it into code and usable assets, and return to browser comparison. Desktop/mobile coverage includes the full scope and ending. Generated images remain proposals or assets. With a running development target, `live` persists the baseline, variants, accept/discard decision, source diff, and after-capture evidence; `live close` verifies that the local media and accepted source diff exist. This is a handoff protocol for a browser adapter, not a claim that the CLI itself captured a browser. See [references/visual-iteration.md](references/visual-iteration.md) and [references/live-iteration.md](references/live-iteration.md).
+Substantial work uses a visual iteration loop: capture the real render, inspect its defects, change code or assets, and recapture under comparable conditions. `capture` can save a local PNG/JPEG and proof manifest when the target already has Playwright or Puppeteer; it never installs a browser. For an unresolved or bland composition, the agent can edit the inspected screenshot through available image generation, select a revision, translate it into code and usable assets, and return to browser comparison. Desktop/mobile coverage includes the full scope and ending. Generated images remain proposals or assets. With a running development target, `live` persists the baseline, variants, accept/discard decision, source diff, and after-capture evidence; `live close` verifies that the local media and accepted source diff exist. See [references/visual-iteration.md](references/visual-iteration.md) and [references/live-iteration.md](references/live-iteration.md).
 
 The ordinary default is soft structural geometry: open page fields, a clearly softer dominant stage, tighter secondary panels and controls, and grouping through spacing, tone, inset, crop, overlap, or depth before borders and dividers. This is not a universal rounded-card style. Technical grids, industrial tools, brutalist directions, safety boundaries, and inspected sharp references remain valid when the exception is explicit and localized.
 
