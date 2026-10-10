@@ -25,6 +25,7 @@ import { addImageProposal, closeImageProposalSession, createImageProposalSession
 import { addVisualFinding, closeVisualCritiqueSession, createVisualCritiqueSession, recordVisualVerdict } from "./visual-critique.mjs";
 import { lintProject } from "./visual-lint.mjs";
 import { initProductContext, parseProductContext, readProductContext, renderProductContextMarkdown } from "./product-context.mjs";
+import { buildMotionPlan } from "./transitions-adapter.mjs";
 
 const root = REPO_ROOT;
 const errors = [];
@@ -736,6 +737,24 @@ async function checkIntentRegressions() {
 }
 
 async function checkProductContext() {
+  for (const query of [
+    "Claude Monet visual essay; three real paintings, complete reading sequence and native whole painting / brushwork detail viewer; no animated type or decorative loop",
+    "a photo viewer for architecture observations",
+    "a PDF viewer with document annotations",
+  ]) {
+    const brief = buildBrief({ query });
+    const build = buildReferenceBuild({ query });
+    const audit = await buildAudit({ query, projectRoot: root, motion: false, offline: true });
+    for (const result of [brief, build, audit]) {
+      const resolved = result.productRequest;
+      if (resolved?.profile.record.id === "spatial-product") fail(`a generic viewer invented a spatial product: ${query}`);
+    }
+    if (brief.referenceScout.selected.some((source) => source.id === "logitech-mx")) fail(`a generic viewer inherited a hardware reference: ${query}`);
+  }
+  for (const query of ["a 3D vehicle viewer", "a spatial model viewer", "a vehicle configurator", "一个模型查看器"]) {
+    if (buildBrief({ query }).recommendation.profile.id !== "spatial-product") fail(`explicit spatial evidence was discarded: ${query}`);
+  }
+  if (buildBrief({ query: "painting viewer", overrides: { profile: "spatial-product" } }).recommendation.profile.id !== "spatial-product") fail("an explicit spatial profile pin was discarded");
   const fixture = mkdtempSync(join(tmpdir(), "frontend-art-direction-product-"));
   const productPath = join(fixture, "PRODUCT.md");
   const run = (...args) => execFileSync(process.execPath, [join(root, "bin/frontend-art-direction.js"), ...args], { encoding: "utf8", stdio: "pipe" });
@@ -813,6 +832,29 @@ async function checkProductContext() {
   }
 }
 
+async function checkMotionIntentRegressions() {
+  const fixture = mkdtempSync(join(tmpdir(), "frontend-art-direction-motion-intent-"));
+  try {
+    writeFileSync(join(fixture, "app.js"), 'const values = items.filter(item => item.active);\nif (!blob) throw new Error("No image produced");\nconst modal = document.querySelector("#viewer");\nmodal.showModal();\n');
+    writeFileSync(join(fixture, "styles.css"), '@media (prefers-reduced-motion: reduce) { button { transition: none; } }\n.photo-button img { transition: transform 260ms ease; }\n');
+    writeFileSync(join(fixture, "index.html"), '<link rel="stylesheet" href="styles.css">\n<dialog id="viewer"></dialog>\n<img src="photo.jpg" loading="lazy">\n');
+    for (const intent of ["immediate type preview, undo and redo, palette selection; no animated text shaping", "文字预览与配色选择，不要文字动画", "styles and stable layout without animation", "open a modal without animation", "打开对话框，不要动画", "text input and search field"]) {
+      const plan = await buildMotionPlan({ intent, offline: true });
+      if (plan.selected.length || plan.workflow.apply.selected) fail(`unresolved or negative motion intent selected a recipe: ${intent}`);
+    }
+    const modal = await buildMotionPlan({ intent: "not a loading shimmer, but a modal opening", projectRoot: fixture, offline: true });
+    if (modal.selected[0]?.id !== "modal" || modal.selected.some(item => item.id === "shimmer-text")) fail("negative loading text overrode the positive modal job");
+    const findings = modal.workflow.review.projectFindings;
+    if (findings.some(item => /\.filter\(|new Error\(|stylesheet|prefers-reduced-motion|loading="lazy"/u.test(item.signal))) fail("source-only non-UI tokens became motion component findings");
+    if (!findings.some(item => item.candidate === "modal" && item.confidence === "review-needed")) fail("motion scan lost the actual dialog or overstated code-only certainty");
+    if (!findings.some(item => item.path === "styles.css" && item.candidate === null)) fail("an unrelated transition inherited the project modal intent");
+    const explicit = await buildMotionPlan({ intent: "no general text effects", transition: "shimmer-text", offline: true });
+    if (explicit.selected[0]?.id !== "shimmer-text" || explicit.selected[0]?.confidence !== "explicit") fail("conservative matching overrode a pinned transition");
+  } finally {
+    rmSync(fixture, { recursive: true, force: true });
+  }
+}
+
 async function main() {
   checkSkill();
   checkPackage();
@@ -822,6 +864,7 @@ async function main() {
   await checkSmoke();
   await checkIntentRegressions();
   await checkProductContext();
+  await checkMotionIntentRegressions();
 
   if (errors.length > 0) {
     console.error(`FAIL ${errors.length} check(s)`);

@@ -4,6 +4,8 @@ This is the default high-quality workflow for a substantial frontend surface. It
 
 The loop has 20 checkpoints. They can be batched when their evidence is independent, but they cannot disappear silently. A skipped checkpoint records why it does not apply. The loop does not mean making twenty arbitrary visual rewrites; it means moving from ambiguity to a tested, coherent artifact through twenty kinds of evidence.
 
+A checkpoint is not an iteration. When the user explicitly requests twenty iterations, maintain a separate counter of actual question -> change -> observed result cycles with source or render evidence. Completing this checklist, taking another unchanged screenshot, or relabeling the same repair does not satisfy that request. Report the completed cycles and remaining work honestly; the workflow ledger must not replace the user's requested experiment.
+
 ## The 20 Checkpoints
 
 1. **Context**: inspect the brief, project, audience, device, and existing authority.

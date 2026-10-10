@@ -24,6 +24,7 @@ For a new or substantially changed surface:
 - verify the complete declared scope, including lower sections, destinations, specimens, or ending, instead of checking only the first viewport;
 - inspect desktop and the target mobile/device size;
 - check the first screen before scrolling and one meaningful non-default state;
+- challenge the actual content shape: a paragraph instead of a short title, a long unbroken identifier, mixed-language glyphs, dense or empty results, and native input values when relevant; do not solve ordinary overflow by shrinking the whole interface;
 - exercise the primary product action and capture the before/after state, or capture the authored transition, spatial relationship, or stable ending; reject only an unintentional presentation shell even when its styling is polished;
 - verify loading, empty, error, success, selected, or partial-data states that matter to the workflow;
 - inspect text wrapping, focus, touch targets, contrast, overflow, and console errors;
@@ -31,6 +32,12 @@ For a new or substantially changed surface:
 - run a grayscale pass for hierarchy, alignment, type ceiling, surface/material separation, and excessive effects before judging color polish;
 - verify reduced motion or the static fallback;
 - compare against the requirement frame, local evidence, and direction assumption.
+
+Exercise the workflow continuously, including its editing or result context. An editor can fit the first screen yet lose its object when the user reaches a palette; a task dialog can look complete yet silently replace the selected task after completion. Preserve the relationship between object, action, and result through the actual sequence. A split workspace, a compact preview, a dialog, or a deliberate navigation path may solve the job; none is a universal layout rule.
+
+Inspect native controls at their real platform-rendered size. Date fields, select values, and intrinsic grid tracks can squeeze neighboring content even when the page has no horizontal scroll. Confirm the full selected value and nearby alignment, not only document width. For exported artifacts, compare real content and layout with the working object; use the same layout decisions where practical and distinguish system font fallback from a claimed custom font.
+
+Include a short-height or landscape case when the surface uses a viewer, overlay, or height-bound work area. Confirm that dismissal and navigation remain reachable while long content can scroll. For a declared image-failure path, provoke a real local request failure and inspect the visible message, disabled states, and recovery action: a `hidden` attribute or an error handler can exist while author CSS keeps the broken image visible and clips its feedback. Restore temporary failure, cache, viewport, and media conditions after verification.
 
 For substantial work, use [visual-iteration.md](visual-iteration.md) for the screenshot-to-code and screenshot-to-image-to-code loops. Keep the baseline, named visible defects, code/asset repairs, and inspected recaptures. The workflow is complete when remaining material issues are resolved or honestly blocked; taking screenshots without using them to guide repairs is insufficient.
 

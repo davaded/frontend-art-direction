@@ -63,6 +63,7 @@ Before handoff, verify every primary asset in the running surface:
 
 - it remains sharp at its rendered desktop and mobile size without visible upscaling;
 - the subject and focal point survive responsive cropping;
+- foreground type and controls leave the intended subject inspectable; fitting inside the viewport does not prove that a title has not covered a face, object edge, label, or important detail;
 - loading does not collapse layout or move adjacent controls;
 - alt text, captions, controls, poster/static behavior, and reduced-motion behavior match the asset's role;
 - color treatment and overlays do not conceal low quality or make the product hard to inspect;
@@ -70,3 +71,5 @@ Before handoff, verify every primary asset in the running surface:
 - the final screenshot contains no unfinished placeholder or low-quality filler.
 
 If the user supplied the asset, include it in the visual proof. If it exposes a crop or quality limitation, preserve the material and report the limitation rather than silently substituting something else.
+
+For an authored detail, make the crop's role clear and keep a path to the whole source when that distinction matters. Inspect thumbnails as well as the main stage: forcing unlike images into one ratio can remove the very objects the caption names. Natural proportions, different tracks, or an intentional focal crop are choices, not universal prescriptions. A source request failure is not permission to accept a tiny preview; use another attributable high-quality version, generate only when authenticity permits it, or report the unresolved asset.

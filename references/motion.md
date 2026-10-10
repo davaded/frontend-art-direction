@@ -30,6 +30,8 @@ node <skill-root>/scripts/transitions-adapter.mjs \
 
 The bridge fetches a pinned upstream Skill into a private cache on first use. It is an implementation source for this skill, not a second skill the user must install. If the source is unavailable, continue with this guide's local rules and record the missing upstream evidence.
 
+Intent matches are candidates; source findings require UI review. A negated effect, array `filter()`, stylesheet link, or reduced-motion guard does not identify an animated component. Confirm the visible element and state pair before applying a recipe. When the relationship is unresolved, preserve immediate/static feedback or explicitly pin the inspected recipe instead of turning a generic word such as text or selection into an effect.
+
 ## Choose The Lightest Medium
 
 - CSS transitions or native view transitions for simple state and route continuity.

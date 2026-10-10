@@ -1,0 +1,54 @@
+{
+  "intent": "immediate type preview, undo and redo, palette selection; no animated text shaping",
+  "phase": "all",
+  "source": {
+    "repository": "https://github.com/Jakubantalik/transitions.dev",
+    "commit": "598d3d6ad89dabb4bdf742fd2e887ca53914a888",
+    "root": "/Users/daiyudai/Library/Caches/frontend-art-direction/transitions-dev/598d3d6ad89dabb4bdf742fd2e887ca53914a888",
+    "status": "cached",
+    "transitionsSkill": "/Users/daiyudai/Library/Caches/frontend-art-direction/transitions-dev/598d3d6ad89dabb4bdf742fd2e887ca53914a888/transitions-dev/SKILL.md",
+    "polishSkill": "/Users/daiyudai/Library/Caches/frontend-art-direction/transitions-dev/598d3d6ad89dabb4bdf742fd2e887ca53914a888/transitions-polish/SKILL.md",
+    "terms": "https://transitions.dev/terms.html",
+    "redistribution": "The adapter fetches upstream files on demand; this package does not redistribute the upstream library."
+  },
+  "selected": [],
+  "workflow": {
+    "review": {
+      "purpose": "Name the user-facing purpose before selecting a motion recipe.",
+      "statePair": "unresolved -> inspect the actual resting and resulting states",
+      "trigger": "Identify the real user or system trigger; do not animate on a decorative timer.",
+      "projectFindings": [],
+      "decision": "No single recipe matched confidently; review the catalog before applying one."
+    },
+    "apply": {
+      "selected": false,
+      "source": null,
+      "steps": [
+        "Do not invent a recipe; return to Review and name the state relationship first."
+      ]
+    },
+    "polish": {
+      "source": "/Users/daiyudai/Library/Caches/frontend-art-direction/transitions-dev/598d3d6ad89dabb4bdf742fd2e887ca53914a888/transitions-polish/SKILL.md",
+      "dimensions": [
+        "duration",
+        "distance",
+        "scale",
+        "blur",
+        "easing"
+      ],
+      "rules": [
+        "Infer usage before choosing a token; never replace a value only because a number is nearby.",
+        "Make open states inviting and close states faster/quieter, except for symmetric swaps such as tabs and page side-by-side.",
+        "Keep stagger totals short, reserve delay for intent gating or sequencing, and never delay dismissal.",
+        "Use blur/scale/distance only when they explain a swap or spatial relationship; leave plain fades alone."
+      ]
+    }
+  },
+  "guardrails": {
+    "motionPurpose": "feedback / continuity / reveal / comparison / progress / inspection / narrative",
+    "cleanup": "Keep the local state cleanup explicit; do not leave closing or replay classes behind.",
+    "reducedMotion": "Keep the resting and final states readable without animation; use a static state for unsupported motion.",
+    "fallback": "The final state must remain understandable with animation removed, interrupted, or unsupported on the target device."
+  },
+  "next": "Run Review against the project and choose one recipe only after the state relationship is clear."
+}

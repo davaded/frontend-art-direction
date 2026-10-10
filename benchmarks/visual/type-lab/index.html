@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f2f3f0">
+  <title>Type / Lab - Specimen editor</title>
+  <link rel="stylesheet" href="../shared/fonts.css">
+  <link rel="stylesheet" href="styles.css">
+  <script src="../shared/assets/lucide.min.js" defer></script>
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <header class="app-header">
+    <a class="brand" href="#artboard" aria-label="Type Lab artboard"><i data-lucide="type" aria-hidden="true"></i><h1>Type <span>/</span> Lab</h1></a>
+    <span class="document-name" id="document-name">Untitled study</span>
+    <div class="document-actions"><button id="save" type="button" aria-label="Save study" title="Save study"><i data-lucide="bookmark-plus" aria-hidden="true"></i><span>Save</span></button><button id="export" class="primary-button" type="button" title="Export PNG"><i data-lucide="download" aria-hidden="true"></i><span>Export PNG</span></button></div>
+  </header>
+  <main class="editor">
+    <aside class="families" id="family-panel" aria-labelledby="families-title">
+      <div class="rail-heading"><h2 id="families-title">Type families</h2><span>03</span></div>
+      <div class="family-list" role="group" aria-label="Type family">
+        <button type="button" class="family" data-font="Newsreader" aria-pressed="true"><span class="family-glyph serif">Aa</span><span class="family-description"><strong>Newsreader</strong><small>Serif / Variable</small></span><i data-lucide="check" aria-hidden="true"></i></button>
+        <button type="button" class="family" data-font="Sora" aria-pressed="false"><span class="family-glyph sans">Aa</span><span class="family-description"><strong>Sora</strong><small>Sans / Variable</small></span><i data-lucide="check" aria-hidden="true"></i></button>
+        <button type="button" class="family" data-font="Space Mono" aria-pressed="false"><span class="family-glyph mono">Aa</span><span class="family-description"><strong>Space Mono</strong><small>Mono / Regular</small></span><i data-lucide="check" aria-hidden="true"></i></button>
+      </div>
+      <section class="saved-section" aria-labelledby="saved-title"><div class="rail-heading"><h2 id="saved-title">Saved studies</h2><span id="study-count">00</span></div><div id="studies"></div><p id="saved-empty">No saved studies</p></section>
+    </aside>
+    <section class="workspace" aria-label="Artwork">
+      <div class="workspace-toolbar"><label class="sample-label" for="sample">Specimen<select id="sample"><option value="study">A little less ordinary</option><option value="alphabet">Alphabet</option><option value="numbers">Numerals</option><option value="custom">Custom text</option></select></label><div class="history"><button type="button" id="undo" class="icon-button" disabled aria-label="Undo" title="Undo"><i data-lucide="undo-2" aria-hidden="true"></i></button><button type="button" id="redo" class="icon-button" disabled aria-label="Redo" title="Redo"><i data-lucide="redo-2" aria-hidden="true"></i></button></div></div>
+      <div class="stage"><div class="stage-label"><span>ARTBOARD / 01</span><span>600 &times; 750</span></div><div class="artboard" id="artboard" role="img" aria-label="Current typographic artwork"><div class="artboard-content" id="artboard-content"><div class="artwork-top"><span>A TYPE STUDY</span><span id="artwork-number">01</span></div><div class="specimen" id="specimen">A little<br>less ordinary.</div><div class="artwork-bottom"><span>TYPE / LAB</span><span id="artwork-family">NEWSREADER / 400</span></div></div></div><div class="stage-caption"><span id="type-caption">Newsreader Regular</span><span id="actual-size">96 px</span></div></div>
+      <div class="workspace-footer"><span><i data-lucide="circle-check" aria-hidden="true"></i><span id="edit-status">Ready</span></span><span id="contrast">Contrast 10.6:1</span></div>
+    </section>
+    <div class="mobile-panels" role="tablist" aria-label="Editing panels"><button id="properties-tab" type="button" role="tab" aria-selected="true" aria-controls="property-panel">Properties</button><button id="families-tab" type="button" role="tab" aria-selected="false" aria-controls="family-panel" tabindex="-1">Families &amp; studies</button></div>
+    <aside class="properties" id="property-panel" aria-labelledby="properties-title">
+      <div class="rail-heading"><h2 id="properties-title">Properties</h2><i data-lucide="sliders-horizontal" aria-hidden="true"></i></div>
+      <section class="property-group"><label for="copy">Specimen text</label><textarea id="copy" rows="3" maxlength="400" spellcheck="false">A little
+less ordinary.</textarea><div class="text-meta"><span>TYPE STUDY</span><output id="character-count" for="copy">23 characters</output></div></section>
+      <section class="property-group range-group"><div class="property-title"><label for="size">Size</label><output id="size-value" for="size">96 px</output></div><input id="size" type="range" min="24" max="180" step="1" value="96"><div class="range-ticks"><span>24</span><span>180</span></div><div class="property-title"><label for="weight">Weight</label><output id="weight-value" for="weight">400</output></div><input id="weight" type="range" min="200" max="800" step="100" value="400"><div class="range-ticks"><span id="weight-min">200</span><span id="weight-max">800</span></div><div class="property-title"><label for="leading">Line height</label><output id="leading-value" for="leading">1.05</output></div><input id="leading" type="range" min="0.85" max="1.6" step="0.05" value="1.05"><label class="check-setting"><input id="fit" type="checkbox" checked>Fit to artboard</label></section>
+      <section class="property-group"><span class="control-label">Alignment</span><div class="alignment" role="group" aria-label="Text alignment"><button type="button" class="icon-button" data-align="left" aria-label="Align left" aria-pressed="true" title="Align left"><i data-lucide="align-left" aria-hidden="true"></i></button><button type="button" class="icon-button" data-align="center" aria-label="Align center" aria-pressed="false" title="Align center"><i data-lucide="align-center" aria-hidden="true"></i></button><button type="button" class="icon-button" data-align="right" aria-label="Align right" aria-pressed="false" title="Align right"><i data-lucide="align-right" aria-hidden="true"></i></button></div></section>
+      <section class="property-group"><span class="control-label">Palette</span><div class="palettes" role="group" aria-label="Artwork palette"><button type="button" data-palette="mint" style="--swatch:#e8f4de;--dot:#263b31" aria-label="Mint palette" aria-pressed="true" title="Mint"><span></span></button><button type="button" data-palette="ink" style="--swatch:#29272a;--dot:#f3f2e9" aria-label="Ink palette" aria-pressed="false" title="Ink"><span></span></button><button type="button" data-palette="rose" style="--swatch:#f7dfe8;--dot:#562941" aria-label="Rose palette" aria-pressed="false" title="Rose"><span></span></button><button type="button" data-palette="paper" style="--swatch:#ffedbd;--dot:#353127" aria-label="Paper palette" aria-pressed="false" title="Paper"><span></span></button></div><div class="color-row"><label for="foreground"><input id="foreground" type="color" aria-label="Type color" value="#263b31">Type<output id="foreground-value">#263B31</output></label><label for="background"><input id="background" type="color" aria-label="Paper color" value="#e8f4de">Paper<output id="background-value">#E8F4DE</output></label></div></section>
+      <button type="button" id="reset" class="reset-button"><i data-lucide="rotate-ccw" aria-hidden="true"></i>Reset study</button>
+    </aside>
+  </main>
+  <p id="status" role="status" class="status"></p>
+</body>
+</html>

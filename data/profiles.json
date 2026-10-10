@@ -174,7 +174,7 @@
     {
       "id": "spatial-product",
       "label": "Spatial / Product Object",
-      "keywords": ["3d", "model", "viewer", "configurator", "vehicle", "product inspection", "spatial", "模型", "车辆", "配置器"],
+      "keywords": ["3d", "model", "configurator", "vehicle", "product inspection", "spatial", "模型", "车辆", "配置器"],
       "surfaceMode": "Spatial Experiential",
       "stance": "spatial-model-led",
       "type": "technical-display",

@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f8f9f6">
+  <title>Common Ground - Architecture notebook</title>
+  <link rel="stylesheet" href="../shared/fonts.css">
+  <link rel="stylesheet" href="styles.css">
+  <script src="../shared/assets/lucide.min.js" defer></script>
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#observations">Skip to observations</a>
+  <header class="site-header" id="top">
+    <a class="identity" href="#top">COMMON GROUND<span>ARCHITECTURE NOTEBOOK</span></a>
+    <nav aria-label="Notebook"><a href="#observations">Observations <span>03</span></a><a href="#notes">Field notes</a><button type="button" id="saved-view" aria-label="View saved observations"><i data-lucide="bookmark" aria-hidden="true"></i><span id="saved-count">0</span></button></nav>
+  </header>
+  <main>
+    <section class="opening" aria-labelledby="notebook-title">
+      <img class="opening-photo" src="../shared/assets/eye-museum.jpg" width="2400" height="3590" alt="Angular white facade and long dark stairs of the Eye Film Museum in Amsterdam" fetchpriority="high">
+      <p class="opening-index">A STUDY IN MATERIAL &amp; LIGHT <span>VOL. 01 / 2026</span></p>
+      <div class="opening-title"><h1 id="notebook-title">Common<br>Ground</h1></div>
+      <div class="opening-caption"><span>01 / AMSTERDAM</span><button type="button" data-view="0" class="light-link">Eye Film Museum <i data-lucide="arrow-up-right" aria-hidden="true"></i></button></div>
+      <button type="button" class="inspect-button" data-view="0" aria-label="Inspect the Eye Film Museum photograph" title="Inspect photograph"><i data-lucide="expand" aria-hidden="true"></i></button>
+    </section>
+    <section class="introduction" aria-labelledby="intro-title">
+      <p class="section-index">THE NOTEBOOK<span>01 - 03</span></p>
+      <h2 id="intro-title">A different way<br>of paying attention.</h2>
+      <p>Follow an edge. Notice a shadow. Stay with the place a little longer. Three photographs, and a few things they ask us to see.</p>
+    </section>
+    <section class="observations" id="observations" aria-labelledby="observations-title">
+      <div class="section-heading"><h2 id="observations-title">Selected observations</h2><span>02 / 03</span></div>
+      <div class="observation-pair">
+        <article class="observation observation-large">
+          <button type="button" class="photo-button" data-view="1" aria-label="Inspect the Ottawa colonnade photograph"><img src="../shared/assets/ottawa-colonnade.jpg" width="1800" height="2700" alt="Repeated concrete columns, glass and long shadows along a building in Ottawa" loading="lazy"><span class="photo-inspect"><i data-lucide="arrow-up-right" aria-hidden="true"></i></span></button>
+          <div class="observation-caption"><div><span class="caption-index">02 / OTTAWA</span><h3>Intervals of light</h3><p>Concrete. Glass. A repeating pause.</p></div><a href="https://unsplash.com/photos/concrete-pillars-line-the-exterior-of-a-modern-building-VQbpgDEstfU" target="_blank" rel="noreferrer">Jonathan Lim <i data-lucide="arrow-up-right" aria-hidden="true"></i></a></div>
+        </article>
+        <article class="observation observation-small">
+          <button type="button" class="photo-button" data-view="2" aria-label="Inspect the Kunsthalle photograph"><img src="../shared/assets/kunsthalle.jpg" width="1800" height="2700" alt="Geometric concrete facade of Kunsthalle Dusseldorf against a clear blue sky" loading="lazy"><span class="photo-inspect"><i data-lucide="arrow-up-right" aria-hidden="true"></i></span></button>
+          <div class="observation-caption"><div><span class="caption-index">03 / DUSSELDORF</span><h3>A shadow makes a room</h3><p>Depth begins where the light ends.</p></div><a href="https://unsplash.com/photos/modern-concrete-building-facade-with-geometric-shadows-wcdlRkLTtrg" target="_blank" rel="noreferrer">Julia Taubitz <i data-lucide="arrow-up-right" aria-hidden="true"></i></a></div>
+        </article>
+      </div>
+    </section>
+    <section class="field-notes" id="notes" aria-labelledby="notes-title">
+      <p class="section-index">FIELD NOTES<span>ON LOOKING</span></p>
+      <div><h2 id="notes-title">Look a little<br><em>longer.</em></h2><p>Architecture is not still. A wall changes as the sun moves. A row of columns becomes a rhythm when you walk past. A photograph holds one moment of that conversation.</p><p>This notebook follows three of those moments: a diagonal in Amsterdam, repeated intervals in Ottawa, and a deep cut of shadow in Dusseldorf.</p><a class="text-link" href="#observations">Return to the observations <i data-lucide="arrow-up-right" aria-hidden="true"></i></a></div>
+      <div class="notes-detail"><button type="button" data-view="0" class="note-photo" aria-label="Inspect the diagonal in the Eye Film Museum photograph"><img src="../shared/assets/eye-museum.jpg" width="2400" height="3590" alt="A closer crop of the stair, facade and shadow in the Eye Film Museum photograph" loading="lazy"><span><i data-lucide="expand" aria-hidden="true"></i></span></button><p><span class="caption-index">01 / AMSTERDAM</span><br>Stair. Facade. Shadow.</p><a href="https://unsplash.com/photos/architectural-photograph-of-concrete-structure-clrS7NSsJLk" target="_blank" rel="noreferrer">Photography by John Unwin <i data-lucide="arrow-up-right" aria-hidden="true"></i></a></div>
+    </section>
+  </main>
+  <footer><a class="footer-name" href="#top">Common Ground</a><span>THREE OBSERVATIONS / ONE NOTEBOOK</span><a class="back-top" href="#top" aria-label="Back to top" title="Back to top"><i data-lucide="arrow-up" aria-hidden="true"></i></a></footer>
+  <p class="status" id="status" role="status"></p>
+  <dialog id="viewer" aria-labelledby="viewer-title">
+    <div class="viewer-toolbar"><span id="viewer-position">01 / 03</span><div><button type="button" id="bookmark" class="icon-button" aria-label="Save observation" aria-pressed="false" title="Save observation"><i data-lucide="bookmark" aria-hidden="true"></i></button><button type="button" id="close-viewer" class="icon-button" aria-label="Close photograph" title="Close photograph"><i data-lucide="x" aria-hidden="true"></i></button></div></div>
+    <div class="viewer-content"><img id="viewer-image" alt=""><div class="viewer-description"><span id="viewer-place"></span><h2 id="viewer-title"></h2><p id="viewer-note"></p><a id="viewer-source" target="_blank" rel="noreferrer"></a></div></div>
+    <div class="viewer-navigation"><button type="button" id="previous" class="icon-button" aria-label="Previous photograph" title="Previous photograph"><i data-lucide="arrow-left" aria-hidden="true"></i></button><span>COMMON GROUND / OBSERVATIONS</span><button type="button" id="next" class="icon-button" aria-label="Next photograph" title="Next photograph"><i data-lucide="arrow-right" aria-hidden="true"></i></button></div>
+  </dialog>
+</body>
+</html>

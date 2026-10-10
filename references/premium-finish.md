@@ -29,7 +29,7 @@ The first screen shows the actual product, work object, data relationship, or au
 
 ### 2. Optical hierarchy
 
-Typography, spacing, alignment, and contrast are tuned by eye after the mechanical grid is in place. Use one primary type family unless a second family has a real editorial job. Keep display type earned, not merely large.
+Typography, spacing, alignment, and contrast are tuned by eye after the mechanical grid is in place. Use one primary type family unless a second family has a real editorial job. Keep display type earned, not merely large. Inspect the actual glyphs over the actual image crop at each relevant width: a foreground color can be correct in the palette and still disappear on a photograph. Repair the type/media relationship before adding an overlay. For instruments, distinguish expressive artwork type from control text; making labels microscopic to keep the artwork large weakens the product.
 
 ### 3. Material discipline
 
@@ -40,6 +40,8 @@ Use a related corner hierarchy rather than one radius everywhere: the dominant s
 ### 4. Composition with tension
 
 Give the page one dominant object and one supporting counterweight. Use asymmetry only when the reading path remains clear. Avoid equal cards, repeated split sections, centered-everything heroes, and empty space with no object or copy to justify it.
+
+Inspect the handoffs between regions, including the opening and ending. A strong hero can still stall the reading path when only its caption and a blank gap enter the viewport. An ending can return to an earlier object, resolve an observation, or provide a next action when the work calls for one; a giant index or unrelated CTA does not supply that purpose by itself. Choose the handoff from the work rather than imposing one page sequence.
 
 ### 5. Specific language
 

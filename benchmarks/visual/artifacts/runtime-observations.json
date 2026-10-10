@@ -1,0 +1,165 @@
+{
+  "protocol": "frontend-art-direction/visual-trial-observations-v1",
+  "observedAt": "2026-10-10T19:48:46.854Z",
+  "captures": [
+    {
+      "surface": "type-lab",
+      "requestedViewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "capture": "type-lab-after-desktop.jpg",
+      "fullPage": false,
+      "artwork": "Sora artwork: Make it\nyours.",
+      "fontStatus": "loaded",
+      "height": 900,
+      "savedCount": "00",
+      "scrollWidth": 1440,
+      "scrollY": 0,
+      "url": "http://127.0.0.1:4176/type-lab/",
+      "width": 1440
+    },
+    {
+      "surface": "type-lab",
+      "requestedViewport": {
+        "width": 768,
+        "height": 1024
+      },
+      "capture": "type-lab-tablet.jpg",
+      "fullPage": true,
+      "artwork": "Sora artwork: Make it\nyours.",
+      "fontStatus": "loaded",
+      "height": 1024,
+      "savedCount": "00",
+      "scrollWidth": 768,
+      "scrollY": 0,
+      "url": "http://127.0.0.1:4176/type-lab/",
+      "width": 768
+    },
+    {
+      "surface": "type-lab",
+      "requestedViewport": {
+        "width": 390,
+        "height": 844
+      },
+      "capture": "type-lab-after-mobile.jpg",
+      "fullPage": true,
+      "artwork": "Sora artwork: Make it\nyours.",
+      "fontStatus": "loaded",
+      "height": 844,
+      "savedCount": "00",
+      "scrollWidth": 390,
+      "scrollY": 0,
+      "url": "http://127.0.0.1:4176/type-lab/",
+      "width": 390
+    },
+    {
+      "surface": "common-ground",
+      "requestedViewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "capture": "common-ground-after-desktop.jpg",
+      "fullPage": false,
+      "fontStatus": "loaded",
+      "height": 900,
+      "images": [
+        {
+          "loaded": true,
+          "naturalHeight": 3590,
+          "naturalWidth": 2400,
+          "src": "../shared/assets/eye-museum.jpg"
+        },
+        {
+          "loaded": true,
+          "naturalHeight": 2700,
+          "naturalWidth": 1800,
+          "src": "../shared/assets/ottawa-colonnade.jpg"
+        },
+        {
+          "loaded": true,
+          "naturalHeight": 2700,
+          "naturalWidth": 1800,
+          "src": "../shared/assets/kunsthalle.jpg"
+        }
+      ],
+      "savedCount": "0",
+      "scrollWidth": 1440,
+      "scrollY": 0,
+      "url": "http://127.0.0.1:4176/common-ground/",
+      "width": 1440
+    },
+    {
+      "surface": "common-ground",
+      "requestedViewport": {
+        "width": 768,
+        "height": 1024
+      },
+      "capture": "common-ground-tablet.jpg",
+      "fullPage": true,
+      "fontStatus": "loaded",
+      "height": 1024,
+      "images": [
+        {
+          "loaded": true,
+          "naturalHeight": 3590,
+          "naturalWidth": 2400,
+          "src": "../shared/assets/eye-museum.jpg"
+        },
+        {
+          "loaded": true,
+          "naturalHeight": 2700,
+          "naturalWidth": 1800,
+          "src": "../shared/assets/ottawa-colonnade.jpg"
+        },
+        {
+          "loaded": true,
+          "naturalHeight": 2700,
+          "naturalWidth": 1800,
+          "src": "../shared/assets/kunsthalle.jpg"
+        }
+      ],
+      "savedCount": "0",
+      "scrollWidth": 768,
+      "scrollY": 0,
+      "url": "http://127.0.0.1:4176/common-ground/",
+      "width": 768
+    },
+    {
+      "surface": "common-ground",
+      "requestedViewport": {
+        "width": 390,
+        "height": 844
+      },
+      "capture": "common-ground-after-mobile.jpg",
+      "fullPage": true,
+      "fontStatus": "loaded",
+      "height": 844,
+      "images": [
+        {
+          "loaded": true,
+          "naturalHeight": 3590,
+          "naturalWidth": 2400,
+          "src": "../shared/assets/eye-museum.jpg"
+        },
+        {
+          "loaded": true,
+          "naturalHeight": 2700,
+          "naturalWidth": 1800,
+          "src": "../shared/assets/ottawa-colonnade.jpg"
+        },
+        {
+          "loaded": true,
+          "naturalHeight": 2700,
+          "naturalWidth": 1800,
+          "src": "../shared/assets/kunsthalle.jpg"
+        }
+      ],
+      "savedCount": "0",
+      "scrollWidth": 390,
+      "scrollY": 0,
+      "url": "http://127.0.0.1:4176/common-ground/",
+      "width": 390
+    }
+  ]
+}

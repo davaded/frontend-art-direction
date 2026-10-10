@@ -23,6 +23,7 @@ import {
   walkFiles,
   writeOutput,
 } from "./lib.mjs";
+import { positiveRoutingText } from "./product-context.mjs";
 
 const UPSTREAM_COMMIT = "598d3d6ad89dabb4bdf742fd2e887ca53914a888";
 const UPSTREAM_REPOSITORY = "https://github.com/Jakubantalik/transitions.dev";
@@ -347,12 +348,19 @@ function recordsFromSource(root) {
   return records.length > 0 ? records : BUILTIN_TRANSITIONS;
 }
 
+const GENERAL_MOTION_WORDS = new Set(["page", "route", "navigation", "list", "detail", "step", "screen", "reveal", "card", "size", "text", "label", "status", "copy", "symbol", "glyph", "swap", "done", "complete", "confirmation", "check", "form", "input", "search", "reset", "loading", "placeholder", "pending", "waiting", "control", "filter", "info", "hover", "title", "pointer", "compose", "action", "feedback", "notification", "selection", "number", "digits", "value", "metric", "boolean", "agent", "ai", "stream", "words", "token", "response", "stack", "stacked", "queue", "group", "chips", "people", "dot", "update", "pop", "页面", "路由", "展开", "收起", "尺寸", "容器", "文本", "文字", "文案", "标题", "状态", "完成", "确认", "表单", "输入框", "信息", "通知", "收藏", "数字", "数值", "指标", "过程", "加载"]);
+
+function includesTerm(text, term) {
+  if (!/^[a-z0-9-]+$/iu.test(term)) return text.includes(term);
+  return new RegExp(`\\b${term}\\b`, "iu").test(text);
+}
+
 function expandIntent(intent) {
-  const lower = String(intent ?? "").toLocaleLowerCase();
-  const expanded = new Set(meaningfulTokens(intent));
+  const affirmative = positiveRoutingText(intent).toLocaleLowerCase();
+  const expanded = new Set(meaningfulTokens(affirmative).filter((token) => !GENERAL_MOTION_WORDS.has(token)));
   for (const [id, aliases] of ALIASES) {
-    const words = aliases.split(" ");
-    if (words.some((word) => word.length > 1 && lower.includes(word.toLocaleLowerCase()))) {
+    const words = aliases.split(" ").filter((word) => !GENERAL_MOTION_WORDS.has(word));
+    if (includesTerm(affirmative, id) || words.some((word) => word.length > 1 && includesTerm(affirmative, word))) {
       expanded.add(id);
       for (const token of tokenize(aliases)) expanded.add(token);
     }
@@ -361,11 +369,11 @@ function expandIntent(intent) {
 }
 
 function scoreRecord(record, intentTokens) {
-  const source = `${record.id} ${record.title} ${record.when} ${record.html ?? ""} ${record.keywords ?? ""}`.toLocaleLowerCase();
+  const source = `${record.id} ${record.title} ${record.when} ${record.keywords ?? ""}`.toLocaleLowerCase();
   const words = new Set(tokenize(source));
   const generic = new Set(["close", "cleanup", "reduced", "motion", "state", "transition", "animation", "use", "when"]);
-  const hits = intentTokens.filter((token) => !generic.has(token) && (words.has(token) || source.includes(token)));
-  const exact = intentTokens.filter((token) => record.id.includes(token));
+  const hits = intentTokens.filter((token) => !generic.has(token) && !GENERAL_MOTION_WORDS.has(token) && (words.has(token) || includesTerm(source, token)));
+  const exact = intentTokens.filter((token) => record.id === token);
   return { record, score: new Set(hits).size + (exact.length * 8), hits: [...new Set(hits)] };
 }
 
@@ -375,6 +383,7 @@ export function selectTransitions(records, intent, { transition, limit = 3 } = {
     const exact = records.find((record) => record.id === requested);
     if (exact) return [{ ...scoreRecord(exact, [requested]), confidence: "explicit" }];
   }
+  if (/\b(?:without|no)\s+(?:any\s+)?(?:motion|animations?|transitions?)\b(?!\s+(?:for|on|in)\b)|(?:不要|无需|不需要)(?:任何)?(?:动效|动画|过渡)/iu.test(intent)) return [];
   const tokens = expandIntent(intent);
   const ranked = records
     .map((record) => scoreRecord(record, tokens))
@@ -387,7 +396,8 @@ export function selectTransitions(records, intent, { transition, limit = 3 } = {
 }
 
 function inferStatePair(intent, record) {
-  const text = `${intent} ${record?.id ?? ""}`.toLocaleLowerCase();
+  if (!record) return "unresolved -> inspect the actual resting and resulting states";
+  const text = `${positiveRoutingText(intent)} ${record?.id ?? ""}`.toLocaleLowerCase();
   if (/error|invalid|shake|错误|校验/.test(text)) return "valid -> invalid -> show what needs correction";
   if (/loading|skeleton|stream|thinking|matrix|shimmer|加载|流式|思考/.test(text)) return "waiting -> ready -> show what became available";
   if (/success|check|done|complete|成功|完成/.test(text)) return "idle -> complete -> confirm the action landed";
@@ -450,21 +460,21 @@ function polishPlan(source) {
   };
 }
 
-function scanMotion(projectRoot, records, intent) {
+function scanMotion(projectRoot, records) {
   if (!projectRoot) return [];
   const root = resolve(projectRoot);
   const hits = [];
   const files = walkFiles(root, { maxFiles: 3000, ignore: [".frontend-art-direction", ".cache", "docs", "references", "data", ".github", "bin", "scripts", "test", "tests", "__tests__"] });
   const patterns = [
-    [/(modal|dialog|popover)/i, "modal"],
-    [/(dropdown|menu|context-menu)/i, "menu-dropdown"],
-    [/(drawer|sidebar|panel|sheet)/i, "panel-reveal"],
-    [/(skeleton|placeholder|loading)/i, "skeleton-reveal"],
-    [/(tooltip|popover-hint)/i, "tooltip"],
-    [/(toast|snackbar|notification)/i, "toast"],
-    [/(tabs?|segmented|filter)/i, "tabs-sliding"],
-    [/(accordion|disclosure|collaps)/i, "accordion"],
-    [/(shake|invalid|validation|error)/i, "error-state-shake"],
+    [/\b(modal|dialog|popover)\b|showModal\s*\(/i, "modal"],
+    [/\b(dropdown|menu|context-menu)\b/i, "menu-dropdown"],
+    [/\b(drawer|sidebar|panel|sheet)\b/i, "panel-reveal"],
+    [/\b(skeleton|placeholder|loading)\b/i, "skeleton-reveal"],
+    [/\b(tooltip|popover-hint)\b/i, "tooltip"],
+    [/\b(toast|snackbar|notification)\b/i, "toast"],
+    [/\b(tabs?|segmented|filter)\b/i, "tabs-sliding"],
+    [/\b(accordion|disclosure|collapsible)\b/i, "accordion"],
+    [/\b(shake|invalid|validation|error)\b/i, "error-state-shake"],
     [/(transition|animation|@keyframes|motion|duration-)/i, null],
   ];
   for (const file of files) {
@@ -480,16 +490,20 @@ function scanMotion(projectRoot, records, intent) {
     for (let index = 0; index < lines.length; index += 1) {
       const line = lines[index].trim();
       if (!line) continue;
+      if (/prefers-reduced-motion/u.test(line)) continue;
+      if (/\bnew\s+\w*Error\s*\(/u.test(line)) continue;
+      if (/\.filter\s*\(/u.test(line) && !/<|\b(?:className|aria-|role=)/u.test(line)) continue;
+      if (/^<link\b|\bloading\s*=\s*["']lazy["']/iu.test(line)) continue;
       const match = patterns.find(([pattern]) => pattern.test(line));
       if (!match) continue;
       const explicit = match[1] && match[1] !== "transition" ? match[1] : undefined;
-      const selected = selectTransitions(records, explicit || `${intent} ${line}`, { limit: 1 })[0];
+      const selected = explicit ? selectTransitions(records, "", { transition: explicit, limit: 1 })[0] : null;
       hits.push({
         path: relativePath(root, file),
         line: index + 1,
         signal: line.length > 220 ? `${line.slice(0, 217)}...` : line,
         candidate: selected?.record.id ?? null,
-        confidence: selected?.confidence ?? "review-needed",
+        confidence: "review-needed",
       });
       if (hits.length >= 24) return hits;
     }
@@ -514,7 +528,7 @@ export async function buildMotionPlan({
     purpose: primary?.when ?? "Name the user-facing purpose before selecting a motion recipe.",
     statePair: inferStatePair(intent, primary),
     trigger: "Identify the real user or system trigger; do not animate on a decorative timer.",
-    projectFindings: scanMotion(projectRoot, records, intent),
+    projectFindings: scanMotion(projectRoot, records),
     decision: primary ? `Candidate: ${primary.id} (${selected[0].confidence} confidence).` : "No single recipe matched confidently; review the catalog before applying one.",
   };
   const apply = applyRecord(primary, source);

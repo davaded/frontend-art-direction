@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#f8f9fb">
+  <title>Runbook - Visual trial tasks</title>
+  <link rel="stylesheet" href="../shared/fonts.css"><link rel="stylesheet" href="styles.css">
+  <script src="../shared/assets/lucide.min.js" defer></script><script src="app.js" defer></script>
+</head>
+<body>
+  <header class="app-header"><a class="identity" href="#task-list"><i data-lucide="notebook-tabs" aria-hidden="true"></i><strong>Runbook</strong></a><span class="workspace-name">VISUAL TRIALS</span><button id="export" class="icon-button" type="button" aria-label="Export tasks" title="Export tasks"><i data-lucide="download" aria-hidden="true"></i></button></header>
+  <main>
+    <div class="page-heading"><div><p class="eyebrow">FRONTEND ART DIRECTION</p><h1>Tasks</h1></div><button id="add" class="primary" type="button"><i data-lucide="plus" aria-hidden="true"></i>Add task</button></div>
+    <div class="view-tools"><div class="filters" role="group" aria-label="Task view"><button type="button" data-filter="open" aria-pressed="true">Open <span id="open-count"></span></button><button type="button" data-filter="done" aria-pressed="false">Completed <span id="done-count"></span></button><button type="button" data-filter="all" aria-pressed="false">All</button></div><label class="search"><i data-lucide="search" aria-hidden="true"></i><input id="search" type="search" aria-label="Search tasks" placeholder="Search tasks"></label></div>
+    <div class="workbench"><section class="queue" aria-label="Task queue"><div class="list-heading"><span>TASK</span><span>DUE</span></div><div id="task-list"></div><div id="empty" class="empty" hidden><i data-lucide="inbox" aria-hidden="true"></i><h2 id="empty-title">No open tasks</h2><button type="button" id="empty-action">Add a task</button></div><p class="list-summary" id="list-summary"></p></section><aside id="detail-rail" class="detail-rail" aria-label="Selected task"></aside></div>
+  </main>
+  <dialog id="task-dialog" class="task-dialog" aria-label="Task details"><button type="button" id="close-detail" class="icon-button close-detail" aria-label="Close task details" title="Close"><i data-lucide="x" aria-hidden="true"></i></button><div id="detail-mobile"></div></dialog>
+  <dialog id="edit-dialog" class="edit-dialog" aria-labelledby="form-title"><form id="task-form"><div class="form-heading"><h2 id="form-title">Add task</h2><button id="cancel" type="button" class="icon-button" aria-label="Cancel task editing" title="Cancel"><i data-lucide="x" aria-hidden="true"></i></button></div><label for="title">Task name</label><input id="title" name="title" required maxlength="180" autocomplete="off" autofocus><label for="notes">Notes</label><textarea id="notes" name="notes" rows="4" maxlength="2000"></textarea><div class="form-columns"><div><label for="due">Due date</label><input id="due" name="due" type="date"></div><div><label for="priority">Priority</label><select id="priority" name="priority"><option value="normal">Normal</option><option value="high">High</option><option value="low">Low</option></select></div></div><p id="form-error" role="alert"></p><div class="form-actions"><button type="submit" class="primary">Save task</button></div></form></dialog>
+  <div class="toast" role="status" id="status" hidden><span id="status-text"></span><button type="button" id="undo" hidden>Undo</button></div>
+</body>
+</html>

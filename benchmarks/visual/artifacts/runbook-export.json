@@ -1,0 +1,53 @@
+{
+  "format": "runbook-v1",
+  "tasks": [
+    {
+      "id": "paragraph",
+      "title": "Check paragraph typography",
+      "notes": "Compare the 120-character paragraph in the real editor and exported PNG. Preserve explicit line breaks and inspect mixed-language content.",
+      "due": "2026-10-11",
+      "priority": "high",
+      "status": "working"
+    },
+    {
+      "id": "mobile",
+      "title": "Test mobile editing",
+      "notes": "Keep the artwork visible while changing weight and palette. Exercise the family and saved-study panels at 390px and 320px.",
+      "due": "2026-10-11",
+      "priority": "high",
+      "status": "open"
+    },
+    {
+      "id": "viewer",
+      "title": "Review the photo viewer",
+      "notes": "Inspect image framing, notes, source credit, and native dialog focus at a short landscape viewport.",
+      "due": "2026-10-12",
+      "priority": "normal",
+      "status": "open"
+    },
+    {
+      "id": "research",
+      "title": "Read the design research corpus",
+      "notes": "Review the public design skills and primary designer workflow sources recorded in docs/research-synthesis.md.",
+      "due": "2026-10-10",
+      "priority": "normal",
+      "status": "done"
+    },
+    {
+      "id": "408e9747-b973-44c3-926e-39504e25ed06",
+      "title": "Inspect asset 121b5d64f127a391ad0a00d494f0542b1c6703a6c8418412edd600458326572874c6807980db65053306e5c27e3bb8e899f6521187bd14c60c106efefca98f3b",
+      "notes": "Verification entry for a task whose name contains a long source path. It should remain readable in the queue and detail reader.",
+      "due": "",
+      "priority": "normal",
+      "status": "open"
+    },
+    {
+      "id": "937236ec-5d1b-4069-bd1c-4b3e0b5d6cc3",
+      "title": "Verify the narrow task form",
+      "notes": "",
+      "due": "2026-10-13",
+      "priority": "high",
+      "status": "done"
+    }
+  ]
+}

@@ -1,0 +1,109 @@
+{
+  "runbook": {
+    "desktop": {
+      "completed": "1",
+      "document": [
+        1440,
+        900
+      ],
+      "fonts": "loaded",
+      "open": "3",
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    "tablet": {
+      "document": [
+        768,
+        1024
+      ],
+      "fonts": "loaded",
+      "rail": {
+        "bottom": 694.078125,
+        "height": 435.28125,
+        "left": 456,
+        "right": 736,
+        "top": 258.796875,
+        "width": 280,
+        "x": 456,
+        "y": 258.796875
+      },
+      "viewport": [
+        768,
+        1024
+      ]
+    },
+    "mobile": {
+      "completed": "1",
+      "document": [
+        390,
+        844
+      ],
+      "fonts": "loaded",
+      "open": "3",
+      "route": "/runbook/",
+      "scroll": [
+        0,
+        0
+      ],
+      "viewport": [
+        390,
+        844
+      ]
+    },
+    "reducedMotion": {
+      "dialogOpen": true,
+      "focus": "title",
+      "reduced": true,
+      "transition": "0s"
+    },
+    "completion": {
+      "checked": true,
+      "dialogTitle": "Verify the narrow task form",
+      "focus": "<input type=\"checkbox\">",
+      "result": "Completed",
+      "viewport": [
+        320,
+        740
+      ]
+    }
+  },
+  "typeLab": {
+    "mobile": {
+      "board": {
+        "bottom": 379.3828125,
+        "height": 235.3828125,
+        "left": 100.84375,
+        "right": 289.1484375,
+        "top": 144,
+        "width": 188.3046875,
+        "x": 100.84375,
+        "y": 144
+      },
+      "document": [
+        390,
+        844
+      ],
+      "fonts": "loaded",
+      "properties": {
+        "bottom": 844,
+        "height": 356.6171875,
+        "left": 0,
+        "right": 390,
+        "top": 487.3828125,
+        "width": 390,
+        "x": 0,
+        "y": 487.3828125
+      },
+      "toolbar": [
+        350,
+        350
+      ],
+      "viewport": [
+        390,
+        844
+      ]
+    }
+  }
+}

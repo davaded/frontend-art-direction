@@ -1,0 +1,163 @@
+{
+  "intent": "immediate type preview, undo and redo, palette selection; no animated text shaping",
+  "phase": "all",
+  "source": {
+    "repository": "https://github.com/Jakubantalik/transitions.dev",
+    "commit": "598d3d6ad89dabb4bdf742fd2e887ca53914a888",
+    "root": "/Users/daiyudai/Library/Caches/frontend-art-direction/transitions-dev/598d3d6ad89dabb4bdf742fd2e887ca53914a888",
+    "status": "cached",
+    "transitionsSkill": "/Users/daiyudai/Library/Caches/frontend-art-direction/transitions-dev/598d3d6ad89dabb4bdf742fd2e887ca53914a888/transitions-dev/SKILL.md",
+    "polishSkill": "/Users/daiyudai/Library/Caches/frontend-art-direction/transitions-dev/598d3d6ad89dabb4bdf742fd2e887ca53914a888/transitions-polish/SKILL.md",
+    "terms": "https://transitions.dev/terms.html",
+    "redistribution": "The adapter fetches upstream files on demand; this package does not redistribute the upstream library."
+  },
+  "selected": [
+    {
+      "id": "shimmer-text",
+      "title": "Shimmer text",
+      "score": 33,
+      "confidence": "high",
+      "hits": [
+        "no",
+        "text",
+        "label",
+        "status",
+        "copy",
+        "shimmer-text",
+        "shimmer",
+        "loading",
+        "streaming"
+      ],
+      "source": "/Users/daiyudai/Library/Caches/frontend-art-direction/transitions-dev/598d3d6ad89dabb4bdf742fd2e887ca53914a888/transitions-dev/15-shimmer-text.md",
+      "when": "A loading / \"thinking\" label that shimmers — streaming status, \"Generating…\", any in-progress copy that should feel alive without a spinner. Pure CSS: duplicate the string into `data-text` on `.t-shimmer` and tune `--shimmer-base` / `--shimmer-highlight` per theme.",
+      "html": "Pure CSS — no JS, no class toggling. Tune --shimmer-base / --shimmer-highlight in your own theme rules so the colors follow light / dark mode.",
+      "javascript": "None — pure CSS. Toggle the documented HTML attributes or class names from whatever already drives state in your app."
+    },
+    {
+      "id": "texts-reveal",
+      "title": "Texts reveal",
+      "score": 32,
+      "confidence": "high",
+      "hits": [
+        "no",
+        "text",
+        "copy",
+        "texts-reveal",
+        "reveal",
+        "headline",
+        "stagger",
+        "onboarding"
+      ],
+      "source": "/Users/daiyudai/Library/Caches/frontend-art-direction/transitions-dev/598d3d6ad89dabb4bdf742fd2e887ca53914a888/transitions-dev/18-texts-reveal.md",
+      "when": "A headline + supporting line that rise into view with staggered blur — hero copy, empty states, onboarding steps. Exit is decoupled: a single quiet fade with no Y-return so dismissing doesn't replay the reveal in reverse.",
+      "html": "State: Add `.is-shown` to play the staggered entrance. Add `.is-hiding` (and remove `.is-shown`) to fade out in place over a short 200ms — independent of the entrance timing so the exit doesn't replay the stagger. Add more lines by adding `.t-stagger-line--N` with `transition-delay: calc(var(--stagger-stagger) * (N - 1))`.",
+      "javascript": ""
+    },
+    {
+      "id": "streaming-text",
+      "title": "Streaming text",
+      "score": 31,
+      "confidence": "high",
+      "hits": [
+        "type",
+        "no",
+        "text",
+        "streaming-text",
+        "streaming",
+        "words",
+        "response"
+      ],
+      "source": "/Users/daiyudai/Library/Caches/frontend-art-direction/transitions-dev/598d3d6ad89dabb4bdf742fd2e887ca53914a888/transitions-dev/30-streaming-text.md",
+      "when": "Model output arriving word by word — chat responses, AI completions, any streamed paragraph. JS wraps each word in a span; words rest visible, and a replay wipes them all, then resolves them in order through opacity plus a small blur, one every `--stream-gap`. Reach for this over a typewriter effect when the text should feel like it condenses into place rather than being typed — the cross-blur reads as resolution,...",
+      "html": "JS wraps each word in a .t-stream-w span; spans rest visible. To replay the stream: wipe every span with transition: none, force one reflow, restore the transition, then add .is-in word by word every --stream-gap — each word resolves through opacity + a small blur over --stream-fade.",
+      "javascript": ""
+    }
+  ],
+  "workflow": {
+    "review": {
+      "purpose": "A loading / \"thinking\" label that shimmers — streaming status, \"Generating…\", any in-progress copy that should feel alive without a spinner. Pure CSS: duplicate the string into `data-text` on `.t-shimmer` and tune `--shimmer-base` / `--shimmer-highlight` per theme.",
+      "statePair": "waiting -> ready -> show what became available",
+      "trigger": "Identify the real user or system trigger; do not animate on a decorative timer.",
+      "projectFindings": [
+        {
+          "path": "app.js",
+          "line": 18,
+          "signal": "try { const saved = JSON.parse(localStorage.getItem(\"type-lab-studies\") || \"[]\"); if (Array.isArray(saved)) studies = saved.filter(validStudy).slice(0, 30); } catch {}",
+          "candidate": "tabs-sliding",
+          "confidence": "high"
+        },
+        {
+          "path": "app.js",
+          "line": 77,
+          "signal": "remove.addEventListener(\"click\", () => { const next = studies.filter(item => item.id !== study.id); if (persist(next)) { studies = next; renderStudies(); notify(`${study.name} removed`); } });",
+          "candidate": "tabs-sliding",
+          "confidence": "high"
+        },
+        {
+          "path": "app.js",
+          "line": 131,
+          "signal": "if (!blob) throw new Error(\"No image produced\");",
+          "candidate": "error-state-shake",
+          "confidence": "high"
+        },
+        {
+          "path": "index.html",
+          "line": 8,
+          "signal": "<link rel=\"stylesheet\" href=\"../shared/fonts.css\">",
+          "candidate": "skeleton-reveal",
+          "confidence": "high"
+        },
+        {
+          "path": "index.html",
+          "line": 9,
+          "signal": "<link rel=\"stylesheet\" href=\"styles.css\">",
+          "candidate": "skeleton-reveal",
+          "confidence": "high"
+        },
+        {
+          "path": "styles.css",
+          "line": 165,
+          "signal": "@media (prefers-reduced-motion: no-preference) { button { transition: background-color 120ms ease, color 120ms ease; } }",
+          "candidate": "shimmer-text",
+          "confidence": "high"
+        }
+      ],
+      "decision": "Candidate: shimmer-text (high confidence)."
+    },
+    "apply": {
+      "selected": true,
+      "transition": "shimmer-text",
+      "source": "/Users/daiyudai/Library/Caches/frontend-art-direction/transitions-dev/598d3d6ad89dabb4bdf742fd2e887ca53914a888/transitions-dev/15-shimmer-text.md",
+      "steps": [
+        "Read the selected upstream reference before editing the target component.",
+        "Copy only the variables, namespaced CSS, and documented hooks needed for this state.",
+        "Preserve the documented close-state cleanup, replay reflow, and event teardown.",
+        "Keep the prefers-reduced-motion guard and define a static/final-state fallback.",
+        "Adapt selectors to the existing component instead of adding a motion dependency."
+      ]
+    },
+    "polish": {
+      "source": "/Users/daiyudai/Library/Caches/frontend-art-direction/transitions-dev/598d3d6ad89dabb4bdf742fd2e887ca53914a888/transitions-polish/SKILL.md",
+      "dimensions": [
+        "duration",
+        "distance",
+        "scale",
+        "blur",
+        "easing"
+      ],
+      "rules": [
+        "Infer usage before choosing a token; never replace a value only because a number is nearby.",
+        "Make open states inviting and close states faster/quieter, except for symmetric swaps such as tabs and page side-by-side.",
+        "Keep stagger totals short, reserve delay for intent gating or sequencing, and never delay dismissal.",
+        "Use blur/scale/distance only when they explain a swap or spatial relationship; leave plain fades alone."
+      ]
+    }
+  },
+  "guardrails": {
+    "motionPurpose": "feedback / continuity / reveal / comparison / progress / inspection / narrative",
+    "cleanup": "No extra JS cleanup is documented; keep the state toggle idempotent and teardown-safe.",
+    "reducedMotion": "Keep the upstream reduced-motion guard and retain a readable resting/final state when animation is disabled.",
+    "fallback": "The final state must remain understandable with animation removed, interrupted, or unsupported on the target device."
+  },
+  "next": "Read /Users/daiyudai/Library/Caches/frontend-art-direction/transitions-dev/598d3d6ad89dabb4bdf742fd2e887ca53914a888/transitions-dev/15-shimmer-text.md, then implement the smallest stateful version and verify it on the running surface."
+}

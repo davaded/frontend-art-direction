@@ -198,7 +198,7 @@ export function buildBrief({ query, projectRoot, overrides = {}, authoredDirecti
       : "Confirm the primary workflow and target input method with a rendered state.",
   ];
   if (!project) openEvidence.unshift("No project scan supplied; all local-system claims remain open.");
-  if (adaptiveDefault) openEvidence.unshift("Direction assumption: no domain, audience, object, or workflow was specified; keep the composition adaptive until one is known.");
+  if (adaptiveDefault) openEvidence.unshift("No saved product profile confidently matches this brief. Keep the adaptive candidate provisional and derive the composition from the actual subject, content, and workflow.");
   if (project?.designAuthority) openEvidence.unshift(`Project-owned visual authority detected at ${project.designAuthority.path}; read and preserve it before replacing the direction.`);
   if (productContext) {
     openEvidence.unshift(`Product context: ${productContext.path} (${productContext.status}); routing source: ${productRequest.source}. Current surface requirements take precedence; unknown facts remain open.`);

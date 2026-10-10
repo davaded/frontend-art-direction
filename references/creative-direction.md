@@ -21,6 +21,8 @@ Useful differences include rail versus open field, object-led versus type-led, c
 
 Choose one direction by product specificity, hierarchy, silhouette, content truth, responsive viability, interaction meaning, and implementation cost. Do not average the concepts into a safe middle. Record the rejected directions briefly so later polish does not quietly return to the generic default.
 
+Inspect the actual materials before standardizing the regions around them. A wide painting, a portrait, a long paragraph, and a working instrument imply different distances and proportions. Their relationship can supply the composition and rhythm; a repeated component ratio can erase it. A deliberate crop or repeated format remains valid when it supports the chosen thesis and preserves the intended subject. A generic implementation noun such as `viewer` identifies an interaction, not evidence that the work needs a 3D, hardware, or commerce genre.
+
 For an underspecified request, `visual-direction` exposes three provisional structural frames so the agent has something concrete to compare:
 
 ```bash
