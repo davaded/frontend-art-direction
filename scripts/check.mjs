@@ -21,6 +21,7 @@ import { buildDesignLoop, renderDesignLoop } from "./design-loop.mjs";
 import { closeDesignLoopSession, createDesignLoopSession, getDesignLoopSession, recordDesignLoopRound } from "./design-loop-session.mjs";
 import { ATLAS_SECTIONS, addResearchAtlasReference, closeResearchAtlas, recordResearchAtlasSection, recordResearchAtlasSkill, recordResearchAtlasSynthesis, renderResearchAtlas } from "./research-atlas.mjs";
 import { addLiveVariant, closeLiveSession, createLiveSession, decideLiveVariant, recordLiveEvent } from "./live-iteration.mjs";
+import { addImageProposal, closeImageProposalSession, createImageProposalSession, decideImageProposal, recordImageEvidence, translateImageProposal } from "./image-proposal.mjs";
 
 const root = REPO_ROOT;
 const errors = [];
@@ -165,7 +166,7 @@ function checkPackage() {
   }
   if (packageJson.type !== "module") fail("package.json must use type=module");
   if (!packageJson.scripts?.test) fail("package.json is missing the test script");
-  for (const script of ["graph", "brief", "direction", "reference", "scout", "reference-build", "resource", "audit", "motion", "surface-mode", "design-operation", "design-loop", "research-atlas", "live", "capture"]) {
+  for (const script of ["graph", "brief", "direction", "reference", "scout", "reference-build", "resource", "audit", "motion", "surface-mode", "design-operation", "design-loop", "research-atlas", "live", "image-proposal", "capture"]) {
     if (!packageJson.scripts?.[script]) fail(`package.json is missing the ${script} script`);
   }
 }
@@ -264,6 +265,22 @@ async function checkSmoke() {
       if (baseline.evidence.length !== 1 || variant.variants.length !== 1 || accepted.status !== "accepted-awaiting-proof" || accepted.decision.variant !== "variant-1" || closedLive.status !== "complete" || !closedLive.proof?.baseline?.valid || !closedLive.proof?.after?.valid) fail("live iteration session did not enforce and close the rendered acceptance protocol");
     } finally {
       rmSync(liveFixture, { recursive: true, force: true });
+    }
+    const imageFixture = mkdtempSync(join(tmpdir(), "frontend-art-direction-image-proposal-"));
+    try {
+      mkdirSync(join(imageFixture, "artifacts"), { recursive: true });
+      for (const capture of ["baseline", "proposal", "after"]) writeFileSync(join(imageFixture, "artifacts", `${capture}.png`), syntheticPng);
+      writeFileSync(join(imageFixture, "artifacts", "translation.diff"), "source translation\n");
+      const imageSession = createImageProposalSession({ projectRoot: imageFixture, query: "make the field stage more authored", gap: "the first viewport is visually even" });
+      const imageBaseline = recordImageEvidence({ projectRoot: imageFixture, session: imageSession.session.id, kind: "baseline", path: "artifacts/baseline.png", notes: "Real browser baseline" });
+      const imageProposal = addImageProposal({ projectRoot: imageFixture, session: imageSession.session.id, id: "field-stage", path: "artifacts/proposal.png", prompt: "Keep the field subject and create a more authored stage.", summary: "A stronger stage silhouette with a clear visual counterweight.", inputs: "baseline-screenshot,reference", preserve: "subject,content,working controls" });
+      const imageSelected = decideImageProposal({ projectRoot: imageFixture, session: imageSession.session.id, proposal: "field-stage", decision: "select" });
+      const imageTranslated = translateImageProposal({ projectRoot: imageFixture, session: imageSession.session.id, sourceDiff: "artifacts/translation.diff", delta: "Rebuilt the stage silhouette and translated the proposal into CSS and real assets." });
+      const imageAfter = recordImageEvidence({ projectRoot: imageFixture, session: imageSession.session.id, kind: "after", path: "artifacts/after.png", notes: "Actual target recapture" });
+      const closedImage = closeImageProposalSession({ projectRoot: imageFixture, session: imageSession.session.id });
+      if (!imageBaseline.baseline?.valid || imageProposal.proposals.length !== 1 || imageSelected.status !== "selected-awaiting-translation" || imageTranslated.status !== "translated-awaiting-capture" || imageAfter.status !== "ready-to-close" || closedImage.status !== "complete" || !closedImage.proof?.proposal?.valid || !closedImage.proof?.after?.valid) fail("image proposal session did not enforce and close the proposal-to-code proof protocol");
+    } finally {
+      rmSync(imageFixture, { recursive: true, force: true });
     }
     const authoredDirection = selectVisualDirection("a reading tool for field notes", {
       authoredDirection: {

@@ -108,7 +108,7 @@ export function buildVisualIterationPlan() {
       useWhen: "Use available image generation for an open visual thesis, a bland composition, or unsuitable media; direct code fixes remain appropriate for local defects.",
       sequence: ["inspect current screenshot or real brief", "generate or edit visual proposal", "inspect and select revision", "translate changes into code and usable assets", "capture actual render and compare"],
       inputs: "Current screenshot is the edit target when available; inspected references and user assets have explicit supporting roles.",
-      execution: "The agent invokes the available built-in image tool; this local command does not generate images or capture a browser.",
+      execution: "The agent invokes the available built-in image tool, then records the proposal with image-proposal; this local command does not generate images or capture a browser.",
     },
     evidence: {
       acceptanceSource: "actual-render",
@@ -116,7 +116,7 @@ export function buildVisualIterationPlan() {
       ledger: "baseline capture -> observed defect -> selected proposal if used -> code/asset delta -> recapture -> resolved/open issues",
     },
     convergence: "Continue while material issues remain and a useful repair is available. If rounds plateau, replace the weak direction or missing asset; report real blockers and never claim acceptance from a plan or generated mockup.",
-    reference: "references/visual-iteration.md",
+    reference: "references/visual-iteration.md; image-proposal journal",
   };
 }
 

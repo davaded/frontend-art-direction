@@ -35,6 +35,7 @@ Usage:
   frontend-art-direction design-loop [plan|start|status|record|close] [options]
   frontend-art-direction research-atlas [start|status|add|section|synthesize|skill|close] [options]
   frontend-art-direction live <start|status|record|add-variant|accept|discard> [options]
+  frontend-art-direction image-proposal <start|status|add|select|reject|translate|record|close> [options]
   frontend-art-direction check
 
 Options:
@@ -80,6 +81,7 @@ if (command === "design-operation") runNodeScript("design-operation.mjs", argv.s
 if (command === "design-loop") runNodeScript("design-loop.mjs", argv.slice(1));
 if (command === "research-atlas") runNodeScript("research-atlas.mjs", argv.slice(1));
 if (command === "live") runNodeScript("live-iteration.mjs", argv.slice(1));
+if (command === "image-proposal") runNodeScript("image-proposal.mjs", argv.slice(1));
 if (command === "check") runNodeScript("check.mjs", argv.slice(1));
 
 const installArgs = command === "install" ? argv.slice(1) : argv;

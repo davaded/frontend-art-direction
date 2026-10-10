@@ -46,6 +46,15 @@ node <skill-root>/scripts/browser-capture.mjs \
 
 Use `--click "<selector>"` for one meaningful state before capture and run the command again for the target mobile viewport. The command reuses the target's runner and writes console/page-error data to the manifest; it does not install a browser.
 
+When image generation is used to resolve a visual thesis, record the proposal-to-code handoff separately from runtime proof:
+
+```bash
+node <skill-root>/scripts/image-proposal.mjs status \
+  --project /path/to/project --session <id> --format json
+```
+
+`image-proposal close` is the final gate for that optional path. It requires a valid baseline, a selected local proposal, an existing source translation artifact, and a valid after capture. A generated image by itself never satisfies the visual proof layer.
+
 ## Reference Or Concept QA
 
 When the work started from a live reference, screenshot, or generated concept, visual comparison is a blocking gate for substantial work:

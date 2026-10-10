@@ -28,6 +28,37 @@ When a real screenshot exists, inspect it first and use it as the edit target. L
 
 Use the available image-generation skill and built-in tool by default. Use returned paths for subsequent edits, preserve the source image, and save siblings for revisions. If generation is unavailable, continue screenshot-to-code work and state that limitation. Do not claim a generated round happened or silently switch to a paid API workflow.
 
+Record the handoff in the provider-neutral journal so a proposal cannot disappear into chat history:
+
+```bash
+node <skill-root>/scripts/image-proposal.mjs start \
+  --project /path/to/project \
+  --query "make the stage more authored" \
+  --baseline artifacts/baseline.png \
+  --gap "the first viewport is visually even"
+
+node <skill-root>/scripts/image-proposal.mjs add \
+  --project /path/to/project --session <id> --id stage-v1 \
+  --path artifacts/proposal.png --role screenshot-edit \
+  --prompt "Keep the subject and real content; create a stronger stage silhouette." \
+  --summary "A clearer dominant stage and quieter supporting field." \
+  --inputs baseline-screenshot,reference \
+  --preserve "subject,content,working controls"
+
+node <skill-root>/scripts/image-proposal.mjs select \
+  --project /path/to/project --session <id> --proposal stage-v1
+node <skill-root>/scripts/image-proposal.mjs translate \
+  --project /path/to/project --session <id> \
+  --source-diff artifacts/translation.diff \
+  --delta "Translated the stage relationship into source and usable assets."
+node <skill-root>/scripts/image-proposal.mjs record \
+  --project /path/to/project --session <id> --kind after --path artifacts/after.png
+node <skill-root>/scripts/image-proposal.mjs close \
+  --project /path/to/project --session <id>
+```
+
+The journal validates local media at each handoff and keeps the proposal prompt, input roles, selected decision, source translation, and actual after render together. It does not call an image provider, capture a browser, or install dependencies; the agent runs those tools and then records their outputs. Use `reject` when the proposal is weak and return to screenshot-to-code or create another bounded proposal.
+
 Useful prompt scaffold; keep only fields needed for this iteration:
 
 ```text
@@ -53,6 +84,6 @@ Implement real text, semantic controls, content, states, and layout. Do not ship
 
 Stop when the declared scope is complete, material visible defects are resolved, the selected thesis survives desktop/mobile, and the relevant interactions or authored ending work. Do not prescribe a universal style or a fixed number of aesthetic rounds. If successive rounds stop improving, return to the weak direction or missing asset instead of producing near-identical revisions. Report actual tooling or content blockers without claiming acceptance.
 
-Keep a compact ledger in [the evidence template](../templates/EVIDENCE.md): baseline capture, inspected defects, proposal image and prompt if used, accepted implementation delta, new capture, resolved issues, and remaining issues. Preserve the selected concept separately from runtime proof. This workflow requires real tool execution by the implementing agent; the local CLI only emits the plan.
+Keep a compact ledger in [the evidence template](../templates/EVIDENCE.md): baseline capture, inspected defects, proposal image and prompt if used, accepted implementation delta, new capture, resolved issues, and remaining issues. Preserve the selected concept separately from runtime proof. The `image-proposal` journal makes this handoff inspectable, but still requires real tool execution by the implementing agent; it never fabricates a proposal or browser proof.
 
 When a development target is already running and the problem benefits from comparing alternatives, use [the live iteration protocol](live-iteration.md). It records the baseline, bounded variants, accept/discard decision, source diff, and after-capture proof. A session journal is a handoff and evidence record; it does not replace the browser capture itself.
