@@ -25,6 +25,7 @@ import { addLiveVariant, createLiveSession, decideLiveVariant, recordLiveEvent }
 const root = REPO_ROOT;
 const errors = [];
 const notes = [];
+const syntheticPng = Buffer.from("89504e470d0a1a0a", "hex");
 
 function fail(message) {
   errors.push(message);
@@ -397,12 +398,31 @@ async function checkSmoke() {
             rejectedWithoutCapture = /local screenshot or media capture/u.test(error.message);
           }
           if (!rejectedWithoutCapture) fail("design loop accepted a visual round without a local capture");
+          writeFileSync(join(loopFixture, "artifacts", "invalid-capture.png"), "this is not a PNG\n");
+          let rejectedInvalidCapture = false;
+          try {
+            recordDesignLoopRound({ projectRoot: loopFixture, session: loopSession.id, round, decision: "invalid capture should fail", evidence: "artifacts/invalid-capture.png", proof: "desktop-capture" });
+          } catch (error) {
+            rejectedInvalidCapture = /local screenshot or media capture/u.test(error.message);
+          }
+          if (!rejectedInvalidCapture) fail("design loop accepted a non-media capture file");
         }
         if (round >= 15) {
-          writeFileSync(join(loopFixture, "artifacts", `round-${round}.png`), `synthetic capture fixture ${round}\n`);
+          writeFileSync(join(loopFixture, "artifacts", `round-${round}.png`), syntheticPng);
           evidence.push(`artifacts/round-${round}.png`);
         }
         if (round >= 16) {
+          if (round === 16) {
+            let rejectedWithoutComparison = false;
+            try {
+              recordDesignLoopRound({ projectRoot: loopFixture, session: loopSession.id, round, decision: "missing comparison should fail", evidence: "artifacts/round-16.png", proof: "desktop-capture", largestGap: "the visual hierarchy is too even", repair: "rebalance the dominant object" });
+            } catch (error) {
+              rejectedWithoutComparison = /before-and-after capture evidence/u.test(error.message);
+            }
+            if (!rejectedWithoutComparison) fail("design loop accepted a repair round without before-and-after capture evidence");
+          }
+          writeFileSync(join(loopFixture, "artifacts", `round-${round}-before.png`), syntheticPng);
+          evidence.unshift(`artifacts/round-${round}-before.png`);
           visualFields.largestGap = `largest gap in round ${round}`;
           visualFields.repair = `repair applied in round ${round}`;
           writeFileSync(join(loopFixture, "artifacts", `round-${round}-comparison.md`), `before and after comparison ${round}\n`);
@@ -412,7 +432,7 @@ async function checkSmoke() {
         loopSession = recordDesignLoopRound({ projectRoot: loopFixture, session: loopSession.id, round, decision: `round ${round} decision`, evidence: evidence.join(","), proof: round >= 15 ? "desktop-capture" : "decision", ...visualFields });
       }
       writeFileSync(join(loopFixture, "artifacts", "signoff.md"), "signoff\n");
-      writeFileSync(join(loopFixture, "artifacts", "signoff.png"), "synthetic signoff capture fixture\n");
+      writeFileSync(join(loopFixture, "artifacts", "signoff.png"), syntheticPng);
       loopSession = recordDesignLoopRound({ projectRoot: loopFixture, session: loopSession.id, round: 20, decision: "all gates pass", evidence: "artifacts/signoff.md,artifacts/signoff.png", proof: "static,runtime,visual,accessibility,scope", score: "8", verdict: "CURRENT WINS", largestGap: "no material gap remains", repair: "completed the final documented repair", dimensions: "subject-fit=8,hierarchy=8,composition=8,type-and-content=8,material-and-assets=8,interaction-and-motion=8,responsive-and-states=8,originality=8,completion-and-proof=8" });
       const closedLoop = closeDesignLoopSession({ projectRoot: loopFixture, session: loopSession.id });
       if (closedLoop.status !== "complete" || getDesignLoopSession({ projectRoot: loopFixture, session: loopSession.id }).currentRound !== 21) fail("design loop session did not enforce and close the 20-round evidence contract");

@@ -1,5 +1,5 @@
 import { existsSync, mkdirSync, readFileSync, statSync, writeFileSync } from "node:fs";
-import { dirname, join, resolve } from "node:path";
+import { dirname, extname, join, resolve } from "node:path";
 import { randomUUID } from "node:crypto";
 import { loadDataset, relativePath } from "./lib.mjs";
 import { buildDesignLoop } from "./design-loop.mjs";
@@ -41,6 +41,26 @@ function list(value) {
     .filter(Boolean);
 }
 
+function hasBytes(bytes, values, offset = 0) {
+  return values.every((value, index) => bytes[offset + index] === value);
+}
+
+function isRenderableCapture(path, ref) {
+  try {
+    const bytes = readFileSync(path).subarray(0, 32);
+    const extension = extname(ref).toLocaleLowerCase();
+    if (extension === ".png") return hasBytes(bytes, [0x89, 0x50, 0x4e, 0x47, 0x0d, 0x0a, 0x1a, 0x0a]);
+    if ([".jpg", ".jpeg"].includes(extension)) return hasBytes(bytes, [0xff, 0xd8, 0xff]);
+    if (extension === ".gif") return hasBytes(bytes, [0x47, 0x49, 0x46, 0x38]);
+    if (extension === ".webp") return hasBytes(bytes, [0x52, 0x49, 0x46, 0x46]) && hasBytes(bytes, [0x57, 0x45, 0x42, 0x50], 8);
+    if ([".avif", ".heic", ".heif", ".mp4", ".mov", ".m4v"].includes(extension)) return hasBytes(bytes, [0x66, 0x74, 0x79, 0x70], 4);
+    if ([".webm", ".mkv"].includes(extension)) return hasBytes(bytes, [0x1a, 0x45, 0xdf, 0xa3]);
+    return false;
+  } catch {
+    return false;
+  }
+}
+
 function parseDimensionScores(value, dimensions) {
   const scores = {};
   for (const item of list(value)) {
@@ -78,17 +98,23 @@ function normalizeEvidence(projectRoot, values) {
     const absolute = resolve(projectRoot, ref);
     const inside = absolute === projectRoot || absolute.startsWith(`${projectRoot}/`);
     const file = inside && existsSync(absolute) ? statSync(absolute) : null;
+    const capture = /\.(?:png|jpe?g|webp|avif|gif|mp4|mov|m4v|webm|mkv)$/iu.test(ref);
     return {
       ref: inside ? relativePath(projectRoot, absolute) : ref,
-      kind: /\.(?:png|jpe?g|webp|avif|gif|mp4|mov)$/iu.test(ref) ? "capture-or-media" : "artifact-or-check",
+      kind: capture ? "capture-or-media" : "artifact-or-check",
       exists: Boolean(file?.isFile()),
       size: file?.size ?? null,
+      valid: capture && file?.isFile() ? isRenderableCapture(absolute, ref) : null,
     };
   });
 }
 
 function hasCaptureEvidence(items) {
-  return items.some((item) => item.exists === true && item.kind === "capture-or-media" && item.size > 0);
+  return items.some((item) => item.exists === true && item.kind === "capture-or-media" && item.size > 0 && item.valid === true);
+}
+
+function captureEvidenceCount(items) {
+  return items.filter((item) => item.exists === true && item.kind === "capture-or-media" && item.size > 0 && item.valid === true).length;
 }
 
 function currentRound(session) {
@@ -176,6 +202,8 @@ export function recordDesignLoopRound({ projectRoot, session, round, status = "c
   const missingComparison = comparisonItems.filter((item) => item.exists === false);
   if (status === "complete" && missingComparison.length > 0) throw new Error(`comparison evidence does not exist inside the project: ${missingComparison.map((item) => item.ref).join(", ")}`);
   if (number >= 15 && status === "complete" && !hasCaptureEvidence(evidenceItems)) throw new Error(`round ${number} requires at least one existing local screenshot or media capture in --evidence`);
+  if (number >= 16 && number <= 19 && status === "complete" && captureEvidenceCount(evidenceItems) < 2) throw new Error(`round ${number} requires before-and-after capture evidence in --evidence`);
+  if (number >= 16 && number <= 19 && status === "complete" && comparisonItems.length === 0) throw new Error(`round ${number} requires --comparison evidence`);
   if (number >= 16 && number <= 19 && status === "complete" && (!String(largestGap).trim() || !String(repair).trim())) throw new Error(`round ${number} requires --largest-gap and --repair`);
   if (number === 19 && status === "complete" && !["CURRENT WINS", "REFERENCE WINS", "INCONCLUSIVE"].includes(String(verdict).trim())) throw new Error("round 19 requires --verdict CURRENT WINS, REFERENCE WINS, or INCONCLUSIVE");
   if (number === 20 && status === "complete" && String(verdict).trim() !== "CURRENT WINS") throw new Error("round 20 requires --verdict CURRENT WINS before sign-off");
