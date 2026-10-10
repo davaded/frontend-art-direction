@@ -12,7 +12,8 @@ references/ -> mode-specific decisions
 scripts/ -> deterministic local evidence and validation
 data/ -> candidate profiles, styles, types, palettes, motion, stacks, visual directions, reference lenses, product reference sources, build recipes
 templates/ -> artifacts that persist project decisions
-live -> page-level surface mode, design action, browser-variant evidence protocol, and 20-round production loop
+live -> page-level surface mode, design action, browser-variant evidence protocol
+design-loop -> 20-round production plan, persisted session, quality rubric, and signoff gate
 ```
 
 ## Reference Capabilities, Implemented Locally
@@ -35,7 +36,7 @@ The design was informed by public projects, but the package does not claim that 
 - Product reference discovery: `scripts/reference-scout.mjs` ranks official product sources by category, quality signals, and distinct job; it does not claim that a URL was inspected and it does not use geography as a quality quota.
 - Page-level visitor routing: `scripts/surface-mode.mjs` classifies the current route as `Persuade`, `Operate`, `Read`, or `Experience` with confidence and evidence, while `scripts/design-operation.mjs` translates visual feedback into one bounded action without forcing a product genre.
 - Live visual iteration: `scripts/live-iteration.mjs` persists a provider-neutral development session for baseline capture, bounded variants, accept/discard decisions, source diffs, and after-capture proof. It is an execution handoff and evidence journal; it does not pretend to capture a browser by itself.
-- Design production loop: `scripts/design-loop.mjs` turns the research synthesis into 20 executable checkpoints from context and divergent concepts through complete construction, rendered critique, responsive/state proof, fresh-eyes review, and signoff. It records the contract; the target project still supplies the actual browser captures and edits.
+- Design production loop: `scripts/design-loop.mjs` turns the research synthesis into 20 executable checkpoints from context and divergent concepts through complete construction, rendered critique, responsive/state proof, fresh-eyes review, and signoff. `start`, `record`, and `close` persist the session and enforce evidence gates; the target project still supplies the actual browser captures and edits. `data/quality-rubric.json` keeps the quality bar explicit.
 
 The package remains dependency-free and local-only for `inspect`, `map`, `graph`, `brief`, `reference`, `scout`, `reference-build`, `resource`, `audit`, and `check`. Motion work is the deliberate exception: the internal adapter may fetch the pinned upstream Skill on first use, but it does not install an animation runtime or change the target project's dependency manifest.
 
@@ -61,7 +62,7 @@ The Completion Contract sits after that signal and defines the actual delivery b
 | Visitor surface and design action | `surface-mode`, `design-operation`, `brief`, `audit` | per-route visitor job, explicit operation, evidence/confidence, and adaptive fallback |
 | Motion workflow | `motion`, `audit` | Review -> Apply -> Polish plus four guardrails on every full run |
 | Live visual iteration | `live` | baseline, bounded variants, acceptance decision, source diff, and after-capture proof |
-| Design production loop | `design-loop`, `brief`, `audit` | 20 checkpoints, explicit artifacts, rendered evidence, and scope-aware signoff |
+| Design production loop | `design-loop`, `brief`, `audit` | 20 checkpoints, persisted artifacts, quality rubric, rendered evidence, and scope-aware signoff |
 
 ## Runtime Flow
 

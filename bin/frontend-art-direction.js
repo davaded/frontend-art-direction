@@ -32,7 +32,7 @@ Usage:
   frontend-art-direction motion --intent "..." [--project <path>] [--phase review|apply|polish|all]
   frontend-art-direction surface-mode --query "..." [--mode persuade|operate|read|experience]
   frontend-art-direction design-operation --query "..." [--mode <surface-mode>]
-  frontend-art-direction design-loop --query "..." [--format md|json]
+  frontend-art-direction design-loop [plan|start|status|record|close] [options]
   frontend-art-direction live <start|status|record|add-variant|accept|discard> [options]
   frontend-art-direction check
 

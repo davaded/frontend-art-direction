@@ -35,6 +35,20 @@ This note records the research used for the current skill redesign. It is a synt
 8. **Completion is broader than the hero.** Real designers account for lower sections, states, responsive behavior, content, assets, and the ending before sign-off.
 9. **Iteration must have a question.** A new round is justified by a visible defect, an unresolved decision, a failed state, a fidelity gap, or a new user signal. Blind polishing consumes time without improving the design.
 
+## Second Pass: Loop And Review Systems
+
+The additional public skill review found a gap between a plan and a production system:
+
+| Source | Reusable mechanism | Local response |
+| --- | --- | --- |
+| [rithvikx/design-loop](https://github.com/rithvikx/design-loop) | Persistent state, session, issues, decisions, research protocol, quality bar, independent gauntlet, and largest-gap repair loop | `design-loop start/status/record/close`, `data/quality-rubric.json`, session evidence and signoff gates |
+| [design-visual-frontend](https://github.com/Xialiang98/design-visual-frontend) | Classify the protagonist and surface archetype, define a compact decision sheet, require wide responsive behavior and honest unavailable-tool reporting | Existing surface routing plus explicit subject, direction, responsive, asset, state, and rendered-proof contracts |
+| [webdev-agent-kit frontend-visual-qa](https://github.com/ytvee-dev/webdev-agent-kit/tree/main/skills/frontend-visual-qa) | Keep rendered QA separate from static code review, use only available browser tools, constrain repair scope, and report blockers | `references/verification.md`, `references/visual-iteration.md`, `references/independent-critique.md`, and `pending` visual status in static audit |
+| [Ixe1/ui-from-image](https://github.com/Ixe1/ui-from-image) | Treat the reference-size render as the source of truth, compare screenshots before responsive refinement, and separate concept images from implementation proof | Screenshot-to-code and screenshot-to-image-to-code workflow, actual-capture evidence, and generated-image proposal boundary |
+| [KyaniteLabs/tastecheck](https://github.com/KyaniteLabs/tastecheck) | Separate deterministic anti-pattern checks from taste judgment and use a design-direction interview for vague requests | Advisory anti-AI checks, visual direction authority, and the rubric's subject-fit, composition, and originality dimensions |
+
+The resulting conclusion is operational: a skill cannot guarantee good taste with a larger list of styles. It can make weak output harder to accept by forcing subject-specific choices, real references, persistent decisions, rendered comparison, an independent critique, a largest-gap repair, and an evidence-backed signoff. The freedom layer remains intact because the rubric evaluates the chosen direction's coherence and fit rather than forcing one visual skin.
+
 ## Resulting Skill Contract
 
 ```text

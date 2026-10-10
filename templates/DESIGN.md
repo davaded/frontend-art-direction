@@ -21,6 +21,17 @@ Use this file as project-specific visual memory. Keep it true to the shipped pro
 - Chosen concept and why it belongs to this product:
 - Rejected concepts and reason:
 
+## Research Atlas
+
+- User-provided references and inspection status:
+- Competitor or category references and inspection status:
+- Section-level winners: navigation / opening / object or feature proof / mobile / motion or state / ending:
+- Selected references and visible decisions borrowed:
+- Rejected references or traits and why:
+- Reference weaknesses preserved or corrected:
+- Template-risk observation:
+- Synthesis summary:
+
 ## Authority And Exceptions
 
 - Direction owner: project `DESIGN.md` / user reference / accepted concept / model proposal:

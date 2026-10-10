@@ -1,0 +1,73 @@
+{
+  "version": 1,
+  "targetScore": 8,
+  "scale": {
+    "1": "generic, broken, or unsupported by evidence",
+    "5": "usable but ordinary, inconsistent, or only partly proven",
+    "8": "coherent, specific, complete, and supported by rendered evidence",
+    "10": "exceptional craft with a clear point of view and no material gaps"
+  },
+  "dimensions": [
+    {
+      "id": "subject-fit",
+      "label": "Subject fit",
+      "weight": 1.4,
+      "question": "Does the visual language come from the real subject, audience, content, or workflow?"
+    },
+    {
+      "id": "hierarchy",
+      "label": "Hierarchy",
+      "weight": 1.3,
+      "question": "Can a viewer identify the dominant object, reading order, counterweight, and next action quickly?"
+    },
+    {
+      "id": "composition",
+      "label": "Composition",
+      "weight": 1.3,
+      "question": "Does the silhouette, proportion, rhythm, and spatial relationship have a deliberate point of view?"
+    },
+    {
+      "id": "type-and-content",
+      "label": "Type and content",
+      "weight": 1.1,
+      "question": "Do typography, copy, data density, language, and wrapping support the chosen experience?"
+    },
+    {
+      "id": "material-and-assets",
+      "label": "Material and assets",
+      "weight": 1.1,
+      "question": "Do surfaces, imagery, texture, color, and depth feel authored and remain sharp at the target sizes?"
+    },
+    {
+      "id": "interaction-and-motion",
+      "label": "Interaction and motion",
+      "weight": 0.9,
+      "question": "Do interactions clarify state, continuity, feedback, or spatial relationships with cleanup and fallback?"
+    },
+    {
+      "id": "responsive-and-states",
+      "label": "Responsive and states",
+      "weight": 1.2,
+      "question": "Does the design remain intentional across viewports and important non-default states?"
+    },
+    {
+      "id": "originality",
+      "label": "Originality",
+      "weight": 1.1,
+      "question": "Does the result synthesize references into its own identity instead of looking like a template or a collage?"
+    },
+    {
+      "id": "completion-and-proof",
+      "label": "Completion and proof",
+      "weight": 1.4,
+      "question": "Is the declared scope complete, runnable, accessible, and proven with current rendered evidence?"
+    }
+  ],
+  "requiredProof": [
+    "static",
+    "runtime",
+    "visual",
+    "accessibility",
+    "scope"
+  ]
+}

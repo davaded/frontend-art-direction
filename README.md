@@ -42,6 +42,7 @@ npm run audit -- /path/to/project --query "inventory dashboard with partial data
 npm run surface-mode -- --query "documentation page for a research report" --format md
 npm run design-operation -- --query "现在太方正，排版没有质感" --format md
 npm run design-loop -- --query "hardware product story with responsive states" --format md
+npm run design-loop -- start --project /path/to/project --query "rebuild this visual surface" --format md
 npm run live -- start --project /path/to/project --url http://localhost:5173 --target "[data-art-direction-target]"
 ```
 
@@ -63,6 +64,7 @@ frontend-art-direction motion --intent "filter list continuity" --project /path/
 frontend-art-direction surface-mode --query "portfolio case study"
 frontend-art-direction design-operation --query "页面太平，想更大胆"
 frontend-art-direction design-loop --query "hardware product story with responsive states"
+frontend-art-direction design-loop start --project /path/to/project --query "rebuild this visual surface"
 frontend-art-direction live start --project /path/to/project --url http://localhost:5173 --target "[data-art-direction-target]"
 frontend-art-direction live add-variant --project /path/to/project --session <id> --id variant-1 --path artifacts/variant-1.png --summary "tighter type and wider stage"
 frontend-art-direction live accept --project /path/to/project --session <id> --variant variant-1 --source-diff artifacts/variant-1.diff --path artifacts/after.png

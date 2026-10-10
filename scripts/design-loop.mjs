@@ -75,10 +75,47 @@ ${rounds}
 `;
 }
 
-function main() {
+async function main() {
   const args = parseArgs(process.argv.slice(2));
   if (args.options.help || args.options.h) {
-    console.log(`design-loop.mjs [options]\n\n  --query <text>       Product, page, or feedback description\n  --mode <id>          persuade|operate|read|experience\n  --action <id>        design operation override\n  --scope <text>       declared delivery scope\n  --format md|json     Output format (default: md)`);
+    console.log(`design-loop.mjs [plan|start|status|record|close] [options]\n\n  plan                  Emit the 20-round contract (default)\n  start                 Persist a project session under .art-direction/design-loop/\n  status                Read a persisted session\n  record                Complete, skip, or block one round\n  close                 Enforce signoff gates and close a session\n  --project <path>      Target project root for a session\n  --session <id>        Session id or path\n  --round <number>      Round number for record\n  --status <value>      complete|skipped|blocked\n  --decision <text>     Decision recorded for a round\n  --evidence <paths>    Comma-separated artifact or capture paths\n  --proof <kinds>       Comma-separated proof kinds\n  --issues <items>      Comma-separated issue records, e.g. P2:crop\n  --score <1-10>        Quality score for the round or signoff\n  --reason <text>       Reason for a skipped or blocked round\n  --query <text>       Product, page, or feedback description\n  --mode <id>          persuade|operate|read|experience\n  --action <id>        design operation override\n  --scope <text>       declared delivery scope\n  --format md|json     Output format (default: md)`);
+    return;
+  }
+  const command = ["start", "status", "record", "close"].includes(args.positionals[0]) ? args.positionals[0] : "plan";
+  if (command !== "plan") {
+    const sessionApi = await import("./design-loop-session.mjs");
+    const projectRoot = option(args, "project", process.cwd());
+    let result;
+    if (command === "start") {
+      const created = sessionApi.createDesignLoopSession({
+        projectRoot,
+        query: option(args, "query", args.positionals.slice(1).join(" ") || ""),
+        mode: option(args, "mode", ""),
+        action: option(args, "action", ""),
+        scope: option(args, "scope", "substantial"),
+      });
+      result = { ...created.session, sessionPath: created.path };
+    } else if (command === "status") {
+      result = sessionApi.getDesignLoopSession({ projectRoot, session: option(args, "session", "") });
+    } else if (command === "record") {
+      result = sessionApi.recordDesignLoopRound({
+        projectRoot,
+        session: option(args, "session", ""),
+        round: option(args, "round", ""),
+        status: option(args, "status", "complete"),
+        decision: option(args, "decision", ""),
+        evidence: option(args, "evidence", ""),
+        proof: option(args, "proof", ""),
+        issues: option(args, "issues", ""),
+        score: option(args, "score", ""),
+        dimensions: option(args, "dimensions", ""),
+        reason: option(args, "reason", ""),
+      });
+    } else {
+      result = sessionApi.closeDesignLoopSession({ projectRoot, session: option(args, "session", "") });
+    }
+    const format = option(args, "format", "md");
+    writeOutput(format === "json" ? result : sessionApi.renderDesignLoopSession(result, result.sessionPath), { format, output: option(args, "output") });
     return;
   }
   const query = option(args, "query", args.positionals.join(" ") || "");
@@ -92,4 +129,9 @@ function main() {
   writeOutput(format === "json" ? output : renderDesignLoop(output), { format, output: option(args, "output") });
 }
 
-if (isMainModule(import.meta.url)) main();
+if (isMainModule(import.meta.url)) {
+  main().catch((error) => {
+    console.error(error instanceof Error ? error.message : String(error));
+    process.exit(1);
+  });
+}

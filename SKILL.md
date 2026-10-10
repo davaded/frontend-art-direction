@@ -184,7 +184,7 @@ Read the returned upstream reference before applying it. Copy only the needed re
 
 Read [references/verification.md](references/verification.md). Run the target, inspect the complete declared scope at desktop and target mobile/device viewports, exercise the relevant non-default state or authored ending, and check console/build output. Capture the closest available evidence. Keep static checks, runtime checks, and visual checks separate in the report.
 
-For substantial work, follow [references/visual-iteration.md](references/visual-iteration.md) and the 20-round [design production loop](references/design-production-loop.md): inspect real screenshots, repair material defects, and compare new captures. When the visual thesis needs reworking, edit the screenshot through image generation, inspect the proposal, translate it into code, and return to browser proof; a generated image never proves implementation completeness. When a running dev target exists, use `live start` to journal baseline, variants, acceptance, source diff, and after-capture proof.
+For substantial work, follow [references/visual-iteration.md](references/visual-iteration.md) and the 20-round [design production loop](references/design-production-loop.md): start a session, inspect real screenshots, record each decision and proof, repair material defects, and compare new captures. Close the session only after the quality, scope, accessibility, runtime, and rendered-proof gates pass. When the visual thesis needs reworking, edit the screenshot through image generation, inspect the proposal, translate it into code, and return to browser proof; a generated image never proves implementation completeness. When a running dev target exists, use `live start` to journal baseline, variants, acceptance, source diff, and after-capture proof.
 
 For this skill itself, run:
 
@@ -192,7 +192,7 @@ For this skill itself, run:
 npm test
 ```
 
-The reference integrations are executable rather than name-only documentation: design intelligence (`brief`), visitor/action routing (`surface-mode`, `design-operation`), the 20-round production contract (`design-loop`), visual direction (`direction`), repository graph (`graph`), role-based reference composition (`reference`), one-sentence implementation contracts (`reference-build`), compact response pipeline (`audit`), curated resources (`resource`), live variant journaling (`live`), and the internal motion bridge (`motion`).
+The reference integrations are executable rather than name-only documentation: design intelligence (`brief`), visitor/action routing (`surface-mode`, `design-operation`), the 20-round production contract and persisted quality gate (`design-loop`), visual direction (`direction`), repository graph (`graph`), role-based reference composition (`reference`), one-sentence implementation contracts (`reference-build`), compact response pipeline (`audit`), curated resources (`resource`), live variant journaling (`live`), and the internal motion bridge (`motion`).
 
 ## Output Contract
 

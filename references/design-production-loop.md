@@ -24,7 +24,7 @@ The loop has 20 checkpoints. They can be batched when their evidence is independ
 16. **Macro repair**: fix the largest visible defect first: scope, silhouette, hierarchy, composition, content, or media.
 17. **Responsive re-stage**: redesign for mobile, tablet, touch, text wrapping, and input behavior.
 18. **State review**: exercise loading, empty, error, success, focus, reduced-motion, transition, and recovery paths.
-19. **Fresh-eyes critique**: compare before/after and use a reviewer without the implementation history.
+19. **Fresh-eyes critique**: compare before/after and use [the independent critique protocol](independent-critique.md) without the implementation history.
 20. **Sign-off**: verify static, runtime, visual, accessibility, and scope evidence; update durable design memory.
 
 ## The Loop's Control Rules
@@ -37,6 +37,52 @@ The loop has 20 checkpoints. They can be batched when their evidence is independ
 - Use a fresh screenshot for each meaningful comparison. A generated concept can guide implementation, but a browser render is the proof.
 - Preserve accepted direction decisions in a project-owned design memory, then allow page-specific overrides where the page has a different job.
 - Stop after the declared scope is complete and material defects are resolved. More iterations are useful only when they answer a new question or fix visible evidence.
+
+## Persist The Loop
+
+For substantial work, create a session in the target project so the loop survives context changes and cannot be replaced by a verbal claim:
+
+```bash
+node <skill-root>/scripts/design-loop.mjs start \
+  --project <project-root> \
+  --query "<one-sentence request>" \
+  --format md
+```
+
+Record each round in order. Early rounds may point to briefs, research notes, direction files, or design memory. From round 15 onward, every completed round needs at least one rendered or verification proof item:
+
+```bash
+node <skill-root>/scripts/design-loop.mjs record \
+  --project <project-root> --session <id> --round 16 \
+  --decision "Rebalanced the dominant object and removed equal-weight cards" \
+  --evidence artifacts/round-16-critique.md \
+  --proof desktop-capture,mobile-capture \
+  --issues "P2:mobile crop"
+```
+
+Round 19 must include a fresh-eyes comparison. Round 20 must include all five proof kinds: `static`, `runtime`, `visual`, `accessibility`, and `scope`, plus a score of at least 8/10:
+
+```bash
+node <skill-root>/scripts/design-loop.mjs record \
+  --project <project-root> --session <id> --round 20 \
+  --decision "Scope is complete; remaining P2 crop is documented" \
+  --evidence artifacts/signoff.md \
+  --proof static,runtime,visual,accessibility,scope \
+  --score 8 \
+  --dimensions subject-fit=8,hierarchy=8,composition=8,type-and-content=8,material-and-assets=8,interaction-and-motion=8,responsive-and-states=8,originality=8,completion-and-proof=8
+node <skill-root>/scripts/design-loop.mjs close \
+  --project <project-root> --session <id> --format md
+```
+
+The session is a gate and ledger, not a visual oracle. A path proves that an artifact was recorded; the implementing agent still has to open the screenshot, inspect the target, compare the result, and write the observed consequence using [the independent critique protocol](independent-critique.md). `close` accepts P2/P3 follow-ups when they are explicit, but rejects unresolved P0/P1 defects.
+
+## Quality Bar
+
+Use [../data/quality-rubric.json](../data/quality-rubric.json) to score subject fit, hierarchy, composition, type/content, material/assets, interaction/motion, responsive/states, originality, and completion/proof. The score does not replace judgment: a generic page can pass static gates while failing subject fit, composition, or originality. The reviewer must name the largest gap and the next repair before starting another round.
+
+## Research And Critique Memory
+
+Keep user references, inspected URLs, section-level observations, reference winners, rejected traits, concept choices, quality-bar scores, and template-risk decisions in the target project's design memory. A reference name alone is never an inspection record. For a new project, compare references by section and job: a navigation winner, an object or hero winner, a mobile winner, and a motion or state winner can come from different sources. The final direction must synthesize them into its own type, composition, material, interaction language, and subject-specific identity.
 
 ## What This Changes In The Skill
 
