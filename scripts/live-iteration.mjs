@@ -6,6 +6,7 @@ import { randomUUID } from "node:crypto";
 import { isMainModule, option, parseArgs, writeOutput } from "./lib.mjs";
 import { resolveDesignOperation } from "./design-operation.mjs";
 import { classifySurfaceMode } from "./surface-mode.mjs";
+import { inspectLocalEvidence, inspectExistingArtifact } from "./media-evidence.mjs";
 
 const LIVE_DIR = ".art-direction/live";
 
@@ -132,6 +133,26 @@ export function decideLiveVariant({ projectRoot, session, variant, decision, sou
   });
 }
 
+export function closeLiveSession({ projectRoot, session } = {}) {
+  const file = sessionPath(projectRoot, session);
+  const current = readSession(file);
+  if (current.variants.length < 2) throw new Error("live session requires at least two bounded variants before signoff");
+  for (const variant of current.variants) {
+    const evidence = inspectLocalEvidence(projectRoot, variant.path || "");
+    if (evidence.kind !== "capture-or-media" || evidence.exists !== true || evidence.valid !== true) throw new Error(`variant ${variant.id} needs an existing valid capture`);
+  }
+  const baseline = current.evidence.find((item) => item.kind === "baseline");
+  const baselineEvidence = inspectLocalEvidence(projectRoot, baseline?.path || "");
+  if (baselineEvidence.kind !== "capture-or-media" || baselineEvidence.exists !== true || baselineEvidence.valid !== true) throw new Error("live session needs a valid baseline capture");
+  const after = current.evidence.find((item) => item.kind === "after" || item.kind === "after-capture");
+  const afterPath = after?.path || current.decision?.afterCapture || "";
+  const afterEvidence = inspectLocalEvidence(projectRoot, afterPath);
+  if (afterEvidence.kind !== "capture-or-media" || afterEvidence.exists !== true || afterEvidence.valid !== true) throw new Error("live session needs a valid after capture");
+  if (!current.decision?.action) throw new Error("live session needs an accepted or discarded variant decision");
+  if (current.decision.action === "accept" && !inspectExistingArtifact(projectRoot, current.decision.sourceDiff || "")) throw new Error("an accepted live variant needs an existing source diff");
+  return writeSession(file, { ...current, status: "complete", proof: { baseline: baselineEvidence, after: afterEvidence, sourceDiff: current.decision.sourceDiff || null }, completedAt: new Date().toISOString(), updatedAt: new Date().toISOString() });
+}
+
 function renderLiveSession(session, path = "") {
   return `# Live Iteration Session
 
@@ -152,7 +173,7 @@ function main() {
   const args = parseArgs(process.argv.slice(2));
   const subcommand = args.positionals[0] ?? "start";
   if (args.options.help || args.options.h) {
-    console.log(`live-iteration.mjs <start|status|record|add-variant|accept|discard> [options]\n\n  --project <path> --query <text> --url <url> --target <selector>\n  --session <id-or-path> --kind <baseline|variant|after> --path <capture>\n  --id <variant-id> --summary <text> --source-diff <path>\n  --format md|json`);
+    console.log(`live-iteration.mjs <start|status|record|add-variant|accept|discard|close> [options]\n\n  --project <path> --query <text> --url <url> --target <selector>\n  --session <id-or-path> --kind <baseline|variant|after> --path <capture>\n  --id <variant-id> --summary <text> --source-diff <path>\n  --format md|json`);
     return;
   }
   const projectRoot = option(args, "project", process.cwd());
@@ -169,6 +190,8 @@ function main() {
     result = addLiveVariant({ projectRoot, session: option(args, "session", ""), id: option(args, "id", ""), path: option(args, "path", ""), summary: option(args, "summary", ""), sourceDiff: option(args, "source-diff", "") });
   } else if (subcommand === "accept" || subcommand === "discard") {
     result = decideLiveVariant({ projectRoot, session: option(args, "session", ""), variant: option(args, "variant", option(args, "id", "")), decision: subcommand, sourceDiff: option(args, "source-diff", ""), path: option(args, "path", "") });
+  } else if (subcommand === "close") {
+    result = closeLiveSession({ projectRoot, session: option(args, "session", "") });
   } else {
     throw new Error(`Unknown live subcommand: ${subcommand}`);
   }

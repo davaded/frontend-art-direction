@@ -20,7 +20,7 @@ import { resolveDesignOperation } from "./design-operation.mjs";
 import { buildDesignLoop, renderDesignLoop } from "./design-loop.mjs";
 import { closeDesignLoopSession, createDesignLoopSession, getDesignLoopSession, recordDesignLoopRound } from "./design-loop-session.mjs";
 import { ATLAS_SECTIONS, addResearchAtlasReference, closeResearchAtlas, recordResearchAtlasSection, recordResearchAtlasSkill, recordResearchAtlasSynthesis, renderResearchAtlas } from "./research-atlas.mjs";
-import { addLiveVariant, createLiveSession, decideLiveVariant, recordLiveEvent } from "./live-iteration.mjs";
+import { addLiveVariant, closeLiveSession, createLiveSession, decideLiveVariant, recordLiveEvent } from "./live-iteration.mjs";
 
 const root = REPO_ROOT;
 const errors = [];
@@ -251,11 +251,17 @@ async function checkSmoke() {
     if (layoutOperation.operation !== "layout" || vagueOperation.directionQuestion === null) fail("design operation routing did not separate explicit and vague feedback");
     const liveFixture = mkdtempSync(join(tmpdir(), "frontend-art-direction-live-"));
     try {
+      mkdirSync(join(liveFixture, "artifacts"), { recursive: true });
+      for (const capture of ["baseline", "variant-1", "variant-2", "after"]) writeFileSync(join(liveFixture, "artifacts", `${capture}.png`), syntheticPng);
+      writeFileSync(join(liveFixture, "artifacts", "variant-1.diff"), "source diff\n");
       const live = createLiveSession({ projectRoot: liveFixture, query: "polish an editor panel", url: "http://localhost:5173", target: "[data-target]" });
       const baseline = recordLiveEvent({ projectRoot: liveFixture, session: live.session.id, kind: "baseline", path: "artifacts/baseline.png" });
       const variant = addLiveVariant({ projectRoot: liveFixture, session: live.session.id, id: "variant-1", path: "artifacts/variant-1.png", summary: "Tighter panel hierarchy" });
+      addLiveVariant({ projectRoot: liveFixture, session: live.session.id, id: "variant-2", path: "artifacts/variant-2.png", summary: "More open stage" });
       const accepted = decideLiveVariant({ projectRoot: liveFixture, session: live.session.id, variant: "variant-1", decision: "accept", sourceDiff: "artifacts/variant-1.diff", path: "artifacts/after.png" });
-      if (baseline.evidence.length !== 1 || variant.variants.length !== 1 || accepted.status !== "accepted-awaiting-proof" || accepted.decision.variant !== "variant-1") fail("live iteration session did not persist the acceptance protocol");
+      recordLiveEvent({ projectRoot: liveFixture, session: live.session.id, kind: "after", path: "artifacts/after.png" });
+      const closedLive = closeLiveSession({ projectRoot: liveFixture, session: live.session.id });
+      if (baseline.evidence.length !== 1 || variant.variants.length !== 1 || accepted.status !== "accepted-awaiting-proof" || accepted.decision.variant !== "variant-1" || closedLive.status !== "complete" || !closedLive.proof?.baseline?.valid || !closedLive.proof?.after?.valid) fail("live iteration session did not enforce and close the rendered acceptance protocol");
     } finally {
       rmSync(liveFixture, { recursive: true, force: true });
     }

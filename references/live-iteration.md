@@ -49,6 +49,15 @@ frontend-art-direction live accept --project /path/to/project \
 
 `accepted-awaiting-proof` is intentional. Acceptance means a visual direction was chosen; it does not mean the source was applied or the final render passed. The session only becomes proof after the source change and after-capture are recorded.
 
+Close the session only after the browser artifacts exist:
+
+```bash
+frontend-art-direction live close --project /path/to/project \
+  --session <id> --format md
+```
+
+`close` requires at least two valid captured variants, a valid baseline, an after-capture, and a source diff when a variant was accepted. The evidence checker validates common image and video container signatures; a filename or non-empty text file does not count as rendered proof.
+
 ## Adapter Boundaries
 
 The protocol is provider-neutral. A browser adapter may use Playwright, the Codex browser, an existing dev-server HMR path, or another project-owned mechanism. It must preserve the target app's CSP and development boundary, keep variants scoped to the selected region, and return a source diff before claiming that an accepted variant is implemented.
