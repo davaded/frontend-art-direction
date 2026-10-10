@@ -7,16 +7,17 @@ import { asNumber, isMainModule, loadDataset, option, parseArgs, writeOutput } f
 import { queryResources } from "./resource-catalog.mjs";
 import { buildMotionPlan } from "./transitions-adapter.mjs";
 import { scanProject } from "./inspect-project.mjs";
-import { buildReferenceBuild } from "./reference-build.mjs";
+import { buildReferenceBuild, hasReferenceBuildSignal } from "./reference-build.mjs";
 import { renderAuthorityMarkdown } from "./authority.mjs";
 import { readAuthoredDirection, renderCreativeProcess } from "./creative-process.mjs";
 import { renderProductSignal } from "./product-signal.mjs";
 import { renderCompletionContract } from "./completion-contract.mjs";
-import { classifySurfaceMode, renderSurfaceMode } from "./surface-mode.mjs";
+import { renderSurfaceMode } from "./surface-mode.mjs";
 import { renderDesignOperation, resolveDesignOperation } from "./design-operation.mjs";
 import { renderDesignLoop } from "./design-loop.mjs";
 import { buildLiveIterationContract } from "./live-iteration.mjs";
 import { lintProject } from "./visual-lint.mjs";
+import { renderProductContextStatus } from "./product-context.mjs";
 
 const HELP = `audit.mjs [project-root] [options]
 
@@ -267,10 +268,6 @@ function buildControlDials(brief, referenceBuild) {
   };
 }
 
-function hasReferenceBuildSignal(query) {
-  return /https?:\/\/|like\s+|similar\s+to|inspired\s+by|based\s+on|像|类似|参考|仿照|复刻/.test(String(query).toLocaleLowerCase());
-}
-
 function compact(value, max = 180) {
   const text = String(value ?? "").replace(/\s+/g, " ").trim();
   return text.length > max ? `${text.slice(0, max - 3)}...` : text;
@@ -307,6 +304,7 @@ export async function buildAudit({
     referenceExplicit: namedReferenceRequest,
     productReference: scoutedProductReference,
     authoredDirection,
+    productRequest: brief.productRequest,
   });
   const resources = queryResources(query, {
     stack: brief.recommendation.stack.id,
@@ -326,7 +324,7 @@ export async function buildAudit({
   const resourceMatrix = buildResourceMatrix(resources);
   const controlDials = buildControlDials(brief, referenceBuild);
   const visualIteration = brief.visualDirection.creativeProcess.visualIteration;
-  const surfaceMode = classifySurfaceMode(query);
+  const surfaceMode = brief.surfaceMode;
   const designOperation = resolveDesignOperation(query, { mode: surfaceMode.mode === "adaptive" ? "" : surfaceMode.mode });
   const designLoop = brief.designLoop;
   const researchAtlas = {
@@ -385,6 +383,8 @@ export async function buildAudit({
     project: root,
     query,
     contract: "Decision / Changed / Proof / Open",
+    productContext: scan.productContext,
+    productRequest: brief.productRequest,
     decision: `Run the full pipeline for ${brief.recommendation.profile.label} with ${brief.recommendation.style.label}; use ${brief.visualDirection.constraintAuthority.label} as the creative authority, ${signalDecision}.`,
     changed: "No target project files changed; this full audit reads local evidence, evaluates every capability, and produces an implementation contract.",
     pipeline,
@@ -422,6 +422,8 @@ export async function buildAudit({
         controlDials,
       },
       productSignal: brief.productSignal,
+      productContext: scan.productContext,
+      productRequest: brief.productRequest,
       surfaceMode,
       designOperation,
       visualLint,
@@ -593,6 +595,8 @@ ${visualLint}
 ${renderCreativeProcess(audit.proof.direction.visualDirection?.creativeProcess)}
 
 ${renderProductSignal(audit.proof.productSignal ?? audit.direction.productSignal)}
+
+${audit.productContext ? renderProductContextStatus(audit.productContext) : ""}
 
 ${renderSurfaceMode(audit.proof.surfaceMode ?? audit.surfaceMode)}
 

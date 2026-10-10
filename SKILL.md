@@ -32,7 +32,7 @@ Use the smallest mode that can answer the request, then classify the current sur
 
 1. **Fast polish**: one component, one state, or one local spacing/type/color problem. Inspect the local pattern, make the smallest visible change, and verify that state.
 2. **Product UI**: app, dashboard, editor, settings, commerce, developer tool, or embedded surface. Optimize for task clarity, density, trust, state coverage, and responsive input behavior.
-3. **Media-led**: landing, portfolio, launch, product story, model viewer, or spatial surface. Use this only when real media or a meaningful object can carry the first screen; otherwise downgrade to Product UI.
+3. **Media-led**: landing, portfolio, launch, product story, model viewer, or spatial surface. Let real media or a meaningful object carry the first screen; when neither fits, explore a type-, material-, or content-led composition for the same visitor intent.
 4. **Reference-led build**: the user says “像/类似/参考某个网站” or names a URL and expects a working result. Treat this as implementation work, not a moodboard request.
 5. **Direction-only**: the user asks for options, a plan, or analysis without implementation. Return a compact direction decision and implementation contract.
 
@@ -65,7 +65,7 @@ node <skill-root>/scripts/project-map.mjs <project-root> \
   --format md
 ```
 
-Record only what is evidenced: framework and scripts, routes, components, tokens, assets, existing design memory, weak primitives, and constraints. If a project is not runnable, say so and keep the scan static.
+Record only what is evidenced: framework and scripts, routes, components, tokens, assets, existing design memory, weak primitives, and constraints. Read root `PRODUCT.md` for durable audience, subject, and purpose, separately from `DESIGN.md` for visual direction. Current page requirements take precedence; optional setup is documented in [references/design-system.md](references/design-system.md). If a project is not runnable, say so and keep the scan static.
 
 When file relationships matter, query the repository graph instead of relying on path names:
 

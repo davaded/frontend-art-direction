@@ -14,6 +14,25 @@ Do not present an inferred font, palette, or motion system as an existing produc
 
 If the project has a substantive `DESIGN.md`, treat it as project-owned visual memory before ranking local styles or treatments. The saved candidates are fallback vocabulary for missing fields, not a normalization pass over the project's own direction. See [constraint-authority.md](constraint-authority.md) for the precedence and exception record.
 
+## Product Context
+
+Read root `PRODUCT.md` when present. It records durable product facts: audience, purpose, subject, workflow, operating context, and constraints. `DESIGN.md` records visual language; visitor mode belongs to the current page. This separation follows [Impeccable's initialization flow](https://github.com/pbakaus/impeccable#the-skill-impeccable).
+
+`inspect`, `brief`, `direction --project`, `reference-build`, and `audit` read the context automatically. Their keyword routing uses positive product facts to fill an unresolved request. Frameworks, filenames, constraints, and non-goals are not positive genre evidence. An explicit current task or profile pin wins; a component candidate cannot become visual authority by being selected automatically.
+
+Use the file's actual prose as well as the structured fields. The CLI is a lightweight candidate selector, not a semantic design judge: ambiguous or unsupported wording still needs inspection. Useful partial facts can inform the next decision; optional fields do not block implementation.
+
+When several screens need shared background, inspect the project and original request first, then create context from known facts:
+
+```bash
+node <skill-root>/scripts/product-context.mjs init --project <project-root> \
+  --product-audience "<known product and audience>" \
+  --primary-job "<known purpose or visitor job>"
+node <skill-root>/scripts/product-context.mjs status --project <project-root>
+```
+
+Initialization writes only root `PRODUCT.md` and refuses replacement unless `--force` is explicit. `status` is read-only; `template` prints a blank document. `--output` saves the report, not the product document. Leave unknowns blank, separate assumptions from facts, and ask only about gaps that would materially change the design. A tiny local fix does not need a new context file. Update stale facts when the product changes, rather than treating them as permanent restrictions.
+
 ## Content Readiness
 
 Use the lowest level that describes the actual surface:

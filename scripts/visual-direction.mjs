@@ -5,6 +5,8 @@ import { advisoryChecks, renderAuthorityMarkdown, resolveCreativeAuthority } fro
 import { applyAuthoredDirection, buildCreativeProcess, readAuthoredDirection, renderCreativeProcess } from "./creative-process.mjs";
 import { buildProductSignal, renderProductSignal } from "./product-signal.mjs";
 import { buildCompletionContract, renderCompletionContract } from "./completion-contract.mjs";
+import { renderProductContextStatus, resolveProductRequest } from "./product-context.mjs";
+import { scanProject } from "./inspect-project.mjs";
 
 const HELP = `visual-direction.mjs [options]
 
@@ -14,6 +16,7 @@ contract instead of another abstract style label.
 
 Options:
   --query <text>         Product, screen, or implementation question
+  --project <path>       Read PRODUCT.md and project-owned DESIGN.md
   --profile <id|text>    Product profile or surface mode
   --style <id|text>      Design stance
   --reference <id|text>  Named visual reference
@@ -312,7 +315,12 @@ export function selectVisualDirection(query = "frontend interface", {
   modelProposal = false,
   overrides = [],
   authoredDirection = null,
+  productRequest = null,
 } = {}) {
+  const request = productRequest ?? resolveProductRequest(query, project?.productContext, { profile: typeof profile === "object" ? profile.id : String(profile).split(/\s+/)[0] });
+  const authorityQuery = request.routingQuery;
+  query = request.selectionQuery;
+  if (!profile && request.profile.record.id !== "adaptive-surface") profile = request.profile.record;
   const directions = loadDataset("visual-directions.json").directions;
   const treatments = loadDataset("visual-treatments.json").treatments;
   const profileId = idOf(profile);
@@ -344,7 +352,7 @@ export function selectVisualDirection(query = "frontend interface", {
     treatment: requestedTreatment || requestedConcept?.treatmentId || "",
   });
   const constraintAuthority = resolveCreativeAuthority({
-    query,
+    query: authorityQuery,
     project,
     designMemory,
     reference: referenceId,
@@ -358,6 +366,9 @@ export function selectVisualDirection(query = "frontend interface", {
     overrides,
   });
   const resolved = applyAuthoredDirection({ ...selected, visualTreatment: candidateTreatment }, authoredDirection);
+  if (!authoredDirection && constraintAuthority.mode === "adaptive-default" && request.signalFields["primary-object"]) {
+    resolved.firstViewport = { ...resolved.firstViewport, dominant: request.signalFields["primary-object"] };
+  }
   const visualTreatment = resolved.visualTreatment;
   const conceptSet = !authoredDirection && constraintAuthority.mode === "adaptive-default"
     ? fixedConcept
@@ -374,6 +385,7 @@ export function selectVisualDirection(query = "frontend interface", {
     query,
     profile: typeof profile === "object" ? profile : { id: idOf(profile), anchor: resolved.firstViewport.dominant },
     visualDirection: resolved,
+    contextFields: request.signalFields,
   });
   const completionContract = buildCompletionContract({
     query,
@@ -408,6 +420,8 @@ export function selectVisualDirection(query = "frontend interface", {
     authoredBuild: resolved.authoredBuild,
     creativeProcess,
     productSignal,
+    productContext: project?.productContext ?? null,
+    productRequest: request,
     completionContract,
     visualTreatment,
     conceptSet,
@@ -434,6 +448,8 @@ Mode: **${direction.mode}**
 Matched: ${direction.matched.join(", ") || "provisional evidence"}
 
 Selection: **${direction.selectionStatus}**; confidence measures routing fit, not visual quality.
+
+${direction.productContext ? renderProductContextStatus(direction.productContext) : ""}
 
 ${renderCreativeProcess(direction.creativeProcess)}
 
@@ -514,6 +530,7 @@ function main() {
   }
   const query = option(args, "query", args.positionals.join(" ") || "frontend interface");
   const result = selectVisualDirection(query, {
+    project: option(args, "project") ? scanProject(option(args, "project")) : null,
     profile: option(args, "profile", ""),
     style: option(args, "style", ""),
     reference: option(args, "reference", ""),

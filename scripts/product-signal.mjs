@@ -150,12 +150,14 @@ export function buildProductSignal({
   firstViewport = null,
   componentGrammar = [],
   referenceMode = "adaptive-no-reference",
+  contextFields = {},
 } = {}) {
   const requestedProfileId = String(profile.id ?? "adaptive-surface").split(/\s+/)[0];
   const profileId = inferProfileId(query, requestedProfileId);
   const defaults = PROFILE_SIGNALS[profileId] ?? PROFILE_SIGNALS["adaptive-surface"];
   const mode = inferSignalMode(query, profileId, profile);
   const dominant = first([
+    contextFields["primary-object"],
     visualDirection?.firstViewport?.dominant,
     firstViewport?.mustShow?.[0],
     profile.anchor,
@@ -169,7 +171,7 @@ export function buildProductSignal({
   const provisional = mode === "open-experience" || !query.trim();
   const experience = {
     subject: dominant || "the subject, material, or world of the piece",
-    audienceIntent: "decide what should be noticed, felt, understood, or remembered",
+    audienceIntent: contextFields["primary-job"] ?? "decide what should be noticed, felt, understood, or remembered",
     attentionPath: "choose an authored reading, looking, listening, or spatial path",
     creativeThesis: "make one deliberate formal claim about the subject instead of averaging familiar website patterns",
     proof: "use specific media, text, artifact, object, or interaction that belongs to the chosen world",
@@ -180,10 +182,10 @@ export function buildProductSignal({
     status: productMode ? "draft-ready" : authoredMode ? "authored-direction" : "open-thesis",
     query,
     object: dominant,
-    userJob: productMode ? defaults.userJob : null,
-    coreLoop: productMode ? defaults.coreLoop : null,
+    userJob: productMode ? contextFields["primary-job"] ?? defaults.userJob : null,
+    coreLoop: productMode ? contextFields["primary-workflow"] ?? defaults.coreLoop : null,
     primaryAction: productMode ? defaults.primaryAction : null,
-    visibleResult: productMode ? defaults.visibleResult : null,
+    visibleResult: productMode ? contextFields["visible-result"] ?? defaults.visibleResult : null,
     stateMatrix: productMode ? (states.length > 0 ? states : ["idle", "loading", "empty", "error", "success"]) : [],
     concreteData: productMode ? defaults.concreteData : null,
     firstViewportProof: productMode

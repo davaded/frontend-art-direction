@@ -54,6 +54,8 @@ The implementation now makes that research durable through `scripts/research-atl
 
 The current Impeccable review adds a second separation: `design-operation` routes the user's requested change, `audit` is reserved for deterministic or technical checks, and `critique` records visual judgment with fresh rendered evidence. This prevents a contrast detector from pretending to know whether a composition has a point of view, while also preventing taste language from hiding measurable accessibility, performance, or responsive defects.
 
+The product-context integration now uses root `PRODUCT.md` for durable audience, subject, and purpose, while preserving `DESIGN.md` as visual authority and choosing visitor mode per surface. Routing regressions demonstrated two failure mechanisms: framework/path terms were being treated as product evidence, and an automatically selected component lens could suppress creative exploration by becoming visual authority. Both paths have been removed from the brief. Regression cases cover blank and partial context, negative feedback, explicit page tasks, profile pins, project authority, and all decision entrypoints. These checks establish routing behavior; they do not establish visual quality across arbitrary websites or apps.
+
 ## Resulting Skill Contract
 
 ```text

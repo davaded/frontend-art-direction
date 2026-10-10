@@ -23,6 +23,7 @@ Usage:
   frontend-art-direction map <path> --query "..." [--format md|json]
   frontend-art-direction graph <path> [--query "..."] [--format md|json]
   frontend-art-direction brief --query "..." [options]
+  frontend-art-direction product-context <init|status|template> --project <path> [options]
   frontend-art-direction direction --query "..." [--profile "..."] [--authority artist|reference|project|model] [--format md|json]
   frontend-art-direction reference --query "..." [--profile "..."] [--style "..."] [--motion "..."]
   frontend-art-direction scout --query "..." [--category <id>] [--format md|json]
@@ -71,6 +72,7 @@ if (command === "inspect") runNodeScript("inspect-project.mjs", argv.slice(1));
 if (command === "map") runNodeScript("project-map.mjs", argv.slice(1));
 if (command === "graph") runNodeScript("project-graph.mjs", argv.slice(1));
 if (command === "brief") runNodeScript("design-brief.mjs", argv.slice(1));
+if (command === "product-context") runNodeScript("product-context.mjs", argv.slice(1));
 if (command === "direction") runNodeScript("visual-direction.mjs", argv.slice(1));
 if (command === "reference") runNodeScript("reference-composition.mjs", argv.slice(1));
 if (command === "scout") runNodeScript("reference-scout.mjs", argv.slice(1));

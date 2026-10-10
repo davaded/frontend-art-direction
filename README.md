@@ -32,6 +32,7 @@ npm run inspect -- /path/to/project --format md
 npm run map -- /path/to/project --query "where is the main navigation?"
 npm run graph -- /path/to/project --query "where is the main navigation?" --format md
 npm run brief -- --query "inventory dashboard for warehouse operators" --format md
+npm run product-context -- status --project /path/to/project
 npm run direction -- --query "AI agent dashboard with approval modal" --profile productive-app --format md
 npm run direction -- --query "我要一个网站" --format json
 npm run direction -- --query "我要一个网站" --concept object-story --format json
@@ -122,6 +123,8 @@ For greenfield visual work with no live target, it can use a concept-first pass:
 `motion` is an always-on internal bridge in every full audit. It fetches the pinned Transitions.dev Skill into a private cache when needed, runs the `Review -> Apply -> Polish` plan with purpose, cleanup, reduced-motion, and fallback checks, and then lets the evidence decide whether the final surface stays static or uses motion. Users do not need to install transitions.dev or a motion library separately.
 
 When a target project contains a substantive root `DESIGN.md`, `inspect`, `brief`, `reference-build`, and `audit` expose it as project-owned visual authority. The local directions remain gap-fill candidates. Use `--reference-inspected` after actually inspecting a supplied reference, or `--authority artist|model` when the current pass has an intentional authored direction. These flags do not disable accessibility, state, responsive, asset, motion fallback, runtime, or rendered-proof checks; they only prevent local anti-AI preferences from overriding a better visual decision.
+
+Root `PRODUCT.md` holds audience, purpose, subject, and other durable facts separately from visual direction. `product-context init` creates it from supplied facts, `status` reads it, and `template` prints a blank version; existing files require explicit `--force` to replace. `brief`, `direction --project`, `reference-build`, and `audit` use positive product facts only when the current request is unresolved. Non-goals do not become genre matches, frameworks and route names do not define the product, and the current page job takes precedence. See [references/design-system.md](references/design-system.md#product-context).
 
 For machine-readable output through npm scripts, add npm's quiet flag: `npm run --silent brief -- --query "..." --format json`.
 

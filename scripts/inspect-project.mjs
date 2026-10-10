@@ -13,6 +13,7 @@ import {
   walkFiles,
   writeOutput,
 } from "./lib.mjs";
+import { readProductContext } from "./product-context.mjs";
 
 const HELP = `inspect-project.mjs [project-root] [options]
 
@@ -121,6 +122,7 @@ export function scanProject(projectRoot, { maxFiles = 5000 } = {}) {
   const testFiles = relativeFiles.filter((file) => /(test|spec)\.[^/]+$/i.test(file) || /(^|\/)(__tests__|e2e|playwright|cypress)(\/|$)/i.test(file)).slice(0, 60);
   const designMemory = relativeFiles.filter((file) => /(^|\/)(design\.md|agents\.md|claude\.md|readme\.md|\.cursor\/rules)(\/|$)/i.test(file)).slice(0, 60);
   const designAuthority = extractDesignAuthority(root, relativeFiles);
+  const productContext = readProductContext(root);
   const manifests = existsAny(root, [
     "package.json", "pnpm-lock.yaml", "package-lock.json", "yarn.lock", "bun.lockb", "vite.config.ts", "vite.config.js",
     "next.config.js", "next.config.mjs", "nuxt.config.ts", "svelte.config.js", "tsconfig.json", "tailwind.config.js",
@@ -137,6 +139,7 @@ export function scanProject(projectRoot, { maxFiles = 5000 } = {}) {
   addEvidence("tokens", tokenFiles, "possible theme, token, style, or typography sources");
   addEvidence("assets", assetFiles.slice(0, 80), `${assetFiles.length} media/font files found`);
   addEvidence("design-memory", designMemory, "project guidance or existing visual memory");
+  if (productContext) addEvidence("product-context", [productContext.path], `durable product truth (${productContext.status})`);
   if (designAuthority) addEvidence("design-authority", [designAuthority.path], `project-owned visual direction (${designAuthority.confidence} confidence)`);
   addEvidence("tests", testFiles, "test or browser verification files");
 
@@ -154,8 +157,9 @@ export function scanProject(projectRoot, { maxFiles = 5000 } = {}) {
     stack: { frameworks, dependencies: dependencyNames.slice(0, 120), scripts },
     manifests,
     evidence,
-    paths: { routes: routeFiles, components: componentFiles, tokens: tokenFiles, designMemory, designAuthority: designAuthority?.path ?? null, tests: testFiles },
+    paths: { routes: routeFiles, components: componentFiles, tokens: tokenFiles, designMemory, designAuthority: designAuthority?.path ?? null, productContext: productContext?.path ?? null, tests: testFiles },
     designAuthority,
+    productContext,
     assets: { count: assetFiles.length, examples: assetFiles.slice(0, 80) },
     gaps,
     status: gaps.length === 0 ? "evidence-ready" : "partial-evidence",
@@ -199,6 +203,9 @@ ${list(report.paths.designMemory)}
 
 ### Design Authority
 ${report.designAuthority ? `- **${report.designAuthority.status}** \`${report.designAuthority.path}\` (${report.designAuthority.confidence}); project-owned direction: ${report.designAuthority.hasDirectionContract ? "detected" : "not yet structured"}` : "- No project-owned DESIGN.md detected; local direction remains provisional."}
+
+### Product Context
+${report.productContext ? `- **${report.productContext.status}** \`${report.productContext.path}\`; missing fields: ${report.productContext.missing?.join(", ") || "none"}` : "- No PRODUCT.md detected; product, audience, and workflow remain open."}
 
 ### Tests / Browser Evidence
 ${list(report.paths.tests)}

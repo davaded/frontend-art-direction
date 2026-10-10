@@ -25,6 +25,7 @@
     "map": "node scripts/project-map.mjs",
     "graph": "node scripts/project-graph.mjs",
     "brief": "node scripts/design-brief.mjs",
+    "product-context": "node scripts/product-context.mjs",
     "direction": "node scripts/visual-direction.mjs",
     "reference": "node scripts/reference-composition.mjs",
     "scout": "node scripts/reference-scout.mjs",

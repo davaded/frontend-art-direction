@@ -24,6 +24,7 @@ import { addLiveVariant, closeLiveSession, createLiveSession, decideLiveVariant,
 import { addImageProposal, closeImageProposalSession, createImageProposalSession, decideImageProposal, recordImageEvidence, translateImageProposal } from "./image-proposal.mjs";
 import { addVisualFinding, closeVisualCritiqueSession, createVisualCritiqueSession, recordVisualVerdict } from "./visual-critique.mjs";
 import { lintProject } from "./visual-lint.mjs";
+import { initProductContext, parseProductContext, readProductContext, renderProductContextMarkdown } from "./product-context.mjs";
 
 const root = REPO_ROOT;
 const errors = [];
@@ -168,7 +169,7 @@ function checkPackage() {
   }
   if (packageJson.type !== "module") fail("package.json must use type=module");
   if (!packageJson.scripts?.test) fail("package.json is missing the test script");
-  for (const script of ["graph", "brief", "direction", "reference", "scout", "reference-build", "resource", "audit", "motion", "surface-mode", "design-operation", "design-loop", "research-atlas", "live", "image-proposal", "critique", "visual-lint", "capture"]) {
+  for (const script of ["graph", "brief", "product-context", "direction", "reference", "scout", "reference-build", "resource", "audit", "motion", "surface-mode", "design-operation", "design-loop", "research-atlas", "live", "image-proposal", "critique", "visual-lint", "capture"]) {
     if (!packageJson.scripts?.[script]) fail(`package.json is missing the ${script} script`);
   }
 }
@@ -734,6 +735,84 @@ async function checkIntentRegressions() {
   }
 }
 
+async function checkProductContext() {
+  const fixture = mkdtempSync(join(tmpdir(), "frontend-art-direction-product-"));
+  const productPath = join(fixture, "PRODUCT.md");
+  const run = (...args) => execFileSync(process.execPath, [join(root, "bin/frontend-art-direction.js"), ...args], { encoding: "utf8", stdio: "pipe" });
+  try {
+    mkdirSync(join(fixture, "src/routes"), { recursive: true });
+    writeFileSync(join(fixture, "package.json"), JSON.stringify({ dependencies: { react: "19.0.0" } }));
+    writeFileSync(join(fixture, "src/routes/commerce-dashboard.tsx"), "export default function View() { return null; }\n");
+    for (const query of ["我要一个网站", "make an app", "帮我优化一下", "make signal stage more authored"]) {
+      const brief = buildBrief({ query, projectRoot: fixture });
+      if (brief.recommendation.profile.id !== "adaptive-surface" || brief.visualDirection.constraintAuthority.mode !== "adaptive-default") fail(`framework/path evidence invented a product genre: ${query}`);
+    }
+    run("product-context", "template", "--project", fixture);
+    if (existsSync(productPath)) fail("printing a product template mutated the target");
+    initProductContext({ projectRoot: fixture });
+    if (Object.keys(readProductContext(fixture).fields).length) fail("blank product fields swallowed subsequent lines");
+    if (buildBrief({ query: "帮我优化一下", projectRoot: fixture }).recommendation.profile.id !== "adaptive-surface") fail("blank PRODUCT.md invented a product genre");
+    const original = readFileSync(productPath, "utf8");
+    for (const args of [[], ["--force=false"]]) {
+      let rejected = false;
+      try { run("product-context", "init", "--project", fixture, ...args); } catch { rejected = true; }
+      if (!rejected || readFileSync(productPath, "utf8") !== original) fail("product init replaced existing context without explicit force");
+    }
+    run("product-context", "status", "--project", fixture);
+    if (readFileSync(productPath, "utf8") !== original) fail("product status mutated the context file");
+    const partial = initProductContext({ projectRoot: fixture, force: true, values: { "product-audience": "photography portfolio for art directors" } });
+    if (partial.status !== "partial" || buildBrief({ query: "帮我优化一下", projectRoot: fixture }).recommendation.profile.id !== "portfolio-studio") fail("useful partial product facts were discarded");
+    const facts = {
+      "product-audience": "photography portfolio for art directors",
+      "primary-job": "Explore a gallery of cinematic city observations",
+      "primary-object": "The photographer's contact sheet from four coastal nights",
+      "non-goals": "ecommerce cart payment checkout store dashboard admin",
+      constraints: "Do not add an editor, command builder, or payment workflow",
+    };
+    initProductContext({ projectRoot: fixture, force: true, values: facts });
+    writeFileSync(join(fixture, "DESIGN.md"), "# DESIGN.md\n\n## Visual Direction\n- Design stance: warm contact-sheet archive\n- Signature move: material-led sequencing\n");
+    const project = scanProject(fixture);
+    const query = "make the stage more authored";
+    const brief = buildBrief({ query, projectRoot: fixture });
+    const direction = selectVisualDirection(query, { project });
+    const build = buildReferenceBuild({ query, projectRoot: fixture });
+    const audit = await buildAudit({ query, projectRoot: fixture, motion: false, offline: true });
+    for (const result of [brief, direction, build, audit]) {
+      const resolved = result.productRequest;
+      const authority = result.constraintAuthority ?? result.visualDirection?.constraintAuthority ?? result.proof?.direction?.constraintAuthority;
+      if (resolved?.profile.record.id !== "portfolio-studio" || resolved.source !== "PRODUCT.md") fail("a decision entrypoint lost the inherited product facts");
+      if (authority?.mode !== "project-owned") fail("background prose or a supporting component library overrode DESIGN.md");
+      if (result.productSignal.object !== facts["primary-object"] || result.productSignal.mode !== "authored-experience") fail("product facts were not translated into the subject contract");
+    }
+    if (brief.surfaceMode.mode !== "experience" || audit.surfaceMode.mode !== "experience") fail("audit recomputed visitor mode without product context");
+    if (build.primaryReference.id !== "adaptive-default") fail("background facts invented a named reference");
+    for (const query of ["不是电商，优化一下作品集", "not ecommerce but a portfolio"]) {
+      if (buildBrief({ query, projectRoot: fixture }).recommendation.profile.id !== "portfolio-studio") fail(`negative feedback became a positive genre match: ${query}`);
+    }
+    const checkout = buildBrief({ query: "build a checkout payment page", projectRoot: fixture });
+    if (checkout.recommendation.profile.id !== "commerce-flow" || checkout.productRequest.source !== "current-request" || checkout.productRequest.usedFields.length || checkout.productSignal.object === facts["primary-object"]) fail("an explicit new page inherited a conflicting product default");
+    const docs = buildBrief({ query: "build a documentation page", projectRoot: fixture });
+    if (docs.surfaceMode.mode !== "read" || docs.productRequest.usedFields.length) fail("product background replaced a page-specific visitor job");
+    const explicit = buildBrief({ query: "帮我优化一下", projectRoot: fixture, overrides: { profile: "creative-editor", surfaceMode: "operate" } });
+    if (explicit.recommendation.profile.id !== "creative-editor" || explicit.surfaceMode.mode !== "operate") fail("product context overrode an explicit pin");
+    const noDesign = selectVisualDirection(query, { project: { ...project, designAuthority: null } });
+    if (noDesign.constraintAuthority.mode !== "adaptive-default") fail("cinematic product prose became explicit visual authority");
+    if (noDesign.firstViewport.dominant !== facts["primary-object"] || build.firstViewport.dominant !== facts["primary-object"] || !build.firstViewport.mustShow.includes(facts["primary-object"])) fail("known subject did not replace the generic fallback object");
+    const readback = JSON.parse(run("product-context", "status", "--project", fixture, "--format", "json"));
+    if (readback.fields["primary-object"] !== facts["primary-object"]) fail("product-context CLI lost written facts");
+    const cliDirection = JSON.parse(run("direction", "--query", query, "--project", fixture, "--format", "json"));
+    if (cliDirection.productRequest.source !== "PRODUCT.md" || cliDirection.constraintAuthority.mode !== "project-owned") fail("direction CLI did not load project context");
+    const prior = readFileSync(productPath, "utf8");
+    let reportRejected = false;
+    try { run("product-context", "status", "--project", fixture, "--output", productPath); } catch { reportRejected = true; }
+    if (!reportRejected || readFileSync(productPath, "utf8") !== prior) fail("status output could overwrite PRODUCT.md");
+    const blank = parseProductContext(renderProductContextMarkdown({ fields: {} }));
+    if (Object.keys(blank.fields).length || blank.missing.length !== 2) fail("optional product fields became mandatory");
+  } finally {
+    rmSync(fixture, { recursive: true, force: true });
+  }
+}
+
 async function main() {
   checkSkill();
   checkPackage();
@@ -742,6 +821,7 @@ async function main() {
   checkScripts();
   await checkSmoke();
   await checkIntentRegressions();
+  await checkProductContext();
 
   if (errors.length > 0) {
     console.error(`FAIL ${errors.length} check(s)`);

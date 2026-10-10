@@ -5,7 +5,6 @@ import {
   chooseRecord,
   isMainModule,
   loadDataset,
-  isUnderspecifiedRequest,
   meaningfulTokens,
   option,
   parseArgs,
@@ -20,9 +19,11 @@ import { renderAuthorityMarkdown } from "./authority.mjs";
 import { readAuthoredDirection, renderCreativeProcess } from "./creative-process.mjs";
 import { buildProductSignal, renderProductSignal } from "./product-signal.mjs";
 import { buildCompletionContract, renderCompletionContract } from "./completion-contract.mjs";
-import { classifySurfaceMode, renderSurfaceMode } from "./surface-mode.mjs";
+import { renderSurfaceMode } from "./surface-mode.mjs";
 import { renderDesignOperation, resolveDesignOperation } from "./design-operation.mjs";
 import { buildDesignLoop, renderDesignLoop } from "./design-loop.mjs";
+import { resolveProductRequest, renderProductContextStatus } from "./product-context.mjs";
+import { hasReferenceBuildSignal } from "./reference-build.mjs";
 
 const HELP = `design-brief.mjs [options]
 
@@ -130,7 +131,6 @@ function evidenceCards(project) {
 
 export function buildBrief({ query, projectRoot, overrides = {}, authoredDirection = null }) {
   const datasets = {
-    profiles: loadDataset("profiles.json").profiles,
     styles: loadDataset("styles.json").styles,
     types: loadDataset("types.json").types,
     palettes: loadDataset("palettes.json").palettes,
@@ -138,37 +138,35 @@ export function buildBrief({ query, projectRoot, overrides = {}, authoredDirecti
     stacks: loadDataset("stacks.json").stacks,
   };
   const project = projectRoot ? scanProject(projectRoot) : null;
-  const localTokens = project ? tokenize(`${project.stack.frameworks.join(" ")} ${project.stack.dependencies.join(" ")} ${project.paths.routes.join(" ")}`) : [];
-  const queryTokens = meaningfulTokens(`${query} ${localTokens.join(" ")}`);
-  const hasFrontendEvidence = Boolean(project && (
-    project.stack.frameworks.length > 0
-    || project.paths.routes.length > 0
-    || project.paths.components.length > 0
-  ));
-  const adaptiveDefault = !overrides.profile && !overrides.style && isUnderspecifiedRequest(query) && (!project || !hasFrontendEvidence);
+  const productContext = project?.productContext ?? null;
+  const productRequest = resolveProductRequest(query, productContext, { profile: overrides.profile, surfaceMode: overrides.surfaceMode });
+  const profile = productRequest.profile;
+  const selectionQuery = productRequest.selectionQuery;
+  const queryTokens = meaningfulTokens(selectionQuery);
+  const adaptiveDefault = !overrides.profile && !overrides.style && productRequest.source === "open" && !hasReferenceBuildSignal(query);
   const quality = qualitySelection(queryTokens);
-  const profile = chooseRecord(datasets.profiles, queryTokens, overrides.profile, adaptiveDefault ? "adaptive-surface" : "productive-app");
   const style = chooseRecord(datasets.styles, [...queryTokens, ...tokenize(profile.record.id)], overrides.style, adaptiveDefault ? "evidence-led-neutral" : profile.record.stance, ["id", "label", "keywords", "bestFor"]);
   const type = chooseRecord(datasets.types, [...queryTokens, ...tokenize(profile.record.id), ...tokenize(style.record.id)], overrides.type, adaptiveDefault ? "adaptive-hierarchy" : profile.record.type);
   const palette = chooseRecord(datasets.palettes, [...queryTokens, ...tokenize(profile.record.id)], overrides.palette, adaptiveDefault ? "adaptive-neutral" : profile.record.palette);
   const motion = chooseRecord(datasets.motions, [...queryTokens, ...tokenize(profile.record.motion)], overrides.motion, adaptiveDefault ? "purposeful-motion" : profile.record.motion);
   const stack = findStack(datasets.stacks, queryTokens, overrides.stack ?? project?.stack.frameworks[0]);
-  const referenceComposition = selectReferenceComposition(adaptiveDefault ? "" : query, {
+  const referenceComposition = selectReferenceComposition(adaptiveDefault ? "" : selectionQuery, {
     profile: adaptiveDefault ? "" : `${profile.record.id} ${profile.record.surfaceMode} ${profile.record.label}`,
     style: adaptiveDefault ? "" : `${style.record.id} ${style.record.label}`,
     motion: adaptiveDefault ? "" : `${motion.record.id} ${motion.record.label}`,
     limit: 4,
   });
-  const referenceScout = scoutReferences(adaptiveDefault ? "" : query, {
+  const referenceScout = scoutReferences(adaptiveDefault ? "" : selectionQuery, {
     profile: adaptiveDefault ? "" : `${profile.record.id} ${profile.record.surfaceMode} ${profile.record.label}`,
     limit: 4,
   });
   const visualDirection = selectVisualDirection(query, {
     profile: profile.record,
     style: style.record,
-    reference: referenceScout.selected[0]?.id ?? referenceComposition.selected[0]?.id ?? "",
+    reference: hasReferenceBuildSignal(query) ? query : "",
     adaptiveDefault,
     project,
+    productRequest,
     authority: overrides.authority,
     creativeDirection: overrides.creativeDirection,
     referenceInspected: Boolean(overrides.referenceInspected),
@@ -178,11 +176,12 @@ export function buildBrief({ query, projectRoot, overrides = {}, authoredDirecti
     authoredDirection,
   });
   const productSignal = buildProductSignal({
-    query,
+    query: selectionQuery,
     profile: profile.record,
     visualDirection,
+    contextFields: productRequest.signalFields,
   });
-  const surfaceMode = classifySurfaceMode(query, { explicit: overrides.surfaceMode ?? "" });
+  const surfaceMode = productRequest.surfaceMode;
   const designOperation = resolveDesignOperation(query, { mode: surfaceMode.mode === "adaptive" ? "" : surfaceMode.mode });
   const designLoop = buildDesignLoop({ query, surfaceMode, operation: designOperation });
   const completionContract = buildCompletionContract({
@@ -201,15 +200,21 @@ export function buildBrief({ query, projectRoot, overrides = {}, authoredDirecti
   if (!project) openEvidence.unshift("No project scan supplied; all local-system claims remain open.");
   if (adaptiveDefault) openEvidence.unshift("Direction assumption: no domain, audience, object, or workflow was specified; keep the composition adaptive until one is known.");
   if (project?.designAuthority) openEvidence.unshift(`Project-owned visual authority detected at ${project.designAuthority.path}; read and preserve it before replacing the direction.`);
+  if (productContext) {
+    openEvidence.unshift(`Product context: ${productContext.path} (${productContext.status}); routing source: ${productRequest.source}. Current surface requirements take precedence; unknown facts remain open.`);
+  }
   if (project?.gaps.length > 0) openEvidence.push(...project.gaps.slice(0, 3));
 
   return {
     query,
+    productContext,
+    productRequest,
     evidence: {
       localProject: project?.project ?? null,
       localStatus: project?.status ?? "not-scanned",
       observedPaths: project ? project.evidence.flatMap((item) => item.paths.slice(0, 8)) : [],
       cards: evidenceCards(project),
+      productContext,
     },
     recommendation: {
       profile: profile.record,
@@ -237,7 +242,7 @@ export function buildBrief({ query, projectRoot, overrides = {}, authoredDirecti
       typeCeiling: profile.record.typeCeiling,
       componentShape: `${visualDirection.geometryRules.edgeCharacter}; ${visualDirection.geometryRules.cornerHierarchy}`,
       medium: profile.record.surfaceMode === "Spatial Experiential" ? "hybrid spatial object + usable controls" : profile.record.surfaceMode === "Editorial Marketing" ? "media-led or restrained editorial hybrid, pending asset check" : adaptiveDefault ? "adaptive surface with one primary object or task and a normal-flow fallback" : "static product UI with stateful transitions",
-      intentionalOmissions: [...new Set([...style.record.avoid, ...profile.record.avoid])].slice(0, 8),
+      intentionalOmissions: [...new Set([productRequest.nonGoals, ...style.record.avoid, ...profile.record.avoid].filter(Boolean))].slice(0, 8),
       sceneDials: quality.dials,
       visualDirection: visualDirection.directionLock,
       visualTreatment: visualDirection.visualTreatment?.signature,
@@ -298,6 +303,9 @@ export function renderBriefMarkdown(brief) {
 
 Query: **${brief.query || "(none)"}**
 Local evidence: **${brief.evidence.localStatus}**${brief.evidence.localProject ? ` at \`${brief.evidence.localProject}\`` : ""}
+
+${brief.productContext ? renderProductContextStatus(brief.productContext) : ""}
+Product routing source: **${brief.productRequest.source}**. ${brief.productRequest.usedFields.length ? `Background fields used: ${brief.productRequest.usedFields.join(", ")}.` : "Current request governs this surface."}
 
 ## Direction
 

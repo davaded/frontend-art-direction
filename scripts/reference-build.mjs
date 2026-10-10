@@ -9,6 +9,7 @@ import { renderAuthorityMarkdown } from "./authority.mjs";
 import { applyAuthoredBuild, readAuthoredDirection, renderCreativeProcess } from "./creative-process.mjs";
 import { buildProductSignal, renderProductSignal } from "./product-signal.mjs";
 import { buildCompletionContract, renderCompletionContract } from "./completion-contract.mjs";
+import { positiveRoutingText, renderProductContextStatus, resolveProductRequest } from "./product-context.mjs";
 
 const HELP = `reference-build.mjs [options]
 
@@ -35,6 +36,10 @@ Options:
 
 const GENERIC_REFERENCE_TOKENS = new Set(["http", "https", "www", "com", "dev", "io", "ui"]);
 const REFERENCE_SIGNAL = /https?:\/\/|like\s+|similar\s+to|inspired\s+by|based\s+on|\b(?:rare\s+ui|beautiful\s+ui|beui|magic\s+ui|react\s+bits|aceternity|obsidian\s+ui|bencho|design\s+spells|transitions|shadcn)\b|像|类似|参考|仿照|复刻/i;
+
+export function hasReferenceBuildSignal(query) {
+  return REFERENCE_SIGNAL.test(positiveRoutingText(query));
+}
 
 const EXTERNAL_RECIPE = {
   archetype: "live-reference-adaptation",
@@ -538,19 +543,24 @@ export function buildReferenceBuild({
   modelProposal = false,
   directionOverrides = [],
   authoredDirection = null,
+  productRequest = null,
 } = {}) {
+  const project = projectRoot ? scanProject(resolve(projectRoot)) : null;
+  const request = productRequest ?? resolveProductRequest(query, project?.productContext, { profile: typeof profile === "object" ? profile.id : String(profile).split(/\s+/)[0] });
+  const selectionQuery = request.selectionQuery;
+  if (!profile) profile = request.profile.record;
   const references = loadDataset("reference-lenses.json").references;
   const recipes = loadDataset("reference-recipes.json").recipes;
   const scouted = productReferenceFromScout(productReference);
-  const explicitInput = reference || (referenceExplicit && REFERENCE_SIGNAL.test(query) ? query : "");
+  const explicitInput = reference || (referenceExplicit && hasReferenceBuildSignal(query) ? request.routingQuery : "");
   const explicit = referenceExplicit ? resolveReference(explicitInput, references) : null;
   const seeded = !referenceExplicit ? resolveReference(reference, references) : null;
-  const inferred = allowInferred ? resolveReference(query, references) : null;
+  const inferred = allowInferred ? resolveReference(request.routingQuery, references) : null;
   const productResolved = scouted ? { reference: scouted, score: 100, hits: scouted.visualSignals ?? [], scouted: true } : null;
   const resolved = explicit ?? productResolved ?? seeded ?? inferred;
   const primary = resolved?.reference ?? null;
   const selectionLimit = Math.min(Math.max(Number(limit) || 4, 1), 4);
-  const composition = selectReferenceComposition(`${query} ${primary?.label ?? ""}`, {
+  const composition = selectReferenceComposition(`${selectionQuery} ${primary?.label ?? ""}`, {
     profile,
     style,
     motion: `${motion} ${primary?.label ?? ""}`,
@@ -561,13 +571,13 @@ export function buildReferenceBuild({
   // Supporting lenses can inform the contract, but they do not become the
   // primary visual authority when the request did not name a reference.
   const chosen = primary;
-  const project = projectRoot ? scanProject(resolve(projectRoot)) : null;
   const visualDirection = selectVisualDirection(query, {
     profile,
     style,
     reference: chosen?.id ?? "",
     adaptiveDefault: !primary && selected.length === 0,
     project,
+    productRequest: request,
     authority,
     creativeDirection,
     referenceInspected,
@@ -581,7 +591,7 @@ export function buildReferenceBuild({
     ? (explicit ? "named-reference" : productResolved ? "scouted-reference" : seeded ? "supporting-reference" : "inferred-reference")
     : "adaptive-no-reference";
   const signalProfile = typeof profile === "object" ? profile : { id: profile || "adaptive-surface", anchor: visualDirection.firstViewport.dominant };
-  const initialSignal = buildProductSignal({ query, profile: signalProfile, visualDirection, referenceMode: mode });
+  const initialSignal = buildProductSignal({ query: selectionQuery, profile: signalProfile, visualDirection, referenceMode: mode, contextFields: request.signalFields });
   const baseRecipe = chosen ? recipeFor(chosen, recipes) : ADAPTIVE_RECIPE;
   const recipe = initialSignal.mode === "product" ? baseRecipe : recipeForExperience(baseRecipe);
   const visual = chosen?.visual ?? {
@@ -612,13 +622,18 @@ export function buildReferenceBuild({
       ...initialSignal.firstViewportProof,
     ].filter(Boolean))],
   };
+  if (!primary && !authoredDirection && request.signalFields["primary-object"]) {
+    resolvedBuild.firstViewport.dominant = request.signalFields["primary-object"];
+    resolvedBuild.firstViewport.mustShow = [...new Set([request.signalFields["primary-object"], ...resolvedBuild.firstViewport.mustShow])];
+  }
   const productSignal = buildProductSignal({
-    query,
+    query: selectionQuery,
     profile: signalProfile,
     visualDirection,
     firstViewport: resolvedBuild.firstViewport,
     componentGrammar: resolvedBuild.componentGrammar,
     referenceMode: mode,
+    contextFields: request.signalFields,
   });
   const completionContract = buildCompletionContract({
     query,
@@ -632,6 +647,8 @@ export function buildReferenceBuild({
   return {
     version: 1,
     query,
+    productContext: project?.productContext ?? null,
+    productRequest: request,
     executionMode: "implement-and-verify",
     fidelity: primary ? primary.scouted ? "translate-inspected-product-grammar-not-brand-or-source" : "borrow-visual-grammar-not-brand-or-source" : "evidence-first-no-forced-reference",
     referenceMode: mode,
@@ -741,6 +758,8 @@ Execution mode: **${contract.executionMode}**
 Reference mode: **${contract.referenceMode}**
 Primary reference: **${contract.primaryReference.label}**${primarySource}${contract.primaryReference.explicit ? " · explicitly named" : contract.referenceMode === "inferred-reference" ? " · inferred from the request" : ""}
 Fidelity rule: **${contract.fidelity}**
+
+${contract.productContext ? renderProductContextStatus(contract.productContext) : ""}
 
 ## Selected Reference Lenses
 
