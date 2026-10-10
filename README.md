@@ -33,6 +33,8 @@ npm run map -- /path/to/project --query "where is the main navigation?"
 npm run graph -- /path/to/project --query "where is the main navigation?" --format md
 npm run brief -- --query "inventory dashboard for warehouse operators" --format md
 npm run direction -- --query "AI agent dashboard with approval modal" --profile productive-app --format md
+npm run direction -- --query "我要一个网站" --format json
+npm run direction -- --query "我要一个网站" --concept object-story --format json
 npm run direction -- --query "experimental asymmetric editorial site" --authority artist --creative-direction "An authored typographic reading instrument" --format md
 npm run reference -- --query "AI agent dashboard with approval modal" --format md
 npm run scout -- --query "premium keyboard and mouse product website" --format md
@@ -79,6 +81,8 @@ The saved visual references have different jobs: [Rare UI](https://www.rareui.co
 When a request only names a product type and gives no example, the skill infers a provisional profile, style, type, palette, and motion grammar with confidence labels. For a request as open as “make a website”, it uses an adaptive default and does not assume commerce, dashboard, or editorial structure. When a real category is present, the product-reference scout feeds a quality-first product source into the build contract; component and motion lenses remain supporting evidence. It selects a saved lens only when a concrete job is present, such as component anatomy, data display, AI state, or motion governance; otherwise it leaves the reference set empty instead of inventing a visual skin.
 
 An adaptive default is not a bland default. Content structure stays provisional, but the visual layer still receives a concrete stance such as `Quiet Editorial Studio`: a tonal canvas, restrained type contrast, one repeatable graphic device, deliberate material rules, and a bounded expression budget. The stance remains provisional until real content, assets, and a rendered target confirm it.
+
+Open requests now expose a provisional concept set instead of silently treating that stance as the answer. The default frames are `Open Field`, `Object Story`, and `Sequence Chapters`; they change composition, reading order, and subject relationship. Choose one with `--concept <id>`, replace them with `--direction-file`, or let an inspected reference/user direction own the frame. These are hypotheses, not a prescribed set of page types.
 
 Visual rules are tiered. Accessibility, the relevant task/state or authored-experience completeness, responsive usability, asset truth, motion fallback, runtime integrity, and rendered proof are hard invariants. Profiles, treatments, anti-AI checks, and reference recipes are advisory defaults. A substantive project `DESIGN.md`, an inspected reference, an accepted concept, explicit user direction, an authored direction file, or an evidence-backed model proposal can override those defaults when the direction remains coherent and the override is recorded and rendered.
 

@@ -21,6 +21,15 @@ Useful differences include rail versus open field, object-led versus type-led, c
 
 Choose one direction by product specificity, hierarchy, silhouette, content truth, responsive viability, interaction meaning, and implementation cost. Do not average the concepts into a safe middle. Record the rejected directions briefly so later polish does not quietly return to the generic default.
 
+For an underspecified request, `visual-direction` exposes three provisional structural frames so the agent has something concrete to compare:
+
+```bash
+node <skill-root>/scripts/visual-direction.mjs --query "我要一个网站" --format json
+node <skill-root>/scripts/visual-direction.mjs --query "我要一个网站" --concept object-story --format json
+```
+
+The frames are `open-field`, `object-story`, and `sequence-chapters`. They are not a closed list of genres. They are deliberately different starting hypotheses; a real subject, an inspected reference, an authored direction file, or the model's stronger proposal may replace all three.
+
 ## Authority And References
 
 When a user supplies a reference, inspect it and translate its relationships. When no reference is supplied, form the independent thesis first, then use saved references to research a missing job such as specimen anatomy, navigation indexing, motion continuity, or component behavior. A reference may influence the result without becoming its skin.

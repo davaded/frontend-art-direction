@@ -19,6 +19,7 @@ Options:
   --reference <id|text>  Named visual reference
   --direction <id>       Pin a local visual direction
   --treatment <id>       Pin a visual treatment / expression layer
+  --concept <id>         Accept one adaptive concept frame
   --authority <mode>     adaptive|reference|project|artist|concept|model
   --creative-direction   Explicit visual direction supplied by the user/artist
   --direction-file <path> Authored JSON composition and optional build plan
@@ -64,6 +65,53 @@ const SIGNAL_BOOSTS = [
 ];
 
 const DEFAULT_TREATMENT_ID = "quiet-editorial-studio";
+
+const ADAPTIVE_CONCEPT_FRAMES = [
+  {
+    id: "open-field",
+    label: "Open Field",
+    directionId: "adaptive-asymmetric",
+    treatmentId: "quiet-editorial-studio",
+    thesis: "Let one subject or task occupy a continuous field while a small counterweight makes the next move legible.",
+    structuralChange: "open field + offset object + visible continuation",
+    chooseWhen: "the work needs breathing room, a strong subject, or a calm reading path",
+  },
+  {
+    id: "object-story",
+    label: "Object Story",
+    directionId: "object-led-editorial",
+    treatmentId: "material-object-studio",
+    thesis: "Let the actual object, artifact, or material evidence carry the identity and reveal itself through changing crops and scale.",
+    structuralChange: "stable object stage + changing crop + evidence chapters",
+    chooseWhen: "the subject has physical form, material detail, or a visual artifact worth inspecting",
+  },
+  {
+    id: "sequence-chapters",
+    label: "Sequence Chapters",
+    directionId: "narrative-chapters",
+    treatmentId: "warm-humanist-editorial",
+    thesis: "Make each section change the reading relationship so the page behaves like a sequence rather than a stack of modules.",
+    structuralChange: "claim -> proof -> breathing space -> changed relationship",
+    chooseWhen: "the work depends on story, people, a launch, a belief, or progressive disclosure",
+  },
+];
+
+function buildAdaptiveConceptSet(directions, treatments, { selectedId = null, status = "selection-required" } = {}) {
+  return {
+    status,
+    selected: selectedId,
+    policy: "These are structural hypotheses, not product genres or a fixed skin. Choose from the real subject, content, and evidence; an authored direction may replace all of them.",
+    candidates: ADAPTIVE_CONCEPT_FRAMES.map((frame) => {
+      const direction = directions.find((item) => item.id === frame.directionId);
+      const treatment = treatments.find((item) => item.id === frame.treatmentId);
+      return {
+        ...frame,
+        direction: direction ? { id: direction.id, label: direction.label, signature: direction.signature, firstViewport: direction.firstViewport } : null,
+        treatment: treatment ? { id: treatment.id, label: treatment.label, signature: treatment.signature, composition: treatment.composition, geometry: treatment.geometry } : null,
+      };
+    }),
+  };
+}
 
 function scoreTreatment(treatment, queryTokens, contextTokens, { profileId, styleId, directionId } = {}) {
   const searchable = new Set(tokenize([
@@ -181,11 +229,13 @@ export function selectVisualDirection(query = "frontend interface", {
   referenceInspected = false,
   referenceEvidence = null,
   acceptedConcept = false,
+  concept = "",
   modelProposal = false,
   overrides = [],
   authoredDirection = null,
 } = {}) {
   const directions = loadDataset("visual-directions.json").directions;
+  const treatments = loadDataset("visual-treatments.json").treatments;
   const profileId = idOf(profile);
   const referenceId = idOf(reference);
   const context = `${textOf(profile)} ${textOf(style)} ${textOf(reference)}`.trim();
@@ -193,10 +243,14 @@ export function selectVisualDirection(query = "frontend interface", {
   const queryTokens = underspecified ? [] : meaningfulTokens(query);
   const contextTokens = underspecified ? [] : meaningfulTokens(context);
   const explicit = requestedDirection ? directions.find((item) => item.id === requestedDirection) : null;
+  const requestedConcept = ADAPTIVE_CONCEPT_FRAMES.find((item) => item.id === concept);
+  if (concept && !requestedConcept) throw new Error(`unknown adaptive concept: ${concept}`);
   const ranked = directions
     .map((direction) => ({ direction, ...scoreDirection(direction, queryTokens, contextTokens, { profileId, referenceId }) }))
     .sort((left, right) => right.score - left.score || left.direction.id.localeCompare(right.direction.id));
-  const selected = explicit ?? (underspecified
+  const selected = explicit ?? (requestedConcept
+    ? directions.find((item) => item.id === requestedConcept.directionId)
+    : underspecified
     ? directions.find((item) => item.id === "adaptive-asymmetric")
     : ranked[0]?.direction ?? directions.find((item) => item.id === "adaptive-asymmetric"));
   const selectedScore = explicit ? 99 : ranked.find((item) => item.direction.id === selected.id)?.score ?? 0;
@@ -206,7 +260,7 @@ export function selectVisualDirection(query = "frontend interface", {
     style,
     direction: selected,
     adaptiveDefault: underspecified,
-    treatment: requestedTreatment,
+    treatment: requestedTreatment || requestedConcept?.treatmentId || "",
   });
   const constraintAuthority = resolveCreativeAuthority({
     query,
@@ -224,6 +278,14 @@ export function selectVisualDirection(query = "frontend interface", {
   });
   const resolved = applyAuthoredDirection({ ...selected, visualTreatment: candidateTreatment }, authoredDirection);
   const visualTreatment = resolved.visualTreatment;
+  const conceptSet = underspecified && !authoredDirection && constraintAuthority.mode === "adaptive-default"
+    ? buildAdaptiveConceptSet(directions, treatments, { selectedId: requestedConcept?.id ?? null, status: requestedConcept ? "accepted" : "selection-required" })
+    : {
+      status: "suppressed-by-authority",
+      selected: null,
+      policy: "An inspected reference, project direction, user direction, accepted concept, or model proposal owns the direction; local concept frames remain available only as gap-fill vocabulary.",
+      candidates: [],
+    };
   const creativeProcess = buildCreativeProcess({ authored: authoredDirection, authority: constraintAuthority, candidate: selected });
   const productSignal = buildProductSignal({
     query,
@@ -238,13 +300,15 @@ export function selectVisualDirection(query = "frontend interface", {
     ? `Respect ${constraintAuthority.source} as the project-owned visual authority. Use ${selected.label} only to fill fields the project direction does not define.`
     : authoredDirection
       ? `Implement ${resolved.label}: ${authoredDirection.rationale} Unspecified fields remain candidate suggestions; render proof is pending.`
+      : requestedConcept
+        ? `Implement accepted concept ${requestedConcept.label}: ${requestedConcept.thesis} Preserve the concept's structure while adapting it to the subject.`
       : `Derive the composition from ${constraintAuthority.mode === "adaptive-default" ? "the content and a creative exploration" : constraintAuthority.source}. ${selected.label} is gap-fill vocabulary; its layout, type sizes, radii, and signature are suggestions, not a chosen design.`;
   return {
     id: resolved.id,
     label: resolved.label,
     confidence: authoredDirection ? "proposed" : confidence(selectedScore, Boolean(explicit)),
     mode: authoredDirection ? "authored" : underspecified ? "adaptive" : "signal-led",
-    selectionStatus: authoredDirection ? "authored-proposal" : "candidate",
+    selectionStatus: authoredDirection ? "authored-proposal" : requestedConcept ? "accepted-concept" : underspecified ? "provisional-concept-fallback" : "candidate",
     matched: [...new Set([...(selectedMatch?.queryHits ?? []), ...(selectedMatch?.contextHits ?? [])])],
     directionLock,
     firstViewport: resolved.firstViewport,
@@ -263,6 +327,7 @@ export function selectVisualDirection(query = "frontend interface", {
     productSignal,
     completionContract,
     visualTreatment,
+    conceptSet,
     constraintAuthority,
     source: authoredDirection ? "authored direction; local data fills missing fields" : "data/visual-directions.json",
   };
@@ -288,6 +353,13 @@ Matched: ${direction.matched.join(", ") || "provisional evidence"}
 Selection: **${direction.selectionStatus}**; confidence measures routing fit, not visual quality.
 
 ${renderCreativeProcess(direction.creativeProcess)}
+
+## Concept Set
+
+- Status: **${direction.conceptSet?.status ?? "not recorded"}**
+- Selected: **${direction.conceptSet?.selected ?? "none"}**
+- Policy: ${direction.conceptSet?.policy ?? "not recorded"}
+${(direction.conceptSet?.candidates ?? []).map((item) => `- **${item.label}** \`${item.id}\`: ${item.thesis} Choose when: ${item.chooseWhen}. Structure: ${item.structuralChange}.`).join("\n") || "- No adaptive concepts; an authority source owns the direction."}
 
 ${renderProductSignal(direction.productSignal)}
 
@@ -369,6 +441,7 @@ function main() {
     authoredDirection: readAuthoredDirection(option(args, "direction-file")),
     referenceInspected: Boolean(args.options["reference-inspected"]),
     acceptedConcept: Boolean(args.options["concept-accepted"]),
+    concept: option(args, "concept", ""),
     modelProposal: Boolean(args.options["model-proposed"]),
     adaptiveDefault: Boolean(args.options.adaptive),
   });
