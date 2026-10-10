@@ -54,3 +54,17 @@ Official metadata and public-domain flags are saved in `shared/assets/monet-sour
 | `shared/assets/lucide.min.js` | [Lucide 0.468.0](https://www.npmjs.com/package/lucide/v/0.468.0) | Lucide contributors; bundled ISC license | Familiar tool icons |
 
 The photographs were inspected at their downloaded resolution before use. They illustrate the real subject; they are not evidence of work commissioned from an invented studio. [Unsplash's license](https://unsplash.com/license) and font licenses are recorded separately from browser proof. No image was generated in these trials.
+
+## Night Shift
+
+Night Shift is a fifth brief and a deliberate test of an ordinary product-like surface with a strong subject. It is a field guide for one real Hubble image, not a space dashboard, telescope shop, or generic dark landing page.
+
+Alternatives considered:
+
+- A dense observatory dashboard: rejected because one image does not justify fake telemetry or repeated data tiles.
+- A cinematic space poster: rejected because it makes the image decorative and loses the reading task.
+- A field guide with changing reading distance: chosen. The same source image can be read as a wide field, companion relationship, and core detail without inventing new material.
+
+The hero scale follows the actual image: a first render left M51 too small, so the real image was enlarged and repositioned. The reading controls are a meaningful interaction because they change the visitor's distance from the same material. A control-triggered state must keep the changed image visible; this exposed and repaired a deep-scroll visibility bug. Mobile keeps all three primary destinations after a narrow-header check. The ending gives the source record its own visual section and retains the NASA/ESA/STScI credit.
+
+The image is the original 7095x6219 Wikimedia Commons reproduction of NASA/ESA Hubble material. Its source record is saved at `shared/assets/m51-source.json`; the file page declares the NASA/ESA material public domain with credit. The browser tests also induced an image failure and verified the source links, disabled controls, and readable fallback. No generated or placeholder image is used.

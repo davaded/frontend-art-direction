@@ -43,6 +43,8 @@ Give the page one dominant object and one supporting counterweight. Use asymmetr
 
 Inspect the handoffs between regions, including the opening and ending. A strong hero can still stall the reading path when only its caption and a blank gap enter the viewport. An ending can return to an earlier object, resolve an observation, or provide a next action when the work calls for one; a giant index or unrelated CTA does not supply that purpose by itself. Choose the handoff from the work rather than imposing one page sequence.
 
+When a control changes the dominant object, the finish includes the handoff into the result: the changed object stays visible, the selected state is legible, and the surrounding spacing still explains what changed. Test this from a deep scroll position and at the narrowest relevant width. A polished control whose result has moved above the viewport is an incomplete interaction.
+
 ### 5. Specific language
 
 Replace generic claims with concrete product facts, verbs, dimensions, materials, constraints, and outcomes. Short copy with a real subject feels more expensive than a large paragraph with no evidence.

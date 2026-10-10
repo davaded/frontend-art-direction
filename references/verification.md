@@ -24,10 +24,13 @@ For a new or substantially changed surface:
 - verify the complete declared scope, including lower sections, destinations, specimens, or ending, instead of checking only the first viewport;
 - inspect desktop and the target mobile/device size;
 - check the first screen before scrolling and one meaningful non-default state;
+- after triggering a visual state from a lower control or deep scroll position, confirm the changed object/result is still visible; a changed label or selected control alone is insufficient;
+- preserve every primary route or provide an equally direct mobile alternative; do not hide a meaningful destination merely to make a narrow header fit;
 - challenge the actual content shape: a paragraph instead of a short title, a long unbroken identifier, mixed-language glyphs, dense or empty results, and native input values when relevant; do not solve ordinary overflow by shrinking the whole interface;
 - exercise the primary product action and capture the before/after state, or capture the authored transition, spatial relationship, or stable ending; reject only an unintentional presentation shell even when its styling is polished;
 - verify loading, empty, error, success, selected, or partial-data states that matter to the workflow;
 - inspect text wrapping, focus, touch targets, contrast, overflow, and console errors;
+- wait for fonts and images to settle and verify entrance or route animations have reached their final state before using a screenshot as visual evidence; capture a second settled frame when the first frame may still be transitional;
 - inspect every primary image/video/illustration/model at its rendered desktop and mobile size; confirm sharpness, focal crop, provenance, and absence of placeholder or filler media;
 - run a grayscale pass for hierarchy, alignment, type ceiling, surface/material separation, and excessive effects before judging color polish;
 - verify reduced motion or the static fallback;
