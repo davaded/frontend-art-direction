@@ -27,7 +27,7 @@ Make the visible product better without making the process expensive, vague, or 
 
 ## Route The Request
 
-Use the smallest mode that can answer the request:
+Use the smallest mode that can answer the request, then classify the current surface as `Persuade`, `Operate`, `Read`, or `Experience`; this is per route, not per product.
 
 1. **Fast polish**: one component, one state, or one local spacing/type/color problem. Inspect the local pattern, make the smallest visible change, and verify that state.
 2. **Product UI**: app, dashboard, editor, settings, commerce, developer tool, or embedded surface. Optimize for task clarity, density, trust, state coverage, and responsive input behavior.
@@ -35,7 +35,7 @@ Use the smallest mode that can answer the request:
 4. **Reference-led build**: the user says “像/类似/参考某个网站” or names a URL and expects a working result. Treat this as implementation work, not a moodboard request.
 5. **Direction-only**: the user asks for options, a plan, or analysis without implementation. Return a compact direction decision and implementation contract.
 
-Read [references/operating-modes.md](references/operating-modes.md) when the work is substantial, ambiguous, or likely to affect several screens.
+Read [references/operating-modes.md](references/operating-modes.md) when the work is substantial, ambiguous, or likely to affect several screens. Use `surface-mode` and `design-operation` to turn page intent and feedback into an explicit next action.
 
 ## The Four Passes
 
@@ -127,7 +127,7 @@ node <skill-root>/scripts/design-brief.mjs \
 
 Read [references/design-system.md](references/design-system.md) when choosing type, color, component shape, content readiness, or a persistent `DESIGN.md`. The brief must expose:
 
-- product profile and surface mode
+- product profile, visitor surface mode, and design operation
 - design stance and one signature move
 - type ceiling and type roles
 - component shape language, geometry hierarchy, and card budget
@@ -183,7 +183,7 @@ Read the returned upstream reference before applying it. Copy only the needed re
 
 Read [references/verification.md](references/verification.md). Run the target, inspect the complete declared scope at desktop and target mobile/device viewports, exercise the relevant non-default state or authored ending, and check console/build output. Capture the closest available evidence. Keep static checks, runtime checks, and visual checks separate in the report.
 
-For substantial work, follow [references/visual-iteration.md](references/visual-iteration.md): inspect real screenshots, repair material defects, and compare new captures. When the visual thesis needs reworking, edit the screenshot through image generation, inspect the proposal, translate it into code, and return to browser proof; a generated image never proves implementation completeness.
+For substantial work, follow [references/visual-iteration.md](references/visual-iteration.md): inspect real screenshots, repair material defects, and compare new captures. When the visual thesis needs reworking, edit the screenshot through image generation, inspect the proposal, translate it into code, and return to browser proof; a generated image never proves implementation completeness. When a running dev target exists, use `live start` to journal baseline, variants, acceptance, source diff, and after-capture proof.
 
 For this skill itself, run:
 
@@ -191,7 +191,7 @@ For this skill itself, run:
 npm test
 ```
 
-The reference integrations are executable rather than name-only documentation: design intelligence (`brief`), visual direction (`direction`), repository graph (`graph`), role-based reference composition (`reference`), one-sentence implementation contracts (`reference-build`), compact response pipeline (`audit`), curated resources (`resource`), and the internal motion bridge (`motion`).
+The reference integrations are executable rather than name-only documentation: design intelligence (`brief`), visitor/action routing (`surface-mode`, `design-operation`), visual direction (`direction`), repository graph (`graph`), role-based reference composition (`reference`), one-sentence implementation contracts (`reference-build`), compact response pipeline (`audit`), curated resources (`resource`), live variant journaling (`live`), and the internal motion bridge (`motion`).
 
 ## Output Contract
 

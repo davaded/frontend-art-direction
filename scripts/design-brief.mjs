@@ -20,6 +20,8 @@ import { renderAuthorityMarkdown } from "./authority.mjs";
 import { readAuthoredDirection, renderCreativeProcess } from "./creative-process.mjs";
 import { buildProductSignal, renderProductSignal } from "./product-signal.mjs";
 import { buildCompletionContract, renderCompletionContract } from "./completion-contract.mjs";
+import { classifySurfaceMode, renderSurfaceMode } from "./surface-mode.mjs";
+import { renderDesignOperation, resolveDesignOperation } from "./design-operation.mjs";
 
 const HELP = `design-brief.mjs [options]
 
@@ -179,6 +181,8 @@ export function buildBrief({ query, projectRoot, overrides = {}, authoredDirecti
     profile: profile.record,
     visualDirection,
   });
+  const surfaceMode = classifySurfaceMode(query, { explicit: overrides.surfaceMode ?? "" });
+  const designOperation = resolveDesignOperation(query, { mode: surfaceMode.mode === "adaptive" ? "" : surfaceMode.mode });
   const completionContract = buildCompletionContract({
     query,
     productSignal,
@@ -223,6 +227,8 @@ export function buildBrief({ query, projectRoot, overrides = {}, authoredDirecti
     },
     decisions: {
       surfaceMode: profile.record.surfaceMode,
+      visitorMode: surfaceMode,
+      designOperation,
       designStance: style.record.label,
       signatureMove: style.record.signature,
       signatureInteraction: motion.record.purpose,
@@ -242,6 +248,8 @@ export function buildBrief({ query, projectRoot, overrides = {}, authoredDirecti
     visualDirection,
     productSignal,
     completionContract,
+    surfaceMode,
+    designOperation,
     referenceComposition,
     referenceScout,
     openEvidence,
@@ -294,6 +302,10 @@ Selection: **${brief.visualDirection.selectionStatus}**; local candidates are ro
 ${renderCreativeProcess(brief.visualDirection.creativeProcess)}
 
 ${renderProductSignal(brief.productSignal)}
+
+${renderSurfaceMode(brief.surfaceMode)}
+
+${renderDesignOperation(brief.designOperation)}
 
 ${renderCompletionContract(brief.completionContract)}
 

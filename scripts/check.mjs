@@ -15,6 +15,9 @@ import { renderReferenceComposition, selectReferenceComposition } from "./refere
 import { buildReferenceBuild, renderReferenceBuild } from "./reference-build.mjs";
 import { renderReferenceScout, scoutReferences } from "./reference-scout.mjs";
 import { renderVisualDirection, selectVisualDirection } from "./visual-direction.mjs";
+import { classifySurfaceMode } from "./surface-mode.mjs";
+import { resolveDesignOperation } from "./design-operation.mjs";
+import { addLiveVariant, createLiveSession, decideLiveVariant, recordLiveEvent } from "./live-iteration.mjs";
 
 const root = REPO_ROOT;
 const errors = [];
@@ -158,7 +161,7 @@ function checkPackage() {
   }
   if (packageJson.type !== "module") fail("package.json must use type=module");
   if (!packageJson.scripts?.test) fail("package.json is missing the test script");
-  for (const script of ["graph", "brief", "direction", "reference", "scout", "reference-build", "resource", "audit", "motion"]) {
+  for (const script of ["graph", "brief", "direction", "reference", "scout", "reference-build", "resource", "audit", "motion", "surface-mode", "design-operation", "live"]) {
     if (!packageJson.scripts?.[script]) fail(`package.json is missing the ${script} script`);
   }
 }
@@ -235,6 +238,23 @@ async function checkSmoke() {
       modelProposal: true,
       creativeDirection: "A sparse, typographic, intentionally asymmetric reading instrument.",
     });
+    const readMode = classifySurfaceMode("a documentation page for a research report");
+    const operateMode = classifySurfaceMode("an editor for configuring components");
+    const adaptiveMode = classifySurfaceMode("我要一个网站");
+    const layoutOperation = resolveDesignOperation("现在太方正，排版没有质感");
+    const vagueOperation = resolveDesignOperation("帮我优化一下");
+    if (readMode.mode !== "read" || operateMode.mode !== "operate" || adaptiveMode.mode !== "adaptive") fail("surface mode routing lost per-surface or adaptive behavior");
+    if (layoutOperation.operation !== "layout" || vagueOperation.directionQuestion === null) fail("design operation routing did not separate explicit and vague feedback");
+    const liveFixture = mkdtempSync(join(tmpdir(), "frontend-art-direction-live-"));
+    try {
+      const live = createLiveSession({ projectRoot: liveFixture, query: "polish an editor panel", url: "http://localhost:5173", target: "[data-target]" });
+      const baseline = recordLiveEvent({ projectRoot: liveFixture, session: live.session.id, kind: "baseline", path: "artifacts/baseline.png" });
+      const variant = addLiveVariant({ projectRoot: liveFixture, session: live.session.id, id: "variant-1", path: "artifacts/variant-1.png", summary: "Tighter panel hierarchy" });
+      const accepted = decideLiveVariant({ projectRoot: liveFixture, session: live.session.id, variant: "variant-1", decision: "accept", sourceDiff: "artifacts/variant-1.diff", path: "artifacts/after.png" });
+      if (baseline.evidence.length !== 1 || variant.variants.length !== 1 || accepted.status !== "accepted-awaiting-proof" || accepted.decision.variant !== "variant-1") fail("live iteration session did not persist the acceptance protocol");
+    } finally {
+      rmSync(liveFixture, { recursive: true, force: true });
+    }
     const authoredDirection = selectVisualDirection("a reading tool for field notes", {
       authoredDirection: {
         id: "folded-field",

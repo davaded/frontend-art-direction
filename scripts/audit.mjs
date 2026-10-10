@@ -12,6 +12,9 @@ import { renderAuthorityMarkdown } from "./authority.mjs";
 import { readAuthoredDirection, renderCreativeProcess } from "./creative-process.mjs";
 import { renderProductSignal } from "./product-signal.mjs";
 import { renderCompletionContract } from "./completion-contract.mjs";
+import { classifySurfaceMode, renderSurfaceMode } from "./surface-mode.mjs";
+import { renderDesignOperation, resolveDesignOperation } from "./design-operation.mjs";
+import { buildLiveIterationContract } from "./live-iteration.mjs";
 
 const HELP = `audit.mjs [project-root] [options]
 
@@ -304,6 +307,15 @@ export async function buildAudit({
   const resourceMatrix = buildResourceMatrix(resources);
   const controlDials = buildControlDials(brief, referenceBuild);
   const visualIteration = brief.visualDirection.creativeProcess.visualIteration;
+  const surfaceMode = classifySurfaceMode(query);
+  const designOperation = resolveDesignOperation(query, { mode: surfaceMode.mode === "adaptive" ? "" : surfaceMode.mode });
+  const liveIteration = buildLiveIterationContract({
+    query,
+    url: "",
+    target: "",
+    surfaceMode,
+    operation: designOperation,
+  });
   const signalDecision = brief.productSignal.mode === "product"
     ? `make the ${brief.productSignal.object} usable through ${brief.productSignal.primaryAction}, then polish around the resulting state`
     : `make ${brief.productSignal.experience.subject} legible through ${brief.productSignal.experience.creativeThesis}, then polish around its chosen attention path`;
@@ -314,12 +326,15 @@ export async function buildAudit({
     { id: "visual-direction", label: `visual direction contract: ${brief.visualDirection.label} / ${brief.visualDirection.visualTreatment.label}`, status: "completed", evidence: `${brief.visualDirection.firstViewport.layout}; ${brief.visualDirection.visualTreatment.signatureDevice}` },
     { id: "direction-authority", label: `creative direction authority: ${brief.visualDirection.constraintAuthority.mode}`, status: "completed", evidence: `${brief.visualDirection.constraintAuthority.source}; advisory defaults remain overrideable` },
     { id: "product-signal", label: "product or experience signal", status: "completed", evidence: `${brief.productSignal.status}; ${brief.productSignal.mode === "product" ? `${brief.productSignal.object}; ${brief.productSignal.primaryAction}` : `${brief.productSignal.experience.subject}; ${brief.productSignal.experience.creativeThesis}`}` },
+    { id: "surface-mode", label: `visitor mode: ${surfaceMode.label}`, status: "completed", evidence: `${surfaceMode.confidence}; ${surfaceMode.decision}` },
+    { id: "design-operation", label: `design operation: ${designOperation.label}`, status: "completed", evidence: `${designOperation.confidence}; ${designOperation.purpose}` },
     { id: "surface-completeness", label: "surface completion contract", status: "completed", evidence: `${(referenceBuild?.completionContract ?? brief.completionContract).status}; ${(referenceBuild?.completionContract ?? brief.completionContract).scope}` },
     { id: "reference-lenses", label: "all saved reference lenses considered", status: "completed", evidence: `${referenceInventory.length} lenses cataloged; ${referenceInventory.filter((item) => item.status !== "considered").length} applied` },
     { id: "reference-build", label: "reference/build contract", status: "completed", evidence: `${referenceBuild.referenceMode} / ${referenceBuild.primaryReference.label}` },
     { id: "resource-catalog", label: "local decision resource classification", status: "completed", evidence: `${resourceMatrix.length} resources cataloged; ${resources.candidates.length} ranked for this query` },
     { id: "transitions", label: "Transitions.dev Review -> Apply -> Polish", status: motionPlan ? motionPlan.source.status === "unavailable" ? "completed-with-warning" : "completed" : "skipped", evidence: motionPlan ? `${motionPlan.selected.length} candidate recipes; source ${motionPlan.source.status}` : "explicitly disabled" },
     { id: "visual-iteration", label: "actual screenshots and generated revision loop", status: "pending", evidence: `${visualIteration.status}; the implementing agent must inspect captures, repair defects, and recapture; generated images are proposals` },
+    { id: "live-iteration", label: "browser live variant protocol", status: "ready", evidence: `${liveIteration.protocol}; requires a target dev server and browser adapter to execute` },
     { id: "verification", label: "rendered verification contract", status: "completed", evidence: "desktop, mobile, non-default, reduced-motion, and console checks required" },
   ];
 
@@ -328,6 +343,7 @@ export async function buildAudit({
     ...brief.openEvidence.slice(0, 3),
     ...(unresolved > 0 ? [`${unresolved} unresolved relative import${unresolved === 1 ? "" : "s"} remain visible in the graph; verify aliases or generated files.`] : []),
     "Visual iteration is planned, not executed by this audit: run the target, inspect screenshots, repair observed defects, and compare recaptures before claiming visual acceptance.",
+    "Live iteration is a ready protocol, not a browser run: start a session only when the target dev server and browser adapter are available, then record baseline, decision, source diff, and after-capture evidence.",
   ];
   if (motionPlan?.source?.status !== "cached" && motionPlan?.source?.status !== "fetched") {
     open.push(`Motion source status is ${motionPlan?.source?.status ?? "unknown"}; inspect the returned source before applying a recipe.`);
@@ -342,6 +358,9 @@ export async function buildAudit({
     pipeline,
     controlDials,
     visualIteration,
+    surfaceMode,
+    designOperation,
+    liveIteration,
     productSignal: brief.productSignal,
     completionContract: referenceBuild?.completionContract ?? brief.completionContract,
     proof: {
@@ -368,6 +387,9 @@ export async function buildAudit({
         controlDials,
       },
       productSignal: brief.productSignal,
+      surfaceMode,
+      designOperation,
+      liveIteration,
       completionContract: referenceBuild?.completionContract ?? brief.completionContract,
       referenceComposition: {
         policy: brief.referenceComposition.selectionPolicy,
@@ -524,6 +546,10 @@ ${renderAuthorityMarkdown(audit.proof.direction.constraintAuthority)}
 ${renderCreativeProcess(audit.proof.direction.visualDirection?.creativeProcess)}
 
 ${renderProductSignal(audit.proof.productSignal ?? audit.direction.productSignal)}
+
+${renderSurfaceMode(audit.proof.surfaceMode ?? audit.surfaceMode)}
+
+${renderDesignOperation(audit.proof.designOperation ?? audit.designOperation)}
 
 ${renderCompletionContract(audit.proof.completionContract ?? audit.completionContract)}
 

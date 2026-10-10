@@ -39,6 +39,9 @@ npm run scout -- --query "premium keyboard and mouse product website" --format m
 npm run reference-build -- --query "Build a component gallery for our analytics SDK like Rare UI" --format md
 npm run resource -- --query "accessible modal" --stack react --format md
 npm run audit -- /path/to/project --query "inventory dashboard with partial data" --format md
+npm run surface-mode -- --query "documentation page for a research report" --format md
+npm run design-operation -- --query "现在太方正，排版没有质感" --format md
+npm run live -- start --project /path/to/project --url http://localhost:5173 --target "[data-art-direction-target]"
 ```
 
 The same commands are available through the package binary when it is resolved by npm:
@@ -56,6 +59,11 @@ frontend-art-direction reference-build --query "Build a component gallery for ou
 frontend-art-direction resource --query "accessible modal" --stack react
 frontend-art-direction audit /path/to/project --query "mobile editor with undo and loading"
 frontend-art-direction motion --intent "filter list continuity" --project /path/to/project
+frontend-art-direction surface-mode --query "portfolio case study"
+frontend-art-direction design-operation --query "页面太平，想更大胆"
+frontend-art-direction live start --project /path/to/project --url http://localhost:5173 --target "[data-art-direction-target]"
+frontend-art-direction live add-variant --project /path/to/project --session <id> --id variant-1 --path artifacts/variant-1.png --summary "tighter type and wider stage"
+frontend-art-direction live accept --project /path/to/project --session <id> --variant variant-1 --source-diff artifacts/variant-1.diff --path artifacts/after.png
 frontend-art-direction check
 ```
 
@@ -69,13 +77,15 @@ An adaptive default is not a bland default. Content structure stays provisional,
 
 Visual rules are tiered. Accessibility, the relevant task/state or authored-experience completeness, responsive usability, asset truth, motion fallback, runtime integrity, and rendered proof are hard invariants. Profiles, treatments, anti-AI checks, and reference recipes are advisory defaults. A substantive project `DESIGN.md`, an inspected reference, an accepted concept, explicit user direction, an authored direction file, or an evidence-backed model proposal can override those defaults when the direction remains coherent and the override is recorded and rendered.
 
+The surface/action layer makes the workflow operational: `surface-mode` identifies whether the current route persuades, supports operation, supports reading, or creates an experience; `design-operation` translates feedback such as “太方正”“太乱”“没质感” into one bounded action. An underspecified request remains adaptive instead of being forced into a product genre.
+
 Creativity is an explicit stage of the workflow. On a substantial open request, form 2-3 structurally different concepts before selecting a direction. Compare composition, reading order, dominant object, type/media relationship, interaction model, responsive viability, and implementation cost. Local datasets provide evidence and missing fields; they do not define the answer. Use `--direction-file` when the chosen proposal needs to survive across agents or iterations.
 
 Every substantial output also carries a Product or Experience Signal Contract. Functional work can name an object, task, action, result, data, state, and prototype interaction; narrative or art-directed work can name a subject, thesis, attention path, proof, and ending. The contract protects intent without forcing a dashboard, commerce layout, card grid, CTA, or interaction model. See [references/product-prototype.md](references/product-prototype.md).
 
 The output also includes a Completion Contract. It declares the delivery scope and rejects first-viewport-only work, dead destinations, filler sections, missing mobile composition, unimplemented states, and absent endings. It defines completeness for the chosen form rather than forcing every request into the same page type.
 
-Substantial work uses a visual iteration loop: capture the real render, inspect its defects, change code or assets, and recapture under comparable conditions. For an unresolved or bland composition, the agent can edit the inspected screenshot through available image generation, select a revision, translate it into code and usable assets, and return to browser comparison. Desktop/mobile coverage includes the full scope and ending. Generated images remain proposals or assets; the CLI emits a plan marked as unexecuted. See [references/visual-iteration.md](references/visual-iteration.md).
+Substantial work uses a visual iteration loop: capture the real render, inspect its defects, change code or assets, and recapture under comparable conditions. For an unresolved or bland composition, the agent can edit the inspected screenshot through available image generation, select a revision, translate it into code and usable assets, and return to browser comparison. Desktop/mobile coverage includes the full scope and ending. Generated images remain proposals or assets. With a running development target, `live` persists the baseline, variants, accept/discard decision, source diff, and after-capture evidence; this is a handoff protocol for a browser adapter, not a claim that the CLI itself captured a browser. See [references/visual-iteration.md](references/visual-iteration.md) and [references/live-iteration.md](references/live-iteration.md).
 
 The ordinary default is soft structural geometry: open page fields, a clearly softer dominant stage, tighter secondary panels and controls, and grouping through spacing, tone, inset, crop, overlap, or depth before borders and dividers. This is not a universal rounded-card style. Technical grids, industrial tools, brutalist directions, safety boundaries, and inspected sharp references remain valid when the exception is explicit and localized.
 
@@ -104,7 +114,7 @@ For machine-readable output through npm scripts, add npm's quiet flag: `npm run 
 ```text
 SKILL.md                 short router and quality contract
 references/              mode-specific guidance
-scripts/                 inspect, graph, brief, direction, reference, reference-build, resource, audit, motion, validation
+  scripts/                 inspect, graph, brief, direction, reference, reference-build, resource, audit, motion, surface/action routing, live journal, validation
 data/                    local decision, visual-direction, quality-gate, resource, lens, and recipe datasets
 templates/               reusable DESIGN.md and evidence files
 docs/                    architecture and maintenance notes
