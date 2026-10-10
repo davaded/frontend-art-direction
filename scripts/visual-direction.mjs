@@ -96,6 +96,28 @@ const ADAPTIVE_CONCEPT_FRAMES = [
   },
 ];
 
+const DIVERGENCE_DIRECTION_ORDER = [
+  "adaptive-asymmetric",
+  "object-led-editorial",
+  "narrative-chapters",
+  "rail-canvas-workbench",
+  "stateful-instrument",
+  "data-detail-workbench",
+  "spatial-inspection",
+  "specimen-catalog",
+];
+
+const DIVERGENCE_TREATMENT_HINTS = {
+  "adaptive-asymmetric": "quiet-editorial-studio",
+  "object-led-editorial": "material-object-studio",
+  "narrative-chapters": "warm-humanist-editorial",
+  "rail-canvas-workbench": "ink-state-instrument",
+  "stateful-instrument": "ink-state-instrument",
+  "data-detail-workbench": "data-graphic-clarity",
+  "spatial-inspection": "material-object-studio",
+  "specimen-catalog": "specimen-graphic-system",
+};
+
 function buildAdaptiveConceptSet(directions, treatments, { selectedId = null, status = "selection-required" } = {}) {
   return {
     status,
@@ -110,6 +132,63 @@ function buildAdaptiveConceptSet(directions, treatments, { selectedId = null, st
         treatment: treatment ? { id: treatment.id, label: treatment.label, signature: treatment.signature, composition: treatment.composition, geometry: treatment.geometry } : null,
       };
     }),
+  };
+}
+
+function conceptRecord(frame, direction, treatment, score = 0, matches = []) {
+  return {
+    id: frame.id,
+    label: frame.label,
+    directionId: direction?.id ?? frame.directionId,
+    treatmentId: treatment?.id ?? frame.treatmentId,
+    thesis: frame.thesis || direction?.signature || "A structural hypothesis derived from the current evidence.",
+    structuralChange: frame.structuralChange || `${direction?.firstViewport?.layout ?? "change the composition"}; ${treatment?.composition ?? "change the material relationship"}`,
+    chooseWhen: frame.chooseWhen || `the current query matches ${matches.join(", ") || "this direction"}`,
+    score,
+    matches,
+    direction: direction ? { id: direction.id, label: direction.label, signature: direction.signature, firstViewport: direction.firstViewport } : null,
+    treatment: treatment ? { id: treatment.id, label: treatment.label, signature: treatment.signature, composition: treatment.composition, geometry: treatment.geometry } : null,
+  };
+}
+
+function buildRoutedConceptSet(query, directions, treatments, {
+  profile = "",
+  style = "",
+  reference = "",
+  queryTokens = [],
+  contextTokens = [],
+  selectedId = null,
+  status = "selection-required",
+} = {}) {
+  const profileId = idOf(profile);
+  const referenceId = idOf(reference);
+  const ranked = directions
+    .map((direction) => ({ direction, ...scoreDirection(direction, queryTokens, contextTokens, { profileId, referenceId }) }))
+    .sort((left, right) => right.score - left.score || left.direction.id.localeCompare(right.direction.id));
+  const rankedById = new Map(ranked.map((item) => [item.direction.id, item]));
+  const selectedDirectionId = selectedId || ranked[0]?.direction.id;
+  const relevant = ranked.filter((item) => item.score > 0 && item.direction.id !== selectedDirectionId);
+  const fallback = DIVERGENCE_DIRECTION_ORDER
+    .map((id) => rankedById.get(id))
+    .filter((item) => item && item.direction.id !== selectedDirectionId);
+  const pool = [rankedById.get(selectedDirectionId), ...relevant, ...fallback].filter(Boolean);
+  const candidates = [];
+  const usedDirections = new Set();
+  const usedTreatments = new Set();
+  for (const item of pool) {
+    if (candidates.length >= 3 || usedDirections.has(item.direction.id)) continue;
+    const hintedTreatment = DIVERGENCE_TREATMENT_HINTS[item.direction.id] ?? "";
+    const treatment = selectVisualTreatment(query, { profile, style, direction: item.direction, adaptiveDefault: false, treatment: hintedTreatment });
+    if (usedTreatments.has(treatment.id)) continue;
+    candidates.push(conceptRecord({ id: item.direction.id, label: item.direction.label }, item.direction, treatment, item.score, [...new Set([...item.queryHits, ...item.contextHits])].slice(0, 6)));
+    usedDirections.add(item.direction.id);
+    usedTreatments.add(treatment.id);
+  }
+  return {
+    status,
+    selected: selectedId,
+    policy: "These are query-aware structural hypotheses, not product genres or a fixed skin. Choose from the real subject, content, and evidence; an authored direction may replace all of them.",
+    candidates,
   };
 }
 
@@ -243,7 +322,9 @@ export function selectVisualDirection(query = "frontend interface", {
   const queryTokens = underspecified ? [] : meaningfulTokens(query);
   const contextTokens = underspecified ? [] : meaningfulTokens(context);
   const explicit = requestedDirection ? directions.find((item) => item.id === requestedDirection) : null;
-  const requestedConcept = ADAPTIVE_CONCEPT_FRAMES.find((item) => item.id === concept);
+  const fixedConcept = ADAPTIVE_CONCEPT_FRAMES.find((item) => item.id === concept);
+  const directionConcept = directions.find((item) => item.id === concept);
+  const requestedConcept = fixedConcept ?? (directionConcept ? { id: directionConcept.id, directionId: directionConcept.id, treatmentId: "", dynamic: true } : null);
   if (concept && !requestedConcept) throw new Error(`unknown adaptive concept: ${concept}`);
   const ranked = directions
     .map((direction) => ({ direction, ...scoreDirection(direction, queryTokens, contextTokens, { profileId, referenceId }) }))
@@ -278,8 +359,10 @@ export function selectVisualDirection(query = "frontend interface", {
   });
   const resolved = applyAuthoredDirection({ ...selected, visualTreatment: candidateTreatment }, authoredDirection);
   const visualTreatment = resolved.visualTreatment;
-  const conceptSet = underspecified && !authoredDirection && constraintAuthority.mode === "adaptive-default"
-    ? buildAdaptiveConceptSet(directions, treatments, { selectedId: requestedConcept?.id ?? null, status: requestedConcept ? "accepted" : "selection-required" })
+  const conceptSet = !authoredDirection && constraintAuthority.mode === "adaptive-default"
+    ? fixedConcept
+      ? buildAdaptiveConceptSet(directions, treatments, { selectedId: requestedConcept?.id ?? null, status: requestedConcept ? "accepted" : "selection-required" })
+      : buildRoutedConceptSet(query, directions, treatments, { profile, style, reference, queryTokens, contextTokens, selectedId: requestedConcept?.id ?? (underspecified ? null : selected.id), status: requestedConcept ? "accepted" : "selection-required" })
     : {
       status: "suppressed-by-authority",
       selected: null,
