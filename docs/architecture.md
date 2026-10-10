@@ -12,7 +12,7 @@ references/ -> mode-specific decisions
 scripts/ -> deterministic local evidence and validation
 data/ -> candidate profiles, styles, types, palettes, motion, stacks, visual directions, reference lenses, product reference sources, build recipes
 templates/ -> artifacts that persist project decisions
-live -> page-level surface mode, design action, and browser-variant evidence protocol
+live -> page-level surface mode, design action, browser-variant evidence protocol, and 20-round production loop
 ```
 
 ## Reference Capabilities, Implemented Locally
@@ -35,6 +35,7 @@ The design was informed by public projects, but the package does not claim that 
 - Product reference discovery: `scripts/reference-scout.mjs` ranks official product sources by category, quality signals, and distinct job; it does not claim that a URL was inspected and it does not use geography as a quality quota.
 - Page-level visitor routing: `scripts/surface-mode.mjs` classifies the current route as `Persuade`, `Operate`, `Read`, or `Experience` with confidence and evidence, while `scripts/design-operation.mjs` translates visual feedback into one bounded action without forcing a product genre.
 - Live visual iteration: `scripts/live-iteration.mjs` persists a provider-neutral development session for baseline capture, bounded variants, accept/discard decisions, source diffs, and after-capture proof. It is an execution handoff and evidence journal; it does not pretend to capture a browser by itself.
+- Design production loop: `scripts/design-loop.mjs` turns the research synthesis into 20 executable checkpoints from context and divergent concepts through complete construction, rendered critique, responsive/state proof, fresh-eyes review, and signoff. It records the contract; the target project still supplies the actual browser captures and edits.
 
 The package remains dependency-free and local-only for `inspect`, `map`, `graph`, `brief`, `reference`, `scout`, `reference-build`, `resource`, `audit`, and `check`. Motion work is the deliberate exception: the internal adapter may fetch the pinned upstream Skill on first use, but it does not install an animation runtime or change the target project's dependency manifest.
 
@@ -60,12 +61,13 @@ The Completion Contract sits after that signal and defines the actual delivery b
 | Visitor surface and design action | `surface-mode`, `design-operation`, `brief`, `audit` | per-route visitor job, explicit operation, evidence/confidence, and adaptive fallback |
 | Motion workflow | `motion`, `audit` | Review -> Apply -> Polish plus four guardrails on every full run |
 | Live visual iteration | `live` | baseline, bounded variants, acceptance decision, source diff, and after-capture proof |
+| Design production loop | `design-loop`, `brief`, `audit` | 20 checkpoints, explicit artifacts, rendered evidence, and scope-aware signoff |
 
 ## Runtime Flow
 
 1. The agent sees a short name/description and loads `SKILL.md` only when relevant.
 2. `SKILL.md` chooses fast polish, Product UI, Media-led, Reference-led build, or Direction-only.
-3. `audit.mjs` runs the full pipeline: local files, repository graph, design intelligence, visual direction contract, per-surface visitor mode, design operation, complete reference inventory, reference/build contract, resource matrix, internal Transitions.dev motion review, live iteration contract, and one bounded decision report.
+3. `audit.mjs` runs the full pipeline: local files, repository graph, design intelligence, visual direction contract, per-surface visitor mode, design operation, 20-round production loop, complete reference inventory, reference/build contract, resource matrix, internal Transitions.dev motion review, live iteration contract, and one bounded decision report.
 4. `inspect-project.mjs` and `project-graph.mjs` expose evidence, dependencies, hotspots, and gaps.
 5. `design-brief.mjs` ranks local candidates and quality gates as candidate/inferred, then resolves a concrete visual direction before implementation; `authority.mjs` keeps hard invariants above all style choices and lets a project `DESIGN.md`, inspected reference, accepted concept, explicit user direction, or evidence-backed model proposal outrank local defaults.
 6. `reference-composition.mjs` considers every saved UI lens, assigns distinct jobs, and rejects redundant or irrelevant lenses; it never treats a reference as permission to copy a whole surface.
@@ -73,8 +75,9 @@ The Completion Contract sits after that signal and defines the actual delivery b
 8. `reference-build.mjs` turns a named, scouted product, or supporting reference plus one sentence into an implementation contract; named references win, scouted product references lead category work, and component/motion lenses support rather than replace the primary visual grammar.
 9. `resource-catalog.mjs` returns a small shortlist; it never installs a dependency or treats a URL as current API proof.
 10. `transitions-adapter.mjs` resolves the pinned upstream source on every full audit and returns a project-specific `Review -> Apply -> Polish` plan, even when the final implementation chooses a static fallback.
-11. For a running development target, `live` records browser iteration evidence without claiming that a journal entry is a rendered pass.
-12. The implementation is verified at static, runtime, and visual layers.
+11. `design-loop` keeps the substantial pass ordered: create choices, choose a thesis, extract the system, build the complete scope, then judge actual renders and states.
+12. For a running development target, `live` records browser iteration evidence without claiming that a journal entry is a rendered pass.
+13. The implementation is verified at static, runtime, and visual layers.
 
 ## Maintenance Rules
 
@@ -83,6 +86,7 @@ The Completion Contract sits after that signal and defines the actual delivery b
 - Add a dataset record only when it changes a decision and has an explicit misuse risk.
 - Keep scripts dependency-free unless a dependency removes substantial fragility.
 - Every new script needs a smoke path in `npm test`.
+- Every substantial request carries the 20-round design production contract; small local repairs may batch or skip rounds only with a recorded reason.
 - Every substantial output needs a scope-aware Completion Contract; do not use first-viewport proof as a substitute for full-scope proof.
 - Every visual-direction record needs a first-viewport contract, type/spacing/surface/geometry rules, anti-AI checks, and rendered checks.
 - Product-reference records are candidates; update their review date and inspect the live URL before relying on current details.

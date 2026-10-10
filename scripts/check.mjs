@@ -17,6 +17,7 @@ import { renderReferenceScout, scoutReferences } from "./reference-scout.mjs";
 import { renderVisualDirection, selectVisualDirection } from "./visual-direction.mjs";
 import { classifySurfaceMode } from "./surface-mode.mjs";
 import { resolveDesignOperation } from "./design-operation.mjs";
+import { buildDesignLoop, renderDesignLoop } from "./design-loop.mjs";
 import { addLiveVariant, createLiveSession, decideLiveVariant, recordLiveEvent } from "./live-iteration.mjs";
 
 const root = REPO_ROOT;
@@ -161,7 +162,7 @@ function checkPackage() {
   }
   if (packageJson.type !== "module") fail("package.json must use type=module");
   if (!packageJson.scripts?.test) fail("package.json is missing the test script");
-  for (const script of ["graph", "brief", "direction", "reference", "scout", "reference-build", "resource", "audit", "motion", "surface-mode", "design-operation", "live"]) {
+  for (const script of ["graph", "brief", "direction", "reference", "scout", "reference-build", "resource", "audit", "motion", "surface-mode", "design-operation", "design-loop", "live"]) {
     if (!packageJson.scripts?.[script]) fail(`package.json is missing the ${script} script`);
   }
 }
@@ -324,7 +325,9 @@ async function checkSmoke() {
     const referenceAudit = await buildAudit({ projectRoot: root, query: "Build a component gallery like Rare UI", offline: true, limit: 4 });
     const hardwareAudit = await buildAudit({ projectRoot: root, query: "高端硬件外设类网站", offline: true, limit: 4 });
     const motionAudit = await buildAudit({ projectRoot: root, query: "modal transition cleanup", motion: true, offline: true, limit: 4 });
+    const designLoop = buildDesignLoop({ query: "analytics dashboard with loading and empty states" });
     if (!brief.recommendation.profile?.id || !brief.recommendation.motion?.id) fail("brief smoke output is incomplete");
+    if (designLoop.rounds !== 20 || designLoop.roundsDetail.length !== 20 || designLoop.roundsDetail.at(-1)?.id !== "signoff" || !renderDesignLoop(designLoop).includes("20-Round Design Production Loop")) fail("design production loop smoke output is incomplete");
     if (!brief.productSignal?.object || !brief.productSignal?.primaryAction || !brief.productSignal?.visibleResult || !brief.completionContract?.requirements?.length || !brief.quality.gates.some((gate) => gate.id === "product-signal") || !brief.quality.gates.some((gate) => gate.id === "surface-completeness") || !brief.quality.antiPatterns.some((item) => item.id === "presentation-shell")) fail("brief did not expose the product and completion contracts");
     if (!map.results.some((item) => item.path === "package.json")) fail("project map did not rank package.json for a package query");
     if (graph.scan.graphNodes === 0 || graph.scan.graphEdges === 0) fail("project graph smoke output is empty");
@@ -392,6 +395,7 @@ async function checkSmoke() {
     const briefJson = execFileSync(process.execPath, [join(root, "scripts", "design-brief.mjs"), "--query", "analytics dashboard", "--format", "json"], { encoding: "utf8" });
     const directionMd = execFileSync(process.execPath, [join(root, "scripts", "visual-direction.mjs"), "--query", "AI agent dashboard with approval modal", "--profile", "productive-app", "--format", "md"], { encoding: "utf8" });
     const directionJson = execFileSync(process.execPath, [join(root, "scripts", "visual-direction.mjs"), "--query", "AI agent dashboard with approval modal", "--profile", "productive-app", "--format", "json"], { encoding: "utf8" });
+    const designLoopJson = execFileSync(process.execPath, [join(root, "scripts", "design-loop.mjs"), "--query", "analytics dashboard with empty state", "--format", "json"], { encoding: "utf8" });
     const mapJson = execFileSync(process.execPath, [join(root, "scripts", "project-map.mjs"), root, "--query", "package test script", "--format", "json"], { encoding: "utf8" });
     const graphJson = execFileSync(process.execPath, [join(root, "scripts", "project-graph.mjs"), root, "--query", "motion adapter", "--format", "json"], { encoding: "utf8" });
     const resourceJson = execFileSync(process.execPath, [join(root, "scripts", "resource-catalog.mjs"), "--query", "accessible modal", "--stack", "react", "--format", "json"], { encoding: "utf8" });
@@ -409,6 +413,7 @@ async function checkSmoke() {
     const motionJson = execFileSync(process.execPath, [join(root, "scripts", "transitions-adapter.mjs"), "--intent", "modal close cleanup", "--phase", "all", "--offline", "--format", "json"], { encoding: "utf8" });
     if (inspectMd.includes("[object Object]") || briefMd.includes("[object Object]") || directionMd.includes("[object Object]")) fail("CLI markdown smoke output returned [object Object]");
     if (!JSON.parse(briefJson).recommendation?.profile?.id) fail("CLI JSON smoke output is incomplete");
+    if (JSON.parse(designLoopJson).rounds !== 20 || JSON.parse(designLoopJson).roundsDetail?.length !== 20) fail("CLI design production loop output is incomplete");
     if (JSON.parse(directionJson).id !== "stateful-instrument" || !JSON.parse(directionJson).productSignal?.primaryAction || !JSON.parse(directionJson).visualTreatment?.id || !JSON.parse(directionJson).visualTreatment?.geometry || !JSON.parse(directionJson).geometryRules?.edgeCharacter || !JSON.parse(directionJson).constraintAuthority?.mode || !directionMd.includes("Product Signal Contract") || !directionMd.includes("Visual Treatment") || !directionMd.includes("Geometry Rules") || !directionMd.includes("AI-Default Checks (Advisory)")) fail("CLI visual direction output is incomplete");
     if (!JSON.parse(mapJson).results?.some((item) => item.path === "package.json")) fail("CLI project map JSON output is incomplete");
     if (!JSON.parse(graphJson).nodes?.length || !JSON.parse(graphJson).query?.results?.length) fail("CLI project graph JSON output is incomplete");
@@ -445,6 +450,8 @@ for (const path of [
   join(root, "references", "creative-direction.md"),
   join(root, "references", "visual-iteration.md"),
   join(root, "references", "product-prototype.md"),
+  join(root, "references", "design-production-loop.md"),
+  join(root, "docs", "research-synthesis.md"),
   join(root, "templates", "DESIGN.md"), join(root, "scripts", "transitions-adapter.mjs"),
   join(root, "scripts", "project-graph.mjs"), join(root, "scripts", "resource-catalog.mjs"), join(root, "scripts", "audit.mjs"),
   join(root, "data", "quality-gates.json"), join(root, "data", "resources.json"), join(root, "data", "reference-lenses.json"), join(root, "data", "reference-recipes.json"), join(root, "data", "reference-sources.json"),
@@ -454,6 +461,7 @@ for (const path of [
   join(root, "scripts", "creative-process.mjs"),
   join(root, "scripts", "product-signal.mjs"),
   join(root, "scripts", "completion-contract.mjs"),
+  join(root, "scripts", "design-loop.mjs"),
   join(root, "data", "visual-directions.json"),
   join(root, "data", "visual-treatments.json"),
   join(root, "data", "constraint-policy.json"),

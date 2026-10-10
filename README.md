@@ -41,6 +41,7 @@ npm run resource -- --query "accessible modal" --stack react --format md
 npm run audit -- /path/to/project --query "inventory dashboard with partial data" --format md
 npm run surface-mode -- --query "documentation page for a research report" --format md
 npm run design-operation -- --query "现在太方正，排版没有质感" --format md
+npm run design-loop -- --query "hardware product story with responsive states" --format md
 npm run live -- start --project /path/to/project --url http://localhost:5173 --target "[data-art-direction-target]"
 ```
 
@@ -61,6 +62,7 @@ frontend-art-direction audit /path/to/project --query "mobile editor with undo a
 frontend-art-direction motion --intent "filter list continuity" --project /path/to/project
 frontend-art-direction surface-mode --query "portfolio case study"
 frontend-art-direction design-operation --query "页面太平，想更大胆"
+frontend-art-direction design-loop --query "hardware product story with responsive states"
 frontend-art-direction live start --project /path/to/project --url http://localhost:5173 --target "[data-art-direction-target]"
 frontend-art-direction live add-variant --project /path/to/project --session <id> --id variant-1 --path artifacts/variant-1.png --summary "tighter type and wider stage"
 frontend-art-direction live accept --project /path/to/project --session <id> --variant variant-1 --source-diff artifacts/variant-1.diff --path artifacts/after.png
@@ -83,7 +85,7 @@ Creativity is an explicit stage of the workflow. On a substantial open request, 
 
 Every substantial output also carries a Product or Experience Signal Contract. Functional work can name an object, task, action, result, data, state, and prototype interaction; narrative or art-directed work can name a subject, thesis, attention path, proof, and ending. The contract protects intent without forcing a dashboard, commerce layout, card grid, CTA, or interaction model. See [references/product-prototype.md](references/product-prototype.md).
 
-The output also includes a Completion Contract. It declares the delivery scope and rejects first-viewport-only work, dead destinations, filler sections, missing mobile composition, unimplemented states, and absent endings. It defines completeness for the chosen form rather than forcing every request into the same page type.
+The output also includes a Completion Contract. It declares the delivery scope and rejects first-viewport-only work, dead destinations, filler sections, missing mobile composition, unimplemented states, and absent endings. It defines completeness for the chosen form rather than forcing every request into the same page type. For substantial work, `design-loop` emits the 20-round production contract used by `brief` and `audit`; see [references/design-production-loop.md](references/design-production-loop.md) and [docs/research-synthesis.md](docs/research-synthesis.md).
 
 Substantial work uses a visual iteration loop: capture the real render, inspect its defects, change code or assets, and recapture under comparable conditions. For an unresolved or bland composition, the agent can edit the inspected screenshot through available image generation, select a revision, translate it into code and usable assets, and return to browser comparison. Desktop/mobile coverage includes the full scope and ending. Generated images remain proposals or assets. With a running development target, `live` persists the baseline, variants, accept/discard decision, source diff, and after-capture evidence; this is a handoff protocol for a browser adapter, not a claim that the CLI itself captured a browser. See [references/visual-iteration.md](references/visual-iteration.md) and [references/live-iteration.md](references/live-iteration.md).
 

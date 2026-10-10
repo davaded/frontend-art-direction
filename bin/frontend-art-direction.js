@@ -32,6 +32,7 @@ Usage:
   frontend-art-direction motion --intent "..." [--project <path>] [--phase review|apply|polish|all]
   frontend-art-direction surface-mode --query "..." [--mode persuade|operate|read|experience]
   frontend-art-direction design-operation --query "..." [--mode <surface-mode>]
+  frontend-art-direction design-loop --query "..." [--format md|json]
   frontend-art-direction live <start|status|record|add-variant|accept|discard> [options]
   frontend-art-direction check
 
@@ -75,6 +76,7 @@ if (command === "audit") runNodeScript("audit.mjs", argv.slice(1));
 if (command === "motion") runNodeScript("transitions-adapter.mjs", argv.slice(1));
 if (command === "surface-mode") runNodeScript("surface-mode.mjs", argv.slice(1));
 if (command === "design-operation") runNodeScript("design-operation.mjs", argv.slice(1));
+if (command === "design-loop") runNodeScript("design-loop.mjs", argv.slice(1));
 if (command === "live") runNodeScript("live-iteration.mjs", argv.slice(1));
 if (command === "check") runNodeScript("check.mjs", argv.slice(1));
 

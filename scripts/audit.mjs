@@ -14,6 +14,7 @@ import { renderProductSignal } from "./product-signal.mjs";
 import { renderCompletionContract } from "./completion-contract.mjs";
 import { classifySurfaceMode, renderSurfaceMode } from "./surface-mode.mjs";
 import { renderDesignOperation, resolveDesignOperation } from "./design-operation.mjs";
+import { renderDesignLoop } from "./design-loop.mjs";
 import { buildLiveIterationContract } from "./live-iteration.mjs";
 
 const HELP = `audit.mjs [project-root] [options]
@@ -309,6 +310,7 @@ export async function buildAudit({
   const visualIteration = brief.visualDirection.creativeProcess.visualIteration;
   const surfaceMode = classifySurfaceMode(query);
   const designOperation = resolveDesignOperation(query, { mode: surfaceMode.mode === "adaptive" ? "" : surfaceMode.mode });
+  const designLoop = brief.designLoop;
   const liveIteration = buildLiveIterationContract({
     query,
     url: "",
@@ -328,6 +330,7 @@ export async function buildAudit({
     { id: "product-signal", label: "product or experience signal", status: "completed", evidence: `${brief.productSignal.status}; ${brief.productSignal.mode === "product" ? `${brief.productSignal.object}; ${brief.productSignal.primaryAction}` : `${brief.productSignal.experience.subject}; ${brief.productSignal.experience.creativeThesis}`}` },
     { id: "surface-mode", label: `visitor mode: ${surfaceMode.label}`, status: "completed", evidence: `${surfaceMode.confidence}; ${surfaceMode.decision}` },
     { id: "design-operation", label: `design operation: ${designOperation.label}`, status: "completed", evidence: `${designOperation.confidence}; ${designOperation.purpose}` },
+    { id: "design-loop", label: "20-round design production loop", status: "ready", evidence: `${designLoop.scope}; choices, construction, rendered critique, responsive/state proof, and signoff are required` },
     { id: "surface-completeness", label: "surface completion contract", status: "completed", evidence: `${(referenceBuild?.completionContract ?? brief.completionContract).status}; ${(referenceBuild?.completionContract ?? brief.completionContract).scope}` },
     { id: "reference-lenses", label: "all saved reference lenses considered", status: "completed", evidence: `${referenceInventory.length} lenses cataloged; ${referenceInventory.filter((item) => item.status !== "considered").length} applied` },
     { id: "reference-build", label: "reference/build contract", status: "completed", evidence: `${referenceBuild.referenceMode} / ${referenceBuild.primaryReference.label}` },
@@ -360,6 +363,7 @@ export async function buildAudit({
     visualIteration,
     surfaceMode,
     designOperation,
+    designLoop,
     liveIteration,
     productSignal: brief.productSignal,
     completionContract: referenceBuild?.completionContract ?? brief.completionContract,
@@ -389,6 +393,7 @@ export async function buildAudit({
       productSignal: brief.productSignal,
       surfaceMode,
       designOperation,
+      designLoop,
       liveIteration,
       completionContract: referenceBuild?.completionContract ?? brief.completionContract,
       referenceComposition: {
@@ -550,6 +555,8 @@ ${renderProductSignal(audit.proof.productSignal ?? audit.direction.productSignal
 ${renderSurfaceMode(audit.proof.surfaceMode ?? audit.surfaceMode)}
 
 ${renderDesignOperation(audit.proof.designOperation ?? audit.designOperation)}
+
+${renderDesignLoop(audit.proof.designLoop ?? audit.designLoop, { compact: false })}
 
 ${renderCompletionContract(audit.proof.completionContract ?? audit.completionContract)}
 

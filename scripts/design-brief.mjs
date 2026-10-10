@@ -22,6 +22,7 @@ import { buildProductSignal, renderProductSignal } from "./product-signal.mjs";
 import { buildCompletionContract, renderCompletionContract } from "./completion-contract.mjs";
 import { classifySurfaceMode, renderSurfaceMode } from "./surface-mode.mjs";
 import { renderDesignOperation, resolveDesignOperation } from "./design-operation.mjs";
+import { buildDesignLoop, renderDesignLoop } from "./design-loop.mjs";
 
 const HELP = `design-brief.mjs [options]
 
@@ -183,6 +184,7 @@ export function buildBrief({ query, projectRoot, overrides = {}, authoredDirecti
   });
   const surfaceMode = classifySurfaceMode(query, { explicit: overrides.surfaceMode ?? "" });
   const designOperation = resolveDesignOperation(query, { mode: surfaceMode.mode === "adaptive" ? "" : surfaceMode.mode });
+  const designLoop = buildDesignLoop({ query, surfaceMode, operation: designOperation });
   const completionContract = buildCompletionContract({
     query,
     productSignal,
@@ -243,6 +245,7 @@ export function buildBrief({ query, projectRoot, overrides = {}, authoredDirecti
       creativeProcess: visualDirection.creativeProcess,
       productSignal,
       completionContract,
+      designLoop,
     },
     quality,
     visualDirection,
@@ -250,6 +253,7 @@ export function buildBrief({ query, projectRoot, overrides = {}, authoredDirecti
     completionContract,
     surfaceMode,
     designOperation,
+    designLoop,
     referenceComposition,
     referenceScout,
     openEvidence,
@@ -306,6 +310,8 @@ ${renderProductSignal(brief.productSignal)}
 ${renderSurfaceMode(brief.surfaceMode)}
 
 ${renderDesignOperation(brief.designOperation)}
+
+${renderDesignLoop(brief.designLoop, { compact: true })}
 
 ${renderCompletionContract(brief.completionContract)}
 

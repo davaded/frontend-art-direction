@@ -22,6 +22,7 @@ Make the visible product better without making the process expensive, vague, or 
 - Before code, emit a Visual Direction Contract: composition grammar, alignment axis, dominant/counterweight, type ceiling, spacing rhythm, surface budget, edge character, corner hierarchy, separation and line policy, visual treatment, signature device, authority source, and advisory AI-default checks. Treat local direction records as candidates until a real subject-specific thesis is chosen.
 - Separate hard invariants from visual preferences. Accessibility, the relevant task/state or authored-experience completeness, responsive usability, asset truth, motion fallback, runtime integrity, and rendered proof are hard; local anti-AI checks are advisory and may be overridden by a project-owned `DESIGN.md`, an inspected reference, an accepted concept, explicit user direction, or a strong model proposal with an override record.
 - Run a creative-divergence check before implementation: for substantial open work, form 2-3 structurally different concepts from the real object, content, and task; compare their reading order, dominant object, silhouette, type/media relationship, interaction model, and responsive viability; promote the strongest coherent thesis instead of preserving a local candidate for consistency.
+- For substantial work, run [references/design-production-loop.md](references/design-production-loop.md) and complete all 20 checkpoints as decisions and evidence, not blind rewrites.
 - Iterate on the rendered surface: capture, inspect visible defects, change code or assets, then recapture and compare. Static code or a successful build is not visual acceptance.
 - State facts, assumptions, missing evidence, and blockers. Do not spend the user's token budget on generic praise or a long design essay.
 
@@ -183,7 +184,7 @@ Read the returned upstream reference before applying it. Copy only the needed re
 
 Read [references/verification.md](references/verification.md). Run the target, inspect the complete declared scope at desktop and target mobile/device viewports, exercise the relevant non-default state or authored ending, and check console/build output. Capture the closest available evidence. Keep static checks, runtime checks, and visual checks separate in the report.
 
-For substantial work, follow [references/visual-iteration.md](references/visual-iteration.md): inspect real screenshots, repair material defects, and compare new captures. When the visual thesis needs reworking, edit the screenshot through image generation, inspect the proposal, translate it into code, and return to browser proof; a generated image never proves implementation completeness. When a running dev target exists, use `live start` to journal baseline, variants, acceptance, source diff, and after-capture proof.
+For substantial work, follow [references/visual-iteration.md](references/visual-iteration.md) and the 20-round [design production loop](references/design-production-loop.md): inspect real screenshots, repair material defects, and compare new captures. When the visual thesis needs reworking, edit the screenshot through image generation, inspect the proposal, translate it into code, and return to browser proof; a generated image never proves implementation completeness. When a running dev target exists, use `live start` to journal baseline, variants, acceptance, source diff, and after-capture proof.
 
 For this skill itself, run:
 
@@ -191,7 +192,7 @@ For this skill itself, run:
 npm test
 ```
 
-The reference integrations are executable rather than name-only documentation: design intelligence (`brief`), visitor/action routing (`surface-mode`, `design-operation`), visual direction (`direction`), repository graph (`graph`), role-based reference composition (`reference`), one-sentence implementation contracts (`reference-build`), compact response pipeline (`audit`), curated resources (`resource`), live variant journaling (`live`), and the internal motion bridge (`motion`).
+The reference integrations are executable rather than name-only documentation: design intelligence (`brief`), visitor/action routing (`surface-mode`, `design-operation`), the 20-round production contract (`design-loop`), visual direction (`direction`), repository graph (`graph`), role-based reference composition (`reference`), one-sentence implementation contracts (`reference-build`), compact response pipeline (`audit`), curated resources (`resource`), live variant journaling (`live`), and the internal motion bridge (`motion`).
 
 ## Output Contract
 

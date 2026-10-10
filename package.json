@@ -34,6 +34,7 @@
     "motion": "node scripts/transitions-adapter.mjs",
     "surface-mode": "node scripts/surface-mode.mjs",
     "design-operation": "node scripts/design-operation.mjs",
+    "design-loop": "node scripts/design-loop.mjs",
     "live": "node scripts/live-iteration.mjs",
     "pack:check": "npm pack --dry-run"
   },
