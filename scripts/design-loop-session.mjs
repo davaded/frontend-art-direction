@@ -148,7 +148,7 @@ export function createDesignLoopSession({ projectRoot, query = "", mode = "", ac
   return { path, session: writeSession(path, session) };
 }
 
-export function recordDesignLoopRound({ projectRoot, session, round, status = "complete", decision = "", evidence = "", proof = "", issues = "", score = "", dimensions = "", reason = "", largestGap = "", repair = "", verdict = "", comparison = "" } = {}) {
+export function recordDesignLoopRound({ projectRoot, session, round, status = "complete", decision = "", evidence = "", proof = "", issues = "", score = "", dimensions = "", reason = "", largestGap = "", repair = "", verdict = "", comparison = "", critique = "" } = {}) {
   const root = resolve(projectRoot ?? process.cwd());
   const path = sessionPath(root, session);
   const current = readSession(path);
@@ -161,6 +161,7 @@ export function recordDesignLoopRound({ projectRoot, session, round, status = "c
   const proofItems = list(proof);
   const issueItems = list(issues);
   const comparisonItems = normalizeEvidence(root, comparison);
+  const critiqueItems = normalizeEvidence(root, critique);
   const dimensionScores = parseDimensionScores(dimensions, current.qualityBar.dimensions ?? []);
   const numericScore = score === "" ? null : Number(score);
   if (numericScore !== null && (!Number.isFinite(numericScore) || numericScore < 1 || numericScore > 10)) throw new Error("--score must be between 1 and 10");
@@ -172,10 +173,13 @@ export function recordDesignLoopRound({ projectRoot, session, round, status = "c
   if (status === "complete" && missingEvidence.length > 0) throw new Error(`evidence does not exist inside the project: ${missingEvidence.map((item) => item.ref).join(", ")}`);
   const missingComparison = comparisonItems.filter((item) => item.exists === false);
   if (status === "complete" && missingComparison.length > 0) throw new Error(`comparison evidence does not exist inside the project: ${missingComparison.map((item) => item.ref).join(", ")}`);
+  const missingCritique = critiqueItems.filter((item) => item.exists === false);
+  if (status === "complete" && missingCritique.length > 0) throw new Error(`critique evidence does not exist inside the project: ${missingCritique.map((item) => item.ref).join(", ")}`);
   if (number >= 15 && status === "complete" && !hasCaptureEvidence(evidenceItems)) throw new Error(`round ${number} requires at least one existing local screenshot or media capture in --evidence`);
   if (number >= 16 && number <= 19 && status === "complete" && captureEvidenceCount(evidenceItems) < 2) throw new Error(`round ${number} requires before-and-after capture evidence in --evidence`);
   if (number >= 16 && number <= 19 && status === "complete" && comparisonItems.length === 0) throw new Error(`round ${number} requires --comparison evidence`);
   if (number >= 16 && number <= 19 && status === "complete" && (!String(largestGap).trim() || !String(repair).trim())) throw new Error(`round ${number} requires --largest-gap and --repair`);
+  if (number === 19 && status === "complete" && critiqueItems.length === 0) throw new Error("round 19 requires --critique fresh-eyes evidence");
   if (number === 19 && status === "complete" && !["CURRENT WINS", "REFERENCE WINS", "INCONCLUSIVE"].includes(String(verdict).trim())) throw new Error("round 19 requires --verdict CURRENT WINS, REFERENCE WINS, or INCONCLUSIVE");
   if (number === 20 && status === "complete" && String(verdict).trim() !== "CURRENT WINS") throw new Error("round 20 requires --verdict CURRENT WINS before sign-off");
   const attempt = {
@@ -191,6 +195,7 @@ export function recordDesignLoopRound({ projectRoot, session, round, status = "c
     repair: String(repair).trim() || null,
     verdict: String(verdict).trim() || null,
     comparison: comparisonItems,
+    critique: critiqueItems,
     recordedAt: new Date().toISOString(),
   };
   const rounds = current.rounds.map((item) => item.round === number
@@ -208,6 +213,7 @@ export function recordDesignLoopRound({ projectRoot, session, round, status = "c
       repair: attempt.repair,
       verdict: attempt.verdict,
       comparison: comparisonItems,
+      critique: critiqueItems,
       attempts: [...item.attempts, attempt],
     }
     : item);
@@ -225,6 +231,10 @@ export function closeDesignLoopSession({ projectRoot, session } = {}) {
   }
   const pending = current.rounds.filter((item) => !CLOSED_STATUSES.has(item.status));
   if (pending.length > 0) throw new Error(`cannot sign off with open rounds: ${pending.map((item) => item.round).join(", ")}`);
+  if (current.scope === "substantial") {
+    const skipped = current.rounds.filter((item) => item.status === "skipped");
+    if (skipped.length > 0) throw new Error(`substantial sessions cannot skip design-loop rounds: ${skipped.map((item) => item.round).join(", ")}`);
+  }
   const signoff = findRound(current, 20);
   const requiredProof = current.qualityBar.requiredProof ?? [];
   const missingProof = requiredProof.filter((item) => !signoff.proof.includes(item));

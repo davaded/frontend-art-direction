@@ -433,6 +433,10 @@ async function checkSmoke() {
           visualFields.repair = `repair applied in round ${round}`;
           writeFileSync(join(loopFixture, "artifacts", `round-${round}-comparison.md`), `before and after comparison ${round}\n`);
           visualFields.comparison = `artifacts/round-${round}-comparison.md`;
+          if (round === 19) {
+            writeFileSync(join(loopFixture, "artifacts", "round-19-critique.md"), "Fresh eyes found and resolved the largest hierarchy gap.\n");
+            visualFields.critique = "artifacts/round-19-critique.md";
+          }
         }
         if (round === 19) visualFields.verdict = "CURRENT WINS";
         loopSession = recordDesignLoopRound({ projectRoot: loopFixture, session: loopSession.id, round, decision: `round ${round} decision`, evidence: evidence.join(","), proof: round >= 15 ? "desktop-capture" : "decision", ...visualFields });

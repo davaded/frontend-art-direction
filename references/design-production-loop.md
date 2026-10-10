@@ -77,7 +77,7 @@ node <skill-root>/scripts/design-loop.mjs close \
   --project <project-root> --session <id> --format md
 ```
 
-Rounds 15-20 are rendered-proof rounds. `--evidence` must include an existing local screenshot or media capture. Each repair round from 16 through 19 requires both before and after captures plus a local `--comparison` artifact, as well as `--largest-gap` and `--repair`; round 19 requires one of `CURRENT WINS`, `REFERENCE WINS`, or `INCONCLUSIVE`. Round 20 can close only with `--verdict CURRENT WINS`.
+Rounds 15-20 are rendered-proof rounds. `--evidence` must include an existing local screenshot or media capture. Each repair round from 16 through 19 requires both before and after captures plus a local `--comparison` artifact, as well as `--largest-gap` and `--repair`; round 19 additionally requires a local `--critique` artifact and one of `CURRENT WINS`, `REFERENCE WINS`, or `INCONCLUSIVE`. A substantial session cannot sign off skipped rounds. Round 20 can close only with `--verdict CURRENT WINS`.
 
 Example repair record:
 

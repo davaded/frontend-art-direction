@@ -79,7 +79,7 @@ async function main() {
   const args = parseArgs(process.argv.slice(2));
   if (args.options.help || args.options.h) {
     console.log(`design-loop.mjs [plan|start|status|record|close] [options]\n\n  plan                  Emit the 20-round contract (default)\n  start                 Persist a project session under .art-direction/design-loop/\n  status                Read a persisted session\n  record                Complete, skip, or block one round\n  close                 Enforce signoff gates and close a session\n  --project <path>      Target project root for a session\n  --session <id>        Session id or path\n  --round <number>      Round number for record\n  --status <value>      complete|skipped|blocked\n  --decision <text>     Decision recorded for a round\n  --evidence <paths>    Comma-separated artifact or capture paths\n  --proof <kinds>       Comma-separated proof kinds\n  --issues <items>      Comma-separated issue records, e.g. P2:crop\n  --score <1-10>        Quality score for the round or signoff\n  --reason <text>       Reason for a skipped or blocked round\n  --query <text>       Product, page, or feedback description\n  --mode <id>          persuade|operate|read|experience\n  --action <id>        design operation override\n  --scope <text>       declared delivery scope\n  --format md|json     Output format (default: md)`);
-    console.log("  --largest-gap <text>  Largest visible gap found in rounds 16-19\n  --repair <text>       Concrete repair applied in rounds 16-19\n  --verdict <value>     CURRENT WINS|REFERENCE WINS|INCONCLUSIVE\n  --comparison <paths>  Before/after comparison artifact paths");
+    console.log("  --largest-gap <text>  Largest visible gap found in rounds 16-19\n  --repair <text>       Concrete repair applied in rounds 16-19\n  --verdict <value>     CURRENT WINS|REFERENCE WINS|INCONCLUSIVE\n  --comparison <paths>  Before/after comparison artifact paths\n  --critique <paths>    Fresh-eyes critique artifact paths (round 19)");
     return;
   }
   const command = ["start", "status", "record", "close"].includes(args.positionals[0]) ? args.positionals[0] : "plan";
@@ -115,6 +115,7 @@ async function main() {
         repair: option(args, "repair", ""),
         verdict: option(args, "verdict", ""),
         comparison: option(args, "comparison", ""),
+        critique: option(args, "critique", ""),
       });
     } else {
       result = sessionApi.closeDesignLoopSession({ projectRoot, session: option(args, "session", "") });
