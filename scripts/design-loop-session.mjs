@@ -1,4 +1,4 @@
-import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
+import { existsSync, mkdirSync, readFileSync, statSync, writeFileSync } from "node:fs";
 import { dirname, join, resolve } from "node:path";
 import { randomUUID } from "node:crypto";
 import { loadDataset, relativePath } from "./lib.mjs";
@@ -77,12 +77,18 @@ function normalizeEvidence(projectRoot, values) {
     if (/^(?:decision|note|observation):/iu.test(ref)) return { ref, kind: "recorded-note", exists: null };
     const absolute = resolve(projectRoot, ref);
     const inside = absolute === projectRoot || absolute.startsWith(`${projectRoot}/`);
+    const file = inside && existsSync(absolute) ? statSync(absolute) : null;
     return {
       ref: inside ? relativePath(projectRoot, absolute) : ref,
       kind: /\.(?:png|jpe?g|webp|avif|gif|mp4|mov)$/iu.test(ref) ? "capture-or-media" : "artifact-or-check",
-      exists: inside ? existsSync(absolute) : false,
+      exists: Boolean(file?.isFile()),
+      size: file?.size ?? null,
     };
   });
+}
+
+function hasCaptureEvidence(items) {
+  return items.some((item) => item.exists === true && item.kind === "capture-or-media" && item.size > 0);
 }
 
 function currentRound(session) {
@@ -145,7 +151,7 @@ export function createDesignLoopSession({ projectRoot, query = "", mode = "", ac
   return { path, session: writeSession(path, session) };
 }
 
-export function recordDesignLoopRound({ projectRoot, session, round, status = "complete", decision = "", evidence = "", proof = "", issues = "", score = "", dimensions = "", reason = "" } = {}) {
+export function recordDesignLoopRound({ projectRoot, session, round, status = "complete", decision = "", evidence = "", proof = "", issues = "", score = "", dimensions = "", reason = "", largestGap = "", repair = "", verdict = "", comparison = "" } = {}) {
   const root = resolve(projectRoot ?? process.cwd());
   const path = sessionPath(root, session);
   const current = readSession(path);
@@ -157,6 +163,7 @@ export function recordDesignLoopRound({ projectRoot, session, round, status = "c
   const evidenceItems = normalizeEvidence(root, evidence);
   const proofItems = list(proof);
   const issueItems = list(issues);
+  const comparisonItems = normalizeEvidence(root, comparison);
   const dimensionScores = parseDimensionScores(dimensions, current.qualityBar.dimensions ?? []);
   const numericScore = score === "" ? null : Number(score);
   if (numericScore !== null && (!Number.isFinite(numericScore) || numericScore < 1 || numericScore > 10)) throw new Error("--score must be between 1 and 10");
@@ -166,6 +173,12 @@ export function recordDesignLoopRound({ projectRoot, session, round, status = "c
   if (number >= 15 && status === "complete" && proofItems.length === 0) throw new Error(`round ${number} requires at least one --proof item`);
   const missingEvidence = evidenceItems.filter((item) => item.exists === false);
   if (status === "complete" && missingEvidence.length > 0) throw new Error(`evidence does not exist inside the project: ${missingEvidence.map((item) => item.ref).join(", ")}`);
+  const missingComparison = comparisonItems.filter((item) => item.exists === false);
+  if (status === "complete" && missingComparison.length > 0) throw new Error(`comparison evidence does not exist inside the project: ${missingComparison.map((item) => item.ref).join(", ")}`);
+  if (number >= 15 && status === "complete" && !hasCaptureEvidence(evidenceItems)) throw new Error(`round ${number} requires at least one existing local screenshot or media capture in --evidence`);
+  if (number >= 16 && number <= 19 && status === "complete" && (!String(largestGap).trim() || !String(repair).trim())) throw new Error(`round ${number} requires --largest-gap and --repair`);
+  if (number === 19 && status === "complete" && !["CURRENT WINS", "REFERENCE WINS", "INCONCLUSIVE"].includes(String(verdict).trim())) throw new Error("round 19 requires --verdict CURRENT WINS, REFERENCE WINS, or INCONCLUSIVE");
+  if (number === 20 && status === "complete" && String(verdict).trim() !== "CURRENT WINS") throw new Error("round 20 requires --verdict CURRENT WINS before sign-off");
   const attempt = {
     status,
     decision: String(decision || reason).trim() || null,
@@ -175,6 +188,10 @@ export function recordDesignLoopRound({ projectRoot, session, round, status = "c
     score: numericScore,
     dimensionScores,
     calculatedScore: weightedQualityScore(dimensionScores, current.qualityBar.dimensions ?? []),
+    largestGap: String(largestGap).trim() || null,
+    repair: String(repair).trim() || null,
+    verdict: String(verdict).trim() || null,
+    comparison: comparisonItems,
     recordedAt: new Date().toISOString(),
   };
   const rounds = current.rounds.map((item) => item.round === number
@@ -188,6 +205,10 @@ export function recordDesignLoopRound({ projectRoot, session, round, status = "c
       score: numericScore,
       dimensionScores,
       calculatedScore: attempt.calculatedScore,
+      largestGap: attempt.largestGap,
+      repair: attempt.repair,
+      verdict: attempt.verdict,
+      comparison: comparisonItems,
       attempts: [...item.attempts, attempt],
     }
     : item);

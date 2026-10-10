@@ -68,12 +68,28 @@ Round 19 must include a fresh-eyes comparison. Round 20 must include all five pr
 node <skill-root>/scripts/design-loop.mjs record \
   --project <project-root> --session <id> --round 20 \
   --decision "Scope is complete; remaining P2 crop is documented" \
-  --evidence artifacts/signoff.md \
+  --evidence artifacts/signoff.md,artifacts/signoff.png \
   --proof static,runtime,visual,accessibility,scope \
+  --verdict "CURRENT WINS" \
   --score 8 \
   --dimensions subject-fit=8,hierarchy=8,composition=8,type-and-content=8,material-and-assets=8,interaction-and-motion=8,responsive-and-states=8,originality=8,completion-and-proof=8
 node <skill-root>/scripts/design-loop.mjs close \
   --project <project-root> --session <id> --format md
+```
+
+Rounds 15-20 are rendered-proof rounds. `--evidence` must include an existing local screenshot or media capture. Rounds 16-19 also require `--largest-gap` and `--repair`; round 19 requires one of `CURRENT WINS`, `REFERENCE WINS`, or `INCONCLUSIVE` plus a comparison artifact. Round 20 can close only with `--verdict CURRENT WINS`.
+
+Example repair record:
+
+```bash
+node <skill-root>/scripts/design-loop.mjs record \
+  --project <project-root> --session <id> --round 16 \
+  --decision "The first render was too evenly weighted" \
+  --largest-gap "The subject lost dominance below the fold" \
+  --repair "Removed the duplicate panel and widened the object stage" \
+  --evidence artifacts/round-16-before.png,artifacts/round-16-after.png \
+  --comparison artifacts/round-16-comparison.md \
+  --proof desktop-before,desktop-after
 ```
 
 The session is a gate and ledger, not a visual oracle. A path proves that an artifact was recorded; the implementing agent still has to open the screenshot, inspect the target, compare the result, and write the observed consequence using [the independent critique protocol](independent-critique.md). `close` accepts P2/P3 follow-ups when they are explicit, but rejects unresolved P0/P1 defects.

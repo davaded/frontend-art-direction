@@ -387,10 +387,33 @@ async function checkSmoke() {
       if (closedAtlas.status !== "complete" || !renderResearchAtlas(closedAtlas).includes("Section Winners")) fail("research atlas did not close with section winners and synthesis");
       for (let round = 1; round <= 19; round += 1) {
         writeFileSync(join(loopFixture, "artifacts", `round-${round}.md`), `round ${round}\n`);
-        loopSession = recordDesignLoopRound({ projectRoot: loopFixture, session: loopSession.id, round, decision: `round ${round} decision`, evidence: `artifacts/round-${round}.md`, proof: round >= 15 ? "desktop-capture" : "decision" });
+        const evidence = [`artifacts/round-${round}.md`];
+        const visualFields = {};
+        if (round === 15) {
+          let rejectedWithoutCapture = false;
+          try {
+            recordDesignLoopRound({ projectRoot: loopFixture, session: loopSession.id, round, decision: "missing capture should fail", evidence: "artifacts/round-15.md", proof: "desktop-capture" });
+          } catch (error) {
+            rejectedWithoutCapture = /local screenshot or media capture/u.test(error.message);
+          }
+          if (!rejectedWithoutCapture) fail("design loop accepted a visual round without a local capture");
+        }
+        if (round >= 15) {
+          writeFileSync(join(loopFixture, "artifacts", `round-${round}.png`), `synthetic capture fixture ${round}\n`);
+          evidence.push(`artifacts/round-${round}.png`);
+        }
+        if (round >= 16) {
+          visualFields.largestGap = `largest gap in round ${round}`;
+          visualFields.repair = `repair applied in round ${round}`;
+          writeFileSync(join(loopFixture, "artifacts", `round-${round}-comparison.md`), `before and after comparison ${round}\n`);
+          visualFields.comparison = `artifacts/round-${round}-comparison.md`;
+        }
+        if (round === 19) visualFields.verdict = "CURRENT WINS";
+        loopSession = recordDesignLoopRound({ projectRoot: loopFixture, session: loopSession.id, round, decision: `round ${round} decision`, evidence: evidence.join(","), proof: round >= 15 ? "desktop-capture" : "decision", ...visualFields });
       }
       writeFileSync(join(loopFixture, "artifacts", "signoff.md"), "signoff\n");
-      loopSession = recordDesignLoopRound({ projectRoot: loopFixture, session: loopSession.id, round: 20, decision: "all gates pass", evidence: "artifacts/signoff.md", proof: "static,runtime,visual,accessibility,scope", score: "8", dimensions: "subject-fit=8,hierarchy=8,composition=8,type-and-content=8,material-and-assets=8,interaction-and-motion=8,responsive-and-states=8,originality=8,completion-and-proof=8" });
+      writeFileSync(join(loopFixture, "artifacts", "signoff.png"), "synthetic signoff capture fixture\n");
+      loopSession = recordDesignLoopRound({ projectRoot: loopFixture, session: loopSession.id, round: 20, decision: "all gates pass", evidence: "artifacts/signoff.md,artifacts/signoff.png", proof: "static,runtime,visual,accessibility,scope", score: "8", verdict: "CURRENT WINS", largestGap: "no material gap remains", repair: "completed the final documented repair", dimensions: "subject-fit=8,hierarchy=8,composition=8,type-and-content=8,material-and-assets=8,interaction-and-motion=8,responsive-and-states=8,originality=8,completion-and-proof=8" });
       const closedLoop = closeDesignLoopSession({ projectRoot: loopFixture, session: loopSession.id });
       if (closedLoop.status !== "complete" || getDesignLoopSession({ projectRoot: loopFixture, session: loopSession.id }).currentRound !== 21) fail("design loop session did not enforce and close the 20-round evidence contract");
     } finally {
