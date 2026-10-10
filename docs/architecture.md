@@ -16,6 +16,7 @@ live -> page-level surface mode, design action, browser-variant evidence protoco
 research-atlas -> persisted inspection evidence, section winners, synthesis, and template-risk gate
 design-loop -> 20-round production plan, linked session, quality rubric, and signoff gate
 image-proposal -> provider-neutral proposal, selection, source translation, and actual-render proof journal
+visual-critique -> fresh-eyes findings, severity, repair, verdict, and regression journal
 ```
 
 ## Reference Capabilities, Implemented Locally
@@ -40,6 +41,7 @@ The design was informed by public projects, but the package does not claim that 
 - Page-level visitor routing: `scripts/surface-mode.mjs` classifies the current route as `Persuade`, `Operate`, `Read`, or `Experience` with confidence and evidence, while `scripts/design-operation.mjs` translates visual feedback into one bounded action without forcing a product genre.
 - Live visual iteration: `scripts/live-iteration.mjs` persists a provider-neutral development session for baseline capture, bounded variants, accept/discard decisions, source diffs, and after-capture proof. `live close` requires valid local captures for the baseline, at least two variants, and the final render, plus an existing source diff for accepted variants. It is an execution handoff and evidence journal; it does not pretend to capture a browser by itself.
 - Image proposal iteration: `scripts/image-proposal.mjs` persists a provider-neutral image-generation proposal, prompt, input roles, selection decision, source translation, and after-capture proof. `image-proposal close` rejects a proposal-only pass without a valid baseline, selected proposal, source artifact, and actual after render. It does not generate images or install a provider dependency.
+- Independent visual critique: `scripts/visual-critique.mjs` persists an unprimed review with structured findings, severity, evidence, repair, confidence, and a `CURRENT WINS`/`REFERENCE WINS`/`INCONCLUSIVE` verdict. A complete JSON journal can be supplied to design-loop round 19; its status and verdict are checked instead of treating arbitrary text as fresh-eyes proof.
 - Design production loop: `scripts/design-loop.mjs` turns the research synthesis into 20 executable checkpoints from context and divergent concepts through complete construction, rendered critique, responsive/state proof, fresh-eyes review, and signoff. `start`, `record`, and `close` persist the session and enforce evidence gates; rounds 15-20 require local captures, rounds 16-19 require before/after captures, a comparison artifact, and a largest-gap repair record, round 19 requires a fresh-eyes critique artifact, and substantial sessions cannot skip rounds before `CURRENT WINS` signoff. The target project still supplies the actual browser captures and edits. `data/quality-rubric.json` keeps the quality bar explicit.
 - Research atlas: `scripts/research-atlas.mjs` persists inspected references, user-reference triage, section-level winners, selected/unavailable skills, synthesis, and template-risk decisions. It requires local inspection evidence for selected sources. `design-loop start` creates and links one automatically, and `design-loop close` requires the atlas to be closed first.
 
@@ -49,7 +51,7 @@ The Product or Experience Signal Contract is the semantic floor beneath visual f
 
 The Completion Contract sits after that signal and defines the actual delivery boundary. It is intentionally scope-aware: a full route, narrative scene, specimen workbench, and single component have different completion floors, but none can claim completion from a polished first viewport alone.
 
-`scripts/creative-process.mjs` also emits a shared screenshot/image iteration plan used by `direction`, `brief`, `reference-build`, and `audit`. `references/visual-iteration.md` defines actual capture, defect review, code repair, recapture, and optional screenshot editing through image generation. The agent executes the browser and image tools; `image-proposal` records the handoff and proof while `audit` still reports the plan as pending until a target session supplies evidence. Generated revisions are proposals or assets, while actual rendered captures supply acceptance evidence.
+`scripts/creative-process.mjs` also emits a shared screenshot/image iteration plan used by `direction`, `brief`, `reference-build`, and `audit`. `references/visual-iteration.md` defines actual capture, defect review, code repair, recapture, and optional screenshot editing through image generation. The agent executes the browser and image tools; `image-proposal` records the handoff and `visual-critique` records the independent judgment while `audit` still reports the plan as pending until a target session supplies evidence. Generated revisions are proposals or assets, while actual rendered captures supply acceptance evidence.
 
 ## Integration Matrix
 
@@ -68,6 +70,7 @@ The Completion Contract sits after that signal and defines the actual delivery b
 | Motion workflow | `motion`, `audit` | Review -> Apply -> Polish plus four guardrails on every full run |
 | Live visual iteration | `live` | baseline, two or more valid variants, acceptance decision, source diff, and after-capture proof |
 | Image proposal iteration | `image-proposal` | proposal image and prompt, selection, source translation, and actual after-capture proof |
+| Independent visual critique | `critique` | structured fresh-eyes findings, severity-ranked repair, verdict, and regression check |
 | Browser capture | `capture` | local Playwright/Puppeteer screenshot, viewport/state manifest, console messages, and page errors |
 | Research atlas | `research-atlas`, `design-loop` | inspected references, section winners, synthesis, selected/unavailable skills, and template-risk decision |
 | Design production loop | `design-loop`, `brief`, `audit` | 20 checkpoints, linked research, persisted artifacts, quality rubric, rendered evidence, and scope-aware signoff |
@@ -86,7 +89,7 @@ The Completion Contract sits after that signal and defines the actual delivery b
 10. `transitions-adapter.mjs` resolves the pinned upstream source on every full audit and returns a project-specific `Review -> Apply -> Polish` plan, even when the final implementation chooses a static fallback.
 11. `research-atlas` keeps external references inspectable: candidates become evidence only after local capture, section winners are compared by job, and the synthesis records what is rejected as well as what is borrowed.
 12. `design-loop` keeps the substantial pass ordered: create choices, choose a thesis, extract the system, build the complete scope, then judge actual renders and states; its linked atlas must close before sign-off.
-13. For a running development target, `live` records browser iteration evidence without claiming that a journal entry is a rendered pass. `image-proposal` records an optional image-generation handoff without claiming that a proposal is implementation proof. `scripts/browser-capture.mjs` is the optional local adapter for targets that already provide Playwright or Puppeteer; it writes a capture and manifest without adding a dependency.
+13. For a running development target, `live` records browser iteration evidence without claiming that a journal entry is a rendered pass. `image-proposal` records an optional image-generation handoff without claiming that a proposal is implementation proof. `critique` records the reviewer judgment without claiming it is a render. `scripts/browser-capture.mjs` is the optional local adapter for targets that already provide Playwright or Puppeteer; it writes a capture and manifest without adding a dependency.
 14. The implementation is verified at static, runtime, and visual layers.
 
 ## Maintenance Rules

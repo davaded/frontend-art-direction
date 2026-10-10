@@ -2,6 +2,30 @@
 
 Use this after a meaningful implementation capture and before accepting a visual round. The critic should inspect the current render, the declared scope, the selected reference or concept, and the quality rubric without reading the implementation history first. A fresh reviewer may be another agent, a clean context, or a deliberately reset critique pass.
 
+Persist the review when it will be used as a production gate:
+
+```bash
+node <skill-root>/scripts/visual-critique.mjs start \
+  --project <project-root> --query "fresh-eyes review" \
+  --capture artifacts/after.png --reference artifacts/reference.png \
+  --viewport 1440x900 --state default --round 19
+node <skill-root>/scripts/visual-critique.mjs add \
+  --project <project-root> --session <id> --id hierarchy-01 \
+  --severity P1 --region "hero / desktop" \
+  --observation "The subject loses dominance to the support panel." \
+  --consequence "The first glance reads as a generic template." \
+  --evidence artifacts/after.png --repair "Widen the subject stage and quiet the support panel." \
+  --confidence render-certain --status resolved
+node <skill-root>/scripts/visual-critique.mjs verdict \
+  --project <project-root> --session <id> --verdict "CURRENT WINS" \
+  --largest-gap "The original stage was too evenly weighted." \
+  --next-operation "Recheck mobile crop and the primary state." \
+  --regression-check "Compare 390x844 and exercise the primary state."
+node <skill-root>/scripts/visual-critique.mjs close --project <project-root> --session <id>
+```
+
+Pass the completed JSON session to design-loop round 19 with `--critique .art-direction/visual-critique/<id>.json`. The loop checks its protocol, completion status, and verdict. Markdown remains useful for human notes, but it is weaker evidence than a structured journal.
+
 ## Review Input
 
 Record the route, viewport, scroll position, state, capture path, reference or concept path, and the last accepted direction. Review the same viewport and state before comparing other sizes. A screenshot is evidence of a render; it does not explain why the render feels weak.

@@ -48,6 +48,7 @@ npm run design-loop -- start --project /path/to/project --query "rebuild this vi
 npm run live -- start --project /path/to/project --url http://localhost:5173 --target "[data-art-direction-target]"
 npm run capture -- --url http://localhost:5173 --output /path/to/project/artifacts/baseline.png --viewport 1440x900 --full-page
 npm run image-proposal -- start --project /path/to/project --query "make the stage more authored" --baseline artifacts/baseline.png --gap "the first viewport is visually even"
+npm run critique -- start --project /path/to/project --query "fresh-eyes review" --capture artifacts/after.png --reference artifacts/reference.png --viewport 1440x900 --state default --round 19
 ```
 
 The same commands are available through the package binary when it is resolved by npm:
@@ -80,6 +81,10 @@ frontend-art-direction image-proposal select --project /path/to/project --sessio
 frontend-art-direction image-proposal translate --project /path/to/project --session <id> --source-diff artifacts/translation.diff --delta "translated the selected stage relationship into source"
 frontend-art-direction image-proposal record --project /path/to/project --session <id> --kind after --path artifacts/after.png
 frontend-art-direction image-proposal close --project /path/to/project --session <id>
+frontend-art-direction critique start --project /path/to/project --query "fresh-eyes review" --capture artifacts/after.png --reference artifacts/reference.png --viewport 1440x900 --round 19
+frontend-art-direction critique add --project /path/to/project --session <id> --id stage-dominance --severity P1 --region "hero stage / desktop" --observation "The subject stage has no visual dominance." --consequence "The page reads as a generic layout." --evidence artifacts/after.png --repair "Widen the stage and quiet the supporting panel." --confidence render-certain --status resolved
+frontend-art-direction critique verdict --project /path/to/project --session <id> --verdict "CURRENT WINS" --largest-gap "The first stage was too evenly weighted." --next-operation "Recheck the mobile crop." --regression-check "Compare 390x844 and exercise the primary state."
+frontend-art-direction critique close --project /path/to/project --session <id>
 frontend-art-direction capture --url http://localhost:5173 --output /path/to/project/artifacts/baseline.png --viewport 1440x900 --full-page
 frontend-art-direction check
 ```
@@ -135,7 +140,7 @@ For machine-readable output through npm scripts, add npm's quiet flag: `npm run 
 ```text
 SKILL.md                 short router and quality contract
 references/              mode-specific guidance
-  scripts/                 inspect, graph, brief, direction, reference, reference-build, resource, audit, motion, research atlas, surface/action routing, live and image-proposal journals, validation
+  scripts/                 inspect, graph, brief, direction, reference, reference-build, resource, audit, motion, research atlas, surface/action routing, live, image-proposal, and critique journals, validation
 data/                    local decision, visual-direction, quality-gate, resource, lens, and recipe datasets
 templates/               reusable DESIGN.md and evidence files
 docs/                    architecture and maintenance notes

@@ -5,6 +5,7 @@ import { loadDataset, relativePath } from "./lib.mjs";
 import { buildDesignLoop } from "./design-loop.mjs";
 import { createResearchAtlas, getResearchAtlas } from "./research-atlas.mjs";
 import { inspectLocalEvidence } from "./media-evidence.mjs";
+import { validateVisualCritiqueArtifact } from "./visual-critique.mjs";
 
 const SESSION_DIR = ".art-direction/design-loop";
 const MODES = ["create", "rebuild", "refine", "fix", "audit", "resume"];
@@ -181,6 +182,9 @@ export function recordDesignLoopRound({ projectRoot, session, round, status = "c
   if (number >= 16 && number <= 19 && status === "complete" && (!String(largestGap).trim() || !String(repair).trim())) throw new Error(`round ${number} requires --largest-gap and --repair`);
   if (number === 19 && status === "complete" && critiqueItems.length === 0) throw new Error("round 19 requires --critique fresh-eyes evidence");
   if (number === 19 && status === "complete" && !["CURRENT WINS", "REFERENCE WINS", "INCONCLUSIVE"].includes(String(verdict).trim())) throw new Error("round 19 requires --verdict CURRENT WINS, REFERENCE WINS, or INCONCLUSIVE");
+  if (number === 19 && status === "complete") {
+    for (const item of critiqueItems) validateVisualCritiqueArtifact(root, item.ref, String(verdict).trim());
+  }
   if (number === 20 && status === "complete" && String(verdict).trim() !== "CURRENT WINS") throw new Error("round 20 requires --verdict CURRENT WINS before sign-off");
   const attempt = {
     status,

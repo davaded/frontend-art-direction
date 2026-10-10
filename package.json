@@ -38,6 +38,7 @@
     "research-atlas": "node scripts/research-atlas.mjs",
     "live": "node scripts/live-iteration.mjs",
     "image-proposal": "node scripts/image-proposal.mjs",
+    "critique": "node scripts/visual-critique.mjs",
     "capture": "node scripts/browser-capture.mjs",
     "pack:check": "npm pack --dry-run"
   },

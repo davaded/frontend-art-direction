@@ -62,7 +62,7 @@ node <skill-root>/scripts/design-loop.mjs record \
   --issues "P2:mobile crop"
 ```
 
-Round 19 must include a fresh-eyes comparison. Round 20 must include all five proof kinds: `static`, `runtime`, `visual`, `accessibility`, and `scope`, plus a score of at least 8/10:
+Round 19 must include a fresh-eyes comparison. Prefer a complete `critique` journal: it records each finding's severity, region, consequence, evidence, repair, and confidence, and prevents `CURRENT WINS` while a P0/P1 finding remains open. Round 20 must include all five proof kinds: `static`, `runtime`, `visual`, `accessibility`, and `scope`, plus a score of at least 8/10:
 
 ```bash
 node <skill-root>/scripts/design-loop.mjs record \

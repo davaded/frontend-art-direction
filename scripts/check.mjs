@@ -22,6 +22,7 @@ import { closeDesignLoopSession, createDesignLoopSession, getDesignLoopSession, 
 import { ATLAS_SECTIONS, addResearchAtlasReference, closeResearchAtlas, recordResearchAtlasSection, recordResearchAtlasSkill, recordResearchAtlasSynthesis, renderResearchAtlas } from "./research-atlas.mjs";
 import { addLiveVariant, closeLiveSession, createLiveSession, decideLiveVariant, recordLiveEvent } from "./live-iteration.mjs";
 import { addImageProposal, closeImageProposalSession, createImageProposalSession, decideImageProposal, recordImageEvidence, translateImageProposal } from "./image-proposal.mjs";
+import { addVisualFinding, closeVisualCritiqueSession, createVisualCritiqueSession, recordVisualVerdict } from "./visual-critique.mjs";
 
 const root = REPO_ROOT;
 const errors = [];
@@ -166,7 +167,7 @@ function checkPackage() {
   }
   if (packageJson.type !== "module") fail("package.json must use type=module");
   if (!packageJson.scripts?.test) fail("package.json is missing the test script");
-  for (const script of ["graph", "brief", "direction", "reference", "scout", "reference-build", "resource", "audit", "motion", "surface-mode", "design-operation", "design-loop", "research-atlas", "live", "image-proposal", "capture"]) {
+  for (const script of ["graph", "brief", "direction", "reference", "scout", "reference-build", "resource", "audit", "motion", "surface-mode", "design-operation", "design-loop", "research-atlas", "live", "image-proposal", "critique", "capture"]) {
     if (!packageJson.scripts?.[script]) fail(`package.json is missing the ${script} script`);
   }
 }
@@ -281,6 +282,18 @@ async function checkSmoke() {
       if (!imageBaseline.baseline?.valid || imageProposal.proposals.length !== 1 || imageSelected.status !== "selected-awaiting-translation" || imageTranslated.status !== "translated-awaiting-capture" || imageAfter.status !== "ready-to-close" || closedImage.status !== "complete" || !closedImage.proof?.proposal?.valid || !closedImage.proof?.after?.valid) fail("image proposal session did not enforce and close the proposal-to-code proof protocol");
     } finally {
       rmSync(imageFixture, { recursive: true, force: true });
+    }
+    const critiqueFixture = mkdtempSync(join(tmpdir(), "frontend-art-direction-visual-critique-"));
+    try {
+      mkdirSync(join(critiqueFixture, "artifacts"), { recursive: true });
+      for (const capture of ["current", "reference"]) writeFileSync(join(critiqueFixture, "artifacts", `${capture}.png`), syntheticPng);
+      const critiqueSession = createVisualCritiqueSession({ projectRoot: critiqueFixture, query: "make the stage less generic", capture: "artifacts/current.png", reference: "artifacts/reference.png", viewport: "1440x900", state: "default", round: "19" });
+      const finding = addVisualFinding({ projectRoot: critiqueFixture, session: critiqueSession.session.id, id: "stage-dominance", severity: "P1", region: "hero stage / desktop", observation: "The subject stage has no visual dominance over the supporting copy.", consequence: "The first glance reads as a generic layout instead of a subject-led surface.", evidence: "artifacts/current.png", repair: "Widen the stage and reduce the supporting panel's contrast.", confidence: "render-certain", status: "resolved" });
+      const verdict = recordVisualVerdict({ projectRoot: critiqueFixture, session: critiqueSession.session.id, verdict: "CURRENT WINS", largestGap: "The original stage was too evenly weighted.", nextOperation: "Recheck the mobile stage crop after the desktop repair.", regressionCheck: "Compare the same route at 390x844 and exercise the trace state." });
+      const closedCritique = closeVisualCritiqueSession({ projectRoot: critiqueFixture, session: critiqueSession.session.id });
+      if (finding.findings.length !== 1 || verdict.status !== "verdict-ready" || closedCritique.status !== "complete" || closedCritique.proof?.verdict !== "CURRENT WINS") fail("visual critique journal did not enforce and close the structured fresh-eyes protocol");
+    } finally {
+      rmSync(critiqueFixture, { recursive: true, force: true });
     }
     const authoredDirection = selectVisualDirection("a reading tool for field notes", {
       authoredDirection: {
@@ -451,8 +464,11 @@ async function checkSmoke() {
           writeFileSync(join(loopFixture, "artifacts", `round-${round}-comparison.md`), `before and after comparison ${round}\n`);
           visualFields.comparison = `artifacts/round-${round}-comparison.md`;
           if (round === 19) {
-            writeFileSync(join(loopFixture, "artifacts", "round-19-critique.md"), "Fresh eyes found and resolved the largest hierarchy gap.\n");
-            visualFields.critique = "artifacts/round-19-critique.md";
+            const critique = createVisualCritiqueSession({ projectRoot: loopFixture, query: "fresh-eyes loop smoke", capture: "artifacts/round-19.png", reference: "artifacts/round-19-before.png", viewport: "1440x900", round: "19" });
+            addVisualFinding({ projectRoot: loopFixture, session: critique.session.id, id: "loop-hierarchy", severity: "P1", region: "full surface", observation: "The first render gives equal weight to the subject and support copy.", consequence: "The intended hierarchy is hard to read at a glance.", evidence: "artifacts/round-19.png", repair: "Widened the subject stage and reduced support contrast.", confidence: "render-certain", status: "resolved" });
+            recordVisualVerdict({ projectRoot: loopFixture, session: critique.session.id, verdict: "CURRENT WINS", largestGap: "The first render was too evenly weighted.", nextOperation: "Recheck the mobile crop.", regressionCheck: "Compare the same state at the target mobile viewport." });
+            closeVisualCritiqueSession({ projectRoot: loopFixture, session: critique.session.id });
+            visualFields.critique = relative(loopFixture, critique.path).split("\\").join("/");
           }
         }
         if (round === 19) visualFields.verdict = "CURRENT WINS";
