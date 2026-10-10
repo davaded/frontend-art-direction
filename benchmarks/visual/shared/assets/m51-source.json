@@ -4,7 +4,14 @@
   "sourcePage": "https://commons.wikimedia.org/wiki/File:The_Whirlpool_Galaxy_(M51a)_with_it%27s_sparkling_arms_is_the_first_galaxy_found_to_have_a_spiral_structure_(heic0506c).jpg",
   "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/4/46/The_Whirlpool_Galaxy_%28M51a%29_with_it%27s_sparkling_arms_is_the_first_galaxy_found_to_have_a_spiral_structure_%28heic0506c%29.jpg",
   "dimensions": { "width": 7095, "height": 6219 },
-  "credit": "NASA, ESA, S. Beckwith (STScI), and the Hubble Heritage Team (STScI/AURA)",
-  "license": "Public domain declaration on Wikimedia Commons for NASA/ESA Hubble material",
+  "recordId": "heic0506c",
+  "officialPage": "https://esahubble.org/images/heic0506c/",
+  "credit": "ESA/Hubble and Digitized Sky Survey 2. Acknowledgements: Mahdi Zamani (ESA/Hubble)",
+  "instrument": "Digitized Sky Survey 2",
+  "releaseDate": "2005-04-25",
+  "sha1": "a985b5158b3df8e996dd65a3395bd6c0a1e7754b",
+  "license": "CC BY 4.0 per the official ESA/Hubble reuse policy and embedded file metadata",
+  "licenseUrl": "https://esahubble.org/copyright/",
+  "licenseNote": "Commons has a public-domain template, but the actual file metadata and official record credit DSS2. Preserve the full official credit rather than infer the instrument or rights from the archive name.",
   "inspected": true
 }

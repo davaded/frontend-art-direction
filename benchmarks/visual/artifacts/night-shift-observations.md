@@ -39,7 +39,42 @@ These records come from the local CUA browser session against `http://127.0.0.1:
 
 ## Shared runtime facts
 
-- Local asset: `shared/assets/m51-galaxy.jpg`, 7095x6219, inspected before use.
-- Source record: `shared/assets/m51-source.json`.
+- Local wide asset: `shared/assets/m51-galaxy.jpg`, 7095x6219, inspected before use.
+- Local close asset: `shared/assets/m51-hubble.jpg`, 6000x4164, inspected before use.
+- Source records: `shared/assets/m51-source.json` and `shared/assets/m51-hubble-source.json`.
+- A source audit corrected the wide record from an inferred Hubble/public-domain credit to the official DSS2/ESA-Hubble credit before the revised capture.
 - No placeholder, generated, remote font, or telemetry asset is used by this brief.
 - Temporary debugger blocking, cache, media, and viewport conditions were restored after testing.
+
+## Post-20 cycles / source and composition revision
+
+### Cycle 21 / Source identity
+
+- Defect: the original record described a DSS2 wide field as NASA/ESA Hubble material and used a public-domain label inferred from a Commons template.
+- Change: inspected the official ESA/Hubble record and embedded metadata, added the Hubble ACS record separately, and changed visible credits when the reading source changes.
+- Result: the wide field and close Hubble image each expose their record ID, instrument/source, credit, date, and reuse policy.
+
+### Cycle 22 / Subject hierarchy
+
+- Defect: the first page used oversized editorial type while the actual galaxy was too small to inspect.
+- Change: made the close Hubble image the hero material, reduced the title to a supporting role, and placed the title against the actual spiral rather than over an empty star field.
+- Result: the spiral and companion carry the first glance; the 1280x720 opening keeps the title, entry link, and image record legible.
+
+### Cycle 23 / Material continuity
+
+- Defect: unlabeled crosshairs and a detached field note asked the reader to locate features without showing them.
+- Change: named the core and companion in the pair view, added a nearby core crop, and connected the note back to the Core state.
+- Result: the visual argument now proceeds from pair to dust-lane detail with the described material adjacent to the copy.
+
+### Cycle 24 / Desktop result context
+
+- Defect: the desktop image was taller than the viewport, so a reading-distance change left the subject visible but the controls below the fold.
+- Change: staged the desktop instrument as an image-and-controls composition; at mobile it returns to a vertical reading order.
+- Result: at 1280x720 the 732x508 image stage and 344x54 control row are visible together; at 390x844 the 390x271 stage and 350x54 controls are visible together.
+
+### Cycle 25 / Independent comparison
+
+- Evidence: an unprimed screenshot review compared the original and revised desktop, mobile, narrow, and pair-state captures. The revised direction resolved hero hierarchy, image-to-note continuity, narrow overlap, orientation pacing, and source specificity.
+- Remaining decision: the review identified an apparent single-source/two-source contradiction. The brief and design record now explicitly define two complementary source records for one M51 encounter, so the final screenshots and source model agree.
+- Verdict: CURRENT WINS within the supplied screenshot comparison boundary. This remains visual evidence for this brief, not a universal quality claim for arbitrary products.
+- Structured journal: `.art-direction/visual-critique/critique-20261010222354-929501b0.json` records four resolved findings, the comparison boundary, and the next regression operation.

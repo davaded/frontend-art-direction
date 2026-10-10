@@ -18,29 +18,30 @@
       <nav class="site-nav" aria-label="Primary navigation">
         <a href="#field-guide">Field guide</a>
         <a href="#reading">Readings</a>
-        <a href="#source">Source <span aria-hidden="true">↗</span></a>
+        <a href="#source">Sources</a>
       </nav>
       <span class="edition">01 / 01</span>
     </header>
 
     <main id="top">
-      <section class="hero" aria-labelledby="hero-title">
-        <img class="hero-image" src="../shared/assets/m51-galaxy.jpg" alt="The Whirlpool Galaxy M51 and its companion against a field of stars" />
-        <div class="hero-wash" aria-hidden="true"></div>
+      <section class="hero" aria-labelledby="hero-title" data-image-region>
+        <img class="hero-image" src="../shared/assets/m51-hubble.jpg" alt="Hubble's view of M51: blue spiral arms, dark dust lanes and its golden companion galaxy" data-source-image />
+        <p class="image-error" role="status" hidden>The Hubble image could not load. Its image record is available in Sources.</p>
         <div class="hero-copy" data-reveal>
-          <p class="eyebrow">NORTH / LATE SPRING / 23 MILLION LIGHT YEARS</p>
-          <h1 id="hero-title"><span>M51</span><em>The Whirlpool<br />Galaxy</em></h1>
-          <p class="hero-note">A field guide to a spiral structure under tension.</p>
+          <p class="eyebrow">MESSIER 51 / CANES VENATICI</p>
+          <h1 id="hero-title">The Whirlpool<br />Galaxy</h1>
+          <p class="hero-note">A spiral, a companion, and the dust lanes between them.</p>
+          <a class="hero-scroll" href="#field-guide">Into the field guide <span aria-hidden="true">↓</span></a>
         </div>
-        <a class="hero-scroll" href="#field-guide" aria-label="Continue to the field guide"><span>Continue</span><span aria-hidden="true">↓</span></a>
+        <a class="hero-credit" href="#source">Hubble / ACS · heic0506a</a>
       </section>
 
       <section class="intro section-grid" id="field-guide" aria-labelledby="intro-title">
         <div class="section-kicker"><span>01</span><span>ORIENTATION</span></div>
         <div class="intro-copy" data-reveal>
-          <h2 id="intro-title">A spiral<br /><i>in conversation.</i></h2>
-          <p class="lede">M51 is not one island of light. Its companion galaxy pulls at the larger spiral, and the image keeps that exchange visible across distance.</p>
-          <p class="body-copy">Start wide enough to keep the surrounding field. Then move inward. The closer view does not reveal a new object; it changes the pace at which the same object can be read.</p>
+          <h2 id="intro-title">Two galaxies.<br />One encounter.</h2>
+          <p class="lede">The bright spiral is NGC 5194. Its smaller companion, NGC 5195, passes behind it. Their encounter shapes the relationship we see in the arms.</p>
+          <p class="body-copy">The wide field locates the pair among surrounding stars. Hubble's closer view resolves the spiral: dark dust, blue star clusters, and pink regions of star formation.</p>
         </div>
         <aside class="fact-rail" aria-label="M51 facts" data-reveal>
           <div><span>CATALOGUE</span><strong>Messier 51</strong></div>
@@ -53,48 +54,51 @@
         <div class="reading-header section-grid">
           <div class="section-kicker"><span>02</span><span>READING DISTANCE</span></div>
           <div>
-            <p class="eyebrow">THE SAME IMAGE / THREE APPROACHES</p>
-            <h2 id="reading-title">Change your distance.</h2>
+            <p class="eyebrow">FROM FIELD TO STRUCTURE</p>
+            <h2 id="reading-title">Closer to the spiral.</h2>
           </div>
-          <p class="reading-intro">The image is an instrument. Choose where to stand before you decide what you see.</p>
+          <p class="reading-intro">Two source images reveal different scales of the same encounter.</p>
         </div>
-        <div class="image-instrument" data-view="wide">
+        <div class="image-instrument" data-view="companion" data-image-region>
           <div class="view-stage">
-            <img id="reading-image" src="../shared/assets/m51-galaxy.jpg" alt="Detailed view of M51" />
+            <img id="reading-image" src="../shared/assets/m51-hubble.jpg" alt="Hubble's complete view of M51 and its companion" />
             <div class="image-error" role="status" hidden>The image could not load. The source record is still available below.</div>
-            <span class="crosshair crosshair-a" aria-hidden="true"></span>
-            <span class="crosshair crosshair-b" aria-hidden="true"></span>
+            <span class="feature feature-core" aria-hidden="true"><span></span>NGC 5194</span>
+            <span class="feature feature-companion" aria-hidden="true"><span></span>NGC 5195</span>
           </div>
           <div class="instrument-footer">
-            <div class="view-label"><span id="view-index">A</span><span id="view-name">WIDE FIELD</span></div>
-            <div class="view-copy" id="view-copy">The spiral holds its companion, its surrounding stars, and the quiet scale of the frame.</div>
+            <div class="view-label"><span id="view-index">B</span><span id="view-name">THE PAIR</span></div>
+            <div class="view-copy" id="view-copy" aria-live="polite">The blue spiral and golden companion share the frame. The smaller galaxy passes behind M51.</div>
             <div class="view-controls" role="group" aria-label="Choose reading distance">
-              <button class="view-button is-active" type="button" data-view-target="wide" aria-pressed="true"><span>A</span> Wide field</button>
-              <button class="view-button" type="button" data-view-target="companion" aria-pressed="false"><span>B</span> Companion</button>
+              <button class="view-button" type="button" data-view-target="wide" aria-pressed="false"><span>A</span> Wide field</button>
+              <button class="view-button is-active" type="button" data-view-target="companion" aria-pressed="true"><span>B</span> The pair</button>
               <button class="view-button" type="button" data-view-target="core" aria-pressed="false"><span>C</span> Core</button>
             </div>
           </div>
+          <div class="image-caption"><a id="view-source" href="https://www.astropix.org/image/esahubble/heic0506a" target="_blank" rel="noreferrer">heic0506a / Hubble ACS</a><span id="view-credit">NASA, ESA, S. Beckwith (STScI), and The Hubble Heritage Team (STScI/AURA)</span></div>
         </div>
       </section>
 
-      <section class="note section-grid" aria-labelledby="note-title">
-        <div class="section-kicker"><span>03</span><span>FIELD NOTE</span></div>
+      <section class="note" aria-labelledby="note-title">
+        <figure class="note-image" data-image-region>
+          <div class="note-crop"><img src="../shared/assets/m51-hubble.jpg" alt="A closer crop of M51's spiral core and the dark dust lanes around it" data-source-image /><p class="image-error" role="status" hidden>The detail could not load. The Hubble source record remains available below.</p></div>
+          <figcaption>CORE DETAIL / heic0506a · crop of the Hubble image</figcaption>
+        </figure>
         <div class="note-copy" data-reveal>
-          <p class="eyebrow">A SMALLER DISTANCE</p>
-          <h2 id="note-title">Look for the<br /><i>relationship.</i></h2>
-          <p class="lede">The companion is easy to miss when the frame becomes spectacle. Hold the image long enough to see that the irregularity is the subject.</p>
-        </div>
-        <div class="observation" data-reveal>
-          <span class="observation-mark" aria-hidden="true">✳</span>
-          <p>Best read as a pair. Let the eye travel from the bright core to the smaller companion, then back along the dust lane.</p>
-          <span class="observation-meta">FIELD NOTE / 01</span>
+          <div class="section-kicker"><span>03</span><span>FIELD NOTE</span></div>
+          <h2 id="note-title">Follow the dust.</h2>
+          <p class="lede">The dark lanes are part of the spiral, not gaps in the image. They trace the inner edges of the arms around the bright core.</p>
+          <p class="observation">Dust, pink star-forming regions, then blue clusters: the arm carries a sequence, not a single colour.</p>
+          <a class="note-link" href="#reading-core">Return to the core <span aria-hidden="true">↑</span></a>
         </div>
       </section>
 
       <section class="source-band" id="source" aria-labelledby="source-title">
-        <div class="source-heading"><span class="section-kicker"><span>04</span><span>ORIGIN</span></span><h2 id="source-title">Keep the<br /><i>source visible.</i></h2></div>
-        <div class="source-copy"><p>This guide uses an original-resolution NASA/ESA Hubble image. The view is authored; the material is not.</p><a href="https://commons.wikimedia.org/wiki/File:The_Whirlpool_Galaxy_(M51a)_with_it%27s_sparkling_arms_is_the_first_galaxy_found_to_have_a_spiral_structure_(heic0506c).jpg" target="_blank" rel="noreferrer">Open image record <span aria-hidden="true">↗</span></a><a href="https://esahubble.org/images/heic0506c/" target="_blank" rel="noreferrer">ESA Hubble context <span aria-hidden="true">↗</span></a></div>
-        <div class="source-stamp"><span>NASA / ESA / STScI</span><strong>HUBBLE<br />HERITAGE</strong></div>
+        <div class="source-heading"><span class="section-kicker"><span>04</span><span>IMAGE RECORDS</span></span><h2 id="source-title">The material<br />behind the guide.</h2><p>Two observations of M51. Released 25 April 2005. Crops are identified; the source images retain their original colour.</p><a class="license-link" href="https://esahubble.org/copyright/" target="_blank" rel="noreferrer">ESA/Hubble reuse policy / CC BY 4.0</a></div>
+        <div class="source-records">
+          <article><span class="record-id">heic0506a / HUBBLE ACS</span><h3>Whirlpool Galaxy and companion</h3><p>NASA, ESA, S. Beckwith (STScI), and The Hubble Heritage Team (STScI/AURA)</p><a href="https://www.astropix.org/image/esahubble/heic0506a" target="_blank" rel="noreferrer">View Hubble image record <span aria-hidden="true">↗</span></a></article>
+          <article><span class="record-id">heic0506c / WIDE FIELD</span><h3>M51 in its surrounding field</h3><p>ESA/Hubble and Digitized Sky Survey 2. Acknowledgements: Mahdi Zamani (ESA/Hubble)</p><a href="https://esahubble.org/images/heic0506c/" target="_blank" rel="noreferrer">View wide-field record <span aria-hidden="true">↗</span></a></article>
+        </div>
       </section>
     </main>
 

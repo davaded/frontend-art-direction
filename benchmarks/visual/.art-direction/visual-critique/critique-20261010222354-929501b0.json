@@ -1,0 +1,205 @@
+{
+  "protocol": "frontend-art-direction/visual-critique-v1",
+  "version": 1,
+  "id": "critique-20261010222354-929501b0",
+  "status": "complete",
+  "createdAt": "2026-10-10T22:23:54.167Z",
+  "updatedAt": "2026-10-10T22:24:25.061Z",
+  "projectRoot": "/Users/daiyudai/code/frontend-art-direction/benchmarks/visual",
+  "query": "Fresh-eyes comparison after twenty rendered cycles: does the current M51 field guide preserve subject truth, source continuity, reading distance, and a complete result context?",
+  "reviewer": {
+    "mode": "unprimed",
+    "implementationHistory": "not-read-before-first-look"
+  },
+  "target": {
+    "capture": {
+      "ref": "artifacts/night-shift-after-critique-desktop.jpg",
+      "kind": "capture-or-media",
+      "exists": true,
+      "size": 441766,
+      "valid": true
+    },
+    "reference": {
+      "ref": "artifacts/night-shift-before-critique-desktop.jpg",
+      "kind": "capture-or-media",
+      "exists": true,
+      "size": 387905,
+      "valid": true
+    },
+    "viewport": "1280x720",
+    "state": "default",
+    "round": 25
+  },
+  "findings": [
+    {
+      "id": "source-continuity",
+      "severity": "P1",
+      "region": "reading instrument and source records",
+      "observation": "The earlier frame presented a source identity that did not match the actual image and left the relation between the image, note, and record ambiguous.",
+      "consequence": "The guide could feel like a generic dark treatment because the material truth was not legible at the moment of reading.",
+      "evidence": [
+        {
+          "ref": "artifacts/night-shift-before-critique-desktop.jpg",
+          "kind": "capture-or-media",
+          "exists": true,
+          "size": 387905,
+          "valid": true
+        },
+        {
+          "ref": "artifacts/night-shift-after-critique-desktop.jpg",
+          "kind": "capture-or-media",
+          "exists": true,
+          "size": 441766,
+          "valid": true
+        }
+      ],
+      "repair": "Use two explicitly identified records of the same M51 encounter, show the active record beside the state, connect the field note to the core state, and preserve both records in the source band.",
+      "confidence": "render-certain",
+      "status": "resolved",
+      "recordedAt": "2026-10-10T22:24:12.249Z"
+    },
+    {
+      "id": "hero-hierarchy",
+      "severity": "P1",
+      "region": "hero subject and title",
+      "observation": "The prior title was oversized relative to a weak wide-field subject, while the actual galaxy remained too small to carry the opening.",
+      "consequence": "The first read had poster hierarchy without a clear product subject.",
+      "evidence": [
+        {
+          "ref": "artifacts/night-shift-before-critique-desktop.jpg",
+          "kind": "capture-or-media",
+          "exists": true,
+          "size": 387905,
+          "valid": true
+        },
+        {
+          "ref": "artifacts/night-shift-after-critique-desktop.jpg",
+          "kind": "capture-or-media",
+          "exists": true,
+          "size": 441766,
+          "valid": true
+        }
+      ],
+      "repair": "Lead with the inspected Hubble subject, reduce the title ceiling, and keep the next section visible at the bottom of the first viewport.",
+      "confidence": "render-certain",
+      "status": "resolved",
+      "recordedAt": "2026-10-10T22:24:12.311Z"
+    },
+    {
+      "id": "narrow-header-flow",
+      "severity": "P2",
+      "region": "320px header and hero continuation",
+      "observation": "At the narrow viewport the primary destinations and the continuation link competed for the same vertical space.",
+      "consequence": "The entry route became cramped and the next action could overlap supporting copy.",
+      "evidence": [
+        {
+          "ref": "artifacts/night-shift-before-critique-narrow.jpg",
+          "kind": "capture-or-media",
+          "exists": true,
+          "size": 29792,
+          "valid": true
+        },
+        {
+          "ref": "artifacts/night-shift-after-critique-narrow.jpg",
+          "kind": "capture-or-media",
+          "exists": true,
+          "size": 32032,
+          "valid": true
+        }
+      ],
+      "repair": "Keep the three destinations visible with compact touch-safe type and place the continuation action in its own row below the hero copy.",
+      "confidence": "render-certain",
+      "status": "resolved",
+      "recordedAt": "2026-10-10T22:24:12.371Z"
+    },
+    {
+      "id": "result-context",
+      "severity": "P2",
+      "region": "desktop reading instrument",
+      "observation": "The first result layout pushed the reading controls below the viewport while the image occupied the full width.",
+      "consequence": "A user could see the image but not the action that changes the reading distance.",
+      "evidence": [
+        {
+          "ref": "artifacts/night-shift-before-result-layout.jpg",
+          "kind": "capture-or-media",
+          "exists": true,
+          "size": 129154,
+          "valid": true
+        },
+        {
+          "ref": "artifacts/night-shift-after-result-layout.jpg",
+          "kind": "capture-or-media",
+          "exists": true,
+          "size": 70028,
+          "valid": true
+        }
+      ],
+      "repair": "Use a two-column instrument at desktop widths so the source image, state controls, record identity, and explanatory copy are visible in one result context.",
+      "confidence": "render-certain",
+      "status": "resolved",
+      "recordedAt": "2026-10-10T22:24:12.432Z"
+    }
+  ],
+  "verdict": "CURRENT WINS",
+  "largestGap": "The comparison is bounded to the M51 field-guide brief; it does not establish excellence across unrelated future briefs or parity with a live reference.",
+  "nextOperation": "Run the same subject-to-source audit on the next generated brief before fine polish.",
+  "regressionCheck": "Repeat 1280x720, 390x844, 320x740, wide/pair/core source switches, reduced-motion, and induced-image-failure checks.",
+  "contract": {
+    "protocol": "frontend-art-direction/visual-critique-v1",
+    "status": "ready",
+    "purpose": "Provide a fresh, severity-ranked visual judgment before a meaningful round is accepted.",
+    "reviewer": {
+      "mode": "unprimed",
+      "implementationHistory": "do-not-read-before-first-look"
+    },
+    "target": {
+      "query": "Fresh-eyes comparison after twenty rendered cycles: does the current M51 field guide preserve subject truth, source continuity, reading distance, and a complete result context?",
+      "capture": "artifacts/night-shift-after-critique-desktop.jpg",
+      "reference": "artifacts/night-shift-before-critique-desktop.jpg",
+      "viewport": "1280x720",
+      "state": "default"
+    },
+    "reviewOrder": [
+      "thumbnail and first glance",
+      "subject and truth",
+      "composition and hierarchy",
+      "type and density",
+      "material and geometry",
+      "interaction and states",
+      "responsive re-staging",
+      "originality and template risk"
+    ],
+    "findingContract": [
+      "severity",
+      "region",
+      "observation",
+      "consequence",
+      "evidence",
+      "repair",
+      "confidence"
+    ],
+    "verdicts": [
+      "CURRENT WINS",
+      "REFERENCE WINS",
+      "INCONCLUSIVE"
+    ],
+    "hardRules": [
+      "a clean anti-pattern scan cannot certify taste or originality",
+      "CURRENT WINS cannot leave an open P0 or P1 finding",
+      "a critique journal is review evidence, not implementation proof"
+    ]
+  },
+  "decidedAt": "2026-10-10T22:24:24.998Z",
+  "proof": {
+    "capture": {
+      "ref": "artifacts/night-shift-after-critique-desktop.jpg",
+      "kind": "capture-or-media",
+      "exists": true,
+      "size": 441766,
+      "valid": true
+    },
+    "findingCount": 4,
+    "verdict": "CURRENT WINS"
+  },
+  "completedAt": "2026-10-10T22:24:25.061Z"
+}

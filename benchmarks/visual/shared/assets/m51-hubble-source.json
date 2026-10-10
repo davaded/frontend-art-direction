@@ -1,0 +1,17 @@
+{
+  "localFile": "m51-hubble.jpg",
+  "recordId": "heic0506a",
+  "title": "Out of this whirl: The Whirlpool Galaxy (M51) and companion galaxy",
+  "sourcePage": "https://www.astropix.org/image/esahubble/heic0506a",
+  "officialPage": "https://esahubble.org/images/heic0506a/",
+  "downloadUrl": "https://www.astropix.org/archive/esahubble/heic0506a/esahubble_heic0506a_6000.jpg",
+  "dimensions": { "width": 6000, "height": 4164 },
+  "sourceDimensions": { "width": 11477, "height": 7965 },
+  "credit": "NASA, ESA, S. Beckwith (STScI), and The Hubble Heritage Team (STScI/AURA)",
+  "instrument": "Hubble Advanced Camera for Surveys",
+  "releaseDate": "2005-04-25",
+  "license": "CC BY 4.0",
+  "licenseUrl": "https://esahubble.org/copyright/",
+  "modifications": "CSS crops only; no recolouring, compositing or generated replacement",
+  "inspected": true
+}

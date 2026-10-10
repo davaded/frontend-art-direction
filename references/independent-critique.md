@@ -66,3 +66,5 @@ End with exactly one of:
 - **INCONCLUSIVE**: evidence is insufficient or the comparison is not equivalent; name the next capture needed.
 
 Then name the largest remaining gap, the next operation, the affected round, and the regression check. A clean anti-pattern scan is useful evidence, but it cannot certify taste, originality, or visual quality by itself.
+
+State the comparison boundary. Winning against a weaker previous draft establishes the inspected improvement, not excellence across unrelated briefs or parity with a live reference that was never inspected. Separate screenshot judgments from runtime checks, and keep uncertain findings open until the appropriate evidence exists.

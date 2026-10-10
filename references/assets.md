@@ -45,6 +45,8 @@ Optimization format:
 
 Prefer first-party or original sources over reposts and aggregators. Inspect the actual file, not only a search thumbnail. Download or store the approved asset in the target project when permitted; do not make production rendering depend on an unstable search result.
 
+Verify the exact file record, not merely the hosting archive or an adjacent image. Different observations of the same subject can have different instruments, authors, credits, dates, and reuse terms. Keep those identities with the file and update the visible caption when an interaction switches sources. When a mirror's generic license template conflicts with the official record or embedded metadata, investigate the difference and retain the applicable full credit rather than inferring authorship from the archive name.
+
 ## Generation Contract
 
 When generating media:
@@ -63,6 +65,7 @@ Before handoff, verify every primary asset in the running surface:
 
 - it remains sharp at its rendered desktop and mobile size without visible upscaling;
 - the subject and focal point survive responsive cropping;
+- the subject has enough visible detail for its intended role; a high-resolution wide field can still be a weak close-up, so inspect the object itself rather than accept the file dimensions;
 - foreground type and controls leave the intended subject inspectable; fitting inside the viewport does not prove that a title has not covered a face, object edge, label, or important detail;
 - loading does not collapse layout or move adjacent controls;
 - alt text, captions, controls, poster/static behavior, and reduced-motion behavior match the asset's role;
@@ -73,3 +76,5 @@ Before handoff, verify every primary asset in the running surface:
 If the user supplied the asset, include it in the visual proof. If it exposes a crop or quality limitation, preserve the material and report the limitation rather than silently substituting something else.
 
 For an authored detail, make the crop's role clear and keep a path to the whole source when that distinction matters. Inspect thumbnails as well as the main stage: forcing unlike images into one ratio can remove the very objects the caption names. Natural proportions, different tracks, or an intentional focal crop are choices, not universal prescriptions. A source request failure is not permission to accept a tiny preview; use another attributable high-quality version, generate only when authenticity permits it, or report the unresolved asset.
+
+Connect observations to the material they describe. A named image feature should point to that feature; a note about a detail should leave the detail inspectable nearby or through a direct state change. Unlabeled crosshairs, invented measurements, and distant explanatory copy can make authentic material feel generic even when its resolution is excellent.
