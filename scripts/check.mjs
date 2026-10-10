@@ -23,6 +23,7 @@ import { ATLAS_SECTIONS, addResearchAtlasReference, closeResearchAtlas, recordRe
 import { addLiveVariant, closeLiveSession, createLiveSession, decideLiveVariant, recordLiveEvent } from "./live-iteration.mjs";
 import { addImageProposal, closeImageProposalSession, createImageProposalSession, decideImageProposal, recordImageEvidence, translateImageProposal } from "./image-proposal.mjs";
 import { addVisualFinding, closeVisualCritiqueSession, createVisualCritiqueSession, recordVisualVerdict } from "./visual-critique.mjs";
+import { lintProject } from "./visual-lint.mjs";
 
 const root = REPO_ROOT;
 const errors = [];
@@ -167,7 +168,7 @@ function checkPackage() {
   }
   if (packageJson.type !== "module") fail("package.json must use type=module");
   if (!packageJson.scripts?.test) fail("package.json is missing the test script");
-  for (const script of ["graph", "brief", "direction", "reference", "scout", "reference-build", "resource", "audit", "motion", "surface-mode", "design-operation", "design-loop", "research-atlas", "live", "image-proposal", "critique", "capture"]) {
+  for (const script of ["graph", "brief", "direction", "reference", "scout", "reference-build", "resource", "audit", "motion", "surface-mode", "design-operation", "design-loop", "research-atlas", "live", "image-proposal", "critique", "visual-lint", "capture"]) {
     if (!packageJson.scripts?.[script]) fail(`package.json is missing the ${script} script`);
   }
 }
@@ -249,8 +250,13 @@ async function checkSmoke() {
     const adaptiveMode = classifySurfaceMode("我要一个网站");
     const layoutOperation = resolveDesignOperation("现在太方正，排版没有质感");
     const vagueOperation = resolveDesignOperation("帮我优化一下");
+    const colorOperation = resolveDesignOperation("这个页面太灰，配色很单调");
+    const auditOperation = resolveDesignOperation("audit contrast and accessibility");
+    const delightOperation = resolveDesignOperation("make the interaction more memorable");
+    const extractOperation = resolveDesignOperation("extract the repeated tokens and components");
     if (readMode.mode !== "read" || operateMode.mode !== "operate" || adaptiveMode.mode !== "adaptive") fail("surface mode routing lost per-surface or adaptive behavior");
     if (layoutOperation.operation !== "layout" || vagueOperation.directionQuestion === null) fail("design operation routing did not separate explicit and vague feedback");
+    if (colorOperation.operation !== "colorize" || auditOperation.operation !== "audit" || delightOperation.operation !== "delight" || extractOperation.operation !== "extract") fail("design operation routing did not expose the Impeccable action vocabulary");
     const liveFixture = mkdtempSync(join(tmpdir(), "frontend-art-direction-live-"));
     try {
       mkdirSync(join(liveFixture, "artifacts"), { recursive: true });
@@ -294,6 +300,15 @@ async function checkSmoke() {
       if (finding.findings.length !== 1 || verdict.status !== "verdict-ready" || closedCritique.status !== "complete" || closedCritique.proof?.verdict !== "CURRENT WINS") fail("visual critique journal did not enforce and close the structured fresh-eyes protocol");
     } finally {
       rmSync(critiqueFixture, { recursive: true, force: true });
+    }
+    const lintFixture = mkdtempSync(join(tmpdir(), "frontend-art-direction-visual-lint-"));
+    try {
+      writeFileSync(join(lintFixture, "App.css"), `body { font-family: Inter, sans-serif; transition: all 200ms; animation: float 2s; color: #000; background: #fff; box-shadow: 0 0 2px #000; }\n`);
+      writeFileSync(join(lintFixture, "App.jsx"), `<button>placeholder text</button>\n`);
+      const lint = lintProject(lintFixture);
+      if (lint.status !== "completed-with-findings" || !lint.findings.some((item) => item.rule === "placeholder-content") || !lint.findings.some((item) => item.rule === "motion-without-reduced-motion") || !lint.findings.some((item) => item.rule === "interactive-focus")) fail("visual lint did not surface deterministic source findings");
+    } finally {
+      rmSync(lintFixture, { recursive: true, force: true });
     }
     const authoredDirection = selectVisualDirection("a reading tool for field notes", {
       authoredDirection: {

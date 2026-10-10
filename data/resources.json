@@ -36,6 +36,23 @@
       "avoid": "do not equate boldness with oversized type, gradients, glow, or random animation"
     },
     {
+      "id": "impeccable-design-vocabulary",
+      "label": "Impeccable design vocabulary and detectors",
+      "job": "route ambiguous design feedback into bounded actions and separate deterministic audit from visual critique",
+      "category": "agent-workflow",
+      "keywords": ["impeccable", "audit", "critique", "polish", "bolder", "quieter", "distill", "harden", "colorize", "typeset", "layout", "design vocabulary", "设计动作", "视觉评审"],
+      "frameworks": ["any"],
+      "sourceType": "official-skill",
+      "sourceUrl": "https://github.com/pbakaus/impeccable",
+      "trustTier": 5,
+      "installPolicy": "rewritten-locally",
+      "licenseBoundary": "Use the public workflow as provenance; inspect the upstream license before copying code, detector rules, or text.",
+      "states": "route the action first, keep audit findings separate from critique findings, and finish with rendered proof",
+      "performance": "prefer bounded passes and one evidence-backed repair batch over open-ended self-polish",
+      "accessibility": "audit contrast, keyboard, responsive behavior, reduced motion, and text fit independently from taste",
+      "avoid": "do not turn a command vocabulary into a fixed style or claim deterministic detectors can certify originality"
+    },
+    {
       "id": "local-primitives",
       "label": "Existing local primitives",
       "job": "accessible controls, forms, layout, stateful UI",

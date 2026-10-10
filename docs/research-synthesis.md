@@ -10,7 +10,7 @@ This note records the research used for the current skill redesign. It is a synt
 | [OpenAI Product Design](https://github.com/openai/role-specific-plugins/tree/main/plugins/product-design/skills) | Context router, research/audit/ideate/image-to-code/design-QA sequence, browser and image tooling | Context gate, concept-to-code handoff, visual source plus render QA |
 | [OpenAI frontend-app-builder](https://github.com/openai/plugins/blob/main/plugins/build-web-apps/skills/frontend-app-builder/SKILL.md) | Complete concept coverage, section/state concepts, design-system extraction, faithful implementation, browser proof | Full-surface planning, asset inventory, section-level visual comparison |
 | [UI/UX Pro Max](https://github.com/nextlevelbuilder/ui-ux-pro-max-skill) | Searchable design intelligence, persisted master/page overrides, variance/motion/density dials, stack/domain queries | Searchable local evidence, persistent global/page direction, explicit dials |
-| [Impeccable](https://github.com/pbakaus/impeccable) | Action vocabulary, live browser variants, hooks, context artifacts, bounded verification | Action routing, live variant contract, bounded passes, project context |
+| [Impeccable](https://github.com/pbakaus/impeccable) | Shared action vocabulary, durable product context, deterministic detector rules separated from LLM critique, and bounded visual verification | Expanded `design-operation` routing, `visual-critique` journal, live variant contract, structured project authority, and bounded evidence passes |
 | [Avoid AI Design](https://github.com/funboy322/avoid-ai-design) | Code-certain detector versus pixel judgment, first/second-order defaults, silhouette test, surgical versus rebuild depth | Separate detector and visual critique, anti-default calibration, scope-aware rewrite |
 | [Designer Skills design-review](https://github.com/julianoczkowski/designer-skills) | Mandatory screenshots, desktop/tablet/mobile states, interaction states, prioritized refinement list | Screenshot evidence at 3 viewports and state matrix |
 | [Screenshot Critique](https://github.com/dzhng/skills/tree/main/skills/visual/screenshot-critique) | Fresh unprimed reviewer, crops, before/after pixel proof, no self-certification | Fresh-eyes review and before/after evidence |
@@ -34,6 +34,7 @@ This note records the research used for the current skill redesign. It is a synt
 7. **Consistency lives in durable artifacts.** Product context, a master design system, page overrides, surface briefs, screenshots, and critique ledgers stop later pages from drifting back to the training median.
 8. **Completion is broader than the hero.** Real designers account for lower sections, states, responsive behavior, content, assets, and the ending before sign-off.
 9. **Iteration must have a question.** A new round is justified by a visible defect, an unresolved decision, a failed state, a fidelity gap, or a new user signal. Blind polishing consumes time without improving the design.
+10. **Action vocabulary reduces vague edits.** A request such as “more color”, “more memorable”, “too gray”, “hard to use”, or “too slow” should route to a bounded operation with a distinct proof target; the operation must not become a hidden visual template.
 
 ## Second Pass: Loop And Review Systems
 
@@ -50,6 +51,8 @@ The additional public skill review found a gap between a plan and a production s
 The resulting conclusion is operational: a skill cannot guarantee good taste with a larger list of styles. It can make weak output harder to accept by forcing subject-specific choices, real references, persistent decisions, rendered comparison, an independent critique, a largest-gap repair, and an evidence-backed signoff. The freedom layer remains intact because the rubric evaluates the chosen direction's coherence and fit rather than forcing one visual skin.
 
 The implementation now makes that research durable through `scripts/research-atlas.mjs` and `.art-direction/research-atlas/<id>.json`. The atlas triages user references first, requires local inspection evidence for selected sources, lets different sources win different sections, records selected and unavailable skills, and stores the synthesis with template-risk and rejected defaults. `design-loop start` creates and links the atlas; `design-loop close` refuses sign-off while the atlas is open. This closes the gap between mentioning a good reference and proving that it changed a visible design decision.
+
+The current Impeccable review adds a second separation: `design-operation` routes the user's requested change, `audit` is reserved for deterministic or technical checks, and `critique` records visual judgment with fresh rendered evidence. This prevents a contrast detector from pretending to know whether a composition has a point of view, while also preventing taste language from hiding measurable accessibility, performance, or responsive defects.
 
 ## Resulting Skill Contract
 

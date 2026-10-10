@@ -16,6 +16,7 @@ import { classifySurfaceMode, renderSurfaceMode } from "./surface-mode.mjs";
 import { renderDesignOperation, resolveDesignOperation } from "./design-operation.mjs";
 import { renderDesignLoop } from "./design-loop.mjs";
 import { buildLiveIterationContract } from "./live-iteration.mjs";
+import { lintProject } from "./visual-lint.mjs";
 
 const HELP = `audit.mjs [project-root] [options]
 
@@ -52,6 +53,14 @@ export const REFERENCE_COVERAGE = [
     capability: "deliberate aesthetic direction and rejection of generic AI-looking frontend output",
     implementation: "data/profiles.json + data/styles.json + data/quality-gates.json",
     command: "brief / audit",
+    status: "implemented-locally",
+  },
+  {
+    id: "impeccable",
+    requestedName: "Impeccable design vocabulary",
+    capability: "bounded design actions, deterministic audit versus visual critique, and durable project context",
+    implementation: "scripts/design-operation.mjs + scripts/visual-critique.mjs + scripts/live-iteration.mjs + data/resources.json",
+    command: "design-operation / critique / live / audit",
     status: "implemented-locally",
   },
   {
@@ -279,6 +288,7 @@ export async function buildAudit({
   const root = resolve(projectRoot ?? process.cwd());
   const authoredDirection = readAuthoredDirection(directionFile);
   const scan = scanProject(root, { maxFiles });
+  const visualLint = lintProject(root, { maxFiles });
   const graph = buildProjectGraph(root, { maxFiles });
   const graphQuery = queryProjectGraph(graph, query, { limit });
   const brief = buildBrief({ query, projectRoot: root, authoredDirection });
@@ -345,6 +355,7 @@ export async function buildAudit({
     { id: "product-signal", label: "product or experience signal", status: "completed", evidence: `${brief.productSignal.status}; ${brief.productSignal.mode === "product" ? `${brief.productSignal.object}; ${brief.productSignal.primaryAction}` : `${brief.productSignal.experience.subject}; ${brief.productSignal.experience.creativeThesis}`}` },
     { id: "surface-mode", label: `visitor mode: ${surfaceMode.label}`, status: "completed", evidence: `${surfaceMode.confidence}; ${surfaceMode.decision}` },
     { id: "design-operation", label: `design operation: ${designOperation.label}`, status: "completed", evidence: `${designOperation.confidence}; ${designOperation.purpose}` },
+    { id: "visual-lint", label: "deterministic visual lint", status: visualLint.status, evidence: `${visualLint.findings.length} findings across ${visualLint.filesScanned} source files; routes to design operations, not taste certification` },
     { id: "research-atlas", label: "reference research atlas and section synthesis", status: "required", evidence: researchAtlas.evidence },
     { id: "design-loop", label: "20-round design production loop", status: "ready", evidence: `${designLoop.scope}; choices, construction, rendered critique, responsive/state proof, and signoff are required` },
     { id: "surface-completeness", label: "surface completion contract", status: "completed", evidence: `${(referenceBuild?.completionContract ?? brief.completionContract).status}; ${(referenceBuild?.completionContract ?? brief.completionContract).scope}` },
@@ -362,6 +373,7 @@ export async function buildAudit({
     ...brief.openEvidence.slice(0, 3),
     ...(unresolved > 0 ? [`${unresolved} unresolved relative import${unresolved === 1 ? "" : "s"} remain visible in the graph; verify aliases or generated files.`] : []),
     "Visual iteration is planned, not executed by this audit: run the target, inspect screenshots, repair observed defects, and compare recaptures before claiming visual acceptance.",
+    ...(visualLint.findings.length > 0 ? [`Deterministic visual lint found ${visualLint.findings.length} source finding${visualLint.findings.length === 1 ? "" : "s"}; route them through the suggested operations, then confirm the rendered result.`] : []),
     "Research Atlas is required before design-loop signoff: inspect references, record section winners, and write the synthesis with template-risk.",
     "Live iteration is a ready protocol, not a browser run: start a session only when the target dev server and browser adapter are available, then record baseline, decision, source diff, and after-capture evidence.",
   ];
@@ -380,6 +392,7 @@ export async function buildAudit({
     visualIteration,
     surfaceMode,
     designOperation,
+    visualLint,
     researchAtlas,
     designLoop,
     liveIteration,
@@ -411,6 +424,7 @@ export async function buildAudit({
       productSignal: brief.productSignal,
       surfaceMode,
       designOperation,
+      visualLint,
       researchAtlas,
       designLoop,
       liveIteration,
@@ -530,6 +544,9 @@ export function renderAuditMarkdown(audit) {
     : "";
   const pipeline = audit.pipeline?.map((item) => `- **${item.status}** ${item.label}: ${item.evidence}`).join("\n") ?? "- Pipeline status unavailable.";
   const dials = Object.entries(audit.controlDials ?? {}).map(([key, value]) => `- **${key}**: ${value}`).join("\n") || "- No control dials recorded.";
+  const visualLint = audit.proof.visualLint
+    ? `\n## Deterministic Visual Lint\n\n- Status: **${audit.proof.visualLint.status}**\n- Files: **${audit.proof.visualLint.filesScanned}** · rules: **${audit.proof.visualLint.rulesRun}**\n- Findings: **${audit.proof.visualLint.findings.length}**; suggested operations: ${[...new Set(audit.proof.visualLint.findings.map((item) => item.suggestedOperation))].join(", ") || "none"}\n- Policy: detectors route the next inspection; they do not certify taste or originality.\n`
+    : "";
   const aiDefaultRejections = [...new Set([
     ...(audit.proof.direction.visualDirection?.antiAiChecks ?? []),
     ...(audit.proof.direction.visualDirection?.visualTreatment?.antiAiChecks ?? []),
@@ -570,6 +587,8 @@ ${pipeline}
 ${dials}
 
 ${renderAuthorityMarkdown(audit.proof.direction.constraintAuthority)}
+
+${visualLint}
 
 ${renderCreativeProcess(audit.proof.direction.visualDirection?.creativeProcess)}
 

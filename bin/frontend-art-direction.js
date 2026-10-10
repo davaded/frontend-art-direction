@@ -37,6 +37,7 @@ Usage:
   frontend-art-direction live <start|status|record|add-variant|accept|discard> [options]
   frontend-art-direction image-proposal <start|status|add|select|reject|translate|record|close> [options]
   frontend-art-direction critique <start|status|add|verdict|close> [options]
+  frontend-art-direction visual-lint <project-root> [options]
   frontend-art-direction check
 
 Options:
@@ -84,6 +85,7 @@ if (command === "research-atlas") runNodeScript("research-atlas.mjs", argv.slice
 if (command === "live") runNodeScript("live-iteration.mjs", argv.slice(1));
 if (command === "image-proposal") runNodeScript("image-proposal.mjs", argv.slice(1));
 if (command === "critique") runNodeScript("visual-critique.mjs", argv.slice(1));
+if (command === "visual-lint") runNodeScript("visual-lint.mjs", argv.slice(1));
 if (command === "check") runNodeScript("check.mjs", argv.slice(1));
 
 const installArgs = command === "install" ? argv.slice(1) : argv;

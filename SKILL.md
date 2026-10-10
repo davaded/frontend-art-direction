@@ -49,7 +49,7 @@ node <skill-root>/scripts/audit.mjs <project-root> \
   --query "<product, screen, or implementation question>" --format md
 ```
 
-It runs the full local pipeline on every substantial pass: local evidence, dependency graph, design intelligence, all saved reference lenses, resource provenance, the reference/build contract, the internal Transitions.dev motion review, and the compact `Decision / Changed / Proof / Open` contract. Motion is on by default; add `--offline` only when the private motion cache must not be refreshed.
+It runs the full local pipeline on every substantial pass: local evidence, dependency graph, deterministic visual lint, design intelligence, all saved reference lenses, resource provenance, the reference/build contract, the internal Transitions.dev motion review, and the compact `Decision / Changed / Proof / Open` contract. Motion is on by default; add `--offline` only when the private motion cache must not be refreshed.
 
 For a narrower read, run the local scanner directly:
 
@@ -192,7 +192,7 @@ For this skill itself, run:
 npm test
 ```
 
-The reference integrations are executable rather than name-only documentation: design intelligence (`brief`), visitor/action routing (`surface-mode`, `design-operation`), research evidence and section synthesis (`research-atlas`), the 20-round production contract and persisted quality gate (`design-loop`), visual direction (`direction`), repository graph (`graph`), role-based reference composition (`reference`), one-sentence implementation contracts (`reference-build`), compact response pipeline (`audit`), curated resources (`resource`), live variant journaling and proof gate (`live`), image proposal-to-code journaling (`image-proposal`), structured independent visual critique (`critique`), and the internal motion bridge (`motion`).
+The reference integrations are executable rather than name-only documentation: design intelligence (`brief`), visitor/action routing (`surface-mode`, `design-operation`), evidence-only source lint (`visual-lint`), research evidence and section synthesis (`research-atlas`), the 20-round production contract and persisted quality gate (`design-loop`), visual direction (`direction`), repository graph (`graph`), role-based reference composition (`reference`), one-sentence implementation contracts (`reference-build`), compact response pipeline (`audit`), curated resources (`resource`), live variant journaling and proof gate (`live`), image proposal-to-code journaling (`image-proposal`), structured independent visual critique (`critique`), and the internal motion bridge (`motion`).
 
 ## Output Contract
 

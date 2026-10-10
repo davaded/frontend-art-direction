@@ -34,6 +34,8 @@ For a new or substantially changed surface:
 
 For substantial work, use [visual-iteration.md](visual-iteration.md) for the screenshot-to-code and screenshot-to-image-to-code loops. Keep the baseline, named visible defects, code/asset repairs, and inspected recaptures. The workflow is complete when remaining material issues are resolved or honestly blocked; taking screenshots without using them to guide repairs is insufficient.
 
+Run `node <skill-root>/scripts/visual-lint.mjs <project-root>` before visual critique when the target is available. Treat its findings as deterministic leads for `audit`, `harden`, `typeset`, `colorize`, `animate`, `distill`, or `extract`; confirm every meaningful finding against the rendered surface because source detectors cannot certify taste, originality, or intentional exceptions.
+
 When the target project already exposes Playwright or Puppeteer, create comparable local evidence with:
 
 ```bash
