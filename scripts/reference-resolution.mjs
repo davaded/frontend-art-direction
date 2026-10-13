@@ -57,10 +57,28 @@ function referenceMatchScore(reference, input) {
   };
 }
 
+function discoveryReference(channel, url) {
+  return {
+    ...externalReference(url || channel.url),
+    id: channel.id,
+    label: channel.label,
+    sourceType: "discovery-channel",
+    roles: ["reference-discovery"],
+    borrow: [channel.use],
+    reject: [channel.limit, "Trace the original work before borrowing; a discovery index is not an inspected visual grammar."],
+  };
+}
+
 export function resolveReference(input, references = loadDataset("reference-lenses.json").references) {
   const url = extractUrl(input);
   const hostname = url ? new URL(url).hostname.replace(/^www\./, "") : "";
-  const candidates = hostname ? references.filter((reference) => new URL(reference.url).hostname.replace(/^www\./, "") === hostname) : references;
+  const tokens = meaningfulTokens(positiveRoutingText(input));
+  const discoveries = (loadDataset("reference-sources.json").discoveryChannels ?? [])
+    .filter((channel) => !references.some((reference) => new URL(reference.url).hostname === new URL(channel.url).hostname))
+    .filter((channel) => hostname ? new URL(channel.url).hostname.replace(/^www\./, "") === hostname : tokens.includes(channel.id))
+    .map((channel) => discoveryReference(channel, url));
+  const pool = [...references, ...discoveries];
+  const candidates = hostname ? pool.filter((reference) => new URL(reference.url).hostname.replace(/^www\./, "") === hostname) : pool;
   if (hostname && candidates.length === 0) return { reference: externalReference(url), score: 1, hits: [url], external: true };
   const ranked = candidates.map((reference) => ({
     reference,

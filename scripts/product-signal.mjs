@@ -200,7 +200,7 @@ export function buildProductSignal({
   const intentQuery = withoutReferenceUrls(query);
   const visitorMode = surfaceMode || classifySurfaceMode(intentQuery).mode;
   const readingMode = visitorMode === "read";
-  const requestedProfileId = String(profile.id ?? "adaptive-surface").split(/\s+/)[0];
+  const requestedProfileId = String(profile.id || "adaptive-surface").trim().split(/\s+/)[0] || "adaptive-surface";
   const profileId = readingMode ? "reading-surface" : inferProfileId(intentQuery, requestedProfileId);
   const defaults = PROFILE_SIGNALS[profileId] ?? PROFILE_SIGNALS["adaptive-surface"];
   const mode = proposal?.mode ?? inferSignalMode(intentQuery, profileId, profile, visitorMode);

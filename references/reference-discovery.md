@@ -34,6 +34,8 @@ The scout exposes all channels below as a reserve and recommends a few by job. T
 | Complete visual concept and type/image relationships | [Behance](https://www.behance.net/) | Whole project; distinguish a presentation board from a live implementation |
 | Real screen and task sequence | [Mobbin](https://mobbin.com/) | Captured states, entry/action/result/recovery path; current behavior where relevant |
 | Focused component or micro-interaction | [Dribbble](https://dribbble.com/), existing component/motion reserve | Specimen anatomy, state behavior, constraints; whole-product usability remains unproven |
+| Cross-media composition or motion relationships | [Inspora](https://www.inspora.design/) | Recorded or live medium, creator link, complete sequence; trace the original before borrowing |
+| Website motion and section continuity | [MotionSites AI](https://motionsites.ai/) | Accessible demo, full-page scope and responsive behavior; distinguish video, live controls and licensed material |
 | Material, image, color, or visual mood | [Pinterest](https://www.pinterest.com/), [Huaban](https://huaban.com/) | Original source, authorship, asset rights; use a moodboard as a hypothesis |
 | Fresh discovery or missing channels | [Muzli](https://muz.li/), [Eagle Blog](https://cn.eagle.cool/blog/post/best-websites-designers-love-for-finding-design-inspirations) | Creator/live-project link, not the aggregator's popularity |
 
@@ -52,6 +54,8 @@ The useful unit of research is a relationship, not a skin. Current reference sou
 Translate these observations into the build contract as: dominant/counterweight, per-region placement and text alignment, natural measure, named empty-space purpose, optional versus core relationships, and explicit wide/intermediate/narrow regrouping. A reference pass fails when it only returns colors, gradients, rounded corners, or a list of attractive components.
 
 Component libraries complement page research. Load `reference-composition` and `resource-catalog` for a named gap in the chosen structure; combine source-owned pieces with one coherent type, material, spacing, and state language. A pile of beautiful components does not choose the page's relationships for it.
+
+One inspected specimen is Kyle Thacker's [Soft glass workspace picker](https://www.inspora.design/posts/soft-glass-workspace-picker), viewed on 2026-10-13 at 1280x720. The recorded demo attaches a view-selection popover to its toolbar trigger and combines icons, labels and checkmarks to expose enabled views. Those contextual and state relationships can inform a target's own controls; the glass material and palette remain choices. Inspora links to the [creator's original post](https://x.com/kylethacker/status/2106909046880244165), but that original prototype was not inspected. This observation establishes a visible design hypothesis, not functioning input, exclusive selection, keyboard behavior, mobile layout or a translated target result.
 
 ## Hardware And Peripheral Lens
 

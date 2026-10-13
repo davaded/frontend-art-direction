@@ -581,7 +581,7 @@ async function checkSmoke() {
     }
     if (!brief.recommendation.profile?.id || !brief.recommendation.motion?.id) fail("brief smoke output is incomplete");
     if (designLoop.rounds !== 20 || designLoop.roundsDetail.length !== 20 || designLoop.roundsDetail.at(-1)?.id !== "signoff" || !renderDesignLoop(designLoop).includes("20-Round Design Production Loop")) fail("design production loop smoke output is incomplete");
-    if (!brief.productSignal?.object || !brief.productSignal?.primaryAction || !brief.productSignal?.visibleResult || !brief.completionContract?.requirements?.length || !brief.quality.gates.some((gate) => gate.id === "product-signal") || !brief.quality.gates.some((gate) => gate.id === "surface-completeness") || !brief.quality.antiPatterns.some((item) => item.id === "presentation-shell")) fail("brief did not expose the product and completion contracts");
+    if (!brief.productSignal?.object || !brief.productSignal?.primaryAction || !brief.productSignal?.visibleResult || !brief.completionContract?.requirements?.length || !brief.completionContract.requirements.some((item) => item.includes("invalidate stale derived state")) || !brief.quality.gates.some((gate) => gate.id === "product-signal") || !brief.quality.gates.some((gate) => gate.id === "surface-completeness") || !brief.quality.antiPatterns.some((item) => item.id === "presentation-shell")) fail("brief did not expose the product, state-integrity, and completion contracts");
     if (!map.results.some((item) => item.path === "package.json")) fail("project map did not rank package.json for a package query");
     if (graph.scan.graphNodes === 0 || graph.scan.graphEdges === 0) fail("project graph smoke output is empty");
     if (graphQuery.results.length === 0) fail("project graph query returned no results");
@@ -1180,6 +1180,38 @@ function checkNewMotionResources() {
     const scout = scoutReferences(query, { limit: 1 });
     if (scout.discoveryPlan.channels[0]?.id !== id || scout.discoveryPlan.status !== "live-inspection-required" || scout.selected.length) fail(`named discovery source became unreachable or a selected visual authority: ${query}`);
   }
+  for (const [query, id] of [["艺术家档案，参考Inspora", "inspora"], ["artist archive like MotionSites", "motionsites"], ["artist archive like https://www.inspora.design/?category=Motion", "inspora"]]) {
+    const build = buildReferenceBuild({ query });
+    if (build.primaryReference.id !== id || build.primaryReference.sourceType !== "discovery-channel" || !build.primaryReference.explicit || build.visualGenome.family !== "unknown until live inspection") fail(`named discovery reference was lost or gained an invented visual grammar: ${query}`);
+  }
+}
+
+async function checkForwardRequestRouting() {
+  const query = "给独立策展人做一个整理借展作品和布展顺序的工具，参考 Inspora。";
+  const fixture = mkdtempSync(join(tmpdir(), "frontend-art-direction-curator-"));
+  try {
+    const outputs = [selectVisualDirection(query), buildBrief({ query }), buildReferenceBuild({ query }), await buildAudit({ query, projectRoot: fixture, motion: false, offline: true })];
+    for (const result of outputs) {
+      if (result.productRequest.surfaceMode.mode !== "operate" || result.productRequest.profile.record.id !== "adaptive-surface" || result.productSignal.status !== "needs-target-proposal") fail("artwork subject vocabulary displaced an explicit uncatalogued operating task or concealed unresolved purpose");
+    }
+    for (const [request, expected] of [["an artwork management tool", "operate"], ["艺术作品编辑器", "operate"], ["experimental visual form", "experience"], ["艺术工具官网", "persuade"], ["艺术工具使用文档", "read"], ["文档编辑器", "operate"]]) {
+      if (classifySurfaceMode(request).mode !== expected) fail(`primary surface job was displaced by its subject: ${request}`);
+    }
+    const authored = { label: "Loan sequence", signature: "Stable work IDs connect readiness and order", rationale: "Resolve lender readiness while arranging installation", firstViewport: { layout: "A register and room sequence", dominant: "The loaned works" }, visualTreatment: { motion: "Keep the reordered work continuous" } };
+    let hint = "";
+    try { buildReferenceBuild({ query, authoredDirection: authored }); } catch (error) { hint = error.message; }
+    if (!hint.includes("build.motionContract") || !hint.includes("Supported fields")) fail("authored-field rejection did not provide its executable repair path");
+    const repaired = { ...authored, visualTreatment: { signature: authored.visualTreatment.motion }, build: { motionContract: { review: "Track the same work", apply: authored.visualTreatment.motion, polish: "Exercise reorder and undo", reducedMotion: "Show final order immediately", fallback: "Keep explicit move controls" } } };
+    if (buildReferenceBuild({ query, authoredDirection: repaired }).motionContract.apply !== authored.visualTreatment.motion) fail("a repaired authored proposal lost its intended motion behavior");
+    for (const command of ["direction", "brief", "reference-build", "audit"]) {
+      const args = [join(root, "bin", "frontend-art-direction.js"), command, "--query", query, "--project", fixture, "--format", "json"];
+      if (command === "audit") args.push("--no-motion", "--offline");
+      const result = JSON.parse(execFileSync(process.execPath, args, { encoding: "utf8", timeout: 30000, maxBuffer: 8 * 1024 * 1024 }));
+      if (result.productSignal.surfaceMode !== "operate" || result.productSignal.status !== "needs-target-proposal") fail(`${command} concealed the real visitor job or unresolved target proposal`);
+    }
+  } finally {
+    rmSync(fixture, { recursive: true, force: true });
+  }
 }
 
 async function checkReferenceTargetSeparation() {
@@ -1328,6 +1360,7 @@ async function main() {
   await checkReferenceTargetSeparation();
   await checkAuthoredProductSignals();
   checkNewMotionResources();
+  await checkForwardRequestRouting();
   await checkMotionIntentRegressions();
   await checkDesignMethodRegressions();
 

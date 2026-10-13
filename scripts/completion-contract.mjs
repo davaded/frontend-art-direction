@@ -34,6 +34,7 @@ export function buildCompletionContract({
         "the primary task can be completed from entry to visible result, with recovery when it fails",
         "all important product states named by the brief or component grammar are represented and reachable",
         "primary actions have a real destination, handler, or deliberate disabled reason; no dead CTA remains",
+        "mutations that change a result's prerequisites or grouping invalidate stale derived state, and a realistic maximum record round-trips through backup or export when the surface supports it",
       ]
       : isAuthored
         ? [

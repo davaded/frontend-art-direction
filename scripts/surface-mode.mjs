@@ -27,7 +27,7 @@ const SURFACE_MODES = [
     label: "Operate",
     question: "What must the visitor do, and what state proves it worked?",
     jobs: ["apps", "editors", "dashboards", "forms", "configuration", "component workbenches"],
-    terms: ["app", "dashboard", "editor", "tool", "workflow", "form", "settings", "builder", "configure", "component", "edit photos", "photo editing", "retouch", "操作", "后台", "工作台", "编辑器", "修图", "修照片", "表单", "设置", "配置", "控件"],
+    terms: ["app", "dashboard", "editor", "tool", "workflow", "form", "settings", "builder", "configure", "component", "edit photos", "photo editing", "retouch", "操作", "后台", "工作台", "工具", "编辑器", "生成器", "搭建器", "修图", "修照片", "表单", "设置", "配置", "控件"],
     strongTerms: ["app", "dashboard", "editor", "workflow", "后台", "工作台", "编辑器"],
     proof: "a real object, a primary action, and a visible result or recovery state",
     avoid: "a presentation shell that hides the active work behind decorative panels",
@@ -71,11 +71,13 @@ function scoreMode(query, mode) {
   const namesMarketingSurface = /\b(?:homepage|official website|product website|landing page)\b|官网|宣传页|产品介绍页/u.test(text);
   const editsReadingSurface = /\b(?:docs?|documentation|manual|report|knowledge base)(?:\s+(?:site|page|portal|website))?\s+(?:editor|builder|manager|dashboard|workspace)\b|(?:文档|知识库|报告)(?:编辑器|生成器|管理|后台|工作台)/u.test(text);
   const namesReadingSurface = /\b(?:docs?|documentation|manual|knowledge base)\b|文档|知识库/u.test(text);
+  const namesOperatingSurface = /\b(?:app|dashboard|editor|tool|workflow|settings|builder)s?\b|应用|后台|工作台|工具|编辑器|生成器|搭建器/u.test(text);
   const namesComponentSurface = COMPONENT_SURFACE_PATTERN.test(text);
   const surfaceScore = editsMarketingSurface && mode.id === "operate" ? 6
     : editsReadingSurface && mode.id === "operate" ? 6
     : namesReadingSurface && !editsReadingSurface && mode.id === "read" ? 3
     : namesComponentSurface && !namesMarketingSurface && !namesReadingSurface && mode.id === "operate" ? 6
+    : namesOperatingSurface && !namesMarketingSurface && !namesReadingSurface && mode.id === "operate" ? 6
     : namesMarketingSurface && !editsMarketingSurface && mode.id === "persuade" ? 3 : 0;
   return { score: hits.length + strongHits.length * 2 + surfaceScore, hits: [...new Set(hits)] };
 }

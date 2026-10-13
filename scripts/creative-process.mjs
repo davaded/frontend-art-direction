@@ -65,7 +65,12 @@ export function mergeVisualContract(base, patch, path = "direction") {
     const merged = { ...base };
     for (const [key, value] of Object.entries(patch)) {
       if (PROTECTED_KEYS.has(key)) throw new Error(`Unsupported field: ${path}.${key}`);
-      if (!(key in base) && !path.startsWith("build.tokenSeed")) throw new Error(`Unknown field: ${path}.${key}`);
+      if (!(key in base) && !path.startsWith("build.tokenSeed")) {
+        const hint = path === "direction.visualTreatment" && key === "motion"
+          ? " Put motion behavior in build.motionContract (review, apply, polish, reducedMotion and fallback)."
+          : "";
+        throw new Error(`Unknown field: ${path}.${key}. Supported fields: ${Object.keys(base).join(", ")}.${hint}`);
+      }
       merged[key] = mergeVisualContract(base[key] ?? (isObject(value) ? {} : ""), value, `${path}.${key}`);
     }
     return merged;

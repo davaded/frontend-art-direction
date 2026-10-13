@@ -31,6 +31,7 @@ For a new or substantially changed surface:
 - challenge the actual content shape: a paragraph instead of a short title, a long unbroken identifier, mixed-language glyphs, dense or empty results, and native input values when relevant; do not solve ordinary overflow by shrinking the whole interface;
 - exercise the primary product action and capture the before/after state, or capture the authored transition, spatial relationship, or stable ending; reject only an unintentional presentation shell even when its styling is polished;
 - verify loading, empty, error, success, selected, or partial-data states that matter to the workflow;
+- verify mutation invariants: a prerequisite, grouping, ordering, or identity change cannot leave stale completion or selection state, while unrelated edits preserve it; round-trip a realistic largest record through the product's backup/export path and exercise its storage/serialization limit;
 - inspect text wrapping, focus, touch targets, contrast, overflow, and console errors;
 - wait for fonts and images to settle and verify entrance or route animations have reached their final state before using a screenshot as visual evidence; capture a second settled frame when the first frame may still be transitional;
 - confirm the actual viewport and a changed computed style before accepting an after capture; a requested browser size or ordinary reload may leave another tab resized or an old stylesheet cached;

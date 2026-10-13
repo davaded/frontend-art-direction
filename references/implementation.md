@@ -34,6 +34,8 @@ expanded | collapsed | filtered | sorted | dragged | offline
 
 Do not implement every state mechanically. Implement the relevant states with real labels, data shape, keyboard/touch behavior, and recovery paths. A static screenshot of the happy path is not component completeness.
 
+Test the state invariants around mutations, not only the event handler: when an edit changes a result's prerequisite, grouping, order, or identity, stale completion must be cleared or recalculated; when it does not, unrelated completion must survive. Exercise the largest ordinary record shape through the real backup/export round trip, including multiple uploaded or generated assets when the product supports them, and keep the failure path truthful when storage or serialization limits are reached.
+
 ## Composition Before Decoration
 
 Use the [Product Or Experience Signal Gate](product-prototype.md) before the composition is polished. Functional surfaces need a concrete vertical slice; narrative and art-directed surfaces need their own subject, thesis, attention path, proof, and ending. This is an intent requirement, not a mandate for a dashboard, commerce, card, split-panel, or interaction-heavy layout.
