@@ -3,6 +3,7 @@
 ## Unreleased
 
 - Strengthened the functional completion gate with mutation invariants and realistic backup/export round trips after an independent curator-tool build exposed stale completion and oversized backup failures.
+- Documented the loopback HTTP preview fallback for static targets when a connected browser rejects `file://`, so visual proof can proceed without treating a browser policy failure as a finished review.
 - Repaired forward-test failures where artwork vocabulary displaced an explicit tool task, empty profile metadata concealed unresolved workflow decisions, named discovery references disappeared, and authored-field errors gave no placement guidance.
 - Added Inspora and MotionSites discovery channels, loading.dev and Rive CLI/RML implementation candidates, concrete scroll/pointer contracts and an agent-owned Rive author/inspect/host-runtime verification workflow.
 - Added authored product and experience signals to direction files so model or designer proposals carry their own object, task, result, complete state names and attention path through every decision entrypoint, without adding a product genre or allowing self-declared acceptance.

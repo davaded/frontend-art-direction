@@ -23,6 +23,7 @@ Apply the Completion Contract to the declared scope. A full page, route, scene, 
 For a new or substantially changed surface:
 
 - run the real app or the closest available preview;
+- if a static target is rejected by the connected browser as `file://`, serve the same project directory over loopback HTTP with its existing dev server or a minimal local static server (for example, `python3 -m http.server <port> --bind 127.0.0.1 --directory <project-root>`); use that URL for the capture, and keep the protocol change separate from the visual result;
 - verify the complete declared scope, including lower sections, destinations, specimens, or ending, instead of checking only the first viewport;
 - inspect desktop and the target mobile/device size;
 - check the first screen before scrolling and one meaningful non-default state;
