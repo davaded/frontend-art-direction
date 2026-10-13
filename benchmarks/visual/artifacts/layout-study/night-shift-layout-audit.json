@@ -1,0 +1,3116 @@
+{
+  "protocol": "frontend-art-direction/layout-audit-v1",
+  "url": "http://127.0.0.1:4174/benchmarks/visual/night-shift/#top",
+  "runner": "codex-in-app-browser",
+  "reducedMotion": false,
+  "capturedAt": "2026-10-11T09:28:23.708Z",
+  "reportedAt": "2026-10-11T09:39:34.933Z",
+  "viewports": [
+    {
+      "viewport": {
+        "height": 900,
+        "width": 601
+      },
+      "url": "http://127.0.0.1:4174/benchmarks/visual/night-shift/#top",
+      "capturedAt": "2026-10-11T09:28:23.708Z",
+      "regionCount": 7,
+      "fullWidthCount": 4,
+      "boundedCount": 6,
+      "alignmentMix": [
+        "local-start",
+        "center"
+      ],
+      "fieldAnchorMix": [
+        "full-field",
+        "center-field"
+      ],
+      "maxGutter": 80,
+      "maxCounterfield": 80,
+      "maxContentGutter": 112,
+      "widthSpread": 0.266,
+      "fullViewportBandCount": 1,
+      "overflow": false,
+      "surfaceEdgeRegions": [],
+      "warnings": [],
+      "status": "clear",
+      "regions": [
+        {
+          "contentGutter": 36,
+          "contentLeft": 36,
+          "contentRight": 565,
+          "contentSpan": 529,
+          "contentSpanRatio": 0.88,
+          "contentWidth": 281,
+          "contentWidthRatio": 0.468,
+          "counterfield": 0,
+          "cssTextAlign": "start",
+          "fieldAnchor": "full-field",
+          "gutter": 0,
+          "hasMedia": false,
+          "hasText": true,
+          "height": 92,
+          "heightRatio": 0.102,
+          "index": 0,
+          "label": "NIGHT SHIFT M51 / FIELD GUIDE Field guide Readings Sources 01 / 01",
+          "left": 0,
+          "localContentInset": 36,
+          "maxWidth": "none",
+          "paintedSurface": false,
+          "right": 601,
+          "tag": "header",
+          "textAlignmentEvidence": [
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            }
+          ],
+          "width": 601,
+          "widthRatio": 1,
+          "textAlignment": "local-start",
+          "textAlignmentMix": [
+            "local-start"
+          ]
+        },
+        {
+          "contentGutter": 52,
+          "contentLeft": 52,
+          "contentRight": 549,
+          "contentSpan": 497,
+          "contentSpanRatio": 0.827,
+          "contentWidth": 360,
+          "contentWidthRatio": 0.599,
+          "counterfield": 24,
+          "cssTextAlign": "start",
+          "fieldAnchor": "center-field",
+          "gutter": 24,
+          "hasMedia": true,
+          "hasText": true,
+          "height": 684,
+          "heightRatio": 0.76,
+          "index": 1,
+          "label": "The WhirlpoolGalaxy",
+          "left": 24,
+          "localContentInset": 28,
+          "maxWidth": "none",
+          "paintedSurface": true,
+          "right": 577,
+          "tag": "section",
+          "textAlignmentEvidence": [
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            }
+          ],
+          "width": 553,
+          "widthRatio": 0.92,
+          "textAlignment": "local-start",
+          "textAlignmentMix": [
+            "local-start"
+          ]
+        },
+        {
+          "contentGutter": 112,
+          "contentLeft": 112,
+          "contentRight": 489,
+          "contentSpan": 377,
+          "contentSpanRatio": 0.627,
+          "contentWidth": 377,
+          "contentWidthRatio": 0.627,
+          "counterfield": 80,
+          "cssTextAlign": "start",
+          "fieldAnchor": "center-field",
+          "gutter": 80,
+          "hasMedia": false,
+          "hasText": true,
+          "height": 728,
+          "heightRatio": 0.809,
+          "index": 2,
+          "label": "Two galaxies.One encounter.",
+          "left": 80,
+          "localContentInset": 32,
+          "maxWidth": "none",
+          "paintedSurface": false,
+          "right": 521,
+          "tag": "section",
+          "textAlignmentEvidence": [
+            {
+              "align": "center",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            }
+          ],
+          "width": 441,
+          "widthRatio": 0.734,
+          "textAlignment": "mixed",
+          "textAlignmentMix": [
+            "center",
+            "local-start"
+          ]
+        },
+        {
+          "contentGutter": 48,
+          "contentLeft": 48,
+          "contentRight": 553,
+          "contentSpan": 505,
+          "contentSpanRatio": 0.84,
+          "contentWidth": 505,
+          "contentWidthRatio": 0.84,
+          "counterfield": 48,
+          "cssTextAlign": "start",
+          "fieldAnchor": "center-field",
+          "gutter": 48,
+          "hasMedia": true,
+          "hasText": true,
+          "height": 1047,
+          "heightRatio": 1.163,
+          "index": 3,
+          "label": "Closer to the spiral.",
+          "left": 48,
+          "localContentInset": 0,
+          "maxWidth": "none",
+          "paintedSurface": false,
+          "right": 553,
+          "tag": "section",
+          "textAlignmentEvidence": [
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "center",
+              "direction": "ltr"
+            },
+            {
+              "align": "center",
+              "direction": "ltr"
+            },
+            {
+              "align": "center",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            }
+          ],
+          "width": 505,
+          "widthRatio": 0.84,
+          "textAlignment": "mixed",
+          "textAlignmentMix": [
+            "local-start",
+            "center"
+          ]
+        },
+        {
+          "contentGutter": 48,
+          "contentLeft": 48,
+          "contentRight": 468,
+          "contentSpan": 420,
+          "contentSpanRatio": 0.699,
+          "contentWidth": 420,
+          "contentWidthRatio": 0.699,
+          "counterfield": 0,
+          "cssTextAlign": "start",
+          "fieldAnchor": "full-field",
+          "gutter": 0,
+          "hasMedia": true,
+          "hasText": true,
+          "height": 950,
+          "heightRatio": 1.056,
+          "index": 4,
+          "label": "Follow the dust.",
+          "left": 0,
+          "localContentInset": 48,
+          "maxWidth": "none",
+          "paintedSurface": true,
+          "right": 601,
+          "tag": "section",
+          "textAlignmentEvidence": [
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            }
+          ],
+          "width": 601,
+          "widthRatio": 1,
+          "textAlignment": "local-start",
+          "textAlignmentMix": [
+            "local-start"
+          ]
+        },
+        {
+          "contentGutter": 80,
+          "contentLeft": 80,
+          "contentRight": 521,
+          "contentSpan": 441,
+          "contentSpanRatio": 0.734,
+          "contentWidth": 441,
+          "contentWidthRatio": 0.734,
+          "counterfield": 80,
+          "cssTextAlign": "start",
+          "fieldAnchor": "center-field",
+          "gutter": 80,
+          "hasMedia": false,
+          "hasText": true,
+          "height": 904,
+          "heightRatio": 1.004,
+          "index": 5,
+          "label": "The materialbehind the guide.",
+          "left": 80,
+          "localContentInset": 0,
+          "maxWidth": "none",
+          "paintedSurface": false,
+          "right": 521,
+          "tag": "section",
+          "textAlignmentEvidence": [
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            }
+          ],
+          "width": 441,
+          "widthRatio": 0.734,
+          "textAlignment": "local-start",
+          "textAlignmentMix": [
+            "local-start"
+          ]
+        },
+        {
+          "contentGutter": 0,
+          "contentLeft": 0,
+          "contentRight": 601,
+          "contentSpan": 601,
+          "contentSpanRatio": 1,
+          "contentWidth": 601,
+          "contentWidthRatio": 1,
+          "counterfield": 0,
+          "cssTextAlign": "start",
+          "fieldAnchor": "full-field",
+          "gutter": 0,
+          "hasMedia": false,
+          "hasText": false,
+          "height": 66,
+          "heightRatio": 0.073,
+          "index": 6,
+          "label": "NIGHT SHIFT / M51LOOK AGAIN / 2026",
+          "left": 0,
+          "localContentInset": 0,
+          "maxWidth": "none",
+          "paintedSurface": false,
+          "right": 601,
+          "tag": "footer",
+          "textAlignmentEvidence": [],
+          "width": 601,
+          "widthRatio": 1,
+          "textAlignment": "unknown",
+          "textAlignmentMix": []
+        }
+      ]
+    },
+    {
+      "viewport": {
+        "height": 740,
+        "width": 320
+      },
+      "url": "http://127.0.0.1:4174/benchmarks/visual/night-shift/#top",
+      "capturedAt": "2026-10-11T09:29:26.945Z",
+      "regionCount": 7,
+      "fullWidthCount": 7,
+      "boundedCount": 5,
+      "alignmentMix": [
+        "local-start",
+        "center"
+      ],
+      "fieldAnchorMix": [
+        "full-field"
+      ],
+      "maxGutter": 0,
+      "maxCounterfield": 0,
+      "maxContentGutter": 24,
+      "widthSpread": 0,
+      "fullViewportBandCount": 3,
+      "overflow": false,
+      "surfaceEdgeRegions": [],
+      "warnings": [],
+      "status": "clear",
+      "regions": [
+        {
+          "contentGutter": 20,
+          "contentLeft": 20,
+          "contentRight": 300,
+          "contentSpan": 280,
+          "contentSpanRatio": 0.875,
+          "contentWidth": 280,
+          "contentWidthRatio": 0.875,
+          "counterfield": 0,
+          "cssTextAlign": "start",
+          "fieldAnchor": "full-field",
+          "gutter": 0,
+          "hasMedia": false,
+          "hasText": true,
+          "height": 112,
+          "heightRatio": 0.152,
+          "index": 0,
+          "label": "NIGHT SHIFT M51 / FIELD GUIDE Field guide Readings Sources 01 / 01",
+          "left": 0,
+          "localContentInset": 20,
+          "maxWidth": "none",
+          "paintedSurface": false,
+          "right": 320,
+          "tag": "header",
+          "textAlignmentEvidence": [
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            }
+          ],
+          "width": 320,
+          "widthRatio": 1,
+          "textAlignment": "local-start",
+          "textAlignmentMix": [
+            "local-start"
+          ]
+        },
+        {
+          "contentGutter": 24,
+          "contentLeft": 24,
+          "contentRight": 296,
+          "contentSpan": 272,
+          "contentSpanRatio": 0.85,
+          "contentWidth": 272,
+          "contentWidthRatio": 0.85,
+          "counterfield": 0,
+          "cssTextAlign": "start",
+          "fieldAnchor": "full-field",
+          "gutter": 0,
+          "hasMedia": true,
+          "hasText": true,
+          "height": 610,
+          "heightRatio": 0.824,
+          "index": 1,
+          "label": "The WhirlpoolGalaxy",
+          "left": 0,
+          "localContentInset": 24,
+          "maxWidth": "none",
+          "paintedSurface": true,
+          "right": 320,
+          "tag": "section",
+          "textAlignmentEvidence": [
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            }
+          ],
+          "width": 320,
+          "widthRatio": 1,
+          "textAlignment": "local-start",
+          "textAlignmentMix": [
+            "local-start"
+          ]
+        },
+        {
+          "contentGutter": 24,
+          "contentLeft": 24,
+          "contentRight": 296,
+          "contentSpan": 272,
+          "contentSpanRatio": 0.85,
+          "contentWidth": 272,
+          "contentWidthRatio": 0.85,
+          "counterfield": 0,
+          "cssTextAlign": "start",
+          "fieldAnchor": "full-field",
+          "gutter": 0,
+          "hasMedia": false,
+          "hasText": true,
+          "height": 646,
+          "heightRatio": 0.873,
+          "index": 2,
+          "label": "Two galaxies.One encounter.",
+          "left": 0,
+          "localContentInset": 24,
+          "maxWidth": "none",
+          "paintedSurface": false,
+          "right": 320,
+          "tag": "section",
+          "textAlignmentEvidence": [
+            {
+              "align": "center",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            }
+          ],
+          "width": 320,
+          "widthRatio": 1,
+          "textAlignment": "mixed",
+          "textAlignmentMix": [
+            "center",
+            "local-start"
+          ]
+        },
+        {
+          "contentGutter": 24,
+          "contentLeft": 24,
+          "contentRight": 296,
+          "contentSpan": 272,
+          "contentSpanRatio": 0.85,
+          "contentWidth": 272,
+          "contentWidthRatio": 0.85,
+          "counterfield": 0,
+          "cssTextAlign": "start",
+          "fieldAnchor": "full-field",
+          "gutter": 0,
+          "hasMedia": true,
+          "hasText": true,
+          "height": 835,
+          "heightRatio": 1.129,
+          "index": 3,
+          "label": "Closer to the spiral.",
+          "left": 0,
+          "localContentInset": 24,
+          "maxWidth": "none",
+          "paintedSurface": false,
+          "right": 320,
+          "tag": "section",
+          "textAlignmentEvidence": [
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "center",
+              "direction": "ltr"
+            },
+            {
+              "align": "center",
+              "direction": "ltr"
+            },
+            {
+              "align": "center",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            }
+          ],
+          "width": 320,
+          "widthRatio": 1,
+          "textAlignment": "mixed",
+          "textAlignmentMix": [
+            "local-start",
+            "center"
+          ]
+        },
+        {
+          "contentGutter": 24,
+          "contentLeft": 24,
+          "contentRight": 296,
+          "contentSpan": 272,
+          "contentSpanRatio": 0.85,
+          "contentWidth": 272,
+          "contentWidthRatio": 0.85,
+          "counterfield": 0,
+          "cssTextAlign": "start",
+          "fieldAnchor": "full-field",
+          "gutter": 0,
+          "hasMedia": true,
+          "hasText": true,
+          "height": 935,
+          "heightRatio": 1.263,
+          "index": 4,
+          "label": "Follow the dust.",
+          "left": 0,
+          "localContentInset": 24,
+          "maxWidth": "none",
+          "paintedSurface": true,
+          "right": 320,
+          "tag": "section",
+          "textAlignmentEvidence": [
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            }
+          ],
+          "width": 320,
+          "widthRatio": 1,
+          "textAlignment": "local-start",
+          "textAlignmentMix": [
+            "local-start"
+          ]
+        },
+        {
+          "contentGutter": 24,
+          "contentLeft": 24,
+          "contentRight": 296,
+          "contentSpan": 272,
+          "contentSpanRatio": 0.85,
+          "contentWidth": 272,
+          "contentWidthRatio": 0.85,
+          "counterfield": 0,
+          "cssTextAlign": "start",
+          "fieldAnchor": "full-field",
+          "gutter": 0,
+          "hasMedia": false,
+          "hasText": true,
+          "height": 893,
+          "heightRatio": 1.207,
+          "index": 5,
+          "label": "The materialbehind the guide.",
+          "left": 0,
+          "localContentInset": 24,
+          "maxWidth": "none",
+          "paintedSurface": false,
+          "right": 320,
+          "tag": "section",
+          "textAlignmentEvidence": [
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            }
+          ],
+          "width": 320,
+          "widthRatio": 1,
+          "textAlignment": "local-start",
+          "textAlignmentMix": [
+            "local-start"
+          ]
+        },
+        {
+          "contentGutter": 0,
+          "contentLeft": 0,
+          "contentRight": 320,
+          "contentSpan": 320,
+          "contentSpanRatio": 1,
+          "contentWidth": 320,
+          "contentWidthRatio": 1,
+          "counterfield": 0,
+          "cssTextAlign": "start",
+          "fieldAnchor": "full-field",
+          "gutter": 0,
+          "hasMedia": false,
+          "hasText": false,
+          "height": 66,
+          "heightRatio": 0.089,
+          "index": 6,
+          "label": "NIGHT SHIFT / M51LOOK AGAIN / 2026",
+          "left": 0,
+          "localContentInset": 0,
+          "maxWidth": "none",
+          "paintedSurface": false,
+          "right": 320,
+          "tag": "footer",
+          "textAlignmentEvidence": [],
+          "width": 320,
+          "widthRatio": 1,
+          "textAlignment": "unknown",
+          "textAlignmentMix": []
+        }
+      ]
+    },
+    {
+      "viewport": {
+        "height": 844,
+        "width": 390
+      },
+      "url": "http://127.0.0.1:4174/benchmarks/visual/night-shift/#top",
+      "capturedAt": "2026-10-11T09:29:28.231Z",
+      "regionCount": 7,
+      "fullWidthCount": 7,
+      "boundedCount": 5,
+      "alignmentMix": [
+        "local-start",
+        "center"
+      ],
+      "fieldAnchorMix": [
+        "full-field"
+      ],
+      "maxGutter": 0,
+      "maxCounterfield": 0,
+      "maxContentGutter": 24,
+      "widthSpread": 0,
+      "fullViewportBandCount": 3,
+      "overflow": false,
+      "surfaceEdgeRegions": [],
+      "warnings": [],
+      "status": "clear",
+      "regions": [
+        {
+          "contentGutter": 20,
+          "contentLeft": 20,
+          "contentRight": 370,
+          "contentSpan": 350,
+          "contentSpanRatio": 0.897,
+          "contentWidth": 350,
+          "contentWidthRatio": 0.897,
+          "counterfield": 0,
+          "cssTextAlign": "start",
+          "fieldAnchor": "full-field",
+          "gutter": 0,
+          "hasMedia": false,
+          "hasText": true,
+          "height": 112,
+          "heightRatio": 0.133,
+          "index": 0,
+          "label": "NIGHT SHIFT M51 / FIELD GUIDE Field guide Readings Sources 01 / 01",
+          "left": 0,
+          "localContentInset": 20,
+          "maxWidth": "none",
+          "paintedSurface": false,
+          "right": 390,
+          "tag": "header",
+          "textAlignmentEvidence": [
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            }
+          ],
+          "width": 390,
+          "widthRatio": 1,
+          "textAlignment": "local-start",
+          "textAlignmentMix": [
+            "local-start"
+          ]
+        },
+        {
+          "contentGutter": 24,
+          "contentLeft": 24,
+          "contentRight": 314,
+          "contentSpan": 290,
+          "contentSpanRatio": 0.744,
+          "contentWidth": 290,
+          "contentWidthRatio": 0.744,
+          "counterfield": 0,
+          "cssTextAlign": "start",
+          "fieldAnchor": "full-field",
+          "gutter": 0,
+          "hasMedia": true,
+          "hasText": true,
+          "height": 610,
+          "heightRatio": 0.723,
+          "index": 1,
+          "label": "The WhirlpoolGalaxy",
+          "left": 0,
+          "localContentInset": 24,
+          "maxWidth": "none",
+          "paintedSurface": true,
+          "right": 390,
+          "tag": "section",
+          "textAlignmentEvidence": [
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            }
+          ],
+          "width": 390,
+          "widthRatio": 1,
+          "textAlignment": "local-start",
+          "textAlignmentMix": [
+            "local-start"
+          ]
+        },
+        {
+          "contentGutter": 24,
+          "contentLeft": 24,
+          "contentRight": 366,
+          "contentSpan": 342,
+          "contentSpanRatio": 0.877,
+          "contentWidth": 342,
+          "contentWidthRatio": 0.877,
+          "counterfield": 0,
+          "cssTextAlign": "start",
+          "fieldAnchor": "full-field",
+          "gutter": 0,
+          "hasMedia": false,
+          "hasText": true,
+          "height": 597,
+          "heightRatio": 0.707,
+          "index": 2,
+          "label": "Two galaxies.One encounter.",
+          "left": 0,
+          "localContentInset": 24,
+          "maxWidth": "none",
+          "paintedSurface": false,
+          "right": 390,
+          "tag": "section",
+          "textAlignmentEvidence": [
+            {
+              "align": "center",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            }
+          ],
+          "width": 390,
+          "widthRatio": 1,
+          "textAlignment": "mixed",
+          "textAlignmentMix": [
+            "center",
+            "local-start"
+          ]
+        },
+        {
+          "contentGutter": 24,
+          "contentLeft": 24,
+          "contentRight": 366,
+          "contentSpan": 342,
+          "contentSpanRatio": 0.877,
+          "contentWidth": 342,
+          "contentWidthRatio": 0.877,
+          "counterfield": 0,
+          "cssTextAlign": "start",
+          "fieldAnchor": "full-field",
+          "gutter": 0,
+          "hasMedia": true,
+          "hasText": true,
+          "height": 826,
+          "heightRatio": 0.979,
+          "index": 3,
+          "label": "Closer to the spiral.",
+          "left": 0,
+          "localContentInset": 24,
+          "maxWidth": "none",
+          "paintedSurface": false,
+          "right": 390,
+          "tag": "section",
+          "textAlignmentEvidence": [
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "center",
+              "direction": "ltr"
+            },
+            {
+              "align": "center",
+              "direction": "ltr"
+            },
+            {
+              "align": "center",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            }
+          ],
+          "width": 390,
+          "widthRatio": 1,
+          "textAlignment": "mixed",
+          "textAlignmentMix": [
+            "local-start",
+            "center"
+          ]
+        },
+        {
+          "contentGutter": 24,
+          "contentLeft": 24,
+          "contentRight": 366,
+          "contentSpan": 342,
+          "contentSpanRatio": 0.877,
+          "contentWidth": 342,
+          "contentWidthRatio": 0.877,
+          "counterfield": 0,
+          "cssTextAlign": "start",
+          "fieldAnchor": "full-field",
+          "gutter": 0,
+          "hasMedia": true,
+          "hasText": true,
+          "height": 921,
+          "heightRatio": 1.091,
+          "index": 4,
+          "label": "Follow the dust.",
+          "left": 0,
+          "localContentInset": 24,
+          "maxWidth": "none",
+          "paintedSurface": true,
+          "right": 390,
+          "tag": "section",
+          "textAlignmentEvidence": [
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            }
+          ],
+          "width": 390,
+          "widthRatio": 1,
+          "textAlignment": "local-start",
+          "textAlignmentMix": [
+            "local-start"
+          ]
+        },
+        {
+          "contentGutter": 24,
+          "contentLeft": 24,
+          "contentRight": 366,
+          "contentSpan": 342,
+          "contentSpanRatio": 0.877,
+          "contentWidth": 342,
+          "contentWidthRatio": 0.877,
+          "counterfield": 0,
+          "cssTextAlign": "start",
+          "fieldAnchor": "full-field",
+          "gutter": 0,
+          "hasMedia": false,
+          "hasText": true,
+          "height": 818,
+          "heightRatio": 0.969,
+          "index": 5,
+          "label": "The materialbehind the guide.",
+          "left": 0,
+          "localContentInset": 24,
+          "maxWidth": "none",
+          "paintedSurface": false,
+          "right": 390,
+          "tag": "section",
+          "textAlignmentEvidence": [
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            }
+          ],
+          "width": 390,
+          "widthRatio": 1,
+          "textAlignment": "local-start",
+          "textAlignmentMix": [
+            "local-start"
+          ]
+        },
+        {
+          "contentGutter": 0,
+          "contentLeft": 0,
+          "contentRight": 390,
+          "contentSpan": 390,
+          "contentSpanRatio": 1,
+          "contentWidth": 390,
+          "contentWidthRatio": 1,
+          "counterfield": 0,
+          "cssTextAlign": "start",
+          "fieldAnchor": "full-field",
+          "gutter": 0,
+          "hasMedia": false,
+          "hasText": false,
+          "height": 66,
+          "heightRatio": 0.078,
+          "index": 6,
+          "label": "NIGHT SHIFT / M51LOOK AGAIN / 2026",
+          "left": 0,
+          "localContentInset": 0,
+          "maxWidth": "none",
+          "paintedSurface": false,
+          "right": 390,
+          "tag": "footer",
+          "textAlignmentEvidence": [],
+          "width": 390,
+          "widthRatio": 1,
+          "textAlignment": "unknown",
+          "textAlignmentMix": []
+        }
+      ]
+    },
+    {
+      "viewport": {
+        "height": 900,
+        "width": 768
+      },
+      "url": "http://127.0.0.1:4174/benchmarks/visual/night-shift/#top",
+      "capturedAt": "2026-10-11T09:29:29.445Z",
+      "regionCount": 7,
+      "fullWidthCount": 4,
+      "boundedCount": 6,
+      "alignmentMix": [
+        "local-start",
+        "center"
+      ],
+      "fieldAnchorMix": [
+        "full-field",
+        "center-field"
+      ],
+      "maxGutter": 80,
+      "maxCounterfield": 80,
+      "maxContentGutter": 112,
+      "widthSpread": 0.208,
+      "fullViewportBandCount": 1,
+      "overflow": false,
+      "surfaceEdgeRegions": [],
+      "warnings": [],
+      "status": "clear",
+      "regions": [
+        {
+          "contentGutter": 36,
+          "contentLeft": 36,
+          "contentRight": 732,
+          "contentSpan": 696,
+          "contentSpanRatio": 0.906,
+          "contentWidth": 448,
+          "contentWidthRatio": 0.583,
+          "counterfield": 0,
+          "cssTextAlign": "start",
+          "fieldAnchor": "full-field",
+          "gutter": 0,
+          "hasMedia": false,
+          "hasText": true,
+          "height": 92,
+          "heightRatio": 0.102,
+          "index": 0,
+          "label": "NIGHT SHIFT M51 / FIELD GUIDE Field guide Readings Sources 01 / 01",
+          "left": 0,
+          "localContentInset": 36,
+          "maxWidth": "none",
+          "paintedSurface": false,
+          "right": 768,
+          "tag": "header",
+          "textAlignmentEvidence": [
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            }
+          ],
+          "width": 768,
+          "widthRatio": 1,
+          "textAlignment": "local-start",
+          "textAlignmentMix": [
+            "local-start"
+          ]
+        },
+        {
+          "contentGutter": 52,
+          "contentLeft": 52,
+          "contentRight": 716,
+          "contentSpan": 664,
+          "contentSpanRatio": 0.865,
+          "contentWidth": 360,
+          "contentWidthRatio": 0.469,
+          "counterfield": 24,
+          "cssTextAlign": "start",
+          "fieldAnchor": "center-field",
+          "gutter": 24,
+          "hasMedia": true,
+          "hasText": true,
+          "height": 684,
+          "heightRatio": 0.76,
+          "index": 1,
+          "label": "The WhirlpoolGalaxy",
+          "left": 24,
+          "localContentInset": 28,
+          "maxWidth": "none",
+          "paintedSurface": true,
+          "right": 744,
+          "tag": "section",
+          "textAlignmentEvidence": [
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            }
+          ],
+          "width": 720,
+          "widthRatio": 0.938,
+          "textAlignment": "local-start",
+          "textAlignmentMix": [
+            "local-start"
+          ]
+        },
+        {
+          "contentGutter": 112,
+          "contentLeft": 112,
+          "contentRight": 656,
+          "contentSpan": 544,
+          "contentSpanRatio": 0.708,
+          "contentWidth": 544,
+          "contentWidthRatio": 0.708,
+          "counterfield": 80,
+          "cssTextAlign": "start",
+          "fieldAnchor": "center-field",
+          "gutter": 80,
+          "hasMedia": false,
+          "hasText": true,
+          "height": 624,
+          "heightRatio": 0.693,
+          "index": 2,
+          "label": "Two galaxies.One encounter.",
+          "left": 80,
+          "localContentInset": 32,
+          "maxWidth": "none",
+          "paintedSurface": false,
+          "right": 688,
+          "tag": "section",
+          "textAlignmentEvidence": [
+            {
+              "align": "center",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            }
+          ],
+          "width": 608,
+          "widthRatio": 0.792,
+          "textAlignment": "mixed",
+          "textAlignmentMix": [
+            "center",
+            "local-start"
+          ]
+        },
+        {
+          "contentGutter": 48,
+          "contentLeft": 48,
+          "contentRight": 720,
+          "contentSpan": 672,
+          "contentSpanRatio": 0.875,
+          "contentWidth": 672,
+          "contentWidthRatio": 0.875,
+          "counterfield": 48,
+          "cssTextAlign": "start",
+          "fieldAnchor": "center-field",
+          "gutter": 48,
+          "hasMedia": true,
+          "hasText": true,
+          "height": 1145,
+          "heightRatio": 1.272,
+          "index": 3,
+          "label": "Closer to the spiral.",
+          "left": 48,
+          "localContentInset": 0,
+          "maxWidth": "none",
+          "paintedSurface": false,
+          "right": 720,
+          "tag": "section",
+          "textAlignmentEvidence": [
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "center",
+              "direction": "ltr"
+            },
+            {
+              "align": "center",
+              "direction": "ltr"
+            },
+            {
+              "align": "center",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            }
+          ],
+          "width": 672,
+          "widthRatio": 0.875,
+          "textAlignment": "mixed",
+          "textAlignmentMix": [
+            "local-start",
+            "center"
+          ]
+        },
+        {
+          "contentGutter": 48,
+          "contentLeft": 48,
+          "contentRight": 468,
+          "contentSpan": 420,
+          "contentSpanRatio": 0.547,
+          "contentWidth": 420,
+          "contentWidthRatio": 0.547,
+          "counterfield": 0,
+          "cssTextAlign": "start",
+          "fieldAnchor": "full-field",
+          "gutter": 0,
+          "hasMedia": true,
+          "hasText": true,
+          "height": 950,
+          "heightRatio": 1.056,
+          "index": 4,
+          "label": "Follow the dust.",
+          "left": 0,
+          "localContentInset": 48,
+          "maxWidth": "none",
+          "paintedSurface": true,
+          "right": 768,
+          "tag": "section",
+          "textAlignmentEvidence": [
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            }
+          ],
+          "width": 768,
+          "widthRatio": 1,
+          "textAlignment": "local-start",
+          "textAlignmentMix": [
+            "local-start"
+          ]
+        },
+        {
+          "contentGutter": 80,
+          "contentLeft": 80,
+          "contentRight": 688,
+          "contentSpan": 608,
+          "contentSpanRatio": 0.792,
+          "contentWidth": 540,
+          "contentWidthRatio": 0.703,
+          "counterfield": 80,
+          "cssTextAlign": "start",
+          "fieldAnchor": "center-field",
+          "gutter": 80,
+          "hasMedia": false,
+          "hasText": true,
+          "height": 883,
+          "heightRatio": 0.981,
+          "index": 5,
+          "label": "The materialbehind the guide.",
+          "left": 80,
+          "localContentInset": 0,
+          "maxWidth": "none",
+          "paintedSurface": false,
+          "right": 688,
+          "tag": "section",
+          "textAlignmentEvidence": [
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            }
+          ],
+          "width": 608,
+          "widthRatio": 0.792,
+          "textAlignment": "local-start",
+          "textAlignmentMix": [
+            "local-start"
+          ]
+        },
+        {
+          "contentGutter": 0,
+          "contentLeft": 0,
+          "contentRight": 768,
+          "contentSpan": 768,
+          "contentSpanRatio": 1,
+          "contentWidth": 768,
+          "contentWidthRatio": 1,
+          "counterfield": 0,
+          "cssTextAlign": "start",
+          "fieldAnchor": "full-field",
+          "gutter": 0,
+          "hasMedia": false,
+          "hasText": false,
+          "height": 66,
+          "heightRatio": 0.073,
+          "index": 6,
+          "label": "NIGHT SHIFT / M51LOOK AGAIN / 2026",
+          "left": 0,
+          "localContentInset": 0,
+          "maxWidth": "none",
+          "paintedSurface": false,
+          "right": 768,
+          "tag": "footer",
+          "textAlignmentEvidence": [],
+          "width": 768,
+          "widthRatio": 1,
+          "textAlignment": "unknown",
+          "textAlignmentMix": []
+        }
+      ]
+    },
+    {
+      "viewport": {
+        "height": 900,
+        "width": 901
+      },
+      "url": "http://127.0.0.1:4174/benchmarks/visual/night-shift/#top",
+      "capturedAt": "2026-10-11T09:29:30.707Z",
+      "regionCount": 7,
+      "fullWidthCount": 4,
+      "boundedCount": 6,
+      "alignmentMix": [
+        "local-start",
+        "center"
+      ],
+      "fieldAnchorMix": [
+        "full-field",
+        "center-field"
+      ],
+      "maxGutter": 80,
+      "maxCounterfield": 80,
+      "maxContentGutter": 141,
+      "widthSpread": 0.178,
+      "fullViewportBandCount": 0,
+      "overflow": false,
+      "surfaceEdgeRegions": [],
+      "warnings": [],
+      "status": "clear",
+      "regions": [
+        {
+          "contentGutter": 36,
+          "contentLeft": 36,
+          "contentRight": 865,
+          "contentSpan": 829,
+          "contentSpanRatio": 0.92,
+          "contentWidth": 581,
+          "contentWidthRatio": 0.645,
+          "counterfield": 0,
+          "cssTextAlign": "start",
+          "fieldAnchor": "full-field",
+          "gutter": 0,
+          "hasMedia": false,
+          "hasText": true,
+          "height": 92,
+          "heightRatio": 0.102,
+          "index": 0,
+          "label": "NIGHT SHIFT M51 / FIELD GUIDE Field guide Readings Sources 01 / 01",
+          "left": 0,
+          "localContentInset": 36,
+          "maxWidth": "none",
+          "paintedSurface": false,
+          "right": 901,
+          "tag": "header",
+          "textAlignmentEvidence": [
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            }
+          ],
+          "width": 901,
+          "widthRatio": 1,
+          "textAlignment": "local-start",
+          "textAlignmentMix": [
+            "local-start"
+          ]
+        },
+        {
+          "contentGutter": 52,
+          "contentLeft": 52,
+          "contentRight": 849,
+          "contentSpan": 797,
+          "contentSpanRatio": 0.885,
+          "contentWidth": 360,
+          "contentWidthRatio": 0.4,
+          "counterfield": 24,
+          "cssTextAlign": "start",
+          "fieldAnchor": "center-field",
+          "gutter": 24,
+          "hasMedia": true,
+          "hasText": true,
+          "height": 684,
+          "heightRatio": 0.76,
+          "index": 1,
+          "label": "The WhirlpoolGalaxy",
+          "left": 24,
+          "localContentInset": 28,
+          "maxWidth": "none",
+          "paintedSurface": true,
+          "right": 877,
+          "tag": "section",
+          "textAlignmentEvidence": [
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            }
+          ],
+          "width": 853,
+          "widthRatio": 0.947,
+          "textAlignment": "local-start",
+          "textAlignmentMix": [
+            "local-start"
+          ]
+        },
+        {
+          "contentGutter": 141,
+          "contentLeft": 141,
+          "contentRight": 761,
+          "contentSpan": 620,
+          "contentSpanRatio": 0.688,
+          "contentWidth": 620,
+          "contentWidthRatio": 0.688,
+          "counterfield": 80,
+          "cssTextAlign": "start",
+          "fieldAnchor": "center-field",
+          "gutter": 80,
+          "hasMedia": false,
+          "hasText": true,
+          "height": 624,
+          "heightRatio": 0.693,
+          "index": 2,
+          "label": "Two galaxies.One encounter.",
+          "left": 80,
+          "localContentInset": 61,
+          "maxWidth": "none",
+          "paintedSurface": false,
+          "right": 821,
+          "tag": "section",
+          "textAlignmentEvidence": [
+            {
+              "align": "center",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            }
+          ],
+          "width": 741,
+          "widthRatio": 0.822,
+          "textAlignment": "mixed",
+          "textAlignmentMix": [
+            "center",
+            "local-start"
+          ]
+        },
+        {
+          "contentGutter": 80,
+          "contentLeft": 80,
+          "contentRight": 816,
+          "contentSpan": 736,
+          "contentSpanRatio": 0.817,
+          "contentWidth": 401,
+          "contentWidthRatio": 0.445,
+          "counterfield": 80,
+          "cssTextAlign": "start",
+          "fieldAnchor": "center-field",
+          "gutter": 80,
+          "hasMedia": true,
+          "hasText": true,
+          "height": 730,
+          "heightRatio": 0.811,
+          "index": 3,
+          "label": "Closer to the spiral.",
+          "left": 80,
+          "localContentInset": 0,
+          "maxWidth": "none",
+          "paintedSurface": false,
+          "right": 821,
+          "tag": "section",
+          "textAlignmentEvidence": [
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "center",
+              "direction": "ltr"
+            },
+            {
+              "align": "center",
+              "direction": "ltr"
+            },
+            {
+              "align": "center",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            }
+          ],
+          "width": 741,
+          "widthRatio": 0.822,
+          "textAlignment": "mixed",
+          "textAlignmentMix": [
+            "local-start",
+            "center"
+          ]
+        },
+        {
+          "contentGutter": 48,
+          "contentLeft": 499,
+          "contentRight": 853,
+          "contentSpan": 355,
+          "contentSpanRatio": 0.393,
+          "contentWidth": 355,
+          "contentWidthRatio": 0.393,
+          "counterfield": 0,
+          "cssTextAlign": "start",
+          "fieldAnchor": "full-field",
+          "gutter": 0,
+          "hasMedia": true,
+          "hasText": true,
+          "height": 652,
+          "heightRatio": 0.725,
+          "index": 4,
+          "label": "Follow the dust.",
+          "left": 0,
+          "localContentInset": 48,
+          "maxWidth": "none",
+          "paintedSurface": true,
+          "right": 901,
+          "tag": "section",
+          "textAlignmentEvidence": [
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            }
+          ],
+          "width": 901,
+          "widthRatio": 1,
+          "textAlignment": "local-start",
+          "textAlignmentMix": [
+            "local-start"
+          ]
+        },
+        {
+          "contentGutter": 80,
+          "contentLeft": 80,
+          "contentRight": 821,
+          "contentSpan": 741,
+          "contentSpanRatio": 0.822,
+          "contentWidth": 374,
+          "contentWidthRatio": 0.415,
+          "counterfield": 80,
+          "cssTextAlign": "start",
+          "fieldAnchor": "center-field",
+          "gutter": 80,
+          "hasMedia": false,
+          "hasText": true,
+          "height": 589,
+          "heightRatio": 0.654,
+          "index": 5,
+          "label": "The materialbehind the guide.",
+          "left": 80,
+          "localContentInset": 0,
+          "maxWidth": "none",
+          "paintedSurface": false,
+          "right": 821,
+          "tag": "section",
+          "textAlignmentEvidence": [
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            }
+          ],
+          "width": 741,
+          "widthRatio": 0.822,
+          "textAlignment": "local-start",
+          "textAlignmentMix": [
+            "local-start"
+          ]
+        },
+        {
+          "contentGutter": 0,
+          "contentLeft": 0,
+          "contentRight": 901,
+          "contentSpan": 901,
+          "contentSpanRatio": 1,
+          "contentWidth": 901,
+          "contentWidthRatio": 1,
+          "counterfield": 0,
+          "cssTextAlign": "start",
+          "fieldAnchor": "full-field",
+          "gutter": 0,
+          "hasMedia": false,
+          "hasText": false,
+          "height": 66,
+          "heightRatio": 0.073,
+          "index": 6,
+          "label": "NIGHT SHIFT / M51LOOK AGAIN / 2026",
+          "left": 0,
+          "localContentInset": 0,
+          "maxWidth": "none",
+          "paintedSurface": false,
+          "right": 901,
+          "tag": "footer",
+          "textAlignmentEvidence": [],
+          "width": 901,
+          "widthRatio": 1,
+          "textAlignment": "unknown",
+          "textAlignmentMix": []
+        }
+      ]
+    },
+    {
+      "viewport": {
+        "height": 768,
+        "width": 1024
+      },
+      "url": "http://127.0.0.1:4174/benchmarks/visual/night-shift/#top",
+      "capturedAt": "2026-10-11T09:29:31.970Z",
+      "regionCount": 7,
+      "fullWidthCount": 4,
+      "boundedCount": 6,
+      "alignmentMix": [
+        "local-start",
+        "center"
+      ],
+      "fieldAnchorMix": [
+        "full-field",
+        "center-field"
+      ],
+      "maxGutter": 80,
+      "maxCounterfield": 80,
+      "maxContentGutter": 202,
+      "widthSpread": 0.156,
+      "fullViewportBandCount": 1,
+      "overflow": false,
+      "surfaceEdgeRegions": [],
+      "warnings": [],
+      "status": "clear",
+      "regions": [
+        {
+          "contentGutter": 32,
+          "contentLeft": 32,
+          "contentRight": 913,
+          "contentSpan": 881,
+          "contentSpanRatio": 0.861,
+          "contentWidth": 597,
+          "contentWidthRatio": 0.583,
+          "counterfield": 0,
+          "cssTextAlign": "start",
+          "fieldAnchor": "full-field",
+          "gutter": 0,
+          "hasMedia": false,
+          "hasText": true,
+          "height": 92,
+          "heightRatio": 0.12,
+          "index": 0,
+          "label": "NIGHT SHIFT M51 / FIELD GUIDE Field guide Readings Sources 01 / 01",
+          "left": 0,
+          "localContentInset": 32,
+          "maxWidth": "none",
+          "paintedSurface": false,
+          "right": 1024,
+          "tag": "header",
+          "textAlignmentEvidence": [
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            }
+          ],
+          "width": 1024,
+          "widthRatio": 1,
+          "textAlignment": "local-start",
+          "textAlignmentMix": [
+            "local-start"
+          ]
+        },
+        {
+          "contentGutter": 64,
+          "contentLeft": 64,
+          "contentRight": 960,
+          "contentSpan": 896,
+          "contentSpanRatio": 0.875,
+          "contentWidth": 360,
+          "contentWidthRatio": 0.352,
+          "counterfield": 32,
+          "cssTextAlign": "start",
+          "fieldAnchor": "center-field",
+          "gutter": 32,
+          "hasMedia": true,
+          "hasText": true,
+          "height": 620,
+          "heightRatio": 0.807,
+          "index": 1,
+          "label": "The WhirlpoolGalaxy",
+          "left": 32,
+          "localContentInset": 32,
+          "maxWidth": "none",
+          "paintedSurface": true,
+          "right": 992,
+          "tag": "section",
+          "textAlignmentEvidence": [
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            }
+          ],
+          "width": 960,
+          "widthRatio": 0.938,
+          "textAlignment": "local-start",
+          "textAlignmentMix": [
+            "local-start"
+          ]
+        },
+        {
+          "contentGutter": 202,
+          "contentLeft": 202,
+          "contentRight": 822,
+          "contentSpan": 620,
+          "contentSpanRatio": 0.605,
+          "contentWidth": 620,
+          "contentWidthRatio": 0.605,
+          "counterfield": 80,
+          "cssTextAlign": "start",
+          "fieldAnchor": "center-field",
+          "gutter": 80,
+          "hasMedia": false,
+          "hasText": true,
+          "height": 624,
+          "heightRatio": 0.812,
+          "index": 2,
+          "label": "Two galaxies.One encounter.",
+          "left": 80,
+          "localContentInset": 122,
+          "maxWidth": "none",
+          "paintedSurface": false,
+          "right": 944,
+          "tag": "section",
+          "textAlignmentEvidence": [
+            {
+              "align": "center",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            }
+          ],
+          "width": 864,
+          "widthRatio": 0.844,
+          "textAlignment": "mixed",
+          "textAlignmentMix": [
+            "center",
+            "local-start"
+          ]
+        },
+        {
+          "contentGutter": 80,
+          "contentLeft": 80,
+          "contentRight": 939,
+          "contentSpan": 859,
+          "contentSpanRatio": 0.839,
+          "contentWidth": 524,
+          "contentWidthRatio": 0.512,
+          "counterfield": 80,
+          "cssTextAlign": "start",
+          "fieldAnchor": "center-field",
+          "gutter": 80,
+          "hasMedia": true,
+          "hasText": true,
+          "height": 816,
+          "heightRatio": 1.062,
+          "index": 3,
+          "label": "Closer to the spiral.",
+          "left": 80,
+          "localContentInset": 0,
+          "maxWidth": "none",
+          "paintedSurface": false,
+          "right": 944,
+          "tag": "section",
+          "textAlignmentEvidence": [
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "center",
+              "direction": "ltr"
+            },
+            {
+              "align": "center",
+              "direction": "ltr"
+            },
+            {
+              "align": "center",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            }
+          ],
+          "width": 864,
+          "widthRatio": 0.844,
+          "textAlignment": "mixed",
+          "textAlignmentMix": [
+            "local-start",
+            "center"
+          ]
+        },
+        {
+          "contentGutter": 80,
+          "contentLeft": 524,
+          "contentRight": 944,
+          "contentSpan": 420,
+          "contentSpanRatio": 0.41,
+          "contentWidth": 420,
+          "contentWidthRatio": 0.41,
+          "counterfield": 0,
+          "cssTextAlign": "start",
+          "fieldAnchor": "full-field",
+          "gutter": 0,
+          "hasMedia": true,
+          "hasText": true,
+          "height": 634,
+          "heightRatio": 0.825,
+          "index": 4,
+          "label": "Follow the dust.",
+          "left": 0,
+          "localContentInset": 80,
+          "maxWidth": "none",
+          "paintedSurface": true,
+          "right": 1024,
+          "tag": "section",
+          "textAlignmentEvidence": [
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            }
+          ],
+          "width": 1024,
+          "widthRatio": 1,
+          "textAlignment": "local-start",
+          "textAlignmentMix": [
+            "local-start"
+          ]
+        },
+        {
+          "contentGutter": 80,
+          "contentLeft": 80,
+          "contentRight": 944,
+          "contentSpan": 864,
+          "contentSpanRatio": 0.844,
+          "contentWidth": 443,
+          "contentWidthRatio": 0.433,
+          "counterfield": 80,
+          "cssTextAlign": "start",
+          "fieldAnchor": "center-field",
+          "gutter": 80,
+          "hasMedia": false,
+          "hasText": true,
+          "height": 589,
+          "heightRatio": 0.767,
+          "index": 5,
+          "label": "The materialbehind the guide.",
+          "left": 80,
+          "localContentInset": 0,
+          "maxWidth": "none",
+          "paintedSurface": false,
+          "right": 944,
+          "tag": "section",
+          "textAlignmentEvidence": [
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            }
+          ],
+          "width": 864,
+          "widthRatio": 0.844,
+          "textAlignment": "local-start",
+          "textAlignmentMix": [
+            "local-start"
+          ]
+        },
+        {
+          "contentGutter": 0,
+          "contentLeft": 0,
+          "contentRight": 1024,
+          "contentSpan": 1024,
+          "contentSpanRatio": 1,
+          "contentWidth": 1024,
+          "contentWidthRatio": 1,
+          "counterfield": 0,
+          "cssTextAlign": "start",
+          "fieldAnchor": "full-field",
+          "gutter": 0,
+          "hasMedia": false,
+          "hasText": false,
+          "height": 66,
+          "heightRatio": 0.085,
+          "index": 6,
+          "label": "NIGHT SHIFT / M51LOOK AGAIN / 2026",
+          "left": 0,
+          "localContentInset": 0,
+          "maxWidth": "none",
+          "paintedSurface": false,
+          "right": 1024,
+          "tag": "footer",
+          "textAlignmentEvidence": [],
+          "width": 1024,
+          "widthRatio": 1,
+          "textAlignment": "unknown",
+          "textAlignmentMix": []
+        }
+      ]
+    },
+    {
+      "viewport": {
+        "height": 1000,
+        "width": 1440
+      },
+      "url": "http://127.0.0.1:4174/benchmarks/visual/night-shift/#top",
+      "capturedAt": "2026-10-11T09:29:33.092Z",
+      "regionCount": 7,
+      "fullWidthCount": 4,
+      "boundedCount": 6,
+      "alignmentMix": [
+        "local-start",
+        "center"
+      ],
+      "fieldAnchorMix": [
+        "full-field",
+        "center-field"
+      ],
+      "maxGutter": 240,
+      "maxCounterfield": 240,
+      "maxContentGutter": 410,
+      "widthSpread": 0.333,
+      "fullViewportBandCount": 0,
+      "overflow": false,
+      "surfaceEdgeRegions": [],
+      "warnings": [],
+      "status": "clear",
+      "regions": [
+        {
+          "contentGutter": 80,
+          "contentLeft": 80,
+          "contentRight": 1281,
+          "contentSpan": 1201,
+          "contentSpanRatio": 0.834,
+          "contentWidth": 917,
+          "contentWidthRatio": 0.637,
+          "counterfield": 0,
+          "cssTextAlign": "start",
+          "fieldAnchor": "full-field",
+          "gutter": 0,
+          "hasMedia": false,
+          "hasText": true,
+          "height": 92,
+          "heightRatio": 0.092,
+          "index": 0,
+          "label": "NIGHT SHIFT M51 / FIELD GUIDE Field guide Readings Sources 01 / 01",
+          "left": 0,
+          "localContentInset": 80,
+          "maxWidth": "none",
+          "paintedSurface": false,
+          "right": 1440,
+          "tag": "header",
+          "textAlignmentEvidence": [
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            }
+          ],
+          "width": 1440,
+          "widthRatio": 1,
+          "textAlignment": "local-start",
+          "textAlignmentMix": [
+            "local-start"
+          ]
+        },
+        {
+          "contentGutter": 80,
+          "contentLeft": 80,
+          "contentRight": 1360,
+          "contentSpan": 1280,
+          "contentSpanRatio": 0.889,
+          "contentWidth": 360,
+          "contentWidthRatio": 0.25,
+          "counterfield": 32,
+          "cssTextAlign": "start",
+          "fieldAnchor": "center-field",
+          "gutter": 32,
+          "hasMedia": true,
+          "hasText": true,
+          "height": 740,
+          "heightRatio": 0.74,
+          "index": 1,
+          "label": "The WhirlpoolGalaxy",
+          "left": 32,
+          "localContentInset": 48,
+          "maxWidth": "none",
+          "paintedSurface": true,
+          "right": 1408,
+          "tag": "section",
+          "textAlignmentEvidence": [
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            }
+          ],
+          "width": 1376,
+          "widthRatio": 0.956,
+          "textAlignment": "local-start",
+          "textAlignmentMix": [
+            "local-start"
+          ]
+        },
+        {
+          "contentGutter": 410,
+          "contentLeft": 410,
+          "contentRight": 1030,
+          "contentSpan": 620,
+          "contentSpanRatio": 0.431,
+          "contentWidth": 620,
+          "contentWidthRatio": 0.431,
+          "counterfield": 240,
+          "cssTextAlign": "start",
+          "fieldAnchor": "center-field",
+          "gutter": 240,
+          "hasMedia": false,
+          "hasText": true,
+          "height": 624,
+          "heightRatio": 0.624,
+          "index": 2,
+          "label": "Two galaxies.One encounter.",
+          "left": 240,
+          "localContentInset": 170,
+          "maxWidth": "none",
+          "paintedSurface": false,
+          "right": 1200,
+          "tag": "section",
+          "textAlignmentEvidence": [
+            {
+              "align": "center",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            }
+          ],
+          "width": 960,
+          "widthRatio": 0.667,
+          "textAlignment": "mixed",
+          "textAlignmentMix": [
+            "center",
+            "local-start"
+          ]
+        },
+        {
+          "contentGutter": 100,
+          "contentLeft": 100,
+          "contentRight": 1175,
+          "contentSpan": 1075,
+          "contentSpanRatio": 0.747,
+          "contentWidth": 700,
+          "contentWidthRatio": 0.486,
+          "counterfield": 100,
+          "cssTextAlign": "start",
+          "fieldAnchor": "center-field",
+          "gutter": 100,
+          "hasMedia": true,
+          "hasText": true,
+          "height": 966,
+          "heightRatio": 0.966,
+          "index": 3,
+          "label": "Closer to the spiral.",
+          "left": 100,
+          "localContentInset": 0,
+          "maxWidth": "none",
+          "paintedSurface": false,
+          "right": 1340,
+          "tag": "section",
+          "textAlignmentEvidence": [
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "center",
+              "direction": "ltr"
+            },
+            {
+              "align": "center",
+              "direction": "ltr"
+            },
+            {
+              "align": "center",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            }
+          ],
+          "width": 1240,
+          "widthRatio": 0.861,
+          "textAlignment": "mixed",
+          "textAlignmentMix": [
+            "local-start",
+            "center"
+          ]
+        },
+        {
+          "contentGutter": 292,
+          "contentLeft": 728,
+          "contentRight": 1148,
+          "contentSpan": 420,
+          "contentSpanRatio": 0.292,
+          "contentWidth": 420,
+          "contentWidthRatio": 0.292,
+          "counterfield": 0,
+          "cssTextAlign": "start",
+          "fieldAnchor": "full-field",
+          "gutter": 0,
+          "hasMedia": true,
+          "hasText": true,
+          "height": 634,
+          "heightRatio": 0.634,
+          "index": 4,
+          "label": "Follow the dust.",
+          "left": 0,
+          "localContentInset": 292,
+          "maxWidth": "none",
+          "paintedSurface": true,
+          "right": 1440,
+          "tag": "section",
+          "textAlignmentEvidence": [
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            }
+          ],
+          "width": 1440,
+          "widthRatio": 1,
+          "textAlignment": "local-start",
+          "textAlignmentMix": [
+            "local-start"
+          ]
+        },
+        {
+          "contentGutter": 180,
+          "contentLeft": 180,
+          "contentRight": 1260,
+          "contentSpan": 1080,
+          "contentSpanRatio": 0.75,
+          "contentWidth": 565,
+          "contentWidthRatio": 0.393,
+          "counterfield": 180,
+          "cssTextAlign": "start",
+          "fieldAnchor": "center-field",
+          "gutter": 180,
+          "hasMedia": false,
+          "hasText": true,
+          "height": 568,
+          "heightRatio": 0.568,
+          "index": 5,
+          "label": "The materialbehind the guide.",
+          "left": 180,
+          "localContentInset": 0,
+          "maxWidth": "none",
+          "paintedSurface": false,
+          "right": 1260,
+          "tag": "section",
+          "textAlignmentEvidence": [
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            }
+          ],
+          "width": 1080,
+          "widthRatio": 0.75,
+          "textAlignment": "local-start",
+          "textAlignmentMix": [
+            "local-start"
+          ]
+        },
+        {
+          "contentGutter": 0,
+          "contentLeft": 0,
+          "contentRight": 1440,
+          "contentSpan": 1440,
+          "contentSpanRatio": 1,
+          "contentWidth": 1440,
+          "contentWidthRatio": 1,
+          "counterfield": 0,
+          "cssTextAlign": "start",
+          "fieldAnchor": "full-field",
+          "gutter": 0,
+          "hasMedia": false,
+          "hasText": false,
+          "height": 66,
+          "heightRatio": 0.066,
+          "index": 6,
+          "label": "NIGHT SHIFT / M51LOOK AGAIN / 2026",
+          "left": 0,
+          "localContentInset": 0,
+          "maxWidth": "none",
+          "paintedSurface": false,
+          "right": 1440,
+          "tag": "footer",
+          "textAlignmentEvidence": [],
+          "width": 1440,
+          "widthRatio": 1,
+          "textAlignment": "unknown",
+          "textAlignmentMix": []
+        }
+      ]
+    },
+    {
+      "viewport": {
+        "height": 1080,
+        "width": 1920
+      },
+      "url": "http://127.0.0.1:4174/benchmarks/visual/night-shift/#top",
+      "capturedAt": "2026-10-11T09:29:34.269Z",
+      "regionCount": 7,
+      "fullWidthCount": 3,
+      "boundedCount": 6,
+      "alignmentMix": [
+        "local-start",
+        "center"
+      ],
+      "fieldAnchorMix": [
+        "full-field",
+        "center-field"
+      ],
+      "maxGutter": 480,
+      "maxCounterfield": 480,
+      "maxContentGutter": 650,
+      "widthSpread": 0.5,
+      "fullViewportBandCount": 0,
+      "overflow": false,
+      "surfaceEdgeRegions": [],
+      "warnings": [],
+      "status": "clear",
+      "regions": [
+        {
+          "contentGutter": 320,
+          "contentLeft": 320,
+          "contentRight": 1521,
+          "contentSpan": 1201,
+          "contentSpanRatio": 0.626,
+          "contentWidth": 917,
+          "contentWidthRatio": 0.478,
+          "counterfield": 0,
+          "cssTextAlign": "start",
+          "fieldAnchor": "full-field",
+          "gutter": 0,
+          "hasMedia": false,
+          "hasText": true,
+          "height": 92,
+          "heightRatio": 0.085,
+          "index": 0,
+          "label": "NIGHT SHIFT M51 / FIELD GUIDE Field guide Readings Sources 01 / 01",
+          "left": 0,
+          "localContentInset": 320,
+          "maxWidth": "none",
+          "paintedSurface": false,
+          "right": 1920,
+          "tag": "header",
+          "textAlignmentEvidence": [
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            }
+          ],
+          "width": 1920,
+          "widthRatio": 1,
+          "textAlignment": "local-start",
+          "textAlignmentMix": [
+            "local-start"
+          ]
+        },
+        {
+          "contentGutter": 320,
+          "contentLeft": 320,
+          "contentRight": 1600,
+          "contentSpan": 1280,
+          "contentSpanRatio": 0.667,
+          "contentWidth": 360,
+          "contentWidthRatio": 0.188,
+          "counterfield": 120,
+          "cssTextAlign": "start",
+          "fieldAnchor": "center-field",
+          "gutter": 120,
+          "hasMedia": true,
+          "hasText": true,
+          "height": 740,
+          "heightRatio": 0.685,
+          "index": 1,
+          "label": "The WhirlpoolGalaxy",
+          "left": 120,
+          "localContentInset": 200,
+          "maxWidth": "none",
+          "paintedSurface": true,
+          "right": 1800,
+          "tag": "section",
+          "textAlignmentEvidence": [
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            }
+          ],
+          "width": 1680,
+          "widthRatio": 0.875,
+          "textAlignment": "local-start",
+          "textAlignmentMix": [
+            "local-start"
+          ]
+        },
+        {
+          "contentGutter": 650,
+          "contentLeft": 650,
+          "contentRight": 1270,
+          "contentSpan": 620,
+          "contentSpanRatio": 0.323,
+          "contentWidth": 620,
+          "contentWidthRatio": 0.323,
+          "counterfield": 480,
+          "cssTextAlign": "start",
+          "fieldAnchor": "center-field",
+          "gutter": 480,
+          "hasMedia": false,
+          "hasText": true,
+          "height": 624,
+          "heightRatio": 0.578,
+          "index": 2,
+          "label": "Two galaxies.One encounter.",
+          "left": 480,
+          "localContentInset": 170,
+          "maxWidth": "none",
+          "paintedSurface": false,
+          "right": 1440,
+          "tag": "section",
+          "textAlignmentEvidence": [
+            {
+              "align": "center",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            }
+          ],
+          "width": 960,
+          "widthRatio": 0.5,
+          "textAlignment": "mixed",
+          "textAlignmentMix": [
+            "center",
+            "local-start"
+          ]
+        },
+        {
+          "contentGutter": 340,
+          "contentLeft": 340,
+          "contentRight": 1415,
+          "contentSpan": 1075,
+          "contentSpanRatio": 0.56,
+          "contentWidth": 700,
+          "contentWidthRatio": 0.365,
+          "counterfield": 340,
+          "cssTextAlign": "start",
+          "fieldAnchor": "center-field",
+          "gutter": 340,
+          "hasMedia": true,
+          "hasText": true,
+          "height": 966,
+          "heightRatio": 0.894,
+          "index": 3,
+          "label": "Closer to the spiral.",
+          "left": 340,
+          "localContentInset": 0,
+          "maxWidth": "none",
+          "paintedSurface": false,
+          "right": 1580,
+          "tag": "section",
+          "textAlignmentEvidence": [
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "center",
+              "direction": "ltr"
+            },
+            {
+              "align": "center",
+              "direction": "ltr"
+            },
+            {
+              "align": "center",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            }
+          ],
+          "width": 1240,
+          "widthRatio": 0.646,
+          "textAlignment": "mixed",
+          "textAlignmentMix": [
+            "local-start",
+            "center"
+          ]
+        },
+        {
+          "contentGutter": 532,
+          "contentLeft": 968,
+          "contentRight": 1388,
+          "contentSpan": 420,
+          "contentSpanRatio": 0.219,
+          "contentWidth": 420,
+          "contentWidthRatio": 0.219,
+          "counterfield": 0,
+          "cssTextAlign": "start",
+          "fieldAnchor": "full-field",
+          "gutter": 0,
+          "hasMedia": true,
+          "hasText": true,
+          "height": 634,
+          "heightRatio": 0.587,
+          "index": 4,
+          "label": "Follow the dust.",
+          "left": 0,
+          "localContentInset": 532,
+          "maxWidth": "none",
+          "paintedSurface": true,
+          "right": 1920,
+          "tag": "section",
+          "textAlignmentEvidence": [
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            }
+          ],
+          "width": 1920,
+          "widthRatio": 1,
+          "textAlignment": "local-start",
+          "textAlignmentMix": [
+            "local-start"
+          ]
+        },
+        {
+          "contentGutter": 420,
+          "contentLeft": 420,
+          "contentRight": 1500,
+          "contentSpan": 1080,
+          "contentSpanRatio": 0.563,
+          "contentWidth": 565,
+          "contentWidthRatio": 0.294,
+          "counterfield": 420,
+          "cssTextAlign": "start",
+          "fieldAnchor": "center-field",
+          "gutter": 420,
+          "hasMedia": false,
+          "hasText": true,
+          "height": 568,
+          "heightRatio": 0.526,
+          "index": 5,
+          "label": "The materialbehind the guide.",
+          "left": 420,
+          "localContentInset": 0,
+          "maxWidth": "none",
+          "paintedSurface": false,
+          "right": 1500,
+          "tag": "section",
+          "textAlignmentEvidence": [
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            }
+          ],
+          "width": 1080,
+          "widthRatio": 0.563,
+          "textAlignment": "local-start",
+          "textAlignmentMix": [
+            "local-start"
+          ]
+        },
+        {
+          "contentGutter": 0,
+          "contentLeft": 0,
+          "contentRight": 1920,
+          "contentSpan": 1920,
+          "contentSpanRatio": 1,
+          "contentWidth": 1920,
+          "contentWidthRatio": 1,
+          "counterfield": 0,
+          "cssTextAlign": "start",
+          "fieldAnchor": "full-field",
+          "gutter": 0,
+          "hasMedia": false,
+          "hasText": false,
+          "height": 66,
+          "heightRatio": 0.061,
+          "index": 6,
+          "label": "NIGHT SHIFT / M51LOOK AGAIN / 2026",
+          "left": 0,
+          "localContentInset": 0,
+          "maxWidth": "none",
+          "paintedSurface": false,
+          "right": 1920,
+          "tag": "footer",
+          "textAlignmentEvidence": [],
+          "width": 1920,
+          "widthRatio": 1,
+          "textAlignment": "unknown",
+          "textAlignmentMix": []
+        }
+      ]
+    }
+  ],
+  "console": null,
+  "pageErrors": null,
+  "runtimeEvidence": "not-recorded",
+  "status": "clear"
+}

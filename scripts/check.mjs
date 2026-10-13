@@ -24,7 +24,9 @@ import { addLiveVariant, closeLiveSession, createLiveSession, decideLiveVariant,
 import { addImageProposal, closeImageProposalSession, createImageProposalSession, decideImageProposal, recordImageEvidence, translateImageProposal } from "./image-proposal.mjs";
 import { addVisualFinding, closeVisualCritiqueSession, createVisualCritiqueSession, recordVisualVerdict } from "./visual-critique.mjs";
 import { lintProject } from "./visual-lint.mjs";
-import { initProductContext, parseProductContext, readProductContext, renderProductContextMarkdown } from "./product-context.mjs";
+import { summarizeLayout, summarizeSnapshots, summarizeTextAlignment } from "./layout-audit.mjs";
+import { selectDesignMethods } from "./design-methods.mjs";
+import { initProductContext, parseProductContext, readProductContext, renderProductContextMarkdown, resolveProductRequest } from "./product-context.mjs";
 import { buildMotionPlan } from "./transitions-adapter.mjs";
 
 const root = REPO_ROOT;
@@ -63,7 +65,7 @@ function checkMarkdownLinks() {
 }
 
 function checkData() {
-  const dataFiles = ["profiles.json", "styles.json", "types.json", "palettes.json", "motion.json", "stacks.json", "quality-gates.json", "resources.json", "reference-lenses.json", "reference-recipes.json", "reference-sources.json", "visual-directions.json", "visual-treatments.json", "constraint-policy.json"];
+  const dataFiles = ["profiles.json", "styles.json", "types.json", "palettes.json", "motion.json", "stacks.json", "quality-gates.json", "resources.json", "reference-lenses.json", "reference-recipes.json", "reference-sources.json", "visual-directions.json", "visual-treatments.json", "constraint-policy.json", "design-methods.json"];
   const datasets = {};
   for (const file of dataFiles) {
     const path = join(root, "data", file);
@@ -79,6 +81,18 @@ function checkData() {
     }
   }
   const ids = (file, key) => new Set((datasets[file]?.[key] ?? []).map((item) => item.id));
+  const methodData = datasets["design-methods.json"] ?? { sources: [], methods: [] };
+  const methodSourceIds = new Set(methodData.sources.map((source) => source.id));
+  const methodIds = methodData.methods.map((method) => method.id);
+  if (!methodIds.length || new Set(methodIds).size !== methodIds.length) fail("design methods are empty or have duplicate ids");
+  for (const source of methodData.sources) {
+    if (!/^https:\/\//u.test(source.url ?? "") || !source.kind || !source.evidence?.status || !source.evidence?.checkedOn || !source.evidence?.note || !source.aliases?.length) fail(`design method source ${source.id} has incomplete provenance`);
+    if (!methodData.methods.some((method) => method.sourceIds?.includes(source.id))) fail(`design method source ${source.id} has no transferable method`);
+  }
+  for (const method of methodData.methods) {
+    if (!method.sourceIds?.length || method.sourceIds.some((id) => !methodSourceIds.has(id))) fail(`design method ${method.id} has missing sources`);
+    if (!method.signals?.length || !method.translate?.length || !method.renderQuestions?.length || !method.implementation || !method.narrow || !method.fallback) fail(`design method ${method.id} has incomplete translation guidance`);
+  }
   const styleIds = ids("styles.json", "styles");
   const typeIds = ids("types.json", "types");
   const paletteIds = ids("palettes.json", "palettes");
@@ -87,11 +101,13 @@ function checkData() {
   if (!(datasets["quality-gates.json"]?.qualityGates ?? []).some((gate) => gate.id === "premium-finish")) fail("quality gates are missing premium-finish");
   if (!(datasets["quality-gates.json"]?.qualityGates ?? []).some((gate) => gate.id === "reference-fidelity")) fail("quality gates are missing reference-fidelity");
   if (!(datasets["quality-gates.json"]?.qualityGates ?? []).some((gate) => gate.id === "visual-direction")) fail("quality gates are missing visual-direction");
+  if (!(datasets["quality-gates.json"]?.qualityGates ?? []).some((gate) => gate.id === "composition-breathing")) fail("quality gates are missing composition-breathing");
   if (!(datasets["quality-gates.json"]?.qualityGates ?? []).some((gate) => gate.id === "geometry-language")) fail("quality gates are missing geometry-language");
   if (!(datasets["quality-gates.json"]?.qualityGates ?? []).some((gate) => gate.id === "constraint-authority")) fail("quality gates are missing constraint-authority");
   if (!(datasets["quality-gates.json"]?.qualityGates ?? []).some((gate) => gate.id === "product-signal")) fail("quality gates are missing product-signal");
   if (!(datasets["quality-gates.json"]?.qualityGates ?? []).some((gate) => gate.id === "surface-completeness")) fail("quality gates are missing surface-completeness");
   if (!(datasets["quality-gates.json"]?.antiPatterns ?? []).some((item) => item.id === "presentation-shell")) fail("quality gates are missing presentation-shell rejection");
+  if (!(datasets["quality-gates.json"]?.antiPatterns ?? []).some((item) => item.id === "packed-composition")) fail("quality gates are missing packed-composition rejection");
   if (!(datasets["quality-gates.json"]?.antiPatterns ?? []).some((item) => item.id === "first-viewport-only")) fail("quality gates are missing first-viewport-only rejection");
   if (!(datasets["quality-gates.json"]?.antiPatterns ?? []).some((item) => item.id === "unfinished-surface")) fail("quality gates are missing unfinished-surface rejection");
   if (!(datasets["constraint-policy.json"]?.hardInvariants ?? []).some((item) => item.id === "semantic-accessibility")) fail("constraint policy is missing semantic-accessibility");
@@ -118,6 +134,9 @@ function checkData() {
     if (!reference.visual?.family || !reference.visual?.motion) fail(`reference ${reference.id} has incomplete visual lens data`);
   }
   const lensIds = new Set((datasets["reference-lenses.json"]?.references ?? []).map((reference) => reference.id));
+  for (const requiredLens of ["siteinspire", "awwwards", "muuuuu", "behance", "dribbble", "mobbin", "pinterest", "huaban", "muzli", "eagle-blog"]) {
+    if (!lensIds.has(requiredLens)) fail(`reference lenses are missing discovery source: ${requiredLens}`);
+  }
   for (const recipe of datasets["reference-recipes.json"]?.recipes ?? []) {
     if (!lensIds.has(recipe.referenceId)) fail(`recipe ${recipe.referenceId} has no matching reference lens`);
     if (!recipe.archetype || !recipe.firstViewport || !Array.isArray(recipe.sections) || recipe.sections.length === 0) fail(`recipe ${recipe.referenceId} is incomplete`);
@@ -170,7 +189,7 @@ function checkPackage() {
   }
   if (packageJson.type !== "module") fail("package.json must use type=module");
   if (!packageJson.scripts?.test) fail("package.json is missing the test script");
-  for (const script of ["graph", "brief", "product-context", "direction", "reference", "scout", "reference-build", "resource", "audit", "motion", "surface-mode", "design-operation", "design-loop", "research-atlas", "live", "image-proposal", "critique", "visual-lint", "capture"]) {
+  for (const script of ["graph", "brief", "product-context", "direction", "reference", "scout", "reference-build", "resource", "audit", "motion", "surface-mode", "design-operation", "design-loop", "research-atlas", "live", "image-proposal", "critique", "visual-lint", "layout-audit", "capture"]) {
     if (!packageJson.scripts?.[script]) fail(`package.json is missing the ${script} script`);
   }
 }
@@ -189,6 +208,7 @@ function checkSkill() {
 
 async function checkSmoke() {
   try {
+    const cliTextOptions = { encoding: "utf8", maxBuffer: 32 * 1024 * 1024 };
     const report = scanProject(root, { maxFiles: 5000 });
     if (!report.stack.frameworks.includes("vite") && !report.stack.frameworks.includes("react")) {
       notes.push("repository itself is a skill package, so its scan has no frontend framework signal");
@@ -208,9 +228,11 @@ async function checkSmoke() {
     });
     const microReferences = selectReferenceComposition("polish the button hover micro-interaction", { limit: 4 });
     const rewampReferences = selectReferenceComposition("build a searchable component workbench like Rewamp UI", { limit: 4 });
+    const openCompositionReferences = selectReferenceComposition("an independent film archive website", { profile: "adaptive surface" });
     const noReference = selectReferenceComposition("我要一个网站");
     const transactionBrief = buildBrief({ query: "商品支付与订单流程" });
     const genericBrief = buildBrief({ query: "我要一个网站" });
+    const developerToolBrief = buildBrief({ query: "做一个关于独立开发者工具的官网" });
     const narrativeBrief = buildBrief({ query: "实验性品牌叙事网页" });
     const editorialBrief = buildBrief({ query: "editorial photography website" });
     const brandToolBrief = buildBrief({ query: "brand design editor tool" });
@@ -218,6 +240,9 @@ async function checkSmoke() {
     if (brandToolBrief.productSignal.mode !== "product" || !brandToolBrief.productSignal.primaryAction) fail("authored vocabulary removed the workflow from an explicit tool request");
     const genericScout = scoutReferences("我要一个网站");
     const hardwareScout = scoutReferences("高端硬件外设官网", { limit: 4 });
+    const poetryScout = scoutReferences("诗歌朗读档案", { profile: "general-product premium hardware" });
+    const artScout = scoutReferences("高级艺术家个人作品集设计");
+    const workflowScout = scoutReferences("local research editor workflow");
     const hardwareBrief = buildBrief({ query: "高端硬件外设官网" });
     const premiumBrief = buildBrief({ query: "高端品牌官网，要求有质感" });
     const genericDirection = selectVisualDirection("我要一个网站", { adaptiveDefault: true });
@@ -325,6 +350,14 @@ async function checkSmoke() {
           counterweight: "A compact index.",
           belowFoldPeek: "The next artifact enters as a continuation.",
         },
+        compositionPlan: {
+          notes: "Placement follows each artifact, not one site-wide axis.",
+          regions: [
+            { region: "overview", placement: "centered", textAlignment: "center", measure: "short title", narrow: "keep centered" },
+            { region: "essay", placement: "centered block", textAlignment: "start", measure: "readable prose", wide: "retain the measure" },
+            { region: "index", placement: "edge attached", textAlignment: "end", relation: "align with the artifact", narrow: "move after the artifact" },
+          ],
+        },
         geometryRules: {
           edgeCharacter: "Soft folded surfaces.",
           cornerHierarchy: "Field broad, index tighter, controls compact.",
@@ -377,6 +410,42 @@ async function checkSmoke() {
     const externalBuild = buildReferenceBuild({
       query: "Build a product like https://example.com/visual-tool for our workflow",
     });
+    if (!referenceBuild.compositionPlan?.regions?.length || !referenceBuild.compositionPlan.optionalRegions?.length || !referenceBuild.compositionPlan.guardrails?.alignmentSequence?.length || !referenceBuild.compositionPlan.guardrails?.fieldSequence?.length || !referenceBuild.compositionPlan.spatialBudget?.occupancy?.length || !referenceBuild.compositionPlan.spaceChoreography?.sequence?.length || !referenceBuild.compositionPlan.spaceChoreography?.counterfield || !referenceBuild.responsivePlan?.compositionRules?.wide || !referenceBuild.responsivePlan?.compositionRules?.intermediate || !referenceBuild.responsivePlan?.compositionRules?.narrow || !referenceBuild.responsivePlan?.compositionRules?.budget?.counterfield || !referenceBuild.responsivePlan?.compositionRules?.spatialBudget?.narrow || !referenceBuild.responsivePlan?.compositionRules?.spaceChoreography?.sequence?.length || !referenceBuild.responsivePlan?.regionRules?.some((region) => region.geometry && region.intermediate) || !referenceBuild.pagePlan) fail("reference build did not carry core/optional regional composition, space choreography, budget, and responsive density rules");
+    const packedLayout = summarizeLayout({ viewport: { width: 1440, height: 900 }, scrollWidth: 1440, documentWidth: 1440, regions: [0, 1, 2].map((index) => ({ index, widthRatio: 1, contentWidthRatio: 1, gutter: 0, counterfield: 0, heightRatio: 0.9, textAlignment: "center" })) });
+    if (!packedLayout.warnings.includes("packed-edge-to-edge") || !packedLayout.warnings.includes("packed-content-field") || !packedLayout.warnings.includes("uniform-shell-rhythm") || !packedLayout.warnings.includes("repeated-viewport-bands") || !packedLayout.warnings.includes("no-bounded-reading-measure")) fail("layout audit did not flag a packed synthetic composition");
+    const narrowLayout = summarizeLayout({ viewport: { width: 390, height: 844 }, scrollWidth: 390, documentWidth: 390, regions: [0, 1].map((index) => ({ index, widthRatio: 1, contentWidthRatio: 0.98, contentSpanRatio: 0.96, contentGutter: 8, gutter: 0, counterfield: 0, heightRatio: 0.42, textAlignment: index === 0 ? "center" : "local-start" })) });
+    if (!narrowLayout.warnings.includes("narrow-edge-content") || narrowLayout.alignmentMix.length !== 2) fail("layout audit did not preserve narrow gutter and local alignment evidence");
+    const mixedGutters = summarizeLayout({ viewport: { width: 390, height: 844 }, scrollWidth: 390, documentWidth: 390, regions: [
+      { widthRatio: 1, contentSpanRatio: 0.96, contentGutter: 8, gutter: 0, hasText: true },
+      { widthRatio: 0.7, contentSpanRatio: 0.7, contentGutter: 48, gutter: 48, hasText: true },
+    ] });
+    if (!mixedGutters.warnings.includes("narrow-edge-content")) fail("one comfortable region concealed a cramped mobile text region");
+    const naturalMobileFlow = summarizeLayout({ viewport: { width: 320, height: 740 }, scrollWidth: 320, documentWidth: 320, regions: [
+      { widthRatio: 1, contentWidthRatio: 0.85, contentGutter: 24, gutter: 0, heightRatio: 0.9, textAlignment: "center" },
+      { widthRatio: 1, contentWidthRatio: 0.85, contentGutter: 24, gutter: 0, heightRatio: 1.3, textAlignment: "local-start" },
+      { widthRatio: 1, contentWidthRatio: 0.72, contentGutter: 24, gutter: 0, heightRatio: 1.5, textAlignment: "local-start" },
+    ] });
+    if (naturalMobileFlow.warnings.includes("uniform-shell-rhythm") || naturalMobileFlow.warnings.includes("repeated-viewport-bands")) fail("natural mobile reading flow was mistaken for repeated viewport-sized shells");
+    const wideProse = summarizeLayout({ viewport: { width: 1440, height: 900 }, scrollWidth: 1440, documentWidth: 1440, regions: [0, 1].map((index) => ({ index, widthRatio: 1, contentWidthRatio: 0.78, contentSpanRatio: 0.78, contentGutter: 32, proseWidthRatio: 0.76, proseGutter: 32, gutter: 0, counterfield: 32, heightRatio: 0.4, hasText: true })) });
+    if (!wideProse.warnings.includes("wide-prose-measure")) fail("layout audit did not flag repeated wide-screen prose measures");
+    const oversizedInsetProse = summarizeLayout({ viewport: { width: 1440, height: 900 }, scrollWidth: 1440, documentWidth: 1440, regions: [{ label: "Long essay", widthRatio: 0.65, gutter: 252, hasText: true, proseBlocks: [{ widthEm: 62, gutter: 252, textLength: 800 }] }] });
+    if (!oversizedInsetProse.warnings.includes("wide-prose-measure")) fail("a large outer gutter concealed an excessively long prose measure");
+    const boundedProseWithWideMedia = summarizeLayout({ viewport: { width: 1440, height: 900 }, scrollWidth: 1440, documentWidth: 1440, regions: [{ widthRatio: 1, gutter: 0, hasText: true, hasMedia: true, proseWidthRatio: 0.9, proseBlocks: [{ widthEm: 30, gutter: 48, textLength: 140 }] }] });
+    if (boundedProseWithWideMedia.warnings.includes("wide-prose-measure")) fail("full-width media or a short label overrode the actual bounded paragraph measure");
+    const paintedEdge = summarizeLayout({ viewport: { width: 768, height: 900 }, scrollWidth: 768, documentWidth: 768, regions: [
+      { label: "Field note", widthRatio: 0.938, contentGutter: 24, gutter: 24, hasText: true, paintedSurface: true, localContentInset: 0 },
+    ] });
+    if (!paintedEdge.warnings.includes("text-at-surface-edge") || paintedEdge.surfaceEdgeRegions[0] !== "Field note") fail("viewport framing concealed text touching its own painted surface");
+    const connectedLayout = summarizeSnapshots({ snapshots: [{ viewport: { width: 390, height: 844 }, scrollWidth: 412, documentWidth: 390, regions: [] }] });
+    if (!connectedLayout.viewports[0].overflow || connectedLayout.status !== "review" || connectedLayout.runtimeEvidence !== "not-recorded" || connectedLayout.pageErrors !== null) fail("connected geometry lost overflow or invented runtime logs");
+    let rejectedBadSnapshots = false;
+    try { summarizeSnapshots({ snapshots: [{ viewport: { width: "390", height: 844 }, regions: [] }] }); } catch { rejectedBadSnapshots = true; }
+    if (!rejectedBadSnapshots) fail("malformed connected geometry was accepted as rendered evidence");
+    const readingAlignment = summarizeTextAlignment([{ align: "center" }, { align: "start" }, { align: "start" }]);
+    if (readingAlignment.textAlignment !== "mixed" || !readingAlignment.textAlignmentMix.includes("local-start")) fail("centered heading and start-aligned prose lost their distinct line alignments");
+    if (summarizeTextAlignment([{ align: "left", direction: "rtl" }]).textAlignment !== "local-end") fail("layout audit did not respect logical RTL line alignment");
+    const variedFields = summarizeLayout({ viewport: { width: 1440, height: 900 }, scrollWidth: 1440, documentWidth: 1440, regions: [0.8, 0.5, 0.7, 0.4].map((widthRatio, index) => ({ widthRatio, contentWidthRatio: widthRatio, gutter: 40, counterfield: 80, fieldAnchor: index % 2 ? "center-field" : "start-field", textAlignmentEvidence: [{ align: "start" }] })) });
+    if (variedFields.warnings.includes("single-page-wide-anchor")) fail("varied block placement was falsely rejected for consistent prose alignment");
     const audit = await buildAudit({ projectRoot: root, query: "analytics dashboard", offline: true, limit: 4 });
     const referenceAudit = await buildAudit({ projectRoot: root, query: "Build a component gallery like Rare UI", offline: true, limit: 4 });
     const hardwareAudit = await buildAudit({ projectRoot: root, query: "高端硬件外设类网站", offline: true, limit: 4 });
@@ -513,21 +582,85 @@ async function checkSmoke() {
     if (references.selected.some((item) => item.borrow.length === 0 || item.reject.length === 0 || !item.translate)) fail("reference composition guidance is incomplete");
     if (!microReferences.requiredRoles.some((role) => role.id === "micro-interaction") || !microReferences.selected.some((item) => ["bencho", "design-spells", "react-bits", "obsidian-ui"].includes(item.id))) fail("micro-interaction reference routing is incomplete");
     if (!rewampReferences.selected.some((item) => item.id === "rewamp-ui")) fail("reference composition did not route the named Rewamp UI workbench lens");
+    if (!openCompositionReferences.selected.some((item) => item.id === "siteinspire") || !openCompositionReferences.selected.some((item) => item.id === "mobbin")) fail("concrete no-case requests did not receive composition and responsive discovery lenses");
     if (noReference.mode !== "no-reference-default" || noReference.selected.length !== 0) fail("no-reference mode forced an external visual lens");
     if (transactionBrief.recommendation.profile.id !== "commerce-flow" || transactionBrief.recommendation.style.id !== "visual-object") fail("explicit transaction matching did not resolve the commerce profile");
     if (transactionBrief.referenceComposition.selected.some((item) => ["rare-ui", "beautiful-ui", "beui"].includes(item.id))) fail("transaction brief imported a visual showcase lens");
     if (genericBrief.directionMode !== "adaptive-default" || genericBrief.recommendation.profile.id !== "adaptive-surface" || genericBrief.recommendation.style.id !== "evidence-led-neutral") fail("underspecified request did not resolve the adaptive default");
+    if (developerToolBrief.recommendation.profile.id !== "editorial-marketing" || developerToolBrief.productRequest.subjectProfile !== "command-tool" || developerToolBrief.productSignal.mode !== "authored-experience") fail("developer-tool homepage confused the product topic with its public surface");
+    for (const query of ["做一个城市独立电影放映俱乐部的网站", "独立书店的阅读活动网站", "a city independent-film screening club website"]) {
+      const request = resolveProductRequest(query);
+      const subjectBrief = buildBrief({ query });
+      if (request.subjectProfile !== "adaptive-surface" || request.profile.hits.length || subjectBrief.productSignal.mode === "product") fail(`shared keyword fragments invented an operational product: ${query}`);
+    }
+    const filmContext = parseProductContext("- Product / audience: 城市独立电影爱好者\n- Primary job: 浏览放映安排");
+    if (resolveProductRequest("我要一个网站", filmContext).subjectProfile !== "adaptive-surface") fail("product context matched an unrelated CJK keyword fragment");
+    const filmWithImage = parseProductContext("- Product / audience: A city independent-film screening club\n- Primary workflow: Browse screenings and save a date\n- Primary object: A named film with an image\n- Primary job: Choose a screening\n- Visible result: A table of saved dates");
+    const refinedFilm = resolveProductRequest("make the stage more authored", filmWithImage);
+    if (refinedFilm.subjectProfile !== "adaptive-surface" || refinedFilm.source !== "PRODUCT.md" || refinedFilm.signalFields["primary-object"] !== "A named film with an image") fail("object/result nouns imposed an unrelated tool on contextual refinement");
+    if (resolveProductRequest("独立电影放映俱乐部", null, { profile: "command-tool" }).profile.confidence !== "explicit") fail("literal keyword matching overrode an explicitly selected profile");
+    for (const [homepage, workspace] of [
+      ["a homepage for an AI coding tool", "an AI coding tool workspace"],
+      ["an official website for an analytics platform", "an analytics dashboard"],
+      ["a homepage for a photo editor", "a photo editor"],
+      ["做一个独立开发者工具的官网", "做一个独立开发者工具工作台"],
+    ]) {
+      const publicBrief = buildBrief({ query: homepage });
+      const operatingBrief = buildBrief({ query: workspace });
+      if (publicBrief.surfaceMode.mode !== "persuade" || publicBrief.productSignal.mode !== "authored-experience" || ["rail-canvas-workbench", "data-detail-workbench", "stateful-instrument"].includes(publicBrief.visualDirection.id)) fail(`product topic overrode the homepage job: ${homepage}`);
+      if (operatingBrief.productSignal.mode !== "product") fail(`operational interface lost its task contract: ${workspace}`);
+    }
+    for (const query of ["a landing page builder", "a homepage editor", "官网编辑器"]) {
+      if (buildBrief({ query }).productSignal.mode !== "product") fail(`an editor was confused with the surface it edits: ${query}`);
+    }
+    if (selectVisualDirection("a homepage for an AI coding tool", { direction: "stateful-instrument" }).id !== "stateful-instrument") fail("surface-aware default routing overrode an explicitly chosen direction");
     if (genericBrief.referenceComposition.selected.length !== 0 || genericBrief.referenceScout.active) fail("underspecified request forced a reference or product category");
     if (genericScout.active || genericScout.selected.length !== 0) fail("generic request activated the product reference scout without category evidence");
+    if (!poetryScout.active || poetryScout.category.id !== "open-discovery" || poetryScout.selected.length !== 0 || !poetryScout.liveSearchPlan.some((query) => query.includes("诗歌朗读档案"))) fail("an uncatalogued subject did not keep its own open discovery plan");
+    if (artScout.category.id !== "open-discovery" || artScout.selected.length !== 0) fail("generic quality/design words forced an artist into a hardware reference");
+    if (!workflowScout.discoveryPlan.channels.some((channel) => channel.id === "mobbin")) fail("workflow discovery did not include real screen sequences");
+    if (poetryScout.discoveryPlan.channelInventory.length !== 10 || genericScout.discoveryPlan.channels.length !== 0) fail("discovery inventory or underspecified routing lost its boundary");
+    if (authoredDirection.compositionPlan?.regions[0]?.textAlignment !== "center" || authoredDirection.compositionPlan?.regions[1]?.placement !== "centered block" || authoredDirection.compositionPlan?.regions[1]?.textAlignment !== "start" || authoredDirection.creativeProcess.compositionPlan.regions[2]?.textAlignment !== "end") fail("authored per-region placement and mixed alignment did not survive direction resolution");
     if (!hardwareScout.active || !hardwareScout.selected.some((item) => item.id === "apple-product")) fail("hardware reference scout did not return a global official benchmark");
     if (hardwareBrief.recommendation.profile.id !== "hardware-product-story" || hardwareBrief.recommendation.style.id !== "premium-industrial") fail("hardware request did not resolve the hardware product direction");
+    const audioHardwareRequest = resolveProductRequest("做一个桌面音频接口品牌官网");
+    if (audioHardwareRequest.subjectProfile !== "hardware-product-story" || audioHardwareRequest.profile.record.id !== "hardware-product-story") fail("a concrete hardware object was outweighed by generic page words");
+    const audioHardwareScout = scoutReferences("做一个桌面音频接口品牌官网");
+    if (audioHardwareScout.category.id !== "hardware-product" || !audioHardwareScout.selected.some((item) => item.id === "apple-product") || !audioHardwareScout.selected.some((item) => item.id === "bang-olufsen")) fail("a concrete audio hardware brief did not preserve both global product and material-specific official references");
     if (premiumBrief.recommendation.style.id !== "quiet-luxury" || premiumBrief.recommendation.palette.id !== "tonal-studio" || !premiumBrief.quality.gates.some((gate) => gate.id === "premium-finish")) fail("premium request did not resolve the premium finish direction");
     const acceptedConceptDirection = selectVisualDirection("我要一个网站", { concept: "object-story" });
     const ordinaryConceptDirection = selectVisualDirection("company website");
     const dataConceptDirection = selectVisualDirection("analytics dashboard");
+    const soundPublicationDirection = selectVisualDirection("一个记录城市声音与夜间步行的独立出版物网站");
+    const soundPublicationBrief = buildBrief({ query: "一个记录城市声音与夜间步行的独立出版物网站" });
+    const filmBlogBrief = buildBrief({ query: "一个关于独立电影的博客网站" });
+    const filmArchiveDirection = selectVisualDirection("a searchable archive for independent films");
     if (genericDirection.id !== "adaptive-asymmetric" || genericDirection.mode !== "adaptive" || genericDirection.visualTreatment?.id !== "quiet-editorial-studio" || genericDirection.visualTreatment?.confidence !== "provisional" || genericDirection.constraintAuthority?.mode !== "adaptive-default" || !genericDirection.constraintAuthority?.canOverrideAdvisory || genericDirection.constraintAuthority?.creativeFreedom !== "open-with-proof" || genericDirection.conceptSet?.status !== "selection-required" || genericDirection.conceptSet?.candidates?.length !== 3 || new Set(genericDirection.conceptSet.candidates.map((item) => item.directionId)).size !== 3 || acceptedConceptDirection.selectionStatus !== "accepted-concept" || acceptedConceptDirection.id !== "object-led-editorial" || acceptedConceptDirection.visualTreatment?.id !== "material-object-studio") fail("generic visual direction did not expose diverse concept frames and an accepted concept path");
     if (ordinaryConceptDirection.conceptSet?.candidates?.length !== 3 || new Set(ordinaryConceptDirection.conceptSet.candidates.map((item) => item.treatmentId)).size !== 3 || dataConceptDirection.conceptSet?.candidates?.length !== 3 || dataConceptDirection.conceptSet.candidates[0]?.directionId !== "data-detail-workbench" || new Set(dataConceptDirection.conceptSet.candidates.map((item) => item.treatmentId)).size !== 3) fail("adaptive visual direction did not expose query-aware structural divergence");
+    if (soundPublicationDirection.id !== "narrative-chapters" || !soundPublicationDirection.matched.includes("出版") || !soundPublicationDirection.conceptSet?.candidates?.some((item) => item.directionId === "stateful-instrument") || soundPublicationDirection.conceptSet?.candidates?.length !== 3) fail("editorial and sound signals did not produce a subject-aware direction with alternatives");
+    if (soundPublicationBrief.directionMode === "adaptive-default" || !soundPublicationBrief.referenceScout.active || soundPublicationBrief.referenceScout.category.id !== "open-discovery" || soundPublicationBrief.visualDirection.id !== "narrative-chapters") fail("a meaningful uncatalogued brief incorrectly disabled open discovery");
+    if (filmBlogBrief.directionMode === "adaptive-default" || filmBlogBrief.visualDirection.id !== "narrative-chapters" || !filmBlogBrief.referenceScout.active || filmArchiveDirection.id !== "narrative-chapters" || !filmArchiveDirection.matched.includes("films")) fail("content medium signals did not route an uncatalogued film publication into open discovery");
     if (authoredDirection.id !== "folded-field" || authoredDirection.selectionStatus !== "authored-proposal" || authoredDirection.constraintAuthority?.mode !== "model-proposed" || authoredDirection.firstViewport.layout.includes("55-65%")) fail("authored direction did not replace the local composition candidate");
+    const compositionDirections = [soundPublicationDirection, hardwareDirection, analyticsDirection, agentDirection, galleryDirection];
+    const hypothesisMapSignature = (hypothesis) => [...(hypothesis.regions ?? []), ...(hypothesis.optionalRegions ?? [])].map((region) => `${region.region}:${region.textAlignment}/${region.geometry?.field}/${region.geometry?.measure}`).join("|");
+    const compositionPlanComplete = (direction) => {
+      const plan = direction.compositionPlan;
+      if (plan?.status !== "generated-hypothesis-render-pending" || plan.regions.length < 3 || plan.geometryMix.length < 2 || plan.measureMix.length < 2 || plan.guardrails?.alignmentSequence?.length < 3 || plan.guardrails?.measureSequence?.length < 3 || plan.guardrails?.fieldSequence?.length < 3 || !plan.guardrails?.wide || !plan.guardrails?.intermediate || !plan.guardrails?.narrow || !plan.guardrails?.counterfield || !plan.spatialBudget?.occupancy?.length || !plan.spatialBudget?.fullBleedLimit || !plan.spatialBudget?.override || !plan.spaceChoreography?.sequence?.length || !plan.spaceChoreography?.wide || !plan.spaceChoreography?.intermediate || !plan.spaceChoreography?.narrow || !plan.spaceChoreography?.counterfield || !plan.spaceChoreography?.override) return false;
+      const allRegions = [...plan.regions, ...(plan.optionalRegions ?? [])];
+      if (plan.regions.length < 3 || !plan.optionalRegions?.length || allRegions.some((region) => !region.space || !region.scope || !region.wide || !region.intermediate || !region.narrow || !region.occupancy || !region.field || !region.surface || !region.pause || !region.geometry?.anchor || !region.geometry?.measure || !region.geometry?.field || !region.geometry?.density || !region.geometry?.mobile)) return false;
+      if (plan.hypotheses?.length !== 3 || !plan.selectedHypothesis) return false;
+      if (plan.hypotheses.some((hypothesis) => !hypothesis.thesis || !hypothesis.bestFor || !hypothesis.tradeoff || !hypothesis.wide || !hypothesis.narrow || !hypothesis.regions?.length || !hypothesis.optionalRegions?.length || hypothesis.geometryMix?.length < 2 || hypothesis.guardrails?.alignmentSequence?.length < 3 || !hypothesis.guardrails?.counterfield || !hypothesis.spatialBudget?.occupancy?.length || !hypothesis.spatialBudget?.narrow || !hypothesis.spaceChoreography?.sequence?.length || !hypothesis.spaceChoreography?.counterfield || !hypothesis.spaceChoreography?.override || [...hypothesis.regions, ...hypothesis.optionalRegions].some((region) => !region.intermediate || !region.geometry?.anchor))) return false;
+      return new Set(plan.hypotheses.map(hypothesisMapSignature)).size >= 2;
+    };
+    if (compositionDirections.some((direction) => !compositionPlanComplete(direction))) fail("direction routing did not produce divergent, renderable regional composition hypotheses");
+    if (compositionDirections.some((direction) => direction.creativeProcess?.compositionPlan !== direction.compositionPlan)) fail("creative process did not preserve the executable composition hypothesis");
+    const hardwareCoreAlignment = hardwareDirection.compositionPlan.regions.map((region) => `${region.region}:${region.textAlignment}`);
+    if (hardwareDirection.compositionPlan.selectedHypothesis !== "subject-led" || hardwareCoreAlignment[0] !== "opening:start" || hardwareCoreAlignment[1] !== "object stage:center" || hardwareCoreAlignment.at(-1) !== "ending:center") fail("subject-led product composition collapsed the opening, object, and ending onto one alignment");
+    if (genericDirection.compositionPlan.hypothesisSelection?.status !== "exploratory-fallback" || genericDirection.compositionPlan.hypotheses.some((hypothesis) => hypothesis.score !== 0)) fail("an underspecified composition invented structural evidence for its exploratory fallback");
+    const dataDetail = analyticsDirection.compositionPlan.regions.find((region) => region.region === "selected detail");
+    if (dataDetail?.geometry?.field !== "attached-local" || dataDetail.geometry.anchor !== "local-end" || dataDetail.textAlignment !== "start") fail("a locally attached explanation was reclassified as the data object or forced into end-aligned prose");
+    if (analyticsDirection.compositionPlan.alignmentMix.includes("center")) fail("an optional centered note inflated the core layout's alignment evidence");
+    if (authoredDirection.creativeProcess?.compositionPlan?.status !== "authored-plan-render-pending" || authoredDirection.creativeProcess.compositionPlan.regions.length !== 3) fail("authored composition plan was not preserved as the authoritative plan");
     if (hardwareDirection.id !== "object-led-editorial" || analyticsDirection.id !== "data-detail-workbench" || agentDirection.id !== "stateful-instrument" || galleryDirection.id !== "specimen-catalog" || rewampDirection.id !== "specimen-catalog") fail("visual direction routing did not resolve the product-specific grammar");
     if (companyDirection.visualTreatment?.id !== "quiet-editorial-studio") fail("ordinary company site did not resolve a visual treatment");
     if (projectOwnedDirection.constraintAuthority?.mode !== "project-owned" || projectOwnedDirection.constraintAuthority?.source !== "DESIGN.md") fail("project-owned DESIGN.md did not outrank local defaults");
@@ -567,34 +700,34 @@ async function checkSmoke() {
     if (renderReferenceBuild(referenceBuild).includes("[object Object]") || !renderReferenceBuild(referenceBuild).includes("Product Signal Contract") || !renderReferenceBuild(referenceBuild).includes("Completion Contract")) fail("reference build markdown renderer returned incomplete product and completion output");
     if (renderVisualDirection(agentDirection).includes("[object Object]") || !renderVisualDirection(agentDirection).includes("Product Signal Contract") || !renderVisualDirection(agentDirection).includes("Completion Contract") || !renderVisualDirection(agentDirection).includes("Visual Treatment") || !renderVisualDirection(agentDirection).includes("Geometry Rules") || !renderVisualDirection(agentDirection).includes("AI-Default Checks (Advisory)") || !renderVisualDirection(agentDirection).includes("Constraint Authority")) fail("visual direction markdown renderer is incomplete");
     if (renderAuditMarkdown(audit).includes("[object Object]") || !renderAuditMarkdown(audit).includes("Product Signal Contract") || !renderAuditMarkdown(audit).includes("Completion Contract")) fail("audit markdown renderer returned incomplete product and completion output");
-    const inspectMd = execFileSync(process.execPath, [join(root, "scripts", "inspect-project.mjs"), root, "--format", "md"], { encoding: "utf8" });
-    const briefMd = execFileSync(process.execPath, [join(root, "scripts", "design-brief.mjs"), "--query", "analytics dashboard", "--format", "md"], { encoding: "utf8" });
-    const briefJson = execFileSync(process.execPath, [join(root, "scripts", "design-brief.mjs"), "--query", "analytics dashboard", "--format", "json"], { encoding: "utf8" });
-    const directionMd = execFileSync(process.execPath, [join(root, "scripts", "visual-direction.mjs"), "--query", "AI agent dashboard with approval modal", "--profile", "productive-app", "--format", "md"], { encoding: "utf8" });
-    const directionJson = execFileSync(process.execPath, [join(root, "scripts", "visual-direction.mjs"), "--query", "AI agent dashboard with approval modal", "--profile", "productive-app", "--format", "json"], { encoding: "utf8" });
-    const conceptDirectionJson = execFileSync(process.execPath, [join(root, "scripts", "visual-direction.mjs"), "--query", "我要一个网站", "--concept", "object-story", "--format", "json"], { encoding: "utf8" });
-    const designLoopJson = execFileSync(process.execPath, [join(root, "scripts", "design-loop.mjs"), "--query", "analytics dashboard with empty state", "--format", "json"], { encoding: "utf8" });
-    const mapJson = execFileSync(process.execPath, [join(root, "scripts", "project-map.mjs"), root, "--query", "package test script", "--format", "json"], { encoding: "utf8" });
-    const graphJson = execFileSync(process.execPath, [join(root, "scripts", "project-graph.mjs"), root, "--query", "motion adapter", "--format", "json"], { encoding: "utf8" });
-    const resourceJson = execFileSync(process.execPath, [join(root, "scripts", "resource-catalog.mjs"), "--query", "accessible modal", "--stack", "react", "--format", "json"], { encoding: "utf8" });
-    const referenceMd = execFileSync(process.execPath, [join(root, "scripts", "reference-composition.mjs"), "--query", "AI agent dashboard with approval modal", "--format", "md"], { encoding: "utf8" });
-    const referenceJson = execFileSync(process.execPath, [join(root, "scripts", "reference-composition.mjs"), "--query", "AI agent dashboard with approval modal", "--format", "json"], { encoding: "utf8" });
-    const scoutMd = execFileSync(process.execPath, [join(root, "scripts", "reference-scout.mjs"), "--query", "高端硬件外设官网", "--format", "md"], { encoding: "utf8" });
-    const scoutJson = execFileSync(process.execPath, [join(root, "scripts", "reference-scout.mjs"), "--query", "高端硬件外设官网", "--format", "json"], { encoding: "utf8" });
-    const referenceBuildMd = execFileSync(process.execPath, [join(root, "scripts", "reference-build.mjs"), "--query", "Build a component gallery for our analytics SDK like Rare UI", "--format", "md"], { encoding: "utf8" });
-    const referenceBuildJson = execFileSync(process.execPath, [join(root, "scripts", "reference-build.mjs"), "--query", "Build a component gallery for our analytics SDK like Rare UI", "--format", "json"], { encoding: "utf8" });
-    const externalBuildJson = execFileSync(process.execPath, [join(root, "scripts", "reference-build.mjs"), "--query", "Build a product like https://example.com/visual-tool for our workflow", "--format", "json"], { encoding: "utf8" });
-    const auditJson = execFileSync(process.execPath, [join(root, "scripts", "audit.mjs"), root, "--query", "analytics dashboard", "--offline", "--format", "json"], { encoding: "utf8" });
+    const inspectMd = execFileSync(process.execPath, [join(root, "scripts", "inspect-project.mjs"), root, "--format", "md"], cliTextOptions);
+    const briefMd = execFileSync(process.execPath, [join(root, "scripts", "design-brief.mjs"), "--query", "analytics dashboard", "--format", "md"], cliTextOptions);
+    const briefJson = execFileSync(process.execPath, [join(root, "scripts", "design-brief.mjs"), "--query", "analytics dashboard", "--format", "json"], cliTextOptions);
+    const directionMd = execFileSync(process.execPath, [join(root, "scripts", "visual-direction.mjs"), "--query", "AI agent dashboard with approval modal", "--profile", "productive-app", "--format", "md"], cliTextOptions);
+    const directionJson = execFileSync(process.execPath, [join(root, "scripts", "visual-direction.mjs"), "--query", "AI agent dashboard with approval modal", "--profile", "productive-app", "--format", "json"], cliTextOptions);
+    const conceptDirectionJson = execFileSync(process.execPath, [join(root, "scripts", "visual-direction.mjs"), "--query", "我要一个网站", "--concept", "object-story", "--format", "json"], cliTextOptions);
+    const designLoopJson = execFileSync(process.execPath, [join(root, "scripts", "design-loop.mjs"), "--query", "analytics dashboard with empty state", "--format", "json"], cliTextOptions);
+    const mapJson = execFileSync(process.execPath, [join(root, "scripts", "project-map.mjs"), root, "--query", "package test script", "--format", "json"], cliTextOptions);
+    const graphJson = execFileSync(process.execPath, [join(root, "scripts", "project-graph.mjs"), root, "--query", "motion adapter", "--format", "json"], cliTextOptions);
+    const resourceJson = execFileSync(process.execPath, [join(root, "scripts", "resource-catalog.mjs"), "--query", "accessible modal", "--stack", "react", "--format", "json"], cliTextOptions);
+    const referenceMd = execFileSync(process.execPath, [join(root, "scripts", "reference-composition.mjs"), "--query", "AI agent dashboard with approval modal", "--format", "md"], cliTextOptions);
+    const referenceJson = execFileSync(process.execPath, [join(root, "scripts", "reference-composition.mjs"), "--query", "AI agent dashboard with approval modal", "--format", "json"], cliTextOptions);
+    const scoutMd = execFileSync(process.execPath, [join(root, "scripts", "reference-scout.mjs"), "--query", "高端硬件外设官网", "--format", "md"], cliTextOptions);
+    const scoutJson = execFileSync(process.execPath, [join(root, "scripts", "reference-scout.mjs"), "--query", "高端硬件外设官网", "--format", "json"], cliTextOptions);
+    const referenceBuildMd = execFileSync(process.execPath, [join(root, "scripts", "reference-build.mjs"), "--query", "Build a component gallery for our analytics SDK like Rare UI", "--format", "md"], cliTextOptions);
+    const referenceBuildJson = execFileSync(process.execPath, [join(root, "scripts", "reference-build.mjs"), "--query", "Build a component gallery for our analytics SDK like Rare UI", "--format", "json"], cliTextOptions);
+    const externalBuildJson = execFileSync(process.execPath, [join(root, "scripts", "reference-build.mjs"), "--query", "Build a product like https://example.com/visual-tool for our workflow", "--format", "json"], cliTextOptions);
+    const auditJson = execFileSync(process.execPath, [join(root, "scripts", "audit.mjs"), root, "--query", "analytics dashboard", "--offline", "--format", "json"], cliTextOptions);
     if (JSON.parse(auditJson).visualIteration?.status !== "planned-not-executed") fail("CLI audit lost the unexecuted status of visual iteration");
-    const referenceAuditJson = execFileSync(process.execPath, [join(root, "scripts", "audit.mjs"), root, "--query", "Build a component gallery like Rare UI", "--offline", "--format", "json"], { encoding: "utf8" });
-    const motionMd = execFileSync(process.execPath, [join(root, "scripts", "transitions-adapter.mjs"), "--intent", "modal close cleanup", "--phase", "all", "--offline", "--format", "md"], { encoding: "utf8" });
-    const motionJson = execFileSync(process.execPath, [join(root, "scripts", "transitions-adapter.mjs"), "--intent", "modal close cleanup", "--phase", "all", "--offline", "--format", "json"], { encoding: "utf8" });
+    const referenceAuditJson = execFileSync(process.execPath, [join(root, "scripts", "audit.mjs"), root, "--query", "Build a component gallery like Rare UI", "--offline", "--format", "json"], cliTextOptions);
+    const motionMd = execFileSync(process.execPath, [join(root, "scripts", "transitions-adapter.mjs"), "--intent", "modal close cleanup", "--phase", "all", "--offline", "--format", "md"], cliTextOptions);
+    const motionJson = execFileSync(process.execPath, [join(root, "scripts", "transitions-adapter.mjs"), "--intent", "modal close cleanup", "--phase", "all", "--offline", "--format", "json"], cliTextOptions);
     if (inspectMd.includes("[object Object]") || briefMd.includes("[object Object]") || directionMd.includes("[object Object]")) fail("CLI markdown smoke output returned [object Object]");
     if (!JSON.parse(briefJson).recommendation?.profile?.id) fail("CLI JSON smoke output is incomplete");
     if (JSON.parse(designLoopJson).rounds !== 20 || JSON.parse(designLoopJson).roundsDetail?.length !== 20) fail("CLI design production loop output is incomplete");
     const cliLoopFixture = mkdtempSync(join(tmpdir(), "frontend-art-direction-cli-loop-"));
     try {
-      const loopStartJson = execFileSync(process.execPath, [join(root, "scripts", "design-loop.mjs"), "start", "--project", cliLoopFixture, "--query", "create a research dashboard", "--format", "json"], { encoding: "utf8" });
+      const loopStartJson = execFileSync(process.execPath, [join(root, "scripts", "design-loop.mjs"), "start", "--project", cliLoopFixture, "--query", "create a research dashboard", "--format", "json"], cliTextOptions);
       const loopStart = JSON.parse(loopStartJson);
       if (!loopStart.id?.startsWith("loop-") || loopStart.rounds?.length !== 20 || loopStart.status !== "in-progress" || !loopStart.researchAtlas?.id || !loopStart.researchAtlas?.path) fail("CLI design loop session start is incomplete");
     } finally {
@@ -645,6 +778,7 @@ for (const path of [
   join(root, "scripts", "project-graph.mjs"), join(root, "scripts", "resource-catalog.mjs"), join(root, "scripts", "audit.mjs"),
   join(root, "data", "quality-gates.json"), join(root, "data", "resources.json"), join(root, "data", "reference-lenses.json"), join(root, "data", "reference-recipes.json"), join(root, "data", "reference-sources.json"),
   join(root, "scripts", "reference-composition.mjs"), join(root, "scripts", "reference-scout.mjs"), join(root, "scripts", "reference-build.mjs"),
+  join(root, "scripts", "layout-audit.mjs"),
   join(root, "scripts", "visual-direction.mjs"),
   join(root, "scripts", "authority.mjs"),
   join(root, "scripts", "creative-process.mjs"),
@@ -810,6 +944,10 @@ async function checkProductContext() {
     }
     const checkout = buildBrief({ query: "build a checkout payment page", projectRoot: fixture });
     if (checkout.recommendation.profile.id !== "commerce-flow" || checkout.productRequest.source !== "current-request" || checkout.productRequest.usedFields.length || checkout.productSignal.object === facts["primary-object"]) fail("an explicit new page inherited a conflicting product default");
+    for (const query of ["做一个城市独立电影放映俱乐部的网站", "build an independent film screening club website", "create a poetry reading archive"]) {
+      const newSubject = buildBrief({ query, projectRoot: fixture });
+      if (newSubject.productRequest.subjectProfile !== "adaptive-surface" || newSubject.productRequest.source !== "current-request" || newSubject.productRequest.usedFields.length || newSubject.productSignal.object === facts["primary-object"]) fail(`an uncatalogued new subject inherited old product facts: ${query}`);
+    }
     const docs = buildBrief({ query: "build a documentation page", projectRoot: fixture });
     if (docs.surfaceMode.mode !== "read" || docs.productRequest.usedFields.length) fail("product background replaced a page-specific visitor job");
     const explicit = buildBrief({ query: "帮我优化一下", projectRoot: fixture, overrides: { profile: "creative-editor", surfaceMode: "operate" } });
@@ -855,6 +993,44 @@ async function checkMotionIntentRegressions() {
   }
 }
 
+async function checkDesignMethodRegressions() {
+  const query = "中文排版，字就是画面，有半调印刷质感";
+  const mixed = selectDesignMethods(query);
+  const mixedIds = new Set(mixed.selected.map((method) => method.id));
+  if (!["hanzi-structure", "kinetic-type", "print-material"].every((id) => mixedIds.has(id))) fail("mixed expression request lost a type or material relationship");
+  for (const method of mixed.selected) {
+    if (!method.implementation || !method.narrow || !method.fallback || !method.sources?.length || method.status !== "candidate-not-applied") fail(`selected method ${method.id} lost implementation or evidence boundaries`);
+  }
+  for (const request of ["我要一个网站", "一个诊所预约网站", "premium Apple iPhone product website", "一个数据分析工作台", "不要玻璃拟态，不用霓虹", "website for Art Deck builders"]) {
+    if (selectDesignMethods(request).selected.length) fail(`unrelated or negative request forced a graphic method: ${request}`);
+  }
+  const limited = selectDesignMethods("瑞士网格、中文动字、半调、纸艺、Art Deco", { limit: 1 });
+  if (limited.selected.length !== 1 || limited.alternatives.length < 3) fail("method output budget discarded matching alternatives");
+  const data = readJson(join(root, "data", "design-methods.json"));
+  for (const source of data.sources) {
+    const result = selectDesignMethods(source.url);
+    if (!result.selected.some((method) => method.sources.some((item) => item.id === source.id))) fail(`supplied source ${source.id} is not reachable by its URL`);
+  }
+  const namedSourceBuild = buildReferenceBuild({ query: "一个中文活动页面", reference: data.sources.find((source) => source.id === "hanzi-motion").url });
+  if (!namedSourceBuild.designMethods.selected.some((method) => method.id === "hanzi-structure")) fail("separate reference input was lost before method selection");
+  const video = data.sources.find((source) => source.id === "cyber-neon");
+  const explicit = selectDesignMethods(video.url);
+  if (explicit.selected[0]?.id !== "retro-light" || explicit.selected[0].sources.find((source) => source.id === video.id)?.evidence.status !== "video-unviewed" || explicit.runtimeProof !== "not-collected") fail("named unviewed source was lost or promoted to verified evidence");
+  const textOptions = { encoding: "utf8", timeout: 30000, maxBuffer: 6 * 1024 * 1024 };
+  for (const file of ["reference-composition.mjs", "design-brief.mjs", "reference-build.mjs", "audit.mjs"]) {
+    const args = [join(root, "scripts", file), "--query", query, "--format", "json"];
+    if (file === "audit.mjs") args.push("--project", root, "--no-motion", "--offline");
+    const output = JSON.parse(execFileSync(process.execPath, args, textOptions));
+    const selection = output.designMethods ?? output.referenceComposition?.designMethods ?? output.proof?.designMethods;
+    if (!selection || !["hanzi-structure", "kinetic-type", "print-material"].every((id) => selection.selected.some((method) => method.id === id))) fail(`${file} lost the shared design-method selection`);
+    const mdArgs = args.map((value) => value === "json" ? "md" : value);
+    const markdown = execFileSync(process.execPath, mdArgs, textOptions);
+    for (const method of mixed.selected) {
+      if (!markdown.includes(method.implementation) || !markdown.includes(method.sources[0].url)) fail(`${file} omitted usable method guidance or its source`);
+    }
+  }
+}
+
 async function main() {
   checkSkill();
   checkPackage();
@@ -865,6 +1041,7 @@ async function main() {
   await checkIntentRegressions();
   await checkProductContext();
   await checkMotionIntentRegressions();
+  await checkDesignMethodRegressions();
 
   if (errors.length > 0) {
     console.error(`FAIL ${errors.length} check(s)`);

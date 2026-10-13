@@ -2,6 +2,8 @@
 
 Use this gate when a result feels generic, unfinished, or disconnected from its own subject. First choose the surface's mode. Functional products need a usable vertical slice. Narrative, art-directed, and experimental work needs a visible thesis, subject, attention path, and authored proof. The gate protects intent without limiting the type of design.
 
+Separate the product topic from the surface being requested. A coding tool's homepage introduces and proves the tool; its editor is where the visitor operates it. Do not turn a homepage into a workbench because the product name contains tool, editor, AI, or analytics. Keep product evidence in the website, and preserve an actual operational interface when that is the requested surface. This is an intent distinction, not a mandatory visual style.
+
 ## Product Signal Contract
 
 Before visual polish, write the contract that belongs to the work:

@@ -368,6 +368,296 @@
       ],
       "useWhen": ["a product needs reliable primitives or a source-owned React foundation", "state and accessibility coverage are the current gap"],
       "avoidWhen": ["the project already has equivalent primitives", "the default skin would erase a deliberate visual language"]
+    },
+    {
+      "id": "siteinspire",
+      "label": "Siteinspire",
+      "url": "https://www.siteinspire.com/",
+      "sourceType": "curated-gallery",
+      "roles": ["visual-language", "composition-reference", "responsive-reference"],
+      "keywords": ["siteinspire", "website gallery", "typographic", "grid", "unusual layout", "minimal", "web design", "构图", "网页灵感", "排版"],
+      "bestFor": ["whole-page composition", "typographic rhythm", "unusual layout research", "responsive composition candidates"],
+      "visual": {
+        "family": "curated whole-site composition reference",
+        "palette": "varies by project; compare tone only after the target subject and material are known",
+        "typography": "useful for observing scale, measure, and local alignment rather than copying typefaces",
+        "layout": "filterable examples expose editorial, grid, typographic, minimal, and unusual page relationships",
+        "surfaces": "the gallery itself is only an index; inspect the original site's fields, stages, and boundaries",
+        "motion": "inspect original sites for scroll, hover, route, and media behavior; the listing is not motion proof"
+      },
+      "borrow": [
+        "study the full page silhouette and the relationship between open field, object stage, and reading measure",
+        "record where alignment changes because the content job changes",
+        "compare the original site at wide, intermediate, and narrow widths"
+      ],
+      "reject": [
+        "do not treat a gallery screenshot as a complete responsive or runtime reference",
+        "do not copy a project shell, brand, or exact section order without target evidence",
+        "do not turn unusual geometry into decoration when the subject has no reason for it"
+      ],
+      "useWhen": ["no named reference exists and the brief needs whole-page visual direction", "the problem is composition, rhythm, or responsive re-staging"],
+      "avoidWhen": ["the task is only a single control or a dense operational state", "the original project cannot be inspected beyond a screenshot"]
+    },
+    {
+      "id": "awwwards",
+      "label": "Awwwards",
+      "url": "https://www.awwwards.com/websites/",
+      "sourceType": "curated-gallery",
+      "roles": ["visual-language", "composition-reference", "interaction-reference"],
+      "keywords": ["awwwards", "websites", "interaction", "creative", "agency", "award", "网页设计", "交互"],
+      "bestFor": ["distinctive website direction", "interaction and motion research", "high-signal art direction"],
+      "visual": {
+        "family": "award-curated art-directed website reference",
+        "palette": "project-specific; use the source to compare contrast and material decisions, not as a shared palette",
+        "typography": "often expressive and display-led; measure it against content and reading distance",
+        "layout": "strong first-viewport theses, narrative scroll, unusual spatial relationships, and authored endings",
+        "surfaces": "inspect whether depth comes from media, type, objects, texture, or interaction before adding effects",
+        "motion": "use original sites to inspect choreography, continuity, and interruption behavior"
+      },
+      "borrow": [
+        "name the visual thesis and dominant object before borrowing a visual trick",
+        "study how the page earns a full-bleed moment and where it returns to a bounded measure",
+        "borrow one interaction relationship only when it improves the target's attention path"
+      ],
+      "reject": [
+        "do not import award-site spectacle into a workflow that needs calm task clarity",
+        "do not trust an award label as proof of mobile usability or performance",
+        "do not use scroll choreography to hide missing content or weak hierarchy"
+      ],
+      "useWhen": ["the brief asks for a strong point of view or a memorable visual moment", "a named object can carry a cinematic or spatial composition"],
+      "avoidWhen": ["the primary task is high-frequency data entry", "the design has no real media, object, or state to animate"]
+    },
+    {
+      "id": "muuuuu",
+      "label": "MUUUUU.ORG",
+      "url": "https://muuuuu.org/zh/",
+      "sourceType": "curated-gallery",
+      "roles": ["composition-reference", "responsive-reference", "visual-language"],
+      "keywords": ["muuuuu", "japanese web", "website gallery", "corporate", "editorial", "日本网站", "官网", "排版"],
+      "bestFor": ["complete website composition", "quiet editorial and corporate rhythm", "responsive layout comparison"],
+      "visual": {
+        "family": "Japanese high-finish website gallery reference",
+        "palette": "varies by source; pay attention to tonal fields and material restraint",
+        "typography": "strong local hierarchy, compact labels, and deliberate measure changes",
+        "layout": "complete pages with asymmetric sections, object-led openings, and careful mobile re-staging",
+        "surfaces": "spacing, crop, and tonal change often carry grouping before visible borders",
+        "motion": "inspect original pages for small transitions, navigation continuity, and media fallback"
+      },
+      "borrow": [
+        "study the relationship between a quiet shell and one high-signal subject",
+        "observe how compact labels, asymmetric media, and reading blocks share a page without a card wall",
+        "use the original mobile page to learn what gets removed, regrouped, or allowed to breathe"
+      ],
+      "reject": [
+        "do not copy a Japanese corporate tone when the target subject needs another voice",
+        "do not mistake generous spacing for a license to remove necessary product information",
+        "do not reproduce a screenshot without checking the live responsive path"
+      ],
+      "useWhen": ["the brief needs high-finish composition without a named case", "the target is editorial, brand, studio, cultural, or object-led"],
+      "avoidWhen": ["the task is a dense table or a small isolated component"]
+    },
+    {
+      "id": "behance",
+      "label": "Behance",
+      "url": "https://www.behance.net/",
+      "sourceType": "project-gallery",
+      "roles": ["visual-language", "composition-reference", "material-reference"],
+      "keywords": ["behance", "case study", "branding", "art direction", "material", "editorial", "项目", "品牌", "视觉"],
+      "bestFor": ["art direction research", "material and type combinations", "complete project narratives"],
+      "visual": {
+        "family": "case-study and visual art-direction reference",
+        "palette": "project-owned; compare material, contrast, and color roles only after understanding the target",
+        "typography": "useful for studying display/body/metadata relationships and intentional line breaks",
+        "layout": "project narratives reveal scale changes, image sequencing, and proof-to-explanation relationships",
+        "surfaces": "presentation boards may be polished but are not necessarily runnable surfaces",
+        "motion": "usually weak runtime evidence; find a live implementation when interaction matters"
+      },
+      "borrow": [
+        "translate the project's visual thesis, material contrast, and pacing into real target content",
+        "use boards to propose asset direction before implementing the page",
+        "separate a strong image sequence from a strong interactive website"
+      ],
+      "reject": [
+        "do not treat a case-study board as proof of responsive behavior",
+        "do not copy presentation mockups or use them as shipped assets",
+        "do not let moodboard material replace a complete product or content path"
+      ],
+      "useWhen": ["the target needs a visual language, material direction, or authored image/type relationship"],
+      "avoidWhen": ["the requirement is behavior-heavy and the board has no live equivalent"]
+    },
+    {
+      "id": "dribbble",
+      "label": "Dribbble",
+      "url": "https://dribbble.com/",
+      "sourceType": "component-gallery",
+      "roles": ["component-reference", "interaction-reference", "material-reference"],
+      "keywords": ["dribbble", "ui shot", "component", "micro interaction", "icon", "interface", "组件", "微交互"],
+      "bestFor": ["focused component ideas", "micro-interaction vocabulary", "small visual details"],
+      "visual": {
+        "family": "focused UI and interaction specimen gallery",
+        "palette": "specimen-specific; compare local contrast and state feedback rather than whole-site identity",
+        "typography": "short labels and visual hierarchy are easier to study than complete content behavior",
+        "layout": "isolated shots, component crops, and small interaction examples",
+        "surfaces": "a shot is a bounded proposal, not a complete information architecture",
+        "motion": "use clips as timing references only after naming the trigger and final state"
+      },
+      "borrow": [
+        "extract one local component or state relationship after the page hierarchy is decided",
+        "study how a small detail gives an object a memorable signature",
+        "rebuild the behavior with the target's tokens, content, keyboard path, and touch equivalent"
+      ],
+      "reject": [
+        "do not assemble a page from unrelated shots",
+        "do not use hover-only behavior as essential information",
+        "do not mistake a polished crop for complete product UX"
+      ],
+      "useWhen": ["the page direction is already chosen and a local detail needs refinement"],
+      "avoidWhen": ["the first viewport or content hierarchy is unresolved"]
+    },
+    {
+      "id": "mobbin",
+      "label": "Mobbin",
+      "url": "https://mobbin.com/",
+      "sourceType": "workflow-gallery",
+      "roles": ["responsive-reference", "workflow-reference", "component-reference"],
+      "keywords": ["mobbin", "real product", "mobile", "web app", "flow", "workflow", "screens", "真实产品", "流程", "移动端"],
+      "bestFor": ["real product flows", "responsive regrouping", "state and action continuity"],
+      "visual": {
+        "family": "real-product screen sequence reference",
+        "palette": "source-specific; the value is the information hierarchy and state continuity",
+        "typography": "useful for comparing practical scale, measure, and control density",
+        "layout": "screen sequences expose what moves, collapses, persists, or changes order across a workflow",
+        "surfaces": "captured states show grouping and affordance but may omit live behavior",
+        "motion": "limited by screenshots; inspect the original product when transition continuity is important"
+      },
+      "borrow": [
+        "study the sequence from input to result and keep the changed object identifiable",
+        "compare what survives on mobile and what becomes a sheet, tab, or inline group",
+        "use real product patterns to validate action/result proximity after the art direction is chosen"
+      ],
+      "reject": [
+        "do not convert every product into a generic SaaS layout",
+        "do not infer live motion or performance from screenshots",
+        "do not copy product content, brand, or exact navigation without permission"
+      ],
+      "useWhen": ["the target has a workflow, responsive state, or action/result relationship to solve"],
+      "avoidWhen": ["the work is a purely authored static composition with no product flow"]
+    },
+    {
+      "id": "pinterest",
+      "label": "Pinterest",
+      "url": "https://www.pinterest.com/",
+      "sourceType": "moodboard-discovery",
+      "roles": ["material-reference", "visual-language"],
+      "keywords": ["pinterest", "moodboard", "texture", "color", "typography", "材质", "情绪板", "色彩"],
+      "bestFor": ["material and image mood", "color and texture directions", "early visual hypotheses"],
+      "visual": {
+        "family": "image-led moodboard discovery reference",
+        "palette": "use clusters to compare temperature, contrast, and material; never accept a pin as provenance",
+        "typography": "useful for collecting type and image relationships before choosing production fonts",
+        "layout": "moodboard relationships, collage rhythm, and visual adjacency rather than complete page architecture",
+        "surfaces": "texture, crop, object detail, and color material can seed an authored surface",
+        "motion": "not runtime evidence; follow the original creator or live project when motion matters"
+      },
+      "borrow": [
+        "use a small board to form a material thesis before coding",
+        "translate image adjacency into a real subject-specific crop, texture, or color role",
+        "trace the original project before using any visible asset"
+      ],
+      "reject": [
+        "do not treat pins as licensed production assets",
+        "do not assemble a page by copying unrelated moodboard fragments",
+        "do not use a moodboard as proof of responsive behavior or interaction"
+      ],
+      "useWhen": ["the page needs a material, image, or color direction and the subject is still open"],
+      "avoidWhen": ["the workflow, responsive path, or implementation state is the primary unresolved problem"]
+    },
+    {
+      "id": "huaban",
+      "label": "花瓣网",
+      "url": "https://huaban.com/",
+      "sourceType": "moodboard-discovery",
+      "roles": ["material-reference", "visual-language"],
+      "keywords": ["huaban", "花瓣", "moodboard", "visual collection", "素材", "灵感", "材质"],
+      "bestFor": ["visual collection", "material and image direction", "local cultural or editorial references"],
+      "visual": {
+        "family": "curated image collection and moodboard reference",
+        "palette": "compare tonal groupings and contrast; verify every source independently",
+        "typography": "collect editorial pairings and layout fragments as hypotheses, not templates",
+        "layout": "collection and juxtaposition rather than a complete live-site relationship",
+        "surfaces": "use real material clues, crop ideas, and visual rhythm after the target thesis is named",
+        "motion": "not runtime proof; inspect the original page or creator work for motion"
+      },
+      "borrow": [
+        "find a material or visual language that belongs to the target subject",
+        "turn a collection into a small set of explicit palette, crop, and texture decisions",
+        "record original attribution and rights before implementation"
+      ],
+      "reject": [
+        "do not copy a collection's visual identity wholesale",
+        "do not use unverified images as shipped assets",
+        "do not infer product hierarchy from an image board"
+      ],
+      "useWhen": ["the subject benefits from image, craft, cultural, or material research"],
+      "avoidWhen": ["the content object and task are already clear and the remaining problem is state or workflow design"]
+    },
+    {
+      "id": "muzli",
+      "label": "Muzli",
+      "url": "https://muz.li/",
+      "sourceType": "fresh-discovery",
+      "roles": ["visual-language", "composition-reference", "interaction-reference"],
+      "keywords": ["muzli", "design news", "fresh websites", "web inspiration", "最新设计", "网页灵感"],
+      "bestFor": ["fresh visual discovery", "new site and interaction candidates", "finding a live original after a category search"],
+      "visual": {
+        "family": "fresh aggregated design discovery reference",
+        "palette": "compare current material and contrast trends without treating popularity as quality",
+        "typography": "use live projects to inspect current type scale and measure decisions",
+        "layout": "a discovery stream for finding full pages, not a fixed page grammar",
+        "surfaces": "follow promising work to its source before borrowing surface or media decisions",
+        "motion": "use the original project for timing, cleanup, and reduced-motion evidence"
+      },
+      "borrow": [
+        "use it to widen the candidate pool when the local inventory misses the subject",
+        "follow a candidate to the live project and record the exact section-level decision worth borrowing",
+        "compare recent work against the target's content and device constraints"
+      ],
+      "reject": [
+        "do not select a reference from a thumbnail or popularity signal alone",
+        "do not treat the feed as a component library or installable dependency",
+        "do not borrow a trend when the target has no matching subject or state"
+      ],
+      "useWhen": ["the brief is open-ended and the current reference pool needs fresh live candidates"],
+      "avoidWhen": ["a named reference or project-owned direction already supplies stronger evidence"]
+    },
+    {
+      "id": "eagle-blog",
+      "label": "Eagle Blog",
+      "url": "https://cn.eagle.cool/blog/post/best-websites-designers-love-for-finding-design-inspirations",
+      "sourceType": "reference-directory",
+      "roles": ["discovery-directory", "visual-language"],
+      "keywords": ["eagle", "eagle blog", "design inspiration directory", "灵感网站导航", "设计资源"],
+      "bestFor": ["expanding discovery channels", "finding category-specific galleries", "research planning"],
+      "visual": {
+        "family": "design reference directory and research map",
+        "palette": "not a palette source; route to the linked original projects",
+        "typography": "not a typography authority; use linked case studies for evidence",
+        "layout": "navigation across reference categories rather than a target page layout",
+        "surfaces": "use it to find stronger material and component sources, then inspect those originals",
+        "motion": "not motion proof; follow the linked live source"
+      },
+      "borrow": [
+        "use the directory to fill a missing research channel by decision type",
+        "follow its links to an original gallery, project, or official source",
+        "record why the chosen source fits the target rather than copying the directory's own taxonomy"
+      ],
+      "reject": [
+        "do not use a directory entry as visual evidence by itself",
+        "do not install a directory or its tools into the target project",
+        "do not choose by list order, popularity, or geography alone"
+      ],
+      "useWhen": ["the current search pool misses a visual category or needs a route to stronger sources"],
+      "avoidWhen": ["the target already has an inspected primary reference and the missing decision is implementation-specific"]
     }
   ]
 }

@@ -1,0 +1,3340 @@
+{
+  "runner": "codex-in-app-browser",
+  "snapshots": [
+    {
+      "capturedAt": "2026-10-11T11:54:52.644Z",
+      "documentWidth": 1920,
+      "regions": [
+        {
+          "contentGutter": 340,
+          "contentLeft": 340,
+          "contentRight": 1580,
+          "contentSpan": 1240,
+          "contentSpanRatio": 0.646,
+          "contentWidth": 172,
+          "contentWidthRatio": 0.089,
+          "counterfield": 340,
+          "cssTextAlign": "start",
+          "fieldAnchor": "center-field",
+          "gutter": 340,
+          "hasMedia": true,
+          "hasText": true,
+          "height": 80,
+          "heightRatio": 0.08,
+          "index": 0,
+          "label": "cf.ProgrammeReading roomThe clubMy programme0",
+          "left": 340,
+          "localContentInset": 0,
+          "maxWidth": "none",
+          "paintedSurface": false,
+          "right": 1580,
+          "tag": "header",
+          "textAlignmentEvidence": [
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "center",
+              "direction": "ltr"
+            }
+          ],
+          "width": 1240,
+          "widthRatio": 0.646
+        },
+        {
+          "contentGutter": 340,
+          "contentLeft": 340,
+          "contentRight": 1580,
+          "contentSpan": 1240,
+          "contentSpanRatio": 0.646,
+          "contentWidth": 1240,
+          "contentWidthRatio": 0.646,
+          "counterfield": 340,
+          "cssTextAlign": "start",
+          "fieldAnchor": "center-field",
+          "gutter": 340,
+          "hasMedia": true,
+          "hasText": true,
+          "height": 694,
+          "heightRatio": 0.694,
+          "index": 1,
+          "label": "Common Frame.",
+          "left": 340,
+          "localContentInset": 0,
+          "maxWidth": "1240px",
+          "paintedSurface": false,
+          "right": 1580,
+          "tag": "section",
+          "textAlignmentEvidence": [
+            {
+              "align": "center",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "center",
+              "direction": "ltr"
+            }
+          ],
+          "width": 1240,
+          "widthRatio": 0.646
+        },
+        {
+          "contentGutter": 420,
+          "contentLeft": 420,
+          "contentRight": 1500,
+          "contentSpan": 1080,
+          "contentSpanRatio": 0.563,
+          "contentWidth": 668,
+          "contentWidthRatio": 0.348,
+          "counterfield": 420,
+          "cssTextAlign": "start",
+          "fieldAnchor": "center-field",
+          "gutter": 420,
+          "hasMedia": true,
+          "hasText": true,
+          "height": 834,
+          "heightRatio": 0.834,
+          "index": 2,
+          "label": "Worlds builtby hand.",
+          "left": 420,
+          "localContentInset": 0,
+          "maxWidth": "none",
+          "paintedSurface": false,
+          "right": 1500,
+          "tag": "section",
+          "textAlignmentEvidence": [
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "center",
+              "direction": "ltr"
+            },
+            {
+              "align": "center",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "center",
+              "direction": "ltr"
+            },
+            {
+              "align": "right",
+              "direction": "ltr"
+            },
+            {
+              "align": "right",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "right",
+              "direction": "ltr"
+            },
+            {
+              "align": "center",
+              "direction": "ltr"
+            }
+          ],
+          "width": 1080,
+          "widthRatio": 0.563
+        },
+        {
+          "contentGutter": 480,
+          "contentLeft": 480,
+          "contentRight": 1440,
+          "contentSpan": 960,
+          "contentSpanRatio": 0.5,
+          "contentWidth": 480,
+          "contentWidthRatio": 0.25,
+          "counterfield": 0,
+          "cssTextAlign": "start",
+          "fieldAnchor": "full-field",
+          "gutter": 0,
+          "hasMedia": true,
+          "hasText": true,
+          "height": 557,
+          "heightRatio": 0.557,
+          "index": 3,
+          "label": "Stay for theconversation.",
+          "left": 0,
+          "localContentInset": 480,
+          "maxWidth": "none",
+          "paintedSurface": true,
+          "right": 1920,
+          "tag": "section",
+          "textAlignmentEvidence": [
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            }
+          ],
+          "width": 1920,
+          "widthRatio": 1
+        },
+        {
+          "contentGutter": 420,
+          "contentLeft": 420,
+          "contentRight": 1500,
+          "contentSpan": 1080,
+          "contentSpanRatio": 0.563,
+          "contentWidth": 420,
+          "contentWidthRatio": 0.219,
+          "counterfield": 420,
+          "cssTextAlign": "start",
+          "fieldAnchor": "center-field",
+          "gutter": 420,
+          "hasMedia": false,
+          "hasText": true,
+          "height": 273,
+          "heightRatio": 0.273,
+          "index": 4,
+          "label": "The same room.A different view.",
+          "left": 420,
+          "localContentInset": 0,
+          "maxWidth": "none",
+          "paintedSurface": false,
+          "right": 1500,
+          "tag": "section",
+          "textAlignmentEvidence": [
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            }
+          ],
+          "width": 1080,
+          "widthRatio": 0.563
+        },
+        {
+          "contentGutter": 340,
+          "contentLeft": 340,
+          "contentRight": 1580,
+          "contentSpan": 1240,
+          "contentSpanRatio": 0.646,
+          "contentWidth": 210,
+          "contentWidthRatio": 0.109,
+          "counterfield": 340,
+          "cssTextAlign": "start",
+          "fieldAnchor": "center-field",
+          "gutter": 340,
+          "hasMedia": true,
+          "hasText": true,
+          "height": 109,
+          "heightRatio": 0.109,
+          "index": 5,
+          "label": "Common Frame.Back to the programme",
+          "left": 340,
+          "localContentInset": 0,
+          "maxWidth": "none",
+          "paintedSurface": false,
+          "right": 1580,
+          "tag": "footer",
+          "textAlignmentEvidence": [
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            }
+          ],
+          "width": 1240,
+          "widthRatio": 0.646
+        }
+      ],
+      "scrollWidth": 1920,
+      "url": "http://127.0.0.1:4175/benchmarks/visual/common-frame/",
+      "viewport": {
+        "height": 1000,
+        "width": 1920
+      }
+    },
+    {
+      "capturedAt": "2026-10-11T11:54:52.745Z",
+      "documentWidth": 1440,
+      "regions": [
+        {
+          "contentGutter": 100,
+          "contentLeft": 100,
+          "contentRight": 1340,
+          "contentSpan": 1240,
+          "contentSpanRatio": 0.861,
+          "contentWidth": 172,
+          "contentWidthRatio": 0.119,
+          "counterfield": 100,
+          "cssTextAlign": "start",
+          "fieldAnchor": "center-field",
+          "gutter": 100,
+          "hasMedia": true,
+          "hasText": true,
+          "height": 80,
+          "heightRatio": 0.089,
+          "index": 0,
+          "label": "cf.ProgrammeReading roomThe clubMy programme0",
+          "left": 100,
+          "localContentInset": 0,
+          "maxWidth": "none",
+          "paintedSurface": false,
+          "right": 1340,
+          "tag": "header",
+          "textAlignmentEvidence": [
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "center",
+              "direction": "ltr"
+            }
+          ],
+          "width": 1240,
+          "widthRatio": 0.861
+        },
+        {
+          "contentGutter": 100,
+          "contentLeft": 100,
+          "contentRight": 1340,
+          "contentSpan": 1240,
+          "contentSpanRatio": 0.861,
+          "contentWidth": 1240,
+          "contentWidthRatio": 0.861,
+          "counterfield": 100,
+          "cssTextAlign": "start",
+          "fieldAnchor": "center-field",
+          "gutter": 100,
+          "hasMedia": true,
+          "hasText": true,
+          "height": 694,
+          "heightRatio": 0.771,
+          "index": 1,
+          "label": "Common Frame.",
+          "left": 100,
+          "localContentInset": 0,
+          "maxWidth": "1240px",
+          "paintedSurface": false,
+          "right": 1340,
+          "tag": "section",
+          "textAlignmentEvidence": [
+            {
+              "align": "center",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "center",
+              "direction": "ltr"
+            }
+          ],
+          "width": 1240,
+          "widthRatio": 0.861
+        },
+        {
+          "contentGutter": 180,
+          "contentLeft": 180,
+          "contentRight": 1260,
+          "contentSpan": 1080,
+          "contentSpanRatio": 0.75,
+          "contentWidth": 668,
+          "contentWidthRatio": 0.464,
+          "counterfield": 180,
+          "cssTextAlign": "start",
+          "fieldAnchor": "center-field",
+          "gutter": 180,
+          "hasMedia": true,
+          "hasText": true,
+          "height": 834,
+          "heightRatio": 0.927,
+          "index": 2,
+          "label": "Worlds builtby hand.",
+          "left": 180,
+          "localContentInset": 0,
+          "maxWidth": "none",
+          "paintedSurface": false,
+          "right": 1260,
+          "tag": "section",
+          "textAlignmentEvidence": [
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "center",
+              "direction": "ltr"
+            },
+            {
+              "align": "center",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "center",
+              "direction": "ltr"
+            },
+            {
+              "align": "right",
+              "direction": "ltr"
+            },
+            {
+              "align": "right",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "right",
+              "direction": "ltr"
+            },
+            {
+              "align": "center",
+              "direction": "ltr"
+            }
+          ],
+          "width": 1080,
+          "widthRatio": 0.75
+        },
+        {
+          "contentGutter": 240,
+          "contentLeft": 240,
+          "contentRight": 1200,
+          "contentSpan": 960,
+          "contentSpanRatio": 0.667,
+          "contentWidth": 480,
+          "contentWidthRatio": 0.333,
+          "counterfield": 0,
+          "cssTextAlign": "start",
+          "fieldAnchor": "full-field",
+          "gutter": 0,
+          "hasMedia": true,
+          "hasText": true,
+          "height": 557,
+          "heightRatio": 0.619,
+          "index": 3,
+          "label": "Stay for theconversation.",
+          "left": 0,
+          "localContentInset": 240,
+          "maxWidth": "none",
+          "paintedSurface": true,
+          "right": 1440,
+          "tag": "section",
+          "textAlignmentEvidence": [
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            }
+          ],
+          "width": 1440,
+          "widthRatio": 1
+        },
+        {
+          "contentGutter": 180,
+          "contentLeft": 180,
+          "contentRight": 1260,
+          "contentSpan": 1080,
+          "contentSpanRatio": 0.75,
+          "contentWidth": 420,
+          "contentWidthRatio": 0.292,
+          "counterfield": 180,
+          "cssTextAlign": "start",
+          "fieldAnchor": "center-field",
+          "gutter": 180,
+          "hasMedia": false,
+          "hasText": true,
+          "height": 273,
+          "heightRatio": 0.303,
+          "index": 4,
+          "label": "The same room.A different view.",
+          "left": 180,
+          "localContentInset": 0,
+          "maxWidth": "none",
+          "paintedSurface": false,
+          "right": 1260,
+          "tag": "section",
+          "textAlignmentEvidence": [
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            }
+          ],
+          "width": 1080,
+          "widthRatio": 0.75
+        },
+        {
+          "contentGutter": 100,
+          "contentLeft": 100,
+          "contentRight": 1340,
+          "contentSpan": 1240,
+          "contentSpanRatio": 0.861,
+          "contentWidth": 210,
+          "contentWidthRatio": 0.146,
+          "counterfield": 100,
+          "cssTextAlign": "start",
+          "fieldAnchor": "center-field",
+          "gutter": 100,
+          "hasMedia": true,
+          "hasText": true,
+          "height": 109,
+          "heightRatio": 0.121,
+          "index": 5,
+          "label": "Common Frame.Back to the programme",
+          "left": 100,
+          "localContentInset": 0,
+          "maxWidth": "none",
+          "paintedSurface": false,
+          "right": 1340,
+          "tag": "footer",
+          "textAlignmentEvidence": [
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            }
+          ],
+          "width": 1240,
+          "widthRatio": 0.861
+        }
+      ],
+      "scrollWidth": 1440,
+      "url": "http://127.0.0.1:4175/benchmarks/visual/common-frame/",
+      "viewport": {
+        "height": 900,
+        "width": 1440
+      }
+    },
+    {
+      "capturedAt": "2026-10-11T11:54:52.791Z",
+      "documentWidth": 1280,
+      "regions": [
+        {
+          "contentGutter": 48,
+          "contentLeft": 48,
+          "contentRight": 1232,
+          "contentSpan": 1184,
+          "contentSpanRatio": 0.925,
+          "contentWidth": 172,
+          "contentWidthRatio": 0.134,
+          "counterfield": 48,
+          "cssTextAlign": "start",
+          "fieldAnchor": "center-field",
+          "gutter": 48,
+          "hasMedia": true,
+          "hasText": true,
+          "height": 64,
+          "heightRatio": 0.089,
+          "index": 0,
+          "label": "cf.ProgrammeReading roomThe clubMy programme0",
+          "left": 48,
+          "localContentInset": 0,
+          "maxWidth": "none",
+          "paintedSurface": false,
+          "right": 1232,
+          "tag": "header",
+          "textAlignmentEvidence": [
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "center",
+              "direction": "ltr"
+            }
+          ],
+          "width": 1184,
+          "widthRatio": 0.925
+        },
+        {
+          "contentGutter": 48,
+          "contentLeft": 48,
+          "contentRight": 1232,
+          "contentSpan": 1184,
+          "contentSpanRatio": 0.925,
+          "contentWidth": 1184,
+          "contentWidthRatio": 0.925,
+          "counterfield": 48,
+          "cssTextAlign": "start",
+          "fieldAnchor": "center-field",
+          "gutter": 48,
+          "hasMedia": true,
+          "hasText": true,
+          "height": 579,
+          "heightRatio": 0.805,
+          "index": 1,
+          "label": "Common Frame.",
+          "left": 48,
+          "localContentInset": 0,
+          "maxWidth": "1240px",
+          "paintedSurface": false,
+          "right": 1232,
+          "tag": "section",
+          "textAlignmentEvidence": [
+            {
+              "align": "center",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "center",
+              "direction": "ltr"
+            }
+          ],
+          "width": 1184,
+          "widthRatio": 0.925
+        },
+        {
+          "contentGutter": 100,
+          "contentLeft": 100,
+          "contentRight": 1180,
+          "contentSpan": 1080,
+          "contentSpanRatio": 0.844,
+          "contentWidth": 668,
+          "contentWidthRatio": 0.522,
+          "counterfield": 100,
+          "cssTextAlign": "start",
+          "fieldAnchor": "center-field",
+          "gutter": 100,
+          "hasMedia": true,
+          "hasText": true,
+          "height": 834,
+          "heightRatio": 1.158,
+          "index": 2,
+          "label": "Worlds builtby hand.",
+          "left": 100,
+          "localContentInset": 0,
+          "maxWidth": "none",
+          "paintedSurface": false,
+          "right": 1180,
+          "tag": "section",
+          "textAlignmentEvidence": [
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "center",
+              "direction": "ltr"
+            },
+            {
+              "align": "center",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "center",
+              "direction": "ltr"
+            },
+            {
+              "align": "right",
+              "direction": "ltr"
+            },
+            {
+              "align": "right",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "right",
+              "direction": "ltr"
+            },
+            {
+              "align": "center",
+              "direction": "ltr"
+            }
+          ],
+          "width": 1080,
+          "widthRatio": 0.844
+        },
+        {
+          "contentGutter": 160,
+          "contentLeft": 160,
+          "contentRight": 1120,
+          "contentSpan": 960,
+          "contentSpanRatio": 0.75,
+          "contentWidth": 480,
+          "contentWidthRatio": 0.375,
+          "counterfield": 0,
+          "cssTextAlign": "start",
+          "fieldAnchor": "full-field",
+          "gutter": 0,
+          "hasMedia": true,
+          "hasText": true,
+          "height": 557,
+          "heightRatio": 0.774,
+          "index": 3,
+          "label": "Stay for theconversation.",
+          "left": 0,
+          "localContentInset": 160,
+          "maxWidth": "none",
+          "paintedSurface": true,
+          "right": 1280,
+          "tag": "section",
+          "textAlignmentEvidence": [
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            }
+          ],
+          "width": 1280,
+          "widthRatio": 1
+        },
+        {
+          "contentGutter": 100,
+          "contentLeft": 100,
+          "contentRight": 1180,
+          "contentSpan": 1080,
+          "contentSpanRatio": 0.844,
+          "contentWidth": 420,
+          "contentWidthRatio": 0.328,
+          "counterfield": 100,
+          "cssTextAlign": "start",
+          "fieldAnchor": "center-field",
+          "gutter": 100,
+          "hasMedia": false,
+          "hasText": true,
+          "height": 273,
+          "heightRatio": 0.379,
+          "index": 4,
+          "label": "The same room.A different view.",
+          "left": 100,
+          "localContentInset": 0,
+          "maxWidth": "none",
+          "paintedSurface": false,
+          "right": 1180,
+          "tag": "section",
+          "textAlignmentEvidence": [
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            }
+          ],
+          "width": 1080,
+          "widthRatio": 0.844
+        },
+        {
+          "contentGutter": 48,
+          "contentLeft": 48,
+          "contentRight": 1232,
+          "contentSpan": 1184,
+          "contentSpanRatio": 0.925,
+          "contentWidth": 210,
+          "contentWidthRatio": 0.164,
+          "counterfield": 48,
+          "cssTextAlign": "start",
+          "fieldAnchor": "center-field",
+          "gutter": 48,
+          "hasMedia": true,
+          "hasText": true,
+          "height": 109,
+          "heightRatio": 0.151,
+          "index": 5,
+          "label": "Common Frame.Back to the programme",
+          "left": 48,
+          "localContentInset": 0,
+          "maxWidth": "none",
+          "paintedSurface": false,
+          "right": 1232,
+          "tag": "footer",
+          "textAlignmentEvidence": [
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            }
+          ],
+          "width": 1184,
+          "widthRatio": 0.925
+        }
+      ],
+      "scrollWidth": 1280,
+      "url": "http://127.0.0.1:4175/benchmarks/visual/common-frame/",
+      "viewport": {
+        "height": 720,
+        "width": 1280
+      }
+    },
+    {
+      "capturedAt": "2026-10-11T11:54:52.941Z",
+      "documentWidth": 1024,
+      "regions": [
+        {
+          "contentGutter": 48,
+          "contentLeft": 48,
+          "contentRight": 976,
+          "contentSpan": 928,
+          "contentSpanRatio": 0.906,
+          "contentWidth": 172,
+          "contentWidthRatio": 0.168,
+          "counterfield": 48,
+          "cssTextAlign": "start",
+          "fieldAnchor": "center-field",
+          "gutter": 48,
+          "hasMedia": true,
+          "hasText": true,
+          "height": 80,
+          "heightRatio": 0.089,
+          "index": 0,
+          "label": "cf.ProgrammeReading roomThe clubMy programme0",
+          "left": 48,
+          "localContentInset": 0,
+          "maxWidth": "none",
+          "paintedSurface": false,
+          "right": 976,
+          "tag": "header",
+          "textAlignmentEvidence": [
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "center",
+              "direction": "ltr"
+            }
+          ],
+          "width": 928,
+          "widthRatio": 0.906
+        },
+        {
+          "contentGutter": 48,
+          "contentLeft": 48,
+          "contentRight": 976,
+          "contentSpan": 928,
+          "contentSpanRatio": 0.906,
+          "contentWidth": 928,
+          "contentWidthRatio": 0.906,
+          "counterfield": 48,
+          "cssTextAlign": "start",
+          "fieldAnchor": "center-field",
+          "gutter": 48,
+          "hasMedia": true,
+          "hasText": true,
+          "height": 592,
+          "heightRatio": 0.657,
+          "index": 1,
+          "label": "Common Frame.",
+          "left": 48,
+          "localContentInset": 0,
+          "maxWidth": "1240px",
+          "paintedSurface": false,
+          "right": 976,
+          "tag": "section",
+          "textAlignmentEvidence": [
+            {
+              "align": "center",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "center",
+              "direction": "ltr"
+            }
+          ],
+          "width": 928,
+          "widthRatio": 0.906
+        },
+        {
+          "contentGutter": 48,
+          "contentLeft": 48,
+          "contentRight": 976,
+          "contentSpan": 928,
+          "contentSpanRatio": 0.906,
+          "contentWidth": 516,
+          "contentWidthRatio": 0.504,
+          "counterfield": 48,
+          "cssTextAlign": "start",
+          "fieldAnchor": "center-field",
+          "gutter": 48,
+          "hasMedia": true,
+          "hasText": true,
+          "height": 849,
+          "heightRatio": 0.943,
+          "index": 2,
+          "label": "Worlds builtby hand.",
+          "left": 48,
+          "localContentInset": 0,
+          "maxWidth": "none",
+          "paintedSurface": false,
+          "right": 976,
+          "tag": "section",
+          "textAlignmentEvidence": [
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "center",
+              "direction": "ltr"
+            },
+            {
+              "align": "center",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "center",
+              "direction": "ltr"
+            },
+            {
+              "align": "right",
+              "direction": "ltr"
+            },
+            {
+              "align": "right",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "right",
+              "direction": "ltr"
+            },
+            {
+              "align": "center",
+              "direction": "ltr"
+            }
+          ],
+          "width": 928,
+          "widthRatio": 0.906
+        },
+        {
+          "contentGutter": 48,
+          "contentLeft": 48,
+          "contentRight": 976,
+          "contentSpan": 928,
+          "contentSpanRatio": 0.906,
+          "contentWidth": 448,
+          "contentWidthRatio": 0.438,
+          "counterfield": 0,
+          "cssTextAlign": "start",
+          "fieldAnchor": "full-field",
+          "gutter": 0,
+          "hasMedia": true,
+          "hasText": true,
+          "height": 583,
+          "heightRatio": 0.648,
+          "index": 3,
+          "label": "Stay for theconversation.",
+          "left": 0,
+          "localContentInset": 48,
+          "maxWidth": "none",
+          "paintedSurface": true,
+          "right": 1024,
+          "tag": "section",
+          "textAlignmentEvidence": [
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            }
+          ],
+          "width": 1024,
+          "widthRatio": 1
+        },
+        {
+          "contentGutter": 48,
+          "contentLeft": 48,
+          "contentRight": 976,
+          "contentSpan": 928,
+          "contentSpanRatio": 0.906,
+          "contentWidth": 420,
+          "contentWidthRatio": 0.41,
+          "counterfield": 48,
+          "cssTextAlign": "start",
+          "fieldAnchor": "center-field",
+          "gutter": 48,
+          "hasMedia": false,
+          "hasText": true,
+          "height": 273,
+          "heightRatio": 0.303,
+          "index": 4,
+          "label": "The same room.A different view.",
+          "left": 48,
+          "localContentInset": 0,
+          "maxWidth": "none",
+          "paintedSurface": false,
+          "right": 976,
+          "tag": "section",
+          "textAlignmentEvidence": [
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            }
+          ],
+          "width": 928,
+          "widthRatio": 0.906
+        },
+        {
+          "contentGutter": 48,
+          "contentLeft": 48,
+          "contentRight": 976,
+          "contentSpan": 928,
+          "contentSpanRatio": 0.906,
+          "contentWidth": 210,
+          "contentWidthRatio": 0.205,
+          "counterfield": 48,
+          "cssTextAlign": "start",
+          "fieldAnchor": "center-field",
+          "gutter": 48,
+          "hasMedia": true,
+          "hasText": true,
+          "height": 109,
+          "heightRatio": 0.121,
+          "index": 5,
+          "label": "Common Frame.Back to the programme",
+          "left": 48,
+          "localContentInset": 0,
+          "maxWidth": "none",
+          "paintedSurface": false,
+          "right": 976,
+          "tag": "footer",
+          "textAlignmentEvidence": [
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            }
+          ],
+          "width": 928,
+          "widthRatio": 0.906
+        }
+      ],
+      "scrollWidth": 1024,
+      "url": "http://127.0.0.1:4175/benchmarks/visual/common-frame/",
+      "viewport": {
+        "height": 900,
+        "width": 1024
+      }
+    },
+    {
+      "capturedAt": "2026-10-11T11:54:53.047Z",
+      "documentWidth": 901,
+      "regions": [
+        {
+          "contentGutter": 48,
+          "contentLeft": 48,
+          "contentRight": 853,
+          "contentSpan": 805,
+          "contentSpanRatio": 0.893,
+          "contentWidth": 172,
+          "contentWidthRatio": 0.191,
+          "counterfield": 48,
+          "cssTextAlign": "start",
+          "fieldAnchor": "center-field",
+          "gutter": 48,
+          "hasMedia": true,
+          "hasText": true,
+          "height": 80,
+          "heightRatio": 0.089,
+          "index": 0,
+          "label": "cf.ProgrammeReading roomThe clubMy programme0",
+          "left": 48,
+          "localContentInset": 0,
+          "maxWidth": "none",
+          "paintedSurface": false,
+          "right": 853,
+          "tag": "header",
+          "textAlignmentEvidence": [
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "center",
+              "direction": "ltr"
+            }
+          ],
+          "width": 805,
+          "widthRatio": 0.893
+        },
+        {
+          "contentGutter": 48,
+          "contentLeft": 48,
+          "contentRight": 853,
+          "contentSpan": 805,
+          "contentSpanRatio": 0.893,
+          "contentWidth": 805,
+          "contentWidthRatio": 0.893,
+          "counterfield": 48,
+          "cssTextAlign": "start",
+          "fieldAnchor": "center-field",
+          "gutter": 48,
+          "hasMedia": true,
+          "hasText": true,
+          "height": 527,
+          "heightRatio": 0.586,
+          "index": 1,
+          "label": "Common Frame.",
+          "left": 48,
+          "localContentInset": 0,
+          "maxWidth": "1240px",
+          "paintedSurface": false,
+          "right": 853,
+          "tag": "section",
+          "textAlignmentEvidence": [
+            {
+              "align": "center",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "center",
+              "direction": "ltr"
+            }
+          ],
+          "width": 805,
+          "widthRatio": 0.893
+        },
+        {
+          "contentGutter": 48,
+          "contentLeft": 48,
+          "contentRight": 853,
+          "contentSpan": 805,
+          "contentSpanRatio": 0.893,
+          "contentWidth": 489,
+          "contentWidthRatio": 0.543,
+          "counterfield": 48,
+          "cssTextAlign": "start",
+          "fieldAnchor": "center-field",
+          "gutter": 48,
+          "hasMedia": true,
+          "hasText": true,
+          "height": 856,
+          "heightRatio": 0.951,
+          "index": 2,
+          "label": "Worlds builtby hand.",
+          "left": 48,
+          "localContentInset": 0,
+          "maxWidth": "none",
+          "paintedSurface": false,
+          "right": 853,
+          "tag": "section",
+          "textAlignmentEvidence": [
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "center",
+              "direction": "ltr"
+            },
+            {
+              "align": "center",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "center",
+              "direction": "ltr"
+            },
+            {
+              "align": "right",
+              "direction": "ltr"
+            },
+            {
+              "align": "right",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "right",
+              "direction": "ltr"
+            },
+            {
+              "align": "center",
+              "direction": "ltr"
+            }
+          ],
+          "width": 805,
+          "widthRatio": 0.893
+        },
+        {
+          "contentGutter": 48,
+          "contentLeft": 48,
+          "contentRight": 853,
+          "contentSpan": 805,
+          "contentSpanRatio": 0.893,
+          "contentWidth": 489,
+          "contentWidthRatio": 0.543,
+          "counterfield": 0,
+          "cssTextAlign": "start",
+          "fieldAnchor": "full-field",
+          "gutter": 0,
+          "hasMedia": true,
+          "hasText": true,
+          "height": 532,
+          "heightRatio": 0.591,
+          "index": 3,
+          "label": "Stay for theconversation.",
+          "left": 0,
+          "localContentInset": 48,
+          "maxWidth": "none",
+          "paintedSurface": true,
+          "right": 901,
+          "tag": "section",
+          "textAlignmentEvidence": [
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            }
+          ],
+          "width": 901,
+          "widthRatio": 1
+        },
+        {
+          "contentGutter": 48,
+          "contentLeft": 48,
+          "contentRight": 853,
+          "contentSpan": 805,
+          "contentSpanRatio": 0.893,
+          "contentWidth": 441,
+          "contentWidthRatio": 0.489,
+          "counterfield": 48,
+          "cssTextAlign": "start",
+          "fieldAnchor": "center-field",
+          "gutter": 48,
+          "hasMedia": false,
+          "hasText": true,
+          "height": 273,
+          "heightRatio": 0.303,
+          "index": 4,
+          "label": "The same room.A different view.",
+          "left": 48,
+          "localContentInset": 0,
+          "maxWidth": "none",
+          "paintedSurface": false,
+          "right": 853,
+          "tag": "section",
+          "textAlignmentEvidence": [
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            }
+          ],
+          "width": 805,
+          "widthRatio": 0.893
+        },
+        {
+          "contentGutter": 48,
+          "contentLeft": 48,
+          "contentRight": 853,
+          "contentSpan": 805,
+          "contentSpanRatio": 0.893,
+          "contentWidth": 210,
+          "contentWidthRatio": 0.233,
+          "counterfield": 48,
+          "cssTextAlign": "start",
+          "fieldAnchor": "center-field",
+          "gutter": 48,
+          "hasMedia": true,
+          "hasText": true,
+          "height": 109,
+          "heightRatio": 0.121,
+          "index": 5,
+          "label": "Common Frame.Back to the programme",
+          "left": 48,
+          "localContentInset": 0,
+          "maxWidth": "none",
+          "paintedSurface": false,
+          "right": 853,
+          "tag": "footer",
+          "textAlignmentEvidence": [
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            }
+          ],
+          "width": 805,
+          "widthRatio": 0.893
+        }
+      ],
+      "scrollWidth": 901,
+      "url": "http://127.0.0.1:4175/benchmarks/visual/common-frame/",
+      "viewport": {
+        "height": 900,
+        "width": 901
+      }
+    },
+    {
+      "capturedAt": "2026-10-11T11:54:53.102Z",
+      "documentWidth": 768,
+      "regions": [
+        {
+          "contentGutter": 32,
+          "contentLeft": 32,
+          "contentRight": 736,
+          "contentSpan": 704,
+          "contentSpanRatio": 0.917,
+          "contentWidth": 172,
+          "contentWidthRatio": 0.224,
+          "counterfield": 32,
+          "cssTextAlign": "start",
+          "fieldAnchor": "center-field",
+          "gutter": 32,
+          "hasMedia": true,
+          "hasText": true,
+          "height": 72,
+          "heightRatio": 0.08,
+          "index": 0,
+          "label": "cf.ProgrammeReading roomThe clubMy programme0",
+          "left": 32,
+          "localContentInset": 0,
+          "maxWidth": "none",
+          "paintedSurface": false,
+          "right": 736,
+          "tag": "header",
+          "textAlignmentEvidence": [
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "center",
+              "direction": "ltr"
+            }
+          ],
+          "width": 704,
+          "widthRatio": 0.917
+        },
+        {
+          "contentGutter": 32,
+          "contentLeft": 32,
+          "contentRight": 736,
+          "contentSpan": 704,
+          "contentSpanRatio": 0.917,
+          "contentWidth": 704,
+          "contentWidthRatio": 0.917,
+          "counterfield": 32,
+          "cssTextAlign": "start",
+          "fieldAnchor": "center-field",
+          "gutter": 32,
+          "hasMedia": true,
+          "hasText": true,
+          "height": 587,
+          "heightRatio": 0.652,
+          "index": 1,
+          "label": "Common Frame.",
+          "left": 32,
+          "localContentInset": 0,
+          "maxWidth": "1240px",
+          "paintedSurface": false,
+          "right": 736,
+          "tag": "section",
+          "textAlignmentEvidence": [
+            {
+              "align": "center",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "center",
+              "direction": "ltr"
+            }
+          ],
+          "width": 704,
+          "widthRatio": 0.917
+        },
+        {
+          "contentGutter": 32,
+          "contentLeft": 32,
+          "contentRight": 736,
+          "contentSpan": 704,
+          "contentSpanRatio": 0.917,
+          "contentWidth": 704,
+          "contentWidthRatio": 0.917,
+          "counterfield": 32,
+          "cssTextAlign": "start",
+          "fieldAnchor": "center-field",
+          "gutter": 32,
+          "hasMedia": true,
+          "hasText": true,
+          "height": 973,
+          "heightRatio": 1.081,
+          "index": 2,
+          "label": "Worlds builtby hand.",
+          "left": 32,
+          "localContentInset": 0,
+          "maxWidth": "none",
+          "paintedSurface": false,
+          "right": 736,
+          "tag": "section",
+          "textAlignmentEvidence": [
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "center",
+              "direction": "ltr"
+            },
+            {
+              "align": "center",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "center",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "center",
+              "direction": "ltr"
+            }
+          ],
+          "width": 704,
+          "widthRatio": 0.917
+        },
+        {
+          "contentGutter": 114,
+          "contentLeft": 114,
+          "contentRight": 654,
+          "contentSpan": 540,
+          "contentSpanRatio": 0.703,
+          "contentWidth": 540,
+          "contentWidthRatio": 0.703,
+          "counterfield": 0,
+          "cssTextAlign": "start",
+          "fieldAnchor": "full-field",
+          "gutter": 0,
+          "hasMedia": true,
+          "hasText": true,
+          "height": 814,
+          "heightRatio": 0.905,
+          "index": 3,
+          "label": "Stay for theconversation.",
+          "left": 0,
+          "localContentInset": 114,
+          "maxWidth": "none",
+          "paintedSurface": true,
+          "right": 768,
+          "tag": "section",
+          "textAlignmentEvidence": [
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            }
+          ],
+          "width": 768,
+          "widthRatio": 1
+        },
+        {
+          "contentGutter": 32,
+          "contentLeft": 32,
+          "contentRight": 736,
+          "contentSpan": 704,
+          "contentSpanRatio": 0.917,
+          "contentWidth": 535,
+          "contentWidthRatio": 0.697,
+          "counterfield": 32,
+          "cssTextAlign": "start",
+          "fieldAnchor": "center-field",
+          "gutter": 32,
+          "hasMedia": false,
+          "hasText": true,
+          "height": 528,
+          "heightRatio": 0.586,
+          "index": 4,
+          "label": "The same room.A different view.",
+          "left": 32,
+          "localContentInset": 0,
+          "maxWidth": "none",
+          "paintedSurface": false,
+          "right": 736,
+          "tag": "section",
+          "textAlignmentEvidence": [
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            }
+          ],
+          "width": 704,
+          "widthRatio": 0.917
+        },
+        {
+          "contentGutter": 32,
+          "contentLeft": 32,
+          "contentRight": 736,
+          "contentSpan": 704,
+          "contentSpanRatio": 0.917,
+          "contentWidth": 210,
+          "contentWidthRatio": 0.273,
+          "counterfield": 32,
+          "cssTextAlign": "start",
+          "fieldAnchor": "center-field",
+          "gutter": 32,
+          "hasMedia": true,
+          "hasText": true,
+          "height": 109,
+          "heightRatio": 0.121,
+          "index": 5,
+          "label": "Common Frame.Back to the programme",
+          "left": 32,
+          "localContentInset": 0,
+          "maxWidth": "none",
+          "paintedSurface": false,
+          "right": 736,
+          "tag": "footer",
+          "textAlignmentEvidence": [
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            }
+          ],
+          "width": 704,
+          "widthRatio": 0.917
+        }
+      ],
+      "scrollWidth": 768,
+      "url": "http://127.0.0.1:4175/benchmarks/visual/common-frame/",
+      "viewport": {
+        "height": 900,
+        "width": 768
+      }
+    },
+    {
+      "capturedAt": "2026-10-11T11:54:53.141Z",
+      "documentWidth": 601,
+      "regions": [
+        {
+          "contentGutter": 32,
+          "contentLeft": 32,
+          "contentRight": 569,
+          "contentSpan": 537,
+          "contentSpanRatio": 0.894,
+          "contentWidth": 172,
+          "contentWidthRatio": 0.286,
+          "counterfield": 32,
+          "cssTextAlign": "start",
+          "fieldAnchor": "center-field",
+          "gutter": 32,
+          "hasMedia": true,
+          "hasText": true,
+          "height": 72,
+          "heightRatio": 0.08,
+          "index": 0,
+          "label": "cf.ProgrammeReading roomThe clubMy programme0",
+          "left": 32,
+          "localContentInset": 0,
+          "maxWidth": "none",
+          "paintedSurface": false,
+          "right": 569,
+          "tag": "header",
+          "textAlignmentEvidence": [
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "center",
+              "direction": "ltr"
+            }
+          ],
+          "width": 537,
+          "widthRatio": 0.894
+        },
+        {
+          "contentGutter": 32,
+          "contentLeft": 32,
+          "contentRight": 569,
+          "contentSpan": 537,
+          "contentSpanRatio": 0.894,
+          "contentWidth": 537,
+          "contentWidthRatio": 0.894,
+          "counterfield": 32,
+          "cssTextAlign": "start",
+          "fieldAnchor": "center-field",
+          "gutter": 32,
+          "hasMedia": true,
+          "hasText": true,
+          "height": 583,
+          "heightRatio": 0.648,
+          "index": 1,
+          "label": "Common Frame.",
+          "left": 32,
+          "localContentInset": 0,
+          "maxWidth": "1240px",
+          "paintedSurface": false,
+          "right": 569,
+          "tag": "section",
+          "textAlignmentEvidence": [
+            {
+              "align": "center",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "center",
+              "direction": "ltr"
+            }
+          ],
+          "width": 537,
+          "widthRatio": 0.894
+        },
+        {
+          "contentGutter": 32,
+          "contentLeft": 32,
+          "contentRight": 569,
+          "contentSpan": 537,
+          "contentSpanRatio": 0.894,
+          "contentWidth": 537,
+          "contentWidthRatio": 0.894,
+          "counterfield": 32,
+          "cssTextAlign": "start",
+          "fieldAnchor": "center-field",
+          "gutter": 32,
+          "hasMedia": true,
+          "hasText": true,
+          "height": 1018,
+          "heightRatio": 1.131,
+          "index": 2,
+          "label": "Worlds builtby hand.",
+          "left": 32,
+          "localContentInset": 0,
+          "maxWidth": "none",
+          "paintedSurface": false,
+          "right": 569,
+          "tag": "section",
+          "textAlignmentEvidence": [
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "center",
+              "direction": "ltr"
+            },
+            {
+              "align": "center",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "center",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "center",
+              "direction": "ltr"
+            }
+          ],
+          "width": 537,
+          "widthRatio": 0.894
+        },
+        {
+          "contentGutter": 32,
+          "contentLeft": 32,
+          "contentRight": 569,
+          "contentSpan": 537,
+          "contentSpanRatio": 0.894,
+          "contentWidth": 537,
+          "contentWidthRatio": 0.894,
+          "counterfield": 0,
+          "cssTextAlign": "start",
+          "fieldAnchor": "full-field",
+          "gutter": 0,
+          "hasMedia": true,
+          "hasText": true,
+          "height": 814,
+          "heightRatio": 0.905,
+          "index": 3,
+          "label": "Stay for theconversation.",
+          "left": 0,
+          "localContentInset": 32,
+          "maxWidth": "none",
+          "paintedSurface": true,
+          "right": 601,
+          "tag": "section",
+          "textAlignmentEvidence": [
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            }
+          ],
+          "width": 601,
+          "widthRatio": 1
+        },
+        {
+          "contentGutter": 32,
+          "contentLeft": 32,
+          "contentRight": 569,
+          "contentSpan": 537,
+          "contentSpanRatio": 0.894,
+          "contentWidth": 535,
+          "contentWidthRatio": 0.89,
+          "counterfield": 32,
+          "cssTextAlign": "start",
+          "fieldAnchor": "center-field",
+          "gutter": 32,
+          "hasMedia": false,
+          "hasText": true,
+          "height": 528,
+          "heightRatio": 0.586,
+          "index": 4,
+          "label": "The same room.A different view.",
+          "left": 32,
+          "localContentInset": 0,
+          "maxWidth": "none",
+          "paintedSurface": false,
+          "right": 569,
+          "tag": "section",
+          "textAlignmentEvidence": [
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            }
+          ],
+          "width": 537,
+          "widthRatio": 0.894
+        },
+        {
+          "contentGutter": 32,
+          "contentLeft": 32,
+          "contentRight": 569,
+          "contentSpan": 537,
+          "contentSpanRatio": 0.894,
+          "contentWidth": 210,
+          "contentWidthRatio": 0.349,
+          "counterfield": 32,
+          "cssTextAlign": "start",
+          "fieldAnchor": "center-field",
+          "gutter": 32,
+          "hasMedia": true,
+          "hasText": true,
+          "height": 109,
+          "heightRatio": 0.121,
+          "index": 5,
+          "label": "Common Frame.Back to the programme",
+          "left": 32,
+          "localContentInset": 0,
+          "maxWidth": "none",
+          "paintedSurface": false,
+          "right": 569,
+          "tag": "footer",
+          "textAlignmentEvidence": [
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            }
+          ],
+          "width": 537,
+          "widthRatio": 0.894
+        }
+      ],
+      "scrollWidth": 601,
+      "url": "http://127.0.0.1:4175/benchmarks/visual/common-frame/",
+      "viewport": {
+        "height": 900,
+        "width": 601
+      }
+    },
+    {
+      "capturedAt": "2026-10-11T11:54:53.291Z",
+      "documentWidth": 390,
+      "regions": [
+        {
+          "contentGutter": 20,
+          "contentLeft": 20,
+          "contentRight": 370,
+          "contentSpan": 350,
+          "contentSpanRatio": 0.897,
+          "contentWidth": 100,
+          "contentWidthRatio": 0.257,
+          "counterfield": 20,
+          "cssTextAlign": "start",
+          "fieldAnchor": "center-field",
+          "gutter": 20,
+          "hasMedia": true,
+          "hasText": true,
+          "height": 64,
+          "heightRatio": 0.076,
+          "index": 0,
+          "label": "cf.ProgrammeReading roomThe clubMy programme0",
+          "left": 20,
+          "localContentInset": 0,
+          "maxWidth": "none",
+          "paintedSurface": false,
+          "right": 370,
+          "tag": "header",
+          "textAlignmentEvidence": [
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "center",
+              "direction": "ltr"
+            }
+          ],
+          "width": 350,
+          "widthRatio": 0.897
+        },
+        {
+          "contentGutter": 20,
+          "contentLeft": 20,
+          "contentRight": 370,
+          "contentSpan": 350,
+          "contentSpanRatio": 0.897,
+          "contentWidth": 330,
+          "contentWidthRatio": 0.846,
+          "counterfield": 20,
+          "cssTextAlign": "start",
+          "fieldAnchor": "center-field",
+          "gutter": 20,
+          "hasMedia": true,
+          "hasText": true,
+          "height": 562,
+          "heightRatio": 0.666,
+          "index": 1,
+          "label": "Common Frame.",
+          "left": 20,
+          "localContentInset": 0,
+          "maxWidth": "1240px",
+          "paintedSurface": false,
+          "right": 370,
+          "tag": "section",
+          "textAlignmentEvidence": [
+            {
+              "align": "center",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "center",
+              "direction": "ltr"
+            }
+          ],
+          "width": 350,
+          "widthRatio": 0.897
+        },
+        {
+          "contentGutter": 20,
+          "contentLeft": 20,
+          "contentRight": 370,
+          "contentSpan": 350,
+          "contentSpanRatio": 0.897,
+          "contentWidth": 350,
+          "contentWidthRatio": 0.897,
+          "counterfield": 20,
+          "cssTextAlign": "start",
+          "fieldAnchor": "center-field",
+          "gutter": 20,
+          "hasMedia": true,
+          "hasText": true,
+          "height": 1298,
+          "heightRatio": 1.538,
+          "index": 2,
+          "label": "Worlds builtby hand.",
+          "left": 20,
+          "localContentInset": 0,
+          "maxWidth": "none",
+          "paintedSurface": false,
+          "right": 370,
+          "tag": "section",
+          "textAlignmentEvidence": [
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "center",
+              "direction": "ltr"
+            },
+            {
+              "align": "center",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "center",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "center",
+              "direction": "ltr"
+            }
+          ],
+          "width": 350,
+          "widthRatio": 0.897
+        },
+        {
+          "contentGutter": 24,
+          "contentLeft": 24,
+          "contentRight": 366,
+          "contentSpan": 342,
+          "contentSpanRatio": 0.877,
+          "contentWidth": 342,
+          "contentWidthRatio": 0.877,
+          "counterfield": 0,
+          "cssTextAlign": "start",
+          "fieldAnchor": "full-field",
+          "gutter": 0,
+          "hasMedia": true,
+          "hasText": true,
+          "height": 879,
+          "heightRatio": 1.041,
+          "index": 3,
+          "label": "Stay for theconversation.",
+          "left": 0,
+          "localContentInset": 24,
+          "maxWidth": "none",
+          "paintedSurface": true,
+          "right": 390,
+          "tag": "section",
+          "textAlignmentEvidence": [
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            }
+          ],
+          "width": 390,
+          "widthRatio": 1
+        },
+        {
+          "contentGutter": 20,
+          "contentLeft": 20,
+          "contentRight": 370,
+          "contentSpan": 350,
+          "contentSpanRatio": 0.897,
+          "contentWidth": 350,
+          "contentWidthRatio": 0.897,
+          "counterfield": 20,
+          "cssTextAlign": "start",
+          "fieldAnchor": "center-field",
+          "gutter": 20,
+          "hasMedia": false,
+          "hasText": true,
+          "height": 579,
+          "heightRatio": 0.686,
+          "index": 4,
+          "label": "The same room.A different view.",
+          "left": 20,
+          "localContentInset": 0,
+          "maxWidth": "none",
+          "paintedSurface": false,
+          "right": 370,
+          "tag": "section",
+          "textAlignmentEvidence": [
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            }
+          ],
+          "width": 350,
+          "widthRatio": 0.897
+        },
+        {
+          "contentGutter": 20,
+          "contentLeft": 20,
+          "contentRight": 230,
+          "contentSpan": 210,
+          "contentSpanRatio": 0.538,
+          "contentWidth": 210,
+          "contentWidthRatio": 0.538,
+          "counterfield": 20,
+          "cssTextAlign": "start",
+          "fieldAnchor": "center-field",
+          "gutter": 20,
+          "hasMedia": true,
+          "hasText": true,
+          "height": 161,
+          "heightRatio": 0.191,
+          "index": 5,
+          "label": "Common Frame.Back to the programme",
+          "left": 20,
+          "localContentInset": 0,
+          "maxWidth": "none",
+          "paintedSurface": false,
+          "right": 370,
+          "tag": "footer",
+          "textAlignmentEvidence": [
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            }
+          ],
+          "width": 350,
+          "widthRatio": 0.897
+        }
+      ],
+      "scrollWidth": 390,
+      "url": "http://127.0.0.1:4175/benchmarks/visual/common-frame/",
+      "viewport": {
+        "height": 844,
+        "width": 390
+      }
+    },
+    {
+      "capturedAt": "2026-10-11T11:54:53.347Z",
+      "documentWidth": 320,
+      "regions": [
+        {
+          "contentGutter": 20,
+          "contentLeft": 20,
+          "contentRight": 300,
+          "contentSpan": 280,
+          "contentSpanRatio": 0.875,
+          "contentWidth": 100,
+          "contentWidthRatio": 0.314,
+          "counterfield": 20,
+          "cssTextAlign": "start",
+          "fieldAnchor": "center-field",
+          "gutter": 20,
+          "hasMedia": true,
+          "hasText": true,
+          "height": 64,
+          "heightRatio": 0.086,
+          "index": 0,
+          "label": "cf.ProgrammeReading roomThe clubMy programme0",
+          "left": 20,
+          "localContentInset": 0,
+          "maxWidth": "none",
+          "paintedSurface": false,
+          "right": 300,
+          "tag": "header",
+          "textAlignmentEvidence": [
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "center",
+              "direction": "ltr"
+            }
+          ],
+          "width": 280,
+          "widthRatio": 0.875
+        },
+        {
+          "contentGutter": 20,
+          "contentLeft": 20,
+          "contentRight": 300,
+          "contentSpan": 280,
+          "contentSpanRatio": 0.875,
+          "contentWidth": 280,
+          "contentWidthRatio": 0.875,
+          "counterfield": 20,
+          "cssTextAlign": "start",
+          "fieldAnchor": "center-field",
+          "gutter": 20,
+          "hasMedia": true,
+          "hasText": true,
+          "height": 562,
+          "heightRatio": 0.759,
+          "index": 1,
+          "label": "Common Frame.",
+          "left": 20,
+          "localContentInset": 0,
+          "maxWidth": "1240px",
+          "paintedSurface": false,
+          "right": 300,
+          "tag": "section",
+          "textAlignmentEvidence": [
+            {
+              "align": "center",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "center",
+              "direction": "ltr"
+            }
+          ],
+          "width": 280,
+          "widthRatio": 0.875
+        },
+        {
+          "contentGutter": 20,
+          "contentLeft": 20,
+          "contentRight": 300,
+          "contentSpan": 280,
+          "contentSpanRatio": 0.875,
+          "contentWidth": 280,
+          "contentWidthRatio": 0.875,
+          "counterfield": 20,
+          "cssTextAlign": "start",
+          "fieldAnchor": "center-field",
+          "gutter": 20,
+          "hasMedia": true,
+          "hasText": true,
+          "height": 1300,
+          "heightRatio": 1.757,
+          "index": 2,
+          "label": "Worlds builtby hand.",
+          "left": 20,
+          "localContentInset": 0,
+          "maxWidth": "none",
+          "paintedSurface": false,
+          "right": 300,
+          "tag": "section",
+          "textAlignmentEvidence": [
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "center",
+              "direction": "ltr"
+            },
+            {
+              "align": "center",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "center",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "center",
+              "direction": "ltr"
+            }
+          ],
+          "width": 280,
+          "widthRatio": 0.875
+        },
+        {
+          "contentGutter": 24,
+          "contentLeft": 24,
+          "contentRight": 296,
+          "contentSpan": 272,
+          "contentSpanRatio": 0.85,
+          "contentWidth": 272,
+          "contentWidthRatio": 0.85,
+          "counterfield": 0,
+          "cssTextAlign": "start",
+          "fieldAnchor": "full-field",
+          "gutter": 0,
+          "hasMedia": true,
+          "hasText": true,
+          "height": 900,
+          "heightRatio": 1.217,
+          "index": 3,
+          "label": "Stay for theconversation.",
+          "left": 0,
+          "localContentInset": 24,
+          "maxWidth": "none",
+          "paintedSurface": true,
+          "right": 320,
+          "tag": "section",
+          "textAlignmentEvidence": [
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            }
+          ],
+          "width": 320,
+          "widthRatio": 1
+        },
+        {
+          "contentGutter": 20,
+          "contentLeft": 20,
+          "contentRight": 300,
+          "contentSpan": 280,
+          "contentSpanRatio": 0.875,
+          "contentWidth": 280,
+          "contentWidthRatio": 0.875,
+          "counterfield": 20,
+          "cssTextAlign": "start",
+          "fieldAnchor": "center-field",
+          "gutter": 20,
+          "hasMedia": false,
+          "hasText": true,
+          "height": 602,
+          "heightRatio": 0.813,
+          "index": 4,
+          "label": "The same room.A different view.",
+          "left": 20,
+          "localContentInset": 0,
+          "maxWidth": "none",
+          "paintedSurface": false,
+          "right": 300,
+          "tag": "section",
+          "textAlignmentEvidence": [
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            }
+          ],
+          "width": 280,
+          "widthRatio": 0.875
+        },
+        {
+          "contentGutter": 20,
+          "contentLeft": 20,
+          "contentRight": 230,
+          "contentSpan": 210,
+          "contentSpanRatio": 0.655,
+          "contentWidth": 210,
+          "contentWidthRatio": 0.655,
+          "counterfield": 20,
+          "cssTextAlign": "start",
+          "fieldAnchor": "center-field",
+          "gutter": 20,
+          "hasMedia": true,
+          "hasText": true,
+          "height": 161,
+          "heightRatio": 0.218,
+          "index": 5,
+          "label": "Common Frame.Back to the programme",
+          "left": 20,
+          "localContentInset": 0,
+          "maxWidth": "none",
+          "paintedSurface": false,
+          "right": 300,
+          "tag": "footer",
+          "textAlignmentEvidence": [
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            }
+          ],
+          "width": 280,
+          "widthRatio": 0.875
+        }
+      ],
+      "scrollWidth": 320,
+      "url": "http://127.0.0.1:4175/benchmarks/visual/common-frame/",
+      "viewport": {
+        "height": 740,
+        "width": 320
+      }
+    }
+  ],
+  "console": []
+}

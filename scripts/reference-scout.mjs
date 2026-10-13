@@ -4,7 +4,7 @@ import { asNumber, isMainModule, isUnderspecifiedRequest, loadDataset, meaningfu
 
 const HELP = `reference-scout.mjs [options]
 
-Rank global, quality-first product references for a frontend direction.
+Find quality-first references and discovery channels for any frontend direction.
 This command is local-only: selected URLs are candidates for live inspection,
 not proof that a source is current or suitable.
 
@@ -18,6 +18,7 @@ Options:
 `;
 
 const DEFAULT_CATEGORY = "general-product";
+const GENERIC_SOURCE_TOKENS = new Set(["官网", "网站", "网页", "页面", "品牌", "设计", "产品", "landing", "website", "site", "page", "web"]);
 
 function unique(values) {
   return [...new Set(values.filter(Boolean))];
@@ -32,6 +33,7 @@ function resolveCategory(categories, query, requested) {
   if (requested) {
     const exact = categories.find((category) => category.id === requested);
     if (exact) return { category: exact, confidence: "explicit", hits: [requested], score: 99 };
+    throw new Error(`Unknown reference category: ${requested}`);
   }
   const tokens = meaningfulTokens(query);
   const ranked = categories
@@ -111,24 +113,38 @@ function selectCandidates(sources, tokens, category, limit) {
   return { selected, notSelected };
 }
 
+function discoveryJobs(query) {
+  const jobs = ["composition", "responsive"];
+  if (/dashboard|editor|app\b|workflow|settings|form|工作流|编辑器|表单|后台|任务/u.test(query.toLowerCase())) jobs.push("workflow", "component");
+  if (/motion|animation|interaction|动效|动画|交互/u.test(query.toLowerCase())) jobs.push("interaction");
+  if (/illustration|texture|photograph|artwork|moodboard|插画|摄影|材质|拼贴/u.test(query.toLowerCase())) jobs.push("material", "artwork");
+  return unique(jobs);
+}
+
 export function scoutReferences(query = "", { profile = "", category: requestedCategory = "", limit = 4 } = {}) {
   const dataset = loadDataset("reference-sources.json");
-  const combined = `${query} ${profile}`.trim();
+  // An inferred profile must not turn an unrelated subject into hardware.
+  const combined = query.trim() || profile.trim();
   const adaptiveDefault = !requestedCategory && isUnderspecifiedRequest(combined);
-  const tokens = meaningfulTokens(combined);
+  const tokens = meaningfulTokens(combined).filter((token) => !GENERIC_SOURCE_TOKENS.has(token));
   const resolved = resolveCategory(dataset.categories, combined, requestedCategory);
-  const active = !adaptiveDefault && (Boolean(requestedCategory) || resolved.score > 0);
+  const active = !adaptiveDefault;
+  const catalogMatch = active && (Boolean(requestedCategory) || (resolved.score > 0 && !["general-product", "premium-consumer"].includes(resolved.category.id)));
+  const jobs = discoveryJobs(combined);
   const category = adaptiveDefault
     ? { id: "unspecified", label: "No category selected", confidence: "low", hits: [], score: 0, jobs: [], searchQueries: [] }
-    : resolved.category;
-  const selection = active
+    : catalogMatch ? resolved.category : { id: "open-discovery", label: "Open discovery for the actual brief", jobs, searchQueries: [
+      `${combined} website design original live site`,
+      `${combined} full project composition responsive`,
+    ] };
+  const selection = catalogMatch
     ? selectCandidates(dataset.sources, tokens, resolved.category, Math.min(Math.max(Number(limit) || 4, 1), 6))
     : {
         selected: [],
         notSelected: dataset.sources.slice(0, 6).map((source) => ({
           id: source.id,
           label: source.label,
-          reason: "没有明确的产品、品牌、硬件或媒体型网站信号",
+          reason: active ? "当前对象不属于这份硬件候选清单；转入开放搜寻" : "没有足够的对象、内容或任务信息",
         })),
       };
   return {
@@ -137,20 +153,34 @@ export function scoutReferences(query = "", { profile = "", category: requestedC
     category: {
       id: category.id,
       label: category.label,
-      confidence: adaptiveDefault ? category.confidence : resolved.confidence,
-      matched: adaptiveDefault ? category.hits : resolved.hits,
+      confidence: adaptiveDefault ? category.confidence : catalogMatch ? resolved.confidence : "open",
+      matched: catalogMatch ? resolved.hits : [],
       jobs: category.jobs,
     },
     active,
     selectionPolicy: dataset.selectionPolicy,
     selected: selection.selected,
     notSelected: selection.notSelected,
+    discoveryPlan: {
+      status: active ? "live-inspection-required" : "brief-needed",
+      jobs: active ? jobs : [],
+      channels: active ? (dataset.discoveryChannels ?? [])
+        .map((channel, index) => ({ ...channel, score: channel.roles.filter((role) => jobs.includes(role)).length, index }))
+        .filter((channel) => channel.score > 0)
+        .sort((left, right) => right.score - left.score || left.index - right.index)
+        .slice(0, Math.min(Math.max(Number(limit) || 4, 1), 6))
+        .map(({ score, index, ...channel }) => channel) : [],
+      channelInventory: dataset.discoveryChannels ?? [],
+      componentReserve: "Use reference-composition and resource-catalog for source-owned component or motion jobs after the full-page relationships are chosen.",
+      policy: "These are discovery channels, never selected visual authorities. Follow the original source, record access failures honestly, and continue with an accessible alternative. Existing categories are accelerators, not the boundaries of design.",
+    },
     liveSearchPlan: category.searchQueries,
     liveInspectionChecklist: adaptiveDefault
       ? ["先补充对象、受众、任务、内容类型或真实素材，再启动外部参考搜寻。"]
       : [
-        "打开官方来源，先看桌面端第一视口和首个滚动章节。",
-        "记录对象、导航、章节顺序、素材类型、功能/性能证据和使用路径。",
+        "从画廊或作品找到原网站，检查第一视口、完整章节和结尾；不要只看一张展示图。",
+        "分别记录每个区域的摆放、文字对齐、内容宽度、留白用途，以及和相邻区域的关系。",
+        "记录对象、导航、章节顺序、素材类型、真实内容和使用/阅读路径。",
         "分别检查移动端首屏、图片/视频加载、键盘焦点、减少动态和无媒体 fallback。",
         "只把可迁移的层级、节奏、对象展示和交互关系带入目标项目；不要复制品牌或整页布局。",
       ],
@@ -174,7 +204,7 @@ function renderSource(item, index) {
 export function renderReferenceScout(result) {
   const selected = result.selected.length > 0
     ? result.selected.map(renderSource).join("\n\n")
-    : "没有足够的类别信号；先补充产品对象、受众、购买/使用任务或真实素材。";
+    : result.active ? "本地清单没有该对象的现成参考；按下面的渠道寻找并检查原网站，不套用硬件或电商结构。" : "先补充对象、受众、内容或任务，再启动外部参考搜寻。";
   return `# Reference Scout
 
 Query: **${result.query || "(none)"}**
@@ -192,6 +222,14 @@ ${selected}
 ## Live Search Plan
 
 ${result.liveSearchPlan.map((item) => `- ${item}`).join("\n")}
+
+## Discovery Channels
+
+${result.discoveryPlan.channels.map((channel) => `- [${channel.label}](${channel.url}): ${channel.use} ${channel.limit}`).join("\n") || "- Brief needed before choosing channels."}
+
+${result.discoveryPlan.policy}
+
+${result.discoveryPlan.componentReserve}
 
 ## Live Inspection Checklist
 

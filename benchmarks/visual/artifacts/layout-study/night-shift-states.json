@@ -1,0 +1,47 @@
+[
+  {
+    "action": "wide-field-320",
+    "buttons": [
+      {
+        "clipped": false,
+        "pressed": "true",
+        "text": "A Wide field"
+      },
+      {
+        "clipped": false,
+        "pressed": "false",
+        "text": "B The pair"
+      },
+      {
+        "clipped": false,
+        "pressed": "false",
+        "text": "C Core"
+      }
+    ],
+    "loaded": true,
+    "source": "https://esahubble.org/images/heic0506c/",
+    "stage": {
+      "bottom": 464.3046875,
+      "top": 275.5390625
+    },
+    "view": "wide",
+    "viewport": {
+      "height": 740,
+      "width": 320
+    }
+  },
+  {
+    "action": "reduced-core-320",
+    "loaded": true,
+    "reduce": true,
+    "transform": "matrix(2.15, 0, 0, 2.15, 0, 0)",
+    "transition": "0s",
+    "view": "core"
+  },
+  {
+    "action": "image-failure-320",
+    "brokenImagesHidden": true,
+    "controlsDisabled": true,
+    "visibleMessages": 3
+  }
+]

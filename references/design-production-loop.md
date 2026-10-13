@@ -15,16 +15,16 @@ A checkpoint is not an iteration. When the user explicitly requests twenty itera
 5. **References**: open the research atlas, inspect user references first, compare sources by section, and record borrow, reject, and translate decisions.
 6. **Vernacular**: derive visual material from the subject's own artifacts, culture, language, and physical world.
 7. **Defaults**: identify first-order and second-order AI defaults before choosing the direction.
-8. **Diverge**: generate three to five structurally different directions.
+8. **Diverge**: generate three to five structurally different directions. Vary the dominant object, local alignment relationships, occupied width, pause, silhouette, type/media relationship, or interaction model; a palette change is not a new concept. Keep the alternatives visible until one survives an actual render.
 9. **Converge**: choose one direction using subject fit, hierarchy, emotion, feasibility, and responsive viability.
-10. **Contract**: write composition, type, geometry, material, motion, asset, and exception decisions.
+10. **Contract**: write composition, per-region occupancy and field/surface/pause decisions, type, geometry, material, motion, asset, and exception decisions.
 11. **System**: extract tokens, type roles, component families, icon grammar, and page overrides.
 12. **Storyboard**: define the full scope, states, responsive continuation, route transitions, and ending.
 13. **Assets**: source or generate usable media and remove placeholders, fake metrics, and weak crops.
 14. **Skeleton**: build semantic structure, interaction, and real content before decoration.
 15. **Baseline**: run the target and capture actual desktop, mobile, and relevant states.
 16. **Macro repair**: fix the largest visible defect first: scope, silhouette, hierarchy, composition, content, or media.
-17. **Responsive re-stage**: redesign for mobile, tablet, touch, text wrapping, and input behavior.
+17. **Responsive re-stage**: capture and repair wide desktop, ordinary desktop, intermediate/tablet, and target mobile. Confirm local alignment changes, occupied width, reordering, line endings, touch targets, crop, state continuity, and useful empty space. A no-overflow result is insufficient.
 18. **State review**: exercise loading, empty, error, success, focus, reduced-motion, transition, and recovery paths.
 19. **Fresh-eyes critique**: compare before/after and use [the independent critique protocol](independent-critique.md) without the implementation history.
 20. **Sign-off**: verify static, runtime, visual, accessibility, and scope evidence; update durable design memory.

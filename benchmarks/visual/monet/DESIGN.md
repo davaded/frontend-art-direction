@@ -22,6 +22,14 @@ Signature: whole composition and authored brushwork detail refer to the same rea
 
 Motion: native open/close and a short opacity entry acknowledge the viewing state. No automatic slideshow, animated type, scroll hijack, or decorative loop. Reduced motion makes the state immediate. The view remains useful with a static image and normal document scrolling; no additional animation dependency is justified.
 
+## Regional Composition
+
+The opening painting remains full-bleed. Its caption and artist name use a bounded editorial shell; the introduction uses its own 940px centered block, with start-aligned title/prose on desktop and a centered short thesis on mobile. The thesis has balanced wrapping rather than an inherited hand-written break that leaves a lone word after the measure changes.
+
+The whole wheat painting is bounded at 1180px, its centered chapter title gives way to start-aligned caption and looking note, and the near-square pond uses a separate 1080px composition with 350px prose. The ending is centered around a compact 820px group of three whole paintings. The source records return to start-aligned scanning. Wide screens add framing space rather than enlarging every region.
+
+The different measures follow the paintings and reading task. They are not required ratios or a template for another subject. See `../artifacts/layout-study/` for actual comparisons and their limitations.
+
 ## Reference Translation
 
 Consider the maintained inventory. Apply Rare UI's clear specimen state and compact inspect control; reject its landing layout and copy. Apply Design Spells' focus on a small purposeful state change; reject a collection of unrelated tricks. Apply Transitions.dev's Review / Apply / Polish, cleanup and reduced-motion review; retain native/static behavior when no recipe is a better fit. Use the existing local Lucide source for familiar icons. shadcn/ui, Rewamp, Beautiful UI, beUI, Magic UI, React Bits, Aceternity, Obsidian, and Bencho do not supply a missing implementation job here, so no dependency or default skin is imported.

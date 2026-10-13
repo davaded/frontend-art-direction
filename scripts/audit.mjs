@@ -18,6 +18,7 @@ import { renderDesignLoop } from "./design-loop.mjs";
 import { buildLiveIterationContract } from "./live-iteration.mjs";
 import { lintProject } from "./visual-lint.mjs";
 import { renderProductContextStatus } from "./product-context.mjs";
+import { renderDesignMethods } from "./design-methods.mjs";
 
 const HELP = `audit.mjs [project-root] [options]
 
@@ -444,8 +445,11 @@ export async function buildAudit({
         })),
         notSelected: brief.referenceComposition.notSelected,
       },
+      designMethods: referenceBuild?.designMethods ?? brief.referenceComposition.designMethods,
       referenceScout: {
         category: brief.referenceScout.category,
+        discoveryPlan: brief.referenceScout.discoveryPlan,
+        liveSearchPlan: brief.referenceScout.liveSearchPlan,
         selected: brief.referenceScout.selected.slice(0, 4).map((source) => ({
           id: source.id,
           label: source.label,
@@ -540,7 +544,7 @@ export function renderAuditMarkdown(audit) {
     ? audit.proof.referenceScout.selected.map((source) => `- **${source.label}** · ${source.confidence} · ${source.jobs.join(", ")} · ${source.urls.join(" / ")}`).join("\n")
     : audit.proof.referenceScout?.category?.id === "unspecified"
       ? "- Inactive until a domain, audience, object, task, or named reference is supplied."
-      : "- No product source candidate; add category or object evidence first.";
+      : "- No catalog source fits this brief; use open discovery and inspect original sites.";
   const referenceBuild = audit.proof.referenceBuild
     ? `\n## Reference Build\n\n- Mode: **${audit.proof.referenceBuild.referenceMode}**\n- Primary reference: **${audit.proof.referenceBuild.primaryReference.label}**\n- Visual genome: ${audit.proof.referenceBuild.visualGenome.family}; ${audit.proof.referenceBuild.visualGenome.layout}\n- Visual direction: **${audit.proof.referenceBuild.visualDirection?.label ?? "not resolved"}**; visual stance **${audit.proof.referenceBuild.visualDirection?.visualTreatment?.label ?? "not resolved"}**; ${audit.proof.referenceBuild.visualDirection?.surfaceRules?.cardBudget ?? "card budget not recorded"}\n- Fidelity anchors: ${Object.values(audit.proof.referenceBuild.fidelityAnchors ?? {}).join("；")}\n- Product evidence: ${audit.proof.referenceBuild.referenceEvidence?.visualSignals?.join("；") || "inspect the selected source before locking visual values"}\n- First viewport: ${audit.proof.referenceBuild.firstViewport.layout}\n- Sections: ${audit.proof.referenceBuild.sections.join(", ")}\n- Acceptance: ${audit.proof.referenceBuild.acceptance.join("；")}\n`
     : "";
@@ -559,7 +563,7 @@ export function renderAuditMarkdown(audit) {
   const coverage = audit.referenceCoverage.map((item) => `- **${item.id}**: ${item.status}; ${item.implementation}`).join("\n");
   const referenceScoutHeading = audit.proof.referenceScout?.category?.id === "unspecified"
     ? "## External Reference Scout (inactive)"
-    : "## Global Product Reference Scout";
+    : "## External Reference Scout";
   return `# Frontend Decision Audit
 
 Query: **${audit.query}**
@@ -577,7 +581,7 @@ ${audit.changed}
 - Local scan: **${audit.proof.scan.status}**, ${audit.proof.scan.files} files; stack: ${audit.proof.scan.frameworks.join(", ") || "not confirmed"}
 - Graph: **${audit.proof.graph.nodes} nodes / ${audit.proof.graph.edges} edges**
 - Direction: **${audit.proof.direction.profile}** + **${audit.proof.direction.style}**
-- Visual direction: **${audit.proof.direction.visualDirection?.label ?? "not resolved"}**; visual stance **${audit.proof.direction.visualDirection?.visualTreatment?.label ?? "not resolved"}**; authority **${audit.proof.direction.constraintAuthority?.label ?? "not resolved"}**; ${audit.proof.direction.visualDirection?.firstViewport?.alignmentAxis ?? "alignment axis not recorded"}
+- Visual direction: **${audit.proof.direction.visualDirection?.label ?? "not resolved"}**; visual stance **${audit.proof.direction.visualDirection?.visualTreatment?.label ?? "not resolved"}**; authority **${audit.proof.direction.constraintAuthority?.label ?? "not resolved"}**; local alignment suggestion: ${audit.proof.direction.visualDirection?.firstViewport?.alignmentAxis ?? "not recorded"}; remaining regions require their own decisions.
 - Quality gates: ${audit.proof.direction.qualityGates.join(", ")}
 
 ## Full Pipeline
@@ -624,12 +628,18 @@ ${referenceComposition?.policy ?? "Select references by distinct job, not by che
 
 ${references}
 
+${renderDesignMethods(audit.proof.designMethods)}
+
 ${referenceScoutHeading}
 
 - Category: **${audit.proof.referenceScout?.category?.label ?? "not resolved"}** (${audit.proof.referenceScout?.category?.confidence ?? "unknown"})
 - Policy: choose by product fit and demonstrated quality; do not use geography as a quota.
 
 ${referenceScout}
+
+Discovery channels: ${(audit.proof.referenceScout?.discoveryPlan?.channels ?? []).map((channel) => `[${channel.label}](${channel.url})`).join("; ") || "brief needed"}
+
+${audit.proof.referenceScout?.discoveryPlan?.policy ?? "Inspect original sources before applying visible decisions."}
 
 ${referenceBuild}
 

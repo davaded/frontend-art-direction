@@ -1,0 +1,2872 @@
+{
+  "protocol": "frontend-art-direction/design-loop-session-v1",
+  "version": 1,
+  "id": "loop-20261011095727-f54d5841",
+  "status": "in-progress",
+  "mode": "create",
+  "createdAt": "2026-10-11T09:57:27.610Z",
+  "updatedAt": "2026-10-11T12:02:57.101Z",
+  "projectRoot": "/Users/daiyudai/code/frontend-art-direction/benchmarks/visual/common-frame",
+  "query": "做一个城市独立电影放映俱乐部的网站",
+  "scope": "substantial",
+  "operation": {
+    "operation": "polish",
+    "label": "Polish",
+    "confidence": "provisional",
+    "evidence": [],
+    "purpose": "tighten hierarchy, optical alignment, material behavior, copy, and state finish without replacing the thesis",
+    "mode": "adaptive",
+    "needsDirection": false,
+    "directionQuestion": null,
+    "candidates": [],
+    "next": "Inspect the target state, apply polish, then capture and compare the real render."
+  },
+  "surfaceMode": {
+    "mode": "adaptive",
+    "label": "Adaptive surface",
+    "confidence": "provisional",
+    "evidence": {
+      "hits": [],
+      "source": "awaiting surface evidence"
+    },
+    "candidates": [],
+    "decision": "Choose the visitor's primary job before fixing the page genre or interaction model.",
+    "proof": "the subject, task, or reading path is legible before visual polish",
+    "avoid": "committing to a product type, layout, or visual skin from an underspecified request",
+    "perSurface": true
+  },
+  "qualityBar": {
+    "version": 1,
+    "targetScore": 8,
+    "scale": {
+      "1": "generic, broken, or unsupported by evidence",
+      "5": "usable but ordinary, inconsistent, or only partly proven",
+      "8": "coherent, specific, complete, and supported by rendered evidence",
+      "10": "exceptional craft with a clear point of view and no material gaps"
+    },
+    "dimensions": [
+      {
+        "id": "subject-fit",
+        "label": "Subject fit",
+        "weight": 1.4,
+        "question": "Does the visual language come from the real subject, audience, content, or workflow?"
+      },
+      {
+        "id": "hierarchy",
+        "label": "Hierarchy",
+        "weight": 1.3,
+        "question": "Can a viewer identify the dominant object, reading order, counterweight, and next action quickly?"
+      },
+      {
+        "id": "composition",
+        "label": "Composition",
+        "weight": 1.3,
+        "question": "Does the silhouette, proportion, rhythm, and spatial relationship have a deliberate point of view?"
+      },
+      {
+        "id": "type-and-content",
+        "label": "Type and content",
+        "weight": 1.1,
+        "question": "Do typography, copy, data density, language, and wrapping support the chosen experience?"
+      },
+      {
+        "id": "material-and-assets",
+        "label": "Material and assets",
+        "weight": 1.1,
+        "question": "Do surfaces, imagery, texture, color, and depth feel authored and remain sharp at the target sizes?"
+      },
+      {
+        "id": "interaction-and-motion",
+        "label": "Interaction and motion",
+        "weight": 0.9,
+        "question": "Do interactions clarify state, continuity, feedback, or spatial relationships with cleanup and fallback?"
+      },
+      {
+        "id": "responsive-and-states",
+        "label": "Responsive and states",
+        "weight": 1.2,
+        "question": "Does the design remain intentional across viewports and important non-default states?"
+      },
+      {
+        "id": "originality",
+        "label": "Originality",
+        "weight": 1.1,
+        "question": "Does the result synthesize references into its own identity instead of looking like a template or a collage?"
+      },
+      {
+        "id": "completion-and-proof",
+        "label": "Completion and proof",
+        "weight": 1.4,
+        "question": "Is the declared scope complete, runnable, accessible, and proven with current rendered evidence?"
+      }
+    ],
+    "requiredProof": [
+      "static",
+      "runtime",
+      "visual",
+      "accessibility",
+      "scope"
+    ]
+  },
+  "researchAtlas": {
+    "id": "atlas-20261011095727-10dbca76",
+    "path": ".art-direction/research-atlas/atlas-20261011095727-10dbca76.json",
+    "status": "in-progress"
+  },
+  "currentRound": 20,
+  "rounds": [
+    {
+      "round": 1,
+      "id": "context",
+      "objective": "Read the request, project, audience, device, and existing visual authority.",
+      "artifact": "requirement-frame",
+      "source": "human-design",
+      "evidence": [
+        {
+          "ref": "PRODUCT.md",
+          "kind": "artifact-or-check",
+          "exists": true,
+          "size": 1495,
+          "valid": null
+        },
+        {
+          "ref": "RESEARCH.md",
+          "kind": "artifact-or-check",
+          "exists": true,
+          "size": 5285,
+          "valid": null
+        }
+      ],
+      "status": "complete",
+      "attempts": [
+        {
+          "status": "complete",
+          "decision": "Read the one-sentence film-club brief and recorded trial assumptions",
+          "evidence": [
+            {
+              "ref": "PRODUCT.md",
+              "kind": "artifact-or-check",
+              "exists": true,
+              "size": 1495,
+              "valid": null
+            },
+            {
+              "ref": "RESEARCH.md",
+              "kind": "artifact-or-check",
+              "exists": true,
+              "size": 5285,
+              "valid": null
+            }
+          ],
+          "proof": [],
+          "issues": [],
+          "score": null,
+          "dimensionScores": {},
+          "calculatedScore": null,
+          "largestGap": null,
+          "repair": null,
+          "verdict": null,
+          "comparison": [],
+          "critique": [],
+          "recordedAt": "2026-10-11T10:59:54.375Z"
+        }
+      ],
+      "decision": "Read the one-sentence film-club brief and recorded trial assumptions",
+      "proof": [],
+      "issues": [],
+      "score": null,
+      "dimensionScores": {},
+      "calculatedScore": null,
+      "largestGap": null,
+      "repair": null,
+      "verdict": null,
+      "comparison": [],
+      "critique": []
+    },
+    {
+      "round": 2,
+      "id": "job",
+      "objective": "Name the visitor's primary job and the result that proves it.",
+      "artifact": "surface-mode",
+      "source": "openai-context",
+      "evidence": [
+        {
+          "ref": "PRODUCT.md",
+          "kind": "artifact-or-check",
+          "exists": true,
+          "size": 1495,
+          "valid": null
+        },
+        {
+          "ref": "DESIGN.md",
+          "kind": "artifact-or-check",
+          "exists": true,
+          "size": 5364,
+          "valid": null
+        }
+      ],
+      "status": "complete",
+      "attempts": [
+        {
+          "status": "complete",
+          "decision": "Choose the visitor job of discovering and keeping a film plan without forcing a product genre",
+          "evidence": [
+            {
+              "ref": "PRODUCT.md",
+              "kind": "artifact-or-check",
+              "exists": true,
+              "size": 1495,
+              "valid": null
+            },
+            {
+              "ref": "DESIGN.md",
+              "kind": "artifact-or-check",
+              "exists": true,
+              "size": 5364,
+              "valid": null
+            }
+          ],
+          "proof": [],
+          "issues": [],
+          "score": null,
+          "dimensionScores": {},
+          "calculatedScore": null,
+          "largestGap": null,
+          "repair": null,
+          "verdict": null,
+          "comparison": [],
+          "critique": [],
+          "recordedAt": "2026-10-11T10:59:54.376Z"
+        }
+      ],
+      "decision": "Choose the visitor job of discovering and keeping a film plan without forcing a product genre",
+      "proof": [],
+      "issues": [],
+      "score": null,
+      "dimensionScores": {},
+      "calculatedScore": null,
+      "largestGap": null,
+      "repair": null,
+      "verdict": null,
+      "comparison": [],
+      "critique": []
+    },
+    {
+      "round": 3,
+      "id": "constraints",
+      "objective": "Separate hard invariants from preferences, risks, and reversible choices.",
+      "artifact": "constraint-register",
+      "source": "frontend-design-codex",
+      "evidence": [
+        {
+          "ref": "PRODUCT.md",
+          "kind": "artifact-or-check",
+          "exists": true,
+          "size": 1495,
+          "valid": null
+        },
+        {
+          "ref": "DESIGN.md",
+          "kind": "artifact-or-check",
+          "exists": true,
+          "size": 5364,
+          "valid": null
+        }
+      ],
+      "status": "complete",
+      "attempts": [
+        {
+          "status": "complete",
+          "decision": "Keep sample dates truthful; require semantic controls and recoverable states; visual choices remain replaceable",
+          "evidence": [
+            {
+              "ref": "PRODUCT.md",
+              "kind": "artifact-or-check",
+              "exists": true,
+              "size": 1495,
+              "valid": null
+            },
+            {
+              "ref": "DESIGN.md",
+              "kind": "artifact-or-check",
+              "exists": true,
+              "size": 5364,
+              "valid": null
+            }
+          ],
+          "proof": [],
+          "issues": [],
+          "score": null,
+          "dimensionScores": {},
+          "calculatedScore": null,
+          "largestGap": null,
+          "repair": null,
+          "verdict": null,
+          "comparison": [],
+          "critique": [],
+          "recordedAt": "2026-10-11T10:59:54.376Z"
+        }
+      ],
+      "decision": "Keep sample dates truthful; require semantic controls and recoverable states; visual choices remain replaceable",
+      "proof": [],
+      "issues": [],
+      "score": null,
+      "dimensionScores": {},
+      "calculatedScore": null,
+      "largestGap": null,
+      "repair": null,
+      "verdict": null,
+      "comparison": [],
+      "critique": []
+    },
+    {
+      "round": 4,
+      "id": "evidence",
+      "objective": "Inspect routes, components, tokens, content, assets, runtime entrypoints, and sibling surfaces.",
+      "artifact": "evidence-map",
+      "source": "avoid-ai-design",
+      "evidence": [
+        {
+          "ref": "index.html",
+          "kind": "artifact-or-check",
+          "exists": true,
+          "size": 9972,
+          "valid": null
+        },
+        {
+          "ref": "styles.css",
+          "kind": "artifact-or-check",
+          "exists": true,
+          "size": 14442,
+          "valid": null
+        },
+        {
+          "ref": "app.js",
+          "kind": "artifact-or-check",
+          "exists": true,
+          "size": 10832,
+          "valid": null
+        },
+        {
+          "ref": "assets/SOURCES.md",
+          "kind": "artifact-or-check",
+          "exists": true,
+          "size": 2085,
+          "valid": null
+        }
+      ],
+      "status": "complete",
+      "attempts": [
+        {
+          "status": "complete",
+          "decision": "Inspect the actual local content assets and semantic interactive implementation",
+          "evidence": [
+            {
+              "ref": "index.html",
+              "kind": "artifact-or-check",
+              "exists": true,
+              "size": 9972,
+              "valid": null
+            },
+            {
+              "ref": "styles.css",
+              "kind": "artifact-or-check",
+              "exists": true,
+              "size": 14442,
+              "valid": null
+            },
+            {
+              "ref": "app.js",
+              "kind": "artifact-or-check",
+              "exists": true,
+              "size": 10832,
+              "valid": null
+            },
+            {
+              "ref": "assets/SOURCES.md",
+              "kind": "artifact-or-check",
+              "exists": true,
+              "size": 2085,
+              "valid": null
+            }
+          ],
+          "proof": [],
+          "issues": [],
+          "score": null,
+          "dimensionScores": {},
+          "calculatedScore": null,
+          "largestGap": null,
+          "repair": null,
+          "verdict": null,
+          "comparison": [],
+          "critique": [],
+          "recordedAt": "2026-10-11T10:59:54.376Z"
+        }
+      ],
+      "decision": "Inspect the actual local content assets and semantic interactive implementation",
+      "proof": [],
+      "issues": [],
+      "score": null,
+      "dimensionScores": {},
+      "calculatedScore": null,
+      "largestGap": null,
+      "repair": null,
+      "verdict": null,
+      "comparison": [],
+      "critique": []
+    },
+    {
+      "round": 5,
+      "id": "references",
+      "objective": "Choose references by missing job; extract visible relationships instead of copying skins.",
+      "artifact": "reference-ledger",
+      "source": "reference-composition",
+      "evidence": [
+        {
+          "ref": "RESEARCH.md",
+          "kind": "artifact-or-check",
+          "exists": true,
+          "size": 5285,
+          "valid": null
+        },
+        {
+          "ref": "artifacts/metrograph-1440.jpg",
+          "kind": "capture-or-media",
+          "exists": true,
+          "size": 111048,
+          "valid": true
+        },
+        {
+          "ref": "artifacts/cineville-1440.jpg",
+          "kind": "capture-or-media",
+          "exists": true,
+          "size": 125313,
+          "valid": true
+        },
+        {
+          "ref": "artifacts/cineville-390.jpg",
+          "kind": "capture-or-media",
+          "exists": true,
+          "size": 59740,
+          "valid": true
+        }
+      ],
+      "status": "complete",
+      "attempts": [
+        {
+          "status": "complete",
+          "decision": "Inspect original film sites and live cinema pages; record borrow reject and translate decisions",
+          "evidence": [
+            {
+              "ref": "RESEARCH.md",
+              "kind": "artifact-or-check",
+              "exists": true,
+              "size": 5285,
+              "valid": null
+            },
+            {
+              "ref": "artifacts/metrograph-1440.jpg",
+              "kind": "capture-or-media",
+              "exists": true,
+              "size": 111048,
+              "valid": true
+            },
+            {
+              "ref": "artifacts/cineville-1440.jpg",
+              "kind": "capture-or-media",
+              "exists": true,
+              "size": 125313,
+              "valid": true
+            },
+            {
+              "ref": "artifacts/cineville-390.jpg",
+              "kind": "capture-or-media",
+              "exists": true,
+              "size": 59740,
+              "valid": true
+            }
+          ],
+          "proof": [],
+          "issues": [],
+          "score": null,
+          "dimensionScores": {},
+          "calculatedScore": null,
+          "largestGap": null,
+          "repair": null,
+          "verdict": null,
+          "comparison": [],
+          "critique": [],
+          "recordedAt": "2026-10-11T10:59:54.377Z"
+        }
+      ],
+      "decision": "Inspect original film sites and live cinema pages; record borrow reject and translate decisions",
+      "proof": [],
+      "issues": [],
+      "score": null,
+      "dimensionScores": {},
+      "calculatedScore": null,
+      "largestGap": null,
+      "repair": null,
+      "verdict": null,
+      "comparison": [],
+      "critique": []
+    },
+    {
+      "round": 6,
+      "id": "vernacular",
+      "objective": "Find the subject's materials, artifacts, culture, language, and visual vocabulary.",
+      "artifact": "subject-thesis",
+      "source": "anthropic-frontend-design",
+      "evidence": [
+        {
+          "ref": "PRODUCT.md",
+          "kind": "artifact-or-check",
+          "exists": true,
+          "size": 1495,
+          "valid": null
+        },
+        {
+          "ref": "DESIGN.md",
+          "kind": "artifact-or-check",
+          "exists": true,
+          "size": 5364,
+          "valid": null
+        },
+        {
+          "ref": "assets/SOURCES.md",
+          "kind": "artifact-or-check",
+          "exists": true,
+          "size": 2085,
+          "valid": null
+        }
+      ],
+      "status": "complete",
+      "attempts": [
+        {
+          "status": "complete",
+          "decision": "Derive the frame programme date and discussion language from real films and film-club use",
+          "evidence": [
+            {
+              "ref": "PRODUCT.md",
+              "kind": "artifact-or-check",
+              "exists": true,
+              "size": 1495,
+              "valid": null
+            },
+            {
+              "ref": "DESIGN.md",
+              "kind": "artifact-or-check",
+              "exists": true,
+              "size": 5364,
+              "valid": null
+            },
+            {
+              "ref": "assets/SOURCES.md",
+              "kind": "artifact-or-check",
+              "exists": true,
+              "size": 2085,
+              "valid": null
+            }
+          ],
+          "proof": [],
+          "issues": [],
+          "score": null,
+          "dimensionScores": {},
+          "calculatedScore": null,
+          "largestGap": null,
+          "repair": null,
+          "verdict": null,
+          "comparison": [],
+          "critique": [],
+          "recordedAt": "2026-10-11T10:59:54.378Z"
+        }
+      ],
+      "decision": "Derive the frame programme date and discussion language from real films and film-club use",
+      "proof": [],
+      "issues": [],
+      "score": null,
+      "dimensionScores": {},
+      "calculatedScore": null,
+      "largestGap": null,
+      "repair": null,
+      "verdict": null,
+      "comparison": [],
+      "critique": []
+    },
+    {
+      "round": 7,
+      "id": "defaults",
+      "objective": "Run a first-order and second-order AI-default scan before choosing a direction.",
+      "artifact": "anti-default-review",
+      "source": "avoid-ai-design",
+      "evidence": [
+        {
+          "ref": "RESEARCH.md",
+          "kind": "artifact-or-check",
+          "exists": true,
+          "size": 5285,
+          "valid": null
+        },
+        {
+          "ref": "DESIGN.md",
+          "kind": "artifact-or-check",
+          "exists": true,
+          "size": 5364,
+          "valid": null
+        }
+      ],
+      "status": "complete",
+      "attempts": [
+        {
+          "status": "complete",
+          "decision": "Reject equal-weight poster cards copied brand fake booking and a forced category",
+          "evidence": [
+            {
+              "ref": "RESEARCH.md",
+              "kind": "artifact-or-check",
+              "exists": true,
+              "size": 5285,
+              "valid": null
+            },
+            {
+              "ref": "DESIGN.md",
+              "kind": "artifact-or-check",
+              "exists": true,
+              "size": 5364,
+              "valid": null
+            }
+          ],
+          "proof": [],
+          "issues": [],
+          "score": null,
+          "dimensionScores": {},
+          "calculatedScore": null,
+          "largestGap": null,
+          "repair": null,
+          "verdict": null,
+          "comparison": [],
+          "critique": [],
+          "recordedAt": "2026-10-11T10:59:54.378Z"
+        }
+      ],
+      "decision": "Reject equal-weight poster cards copied brand fake booking and a forced category",
+      "proof": [],
+      "issues": [],
+      "score": null,
+      "dimensionScores": {},
+      "calculatedScore": null,
+      "largestGap": null,
+      "repair": null,
+      "verdict": null,
+      "comparison": [],
+      "critique": []
+    },
+    {
+      "round": 8,
+      "id": "diverge",
+      "objective": "Create 3-5 structurally different directions, not cosmetic palette variants; vary the dominant object, local alignment relationships, occupied width, pause, and responsive silhouette.",
+      "artifact": "concept-set",
+      "source": "openai-ideate",
+      "evidence": [
+        {
+          "ref": "RESEARCH.md",
+          "kind": "artifact-or-check",
+          "exists": true,
+          "size": 5285,
+          "valid": null
+        }
+      ],
+      "status": "complete",
+      "attempts": [
+        {
+          "status": "complete",
+          "decision": "Compare poster wall attached-film programme and typographic calendar hypotheses",
+          "evidence": [
+            {
+              "ref": "RESEARCH.md",
+              "kind": "artifact-or-check",
+              "exists": true,
+              "size": 5285,
+              "valid": null
+            }
+          ],
+          "proof": [],
+          "issues": [],
+          "score": null,
+          "dimensionScores": {},
+          "calculatedScore": null,
+          "largestGap": null,
+          "repair": null,
+          "verdict": null,
+          "comparison": [],
+          "critique": [],
+          "recordedAt": "2026-10-11T10:59:54.379Z"
+        }
+      ],
+      "decision": "Compare poster wall attached-film programme and typographic calendar hypotheses",
+      "proof": [],
+      "issues": [],
+      "score": null,
+      "dimensionScores": {},
+      "calculatedScore": null,
+      "largestGap": null,
+      "repair": null,
+      "verdict": null,
+      "comparison": [],
+      "critique": []
+    },
+    {
+      "round": 9,
+      "id": "converge",
+      "objective": "Choose one direction against subject fit, hierarchy, emotional register, feasibility, and responsive viability.",
+      "artifact": "direction-verdict",
+      "source": "ideo-create-choices",
+      "evidence": [
+        {
+          "ref": "RESEARCH.md",
+          "kind": "artifact-or-check",
+          "exists": true,
+          "size": 5285,
+          "valid": null
+        },
+        {
+          "ref": "DESIGN.md",
+          "kind": "artifact-or-check",
+          "exists": true,
+          "size": 5364,
+          "valid": null
+        }
+      ],
+      "status": "complete",
+      "attempts": [
+        {
+          "status": "complete",
+          "decision": "Choose the image-led programme hypothesis and keep the other structures replaceable",
+          "evidence": [
+            {
+              "ref": "RESEARCH.md",
+              "kind": "artifact-or-check",
+              "exists": true,
+              "size": 5285,
+              "valid": null
+            },
+            {
+              "ref": "DESIGN.md",
+              "kind": "artifact-or-check",
+              "exists": true,
+              "size": 5364,
+              "valid": null
+            }
+          ],
+          "proof": [],
+          "issues": [],
+          "score": null,
+          "dimensionScores": {},
+          "calculatedScore": null,
+          "largestGap": null,
+          "repair": null,
+          "verdict": null,
+          "comparison": [],
+          "critique": [],
+          "recordedAt": "2026-10-11T10:59:54.379Z"
+        }
+      ],
+      "decision": "Choose the image-led programme hypothesis and keep the other structures replaceable",
+      "proof": [],
+      "issues": [],
+      "score": null,
+      "dimensionScores": {},
+      "calculatedScore": null,
+      "largestGap": null,
+      "repair": null,
+      "verdict": null,
+      "comparison": [],
+      "critique": []
+    },
+    {
+      "round": 10,
+      "id": "contract",
+      "objective": "Write the chosen composition, per-region occupancy and field/surface/pause decisions, type, geometry, material, motion, asset, and exception contract.",
+      "artifact": "design-contract",
+      "source": "ui-ux-pro-max",
+      "evidence": [
+        {
+          "ref": "DESIGN.md",
+          "kind": "artifact-or-check",
+          "exists": true,
+          "size": 5364,
+          "valid": null
+        }
+      ],
+      "status": "complete",
+      "attempts": [
+        {
+          "status": "complete",
+          "decision": "Write local anchors measures fields geometry motion material and responsive decisions",
+          "evidence": [
+            {
+              "ref": "DESIGN.md",
+              "kind": "artifact-or-check",
+              "exists": true,
+              "size": 5364,
+              "valid": null
+            }
+          ],
+          "proof": [],
+          "issues": [],
+          "score": null,
+          "dimensionScores": {},
+          "calculatedScore": null,
+          "largestGap": null,
+          "repair": null,
+          "verdict": null,
+          "comparison": [],
+          "critique": [],
+          "recordedAt": "2026-10-11T10:59:54.380Z"
+        }
+      ],
+      "decision": "Write local anchors measures fields geometry motion material and responsive decisions",
+      "proof": [],
+      "issues": [],
+      "score": null,
+      "dimensionScores": {},
+      "calculatedScore": null,
+      "largestGap": null,
+      "repair": null,
+      "verdict": null,
+      "comparison": [],
+      "critique": []
+    },
+    {
+      "round": 11,
+      "id": "system",
+      "objective": "Extract tokens, type roles, component families, icon grammar, and page-specific overrides.",
+      "artifact": "design-system",
+      "source": "ui-ux-pro-max-persist",
+      "evidence": [
+        {
+          "ref": "DESIGN.md",
+          "kind": "artifact-or-check",
+          "exists": true,
+          "size": 5364,
+          "valid": null
+        },
+        {
+          "ref": "styles.css",
+          "kind": "artifact-or-check",
+          "exists": true,
+          "size": 14442,
+          "valid": null
+        }
+      ],
+      "status": "complete",
+      "attempts": [
+        {
+          "status": "complete",
+          "decision": "Implement separate identity prose date and control roles with local tokens",
+          "evidence": [
+            {
+              "ref": "DESIGN.md",
+              "kind": "artifact-or-check",
+              "exists": true,
+              "size": 5364,
+              "valid": null
+            },
+            {
+              "ref": "styles.css",
+              "kind": "artifact-or-check",
+              "exists": true,
+              "size": 14442,
+              "valid": null
+            }
+          ],
+          "proof": [],
+          "issues": [],
+          "score": null,
+          "dimensionScores": {},
+          "calculatedScore": null,
+          "largestGap": null,
+          "repair": null,
+          "verdict": null,
+          "comparison": [],
+          "critique": [],
+          "recordedAt": "2026-10-11T10:59:54.380Z"
+        }
+      ],
+      "decision": "Implement separate identity prose date and control roles with local tokens",
+      "proof": [],
+      "issues": [],
+      "score": null,
+      "dimensionScores": {},
+      "calculatedScore": null,
+      "largestGap": null,
+      "repair": null,
+      "verdict": null,
+      "comparison": [],
+      "critique": []
+    },
+    {
+      "round": 12,
+      "id": "storyboard",
+      "objective": "Plan the full surface, states, route transitions, responsive continuation, and ending.",
+      "artifact": "surface-storyboard",
+      "source": "frontend-app-builder",
+      "evidence": [
+        {
+          "ref": "PRODUCT.md",
+          "kind": "artifact-or-check",
+          "exists": true,
+          "size": 1495,
+          "valid": null
+        },
+        {
+          "ref": "DESIGN.md",
+          "kind": "artifact-or-check",
+          "exists": true,
+          "size": 5364,
+          "valid": null
+        }
+      ],
+      "status": "complete",
+      "attempts": [
+        {
+          "status": "complete",
+          "decision": "Declare full programme detail save recovery sources and ending scope before final sign-off",
+          "evidence": [
+            {
+              "ref": "PRODUCT.md",
+              "kind": "artifact-or-check",
+              "exists": true,
+              "size": 1495,
+              "valid": null
+            },
+            {
+              "ref": "DESIGN.md",
+              "kind": "artifact-or-check",
+              "exists": true,
+              "size": 5364,
+              "valid": null
+            }
+          ],
+          "proof": [],
+          "issues": [],
+          "score": null,
+          "dimensionScores": {},
+          "calculatedScore": null,
+          "largestGap": null,
+          "repair": null,
+          "verdict": null,
+          "comparison": [],
+          "critique": [],
+          "recordedAt": "2026-10-11T10:59:54.380Z"
+        }
+      ],
+      "decision": "Declare full programme detail save recovery sources and ending scope before final sign-off",
+      "proof": [],
+      "issues": [],
+      "score": null,
+      "dimensionScores": {},
+      "calculatedScore": null,
+      "largestGap": null,
+      "repair": null,
+      "verdict": null,
+      "comparison": [],
+      "critique": []
+    },
+    {
+      "round": 13,
+      "id": "assets",
+      "objective": "Source or generate production-quality media and reject placeholders, fake metrics, and weak crops.",
+      "artifact": "asset-inventory",
+      "source": "frontend-app-builder",
+      "evidence": [
+        {
+          "ref": "assets/SOURCES.md",
+          "kind": "artifact-or-check",
+          "exists": true,
+          "size": 2085,
+          "valid": null
+        },
+        {
+          "ref": "assets/tears-of-steel.jpg",
+          "kind": "capture-or-media",
+          "exists": true,
+          "size": 215282,
+          "valid": true
+        },
+        {
+          "ref": "assets/sintel.jpg",
+          "kind": "capture-or-media",
+          "exists": true,
+          "size": 101869,
+          "valid": true
+        },
+        {
+          "ref": "RESEARCH.md",
+          "kind": "artifact-or-check",
+          "exists": true,
+          "size": 5285,
+          "valid": null
+        }
+      ],
+      "status": "complete",
+      "attempts": [
+        {
+          "status": "complete",
+          "decision": "Acquire and inspect original licensed film imagery; reject weak sources and disclose failed generation",
+          "evidence": [
+            {
+              "ref": "assets/SOURCES.md",
+              "kind": "artifact-or-check",
+              "exists": true,
+              "size": 2085,
+              "valid": null
+            },
+            {
+              "ref": "assets/tears-of-steel.jpg",
+              "kind": "capture-or-media",
+              "exists": true,
+              "size": 215282,
+              "valid": true
+            },
+            {
+              "ref": "assets/sintel.jpg",
+              "kind": "capture-or-media",
+              "exists": true,
+              "size": 101869,
+              "valid": true
+            },
+            {
+              "ref": "RESEARCH.md",
+              "kind": "artifact-or-check",
+              "exists": true,
+              "size": 5285,
+              "valid": null
+            }
+          ],
+          "proof": [],
+          "issues": [],
+          "score": null,
+          "dimensionScores": {},
+          "calculatedScore": null,
+          "largestGap": null,
+          "repair": null,
+          "verdict": null,
+          "comparison": [],
+          "critique": [],
+          "recordedAt": "2026-10-11T10:59:54.381Z"
+        }
+      ],
+      "decision": "Acquire and inspect original licensed film imagery; reject weak sources and disclose failed generation",
+      "proof": [],
+      "issues": [],
+      "score": null,
+      "dimensionScores": {},
+      "calculatedScore": null,
+      "largestGap": null,
+      "repair": null,
+      "verdict": null,
+      "comparison": [],
+      "critique": []
+    },
+    {
+      "round": 14,
+      "id": "skeleton",
+      "objective": "Build the semantic and interactive skeleton with real content and the intended container model.",
+      "artifact": "working-surface",
+      "source": "frontend-app-builder",
+      "evidence": [
+        {
+          "ref": "index.html",
+          "kind": "artifact-or-check",
+          "exists": true,
+          "size": 9972,
+          "valid": null
+        },
+        {
+          "ref": "app.js",
+          "kind": "artifact-or-check",
+          "exists": true,
+          "size": 10832,
+          "valid": null
+        },
+        {
+          "ref": "styles.css",
+          "kind": "artifact-or-check",
+          "exists": true,
+          "size": 14442,
+          "valid": null
+        },
+        {
+          "ref": "PRODUCT.md",
+          "kind": "artifact-or-check",
+          "exists": true,
+          "size": 1495,
+          "valid": null
+        }
+      ],
+      "status": "complete",
+      "attempts": [
+        {
+          "status": "complete",
+          "decision": "Build a semantic working surface with actual films and save/filter/calendar/detail paths",
+          "evidence": [
+            {
+              "ref": "index.html",
+              "kind": "artifact-or-check",
+              "exists": true,
+              "size": 9972,
+              "valid": null
+            },
+            {
+              "ref": "app.js",
+              "kind": "artifact-or-check",
+              "exists": true,
+              "size": 10832,
+              "valid": null
+            },
+            {
+              "ref": "styles.css",
+              "kind": "artifact-or-check",
+              "exists": true,
+              "size": 14442,
+              "valid": null
+            },
+            {
+              "ref": "PRODUCT.md",
+              "kind": "artifact-or-check",
+              "exists": true,
+              "size": 1495,
+              "valid": null
+            }
+          ],
+          "proof": [],
+          "issues": [],
+          "score": null,
+          "dimensionScores": {},
+          "calculatedScore": null,
+          "largestGap": null,
+          "repair": null,
+          "verdict": null,
+          "comparison": [],
+          "critique": [],
+          "recordedAt": "2026-10-11T10:59:54.382Z"
+        }
+      ],
+      "decision": "Build a semantic working surface with actual films and save/filter/calendar/detail paths",
+      "proof": [],
+      "issues": [],
+      "score": null,
+      "dimensionScores": {},
+      "calculatedScore": null,
+      "largestGap": null,
+      "repair": null,
+      "verdict": null,
+      "comparison": [],
+      "critique": []
+    },
+    {
+      "round": 15,
+      "id": "baseline",
+      "objective": "Run the target and capture the actual desktop, mobile, and relevant state before judging polish.",
+      "artifact": "baseline-captures",
+      "source": "design-review",
+      "evidence": [
+        {
+          "ref": "artifacts/baseline-1440.jpg",
+          "kind": "capture-or-media",
+          "exists": true,
+          "size": 298536,
+          "valid": true
+        },
+        {
+          "ref": "artifacts/baseline-768.jpg",
+          "kind": "capture-or-media",
+          "exists": true,
+          "size": 215782,
+          "valid": true
+        },
+        {
+          "ref": "artifacts/baseline-390.jpg",
+          "kind": "capture-or-media",
+          "exists": true,
+          "size": 185265,
+          "valid": true
+        }
+      ],
+      "status": "complete",
+      "attempts": [
+        {
+          "status": "complete",
+          "decision": "Capture the actual default desktop intermediate and narrow baseline",
+          "evidence": [
+            {
+              "ref": "artifacts/baseline-1440.jpg",
+              "kind": "capture-or-media",
+              "exists": true,
+              "size": 298536,
+              "valid": true
+            },
+            {
+              "ref": "artifacts/baseline-768.jpg",
+              "kind": "capture-or-media",
+              "exists": true,
+              "size": 215782,
+              "valid": true
+            },
+            {
+              "ref": "artifacts/baseline-390.jpg",
+              "kind": "capture-or-media",
+              "exists": true,
+              "size": 185265,
+              "valid": true
+            }
+          ],
+          "proof": [
+            "desktop",
+            "intermediate",
+            "mobile"
+          ],
+          "issues": [],
+          "score": null,
+          "dimensionScores": {},
+          "calculatedScore": null,
+          "largestGap": null,
+          "repair": null,
+          "verdict": null,
+          "comparison": [],
+          "critique": [],
+          "recordedAt": "2026-10-11T10:59:54.383Z"
+        }
+      ],
+      "decision": "Capture the actual default desktop intermediate and narrow baseline",
+      "proof": [
+        "desktop",
+        "intermediate",
+        "mobile"
+      ],
+      "issues": [],
+      "score": null,
+      "dimensionScores": {},
+      "calculatedScore": null,
+      "largestGap": null,
+      "repair": null,
+      "verdict": null,
+      "comparison": [],
+      "critique": []
+    },
+    {
+      "round": 16,
+      "id": "macro",
+      "objective": "Fix the biggest visible defect first: scope, silhouette, hierarchy, composition, content, or media.",
+      "artifact": "macro-revision",
+      "source": "screenshot-critique",
+      "evidence": [
+        {
+          "ref": "artifacts/baseline-1440.jpg",
+          "kind": "capture-or-media",
+          "exists": true,
+          "size": 298536,
+          "valid": true
+        },
+        {
+          "ref": "artifacts/after-1440.jpg",
+          "kind": "capture-or-media",
+          "exists": true,
+          "size": 289344,
+          "valid": true
+        },
+        {
+          "ref": "artifacts/after-1280.jpg",
+          "kind": "capture-or-media",
+          "exists": true,
+          "size": 272965,
+          "valid": true
+        }
+      ],
+      "status": "complete",
+      "attempts": [
+        {
+          "status": "complete",
+          "decision": "Repair the opening handoff and the incoherent reading title",
+          "evidence": [
+            {
+              "ref": "artifacts/baseline-1440.jpg",
+              "kind": "capture-or-media",
+              "exists": true,
+              "size": 298536,
+              "valid": true
+            },
+            {
+              "ref": "artifacts/after-1440.jpg",
+              "kind": "capture-or-media",
+              "exists": true,
+              "size": 289344,
+              "valid": true
+            },
+            {
+              "ref": "artifacts/after-1280.jpg",
+              "kind": "capture-or-media",
+              "exists": true,
+              "size": 272965,
+              "valid": true
+            }
+          ],
+          "proof": [
+            "desktop-before",
+            "desktop-after",
+            "short-height"
+          ],
+          "issues": [],
+          "score": null,
+          "dimensionScores": {},
+          "calculatedScore": null,
+          "largestGap": "The lead stage concealed the programme and the reading title began with a lone A",
+          "repair": "Shortened the stage and handoff; preserved the focal subjects; rewrote the reading heading",
+          "verdict": null,
+          "comparison": [
+            {
+              "ref": "artifacts/COMPARISON.md",
+              "kind": "artifact-or-check",
+              "exists": true,
+              "size": 3808,
+              "valid": null
+            }
+          ],
+          "critique": [],
+          "recordedAt": "2026-10-11T10:59:54.384Z"
+        }
+      ],
+      "decision": "Repair the opening handoff and the incoherent reading title",
+      "proof": [
+        "desktop-before",
+        "desktop-after",
+        "short-height"
+      ],
+      "issues": [],
+      "score": null,
+      "dimensionScores": {},
+      "calculatedScore": null,
+      "largestGap": "The lead stage concealed the programme and the reading title began with a lone A",
+      "repair": "Shortened the stage and handoff; preserved the focal subjects; rewrote the reading heading",
+      "verdict": null,
+      "comparison": [
+        {
+          "ref": "artifacts/COMPARISON.md",
+          "kind": "artifact-or-check",
+          "exists": true,
+          "size": 3808,
+          "valid": null
+        }
+      ],
+      "critique": []
+    },
+    {
+      "round": 17,
+      "id": "responsive",
+      "objective": "Capture and repair wide, ordinary, intermediate, and narrow layouts; re-stage local alignment, occupied width, touch order, text wrapping, and input behavior instead of shrinking the desktop.",
+      "artifact": "responsive-captures",
+      "source": "design-review",
+      "evidence": [
+        {
+          "ref": "artifacts/baseline-390.jpg",
+          "kind": "capture-or-media",
+          "exists": true,
+          "size": 185265,
+          "valid": true
+        },
+        {
+          "ref": "artifacts/after-390.jpg",
+          "kind": "capture-or-media",
+          "exists": true,
+          "size": 192340,
+          "valid": true
+        },
+        {
+          "ref": "artifacts/after-320.jpg",
+          "kind": "capture-or-media",
+          "exists": true,
+          "size": 176008,
+          "valid": true
+        },
+        {
+          "ref": "artifacts/after-601.jpg",
+          "kind": "capture-or-media",
+          "exists": true,
+          "size": 197514,
+          "valid": true
+        },
+        {
+          "ref": "artifacts/after-768.jpg",
+          "kind": "capture-or-media",
+          "exists": true,
+          "size": 219185,
+          "valid": true
+        },
+        {
+          "ref": "artifacts/after-901.jpg",
+          "kind": "capture-or-media",
+          "exists": true,
+          "size": 229903,
+          "valid": true
+        },
+        {
+          "ref": "artifacts/after-1024.jpg",
+          "kind": "capture-or-media",
+          "exists": true,
+          "size": 251239,
+          "valid": true
+        },
+        {
+          "ref": "artifacts/after-1280.jpg",
+          "kind": "capture-or-media",
+          "exists": true,
+          "size": 272965,
+          "valid": true
+        },
+        {
+          "ref": "artifacts/after-1440.jpg",
+          "kind": "capture-or-media",
+          "exists": true,
+          "size": 289344,
+          "valid": true
+        },
+        {
+          "ref": "artifacts/after-1920.jpg",
+          "kind": "capture-or-media",
+          "exists": true,
+          "size": 302249,
+          "valid": true
+        },
+        {
+          "ref": "artifacts/detail-saved-before-320.jpg",
+          "kind": "capture-or-media",
+          "exists": true,
+          "size": 35593,
+          "valid": true
+        },
+        {
+          "ref": "artifacts/detail-saved-after-320.jpg",
+          "kind": "capture-or-media",
+          "exists": true,
+          "size": 36728,
+          "valid": true
+        }
+      ],
+      "status": "complete",
+      "attempts": [
+        {
+          "status": "complete",
+          "decision": "Verify nine actual sizes and repair touch size reading rhythm and state-label displacement",
+          "evidence": [
+            {
+              "ref": "artifacts/baseline-390.jpg",
+              "kind": "capture-or-media",
+              "exists": true,
+              "size": 185265,
+              "valid": true
+            },
+            {
+              "ref": "artifacts/after-390.jpg",
+              "kind": "capture-or-media",
+              "exists": true,
+              "size": 192340,
+              "valid": true
+            },
+            {
+              "ref": "artifacts/after-320.jpg",
+              "kind": "capture-or-media",
+              "exists": true,
+              "size": 176008,
+              "valid": true
+            },
+            {
+              "ref": "artifacts/after-601.jpg",
+              "kind": "capture-or-media",
+              "exists": true,
+              "size": 197514,
+              "valid": true
+            },
+            {
+              "ref": "artifacts/after-768.jpg",
+              "kind": "capture-or-media",
+              "exists": true,
+              "size": 219185,
+              "valid": true
+            },
+            {
+              "ref": "artifacts/after-901.jpg",
+              "kind": "capture-or-media",
+              "exists": true,
+              "size": 229903,
+              "valid": true
+            },
+            {
+              "ref": "artifacts/after-1024.jpg",
+              "kind": "capture-or-media",
+              "exists": true,
+              "size": 251239,
+              "valid": true
+            },
+            {
+              "ref": "artifacts/after-1280.jpg",
+              "kind": "capture-or-media",
+              "exists": true,
+              "size": 272965,
+              "valid": true
+            },
+            {
+              "ref": "artifacts/after-1440.jpg",
+              "kind": "capture-or-media",
+              "exists": true,
+              "size": 289344,
+              "valid": true
+            },
+            {
+              "ref": "artifacts/after-1920.jpg",
+              "kind": "capture-or-media",
+              "exists": true,
+              "size": 302249,
+              "valid": true
+            },
+            {
+              "ref": "artifacts/detail-saved-before-320.jpg",
+              "kind": "capture-or-media",
+              "exists": true,
+              "size": 35593,
+              "valid": true
+            },
+            {
+              "ref": "artifacts/detail-saved-after-320.jpg",
+              "kind": "capture-or-media",
+              "exists": true,
+              "size": 36728,
+              "valid": true
+            }
+          ],
+          "proof": [
+            "wide",
+            "desktop",
+            "short-height",
+            "intermediate",
+            "narrow",
+            "touch-labels"
+          ],
+          "issues": [
+            "P3:390px packed-field advisory exception documented"
+          ],
+          "score": null,
+          "dimensionScores": {},
+          "calculatedScore": null,
+          "largestGap": "Small mobile touch areas and prose; the selected save label displaced the calendar action",
+          "repair": "44px navigation and filters; independent prose rhythm; shorter command; sample labels retained",
+          "verdict": null,
+          "comparison": [
+            {
+              "ref": "artifacts/COMPARISON.md",
+              "kind": "artifact-or-check",
+              "exists": true,
+              "size": 3808,
+              "valid": null
+            }
+          ],
+          "critique": [],
+          "recordedAt": "2026-10-11T10:59:54.387Z"
+        }
+      ],
+      "decision": "Verify nine actual sizes and repair touch size reading rhythm and state-label displacement",
+      "proof": [
+        "wide",
+        "desktop",
+        "short-height",
+        "intermediate",
+        "narrow",
+        "touch-labels"
+      ],
+      "issues": [
+        "P3:390px packed-field advisory exception documented"
+      ],
+      "score": null,
+      "dimensionScores": {},
+      "calculatedScore": null,
+      "largestGap": "Small mobile touch areas and prose; the selected save label displaced the calendar action",
+      "repair": "44px navigation and filters; independent prose rhythm; shorter command; sample labels retained",
+      "verdict": null,
+      "comparison": [
+        {
+          "ref": "artifacts/COMPARISON.md",
+          "kind": "artifact-or-check",
+          "exists": true,
+          "size": 3808,
+          "valid": null
+        }
+      ],
+      "critique": []
+    },
+    {
+      "round": 18,
+      "id": "states",
+      "objective": "Exercise loading, empty, error, success, focus, reduced-motion, transition, and recovery paths.",
+      "artifact": "state-captures",
+      "source": "ui-ux-pro-max",
+      "evidence": [
+        {
+          "ref": "artifacts/storage-before-390.jpg",
+          "kind": "capture-or-media",
+          "exists": true,
+          "size": 40393,
+          "valid": true
+        },
+        {
+          "ref": "artifacts/storage-after-390.jpg",
+          "kind": "capture-or-media",
+          "exists": true,
+          "size": 41621,
+          "valid": true
+        },
+        {
+          "ref": "artifacts/storage-observations.json",
+          "kind": "artifact-or-check",
+          "exists": true,
+          "size": 1442,
+          "valid": null
+        },
+        {
+          "ref": "artifacts/remove-return-before-320.jpg",
+          "kind": "capture-or-media",
+          "exists": true,
+          "size": 35727,
+          "valid": true
+        },
+        {
+          "ref": "artifacts/remove-return-after-320.jpg",
+          "kind": "capture-or-media",
+          "exists": true,
+          "size": 31708,
+          "valid": true
+        },
+        {
+          "ref": "artifacts/state-observations.json",
+          "kind": "artifact-or-check",
+          "exists": true,
+          "size": 11239,
+          "valid": null
+        },
+        {
+          "ref": "artifacts/current-detail-320.jpg",
+          "kind": "capture-or-media",
+          "exists": true,
+          "size": 36026,
+          "valid": true
+        },
+        {
+          "ref": "artifacts/current-focus-observations.json",
+          "kind": "artifact-or-check",
+          "exists": true,
+          "size": 481,
+          "valid": null
+        },
+        {
+          "ref": "PROOF.md",
+          "kind": "artifact-or-check",
+          "exists": true,
+          "size": 5020,
+          "valid": null
+        }
+      ],
+      "status": "complete",
+      "attempts": [
+        {
+          "status": "complete",
+          "decision": "Verify real state continuity including hidden-opener recovery, temporary save limits and settled keyboard dismissal",
+          "evidence": [
+            {
+              "ref": "artifacts/storage-before-390.jpg",
+              "kind": "capture-or-media",
+              "exists": true,
+              "size": 40393,
+              "valid": true
+            },
+            {
+              "ref": "artifacts/storage-after-390.jpg",
+              "kind": "capture-or-media",
+              "exists": true,
+              "size": 41621,
+              "valid": true
+            },
+            {
+              "ref": "artifacts/storage-observations.json",
+              "kind": "artifact-or-check",
+              "exists": true,
+              "size": 1442,
+              "valid": null
+            },
+            {
+              "ref": "artifacts/remove-return-before-320.jpg",
+              "kind": "capture-or-media",
+              "exists": true,
+              "size": 35727,
+              "valid": true
+            },
+            {
+              "ref": "artifacts/remove-return-after-320.jpg",
+              "kind": "capture-or-media",
+              "exists": true,
+              "size": 31708,
+              "valid": true
+            },
+            {
+              "ref": "artifacts/state-observations.json",
+              "kind": "artifact-or-check",
+              "exists": true,
+              "size": 11239,
+              "valid": null
+            },
+            {
+              "ref": "artifacts/current-detail-320.jpg",
+              "kind": "capture-or-media",
+              "exists": true,
+              "size": 36026,
+              "valid": true
+            },
+            {
+              "ref": "artifacts/current-focus-observations.json",
+              "kind": "artifact-or-check",
+              "exists": true,
+              "size": 481,
+              "valid": null
+            },
+            {
+              "ref": "PROOF.md",
+              "kind": "artifact-or-check",
+              "exists": true,
+              "size": 5020,
+              "valid": null
+            }
+          ],
+          "proof": [
+            "save",
+            "filter",
+            "reload",
+            "remove",
+            "empty-recovery",
+            "calendar-export",
+            "image-failure-retry",
+            "reduced-motion",
+            "keyboard-wrap",
+            "settled-dismissal"
+          ],
+          "issues": [],
+          "score": null,
+          "dimensionScores": {},
+          "calculatedScore": null,
+          "largestGap": "A saved-view filter erased the actual visit-only persistence limitation; hidden-opener dismissal previously returned outside the viewport",
+          "repair": "Keep persistence facts in action feedback and details; use visible programme return and verify settled native-dialog edge wrapping",
+          "verdict": null,
+          "comparison": [
+            {
+              "ref": "artifacts/COMPARISON.md",
+              "kind": "artifact-or-check",
+              "exists": true,
+              "size": 4924,
+              "valid": null
+            }
+          ],
+          "critique": [],
+          "recordedAt": "2026-10-11T11:28:53.991Z"
+        }
+      ],
+      "decision": "Verify real state continuity including hidden-opener recovery, temporary save limits and settled keyboard dismissal",
+      "proof": [
+        "save",
+        "filter",
+        "reload",
+        "remove",
+        "empty-recovery",
+        "calendar-export",
+        "image-failure-retry",
+        "reduced-motion",
+        "keyboard-wrap",
+        "settled-dismissal"
+      ],
+      "issues": [],
+      "score": null,
+      "dimensionScores": {},
+      "calculatedScore": null,
+      "largestGap": "A saved-view filter erased the actual visit-only persistence limitation; hidden-opener dismissal previously returned outside the viewport",
+      "repair": "Keep persistence facts in action feedback and details; use visible programme return and verify settled native-dialog edge wrapping",
+      "verdict": null,
+      "comparison": [
+        {
+          "ref": "artifacts/COMPARISON.md",
+          "kind": "artifact-or-check",
+          "exists": true,
+          "size": 4924,
+          "valid": null
+        }
+      ],
+      "critique": []
+    },
+    {
+      "round": 19,
+      "id": "fresh-eyes",
+      "objective": "Compare before/after and run an unprimed critique without implementation history bias.",
+      "artifact": "independent-critique",
+      "source": "screenshot-critique",
+      "evidence": [
+        {
+          "ref": "artifacts/revision-verified-1440.jpg",
+          "kind": "capture-or-media",
+          "exists": true,
+          "size": 294443,
+          "valid": true
+        },
+        {
+          "ref": "artifacts/revision-verified-390.jpg",
+          "kind": "capture-or-media",
+          "exists": true,
+          "size": 195436,
+          "valid": true
+        },
+        {
+          "ref": "artifacts/5point-current-1440.jpg",
+          "kind": "capture-or-media",
+          "exists": true,
+          "size": 254105,
+          "valid": true
+        },
+        {
+          "ref": "artifacts/5point-current-390.jpg",
+          "kind": "capture-or-media",
+          "exists": true,
+          "size": 134901,
+          "valid": true
+        },
+        {
+          "ref": "artifacts/revision-layout-audit.md",
+          "kind": "artifact-or-check",
+          "exists": true,
+          "size": 2924,
+          "valid": null
+        }
+      ],
+      "status": "complete",
+      "attempts": [
+        {
+          "status": "complete",
+          "decision": "Run a screenshot-first self-critique against the current 1440 render and the inspected 5Point film-festival reference",
+          "evidence": [
+            {
+              "ref": "artifacts/revision-verified-1440.jpg",
+              "kind": "capture-or-media",
+              "exists": true,
+              "size": 294443,
+              "valid": true
+            },
+            {
+              "ref": "artifacts/revision-verified-390.jpg",
+              "kind": "capture-or-media",
+              "exists": true,
+              "size": 195436,
+              "valid": true
+            },
+            {
+              "ref": "artifacts/5point-current-1440.jpg",
+              "kind": "capture-or-media",
+              "exists": true,
+              "size": 254105,
+              "valid": true
+            },
+            {
+              "ref": "artifacts/5point-current-390.jpg",
+              "kind": "capture-or-media",
+              "exists": true,
+              "size": 134901,
+              "valid": true
+            },
+            {
+              "ref": "artifacts/revision-layout-audit.md",
+              "kind": "artifact-or-check",
+              "exists": true,
+              "size": 2924,
+              "valid": null
+            }
+          ],
+          "proof": [
+            "current wide render",
+            "current narrow render",
+            "reference wide render",
+            "reference narrow render",
+            "console-clean nine-size readback"
+          ],
+          "issues": [
+            "P2: opening tension remains; P2: reverse-row pause remains weakly anchored"
+          ],
+          "score": null,
+          "dimensionScores": {},
+          "calculatedScore": null,
+          "largestGap": "The wide opening remains quieter and more familiar than the strongest inspected film-festival reference; the reverse programme pause also needs a clearer subject cue.",
+          "repair": "Record the next operation as a restrained subject-native opening mark experiment without adding a new page band.",
+          "verdict": "CURRENT WINS",
+          "comparison": [
+            {
+              "ref": "artifacts/COMPARISON.md",
+              "kind": "artifact-or-check",
+              "exists": true,
+              "size": 4924,
+              "valid": null
+            }
+          ],
+          "critique": [
+            {
+              "ref": ".art-direction/visual-critique/critique-20261011115852-a75220b6.json",
+              "kind": "artifact-or-check",
+              "exists": true,
+              "size": 6934,
+              "valid": null
+            }
+          ],
+          "recordedAt": "2026-10-11T12:02:57.100Z"
+        }
+      ],
+      "decision": "Run a screenshot-first self-critique against the current 1440 render and the inspected 5Point film-festival reference",
+      "proof": [
+        "current wide render",
+        "current narrow render",
+        "reference wide render",
+        "reference narrow render",
+        "console-clean nine-size readback"
+      ],
+      "issues": [
+        "P2: opening tension remains; P2: reverse-row pause remains weakly anchored"
+      ],
+      "score": null,
+      "dimensionScores": {},
+      "calculatedScore": null,
+      "largestGap": "The wide opening remains quieter and more familiar than the strongest inspected film-festival reference; the reverse programme pause also needs a clearer subject cue.",
+      "repair": "Record the next operation as a restrained subject-native opening mark experiment without adding a new page band.",
+      "verdict": "CURRENT WINS",
+      "comparison": [
+        {
+          "ref": "artifacts/COMPARISON.md",
+          "kind": "artifact-or-check",
+          "exists": true,
+          "size": 4924,
+          "valid": null
+        }
+      ],
+      "critique": [
+        {
+          "ref": ".art-direction/visual-critique/critique-20261011115852-a75220b6.json",
+          "kind": "artifact-or-check",
+          "exists": true,
+          "size": 6934,
+          "valid": null
+        }
+      ]
+    },
+    {
+      "round": 20,
+      "id": "signoff",
+      "objective": "Run static, runtime, visual, accessibility, and scope checks; record what remains open and update design memory.",
+      "artifact": "evidence-pack",
+      "source": "design-qa",
+      "evidence": [],
+      "status": "pending",
+      "attempts": [],
+      "decision": null,
+      "proof": [],
+      "issues": [],
+      "score": null
+    }
+  ],
+  "history": [
+    {
+      "round": 1,
+      "status": "complete",
+      "decision": "Read the one-sentence film-club brief and recorded trial assumptions",
+      "evidence": [
+        {
+          "ref": "PRODUCT.md",
+          "kind": "artifact-or-check",
+          "exists": true,
+          "size": 1495,
+          "valid": null
+        },
+        {
+          "ref": "RESEARCH.md",
+          "kind": "artifact-or-check",
+          "exists": true,
+          "size": 5285,
+          "valid": null
+        }
+      ],
+      "proof": [],
+      "issues": [],
+      "score": null,
+      "dimensionScores": {},
+      "calculatedScore": null,
+      "largestGap": null,
+      "repair": null,
+      "verdict": null,
+      "comparison": [],
+      "critique": [],
+      "recordedAt": "2026-10-11T10:59:54.375Z"
+    },
+    {
+      "round": 2,
+      "status": "complete",
+      "decision": "Choose the visitor job of discovering and keeping a film plan without forcing a product genre",
+      "evidence": [
+        {
+          "ref": "PRODUCT.md",
+          "kind": "artifact-or-check",
+          "exists": true,
+          "size": 1495,
+          "valid": null
+        },
+        {
+          "ref": "DESIGN.md",
+          "kind": "artifact-or-check",
+          "exists": true,
+          "size": 5364,
+          "valid": null
+        }
+      ],
+      "proof": [],
+      "issues": [],
+      "score": null,
+      "dimensionScores": {},
+      "calculatedScore": null,
+      "largestGap": null,
+      "repair": null,
+      "verdict": null,
+      "comparison": [],
+      "critique": [],
+      "recordedAt": "2026-10-11T10:59:54.376Z"
+    },
+    {
+      "round": 3,
+      "status": "complete",
+      "decision": "Keep sample dates truthful; require semantic controls and recoverable states; visual choices remain replaceable",
+      "evidence": [
+        {
+          "ref": "PRODUCT.md",
+          "kind": "artifact-or-check",
+          "exists": true,
+          "size": 1495,
+          "valid": null
+        },
+        {
+          "ref": "DESIGN.md",
+          "kind": "artifact-or-check",
+          "exists": true,
+          "size": 5364,
+          "valid": null
+        }
+      ],
+      "proof": [],
+      "issues": [],
+      "score": null,
+      "dimensionScores": {},
+      "calculatedScore": null,
+      "largestGap": null,
+      "repair": null,
+      "verdict": null,
+      "comparison": [],
+      "critique": [],
+      "recordedAt": "2026-10-11T10:59:54.376Z"
+    },
+    {
+      "round": 4,
+      "status": "complete",
+      "decision": "Inspect the actual local content assets and semantic interactive implementation",
+      "evidence": [
+        {
+          "ref": "index.html",
+          "kind": "artifact-or-check",
+          "exists": true,
+          "size": 9972,
+          "valid": null
+        },
+        {
+          "ref": "styles.css",
+          "kind": "artifact-or-check",
+          "exists": true,
+          "size": 14442,
+          "valid": null
+        },
+        {
+          "ref": "app.js",
+          "kind": "artifact-or-check",
+          "exists": true,
+          "size": 10832,
+          "valid": null
+        },
+        {
+          "ref": "assets/SOURCES.md",
+          "kind": "artifact-or-check",
+          "exists": true,
+          "size": 2085,
+          "valid": null
+        }
+      ],
+      "proof": [],
+      "issues": [],
+      "score": null,
+      "dimensionScores": {},
+      "calculatedScore": null,
+      "largestGap": null,
+      "repair": null,
+      "verdict": null,
+      "comparison": [],
+      "critique": [],
+      "recordedAt": "2026-10-11T10:59:54.376Z"
+    },
+    {
+      "round": 5,
+      "status": "complete",
+      "decision": "Inspect original film sites and live cinema pages; record borrow reject and translate decisions",
+      "evidence": [
+        {
+          "ref": "RESEARCH.md",
+          "kind": "artifact-or-check",
+          "exists": true,
+          "size": 5285,
+          "valid": null
+        },
+        {
+          "ref": "artifacts/metrograph-1440.jpg",
+          "kind": "capture-or-media",
+          "exists": true,
+          "size": 111048,
+          "valid": true
+        },
+        {
+          "ref": "artifacts/cineville-1440.jpg",
+          "kind": "capture-or-media",
+          "exists": true,
+          "size": 125313,
+          "valid": true
+        },
+        {
+          "ref": "artifacts/cineville-390.jpg",
+          "kind": "capture-or-media",
+          "exists": true,
+          "size": 59740,
+          "valid": true
+        }
+      ],
+      "proof": [],
+      "issues": [],
+      "score": null,
+      "dimensionScores": {},
+      "calculatedScore": null,
+      "largestGap": null,
+      "repair": null,
+      "verdict": null,
+      "comparison": [],
+      "critique": [],
+      "recordedAt": "2026-10-11T10:59:54.377Z"
+    },
+    {
+      "round": 6,
+      "status": "complete",
+      "decision": "Derive the frame programme date and discussion language from real films and film-club use",
+      "evidence": [
+        {
+          "ref": "PRODUCT.md",
+          "kind": "artifact-or-check",
+          "exists": true,
+          "size": 1495,
+          "valid": null
+        },
+        {
+          "ref": "DESIGN.md",
+          "kind": "artifact-or-check",
+          "exists": true,
+          "size": 5364,
+          "valid": null
+        },
+        {
+          "ref": "assets/SOURCES.md",
+          "kind": "artifact-or-check",
+          "exists": true,
+          "size": 2085,
+          "valid": null
+        }
+      ],
+      "proof": [],
+      "issues": [],
+      "score": null,
+      "dimensionScores": {},
+      "calculatedScore": null,
+      "largestGap": null,
+      "repair": null,
+      "verdict": null,
+      "comparison": [],
+      "critique": [],
+      "recordedAt": "2026-10-11T10:59:54.378Z"
+    },
+    {
+      "round": 7,
+      "status": "complete",
+      "decision": "Reject equal-weight poster cards copied brand fake booking and a forced category",
+      "evidence": [
+        {
+          "ref": "RESEARCH.md",
+          "kind": "artifact-or-check",
+          "exists": true,
+          "size": 5285,
+          "valid": null
+        },
+        {
+          "ref": "DESIGN.md",
+          "kind": "artifact-or-check",
+          "exists": true,
+          "size": 5364,
+          "valid": null
+        }
+      ],
+      "proof": [],
+      "issues": [],
+      "score": null,
+      "dimensionScores": {},
+      "calculatedScore": null,
+      "largestGap": null,
+      "repair": null,
+      "verdict": null,
+      "comparison": [],
+      "critique": [],
+      "recordedAt": "2026-10-11T10:59:54.378Z"
+    },
+    {
+      "round": 8,
+      "status": "complete",
+      "decision": "Compare poster wall attached-film programme and typographic calendar hypotheses",
+      "evidence": [
+        {
+          "ref": "RESEARCH.md",
+          "kind": "artifact-or-check",
+          "exists": true,
+          "size": 5285,
+          "valid": null
+        }
+      ],
+      "proof": [],
+      "issues": [],
+      "score": null,
+      "dimensionScores": {},
+      "calculatedScore": null,
+      "largestGap": null,
+      "repair": null,
+      "verdict": null,
+      "comparison": [],
+      "critique": [],
+      "recordedAt": "2026-10-11T10:59:54.379Z"
+    },
+    {
+      "round": 9,
+      "status": "complete",
+      "decision": "Choose the image-led programme hypothesis and keep the other structures replaceable",
+      "evidence": [
+        {
+          "ref": "RESEARCH.md",
+          "kind": "artifact-or-check",
+          "exists": true,
+          "size": 5285,
+          "valid": null
+        },
+        {
+          "ref": "DESIGN.md",
+          "kind": "artifact-or-check",
+          "exists": true,
+          "size": 5364,
+          "valid": null
+        }
+      ],
+      "proof": [],
+      "issues": [],
+      "score": null,
+      "dimensionScores": {},
+      "calculatedScore": null,
+      "largestGap": null,
+      "repair": null,
+      "verdict": null,
+      "comparison": [],
+      "critique": [],
+      "recordedAt": "2026-10-11T10:59:54.379Z"
+    },
+    {
+      "round": 10,
+      "status": "complete",
+      "decision": "Write local anchors measures fields geometry motion material and responsive decisions",
+      "evidence": [
+        {
+          "ref": "DESIGN.md",
+          "kind": "artifact-or-check",
+          "exists": true,
+          "size": 5364,
+          "valid": null
+        }
+      ],
+      "proof": [],
+      "issues": [],
+      "score": null,
+      "dimensionScores": {},
+      "calculatedScore": null,
+      "largestGap": null,
+      "repair": null,
+      "verdict": null,
+      "comparison": [],
+      "critique": [],
+      "recordedAt": "2026-10-11T10:59:54.380Z"
+    },
+    {
+      "round": 11,
+      "status": "complete",
+      "decision": "Implement separate identity prose date and control roles with local tokens",
+      "evidence": [
+        {
+          "ref": "DESIGN.md",
+          "kind": "artifact-or-check",
+          "exists": true,
+          "size": 5364,
+          "valid": null
+        },
+        {
+          "ref": "styles.css",
+          "kind": "artifact-or-check",
+          "exists": true,
+          "size": 14442,
+          "valid": null
+        }
+      ],
+      "proof": [],
+      "issues": [],
+      "score": null,
+      "dimensionScores": {},
+      "calculatedScore": null,
+      "largestGap": null,
+      "repair": null,
+      "verdict": null,
+      "comparison": [],
+      "critique": [],
+      "recordedAt": "2026-10-11T10:59:54.380Z"
+    },
+    {
+      "round": 12,
+      "status": "complete",
+      "decision": "Declare full programme detail save recovery sources and ending scope before final sign-off",
+      "evidence": [
+        {
+          "ref": "PRODUCT.md",
+          "kind": "artifact-or-check",
+          "exists": true,
+          "size": 1495,
+          "valid": null
+        },
+        {
+          "ref": "DESIGN.md",
+          "kind": "artifact-or-check",
+          "exists": true,
+          "size": 5364,
+          "valid": null
+        }
+      ],
+      "proof": [],
+      "issues": [],
+      "score": null,
+      "dimensionScores": {},
+      "calculatedScore": null,
+      "largestGap": null,
+      "repair": null,
+      "verdict": null,
+      "comparison": [],
+      "critique": [],
+      "recordedAt": "2026-10-11T10:59:54.380Z"
+    },
+    {
+      "round": 13,
+      "status": "complete",
+      "decision": "Acquire and inspect original licensed film imagery; reject weak sources and disclose failed generation",
+      "evidence": [
+        {
+          "ref": "assets/SOURCES.md",
+          "kind": "artifact-or-check",
+          "exists": true,
+          "size": 2085,
+          "valid": null
+        },
+        {
+          "ref": "assets/tears-of-steel.jpg",
+          "kind": "capture-or-media",
+          "exists": true,
+          "size": 215282,
+          "valid": true
+        },
+        {
+          "ref": "assets/sintel.jpg",
+          "kind": "capture-or-media",
+          "exists": true,
+          "size": 101869,
+          "valid": true
+        },
+        {
+          "ref": "RESEARCH.md",
+          "kind": "artifact-or-check",
+          "exists": true,
+          "size": 5285,
+          "valid": null
+        }
+      ],
+      "proof": [],
+      "issues": [],
+      "score": null,
+      "dimensionScores": {},
+      "calculatedScore": null,
+      "largestGap": null,
+      "repair": null,
+      "verdict": null,
+      "comparison": [],
+      "critique": [],
+      "recordedAt": "2026-10-11T10:59:54.381Z"
+    },
+    {
+      "round": 14,
+      "status": "complete",
+      "decision": "Build a semantic working surface with actual films and save/filter/calendar/detail paths",
+      "evidence": [
+        {
+          "ref": "index.html",
+          "kind": "artifact-or-check",
+          "exists": true,
+          "size": 9972,
+          "valid": null
+        },
+        {
+          "ref": "app.js",
+          "kind": "artifact-or-check",
+          "exists": true,
+          "size": 10832,
+          "valid": null
+        },
+        {
+          "ref": "styles.css",
+          "kind": "artifact-or-check",
+          "exists": true,
+          "size": 14442,
+          "valid": null
+        },
+        {
+          "ref": "PRODUCT.md",
+          "kind": "artifact-or-check",
+          "exists": true,
+          "size": 1495,
+          "valid": null
+        }
+      ],
+      "proof": [],
+      "issues": [],
+      "score": null,
+      "dimensionScores": {},
+      "calculatedScore": null,
+      "largestGap": null,
+      "repair": null,
+      "verdict": null,
+      "comparison": [],
+      "critique": [],
+      "recordedAt": "2026-10-11T10:59:54.382Z"
+    },
+    {
+      "round": 15,
+      "status": "complete",
+      "decision": "Capture the actual default desktop intermediate and narrow baseline",
+      "evidence": [
+        {
+          "ref": "artifacts/baseline-1440.jpg",
+          "kind": "capture-or-media",
+          "exists": true,
+          "size": 298536,
+          "valid": true
+        },
+        {
+          "ref": "artifacts/baseline-768.jpg",
+          "kind": "capture-or-media",
+          "exists": true,
+          "size": 215782,
+          "valid": true
+        },
+        {
+          "ref": "artifacts/baseline-390.jpg",
+          "kind": "capture-or-media",
+          "exists": true,
+          "size": 185265,
+          "valid": true
+        }
+      ],
+      "proof": [
+        "desktop",
+        "intermediate",
+        "mobile"
+      ],
+      "issues": [],
+      "score": null,
+      "dimensionScores": {},
+      "calculatedScore": null,
+      "largestGap": null,
+      "repair": null,
+      "verdict": null,
+      "comparison": [],
+      "critique": [],
+      "recordedAt": "2026-10-11T10:59:54.383Z"
+    },
+    {
+      "round": 16,
+      "status": "complete",
+      "decision": "Repair the opening handoff and the incoherent reading title",
+      "evidence": [
+        {
+          "ref": "artifacts/baseline-1440.jpg",
+          "kind": "capture-or-media",
+          "exists": true,
+          "size": 298536,
+          "valid": true
+        },
+        {
+          "ref": "artifacts/after-1440.jpg",
+          "kind": "capture-or-media",
+          "exists": true,
+          "size": 289344,
+          "valid": true
+        },
+        {
+          "ref": "artifacts/after-1280.jpg",
+          "kind": "capture-or-media",
+          "exists": true,
+          "size": 272965,
+          "valid": true
+        }
+      ],
+      "proof": [
+        "desktop-before",
+        "desktop-after",
+        "short-height"
+      ],
+      "issues": [],
+      "score": null,
+      "dimensionScores": {},
+      "calculatedScore": null,
+      "largestGap": "The lead stage concealed the programme and the reading title began with a lone A",
+      "repair": "Shortened the stage and handoff; preserved the focal subjects; rewrote the reading heading",
+      "verdict": null,
+      "comparison": [
+        {
+          "ref": "artifacts/COMPARISON.md",
+          "kind": "artifact-or-check",
+          "exists": true,
+          "size": 3808,
+          "valid": null
+        }
+      ],
+      "critique": [],
+      "recordedAt": "2026-10-11T10:59:54.384Z"
+    },
+    {
+      "round": 17,
+      "status": "complete",
+      "decision": "Verify nine actual sizes and repair touch size reading rhythm and state-label displacement",
+      "evidence": [
+        {
+          "ref": "artifacts/baseline-390.jpg",
+          "kind": "capture-or-media",
+          "exists": true,
+          "size": 185265,
+          "valid": true
+        },
+        {
+          "ref": "artifacts/after-390.jpg",
+          "kind": "capture-or-media",
+          "exists": true,
+          "size": 192340,
+          "valid": true
+        },
+        {
+          "ref": "artifacts/after-320.jpg",
+          "kind": "capture-or-media",
+          "exists": true,
+          "size": 176008,
+          "valid": true
+        },
+        {
+          "ref": "artifacts/after-601.jpg",
+          "kind": "capture-or-media",
+          "exists": true,
+          "size": 197514,
+          "valid": true
+        },
+        {
+          "ref": "artifacts/after-768.jpg",
+          "kind": "capture-or-media",
+          "exists": true,
+          "size": 219185,
+          "valid": true
+        },
+        {
+          "ref": "artifacts/after-901.jpg",
+          "kind": "capture-or-media",
+          "exists": true,
+          "size": 229903,
+          "valid": true
+        },
+        {
+          "ref": "artifacts/after-1024.jpg",
+          "kind": "capture-or-media",
+          "exists": true,
+          "size": 251239,
+          "valid": true
+        },
+        {
+          "ref": "artifacts/after-1280.jpg",
+          "kind": "capture-or-media",
+          "exists": true,
+          "size": 272965,
+          "valid": true
+        },
+        {
+          "ref": "artifacts/after-1440.jpg",
+          "kind": "capture-or-media",
+          "exists": true,
+          "size": 289344,
+          "valid": true
+        },
+        {
+          "ref": "artifacts/after-1920.jpg",
+          "kind": "capture-or-media",
+          "exists": true,
+          "size": 302249,
+          "valid": true
+        },
+        {
+          "ref": "artifacts/detail-saved-before-320.jpg",
+          "kind": "capture-or-media",
+          "exists": true,
+          "size": 35593,
+          "valid": true
+        },
+        {
+          "ref": "artifacts/detail-saved-after-320.jpg",
+          "kind": "capture-or-media",
+          "exists": true,
+          "size": 36728,
+          "valid": true
+        }
+      ],
+      "proof": [
+        "wide",
+        "desktop",
+        "short-height",
+        "intermediate",
+        "narrow",
+        "touch-labels"
+      ],
+      "issues": [
+        "P3:390px packed-field advisory exception documented"
+      ],
+      "score": null,
+      "dimensionScores": {},
+      "calculatedScore": null,
+      "largestGap": "Small mobile touch areas and prose; the selected save label displaced the calendar action",
+      "repair": "44px navigation and filters; independent prose rhythm; shorter command; sample labels retained",
+      "verdict": null,
+      "comparison": [
+        {
+          "ref": "artifacts/COMPARISON.md",
+          "kind": "artifact-or-check",
+          "exists": true,
+          "size": 3808,
+          "valid": null
+        }
+      ],
+      "critique": [],
+      "recordedAt": "2026-10-11T10:59:54.387Z"
+    },
+    {
+      "round": 18,
+      "status": "complete",
+      "decision": "Verify real state continuity including hidden-opener recovery, temporary save limits and settled keyboard dismissal",
+      "evidence": [
+        {
+          "ref": "artifacts/storage-before-390.jpg",
+          "kind": "capture-or-media",
+          "exists": true,
+          "size": 40393,
+          "valid": true
+        },
+        {
+          "ref": "artifacts/storage-after-390.jpg",
+          "kind": "capture-or-media",
+          "exists": true,
+          "size": 41621,
+          "valid": true
+        },
+        {
+          "ref": "artifacts/storage-observations.json",
+          "kind": "artifact-or-check",
+          "exists": true,
+          "size": 1442,
+          "valid": null
+        },
+        {
+          "ref": "artifacts/remove-return-before-320.jpg",
+          "kind": "capture-or-media",
+          "exists": true,
+          "size": 35727,
+          "valid": true
+        },
+        {
+          "ref": "artifacts/remove-return-after-320.jpg",
+          "kind": "capture-or-media",
+          "exists": true,
+          "size": 31708,
+          "valid": true
+        },
+        {
+          "ref": "artifacts/state-observations.json",
+          "kind": "artifact-or-check",
+          "exists": true,
+          "size": 11239,
+          "valid": null
+        },
+        {
+          "ref": "artifacts/current-detail-320.jpg",
+          "kind": "capture-or-media",
+          "exists": true,
+          "size": 36026,
+          "valid": true
+        },
+        {
+          "ref": "artifacts/current-focus-observations.json",
+          "kind": "artifact-or-check",
+          "exists": true,
+          "size": 481,
+          "valid": null
+        },
+        {
+          "ref": "PROOF.md",
+          "kind": "artifact-or-check",
+          "exists": true,
+          "size": 5020,
+          "valid": null
+        }
+      ],
+      "proof": [
+        "save",
+        "filter",
+        "reload",
+        "remove",
+        "empty-recovery",
+        "calendar-export",
+        "image-failure-retry",
+        "reduced-motion",
+        "keyboard-wrap",
+        "settled-dismissal"
+      ],
+      "issues": [],
+      "score": null,
+      "dimensionScores": {},
+      "calculatedScore": null,
+      "largestGap": "A saved-view filter erased the actual visit-only persistence limitation; hidden-opener dismissal previously returned outside the viewport",
+      "repair": "Keep persistence facts in action feedback and details; use visible programme return and verify settled native-dialog edge wrapping",
+      "verdict": null,
+      "comparison": [
+        {
+          "ref": "artifacts/COMPARISON.md",
+          "kind": "artifact-or-check",
+          "exists": true,
+          "size": 4924,
+          "valid": null
+        }
+      ],
+      "critique": [],
+      "recordedAt": "2026-10-11T11:28:53.991Z"
+    },
+    {
+      "round": 19,
+      "status": "complete",
+      "decision": "Run a screenshot-first self-critique against the current 1440 render and the inspected 5Point film-festival reference",
+      "evidence": [
+        {
+          "ref": "artifacts/revision-verified-1440.jpg",
+          "kind": "capture-or-media",
+          "exists": true,
+          "size": 294443,
+          "valid": true
+        },
+        {
+          "ref": "artifacts/revision-verified-390.jpg",
+          "kind": "capture-or-media",
+          "exists": true,
+          "size": 195436,
+          "valid": true
+        },
+        {
+          "ref": "artifacts/5point-current-1440.jpg",
+          "kind": "capture-or-media",
+          "exists": true,
+          "size": 254105,
+          "valid": true
+        },
+        {
+          "ref": "artifacts/5point-current-390.jpg",
+          "kind": "capture-or-media",
+          "exists": true,
+          "size": 134901,
+          "valid": true
+        },
+        {
+          "ref": "artifacts/revision-layout-audit.md",
+          "kind": "artifact-or-check",
+          "exists": true,
+          "size": 2924,
+          "valid": null
+        }
+      ],
+      "proof": [
+        "current wide render",
+        "current narrow render",
+        "reference wide render",
+        "reference narrow render",
+        "console-clean nine-size readback"
+      ],
+      "issues": [
+        "P2: opening tension remains; P2: reverse-row pause remains weakly anchored"
+      ],
+      "score": null,
+      "dimensionScores": {},
+      "calculatedScore": null,
+      "largestGap": "The wide opening remains quieter and more familiar than the strongest inspected film-festival reference; the reverse programme pause also needs a clearer subject cue.",
+      "repair": "Record the next operation as a restrained subject-native opening mark experiment without adding a new page band.",
+      "verdict": "CURRENT WINS",
+      "comparison": [
+        {
+          "ref": "artifacts/COMPARISON.md",
+          "kind": "artifact-or-check",
+          "exists": true,
+          "size": 4924,
+          "valid": null
+        }
+      ],
+      "critique": [
+        {
+          "ref": ".art-direction/visual-critique/critique-20261011115852-a75220b6.json",
+          "kind": "artifact-or-check",
+          "exists": true,
+          "size": 6934,
+          "valid": null
+        }
+      ],
+      "recordedAt": "2026-10-11T12:02:57.100Z"
+    }
+  ]
+}

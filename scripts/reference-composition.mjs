@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 
 import { asNumber, isMainModule, isUnderspecifiedRequest, loadDataset, meaningfulTokens, option, parseArgs, tokenize, writeOutput } from "./lib.mjs";
+import { renderDesignMethods, selectDesignMethods } from "./design-methods.mjs";
 
 const HELP = `reference-composition.mjs [options]
 
@@ -24,6 +25,7 @@ const AI_TERMS = ["ai", "agent", "assistant", "streaming", "thinking", "approval
 const DATA_TERMS = ["chart", "analytics", "data", "table", "dashboard", "monitoring", "chart", "数据", "分析", "监控"];
 const SHOWCASE_TERMS = ["showcase", "gallery", "catalog", "portfolio", "landing", "demo", "展示", "画廊", "目录", "作品"];
 const MICRO_INTERACTION_TERMS = ["micro", "microinteraction", "hover", "cursor", "press", "focus", "gesture", "feedback", "polish", "微交互", "悬停", "光标", "手势", "反馈", "细节"];
+const CONCRETE_REFERENCE_ROLES = ["visual-language", "composition-reference", "responsive-reference"];
 
 function hasAny(tokens, terms) {
   return terms.some((term) => tokens.includes(term));
@@ -40,7 +42,31 @@ function inferRoles(query, { profile = "", style = "", motion = "", motionSignal
   if (hasAny(tokens, SHOWCASE_TERMS)) roles.push("visual-language", "component-showcase");
   if (motionSignal || hasAny(queryTokens, MOTION_TERMS)) roles.push("motion-governance", "motion-language");
   if (hasAny(queryTokens, MICRO_INTERACTION_TERMS)) roles.push("micro-interaction");
-  return [...new Set(roles)];
+  // A concrete brief needs a whole-page visual and responsive reference even
+  // when its domain has no local catalog entry. Domain/component references
+  // remain additive; they never decide the page silhouette by themselves.
+  if (queryTokens.length > 0 || meaningfulTokens(`${profile} ${style}`).length > 0) {
+    roles.push(...CONCRETE_REFERENCE_ROLES);
+  }
+  const preferredOrder = [
+    ...(hasAny(queryTokens, MICRO_INTERACTION_TERMS) ? ["micro-interaction"] : []),
+    ...(motionSignal || hasAny(queryTokens, MOTION_TERMS) ? ["motion-governance", "motion-language"] : []),
+    ...(hasAny(tokens, COMPONENT_TERMS) ? ["component-anatomy", "component-reference"] : []),
+    "visual-language",
+    "composition-reference",
+    "responsive-reference",
+    "foundation",
+    "component-anatomy",
+    "data-showcase",
+    "ai-product-patterns",
+    "state-showcase",
+    "motion-governance",
+    "motion-language",
+    "workflow-reference",
+    "component-reference",
+    "material-reference",
+  ];
+  return preferredOrder.filter((role) => roles.includes(role));
 }
 
 function scoreReference(reference, queryTokens, requiredRoles, contextTokens) {
@@ -74,6 +100,12 @@ function roleLabel(role) {
     "accessibility-reference": "可访问性基础",
     "quality-reference": "质量参考",
     "micro-interaction": "微交互参考",
+    "composition-reference": "整页构图参考",
+    "responsive-reference": "响应式重排参考",
+    "interaction-reference": "交互关系参考",
+    "workflow-reference": "工作流参考",
+    "component-reference": "组件参考",
+    "material-reference": "材质与视觉参考",
     "optional-context": "补充视角",
   };
   return labels[role] ?? role;
@@ -172,6 +204,7 @@ export function selectReferenceComposition(query = "frontend interface", {
     mode: hasRoleSignal ? "role-signaled" : "no-reference-default",
     selected,
     notSelected,
+    designMethods: selectDesignMethods(query),
     rule: "参考只提供可迁移的决策，不提供整页复制许可；每个选中的参考必须同时写明 borrow、reject、translate。",
     source: "data/reference-lenses.json",
   };
@@ -198,6 +231,8 @@ Required roles: ${result.requiredRoles.map((role) => role.label).join("、")}
 ## Selected
 
 ${selected}
+
+${renderDesignMethods(result.designMethods)}
 
 ## Not Selected
 

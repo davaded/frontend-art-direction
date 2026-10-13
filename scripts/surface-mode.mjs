@@ -15,8 +15,8 @@ const SURFACE_MODES = [
     label: "Persuade",
     question: "What should the visitor believe, value, or choose next?",
     jobs: ["brand and product stories", "marketing pages", "launches", "conversion paths"],
-    terms: ["brand", "campaign", "landing", "marketing", "launch", "pricing", "signup", "product story", "官网", "品牌", "发布", "宣传", "转化"],
-    strongTerms: ["campaign", "launch", "product story", "官网", "发布"],
+    terms: ["brand", "campaign", "landing", "homepage", "official website", "product website", "marketing", "launch", "pricing", "signup", "product story", "官网", "品牌", "发布", "宣传", "转化"],
+    strongTerms: ["campaign", "launch", "homepage", "official website", "product website", "product story", "官网", "发布"],
     proof: "subject-specific proof, a clear value hierarchy, and a credible next action",
     avoid: "a slogan-first hero followed by interchangeable feature cards",
   },
@@ -64,7 +64,11 @@ function scoreMode(query, mode) {
   };
   const hits = mode.terms.filter(contains);
   const strongHits = (mode.strongTerms ?? []).filter(contains);
-  return { score: hits.length + strongHits.length * 2, hits: [...new Set(hits)] };
+  const editsMarketingSurface = /\b(?:homepage|landing(?:\s+page)?|website)\s+(?:editor|builder)\b|(?:官网|落地页|网站)(?:生成器|编辑器|搭建器|后台)/u.test(text);
+  const namesMarketingSurface = /\b(?:homepage|official website|product website|landing page)\b|官网|宣传页|产品介绍页/u.test(text);
+  const surfaceScore = editsMarketingSurface && mode.id === "operate" ? 6
+    : namesMarketingSurface && !editsMarketingSurface && mode.id === "persuade" ? 3 : 0;
+  return { score: hits.length + strongHits.length * 2 + surfaceScore, hits: [...new Set(hits)] };
 }
 
 export function classifySurfaceMode(query = "", { explicit = "" } = {}) {

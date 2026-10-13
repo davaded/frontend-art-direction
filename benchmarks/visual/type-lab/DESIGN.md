@@ -12,3 +12,11 @@
 - Scope: Family selection, text, weight, size, leading, alignment, palettes, undo/redo, saved studies, empty-state recovery, PNG export, responsive controls
 
 Large type belongs to the user's specimen, not to compact UI headings. Local candidates do not replace this instrument.
+
+## Composition Map
+
+- Header: identity starts at the page edge, document context sits in the quiet middle, and save/export actions stay attached to the end edge.
+- Workbench: the central artboard is the dominant object; family index and property inspector are quiet rails with independent scroll and density.
+- Artboard: bounded 4:5 specimen with its own internal margins and labels; the working object does not expand to fill the whole workspace.
+- Mobile: preview and its state read first, then an explicit panel switch separates properties from family studies. Desktop rails are regrouped rather than squeezed into the viewport.
+- Empty space: the central field frames the specimen and lets its typography carry the identity; it is not a missing card or unfilled grid track.

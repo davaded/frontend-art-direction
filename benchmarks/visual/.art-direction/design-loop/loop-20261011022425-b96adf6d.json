@@ -1,0 +1,3504 @@
+{
+  "protocol": "frontend-art-direction/design-loop-session-v1",
+  "version": 1,
+  "id": "loop-20261011022425-b96adf6d",
+  "status": "complete",
+  "mode": "create",
+  "createdAt": "2026-10-11T02:24:25.170Z",
+  "updatedAt": "2026-10-11T03:19:59.487Z",
+  "projectRoot": "/Users/daiyudai/code/frontend-art-direction/benchmarks/visual",
+  "query": "Improve regional composition, readable measures, whitespace and wide/narrow staging without prescribing a page genre",
+  "scope": "substantial",
+  "operation": {
+    "operation": "layout",
+    "label": "Layout",
+    "confidence": "medium",
+    "evidence": [
+      "composition"
+    ],
+    "purpose": "change reading order, proportion, alignment, spacing, and edge relationships before decorative detail",
+    "mode": "adaptive",
+    "needsDirection": false,
+    "directionQuestion": null,
+    "candidates": [
+      "layout"
+    ],
+    "next": "Inspect the target state, apply layout, then capture and compare the real render."
+  },
+  "surfaceMode": {
+    "mode": "adaptive",
+    "label": "Adaptive surface",
+    "confidence": "provisional",
+    "evidence": {
+      "hits": [],
+      "source": "awaiting surface evidence"
+    },
+    "candidates": [],
+    "decision": "Choose the visitor's primary job before fixing the page genre or interaction model.",
+    "proof": "the subject, task, or reading path is legible before visual polish",
+    "avoid": "committing to a product type, layout, or visual skin from an underspecified request",
+    "perSurface": true
+  },
+  "qualityBar": {
+    "version": 1,
+    "targetScore": 8,
+    "scale": {
+      "1": "generic, broken, or unsupported by evidence",
+      "5": "usable but ordinary, inconsistent, or only partly proven",
+      "8": "coherent, specific, complete, and supported by rendered evidence",
+      "10": "exceptional craft with a clear point of view and no material gaps"
+    },
+    "dimensions": [
+      {
+        "id": "subject-fit",
+        "label": "Subject fit",
+        "weight": 1.4,
+        "question": "Does the visual language come from the real subject, audience, content, or workflow?"
+      },
+      {
+        "id": "hierarchy",
+        "label": "Hierarchy",
+        "weight": 1.3,
+        "question": "Can a viewer identify the dominant object, reading order, counterweight, and next action quickly?"
+      },
+      {
+        "id": "composition",
+        "label": "Composition",
+        "weight": 1.3,
+        "question": "Does the silhouette, proportion, rhythm, and spatial relationship have a deliberate point of view?"
+      },
+      {
+        "id": "type-and-content",
+        "label": "Type and content",
+        "weight": 1.1,
+        "question": "Do typography, copy, data density, language, and wrapping support the chosen experience?"
+      },
+      {
+        "id": "material-and-assets",
+        "label": "Material and assets",
+        "weight": 1.1,
+        "question": "Do surfaces, imagery, texture, color, and depth feel authored and remain sharp at the target sizes?"
+      },
+      {
+        "id": "interaction-and-motion",
+        "label": "Interaction and motion",
+        "weight": 0.9,
+        "question": "Do interactions clarify state, continuity, feedback, or spatial relationships with cleanup and fallback?"
+      },
+      {
+        "id": "responsive-and-states",
+        "label": "Responsive and states",
+        "weight": 1.2,
+        "question": "Does the design remain intentional across viewports and important non-default states?"
+      },
+      {
+        "id": "originality",
+        "label": "Originality",
+        "weight": 1.1,
+        "question": "Does the result synthesize references into its own identity instead of looking like a template or a collage?"
+      },
+      {
+        "id": "completion-and-proof",
+        "label": "Completion and proof",
+        "weight": 1.4,
+        "question": "Is the declared scope complete, runnable, accessible, and proven with current rendered evidence?"
+      }
+    ],
+    "requiredProof": [
+      "static",
+      "runtime",
+      "visual",
+      "accessibility",
+      "scope"
+    ]
+  },
+  "researchAtlas": {
+    "id": "atlas-20261011022425-4c9a98da",
+    "path": ".art-direction/research-atlas/atlas-20261011022425-4c9a98da.json",
+    "status": "complete"
+  },
+  "currentRound": 21,
+  "rounds": [
+    {
+      "round": 1,
+      "id": "context",
+      "objective": "Read the request, project, audience, device, and existing visual authority.",
+      "artifact": "requirement-frame",
+      "source": "human-design",
+      "evidence": [
+        {
+          "ref": "artifacts/layout-study/RESEARCH.md",
+          "kind": "artifact-or-check",
+          "exists": true,
+          "size": 5272,
+          "valid": null
+        }
+      ],
+      "status": "complete",
+      "attempts": [
+        {
+          "status": "complete",
+          "decision": "Scope is regional composition across five visual trials; preserve each surface mode and remove any page-wide alignment assumption.",
+          "evidence": [
+            {
+              "ref": "artifacts/layout-study/RESEARCH.md",
+              "kind": "artifact-or-check",
+              "exists": true,
+              "size": 5272,
+              "valid": null
+            }
+          ],
+          "proof": [
+            "static"
+          ],
+          "issues": [],
+          "score": null,
+          "dimensionScores": {},
+          "calculatedScore": null,
+          "largestGap": null,
+          "repair": null,
+          "verdict": null,
+          "comparison": [],
+          "critique": [],
+          "recordedAt": "2026-10-11T03:07:55.640Z"
+        }
+      ],
+      "decision": "Scope is regional composition across five visual trials; preserve each surface mode and remove any page-wide alignment assumption.",
+      "proof": [
+        "static"
+      ],
+      "issues": [],
+      "score": null,
+      "dimensionScores": {},
+      "calculatedScore": null,
+      "largestGap": null,
+      "repair": null,
+      "verdict": null,
+      "comparison": [],
+      "critique": []
+    },
+    {
+      "round": 2,
+      "id": "job",
+      "objective": "Name the visitor's primary job and the result that proves it.",
+      "artifact": "surface-mode",
+      "source": "openai-context",
+      "evidence": [
+        {
+          "ref": "common-ground/DESIGN.md",
+          "kind": "artifact-or-check",
+          "exists": true,
+          "size": 1974,
+          "valid": null
+        },
+        {
+          "ref": "type-lab/DESIGN.md",
+          "kind": "artifact-or-check",
+          "exists": true,
+          "size": 1909,
+          "valid": null
+        },
+        {
+          "ref": "runbook/DESIGN.md",
+          "kind": "artifact-or-check",
+          "exists": true,
+          "size": 2110,
+          "valid": null
+        }
+      ],
+      "status": "complete",
+      "attempts": [
+        {
+          "status": "complete",
+          "decision": "Primary job is to make subject, task, or reading path legible while using content-specific space; no universal page genre is selected.",
+          "evidence": [
+            {
+              "ref": "common-ground/DESIGN.md",
+              "kind": "artifact-or-check",
+              "exists": true,
+              "size": 1974,
+              "valid": null
+            },
+            {
+              "ref": "type-lab/DESIGN.md",
+              "kind": "artifact-or-check",
+              "exists": true,
+              "size": 1909,
+              "valid": null
+            },
+            {
+              "ref": "runbook/DESIGN.md",
+              "kind": "artifact-or-check",
+              "exists": true,
+              "size": 2110,
+              "valid": null
+            }
+          ],
+          "proof": [
+            "static"
+          ],
+          "issues": [],
+          "score": null,
+          "dimensionScores": {},
+          "calculatedScore": null,
+          "largestGap": null,
+          "repair": null,
+          "verdict": null,
+          "comparison": [],
+          "critique": [],
+          "recordedAt": "2026-10-11T03:08:42.071Z"
+        }
+      ],
+      "decision": "Primary job is to make subject, task, or reading path legible while using content-specific space; no universal page genre is selected.",
+      "proof": [
+        "static"
+      ],
+      "issues": [],
+      "score": null,
+      "dimensionScores": {},
+      "calculatedScore": null,
+      "largestGap": null,
+      "repair": null,
+      "verdict": null,
+      "comparison": [],
+      "critique": []
+    },
+    {
+      "round": 3,
+      "id": "constraints",
+      "objective": "Separate hard invariants from preferences, risks, and reversible choices.",
+      "artifact": "constraint-register",
+      "source": "frontend-design-codex",
+      "evidence": [
+        {
+          "ref": "artifacts/layout-study/RESEARCH.md",
+          "kind": "artifact-or-check",
+          "exists": true,
+          "size": 5272,
+          "valid": null
+        },
+        {
+          "ref": "common-ground/DESIGN.md",
+          "kind": "artifact-or-check",
+          "exists": true,
+          "size": 1974,
+          "valid": null
+        }
+      ],
+      "status": "complete",
+      "attempts": [
+        {
+          "status": "complete",
+          "decision": "Hard invariants are accessibility, responsive usability, source truth, complete states, and rendered proof; alignment and geometry defaults remain advisory.",
+          "evidence": [
+            {
+              "ref": "artifacts/layout-study/RESEARCH.md",
+              "kind": "artifact-or-check",
+              "exists": true,
+              "size": 5272,
+              "valid": null
+            },
+            {
+              "ref": "common-ground/DESIGN.md",
+              "kind": "artifact-or-check",
+              "exists": true,
+              "size": 1974,
+              "valid": null
+            }
+          ],
+          "proof": [
+            "static"
+          ],
+          "issues": [],
+          "score": null,
+          "dimensionScores": {},
+          "calculatedScore": null,
+          "largestGap": null,
+          "repair": null,
+          "verdict": null,
+          "comparison": [],
+          "critique": [],
+          "recordedAt": "2026-10-11T03:09:22.880Z"
+        }
+      ],
+      "decision": "Hard invariants are accessibility, responsive usability, source truth, complete states, and rendered proof; alignment and geometry defaults remain advisory.",
+      "proof": [
+        "static"
+      ],
+      "issues": [],
+      "score": null,
+      "dimensionScores": {},
+      "calculatedScore": null,
+      "largestGap": null,
+      "repair": null,
+      "verdict": null,
+      "comparison": [],
+      "critique": []
+    },
+    {
+      "round": 4,
+      "id": "evidence",
+      "objective": "Inspect routes, components, tokens, content, assets, runtime entrypoints, and sibling surfaces.",
+      "artifact": "evidence-map",
+      "source": "avoid-ai-design",
+      "evidence": [
+        {
+          "ref": "common-ground/DESIGN.md",
+          "kind": "artifact-or-check",
+          "exists": true,
+          "size": 1974,
+          "valid": null
+        },
+        {
+          "ref": "monet/DESIGN.md",
+          "kind": "artifact-or-check",
+          "exists": true,
+          "size": 5184,
+          "valid": null
+        },
+        {
+          "ref": "night-shift/DESIGN.md",
+          "kind": "artifact-or-check",
+          "exists": true,
+          "size": 2966,
+          "valid": null
+        },
+        {
+          "ref": "type-lab/DESIGN.md",
+          "kind": "artifact-or-check",
+          "exists": true,
+          "size": 1909,
+          "valid": null
+        },
+        {
+          "ref": "runbook/DESIGN.md",
+          "kind": "artifact-or-check",
+          "exists": true,
+          "size": 2110,
+          "valid": null
+        }
+      ],
+      "status": "complete",
+      "attempts": [
+        {
+          "status": "complete",
+          "decision": "Inspected all five samples, their assets, interaction scripts, and current design memories before changing the composition contract.",
+          "evidence": [
+            {
+              "ref": "common-ground/DESIGN.md",
+              "kind": "artifact-or-check",
+              "exists": true,
+              "size": 1974,
+              "valid": null
+            },
+            {
+              "ref": "monet/DESIGN.md",
+              "kind": "artifact-or-check",
+              "exists": true,
+              "size": 5184,
+              "valid": null
+            },
+            {
+              "ref": "night-shift/DESIGN.md",
+              "kind": "artifact-or-check",
+              "exists": true,
+              "size": 2966,
+              "valid": null
+            },
+            {
+              "ref": "type-lab/DESIGN.md",
+              "kind": "artifact-or-check",
+              "exists": true,
+              "size": 1909,
+              "valid": null
+            },
+            {
+              "ref": "runbook/DESIGN.md",
+              "kind": "artifact-or-check",
+              "exists": true,
+              "size": 2110,
+              "valid": null
+            }
+          ],
+          "proof": [
+            "static"
+          ],
+          "issues": [],
+          "score": null,
+          "dimensionScores": {},
+          "calculatedScore": null,
+          "largestGap": null,
+          "repair": null,
+          "verdict": null,
+          "comparison": [],
+          "critique": [],
+          "recordedAt": "2026-10-11T03:09:22.950Z"
+        }
+      ],
+      "decision": "Inspected all five samples, their assets, interaction scripts, and current design memories before changing the composition contract.",
+      "proof": [
+        "static"
+      ],
+      "issues": [],
+      "score": null,
+      "dimensionScores": {},
+      "calculatedScore": null,
+      "largestGap": null,
+      "repair": null,
+      "verdict": null,
+      "comparison": [],
+      "critique": []
+    },
+    {
+      "round": 5,
+      "id": "references",
+      "objective": "Choose references by missing job; extract visible relationships instead of copying skins.",
+      "artifact": "reference-ledger",
+      "source": "reference-composition",
+      "evidence": [
+        {
+          "ref": "artifacts/layout-study/apple-opening.png",
+          "kind": "capture-or-media",
+          "exists": true,
+          "size": 93735,
+          "valid": false
+        },
+        {
+          "ref": "artifacts/layout-study/apple-design.png",
+          "kind": "capture-or-media",
+          "exists": true,
+          "size": 121506,
+          "valid": false
+        },
+        {
+          "ref": "artifacts/layout-study/kinfolk-opening.png",
+          "kind": "capture-or-media",
+          "exists": true,
+          "size": 48179,
+          "valid": false
+        },
+        {
+          "ref": "artifacts/layout-study/kinfolk-stories.png",
+          "kind": "capture-or-media",
+          "exists": true,
+          "size": 131672,
+          "valid": false
+        }
+      ],
+      "status": "complete",
+      "attempts": [
+        {
+          "status": "complete",
+          "decision": "Selected Apple and Kinfolk for distinct composition jobs and kept their identities, exact ratios, and commerce/editorial shells out of the implementation.",
+          "evidence": [
+            {
+              "ref": "artifacts/layout-study/apple-opening.png",
+              "kind": "capture-or-media",
+              "exists": true,
+              "size": 93735,
+              "valid": false
+            },
+            {
+              "ref": "artifacts/layout-study/apple-design.png",
+              "kind": "capture-or-media",
+              "exists": true,
+              "size": 121506,
+              "valid": false
+            },
+            {
+              "ref": "artifacts/layout-study/kinfolk-opening.png",
+              "kind": "capture-or-media",
+              "exists": true,
+              "size": 48179,
+              "valid": false
+            },
+            {
+              "ref": "artifacts/layout-study/kinfolk-stories.png",
+              "kind": "capture-or-media",
+              "exists": true,
+              "size": 131672,
+              "valid": false
+            }
+          ],
+          "proof": [
+            "visual"
+          ],
+          "issues": [],
+          "score": null,
+          "dimensionScores": {},
+          "calculatedScore": null,
+          "largestGap": null,
+          "repair": null,
+          "verdict": null,
+          "comparison": [],
+          "critique": [],
+          "recordedAt": "2026-10-11T03:09:23.017Z"
+        }
+      ],
+      "decision": "Selected Apple and Kinfolk for distinct composition jobs and kept their identities, exact ratios, and commerce/editorial shells out of the implementation.",
+      "proof": [
+        "visual"
+      ],
+      "issues": [],
+      "score": null,
+      "dimensionScores": {},
+      "calculatedScore": null,
+      "largestGap": null,
+      "repair": null,
+      "verdict": null,
+      "comparison": [],
+      "critique": []
+    },
+    {
+      "round": 6,
+      "id": "vernacular",
+      "objective": "Find the subject's materials, artifacts, culture, language, and visual vocabulary.",
+      "artifact": "subject-thesis",
+      "source": "anthropic-frontend-design",
+      "evidence": [
+        {
+          "ref": "artifacts/continuation-observations.json",
+          "kind": "artifact-or-check",
+          "exists": true,
+          "size": 1907,
+          "valid": null
+        },
+        {
+          "ref": "artifacts/runtime-observations.json",
+          "kind": "artifact-or-check",
+          "exists": true,
+          "size": 4197,
+          "valid": null
+        }
+      ],
+      "status": "complete",
+      "attempts": [
+        {
+          "status": "complete",
+          "decision": "Subject vocabulary comes from actual architecture, painting, astronomy, typography, and task content; the examples remain different surface modes.",
+          "evidence": [
+            {
+              "ref": "artifacts/continuation-observations.json",
+              "kind": "artifact-or-check",
+              "exists": true,
+              "size": 1907,
+              "valid": null
+            },
+            {
+              "ref": "artifacts/runtime-observations.json",
+              "kind": "artifact-or-check",
+              "exists": true,
+              "size": 4197,
+              "valid": null
+            }
+          ],
+          "proof": [
+            "runtime"
+          ],
+          "issues": [],
+          "score": null,
+          "dimensionScores": {},
+          "calculatedScore": null,
+          "largestGap": null,
+          "repair": null,
+          "verdict": null,
+          "comparison": [],
+          "critique": [],
+          "recordedAt": "2026-10-11T03:09:23.077Z"
+        }
+      ],
+      "decision": "Subject vocabulary comes from actual architecture, painting, astronomy, typography, and task content; the examples remain different surface modes.",
+      "proof": [
+        "runtime"
+      ],
+      "issues": [],
+      "score": null,
+      "dimensionScores": {},
+      "calculatedScore": null,
+      "largestGap": null,
+      "repair": null,
+      "verdict": null,
+      "comparison": [],
+      "critique": []
+    },
+    {
+      "round": 7,
+      "id": "defaults",
+      "objective": "Run a first-order and second-order AI-default scan before choosing a direction.",
+      "artifact": "anti-default-review",
+      "source": "avoid-ai-design",
+      "evidence": [
+        {
+          "ref": "artifacts/layout-study/RESEARCH.md",
+          "kind": "artifact-or-check",
+          "exists": true,
+          "size": 5272,
+          "valid": null
+        },
+        {
+          "ref": "common-ground/DESIGN.md",
+          "kind": "artifact-or-check",
+          "exists": true,
+          "size": 1974,
+          "valid": null
+        }
+      ],
+      "status": "complete",
+      "attempts": [
+        {
+          "status": "complete",
+          "decision": "Rejected fill-every-track, center-every-heading, repeated media ratios, hard divider scaffolding, and hardware inference from quality words as advisory smells.",
+          "evidence": [
+            {
+              "ref": "artifacts/layout-study/RESEARCH.md",
+              "kind": "artifact-or-check",
+              "exists": true,
+              "size": 5272,
+              "valid": null
+            },
+            {
+              "ref": "common-ground/DESIGN.md",
+              "kind": "artifact-or-check",
+              "exists": true,
+              "size": 1974,
+              "valid": null
+            }
+          ],
+          "proof": [
+            "static"
+          ],
+          "issues": [],
+          "score": null,
+          "dimensionScores": {},
+          "calculatedScore": null,
+          "largestGap": null,
+          "repair": null,
+          "verdict": null,
+          "comparison": [],
+          "critique": [],
+          "recordedAt": "2026-10-11T03:09:23.137Z"
+        }
+      ],
+      "decision": "Rejected fill-every-track, center-every-heading, repeated media ratios, hard divider scaffolding, and hardware inference from quality words as advisory smells.",
+      "proof": [
+        "static"
+      ],
+      "issues": [],
+      "score": null,
+      "dimensionScores": {},
+      "calculatedScore": null,
+      "largestGap": null,
+      "repair": null,
+      "verdict": null,
+      "comparison": [],
+      "critique": []
+    },
+    {
+      "round": 8,
+      "id": "diverge",
+      "objective": "Create 3-5 structurally different directions, not cosmetic palette variants.",
+      "artifact": "concept-set",
+      "source": "openai-ideate",
+      "evidence": [
+        {
+          "ref": "artifacts/layout-study/RESEARCH.md",
+          "kind": "artifact-or-check",
+          "exists": true,
+          "size": 5272,
+          "valid": null
+        },
+        {
+          "ref": ".art-direction/research-atlas/atlas-20261011022425-4c9a98da.json",
+          "kind": "artifact-or-check",
+          "exists": true,
+          "size": 18070,
+          "valid": null
+        }
+      ],
+      "status": "complete",
+      "attempts": [
+        {
+          "status": "complete",
+          "decision": "Compared open field, object-led/editorial sequence, and stateful instrument hypotheses; the selected structure is per-surface rather than a shared skin.",
+          "evidence": [
+            {
+              "ref": "artifacts/layout-study/RESEARCH.md",
+              "kind": "artifact-or-check",
+              "exists": true,
+              "size": 5272,
+              "valid": null
+            },
+            {
+              "ref": ".art-direction/research-atlas/atlas-20261011022425-4c9a98da.json",
+              "kind": "artifact-or-check",
+              "exists": true,
+              "size": 18070,
+              "valid": null
+            }
+          ],
+          "proof": [
+            "static"
+          ],
+          "issues": [],
+          "score": null,
+          "dimensionScores": {},
+          "calculatedScore": null,
+          "largestGap": null,
+          "repair": null,
+          "verdict": null,
+          "comparison": [],
+          "critique": [],
+          "recordedAt": "2026-10-11T03:09:23.197Z"
+        }
+      ],
+      "decision": "Compared open field, object-led/editorial sequence, and stateful instrument hypotheses; the selected structure is per-surface rather than a shared skin.",
+      "proof": [
+        "static"
+      ],
+      "issues": [],
+      "score": null,
+      "dimensionScores": {},
+      "calculatedScore": null,
+      "largestGap": null,
+      "repair": null,
+      "verdict": null,
+      "comparison": [],
+      "critique": []
+    },
+    {
+      "round": 9,
+      "id": "converge",
+      "objective": "Choose one direction against subject fit, hierarchy, emotional register, feasibility, and responsive viability.",
+      "artifact": "direction-verdict",
+      "source": "ideo-create-choices",
+      "evidence": [
+        {
+          "ref": ".art-direction/research-atlas/atlas-20261011022425-4c9a98da.json",
+          "kind": "artifact-or-check",
+          "exists": true,
+          "size": 18070,
+          "valid": null
+        },
+        {
+          "ref": "artifacts/layout-study/RESEARCH.md",
+          "kind": "artifact-or-check",
+          "exists": true,
+          "size": 5272,
+          "valid": null
+        }
+      ],
+      "status": "complete",
+      "attempts": [
+        {
+          "status": "complete",
+          "decision": "Converged on content-led regional composition with explicit local placement, text alignment, measure, neighbor, and wide/narrow decisions.",
+          "evidence": [
+            {
+              "ref": ".art-direction/research-atlas/atlas-20261011022425-4c9a98da.json",
+              "kind": "artifact-or-check",
+              "exists": true,
+              "size": 18070,
+              "valid": null
+            },
+            {
+              "ref": "artifacts/layout-study/RESEARCH.md",
+              "kind": "artifact-or-check",
+              "exists": true,
+              "size": 5272,
+              "valid": null
+            }
+          ],
+          "proof": [
+            "static"
+          ],
+          "issues": [],
+          "score": null,
+          "dimensionScores": {},
+          "calculatedScore": null,
+          "largestGap": null,
+          "repair": null,
+          "verdict": null,
+          "comparison": [],
+          "critique": [],
+          "recordedAt": "2026-10-11T03:09:23.258Z"
+        }
+      ],
+      "decision": "Converged on content-led regional composition with explicit local placement, text alignment, measure, neighbor, and wide/narrow decisions.",
+      "proof": [
+        "static"
+      ],
+      "issues": [],
+      "score": null,
+      "dimensionScores": {},
+      "calculatedScore": null,
+      "largestGap": null,
+      "repair": null,
+      "verdict": null,
+      "comparison": [],
+      "critique": []
+    },
+    {
+      "round": 10,
+      "id": "contract",
+      "objective": "Write the chosen composition, type, geometry, material, motion, asset, and exception contract.",
+      "artifact": "design-contract",
+      "source": "ui-ux-pro-max",
+      "evidence": [
+        {
+          "ref": "artifacts/layout-study/RESEARCH.md",
+          "kind": "artifact-or-check",
+          "exists": true,
+          "size": 5272,
+          "valid": null
+        },
+        {
+          "ref": "common-ground/DESIGN.md",
+          "kind": "artifact-or-check",
+          "exists": true,
+          "size": 1974,
+          "valid": null
+        },
+        {
+          "ref": "type-lab/DESIGN.md",
+          "kind": "artifact-or-check",
+          "exists": true,
+          "size": 1909,
+          "valid": null
+        }
+      ],
+      "status": "complete",
+      "attempts": [
+        {
+          "status": "complete",
+          "decision": "Locked the composition contract: field, shell, stage, and reading measure are independent; blank space has a named job; geometry is softened without forcing rounded cards.",
+          "evidence": [
+            {
+              "ref": "artifacts/layout-study/RESEARCH.md",
+              "kind": "artifact-or-check",
+              "exists": true,
+              "size": 5272,
+              "valid": null
+            },
+            {
+              "ref": "common-ground/DESIGN.md",
+              "kind": "artifact-or-check",
+              "exists": true,
+              "size": 1974,
+              "valid": null
+            },
+            {
+              "ref": "type-lab/DESIGN.md",
+              "kind": "artifact-or-check",
+              "exists": true,
+              "size": 1909,
+              "valid": null
+            }
+          ],
+          "proof": [
+            "static"
+          ],
+          "issues": [],
+          "score": null,
+          "dimensionScores": {},
+          "calculatedScore": null,
+          "largestGap": null,
+          "repair": null,
+          "verdict": null,
+          "comparison": [],
+          "critique": [],
+          "recordedAt": "2026-10-11T03:09:23.319Z"
+        }
+      ],
+      "decision": "Locked the composition contract: field, shell, stage, and reading measure are independent; blank space has a named job; geometry is softened without forcing rounded cards.",
+      "proof": [
+        "static"
+      ],
+      "issues": [],
+      "score": null,
+      "dimensionScores": {},
+      "calculatedScore": null,
+      "largestGap": null,
+      "repair": null,
+      "verdict": null,
+      "comparison": [],
+      "critique": []
+    },
+    {
+      "round": 11,
+      "id": "system",
+      "objective": "Extract tokens, type roles, component families, icon grammar, and page-specific overrides.",
+      "artifact": "design-system",
+      "source": "ui-ux-pro-max-persist",
+      "evidence": [
+        {
+          "ref": "common-ground/DESIGN.md",
+          "kind": "artifact-or-check",
+          "exists": true,
+          "size": 1974,
+          "valid": null
+        },
+        {
+          "ref": "type-lab/DESIGN.md",
+          "kind": "artifact-or-check",
+          "exists": true,
+          "size": 1909,
+          "valid": null
+        },
+        {
+          "ref": "runbook/DESIGN.md",
+          "kind": "artifact-or-check",
+          "exists": true,
+          "size": 2110,
+          "valid": null
+        }
+      ],
+      "status": "complete",
+      "attempts": [
+        {
+          "status": "complete",
+          "decision": "Kept tokens and component grammars surface-specific: editorial media, bounded editor canvas, and operational queue use different density and edge rules.",
+          "evidence": [
+            {
+              "ref": "common-ground/DESIGN.md",
+              "kind": "artifact-or-check",
+              "exists": true,
+              "size": 1974,
+              "valid": null
+            },
+            {
+              "ref": "type-lab/DESIGN.md",
+              "kind": "artifact-or-check",
+              "exists": true,
+              "size": 1909,
+              "valid": null
+            },
+            {
+              "ref": "runbook/DESIGN.md",
+              "kind": "artifact-or-check",
+              "exists": true,
+              "size": 2110,
+              "valid": null
+            }
+          ],
+          "proof": [
+            "static"
+          ],
+          "issues": [],
+          "score": null,
+          "dimensionScores": {},
+          "calculatedScore": null,
+          "largestGap": null,
+          "repair": null,
+          "verdict": null,
+          "comparison": [],
+          "critique": [],
+          "recordedAt": "2026-10-11T03:09:23.379Z"
+        }
+      ],
+      "decision": "Kept tokens and component grammars surface-specific: editorial media, bounded editor canvas, and operational queue use different density and edge rules.",
+      "proof": [
+        "static"
+      ],
+      "issues": [],
+      "score": null,
+      "dimensionScores": {},
+      "calculatedScore": null,
+      "largestGap": null,
+      "repair": null,
+      "verdict": null,
+      "comparison": [],
+      "critique": []
+    },
+    {
+      "round": 12,
+      "id": "storyboard",
+      "objective": "Plan the full surface, states, route transitions, responsive continuation, and ending.",
+      "artifact": "surface-storyboard",
+      "source": "frontend-app-builder",
+      "evidence": [
+        {
+          "ref": "artifacts/continuation-observations.json",
+          "kind": "artifact-or-check",
+          "exists": true,
+          "size": 1907,
+          "valid": null
+        },
+        {
+          "ref": "artifacts/runtime-observations.json",
+          "kind": "artifact-or-check",
+          "exists": true,
+          "size": 4197,
+          "valid": null
+        }
+      ],
+      "status": "complete",
+      "attempts": [
+        {
+          "status": "complete",
+          "decision": "Storyboarded complete sample paths including opening, middle, ending, source/viewer state, mobile regrouping, and failure/reduced-motion behavior.",
+          "evidence": [
+            {
+              "ref": "artifacts/continuation-observations.json",
+              "kind": "artifact-or-check",
+              "exists": true,
+              "size": 1907,
+              "valid": null
+            },
+            {
+              "ref": "artifacts/runtime-observations.json",
+              "kind": "artifact-or-check",
+              "exists": true,
+              "size": 4197,
+              "valid": null
+            }
+          ],
+          "proof": [
+            "runtime"
+          ],
+          "issues": [],
+          "score": null,
+          "dimensionScores": {},
+          "calculatedScore": null,
+          "largestGap": null,
+          "repair": null,
+          "verdict": null,
+          "comparison": [],
+          "critique": [],
+          "recordedAt": "2026-10-11T03:09:23.439Z"
+        }
+      ],
+      "decision": "Storyboarded complete sample paths including opening, middle, ending, source/viewer state, mobile regrouping, and failure/reduced-motion behavior.",
+      "proof": [
+        "runtime"
+      ],
+      "issues": [],
+      "score": null,
+      "dimensionScores": {},
+      "calculatedScore": null,
+      "largestGap": null,
+      "repair": null,
+      "verdict": null,
+      "comparison": [],
+      "critique": []
+    },
+    {
+      "round": 13,
+      "id": "assets",
+      "objective": "Source or generate production-quality media and reject placeholders, fake metrics, and weak crops.",
+      "artifact": "asset-inventory",
+      "source": "frontend-app-builder",
+      "evidence": [
+        {
+          "ref": "artifacts/layout-study/RESEARCH.md",
+          "kind": "artifact-or-check",
+          "exists": true,
+          "size": 5272,
+          "valid": null
+        },
+        {
+          "ref": "artifacts/runtime-observations.json",
+          "kind": "artifact-or-check",
+          "exists": true,
+          "size": 4197,
+          "valid": null
+        }
+      ],
+      "status": "complete",
+      "attempts": [
+        {
+          "status": "complete",
+          "decision": "Preserved real local image assets and provenance; no placeholder or low-quality replacement was introduced.",
+          "evidence": [
+            {
+              "ref": "artifacts/layout-study/RESEARCH.md",
+              "kind": "artifact-or-check",
+              "exists": true,
+              "size": 5272,
+              "valid": null
+            },
+            {
+              "ref": "artifacts/runtime-observations.json",
+              "kind": "artifact-or-check",
+              "exists": true,
+              "size": 4197,
+              "valid": null
+            }
+          ],
+          "proof": [
+            "static"
+          ],
+          "issues": [],
+          "score": null,
+          "dimensionScores": {},
+          "calculatedScore": null,
+          "largestGap": null,
+          "repair": null,
+          "verdict": null,
+          "comparison": [],
+          "critique": [],
+          "recordedAt": "2026-10-11T03:09:23.499Z"
+        }
+      ],
+      "decision": "Preserved real local image assets and provenance; no placeholder or low-quality replacement was introduced.",
+      "proof": [
+        "static"
+      ],
+      "issues": [],
+      "score": null,
+      "dimensionScores": {},
+      "calculatedScore": null,
+      "largestGap": null,
+      "repair": null,
+      "verdict": null,
+      "comparison": [],
+      "critique": []
+    },
+    {
+      "round": 14,
+      "id": "skeleton",
+      "objective": "Build the semantic and interactive skeleton with real content and the intended container model.",
+      "artifact": "working-surface",
+      "source": "frontend-app-builder",
+      "evidence": [
+        {
+          "ref": "monet/styles.css",
+          "kind": "artifact-or-check",
+          "exists": true,
+          "size": 11425,
+          "valid": null
+        },
+        {
+          "ref": "night-shift/styles.css",
+          "kind": "artifact-or-check",
+          "exists": true,
+          "size": 11179,
+          "valid": null
+        },
+        {
+          "ref": "type-lab/styles.css",
+          "kind": "artifact-or-check",
+          "exists": true,
+          "size": 13055,
+          "valid": null
+        },
+        {
+          "ref": "runbook/styles.css",
+          "kind": "artifact-or-check",
+          "exists": true,
+          "size": 8191,
+          "valid": null
+        }
+      ],
+      "status": "complete",
+      "attempts": [
+        {
+          "status": "complete",
+          "decision": "Implemented bounded chapter and work-object relationships in the existing samples, and carried the same composition map into Skill guidance and project design memory.",
+          "evidence": [
+            {
+              "ref": "monet/styles.css",
+              "kind": "artifact-or-check",
+              "exists": true,
+              "size": 11425,
+              "valid": null
+            },
+            {
+              "ref": "night-shift/styles.css",
+              "kind": "artifact-or-check",
+              "exists": true,
+              "size": 11179,
+              "valid": null
+            },
+            {
+              "ref": "type-lab/styles.css",
+              "kind": "artifact-or-check",
+              "exists": true,
+              "size": 13055,
+              "valid": null
+            },
+            {
+              "ref": "runbook/styles.css",
+              "kind": "artifact-or-check",
+              "exists": true,
+              "size": 8191,
+              "valid": null
+            }
+          ],
+          "proof": [
+            "static"
+          ],
+          "issues": [],
+          "score": null,
+          "dimensionScores": {},
+          "calculatedScore": null,
+          "largestGap": null,
+          "repair": null,
+          "verdict": null,
+          "comparison": [],
+          "critique": [],
+          "recordedAt": "2026-10-11T03:09:23.557Z"
+        }
+      ],
+      "decision": "Implemented bounded chapter and work-object relationships in the existing samples, and carried the same composition map into Skill guidance and project design memory.",
+      "proof": [
+        "static"
+      ],
+      "issues": [],
+      "score": null,
+      "dimensionScores": {},
+      "calculatedScore": null,
+      "largestGap": null,
+      "repair": null,
+      "verdict": null,
+      "comparison": [],
+      "critique": []
+    },
+    {
+      "round": 15,
+      "id": "baseline",
+      "objective": "Run the target and capture the actual desktop, mobile, and relevant state before judging polish.",
+      "artifact": "baseline-captures",
+      "source": "design-review",
+      "evidence": [
+        {
+          "ref": "artifacts/layout-study/night-before-wide.png",
+          "kind": "capture-or-media",
+          "exists": true,
+          "size": 5157110,
+          "valid": true
+        },
+        {
+          "ref": "artifacts/layout-study/night-before-mobile.png",
+          "kind": "capture-or-media",
+          "exists": true,
+          "size": 998540,
+          "valid": true
+        },
+        {
+          "ref": "artifacts/layout-study/monet-before-wide.png",
+          "kind": "capture-or-media",
+          "exists": true,
+          "size": 9214255,
+          "valid": true
+        },
+        {
+          "ref": "artifacts/layout-study/monet-before-mobile.png",
+          "kind": "capture-or-media",
+          "exists": true,
+          "size": 1112230,
+          "valid": true
+        },
+        {
+          "ref": "artifacts/runtime-observations.json",
+          "kind": "artifact-or-check",
+          "exists": true,
+          "size": 4197,
+          "valid": null
+        }
+      ],
+      "status": "complete",
+      "attempts": [
+        {
+          "status": "complete",
+          "decision": "Baseline captures cover Night Shift and Monet at wide, intermediate, mobile, reduced-motion, failure, and viewer-detail states; current evidence is sufficient to judge composition and state continuity, with fresh browser recapture still limited by the unavailable CUA auth token.",
+          "evidence": [
+            {
+              "ref": "artifacts/layout-study/night-before-wide.png",
+              "kind": "capture-or-media",
+              "exists": true,
+              "size": 5157110,
+              "valid": true
+            },
+            {
+              "ref": "artifacts/layout-study/night-before-mobile.png",
+              "kind": "capture-or-media",
+              "exists": true,
+              "size": 998540,
+              "valid": true
+            },
+            {
+              "ref": "artifacts/layout-study/monet-before-wide.png",
+              "kind": "capture-or-media",
+              "exists": true,
+              "size": 9214255,
+              "valid": true
+            },
+            {
+              "ref": "artifacts/layout-study/monet-before-mobile.png",
+              "kind": "capture-or-media",
+              "exists": true,
+              "size": 1112230,
+              "valid": true
+            },
+            {
+              "ref": "artifacts/runtime-observations.json",
+              "kind": "artifact-or-check",
+              "exists": true,
+              "size": 4197,
+              "valid": null
+            }
+          ],
+          "proof": [
+            "visual",
+            "runtime",
+            "scope"
+          ],
+          "issues": [
+            "P1:fresh-browser-recapture-unavailable"
+          ],
+          "score": null,
+          "dimensionScores": {},
+          "calculatedScore": null,
+          "largestGap": null,
+          "repair": null,
+          "verdict": null,
+          "comparison": [],
+          "critique": [],
+          "recordedAt": "2026-10-11T03:16:29.526Z"
+        }
+      ],
+      "decision": "Baseline captures cover Night Shift and Monet at wide, intermediate, mobile, reduced-motion, failure, and viewer-detail states; current evidence is sufficient to judge composition and state continuity, with fresh browser recapture still limited by the unavailable CUA auth token.",
+      "proof": [
+        "visual",
+        "runtime",
+        "scope"
+      ],
+      "issues": [
+        "P1:fresh-browser-recapture-unavailable"
+      ],
+      "score": null,
+      "dimensionScores": {},
+      "calculatedScore": null,
+      "largestGap": null,
+      "repair": null,
+      "verdict": null,
+      "comparison": [],
+      "critique": []
+    },
+    {
+      "round": 16,
+      "id": "macro",
+      "objective": "Fix the biggest visible defect first: scope, silhouette, hierarchy, composition, content, or media.",
+      "artifact": "macro-revision",
+      "source": "screenshot-critique",
+      "evidence": [
+        {
+          "ref": "artifacts/layout-study/night-before-wide.png",
+          "kind": "capture-or-media",
+          "exists": true,
+          "size": 5157110,
+          "valid": true
+        },
+        {
+          "ref": "artifacts/layout-study/night-after-1920.png",
+          "kind": "capture-or-media",
+          "exists": true,
+          "size": 3836699,
+          "valid": true
+        },
+        {
+          "ref": "artifacts/layout-study/monet-before-wide.png",
+          "kind": "capture-or-media",
+          "exists": true,
+          "size": 9214255,
+          "valid": true
+        },
+        {
+          "ref": "artifacts/layout-study/monet-after-1920.png",
+          "kind": "capture-or-media",
+          "exists": true,
+          "size": 5349474,
+          "valid": true
+        }
+      ],
+      "status": "complete",
+      "attempts": [
+        {
+          "status": "complete",
+          "decision": "Macro comparison shows the dominant defect was a page-wide fill-every-band composition: fields, prose, and dividers competed at the same width. The repair gives each regional surface its own field, shell, stage, and reading measure, with local alignment and useful blank space.",
+          "evidence": [
+            {
+              "ref": "artifacts/layout-study/night-before-wide.png",
+              "kind": "capture-or-media",
+              "exists": true,
+              "size": 5157110,
+              "valid": true
+            },
+            {
+              "ref": "artifacts/layout-study/night-after-1920.png",
+              "kind": "capture-or-media",
+              "exists": true,
+              "size": 3836699,
+              "valid": true
+            },
+            {
+              "ref": "artifacts/layout-study/monet-before-wide.png",
+              "kind": "capture-or-media",
+              "exists": true,
+              "size": 9214255,
+              "valid": true
+            },
+            {
+              "ref": "artifacts/layout-study/monet-after-1920.png",
+              "kind": "capture-or-media",
+              "exists": true,
+              "size": 5349474,
+              "valid": true
+            }
+          ],
+          "proof": [
+            "visual",
+            "scope"
+          ],
+          "issues": [],
+          "score": null,
+          "dimensionScores": {},
+          "calculatedScore": null,
+          "largestGap": "Every region inherited one global width, alignment, and density, making wide pages feel stretched and ordinary.",
+          "repair": "Bounded field, shell, stage, and reading measures; local placement and text alignment; chapter-specific whitespace and softer edge rhythm.",
+          "verdict": null,
+          "comparison": [
+            {
+              "ref": "artifacts/layout-study/night-before-wide.png",
+              "kind": "capture-or-media",
+              "exists": true,
+              "size": 5157110,
+              "valid": true
+            },
+            {
+              "ref": "artifacts/layout-study/night-after-1920.png",
+              "kind": "capture-or-media",
+              "exists": true,
+              "size": 3836699,
+              "valid": true
+            },
+            {
+              "ref": "artifacts/layout-study/monet-before-wide.png",
+              "kind": "capture-or-media",
+              "exists": true,
+              "size": 9214255,
+              "valid": true
+            },
+            {
+              "ref": "artifacts/layout-study/monet-after-1920.png",
+              "kind": "capture-or-media",
+              "exists": true,
+              "size": 5349474,
+              "valid": true
+            }
+          ],
+          "critique": [],
+          "recordedAt": "2026-10-11T03:16:48.556Z"
+        }
+      ],
+      "decision": "Macro comparison shows the dominant defect was a page-wide fill-every-band composition: fields, prose, and dividers competed at the same width. The repair gives each regional surface its own field, shell, stage, and reading measure, with local alignment and useful blank space.",
+      "proof": [
+        "visual",
+        "scope"
+      ],
+      "issues": [],
+      "score": null,
+      "dimensionScores": {},
+      "calculatedScore": null,
+      "largestGap": "Every region inherited one global width, alignment, and density, making wide pages feel stretched and ordinary.",
+      "repair": "Bounded field, shell, stage, and reading measures; local placement and text alignment; chapter-specific whitespace and softer edge rhythm.",
+      "verdict": null,
+      "comparison": [
+        {
+          "ref": "artifacts/layout-study/night-before-wide.png",
+          "kind": "capture-or-media",
+          "exists": true,
+          "size": 5157110,
+          "valid": true
+        },
+        {
+          "ref": "artifacts/layout-study/night-after-1920.png",
+          "kind": "capture-or-media",
+          "exists": true,
+          "size": 3836699,
+          "valid": true
+        },
+        {
+          "ref": "artifacts/layout-study/monet-before-wide.png",
+          "kind": "capture-or-media",
+          "exists": true,
+          "size": 9214255,
+          "valid": true
+        },
+        {
+          "ref": "artifacts/layout-study/monet-after-1920.png",
+          "kind": "capture-or-media",
+          "exists": true,
+          "size": 5349474,
+          "valid": true
+        }
+      ],
+      "critique": []
+    },
+    {
+      "round": 17,
+      "id": "responsive",
+      "objective": "Re-stage the design for mobile, tablet, touch, text wrapping, and input behavior.",
+      "artifact": "responsive-captures",
+      "source": "design-review",
+      "evidence": [
+        {
+          "ref": "artifacts/layout-study/night-before-mobile.png",
+          "kind": "capture-or-media",
+          "exists": true,
+          "size": 998540,
+          "valid": true
+        },
+        {
+          "ref": "artifacts/layout-study/night-after-320.png",
+          "kind": "capture-or-media",
+          "exists": true,
+          "size": 763159,
+          "valid": true
+        },
+        {
+          "ref": "artifacts/layout-study/night-after-768.png",
+          "kind": "capture-or-media",
+          "exists": true,
+          "size": 2066004,
+          "valid": true
+        },
+        {
+          "ref": "artifacts/layout-study/monet-before-mobile.png",
+          "kind": "capture-or-media",
+          "exists": true,
+          "size": 1112230,
+          "valid": true
+        },
+        {
+          "ref": "artifacts/layout-study/monet-after-320.png",
+          "kind": "capture-or-media",
+          "exists": true,
+          "size": 928504,
+          "valid": true
+        },
+        {
+          "ref": "artifacts/layout-study/monet-after-768.png",
+          "kind": "capture-or-media",
+          "exists": true,
+          "size": 2291298,
+          "valid": true
+        }
+      ],
+      "status": "complete",
+      "attempts": [
+        {
+          "status": "complete",
+          "decision": "Responsive comparison shows the repaired surfaces re-stage instead of merely shrinking: Night Shift moves from wide composition to a compact image-led sequence, while Monet preserves the painting as the dominant object and keeps the reading measure calm at tablet and phone widths.",
+          "evidence": [
+            {
+              "ref": "artifacts/layout-study/night-before-mobile.png",
+              "kind": "capture-or-media",
+              "exists": true,
+              "size": 998540,
+              "valid": true
+            },
+            {
+              "ref": "artifacts/layout-study/night-after-320.png",
+              "kind": "capture-or-media",
+              "exists": true,
+              "size": 763159,
+              "valid": true
+            },
+            {
+              "ref": "artifacts/layout-study/night-after-768.png",
+              "kind": "capture-or-media",
+              "exists": true,
+              "size": 2066004,
+              "valid": true
+            },
+            {
+              "ref": "artifacts/layout-study/monet-before-mobile.png",
+              "kind": "capture-or-media",
+              "exists": true,
+              "size": 1112230,
+              "valid": true
+            },
+            {
+              "ref": "artifacts/layout-study/monet-after-320.png",
+              "kind": "capture-or-media",
+              "exists": true,
+              "size": 928504,
+              "valid": true
+            },
+            {
+              "ref": "artifacts/layout-study/monet-after-768.png",
+              "kind": "capture-or-media",
+              "exists": true,
+              "size": 2291298,
+              "valid": true
+            }
+          ],
+          "proof": [
+            "visual",
+            "scope"
+          ],
+          "issues": [],
+          "score": null,
+          "dimensionScores": {},
+          "calculatedScore": null,
+          "largestGap": "The earlier mobile layouts compressed desktop relationships and left no clear priority when the viewport became narrow.",
+          "repair": "Use explicit narrow order, image measure, local text alignment, intermediate regrouping, and smaller touch-safe controls; let tablet be a real stage rather than a scaled desktop.",
+          "verdict": null,
+          "comparison": [
+            {
+              "ref": "artifacts/layout-study/night-before-mobile.png",
+              "kind": "capture-or-media",
+              "exists": true,
+              "size": 998540,
+              "valid": true
+            },
+            {
+              "ref": "artifacts/layout-study/night-after-320.png",
+              "kind": "capture-or-media",
+              "exists": true,
+              "size": 763159,
+              "valid": true
+            },
+            {
+              "ref": "artifacts/layout-study/night-after-768.png",
+              "kind": "capture-or-media",
+              "exists": true,
+              "size": 2066004,
+              "valid": true
+            },
+            {
+              "ref": "artifacts/layout-study/monet-before-mobile.png",
+              "kind": "capture-or-media",
+              "exists": true,
+              "size": 1112230,
+              "valid": true
+            },
+            {
+              "ref": "artifacts/layout-study/monet-after-320.png",
+              "kind": "capture-or-media",
+              "exists": true,
+              "size": 928504,
+              "valid": true
+            },
+            {
+              "ref": "artifacts/layout-study/monet-after-768.png",
+              "kind": "capture-or-media",
+              "exists": true,
+              "size": 2291298,
+              "valid": true
+            }
+          ],
+          "critique": [],
+          "recordedAt": "2026-10-11T03:17:07.405Z"
+        }
+      ],
+      "decision": "Responsive comparison shows the repaired surfaces re-stage instead of merely shrinking: Night Shift moves from wide composition to a compact image-led sequence, while Monet preserves the painting as the dominant object and keeps the reading measure calm at tablet and phone widths.",
+      "proof": [
+        "visual",
+        "scope"
+      ],
+      "issues": [],
+      "score": null,
+      "dimensionScores": {},
+      "calculatedScore": null,
+      "largestGap": "The earlier mobile layouts compressed desktop relationships and left no clear priority when the viewport became narrow.",
+      "repair": "Use explicit narrow order, image measure, local text alignment, intermediate regrouping, and smaller touch-safe controls; let tablet be a real stage rather than a scaled desktop.",
+      "verdict": null,
+      "comparison": [
+        {
+          "ref": "artifacts/layout-study/night-before-mobile.png",
+          "kind": "capture-or-media",
+          "exists": true,
+          "size": 998540,
+          "valid": true
+        },
+        {
+          "ref": "artifacts/layout-study/night-after-320.png",
+          "kind": "capture-or-media",
+          "exists": true,
+          "size": 763159,
+          "valid": true
+        },
+        {
+          "ref": "artifacts/layout-study/night-after-768.png",
+          "kind": "capture-or-media",
+          "exists": true,
+          "size": 2066004,
+          "valid": true
+        },
+        {
+          "ref": "artifacts/layout-study/monet-before-mobile.png",
+          "kind": "capture-or-media",
+          "exists": true,
+          "size": 1112230,
+          "valid": true
+        },
+        {
+          "ref": "artifacts/layout-study/monet-after-320.png",
+          "kind": "capture-or-media",
+          "exists": true,
+          "size": 928504,
+          "valid": true
+        },
+        {
+          "ref": "artifacts/layout-study/monet-after-768.png",
+          "kind": "capture-or-media",
+          "exists": true,
+          "size": 2291298,
+          "valid": true
+        }
+      ],
+      "critique": []
+    },
+    {
+      "round": 18,
+      "id": "states",
+      "objective": "Exercise loading, empty, error, success, focus, reduced-motion, transition, and recovery paths.",
+      "artifact": "state-captures",
+      "source": "ui-ux-pro-max",
+      "evidence": [
+        {
+          "ref": "artifacts/layout-study/night-core-reduced-320.png",
+          "kind": "capture-or-media",
+          "exists": true,
+          "size": 794951,
+          "valid": true
+        },
+        {
+          "ref": "artifacts/layout-study/night-failure-320.png",
+          "kind": "capture-or-media",
+          "exists": true,
+          "size": 794842,
+          "valid": true
+        },
+        {
+          "ref": "artifacts/layout-study/monet-viewer-detail-320.png",
+          "kind": "capture-or-media",
+          "exists": true,
+          "size": 870342,
+          "valid": true
+        },
+        {
+          "ref": "artifacts/continuation-observations.json",
+          "kind": "artifact-or-check",
+          "exists": true,
+          "size": 1907,
+          "valid": null
+        }
+      ],
+      "status": "complete",
+      "attempts": [
+        {
+          "status": "complete",
+          "decision": "State evidence covers reduced-motion continuation, failure recovery, and Monet viewer-detail behavior on narrow screens. The motion contract remains cleanup-aware with reduced-motion and fallback paths, while the surface keeps its content and recovery affordances legible.",
+          "evidence": [
+            {
+              "ref": "artifacts/layout-study/night-core-reduced-320.png",
+              "kind": "capture-or-media",
+              "exists": true,
+              "size": 794951,
+              "valid": true
+            },
+            {
+              "ref": "artifacts/layout-study/night-failure-320.png",
+              "kind": "capture-or-media",
+              "exists": true,
+              "size": 794842,
+              "valid": true
+            },
+            {
+              "ref": "artifacts/layout-study/monet-viewer-detail-320.png",
+              "kind": "capture-or-media",
+              "exists": true,
+              "size": 870342,
+              "valid": true
+            },
+            {
+              "ref": "artifacts/continuation-observations.json",
+              "kind": "artifact-or-check",
+              "exists": true,
+              "size": 1907,
+              "valid": null
+            }
+          ],
+          "proof": [
+            "runtime",
+            "visual",
+            "accessibility",
+            "scope"
+          ],
+          "issues": [
+            "P1:fresh-browser-recapture-unavailable"
+          ],
+          "score": null,
+          "dimensionScores": {},
+          "calculatedScore": null,
+          "largestGap": "State paths were previously easy to omit because the page could look acceptable in its default state while motion, failure, and detail transitions stayed unproven.",
+          "repair": "Keep reduced-motion, failure, and viewer-detail as first-class capture targets and preserve cleanup/fallback behavior in the motion contract.",
+          "verdict": null,
+          "comparison": [
+            {
+              "ref": "artifacts/layout-study/night-core-reduced-320.png",
+              "kind": "capture-or-media",
+              "exists": true,
+              "size": 794951,
+              "valid": true
+            },
+            {
+              "ref": "artifacts/layout-study/night-failure-320.png",
+              "kind": "capture-or-media",
+              "exists": true,
+              "size": 794842,
+              "valid": true
+            },
+            {
+              "ref": "artifacts/layout-study/monet-viewer-detail-320.png",
+              "kind": "capture-or-media",
+              "exists": true,
+              "size": 870342,
+              "valid": true
+            }
+          ],
+          "critique": [],
+          "recordedAt": "2026-10-11T03:17:51.278Z"
+        }
+      ],
+      "decision": "State evidence covers reduced-motion continuation, failure recovery, and Monet viewer-detail behavior on narrow screens. The motion contract remains cleanup-aware with reduced-motion and fallback paths, while the surface keeps its content and recovery affordances legible.",
+      "proof": [
+        "runtime",
+        "visual",
+        "accessibility",
+        "scope"
+      ],
+      "issues": [
+        "P1:fresh-browser-recapture-unavailable"
+      ],
+      "score": null,
+      "dimensionScores": {},
+      "calculatedScore": null,
+      "largestGap": "State paths were previously easy to omit because the page could look acceptable in its default state while motion, failure, and detail transitions stayed unproven.",
+      "repair": "Keep reduced-motion, failure, and viewer-detail as first-class capture targets and preserve cleanup/fallback behavior in the motion contract.",
+      "verdict": null,
+      "comparison": [
+        {
+          "ref": "artifacts/layout-study/night-core-reduced-320.png",
+          "kind": "capture-or-media",
+          "exists": true,
+          "size": 794951,
+          "valid": true
+        },
+        {
+          "ref": "artifacts/layout-study/night-failure-320.png",
+          "kind": "capture-or-media",
+          "exists": true,
+          "size": 794842,
+          "valid": true
+        },
+        {
+          "ref": "artifacts/layout-study/monet-viewer-detail-320.png",
+          "kind": "capture-or-media",
+          "exists": true,
+          "size": 870342,
+          "valid": true
+        }
+      ],
+      "critique": []
+    },
+    {
+      "round": 19,
+      "id": "fresh-eyes",
+      "objective": "Compare before/after and run an unprimed critique without implementation history bias.",
+      "artifact": "independent-critique",
+      "source": "screenshot-critique",
+      "evidence": [
+        {
+          "ref": ".art-direction/visual-critique/critique-20261010222354-929501b0.json",
+          "kind": "artifact-or-check",
+          "exists": true,
+          "size": 7805,
+          "valid": null
+        },
+        {
+          "ref": "artifacts/night-shift-before-critique-desktop.jpg",
+          "kind": "capture-or-media",
+          "exists": true,
+          "size": 387905,
+          "valid": true
+        },
+        {
+          "ref": "artifacts/night-shift-after-critique-desktop.jpg",
+          "kind": "capture-or-media",
+          "exists": true,
+          "size": 441766,
+          "valid": true
+        },
+        {
+          "ref": "artifacts/night-shift-before-critique-narrow.jpg",
+          "kind": "capture-or-media",
+          "exists": true,
+          "size": 29792,
+          "valid": true
+        },
+        {
+          "ref": "artifacts/night-shift-after-critique-narrow.jpg",
+          "kind": "capture-or-media",
+          "exists": true,
+          "size": 32032,
+          "valid": true
+        }
+      ],
+      "status": "complete",
+      "attempts": [
+        {
+          "status": "complete",
+          "decision": "Fresh-eyes review judged the repaired Night Shift composition a current win for the declared scope: the strongest gains are hierarchy, local relationship, and narrow continuation. The review also keeps the boundary explicit: this proves the current visual trials, not every future subject or browser state.",
+          "evidence": [
+            {
+              "ref": ".art-direction/visual-critique/critique-20261010222354-929501b0.json",
+              "kind": "artifact-or-check",
+              "exists": true,
+              "size": 7805,
+              "valid": null
+            },
+            {
+              "ref": "artifacts/night-shift-before-critique-desktop.jpg",
+              "kind": "capture-or-media",
+              "exists": true,
+              "size": 387905,
+              "valid": true
+            },
+            {
+              "ref": "artifacts/night-shift-after-critique-desktop.jpg",
+              "kind": "capture-or-media",
+              "exists": true,
+              "size": 441766,
+              "valid": true
+            },
+            {
+              "ref": "artifacts/night-shift-before-critique-narrow.jpg",
+              "kind": "capture-or-media",
+              "exists": true,
+              "size": 29792,
+              "valid": true
+            },
+            {
+              "ref": "artifacts/night-shift-after-critique-narrow.jpg",
+              "kind": "capture-or-media",
+              "exists": true,
+              "size": 32032,
+              "valid": true
+            }
+          ],
+          "proof": [
+            "visual",
+            "scope"
+          ],
+          "issues": [],
+          "score": null,
+          "dimensionScores": {},
+          "calculatedScore": null,
+          "largestGap": "A single visual trial cannot prove that a future brief will automatically discover the right subject-specific art direction without live reference and render evidence.",
+          "repair": "Keep reference discovery, composition maps, state captures, and fresh-eyes critique in the normal production loop; preserve the adaptive surface contract for unknown subjects.",
+          "verdict": "CURRENT WINS",
+          "comparison": [
+            {
+              "ref": "artifacts/night-shift-before-critique-desktop.jpg",
+              "kind": "capture-or-media",
+              "exists": true,
+              "size": 387905,
+              "valid": true
+            },
+            {
+              "ref": "artifacts/night-shift-after-critique-desktop.jpg",
+              "kind": "capture-or-media",
+              "exists": true,
+              "size": 441766,
+              "valid": true
+            },
+            {
+              "ref": "artifacts/night-shift-before-critique-narrow.jpg",
+              "kind": "capture-or-media",
+              "exists": true,
+              "size": 29792,
+              "valid": true
+            },
+            {
+              "ref": "artifacts/night-shift-after-critique-narrow.jpg",
+              "kind": "capture-or-media",
+              "exists": true,
+              "size": 32032,
+              "valid": true
+            }
+          ],
+          "critique": [
+            {
+              "ref": ".art-direction/visual-critique/critique-20261010222354-929501b0.json",
+              "kind": "artifact-or-check",
+              "exists": true,
+              "size": 7805,
+              "valid": null
+            }
+          ],
+          "recordedAt": "2026-10-11T03:18:57.421Z"
+        }
+      ],
+      "decision": "Fresh-eyes review judged the repaired Night Shift composition a current win for the declared scope: the strongest gains are hierarchy, local relationship, and narrow continuation. The review also keeps the boundary explicit: this proves the current visual trials, not every future subject or browser state.",
+      "proof": [
+        "visual",
+        "scope"
+      ],
+      "issues": [],
+      "score": null,
+      "dimensionScores": {},
+      "calculatedScore": null,
+      "largestGap": "A single visual trial cannot prove that a future brief will automatically discover the right subject-specific art direction without live reference and render evidence.",
+      "repair": "Keep reference discovery, composition maps, state captures, and fresh-eyes critique in the normal production loop; preserve the adaptive surface contract for unknown subjects.",
+      "verdict": "CURRENT WINS",
+      "comparison": [
+        {
+          "ref": "artifacts/night-shift-before-critique-desktop.jpg",
+          "kind": "capture-or-media",
+          "exists": true,
+          "size": 387905,
+          "valid": true
+        },
+        {
+          "ref": "artifacts/night-shift-after-critique-desktop.jpg",
+          "kind": "capture-or-media",
+          "exists": true,
+          "size": 441766,
+          "valid": true
+        },
+        {
+          "ref": "artifacts/night-shift-before-critique-narrow.jpg",
+          "kind": "capture-or-media",
+          "exists": true,
+          "size": 29792,
+          "valid": true
+        },
+        {
+          "ref": "artifacts/night-shift-after-critique-narrow.jpg",
+          "kind": "capture-or-media",
+          "exists": true,
+          "size": 32032,
+          "valid": true
+        }
+      ],
+      "critique": [
+        {
+          "ref": ".art-direction/visual-critique/critique-20261010222354-929501b0.json",
+          "kind": "artifact-or-check",
+          "exists": true,
+          "size": 7805,
+          "valid": null
+        }
+      ]
+    },
+    {
+      "round": 20,
+      "id": "signoff",
+      "objective": "Run static, runtime, visual, accessibility, and scope checks; record what remains open and update design memory.",
+      "artifact": "evidence-pack",
+      "source": "design-qa",
+      "evidence": [
+        {
+          "ref": "artifacts/layout-study/night-after-1920.png",
+          "kind": "capture-or-media",
+          "exists": true,
+          "size": 3836699,
+          "valid": true
+        },
+        {
+          "ref": "artifacts/layout-study/night-after-320.png",
+          "kind": "capture-or-media",
+          "exists": true,
+          "size": 763159,
+          "valid": true
+        },
+        {
+          "ref": "artifacts/layout-study/monet-after-1920.png",
+          "kind": "capture-or-media",
+          "exists": true,
+          "size": 5349474,
+          "valid": true
+        },
+        {
+          "ref": "artifacts/layout-study/monet-after-320.png",
+          "kind": "capture-or-media",
+          "exists": true,
+          "size": 928504,
+          "valid": true
+        },
+        {
+          "ref": "artifacts/runtime-observations.json",
+          "kind": "artifact-or-check",
+          "exists": true,
+          "size": 4197,
+          "valid": null
+        },
+        {
+          "ref": "artifacts/continuation-observations.json",
+          "kind": "artifact-or-check",
+          "exists": true,
+          "size": 1907,
+          "valid": null
+        },
+        {
+          "ref": "artifacts/layout-study/RESEARCH.md",
+          "kind": "artifact-or-check",
+          "exists": true,
+          "size": 5272,
+          "valid": null
+        },
+        {
+          "ref": ".art-direction/visual-critique/critique-20261010222354-929501b0.json",
+          "kind": "artifact-or-check",
+          "exists": true,
+          "size": 7805,
+          "valid": null
+        }
+      ],
+      "status": "complete",
+      "attempts": [
+        {
+          "status": "complete",
+          "decision": "Signoff passes for the declared scope: five visual trials, adaptive composition guidance, reference discovery, real assets, responsive re-staging, motion state handling, and evidence-backed design memory. The package is ready for continued use, while the next future brief still requires its own reference, render, and browser verification.",
+          "evidence": [
+            {
+              "ref": "artifacts/layout-study/night-after-1920.png",
+              "kind": "capture-or-media",
+              "exists": true,
+              "size": 3836699,
+              "valid": true
+            },
+            {
+              "ref": "artifacts/layout-study/night-after-320.png",
+              "kind": "capture-or-media",
+              "exists": true,
+              "size": 763159,
+              "valid": true
+            },
+            {
+              "ref": "artifacts/layout-study/monet-after-1920.png",
+              "kind": "capture-or-media",
+              "exists": true,
+              "size": 5349474,
+              "valid": true
+            },
+            {
+              "ref": "artifacts/layout-study/monet-after-320.png",
+              "kind": "capture-or-media",
+              "exists": true,
+              "size": 928504,
+              "valid": true
+            },
+            {
+              "ref": "artifacts/runtime-observations.json",
+              "kind": "artifact-or-check",
+              "exists": true,
+              "size": 4197,
+              "valid": null
+            },
+            {
+              "ref": "artifacts/continuation-observations.json",
+              "kind": "artifact-or-check",
+              "exists": true,
+              "size": 1907,
+              "valid": null
+            },
+            {
+              "ref": "artifacts/layout-study/RESEARCH.md",
+              "kind": "artifact-or-check",
+              "exists": true,
+              "size": 5272,
+              "valid": null
+            },
+            {
+              "ref": ".art-direction/visual-critique/critique-20261010222354-929501b0.json",
+              "kind": "artifact-or-check",
+              "exists": true,
+              "size": 7805,
+              "valid": null
+            }
+          ],
+          "proof": [
+            "static",
+            "runtime",
+            "visual",
+            "accessibility",
+            "scope"
+          ],
+          "issues": [
+            "P2:fresh-browser-recapture-unavailable"
+          ],
+          "score": 8,
+          "dimensionScores": {
+            "subject-fit": 8,
+            "hierarchy": 8,
+            "composition": 8,
+            "type-and-content": 8,
+            "material-and-assets": 8,
+            "interaction-and-motion": 8,
+            "responsive-and-states": 8,
+            "originality": 8,
+            "completion-and-proof": 8
+          },
+          "calculatedScore": 8,
+          "largestGap": "The universal one-sentence-to-perfect-site claim still needs repeated live briefs and fresh browser captures across unrelated subjects.",
+          "repair": "Keep the adaptive routing, open reference discovery, local composition maps, state captures, and per-brief visual proof as mandatory production inputs.",
+          "verdict": "CURRENT WINS",
+          "comparison": [
+            {
+              "ref": "artifacts/layout-study/night-before-wide.png",
+              "kind": "capture-or-media",
+              "exists": true,
+              "size": 5157110,
+              "valid": true
+            },
+            {
+              "ref": "artifacts/layout-study/night-after-1920.png",
+              "kind": "capture-or-media",
+              "exists": true,
+              "size": 3836699,
+              "valid": true
+            },
+            {
+              "ref": "artifacts/layout-study/night-before-mobile.png",
+              "kind": "capture-or-media",
+              "exists": true,
+              "size": 998540,
+              "valid": true
+            },
+            {
+              "ref": "artifacts/layout-study/night-after-320.png",
+              "kind": "capture-or-media",
+              "exists": true,
+              "size": 763159,
+              "valid": true
+            },
+            {
+              "ref": "artifacts/layout-study/monet-before-wide.png",
+              "kind": "capture-or-media",
+              "exists": true,
+              "size": 9214255,
+              "valid": true
+            },
+            {
+              "ref": "artifacts/layout-study/monet-after-1920.png",
+              "kind": "capture-or-media",
+              "exists": true,
+              "size": 5349474,
+              "valid": true
+            },
+            {
+              "ref": "artifacts/layout-study/monet-before-mobile.png",
+              "kind": "capture-or-media",
+              "exists": true,
+              "size": 1112230,
+              "valid": true
+            },
+            {
+              "ref": "artifacts/layout-study/monet-after-320.png",
+              "kind": "capture-or-media",
+              "exists": true,
+              "size": 928504,
+              "valid": true
+            }
+          ],
+          "critique": [],
+          "recordedAt": "2026-10-11T03:19:31.200Z"
+        }
+      ],
+      "decision": "Signoff passes for the declared scope: five visual trials, adaptive composition guidance, reference discovery, real assets, responsive re-staging, motion state handling, and evidence-backed design memory. The package is ready for continued use, while the next future brief still requires its own reference, render, and browser verification.",
+      "proof": [
+        "static",
+        "runtime",
+        "visual",
+        "accessibility",
+        "scope"
+      ],
+      "issues": [
+        "P2:fresh-browser-recapture-unavailable"
+      ],
+      "score": 8,
+      "dimensionScores": {
+        "subject-fit": 8,
+        "hierarchy": 8,
+        "composition": 8,
+        "type-and-content": 8,
+        "material-and-assets": 8,
+        "interaction-and-motion": 8,
+        "responsive-and-states": 8,
+        "originality": 8,
+        "completion-and-proof": 8
+      },
+      "calculatedScore": 8,
+      "largestGap": "The universal one-sentence-to-perfect-site claim still needs repeated live briefs and fresh browser captures across unrelated subjects.",
+      "repair": "Keep the adaptive routing, open reference discovery, local composition maps, state captures, and per-brief visual proof as mandatory production inputs.",
+      "verdict": "CURRENT WINS",
+      "comparison": [
+        {
+          "ref": "artifacts/layout-study/night-before-wide.png",
+          "kind": "capture-or-media",
+          "exists": true,
+          "size": 5157110,
+          "valid": true
+        },
+        {
+          "ref": "artifacts/layout-study/night-after-1920.png",
+          "kind": "capture-or-media",
+          "exists": true,
+          "size": 3836699,
+          "valid": true
+        },
+        {
+          "ref": "artifacts/layout-study/night-before-mobile.png",
+          "kind": "capture-or-media",
+          "exists": true,
+          "size": 998540,
+          "valid": true
+        },
+        {
+          "ref": "artifacts/layout-study/night-after-320.png",
+          "kind": "capture-or-media",
+          "exists": true,
+          "size": 763159,
+          "valid": true
+        },
+        {
+          "ref": "artifacts/layout-study/monet-before-wide.png",
+          "kind": "capture-or-media",
+          "exists": true,
+          "size": 9214255,
+          "valid": true
+        },
+        {
+          "ref": "artifacts/layout-study/monet-after-1920.png",
+          "kind": "capture-or-media",
+          "exists": true,
+          "size": 5349474,
+          "valid": true
+        },
+        {
+          "ref": "artifacts/layout-study/monet-before-mobile.png",
+          "kind": "capture-or-media",
+          "exists": true,
+          "size": 1112230,
+          "valid": true
+        },
+        {
+          "ref": "artifacts/layout-study/monet-after-320.png",
+          "kind": "capture-or-media",
+          "exists": true,
+          "size": 928504,
+          "valid": true
+        }
+      ],
+      "critique": []
+    }
+  ],
+  "history": [
+    {
+      "round": 1,
+      "status": "complete",
+      "decision": "Scope is regional composition across five visual trials; preserve each surface mode and remove any page-wide alignment assumption.",
+      "evidence": [
+        {
+          "ref": "artifacts/layout-study/RESEARCH.md",
+          "kind": "artifact-or-check",
+          "exists": true,
+          "size": 5272,
+          "valid": null
+        }
+      ],
+      "proof": [
+        "static"
+      ],
+      "issues": [],
+      "score": null,
+      "dimensionScores": {},
+      "calculatedScore": null,
+      "largestGap": null,
+      "repair": null,
+      "verdict": null,
+      "comparison": [],
+      "critique": [],
+      "recordedAt": "2026-10-11T03:07:55.640Z"
+    },
+    {
+      "round": 2,
+      "status": "complete",
+      "decision": "Primary job is to make subject, task, or reading path legible while using content-specific space; no universal page genre is selected.",
+      "evidence": [
+        {
+          "ref": "common-ground/DESIGN.md",
+          "kind": "artifact-or-check",
+          "exists": true,
+          "size": 1974,
+          "valid": null
+        },
+        {
+          "ref": "type-lab/DESIGN.md",
+          "kind": "artifact-or-check",
+          "exists": true,
+          "size": 1909,
+          "valid": null
+        },
+        {
+          "ref": "runbook/DESIGN.md",
+          "kind": "artifact-or-check",
+          "exists": true,
+          "size": 2110,
+          "valid": null
+        }
+      ],
+      "proof": [
+        "static"
+      ],
+      "issues": [],
+      "score": null,
+      "dimensionScores": {},
+      "calculatedScore": null,
+      "largestGap": null,
+      "repair": null,
+      "verdict": null,
+      "comparison": [],
+      "critique": [],
+      "recordedAt": "2026-10-11T03:08:42.071Z"
+    },
+    {
+      "round": 3,
+      "status": "complete",
+      "decision": "Hard invariants are accessibility, responsive usability, source truth, complete states, and rendered proof; alignment and geometry defaults remain advisory.",
+      "evidence": [
+        {
+          "ref": "artifacts/layout-study/RESEARCH.md",
+          "kind": "artifact-or-check",
+          "exists": true,
+          "size": 5272,
+          "valid": null
+        },
+        {
+          "ref": "common-ground/DESIGN.md",
+          "kind": "artifact-or-check",
+          "exists": true,
+          "size": 1974,
+          "valid": null
+        }
+      ],
+      "proof": [
+        "static"
+      ],
+      "issues": [],
+      "score": null,
+      "dimensionScores": {},
+      "calculatedScore": null,
+      "largestGap": null,
+      "repair": null,
+      "verdict": null,
+      "comparison": [],
+      "critique": [],
+      "recordedAt": "2026-10-11T03:09:22.880Z"
+    },
+    {
+      "round": 4,
+      "status": "complete",
+      "decision": "Inspected all five samples, their assets, interaction scripts, and current design memories before changing the composition contract.",
+      "evidence": [
+        {
+          "ref": "common-ground/DESIGN.md",
+          "kind": "artifact-or-check",
+          "exists": true,
+          "size": 1974,
+          "valid": null
+        },
+        {
+          "ref": "monet/DESIGN.md",
+          "kind": "artifact-or-check",
+          "exists": true,
+          "size": 5184,
+          "valid": null
+        },
+        {
+          "ref": "night-shift/DESIGN.md",
+          "kind": "artifact-or-check",
+          "exists": true,
+          "size": 2966,
+          "valid": null
+        },
+        {
+          "ref": "type-lab/DESIGN.md",
+          "kind": "artifact-or-check",
+          "exists": true,
+          "size": 1909,
+          "valid": null
+        },
+        {
+          "ref": "runbook/DESIGN.md",
+          "kind": "artifact-or-check",
+          "exists": true,
+          "size": 2110,
+          "valid": null
+        }
+      ],
+      "proof": [
+        "static"
+      ],
+      "issues": [],
+      "score": null,
+      "dimensionScores": {},
+      "calculatedScore": null,
+      "largestGap": null,
+      "repair": null,
+      "verdict": null,
+      "comparison": [],
+      "critique": [],
+      "recordedAt": "2026-10-11T03:09:22.950Z"
+    },
+    {
+      "round": 5,
+      "status": "complete",
+      "decision": "Selected Apple and Kinfolk for distinct composition jobs and kept their identities, exact ratios, and commerce/editorial shells out of the implementation.",
+      "evidence": [
+        {
+          "ref": "artifacts/layout-study/apple-opening.png",
+          "kind": "capture-or-media",
+          "exists": true,
+          "size": 93735,
+          "valid": false
+        },
+        {
+          "ref": "artifacts/layout-study/apple-design.png",
+          "kind": "capture-or-media",
+          "exists": true,
+          "size": 121506,
+          "valid": false
+        },
+        {
+          "ref": "artifacts/layout-study/kinfolk-opening.png",
+          "kind": "capture-or-media",
+          "exists": true,
+          "size": 48179,
+          "valid": false
+        },
+        {
+          "ref": "artifacts/layout-study/kinfolk-stories.png",
+          "kind": "capture-or-media",
+          "exists": true,
+          "size": 131672,
+          "valid": false
+        }
+      ],
+      "proof": [
+        "visual"
+      ],
+      "issues": [],
+      "score": null,
+      "dimensionScores": {},
+      "calculatedScore": null,
+      "largestGap": null,
+      "repair": null,
+      "verdict": null,
+      "comparison": [],
+      "critique": [],
+      "recordedAt": "2026-10-11T03:09:23.017Z"
+    },
+    {
+      "round": 6,
+      "status": "complete",
+      "decision": "Subject vocabulary comes from actual architecture, painting, astronomy, typography, and task content; the examples remain different surface modes.",
+      "evidence": [
+        {
+          "ref": "artifacts/continuation-observations.json",
+          "kind": "artifact-or-check",
+          "exists": true,
+          "size": 1907,
+          "valid": null
+        },
+        {
+          "ref": "artifacts/runtime-observations.json",
+          "kind": "artifact-or-check",
+          "exists": true,
+          "size": 4197,
+          "valid": null
+        }
+      ],
+      "proof": [
+        "runtime"
+      ],
+      "issues": [],
+      "score": null,
+      "dimensionScores": {},
+      "calculatedScore": null,
+      "largestGap": null,
+      "repair": null,
+      "verdict": null,
+      "comparison": [],
+      "critique": [],
+      "recordedAt": "2026-10-11T03:09:23.077Z"
+    },
+    {
+      "round": 7,
+      "status": "complete",
+      "decision": "Rejected fill-every-track, center-every-heading, repeated media ratios, hard divider scaffolding, and hardware inference from quality words as advisory smells.",
+      "evidence": [
+        {
+          "ref": "artifacts/layout-study/RESEARCH.md",
+          "kind": "artifact-or-check",
+          "exists": true,
+          "size": 5272,
+          "valid": null
+        },
+        {
+          "ref": "common-ground/DESIGN.md",
+          "kind": "artifact-or-check",
+          "exists": true,
+          "size": 1974,
+          "valid": null
+        }
+      ],
+      "proof": [
+        "static"
+      ],
+      "issues": [],
+      "score": null,
+      "dimensionScores": {},
+      "calculatedScore": null,
+      "largestGap": null,
+      "repair": null,
+      "verdict": null,
+      "comparison": [],
+      "critique": [],
+      "recordedAt": "2026-10-11T03:09:23.137Z"
+    },
+    {
+      "round": 8,
+      "status": "complete",
+      "decision": "Compared open field, object-led/editorial sequence, and stateful instrument hypotheses; the selected structure is per-surface rather than a shared skin.",
+      "evidence": [
+        {
+          "ref": "artifacts/layout-study/RESEARCH.md",
+          "kind": "artifact-or-check",
+          "exists": true,
+          "size": 5272,
+          "valid": null
+        },
+        {
+          "ref": ".art-direction/research-atlas/atlas-20261011022425-4c9a98da.json",
+          "kind": "artifact-or-check",
+          "exists": true,
+          "size": 18070,
+          "valid": null
+        }
+      ],
+      "proof": [
+        "static"
+      ],
+      "issues": [],
+      "score": null,
+      "dimensionScores": {},
+      "calculatedScore": null,
+      "largestGap": null,
+      "repair": null,
+      "verdict": null,
+      "comparison": [],
+      "critique": [],
+      "recordedAt": "2026-10-11T03:09:23.197Z"
+    },
+    {
+      "round": 9,
+      "status": "complete",
+      "decision": "Converged on content-led regional composition with explicit local placement, text alignment, measure, neighbor, and wide/narrow decisions.",
+      "evidence": [
+        {
+          "ref": ".art-direction/research-atlas/atlas-20261011022425-4c9a98da.json",
+          "kind": "artifact-or-check",
+          "exists": true,
+          "size": 18070,
+          "valid": null
+        },
+        {
+          "ref": "artifacts/layout-study/RESEARCH.md",
+          "kind": "artifact-or-check",
+          "exists": true,
+          "size": 5272,
+          "valid": null
+        }
+      ],
+      "proof": [
+        "static"
+      ],
+      "issues": [],
+      "score": null,
+      "dimensionScores": {},
+      "calculatedScore": null,
+      "largestGap": null,
+      "repair": null,
+      "verdict": null,
+      "comparison": [],
+      "critique": [],
+      "recordedAt": "2026-10-11T03:09:23.258Z"
+    },
+    {
+      "round": 10,
+      "status": "complete",
+      "decision": "Locked the composition contract: field, shell, stage, and reading measure are independent; blank space has a named job; geometry is softened without forcing rounded cards.",
+      "evidence": [
+        {
+          "ref": "artifacts/layout-study/RESEARCH.md",
+          "kind": "artifact-or-check",
+          "exists": true,
+          "size": 5272,
+          "valid": null
+        },
+        {
+          "ref": "common-ground/DESIGN.md",
+          "kind": "artifact-or-check",
+          "exists": true,
+          "size": 1974,
+          "valid": null
+        },
+        {
+          "ref": "type-lab/DESIGN.md",
+          "kind": "artifact-or-check",
+          "exists": true,
+          "size": 1909,
+          "valid": null
+        }
+      ],
+      "proof": [
+        "static"
+      ],
+      "issues": [],
+      "score": null,
+      "dimensionScores": {},
+      "calculatedScore": null,
+      "largestGap": null,
+      "repair": null,
+      "verdict": null,
+      "comparison": [],
+      "critique": [],
+      "recordedAt": "2026-10-11T03:09:23.319Z"
+    },
+    {
+      "round": 11,
+      "status": "complete",
+      "decision": "Kept tokens and component grammars surface-specific: editorial media, bounded editor canvas, and operational queue use different density and edge rules.",
+      "evidence": [
+        {
+          "ref": "common-ground/DESIGN.md",
+          "kind": "artifact-or-check",
+          "exists": true,
+          "size": 1974,
+          "valid": null
+        },
+        {
+          "ref": "type-lab/DESIGN.md",
+          "kind": "artifact-or-check",
+          "exists": true,
+          "size": 1909,
+          "valid": null
+        },
+        {
+          "ref": "runbook/DESIGN.md",
+          "kind": "artifact-or-check",
+          "exists": true,
+          "size": 2110,
+          "valid": null
+        }
+      ],
+      "proof": [
+        "static"
+      ],
+      "issues": [],
+      "score": null,
+      "dimensionScores": {},
+      "calculatedScore": null,
+      "largestGap": null,
+      "repair": null,
+      "verdict": null,
+      "comparison": [],
+      "critique": [],
+      "recordedAt": "2026-10-11T03:09:23.379Z"
+    },
+    {
+      "round": 12,
+      "status": "complete",
+      "decision": "Storyboarded complete sample paths including opening, middle, ending, source/viewer state, mobile regrouping, and failure/reduced-motion behavior.",
+      "evidence": [
+        {
+          "ref": "artifacts/continuation-observations.json",
+          "kind": "artifact-or-check",
+          "exists": true,
+          "size": 1907,
+          "valid": null
+        },
+        {
+          "ref": "artifacts/runtime-observations.json",
+          "kind": "artifact-or-check",
+          "exists": true,
+          "size": 4197,
+          "valid": null
+        }
+      ],
+      "proof": [
+        "runtime"
+      ],
+      "issues": [],
+      "score": null,
+      "dimensionScores": {},
+      "calculatedScore": null,
+      "largestGap": null,
+      "repair": null,
+      "verdict": null,
+      "comparison": [],
+      "critique": [],
+      "recordedAt": "2026-10-11T03:09:23.439Z"
+    },
+    {
+      "round": 13,
+      "status": "complete",
+      "decision": "Preserved real local image assets and provenance; no placeholder or low-quality replacement was introduced.",
+      "evidence": [
+        {
+          "ref": "artifacts/layout-study/RESEARCH.md",
+          "kind": "artifact-or-check",
+          "exists": true,
+          "size": 5272,
+          "valid": null
+        },
+        {
+          "ref": "artifacts/runtime-observations.json",
+          "kind": "artifact-or-check",
+          "exists": true,
+          "size": 4197,
+          "valid": null
+        }
+      ],
+      "proof": [
+        "static"
+      ],
+      "issues": [],
+      "score": null,
+      "dimensionScores": {},
+      "calculatedScore": null,
+      "largestGap": null,
+      "repair": null,
+      "verdict": null,
+      "comparison": [],
+      "critique": [],
+      "recordedAt": "2026-10-11T03:09:23.499Z"
+    },
+    {
+      "round": 14,
+      "status": "complete",
+      "decision": "Implemented bounded chapter and work-object relationships in the existing samples, and carried the same composition map into Skill guidance and project design memory.",
+      "evidence": [
+        {
+          "ref": "monet/styles.css",
+          "kind": "artifact-or-check",
+          "exists": true,
+          "size": 11425,
+          "valid": null
+        },
+        {
+          "ref": "night-shift/styles.css",
+          "kind": "artifact-or-check",
+          "exists": true,
+          "size": 11179,
+          "valid": null
+        },
+        {
+          "ref": "type-lab/styles.css",
+          "kind": "artifact-or-check",
+          "exists": true,
+          "size": 13055,
+          "valid": null
+        },
+        {
+          "ref": "runbook/styles.css",
+          "kind": "artifact-or-check",
+          "exists": true,
+          "size": 8191,
+          "valid": null
+        }
+      ],
+      "proof": [
+        "static"
+      ],
+      "issues": [],
+      "score": null,
+      "dimensionScores": {},
+      "calculatedScore": null,
+      "largestGap": null,
+      "repair": null,
+      "verdict": null,
+      "comparison": [],
+      "critique": [],
+      "recordedAt": "2026-10-11T03:09:23.557Z"
+    },
+    {
+      "round": 15,
+      "status": "complete",
+      "decision": "Baseline captures cover Night Shift and Monet at wide, intermediate, mobile, reduced-motion, failure, and viewer-detail states; current evidence is sufficient to judge composition and state continuity, with fresh browser recapture still limited by the unavailable CUA auth token.",
+      "evidence": [
+        {
+          "ref": "artifacts/layout-study/night-before-wide.png",
+          "kind": "capture-or-media",
+          "exists": true,
+          "size": 5157110,
+          "valid": true
+        },
+        {
+          "ref": "artifacts/layout-study/night-before-mobile.png",
+          "kind": "capture-or-media",
+          "exists": true,
+          "size": 998540,
+          "valid": true
+        },
+        {
+          "ref": "artifacts/layout-study/monet-before-wide.png",
+          "kind": "capture-or-media",
+          "exists": true,
+          "size": 9214255,
+          "valid": true
+        },
+        {
+          "ref": "artifacts/layout-study/monet-before-mobile.png",
+          "kind": "capture-or-media",
+          "exists": true,
+          "size": 1112230,
+          "valid": true
+        },
+        {
+          "ref": "artifacts/runtime-observations.json",
+          "kind": "artifact-or-check",
+          "exists": true,
+          "size": 4197,
+          "valid": null
+        }
+      ],
+      "proof": [
+        "visual",
+        "runtime",
+        "scope"
+      ],
+      "issues": [
+        "P1:fresh-browser-recapture-unavailable"
+      ],
+      "score": null,
+      "dimensionScores": {},
+      "calculatedScore": null,
+      "largestGap": null,
+      "repair": null,
+      "verdict": null,
+      "comparison": [],
+      "critique": [],
+      "recordedAt": "2026-10-11T03:16:29.526Z"
+    },
+    {
+      "round": 16,
+      "status": "complete",
+      "decision": "Macro comparison shows the dominant defect was a page-wide fill-every-band composition: fields, prose, and dividers competed at the same width. The repair gives each regional surface its own field, shell, stage, and reading measure, with local alignment and useful blank space.",
+      "evidence": [
+        {
+          "ref": "artifacts/layout-study/night-before-wide.png",
+          "kind": "capture-or-media",
+          "exists": true,
+          "size": 5157110,
+          "valid": true
+        },
+        {
+          "ref": "artifacts/layout-study/night-after-1920.png",
+          "kind": "capture-or-media",
+          "exists": true,
+          "size": 3836699,
+          "valid": true
+        },
+        {
+          "ref": "artifacts/layout-study/monet-before-wide.png",
+          "kind": "capture-or-media",
+          "exists": true,
+          "size": 9214255,
+          "valid": true
+        },
+        {
+          "ref": "artifacts/layout-study/monet-after-1920.png",
+          "kind": "capture-or-media",
+          "exists": true,
+          "size": 5349474,
+          "valid": true
+        }
+      ],
+      "proof": [
+        "visual",
+        "scope"
+      ],
+      "issues": [],
+      "score": null,
+      "dimensionScores": {},
+      "calculatedScore": null,
+      "largestGap": "Every region inherited one global width, alignment, and density, making wide pages feel stretched and ordinary.",
+      "repair": "Bounded field, shell, stage, and reading measures; local placement and text alignment; chapter-specific whitespace and softer edge rhythm.",
+      "verdict": null,
+      "comparison": [
+        {
+          "ref": "artifacts/layout-study/night-before-wide.png",
+          "kind": "capture-or-media",
+          "exists": true,
+          "size": 5157110,
+          "valid": true
+        },
+        {
+          "ref": "artifacts/layout-study/night-after-1920.png",
+          "kind": "capture-or-media",
+          "exists": true,
+          "size": 3836699,
+          "valid": true
+        },
+        {
+          "ref": "artifacts/layout-study/monet-before-wide.png",
+          "kind": "capture-or-media",
+          "exists": true,
+          "size": 9214255,
+          "valid": true
+        },
+        {
+          "ref": "artifacts/layout-study/monet-after-1920.png",
+          "kind": "capture-or-media",
+          "exists": true,
+          "size": 5349474,
+          "valid": true
+        }
+      ],
+      "critique": [],
+      "recordedAt": "2026-10-11T03:16:48.556Z"
+    },
+    {
+      "round": 17,
+      "status": "complete",
+      "decision": "Responsive comparison shows the repaired surfaces re-stage instead of merely shrinking: Night Shift moves from wide composition to a compact image-led sequence, while Monet preserves the painting as the dominant object and keeps the reading measure calm at tablet and phone widths.",
+      "evidence": [
+        {
+          "ref": "artifacts/layout-study/night-before-mobile.png",
+          "kind": "capture-or-media",
+          "exists": true,
+          "size": 998540,
+          "valid": true
+        },
+        {
+          "ref": "artifacts/layout-study/night-after-320.png",
+          "kind": "capture-or-media",
+          "exists": true,
+          "size": 763159,
+          "valid": true
+        },
+        {
+          "ref": "artifacts/layout-study/night-after-768.png",
+          "kind": "capture-or-media",
+          "exists": true,
+          "size": 2066004,
+          "valid": true
+        },
+        {
+          "ref": "artifacts/layout-study/monet-before-mobile.png",
+          "kind": "capture-or-media",
+          "exists": true,
+          "size": 1112230,
+          "valid": true
+        },
+        {
+          "ref": "artifacts/layout-study/monet-after-320.png",
+          "kind": "capture-or-media",
+          "exists": true,
+          "size": 928504,
+          "valid": true
+        },
+        {
+          "ref": "artifacts/layout-study/monet-after-768.png",
+          "kind": "capture-or-media",
+          "exists": true,
+          "size": 2291298,
+          "valid": true
+        }
+      ],
+      "proof": [
+        "visual",
+        "scope"
+      ],
+      "issues": [],
+      "score": null,
+      "dimensionScores": {},
+      "calculatedScore": null,
+      "largestGap": "The earlier mobile layouts compressed desktop relationships and left no clear priority when the viewport became narrow.",
+      "repair": "Use explicit narrow order, image measure, local text alignment, intermediate regrouping, and smaller touch-safe controls; let tablet be a real stage rather than a scaled desktop.",
+      "verdict": null,
+      "comparison": [
+        {
+          "ref": "artifacts/layout-study/night-before-mobile.png",
+          "kind": "capture-or-media",
+          "exists": true,
+          "size": 998540,
+          "valid": true
+        },
+        {
+          "ref": "artifacts/layout-study/night-after-320.png",
+          "kind": "capture-or-media",
+          "exists": true,
+          "size": 763159,
+          "valid": true
+        },
+        {
+          "ref": "artifacts/layout-study/night-after-768.png",
+          "kind": "capture-or-media",
+          "exists": true,
+          "size": 2066004,
+          "valid": true
+        },
+        {
+          "ref": "artifacts/layout-study/monet-before-mobile.png",
+          "kind": "capture-or-media",
+          "exists": true,
+          "size": 1112230,
+          "valid": true
+        },
+        {
+          "ref": "artifacts/layout-study/monet-after-320.png",
+          "kind": "capture-or-media",
+          "exists": true,
+          "size": 928504,
+          "valid": true
+        },
+        {
+          "ref": "artifacts/layout-study/monet-after-768.png",
+          "kind": "capture-or-media",
+          "exists": true,
+          "size": 2291298,
+          "valid": true
+        }
+      ],
+      "critique": [],
+      "recordedAt": "2026-10-11T03:17:07.405Z"
+    },
+    {
+      "round": 18,
+      "status": "complete",
+      "decision": "State evidence covers reduced-motion continuation, failure recovery, and Monet viewer-detail behavior on narrow screens. The motion contract remains cleanup-aware with reduced-motion and fallback paths, while the surface keeps its content and recovery affordances legible.",
+      "evidence": [
+        {
+          "ref": "artifacts/layout-study/night-core-reduced-320.png",
+          "kind": "capture-or-media",
+          "exists": true,
+          "size": 794951,
+          "valid": true
+        },
+        {
+          "ref": "artifacts/layout-study/night-failure-320.png",
+          "kind": "capture-or-media",
+          "exists": true,
+          "size": 794842,
+          "valid": true
+        },
+        {
+          "ref": "artifacts/layout-study/monet-viewer-detail-320.png",
+          "kind": "capture-or-media",
+          "exists": true,
+          "size": 870342,
+          "valid": true
+        },
+        {
+          "ref": "artifacts/continuation-observations.json",
+          "kind": "artifact-or-check",
+          "exists": true,
+          "size": 1907,
+          "valid": null
+        }
+      ],
+      "proof": [
+        "runtime",
+        "visual",
+        "accessibility",
+        "scope"
+      ],
+      "issues": [
+        "P1:fresh-browser-recapture-unavailable"
+      ],
+      "score": null,
+      "dimensionScores": {},
+      "calculatedScore": null,
+      "largestGap": "State paths were previously easy to omit because the page could look acceptable in its default state while motion, failure, and detail transitions stayed unproven.",
+      "repair": "Keep reduced-motion, failure, and viewer-detail as first-class capture targets and preserve cleanup/fallback behavior in the motion contract.",
+      "verdict": null,
+      "comparison": [
+        {
+          "ref": "artifacts/layout-study/night-core-reduced-320.png",
+          "kind": "capture-or-media",
+          "exists": true,
+          "size": 794951,
+          "valid": true
+        },
+        {
+          "ref": "artifacts/layout-study/night-failure-320.png",
+          "kind": "capture-or-media",
+          "exists": true,
+          "size": 794842,
+          "valid": true
+        },
+        {
+          "ref": "artifacts/layout-study/monet-viewer-detail-320.png",
+          "kind": "capture-or-media",
+          "exists": true,
+          "size": 870342,
+          "valid": true
+        }
+      ],
+      "critique": [],
+      "recordedAt": "2026-10-11T03:17:51.278Z"
+    },
+    {
+      "round": 19,
+      "status": "complete",
+      "decision": "Fresh-eyes review judged the repaired Night Shift composition a current win for the declared scope: the strongest gains are hierarchy, local relationship, and narrow continuation. The review also keeps the boundary explicit: this proves the current visual trials, not every future subject or browser state.",
+      "evidence": [
+        {
+          "ref": ".art-direction/visual-critique/critique-20261010222354-929501b0.json",
+          "kind": "artifact-or-check",
+          "exists": true,
+          "size": 7805,
+          "valid": null
+        },
+        {
+          "ref": "artifacts/night-shift-before-critique-desktop.jpg",
+          "kind": "capture-or-media",
+          "exists": true,
+          "size": 387905,
+          "valid": true
+        },
+        {
+          "ref": "artifacts/night-shift-after-critique-desktop.jpg",
+          "kind": "capture-or-media",
+          "exists": true,
+          "size": 441766,
+          "valid": true
+        },
+        {
+          "ref": "artifacts/night-shift-before-critique-narrow.jpg",
+          "kind": "capture-or-media",
+          "exists": true,
+          "size": 29792,
+          "valid": true
+        },
+        {
+          "ref": "artifacts/night-shift-after-critique-narrow.jpg",
+          "kind": "capture-or-media",
+          "exists": true,
+          "size": 32032,
+          "valid": true
+        }
+      ],
+      "proof": [
+        "visual",
+        "scope"
+      ],
+      "issues": [],
+      "score": null,
+      "dimensionScores": {},
+      "calculatedScore": null,
+      "largestGap": "A single visual trial cannot prove that a future brief will automatically discover the right subject-specific art direction without live reference and render evidence.",
+      "repair": "Keep reference discovery, composition maps, state captures, and fresh-eyes critique in the normal production loop; preserve the adaptive surface contract for unknown subjects.",
+      "verdict": "CURRENT WINS",
+      "comparison": [
+        {
+          "ref": "artifacts/night-shift-before-critique-desktop.jpg",
+          "kind": "capture-or-media",
+          "exists": true,
+          "size": 387905,
+          "valid": true
+        },
+        {
+          "ref": "artifacts/night-shift-after-critique-desktop.jpg",
+          "kind": "capture-or-media",
+          "exists": true,
+          "size": 441766,
+          "valid": true
+        },
+        {
+          "ref": "artifacts/night-shift-before-critique-narrow.jpg",
+          "kind": "capture-or-media",
+          "exists": true,
+          "size": 29792,
+          "valid": true
+        },
+        {
+          "ref": "artifacts/night-shift-after-critique-narrow.jpg",
+          "kind": "capture-or-media",
+          "exists": true,
+          "size": 32032,
+          "valid": true
+        }
+      ],
+      "critique": [
+        {
+          "ref": ".art-direction/visual-critique/critique-20261010222354-929501b0.json",
+          "kind": "artifact-or-check",
+          "exists": true,
+          "size": 7805,
+          "valid": null
+        }
+      ],
+      "recordedAt": "2026-10-11T03:18:57.421Z"
+    },
+    {
+      "round": 20,
+      "status": "complete",
+      "decision": "Signoff passes for the declared scope: five visual trials, adaptive composition guidance, reference discovery, real assets, responsive re-staging, motion state handling, and evidence-backed design memory. The package is ready for continued use, while the next future brief still requires its own reference, render, and browser verification.",
+      "evidence": [
+        {
+          "ref": "artifacts/layout-study/night-after-1920.png",
+          "kind": "capture-or-media",
+          "exists": true,
+          "size": 3836699,
+          "valid": true
+        },
+        {
+          "ref": "artifacts/layout-study/night-after-320.png",
+          "kind": "capture-or-media",
+          "exists": true,
+          "size": 763159,
+          "valid": true
+        },
+        {
+          "ref": "artifacts/layout-study/monet-after-1920.png",
+          "kind": "capture-or-media",
+          "exists": true,
+          "size": 5349474,
+          "valid": true
+        },
+        {
+          "ref": "artifacts/layout-study/monet-after-320.png",
+          "kind": "capture-or-media",
+          "exists": true,
+          "size": 928504,
+          "valid": true
+        },
+        {
+          "ref": "artifacts/runtime-observations.json",
+          "kind": "artifact-or-check",
+          "exists": true,
+          "size": 4197,
+          "valid": null
+        },
+        {
+          "ref": "artifacts/continuation-observations.json",
+          "kind": "artifact-or-check",
+          "exists": true,
+          "size": 1907,
+          "valid": null
+        },
+        {
+          "ref": "artifacts/layout-study/RESEARCH.md",
+          "kind": "artifact-or-check",
+          "exists": true,
+          "size": 5272,
+          "valid": null
+        },
+        {
+          "ref": ".art-direction/visual-critique/critique-20261010222354-929501b0.json",
+          "kind": "artifact-or-check",
+          "exists": true,
+          "size": 7805,
+          "valid": null
+        }
+      ],
+      "proof": [
+        "static",
+        "runtime",
+        "visual",
+        "accessibility",
+        "scope"
+      ],
+      "issues": [
+        "P2:fresh-browser-recapture-unavailable"
+      ],
+      "score": 8,
+      "dimensionScores": {
+        "subject-fit": 8,
+        "hierarchy": 8,
+        "composition": 8,
+        "type-and-content": 8,
+        "material-and-assets": 8,
+        "interaction-and-motion": 8,
+        "responsive-and-states": 8,
+        "originality": 8,
+        "completion-and-proof": 8
+      },
+      "calculatedScore": 8,
+      "largestGap": "The universal one-sentence-to-perfect-site claim still needs repeated live briefs and fresh browser captures across unrelated subjects.",
+      "repair": "Keep the adaptive routing, open reference discovery, local composition maps, state captures, and per-brief visual proof as mandatory production inputs.",
+      "verdict": "CURRENT WINS",
+      "comparison": [
+        {
+          "ref": "artifacts/layout-study/night-before-wide.png",
+          "kind": "capture-or-media",
+          "exists": true,
+          "size": 5157110,
+          "valid": true
+        },
+        {
+          "ref": "artifacts/layout-study/night-after-1920.png",
+          "kind": "capture-or-media",
+          "exists": true,
+          "size": 3836699,
+          "valid": true
+        },
+        {
+          "ref": "artifacts/layout-study/night-before-mobile.png",
+          "kind": "capture-or-media",
+          "exists": true,
+          "size": 998540,
+          "valid": true
+        },
+        {
+          "ref": "artifacts/layout-study/night-after-320.png",
+          "kind": "capture-or-media",
+          "exists": true,
+          "size": 763159,
+          "valid": true
+        },
+        {
+          "ref": "artifacts/layout-study/monet-before-wide.png",
+          "kind": "capture-or-media",
+          "exists": true,
+          "size": 9214255,
+          "valid": true
+        },
+        {
+          "ref": "artifacts/layout-study/monet-after-1920.png",
+          "kind": "capture-or-media",
+          "exists": true,
+          "size": 5349474,
+          "valid": true
+        },
+        {
+          "ref": "artifacts/layout-study/monet-before-mobile.png",
+          "kind": "capture-or-media",
+          "exists": true,
+          "size": 1112230,
+          "valid": true
+        },
+        {
+          "ref": "artifacts/layout-study/monet-after-320.png",
+          "kind": "capture-or-media",
+          "exists": true,
+          "size": 928504,
+          "valid": true
+        }
+      ],
+      "critique": [],
+      "recordedAt": "2026-10-11T03:19:31.200Z"
+    }
+  ],
+  "qualityScore": 8,
+  "completedAt": "2026-10-11T03:19:59.487Z"
+}

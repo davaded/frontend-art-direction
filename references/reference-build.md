@@ -13,6 +13,8 @@ Primary workflow/object:
 Visual genome:
 First viewport:
 Page sections:
+Regional composition and density:
+Composition budget: local alignment sequence / natural measures / field sequence / counterfield / full-bleed reason:
 Component grammar:
 State matrix:
 Motion purpose:
@@ -54,8 +56,13 @@ Open the live reference or inspect the supplied image before writing UI code. Re
 - repeated component silhouettes and fixed-format frames;
 - interaction states, object continuity, and motion triggers;
 - desktop/mobile differences and any real media or data object.
+- regional placement, text alignment, natural measure, counterfield, pause, geometry tokens, and what changes at wide/intermediate/narrow widths;
 
 Do not infer hidden source code or claim a framework from appearance alone.
+
+The build contract must distinguish three layers: the viewport field, each region's content/stage measure, and the semantic object or control inside it. Each region also receives an anchor, measure role, field relationship, density, and mobile reflow action so the implementation has a spatial instruction rather than a mood. The composition budget records the sequence of local alignments, natural measures, fields, counterfield, and any earned full-bleed exception. A wide viewport may contain a narrow reading block and a smaller object stage with open space around both; a narrow viewport may center a short title, start-align prose, and move an attached action below the object. Do not make every region full width or make every region share one axis merely because the page is coherent.
+
+The spatial budget adds an occupancy review: a starting wide-screen range for the dominant stage, a named counterfield, a limit on consecutive full-bleed regions, and separate narrow-screen text gutters versus media bleed. Treat it as an advisory construction input. It exists to stop a parent grid from silently turning every region into a filled band; an authored composition, inspected reference, or stronger model proposal can replace it with evidence.
 
 ### 2. Translate The Grammar
 

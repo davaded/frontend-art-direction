@@ -4,6 +4,7 @@ import { resolve } from "node:path";
 import {
   chooseRecord,
   isMainModule,
+  isUnderspecifiedRequest,
   loadDataset,
   meaningfulTokens,
   option,
@@ -24,6 +25,7 @@ import { renderDesignOperation, resolveDesignOperation } from "./design-operatio
 import { buildDesignLoop, renderDesignLoop } from "./design-loop.mjs";
 import { resolveProductRequest, renderProductContextStatus } from "./product-context.mjs";
 import { hasReferenceBuildSignal } from "./reference-build.mjs";
+import { renderDesignMethods } from "./design-methods.mjs";
 
 const HELP = `design-brief.mjs [options]
 
@@ -78,7 +80,7 @@ function qualitySelection(queryTokens) {
   const quality = loadDataset("quality-gates.json");
   const dials = rankQualityRecords(quality.sceneDials, queryTokens, 2).filter((item) => item.score > 0);
   const rankedGates = rankQualityRecords(quality.qualityGates, queryTokens, 6);
-  const mandatoryGates = ["visual-direction", "geometry-language", "constraint-authority", "product-signal", "surface-completeness"]
+  const mandatoryGates = ["visual-direction", "composition-breathing", "geometry-language", "constraint-authority", "product-signal", "surface-completeness"]
     .map((id) => quality.qualityGates.find((gate) => gate.id === id))
     .filter(Boolean);
   const gates = [...rankedGates];
@@ -93,7 +95,7 @@ function qualitySelection(queryTokens) {
     })
     .sort((left, right) => right.score - left.score || left.id.localeCompare(right.id))
     .slice(0, 4);
-  const baselineAntiPatterns = ["centered-hero-template", "card-wall", "hard-edge-scaffolding", "presentation-shell", "first-viewport-only", "unfinished-surface", "type-scale-collapse", "generic-copy"]
+  const baselineAntiPatterns = ["centered-hero-template", "card-wall", "hard-edge-scaffolding", "packed-composition", "presentation-shell", "first-viewport-only", "unfinished-surface", "type-scale-collapse", "generic-copy"]
     .map((id) => quality.antiPatterns.find((record) => record.id === id))
     .filter(Boolean);
   const antiPatterns = [...rankedAntiPatterns];
@@ -143,7 +145,7 @@ export function buildBrief({ query, projectRoot, overrides = {}, authoredDirecti
   const profile = productRequest.profile;
   const selectionQuery = productRequest.selectionQuery;
   const queryTokens = meaningfulTokens(selectionQuery);
-  const adaptiveDefault = !overrides.profile && !overrides.style && productRequest.source === "open" && !hasReferenceBuildSignal(query);
+  const adaptiveDefault = !overrides.profile && !overrides.style && productRequest.source === "open" && !hasReferenceBuildSignal(query) && isUnderspecifiedRequest(selectionQuery);
   const quality = qualitySelection(queryTokens);
   const style = chooseRecord(datasets.styles, [...queryTokens, ...tokenize(profile.record.id)], overrides.style, adaptiveDefault ? "evidence-led-neutral" : profile.record.stance, ["id", "label", "keywords", "bestFor"]);
   const type = chooseRecord(datasets.types, [...queryTokens, ...tokenize(profile.record.id), ...tokenize(style.record.id)], overrides.type, adaptiveDefault ? "adaptive-hierarchy" : profile.record.type);
@@ -272,6 +274,7 @@ export function buildBrief({ query, projectRoot, overrides = {}, authoredDirecti
       quality: quality.source,
       visualDirection: visualDirection.source,
       references: referenceComposition.source,
+      designMethods: referenceComposition.designMethods.source,
       referenceSources: referenceScout.source,
     },
   };
@@ -293,11 +296,11 @@ export function renderBriefMarkdown(brief) {
   const references = brief.referenceComposition.selected.length > 0
     ? brief.referenceComposition.selected.map((reference, index) => `- **${index + 1}. ${reference.label}** · ${reference.assignedRoleLabel} · ${reference.confidence}: ${reference.translate} Borrow: ${reference.borrow.join("；")} Reject: ${reference.reject.join("；")}`).join("\n")
     : "- No reference selected; use local evidence first.";
-  const scoutHeading = brief.referenceScout.active ? "Global Product Reference Scout" : "External Reference Scout (inactive)";
+  const scoutHeading = brief.referenceScout.active ? "External Reference Scout" : "External Reference Scout (inactive)";
   const sourceCandidates = brief.referenceScout.selected.length > 0
     ? brief.referenceScout.selected.map((source, index) => `- **${index + 1}. ${source.label}** · ${source.confidence}: ${source.why} ${source.urls.map((url) => `[official](${url})`).join(" · ")}`).join("\n")
     : brief.referenceScout.active
-      ? "- No global product source selected; add product/category evidence first."
+      ? "- No catalog source fits this subject; follow the open discovery plan instead of inheriting a hardware reference."
       : "- Inactive until a domain, audience, object, task, or named reference is supplied.";
   return `# Art Direction Brief (Candidate)
 
@@ -353,7 +356,7 @@ ${renderCompletionContract(brief.completionContract)}
 ## Visual Direction Contract
 
 - First viewport: ${brief.visualDirection.firstViewport.layout}
-- Alignment: ${brief.visualDirection.firstViewport.alignmentAxis}
+- Local alignment suggestion: ${brief.visualDirection.firstViewport.alignmentAxis} Decide the remaining regions separately.
 - Card budget: ${brief.visualDirection.surfaceRules.cardBudget}
 - Edge character: ${brief.visualDirection.geometryRules.edgeCharacter}
 - Corner hierarchy: ${brief.visualDirection.geometryRules.cornerHierarchy}
@@ -378,12 +381,18 @@ The selected references are lenses with distinct jobs, not a checklist. The brie
 
 ${references}
 
+${renderDesignMethods(brief.referenceComposition.designMethods)}
+
 ## ${scoutHeading}
 
 - Category: **${brief.referenceScout.category.label}** (${brief.referenceScout.category.confidence})
 - Policy: quality and product fit outrank geography, popularity, and market proximity.
 
 ${sourceCandidates}
+
+Discovery channels: ${brief.referenceScout.discoveryPlan.channels.map((channel) => `[${channel.label}](${channel.url})`).join("; ") || "brief needed"}
+
+${brief.referenceScout.discoveryPlan.policy}
 
 Live inspection prompts: ${brief.referenceScout.liveInspectionChecklist.join("；")}
 

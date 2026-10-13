@@ -2,7 +2,7 @@
 
 import { isMainModule, isUnderspecifiedRequest, loadDataset, meaningfulTokens, option, parseArgs, tokenize, writeOutput } from "./lib.mjs";
 import { advisoryChecks, renderAuthorityMarkdown, resolveCreativeAuthority } from "./authority.mjs";
-import { applyAuthoredDirection, buildCreativeProcess, readAuthoredDirection, renderCreativeProcess } from "./creative-process.mjs";
+import { applyAuthoredDirection, buildCompositionPlan, buildCreativeProcess, readAuthoredDirection, renderCreativeProcess } from "./creative-process.mjs";
 import { buildProductSignal, renderProductSignal } from "./product-signal.mjs";
 import { buildCompletionContract, renderCompletionContract } from "./completion-contract.mjs";
 import { renderProductContextStatus, resolveProductRequest } from "./product-context.mjs";
@@ -44,10 +44,14 @@ function idOf(value) {
   return typeof value === "string" ? value : value.id ?? "";
 }
 
+function signalTokenMatches(token, signalTokens) {
+  return signalTokens.some((signal) => token === signal || (token.endsWith("s") && token.slice(0, -1) === signal) || (signal.endsWith("s") && signal.slice(0, -1) === token));
+}
+
 const SIGNAL_BOOSTS = [
   {
     directionId: "stateful-instrument",
-    tokens: ["ai", "agent", "assistant", "streaming", "thinking", "approval", "realtime", "audio", "video", "player", "voice", "代理", "流式", "思考", "审批", "实时", "播放"],
+    tokens: ["ai", "agent", "assistant", "streaming", "thinking", "approval", "realtime", "audio", "video", "player", "voice", "sound", "soundscape", "recording", "music", "声音", "声场", "录音", "音乐", "音频", "代理", "流式", "思考", "审批", "实时", "播放"],
     boost: 28,
   },
   {
@@ -64,6 +68,11 @@ const SIGNAL_BOOSTS = [
     directionId: "object-led-editorial",
     tokens: ["hardware", "device", "product", "material", "launch", "peripheral", "硬件", "设备", "产品", "材质", "外设"],
     boost: 18,
+  },
+  {
+    directionId: "narrative-chapters",
+    tokens: ["story", "editorial", "publication", "journal", "magazine", "essay", "narrative", "blog", "film", "cinema", "出版", "刊物", "杂志", "文章", "叙事", "章节", "故事", "博客", "电影", "影像", "影评"],
+    boost: 30,
   },
 ];
 
@@ -160,13 +169,14 @@ function buildRoutedConceptSet(query, directions, treatments, {
   reference = "",
   queryTokens = [],
   contextTokens = [],
+  surfaceMode = "",
   selectedId = null,
   status = "selection-required",
 } = {}) {
   const profileId = idOf(profile);
   const referenceId = idOf(reference);
   const ranked = directions
-    .map((direction) => ({ direction, ...scoreDirection(direction, queryTokens, contextTokens, { profileId, referenceId }) }))
+    .map((direction) => ({ direction, ...scoreDirection(direction, queryTokens, contextTokens, { profileId, referenceId, surfaceMode }) }))
     .sort((left, right) => right.score - left.score || left.direction.id.localeCompare(right.direction.id));
   const rankedById = new Map(ranked.map((item) => [item.direction.id, item]));
   const selectedDirectionId = selectedId || ranked[0]?.direction.id;
@@ -219,7 +229,7 @@ function scoreTreatment(treatment, queryTokens, contextTokens, { profileId, styl
   };
 }
 
-function scoreDirection(direction, queryTokens, contextTokens, { profileId, referenceId } = {}) {
+function scoreDirection(direction, queryTokens, contextTokens, { profileId, referenceId, surfaceMode } = {}) {
   const searchable = new Set(tokenize([
     direction.id,
     direction.label,
@@ -232,10 +242,12 @@ function scoreDirection(direction, queryTokens, contextTokens, { profileId, refe
   let score = new Set(queryHits).size * 3 + new Set(contextHits).size;
   const signalBoost = SIGNAL_BOOSTS.find((item) => item.directionId === direction.id);
   const signalHits = signalBoost
-    ? queryTokens.filter((token) => signalBoost.tokens.includes(token))
+    ? queryTokens.filter((token) => signalTokenMatches(token, signalBoost.tokens))
     : [];
   if (signalBoost && signalHits.length > 0) score += signalBoost.boost;
   if (profileId && direction.profileIds?.includes(profileId)) score += 24;
+  const operatingProfiles = ["productive-app", "command-tool", "creative-editor", "data-workbench", "media-experience"];
+  if (surfaceMode === "persuade" && direction.profileIds?.length > 0 && direction.profileIds.every((id) => operatingProfiles.includes(id))) score -= 40;
   if (referenceId && ["rare-ui", "rewamp-ui", "magic-ui", "react-bits", "aceternity-ui", "obsidian-ui"].includes(referenceId) && direction.id === "specimen-catalog") score += 22;
   if (referenceId && ["apple-product", "bang-olufsen", "teenage-engineering", "logitech-mx", "elgato-creator-hardware", "framework-computer"].includes(referenceId) && direction.id === "object-led-editorial") score += 22;
   return {
@@ -335,7 +347,7 @@ export function selectVisualDirection(query = "frontend interface", {
   const requestedConcept = fixedConcept ?? (directionConcept ? { id: directionConcept.id, directionId: directionConcept.id, treatmentId: "", dynamic: true } : null);
   if (concept && !requestedConcept) throw new Error(`unknown adaptive concept: ${concept}`);
   const ranked = directions
-    .map((direction) => ({ direction, ...scoreDirection(direction, queryTokens, contextTokens, { profileId, referenceId }) }))
+    .map((direction) => ({ direction, ...scoreDirection(direction, queryTokens, contextTokens, { profileId, referenceId, surfaceMode: request.surfaceMode.mode }) }))
     .sort((left, right) => right.score - left.score || left.direction.id.localeCompare(right.direction.id));
   const selected = explicit ?? (requestedConcept
     ? directions.find((item) => item.id === requestedConcept.directionId)
@@ -365,7 +377,13 @@ export function selectVisualDirection(query = "frontend interface", {
     requestedDirection,
     overrides,
   });
-  const resolved = applyAuthoredDirection({ ...selected, visualTreatment: candidateTreatment }, authoredDirection);
+  const compositionPlan = buildCompositionPlan(null, {
+    direction: selected,
+    generate: true,
+    query,
+    productRequest: request,
+  });
+  const resolved = applyAuthoredDirection({ ...selected, visualTreatment: candidateTreatment, compositionPlan }, authoredDirection);
   if (!authoredDirection && constraintAuthority.mode === "adaptive-default" && request.signalFields["primary-object"]) {
     resolved.firstViewport = { ...resolved.firstViewport, dominant: request.signalFields["primary-object"] };
   }
@@ -373,14 +391,19 @@ export function selectVisualDirection(query = "frontend interface", {
   const conceptSet = !authoredDirection && constraintAuthority.mode === "adaptive-default"
     ? fixedConcept
       ? buildAdaptiveConceptSet(directions, treatments, { selectedId: requestedConcept?.id ?? null, status: requestedConcept ? "accepted" : "selection-required" })
-      : buildRoutedConceptSet(query, directions, treatments, { profile, style, reference, queryTokens, contextTokens, selectedId: requestedConcept?.id ?? (underspecified ? null : selected.id), status: requestedConcept ? "accepted" : "selection-required" })
+      : buildRoutedConceptSet(query, directions, treatments, { profile, style, reference, queryTokens, contextTokens, surfaceMode: request.surfaceMode.mode, selectedId: requestedConcept?.id ?? (underspecified ? null : selected.id), status: requestedConcept ? "accepted" : "selection-required" })
     : {
       status: "suppressed-by-authority",
       selected: null,
       policy: "An inspected reference, project direction, user direction, accepted concept, or model proposal owns the direction; local concept frames remain available only as gap-fill vocabulary.",
       candidates: [],
     };
-  const creativeProcess = buildCreativeProcess({ authored: authoredDirection, authority: constraintAuthority, candidate: selected });
+  const creativeProcess = buildCreativeProcess({
+    authored: authoredDirection,
+    authority: constraintAuthority,
+    candidate: selected,
+    compositionPlan: resolved.compositionPlan,
+  });
   const productSignal = buildProductSignal({
     query,
     profile: typeof profile === "object" ? profile : { id: idOf(profile), anchor: resolved.firstViewport.dominant },
@@ -407,6 +430,7 @@ export function selectVisualDirection(query = "frontend interface", {
     matched: [...new Set([...(selectedMatch?.queryHits ?? []), ...(selectedMatch?.contextHits ?? [])])],
     directionLock,
     firstViewport: resolved.firstViewport,
+    compositionPlan: resolved.compositionPlan,
     layoutRules: resolved.layoutRules,
     typeRules: resolved.typeRules,
     spacingRules: resolved.spacingRules,

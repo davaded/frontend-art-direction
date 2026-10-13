@@ -62,7 +62,8 @@ Before touching JSX, CSS, or a component generator, copy the Visual Direction Co
 
 ```text
 Direction / composition grammar:
-Alignment axis:
+Per-region placement / text alignment / measure / neighbor relationship:
+Wide bounds / intermediate regrouping / narrow re-staging:
 Dominant object or relationship:
 Counterweight and primary action:
 Below-fold proof:
@@ -80,7 +81,7 @@ Hard invariants preserved:
 Rendered proof required:
 ```
 
-Treat hard invariants as construction constraints. Treat the local visual direction, geometry contract, and AI-default list as a starting hypothesis. A component can be technically correct and still fail if it breaks the authoritative axis, equalizes the visual weights without intent, exceeds the authority source's type ceiling, spends the surface budget on decorative wrappers, or rebuilds the page as nested border boxes. It can also be correct to break a local heuristic when the stronger authority source makes the exception coherent and the rendered proof supports it.
+Treat hard invariants as construction constraints. Treat local visual directions, geometry contracts, and AI-default lists as hypotheses. A component can be technically correct and still fail if it breaks the chosen local relationships, equalizes visual weights without intent, exceeds the authority source's type ceiling, spends the surface budget on decorative wrappers, or rebuilds the page as nested border boxes. It can also be correct to break a local heuristic when stronger authority makes the exception coherent and rendered proof supports it. Use [visual-composition.md](visual-composition.md) to record region measures without enforcing a site-wide axis.
 
 ## Content And Media Contract
 

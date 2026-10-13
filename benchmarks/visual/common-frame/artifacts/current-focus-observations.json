@@ -1,0 +1,25 @@
+[
+  {
+    "active": "Original film",
+    "insideDialog": true,
+    "state": "reverse-wrap"
+  },
+  {
+    "active": "Close film details",
+    "insideDialog": true,
+    "length": "Live action + visual effects / 2012 / 12 min",
+    "state": "forward-wrap"
+  },
+  {
+    "active": "",
+    "bodyOverflow": "hidden",
+    "open": true,
+    "state": "escape-transitional"
+  },
+  {
+    "active": "Into the film",
+    "bodyOverflow": "",
+    "open": false,
+    "state": "escape-settled"
+  }
+]

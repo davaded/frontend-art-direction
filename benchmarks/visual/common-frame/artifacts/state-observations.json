@@ -1,0 +1,459 @@
+{
+  "states": [
+    {
+      "state": "detail-baseline-320",
+      "evidence": {
+        "dialog": {
+          "client": 716,
+          "height": 716,
+          "open": true,
+          "scroll": 880
+        },
+        "focus": "Close film details",
+        "viewport": {
+          "height": 740,
+          "width": 320
+        }
+      }
+    },
+    {
+      "state": "save-calendar-320",
+      "evidence": {
+        "dialogOpen": true,
+        "save": "Remove from programme",
+        "status": "Calendar download requested. The date is a sample screening.",
+        "title": "Tears of Steel"
+      }
+    },
+    {
+      "state": "reload-restored-steel",
+      "evidence": {
+        "dialog": {
+          "button": "Save screening",
+          "open": false,
+          "status": "",
+          "title": ""
+        },
+        "empty": false,
+        "focus": "Skip to programme\n  cf.ProgrammeReading roomThe clubMy programme1\n  \n ",
+        "saved": "1",
+        "scrollY": 222,
+        "status": "",
+        "view": "all",
+        "viewport": {
+          "height": 740,
+          "width": 320
+        },
+        "visibleFilms": [
+          "steel",
+          "sintel"
+        ]
+      }
+    },
+    {
+      "state": "both-films-saved",
+      "evidence": {
+        "dialog": {
+          "button": "Remove screening",
+          "open": false,
+          "status": "Sintel saved.",
+          "title": "Tears of Steel"
+        },
+        "empty": false,
+        "focus": "Remove Sintel",
+        "saved": "2",
+        "scrollY": 1519,
+        "status": "Sintel saved.",
+        "view": "all",
+        "viewport": {
+          "height": 740,
+          "width": 320
+        },
+        "visibleFilms": [
+          "steel",
+          "sintel"
+        ]
+      }
+    },
+    {
+      "state": "saved-filter-from-sintel",
+      "evidence": {
+        "dialog": {
+          "button": "Remove screening",
+          "open": false,
+          "status": "2 saved screenings.",
+          "title": "Tears of Steel"
+        },
+        "empty": false,
+        "focus": "My programme, 2 saved screenings",
+        "saved": "2",
+        "scrollY": 561,
+        "status": "2 saved screenings.",
+        "view": "saved",
+        "viewport": {
+          "height": 740,
+          "width": 320
+        },
+        "visibleFilms": [
+          "steel",
+          "sintel"
+        ]
+      }
+    },
+    {
+      "state": "sintel-detail-in-saved-view",
+      "evidence": {
+        "dialog": {
+          "button": "Remove screening",
+          "open": true,
+          "status": "",
+          "title": "Sintel"
+        },
+        "empty": false,
+        "focus": "Close film details",
+        "saved": "2",
+        "scrollY": 1374,
+        "status": "2 saved screenings.",
+        "view": "saved",
+        "viewport": {
+          "height": 740,
+          "width": 320
+        },
+        "visibleFilms": [
+          "steel",
+          "sintel"
+        ]
+      }
+    },
+    {
+      "state": "removed-sintel-keeps-dialog-subject",
+      "evidence": {
+        "dialog": {
+          "button": "Save screening",
+          "open": true,
+          "status": "Sintel removed.",
+          "title": "Sintel"
+        },
+        "empty": false,
+        "focus": "Save screening",
+        "saved": "1",
+        "scrollY": 1374,
+        "status": "Sintel removed.",
+        "view": "saved",
+        "viewport": {
+          "height": 740,
+          "width": 320
+        },
+        "visibleFilms": [
+          "steel"
+        ]
+      }
+    },
+    {
+      "state": "removed-opener-close",
+      "evidence": {
+        "dialog": {
+          "button": "Save screening",
+          "open": false,
+          "status": "Sintel removed.",
+          "title": "Sintel"
+        },
+        "empty": false,
+        "focus": "Saved 1",
+        "saved": "1",
+        "scrollY": 1374,
+        "status": "Sintel removed.",
+        "view": "saved",
+        "viewport": {
+          "height": 740,
+          "width": 320
+        },
+        "visibleFilms": [
+          "steel"
+        ]
+      }
+    },
+    {
+      "state": "removed-opener-visible-after-repair",
+      "evidence": {
+        "dialog": {
+          "button": "Save screening",
+          "open": true,
+          "status": "Sintel removed.",
+          "title": "Sintel"
+        },
+        "empty": false,
+        "focus": "Close film details",
+        "saved": "1",
+        "scrollY": 1378,
+        "status": "Sintel removed.",
+        "view": "saved",
+        "viewport": {
+          "height": 740,
+          "width": 320
+        },
+        "visibleFilms": [
+          "steel"
+        ]
+      }
+    },
+    {
+      "state": "inline-remove-last-film-empty",
+      "evidence": {
+        "dialog": {
+          "button": "Save screening",
+          "open": false,
+          "status": "Tears of Steel removed.",
+          "title": "Sintel"
+        },
+        "empty": true,
+        "focus": "Saved 0",
+        "saved": "0",
+        "scrollY": 909,
+        "status": "Tears of Steel removed.",
+        "view": "saved",
+        "viewport": {
+          "height": 740,
+          "width": 320
+        },
+        "visibleFilms": []
+      }
+    },
+    {
+      "state": "empty-recovery-all",
+      "evidence": {
+        "dialog": {
+          "button": "Save screening",
+          "open": false,
+          "status": "Showing both November screenings.",
+          "title": "Sintel"
+        },
+        "empty": false,
+        "focus": "Skip to programme\n  cf.ProgrammeReading roomThe clubMy programme0\n  \n ",
+        "saved": "0",
+        "scrollY": 991,
+        "status": "Showing both November screenings.",
+        "view": "all",
+        "viewport": {
+          "height": 740,
+          "width": 320
+        },
+        "visibleFilms": [
+          "steel",
+          "sintel"
+        ]
+      }
+    },
+    {
+      "state": "settled-removed-opener-visible",
+      "evidence": {
+        "dialog": {
+          "button": "Save screening",
+          "open": false,
+          "status": "Sintel removed.",
+          "title": "Sintel"
+        },
+        "empty": false,
+        "focus": "Saved 1",
+        "saved": "1",
+        "scrollY": 909,
+        "status": "Sintel removed.",
+        "view": "saved",
+        "viewport": {
+          "height": 740,
+          "width": 320
+        },
+        "visibleFilms": [
+          "steel"
+        ]
+      }
+    },
+    {
+      "state": "settled-empty-visible",
+      "evidence": {
+        "dialog": {
+          "button": "Save screening",
+          "open": false,
+          "status": "Tears of Steel removed.",
+          "title": "Sintel"
+        },
+        "empty": true,
+        "focus": "Saved 0",
+        "saved": "0",
+        "scrollY": 909,
+        "status": "Tears of Steel removed.",
+        "view": "saved",
+        "viewport": {
+          "height": 740,
+          "width": 320
+        },
+        "visibleFilms": []
+      }
+    },
+    {
+      "state": "empty-recovery-visible-focus",
+      "evidence": {
+        "dialog": {
+          "button": "Save screening",
+          "open": false,
+          "status": "Showing both November screenings.",
+          "title": "Sintel"
+        },
+        "empty": false,
+        "focus": "All screenings",
+        "saved": "0",
+        "scrollY": 909,
+        "status": "Showing both November screenings.",
+        "view": "all",
+        "viewport": {
+          "height": 740,
+          "width": 320
+        },
+        "visibleFilms": [
+          "steel",
+          "sintel"
+        ]
+      }
+    },
+    {
+      "state": "reduced-motion-detail",
+      "evidence": {
+        "focus": "Close film details",
+        "open": true,
+        "reduced": true,
+        "scroll": "auto",
+        "transition": "0s"
+      }
+    },
+    {
+      "state": "reduced-close-focus",
+      "evidence": {
+        "dialog": {
+          "button": "Save screening",
+          "open": false,
+          "status": "",
+          "title": "Tears of Steel"
+        },
+        "empty": false,
+        "focus": "Tears of Steel",
+        "saved": "0",
+        "scrollY": 913,
+        "status": "Showing both November screenings.",
+        "view": "all",
+        "viewport": {
+          "height": 740,
+          "width": 320
+        },
+        "visibleFilms": [
+          "steel",
+          "sintel"
+        ]
+      }
+    },
+    {
+      "state": "real-image-request-failure",
+      "evidence": {
+        "failed": true,
+        "feedback": "Film image unavailable.Retry image ",
+        "height": 210,
+        "image": {
+          "complete": true,
+          "naturalWidth": 0,
+          "visibility": "hidden"
+        }
+      }
+    },
+    {
+      "state": "image-retry-recovered",
+      "evidence": {
+        "failed": false,
+        "feedbackHidden": true,
+        "height": 210,
+        "image": {
+          "complete": true,
+          "naturalWidth": 1920,
+          "visibility": "visible"
+        }
+      }
+    },
+    {
+      "state": "native-dialog-focus-wrap",
+      "evidence": {
+        "active": "Common Frame / Film notesFilm image unavailable.Retry image Live action + visual effects / 2012Tears of SteelFriday 06 November 2026 / 19:00Set in Amsterdam, Tears of Steel brings live action and an imagined future into the same frame. The film was created by the Mango Open Movie project and released with open production materials.For the conversationLook at the bridge scene. Which details keep the city familiar, and which make you believe in a different future?Sample screening. A saved date is a personal plan, not a seat reservation.Remove screeningOriginal film Tears of Steel saved.Final-render image: (CC) Blender Foundation | mango.blender.org. CC BY 3.0.",
+        "inside": true,
+        "open": true
+      }
+    },
+    {
+      "state": "native-dialog-focus-wrap-back",
+      "evidence": {
+        "active": null,
+        "inside": false
+      }
+    },
+    {
+      "state": "final-no-test-saves",
+      "evidence": {
+        "dialog": {
+          "button": "Save screening",
+          "open": false,
+          "status": "Tears of Steel removed.",
+          "title": "Tears of Steel"
+        },
+        "empty": false,
+        "focus": "Into the film",
+        "saved": "0",
+        "scrollY": 222,
+        "status": "Tears of Steel removed.",
+        "view": "all",
+        "viewport": {
+          "height": 740,
+          "width": 320
+        },
+        "visibleFilms": [
+          "steel",
+          "sintel"
+        ]
+      }
+    },
+    {
+      "state": "short-desktop-detail",
+      "evidence": {
+        "close": {
+          "bottom": 80,
+          "height": 44,
+          "left": 932,
+          "right": 976,
+          "top": 36,
+          "width": 44,
+          "x": 932,
+          "y": 36
+        },
+        "dialog": {
+          "bottom": 696,
+          "height": 672,
+          "left": 280,
+          "right": 1000,
+          "top": 24,
+          "width": 720,
+          "x": 280,
+          "y": 24
+        },
+        "scrollable": true,
+        "source": "https://mango.blender.org/download/",
+        "viewport": {
+          "height": 720,
+          "width": 1280
+        }
+      }
+    }
+  ],
+  "exceptions": {
+    "boundary": "Final normal captures and keyboard/short-height follow-up only",
+    "cursor": 1059,
+    "events": [],
+    "hasMore": false,
+    "truncated": false
+  },
+  "console": []
+}

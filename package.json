@@ -41,6 +41,7 @@
     "image-proposal": "node scripts/image-proposal.mjs",
     "critique": "node scripts/visual-critique.mjs",
     "visual-lint": "node scripts/visual-lint.mjs",
+    "layout-audit": "node scripts/layout-audit.mjs",
     "capture": "node scripts/browser-capture.mjs",
     "pack:check": "npm pack --dry-run"
   },

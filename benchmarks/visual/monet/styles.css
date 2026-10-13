@@ -12,7 +12,7 @@ p { margin: 0 0 18px; }
 h1, h2, h3 { font-weight: 500; margin: 0; letter-spacing: 0; }
 .skip-link { position: fixed; top: -100px; left: 20px; z-index: 5; padding: 12px; background: white; }
 .skip-link:focus { top: 10px; }
-.site-header { min-height: 80px; padding: 16px 48px; display: flex; align-items: center; justify-content: space-between; gap: 20px; }
+.site-header { min-height: 80px; padding: 16px max(32px, calc((100% - 1280px) / 2)); display: flex; align-items: center; justify-content: space-between; gap: 20px; }
 .identity { font-weight: 600; font-size: 13px; line-height: 1.5; }
 .identity span { display: block; font-weight: 400; font-size: 10px; color: var(--muted); }
 nav { display: flex; align-items: center; gap: 40px; font-size: 12px; }
@@ -20,50 +20,54 @@ nav a { min-height: 44px; display: flex; align-items: center; gap: 12px; }
 nav span { font-size: 10px; color: var(--muted); }
 .opening { height: min(600px, calc(100svh - 300px)); min-height: 320px; position: relative; overflow: hidden; background: #9dbbd0; }
 .coast { width: 100%; height: 100%; object-fit: cover; object-position: 50% 49%; display: block; }
-.opening-title { position: absolute; left: 48px; top: 48px; }
+.opening-title { position: absolute; left: max(32px, calc((100% - 1280px) / 2)); top: 48px; }
 .opening-title p { font-size: 11px; margin-bottom: 20px; }
 h1 { font-size: 112px; line-height: .98; }
 .inspect { width: 48px; height: 48px; background: var(--paper); border: 0; border-radius: 50%; display: grid; place-items: center; }
-.coast-inspect { position: absolute; right: 48px; bottom: 28px; }
-.opening-caption { padding: 8px 48px; min-height: 68px; display: flex; justify-content: space-between; align-items: center; gap: 24px; font-size: 12px; }
+.coast-inspect { position: absolute; right: max(32px, calc((100% - 1280px) / 2)); bottom: 28px; }
+.opening-caption { padding: 8px max(32px, calc((100% - 1280px) / 2)); min-height: 68px; display: flex; justify-content: space-between; align-items: center; gap: 24px; font-size: 12px; }
 .opening-caption b { font-size: 11px; font-weight: 400; color: var(--muted); margin-right: 30px; }
 .opening-caption a { width: 44px; height: 44px; display: grid; place-items: center; }
-.introduction { padding: 64px 48px 104px; display: grid; grid-template-columns: .65fr 1.5fr 1fr; gap: 48px; scroll-margin-top: 24px; }
+.introduction { padding: 80px 32px 112px; max-width: 940px; margin-inline: auto; display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); gap: 28px 64px; scroll-margin-top: 24px; }
+.introduction > .chapter { grid-column: 1 / -1; text-align: center; }
+.introduction > .chapter br { display: none; }
+.introduction > .chapter span { margin-left: 14px; }
 .chapter { font-size: 11px; line-height: 1.8; }
 .chapter span { color: var(--muted); }
-.introduction h2 { font: 400 52px/1.07 Newsreader, serif; }
+.introduction h2 { font: 400 52px/1.07 Newsreader, serif; text-wrap: balance; }
 .introduction > div { max-width: 380px; }
 .introduction > div p { color: var(--muted); }
 .text-action { border: 0; padding: 0; min-height: 44px; display: inline-flex; align-items: center; gap: 14px; background: transparent; font-size: 12px; color: var(--plum); text-align: left; }
 .text-action:hover { text-decoration: underline; text-underline-offset: 5px; }
-.chapter-heading { display: grid; grid-template-columns: .65fr 2.5fr; gap: 48px; align-items: end; margin-bottom: 36px; }
-.chapter-heading h2 { font-size: 38px; line-height: 1.15; }
+.chapter-heading { display: block; text-align: center; margin-bottom: 48px; }
+.chapter-heading .chapter { margin-bottom: 20px; }
+.chapter-heading h2 { font-size: 38px; line-height: 1.15; text-wrap: balance; }
 .chapter-heading p { margin: 0; }
-.wheat-chapter { padding: 0 96px 120px; }
+.wheat-chapter { padding: 0 32px 112px; max-width: 1244px; margin-inline: auto; }
 figure { margin: 0; }
 .painting-button { position: relative; width: 100%; display: block; border: 0; padding: 0; background: transparent; }
 .painting-button img { display: block; width: 100%; height: auto; }
 .painting-button .inspect { position: absolute; right: 24px; bottom: 24px; }
 .painting-button:hover .inspect { background: white; }
-.wheat-work figcaption { display: grid; grid-template-columns: 1fr 1fr; gap: 72px; padding-top: 28px; }
+.wheat-work figcaption { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 440px); gap: 72px; padding-top: 28px; }
 h3 { font-size: 21px; line-height: 1.35; }
 h3 span { font-weight: 400; }
 figcaption > div > p, .water-chapter figcaption p { font-size: 11px; color: var(--muted); margin: 12px 0 0; }
 .looking-note { max-width: 440px; }
 .looking-note p { font-size: 14px; color: var(--ink); line-height: 1.8; margin-top: 0; }
-.water-chapter { padding: 88px 48px; background: #e9ecef; display: grid; grid-template-columns: .85fr 1.4fr; gap: 96px; align-items: center; }
+.water-chapter { padding: 104px max(32px, calc((100% - 1080px) / 2)); background: #e9ecef; display: grid; grid-template-columns: minmax(0, 350px) minmax(0, 1fr); gap: 96px; align-items: center; }
 .water-copy { max-width: 350px; margin: 0 auto; }
 .water-copy h2 { font: 400 64px/1.03 Newsreader, serif; margin: 34px 0 28px; }
 .water-copy > p:not(.chapter) { color: var(--muted); }
 .water-chapter figcaption { display: flex; align-items: baseline; justify-content: space-between; gap: 18px; margin-top: 20px; }
-.ending { padding: 88px 48px; background: #292b2e; color: #f6f7f8; display: grid; grid-template-columns: 1fr 1.3fr; gap: 96px; align-items: center; }
+.ending { padding: 88px 32px 96px; background: #292b2e; color: #f6f7f8; text-align: center; }
 .ending h2 { font-size: 48px; line-height: 1.08; margin: 24px 0; }
 .ending > div > p:last-child { color: #c8cbd0; font-size: 13px; }
-.return-works { display: grid; grid-template-columns: minmax(0,1fr) minmax(0,1.3fr) minmax(0,1fr); gap: 16px; align-items: end; }
+.return-works { display: grid; grid-template-columns: minmax(0,1fr) minmax(0,1.3fr) minmax(0,1fr); max-width: 820px; margin: 48px auto 0; gap: 28px; align-items: end; }
 .return-works button { border: 0; padding: 0; background: transparent; color: inherit; text-align: left; }
 .return-works img { display: block; width: 100%; height: auto; }
 .return-works span { display: flex; align-items: center; justify-content: space-between; gap: 8px; font-size: 11px; margin-top: 16px; }
-.sources { padding: 80px 48px; display: grid; grid-template-columns: 1fr 1.3fr; gap: 96px; scroll-margin-top: 30px; }
+.sources { padding: 80px max(32px, calc((100% - 1040px) / 2)); display: grid; grid-template-columns: minmax(0,1fr) minmax(0,1.3fr); gap: 72px; scroll-margin-top: 30px; }
 .sources h2 { font-size: 34px; line-height: 1.2; margin-bottom: 20px; }
 .sources > div > p:last-child { font-size: 12px; color: var(--muted); }
 details { padding: 0 0 14px; margin-bottom: 14px; }
@@ -72,7 +76,7 @@ summary::-webkit-details-marker { display: none; }
 details[open] summary svg { transform: rotate(45deg); }
 details p { font-size: 12px; color: var(--muted); margin: 12px 28px 0 0; }
 details p a { display: inline-flex; align-items: center; gap: 6px; margin-right: 16px; min-height: 44px; color: var(--plum); }
-footer { padding: 28px 48px; display: flex; justify-content: space-between; align-items: center; gap: 20px; font-size: 11px; }
+footer { padding: 28px max(32px, calc((100% - 1280px) / 2)); display: flex; justify-content: space-between; align-items: center; gap: 20px; font-size: 11px; }
 footer > a:first-child { font-weight: 600; font-size: 13px; }
 footer span { color: var(--muted); }
 .icon-button { width: 44px; height: 44px; border: 0; border-radius: 6px; display: grid; place-items: center; background: transparent; padding: 0; }
@@ -96,12 +100,43 @@ dialog::backdrop { background: #202326e8; }
 .viewer-copy a { display: flex; align-items: center; gap: 8px; font-size: 12px; min-height: 44px; color: var(--plum); }
 .no-script { margin: 24px; }
 @media (max-width: 1000px) {
-  .introduction { grid-template-columns: .5fr 1.5fr; gap: 32px; }
-  .introduction > div { grid-column: 2; }
-  .wheat-chapter { padding-right: 48px; padding-left: 48px; }
-  .water-chapter, .ending, .sources { gap: 40px; }
+  .introduction { gap: 28px 40px; }
+  .water-chapter, .sources { gap: 40px; }
   .water-copy h2 { font-size: 52px; }
   .ending h2 { font-size: 40px; }
+}
+@media (min-width: 1001px) {
+  .opening { width: min(calc(100% - 64px), 1680px); margin-inline: auto; border-radius: 0 0 36px 36px; }
+  .opening-caption { width: min(calc(100% - 64px), 1680px); margin-inline: auto; padding-inline: clamp(32px, 5vw, 96px); }
+  .introduction { width: min(calc(100% - 64px), 1240px); margin-inline: auto; border-radius: 0 0 36px 36px; }
+  .wheat-chapter { width: min(calc(100% - 64px), 1340px); padding-inline: clamp(32px, 5vw, 80px); }
+  .water-chapter { width: min(calc(100% - 64px), 1280px); margin-inline: auto; border-radius: 36px; }
+  .ending { width: min(calc(100% - 64px), 1280px); margin-inline: auto; border-radius: 36px 36px 0 0; }
+  .sources { width: min(calc(100% - 64px), 1180px); margin-inline: auto; border-radius: 0 0 36px 36px; }
+}
+@media (min-width: 601px) and (max-width: 1000px) {
+  .opening, .opening-caption, .introduction, .wheat-chapter, .water-chapter, .ending, .sources {
+    width: calc(100% - 48px);
+    margin-inline: auto;
+  }
+  .opening { border-radius: 0 0 28px 28px; }
+  .opening-caption { padding-inline: 28px; }
+  .introduction { border-radius: 0 0 28px 28px; }
+  .water-chapter { border-radius: 28px; }
+  .ending { border-radius: 28px 28px 0 0; }
+  .sources { border-radius: 0 0 28px 28px; }
+  .site-header { padding-inline: 36px; }
+  .opening-title { left: 28px; }
+  .coast-inspect { right: 28px; }
+  .wheat-chapter { padding-inline: 28px; }
+  .wheat-work figcaption { grid-template-columns: minmax(0, 1fr) minmax(0, 1.35fr); gap: 32px; }
+}
+@media (min-width: 601px) and (max-width: 900px) {
+  .water-chapter { grid-template-columns: minmax(0, 1fr); padding: 64px 48px; gap: 40px; }
+  .water-copy { width: min(100%, 420px); max-width: 420px; margin: 0; }
+  .water-copy h2 { margin-top: 24px; }
+  .water-chapter > figure { width: min(100%, 480px); justify-self: end; }
+  .water-chapter figcaption { flex-wrap: wrap; gap: 6px 18px; }
 }
 @media (max-width: 600px) {
   .site-header { min-height: 76px; padding: 14px 20px; }
@@ -118,28 +153,28 @@ dialog::backdrop { background: #202326e8; }
   .coast-inspect { right: 20px; bottom: 24px; }
   .opening-caption { padding: 8px 20px; font-size: 11px; gap: 10px; }
   .opening-caption b { display: block; font-size: 10px; margin: 0 0 2px; }
-  .introduction { padding: 40px 20px 64px; grid-template-columns: 1fr; gap: 20px; }
+  .introduction { padding: 56px 24px 72px; grid-template-columns: 1fr; gap: 24px; }
   .chapter br { display: none; }
   .chapter span { margin-left: 14px; }
-  .introduction h2 { font-size: 40px; }
+  .introduction h2 { font-size: 40px; text-align: center; }
   .introduction > div { grid-column: auto; }
-  .wheat-chapter { padding: 0 20px 64px; }
-  .chapter-heading { grid-template-columns: 1fr; gap: 14px; margin-bottom: 24px; }
+  .wheat-chapter { padding: 0 24px 72px; }
+  .chapter-heading { margin-bottom: 32px; }
   .chapter-heading h2 { font-size: 32px; }
   .painting-button .inspect { right: 14px; bottom: 14px; width: 44px; height: 44px; }
   .wheat-work figcaption { grid-template-columns: 1fr; gap: 20px; padding-top: 22px; }
   h3 { font-size: 20px; }
-  .water-chapter { padding: 48px 20px; grid-template-columns: 1fr; gap: 32px; }
+  .water-chapter { padding: 64px 24px; grid-template-columns: 1fr; gap: 36px; }
   .water-copy { margin: 0; }
   .water-copy h2 { font-size: 48px; margin: 22px 0; }
   .water-chapter figcaption { align-items: start; flex-wrap: wrap; gap: 4px; }
   .water-chapter figcaption p { margin: 0; }
-  .ending { padding: 48px 20px; grid-template-columns: 1fr; gap: 32px; }
+  .ending { padding: 64px 24px; }
   .ending h2 { font-size: 38px; }
-  .return-works { gap: 12px; }
+  .return-works { gap: 12px; margin-top: 36px; }
   .return-works span { font-size: 10px; gap: 2px; }
   .return-works svg { width: 14px; }
-  .sources { padding: 48px 20px; grid-template-columns: 1fr; gap: 24px; }
+  .sources { padding: 56px 24px; grid-template-columns: 1fr; gap: 24px; }
   .sources h2 { font-size: 30px; }
   footer { padding: 20px; flex-wrap: wrap; gap: 12px; }
   footer span { order: 3; flex-basis: 100%; }

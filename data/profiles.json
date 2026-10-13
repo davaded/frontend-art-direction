@@ -55,7 +55,7 @@
     {
       "id": "command-tool",
       "label": "Command / Builder Tool",
-      "keywords": ["developer", "editor", "builder", "ide", "command", "canvas", "inspector", "devtool", "代码", "编辑器", "命令"],
+      "keywords": ["developer", "developer tool", "tool", "editor", "builder", "ide", "command", "canvas", "inspector", "devtool", "代码", "编辑器", "命令", "工具", "开发者工具", "独立开发者"],
       "surfaceMode": "Productive UI",
       "stance": "instrument-panel",
       "type": "system-utility",
@@ -106,7 +106,7 @@
     {
       "id": "hardware-product-story",
       "label": "Hardware Product Story",
-      "keywords": ["hardware", "device", "laptop", "computer", "phone", "monitor", "camera", "audio", "speaker", "headphone", "peripheral", "keyboard", "mouse", "product page", "外设", "硬件", "设备", "电脑", "手机", "显示器", "键盘", "鼠标", "耳机", "音箱"],
+      "keywords": ["hardware", "device", "laptop", "computer", "phone", "monitor", "camera", "audio", "audio interface", "interface", "speaker", "headphone", "peripheral", "keyboard", "mouse", "product page", "外设", "硬件", "设备", "电脑", "手机", "显示器", "键盘", "鼠标", "耳机", "音箱", "声卡", "音频接口", "桌面音频"],
       "surfaceMode": "Editorial Marketing",
       "stance": "premium-industrial",
       "type": "editorial-pair",

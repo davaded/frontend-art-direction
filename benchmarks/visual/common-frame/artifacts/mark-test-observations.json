@@ -1,0 +1,17 @@
+{
+  "wide": {
+    "logs": "pending",
+    "mark": "01\nOF 02 / OPEN MOVIE",
+    "rect": {
+      "bottom": 349.796875,
+      "height": 39,
+      "left": 120,
+      "right": 285.9921875,
+      "top": 310.796875,
+      "width": 165.9921875,
+      "x": 120,
+      "y": 310.796875
+    }
+  },
+  "logs": []
+}

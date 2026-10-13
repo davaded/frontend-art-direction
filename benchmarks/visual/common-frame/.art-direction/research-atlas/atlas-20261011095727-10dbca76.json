@@ -1,0 +1,646 @@
+{
+  "protocol": "frontend-art-direction/research-atlas-v1",
+  "version": 1,
+  "id": "atlas-20261011095727-10dbca76",
+  "status": "complete",
+  "mode": "reference-led",
+  "createdAt": "2026-10-11T09:57:27.610Z",
+  "updatedAt": "2026-10-11T10:59:54.374Z",
+  "projectRoot": "/Users/daiyudai/code/frontend-art-direction/benchmarks/visual/common-frame",
+  "query": "做一个城市独立电影放映俱乐部的网站",
+  "policy": {
+    "userReferencesFirst": true,
+    "sectionWinnersMayComeFromDifferentSources": true,
+    "referenceIsEvidenceOnlyAfterInspection": true,
+    "noReferenceFallback": "Use subject, local evidence, and authored direction; do not invent a skin from the catalog."
+  },
+  "references": [
+    {
+      "id": "metrograph",
+      "label": "Metrograph",
+      "url": "https://metrograph.com/",
+      "kind": "discovered",
+      "status": "selected",
+      "role": "film identity and programme entry",
+      "evidence": [
+        {
+          "ref": "RESEARCH.md",
+          "kind": "artifact-or-check",
+          "exists": true
+        },
+        {
+          "ref": "artifacts/metrograph-1440.jpg",
+          "kind": "capture-or-media",
+          "exists": true
+        }
+      ],
+      "strengths": [
+        "specific films and showtime utility"
+      ],
+      "weaknesses": [],
+      "borrow": [
+        "editorial identity followed by a useful programme"
+      ],
+      "reject": [
+        "sales carousel and popups; brand and campaign assets"
+      ],
+      "observations": [
+        "Desktop source inspected at 1440x900; mobile behavior not inferred"
+      ],
+      "updatedAt": "2026-10-11T10:59:54.367Z",
+      "selectedAt": "2026-10-11T10:59:54.370Z"
+    },
+    {
+      "id": "cineville",
+      "label": "Cineville",
+      "url": "https://cineville.nl/nl-NL",
+      "kind": "discovered",
+      "status": "selected",
+      "role": "image-reading relation and mobile restaging",
+      "evidence": [
+        {
+          "ref": "RESEARCH.md",
+          "kind": "artifact-or-check",
+          "exists": true
+        },
+        {
+          "ref": "artifacts/cineville-1440.jpg",
+          "kind": "capture-or-media",
+          "exists": true
+        },
+        {
+          "ref": "artifacts/cineville-390.jpg",
+          "kind": "capture-or-media",
+          "exists": true
+        },
+        {
+          "ref": "artifacts/cineville-featured-390.jpg",
+          "kind": "capture-or-media",
+          "exists": true
+        }
+      ],
+      "strengths": [
+        "lead image and readable curatorial text"
+      ],
+      "weaknesses": [],
+      "borrow": [
+        "independent image and reading measures; mobile image-before-copy"
+      ],
+      "reject": [
+        "subscription workflow; campaign and brand; dark overlay"
+      ],
+      "observations": [
+        "Actual mobile viewport 390x844; first featured heading around y=493"
+      ],
+      "updatedAt": "2026-10-11T10:59:54.368Z",
+      "selectedAt": "2026-10-11T10:59:54.372Z"
+    },
+    {
+      "id": "official-film-material",
+      "label": "Blender Open Movie imagery",
+      "url": "https://mango.blender.org/gallery/",
+      "kind": "discovered",
+      "status": "selected",
+      "role": "inspectable real film subject and credits",
+      "evidence": [
+        {
+          "ref": "assets/SOURCES.md",
+          "kind": "artifact-or-check",
+          "exists": true
+        },
+        {
+          "ref": "assets/tears-of-steel.jpg",
+          "kind": "capture-or-media",
+          "exists": true
+        },
+        {
+          "ref": "assets/sintel.jpg",
+          "kind": "capture-or-media",
+          "exists": true
+        }
+      ],
+      "strengths": [
+        "official original film identities and attributable imagery"
+      ],
+      "weaknesses": [],
+      "borrow": [
+        "licensed source-specific film images with credits"
+      ],
+      "reject": [
+        "low-resolution Vertov candidate; watermarked Elephants Dream candidate; invented screenings presented as real"
+      ],
+      "observations": [
+        "Tears of Steel 1920x803 final-render image; Sintel 1024x436 official production image"
+      ],
+      "updatedAt": "2026-10-11T10:59:54.368Z",
+      "selectedAt": "2026-10-11T10:59:54.373Z"
+    },
+    {
+      "id": "transitions-dev",
+      "label": "Transitions.dev pinned modal recipe",
+      "url": "https://transitions.dev/skill",
+      "kind": "discovered",
+      "status": "selected",
+      "role": "state motion and quiet fallback",
+      "evidence": [
+        {
+          "ref": "DESIGN.md",
+          "kind": "artifact-or-check",
+          "exists": true
+        },
+        {
+          "ref": "RESEARCH.md",
+          "kind": "artifact-or-check",
+          "exists": true
+        },
+        {
+          "ref": "artifacts/reduced-detail-320.jpg",
+          "kind": "capture-or-media",
+          "exists": true
+        },
+        {
+          "ref": "artifacts/state-observations.json",
+          "kind": "artifact-or-check",
+          "exists": true
+        }
+      ],
+      "strengths": [
+        "purpose and bounded open-close motion"
+      ],
+      "weaknesses": [],
+      "borrow": [
+        "250ms opening and 150ms closing; reduced-motion and cleanup"
+      ],
+      "reject": [
+        "unrelated accordion and decorative loops; dependency for mood"
+      ],
+      "observations": [
+        "Source recipe adapted internally; final explicit keyboard wrap still needs runtime recheck"
+      ],
+      "updatedAt": "2026-10-11T10:59:54.369Z",
+      "selectedAt": "2026-10-11T10:59:54.373Z"
+    },
+    {
+      "id": "local-trial",
+      "label": "Common Frame observed trial",
+      "url": null,
+      "kind": "local",
+      "status": "selected",
+      "role": "target state and ending decisions",
+      "evidence": [
+        {
+          "ref": "PRODUCT.md",
+          "kind": "artifact-or-check",
+          "exists": true
+        },
+        {
+          "ref": "DESIGN.md",
+          "kind": "artifact-or-check",
+          "exists": true
+        },
+        {
+          "ref": "PROOF.md",
+          "kind": "artifact-or-check",
+          "exists": true
+        },
+        {
+          "ref": "artifacts/remove-return-after-320.jpg",
+          "kind": "capture-or-media",
+          "exists": true
+        },
+        {
+          "ref": "artifacts/empty-320.jpg",
+          "kind": "capture-or-media",
+          "exists": true
+        },
+        {
+          "ref": "artifacts/state-observations.json",
+          "kind": "artifact-or-check",
+          "exists": true
+        }
+      ],
+      "strengths": [
+        "specific saved-film and return-path evidence"
+      ],
+      "weaknesses": [],
+      "borrow": [
+        "visible recovery and direct programme continuation"
+      ],
+      "reject": [
+        "claiming full sign-off from tested subsets"
+      ],
+      "observations": [
+        "Implementation-led observations; unavailable storage and final keyboard wrap remain unverified"
+      ],
+      "updatedAt": "2026-10-11T10:59:54.370Z",
+      "selectedAt": "2026-10-11T10:59:54.373Z"
+    },
+    {
+      "id": "5point",
+      "label": "5Point Film Festival candidate",
+      "url": "https://www.siteinspire.com/website/12474-5point-film-festival",
+      "kind": "candidate",
+      "status": "candidate",
+      "role": "culture-event discovery",
+      "evidence": [
+        {
+          "ref": "RESEARCH.md",
+          "kind": "artifact-or-check",
+          "exists": true
+        }
+      ],
+      "strengths": [],
+      "weaknesses": [],
+      "borrow": [],
+      "reject": [],
+      "observations": [
+        "Original-site link discovered; original not inspected and not an acceptance anchor"
+      ],
+      "updatedAt": "2026-10-11T10:59:54.370Z"
+    }
+  ],
+  "sections": [
+    {
+      "id": "navigation",
+      "label": "Navigation and entry",
+      "prompt": "Does the entry structure establish the product and invite the right first action?",
+      "status": "complete",
+      "winner": "metrograph",
+      "decision": "Keep a specific film and programme path together",
+      "evidence": [
+        {
+          "ref": "RESEARCH.md",
+          "kind": "artifact-or-check",
+          "exists": true
+        },
+        {
+          "ref": "DESIGN.md",
+          "kind": "artifact-or-check",
+          "exists": true
+        },
+        {
+          "ref": "PROOF.md",
+          "kind": "artifact-or-check",
+          "exists": true
+        }
+      ],
+      "recordedAt": "2026-10-11T10:59:54.370Z"
+    },
+    {
+      "id": "first-viewport",
+      "label": "First viewport",
+      "prompt": "What leads the eye, what is dominant, and what peeks into the next chapter?",
+      "status": "complete",
+      "winner": "cineville",
+      "decision": "Lead with one film image and a legible club identity; translate into an open masthead",
+      "evidence": [
+        {
+          "ref": "RESEARCH.md",
+          "kind": "artifact-or-check",
+          "exists": true
+        },
+        {
+          "ref": "DESIGN.md",
+          "kind": "artifact-or-check",
+          "exists": true
+        },
+        {
+          "ref": "PROOF.md",
+          "kind": "artifact-or-check",
+          "exists": true
+        }
+      ],
+      "recordedAt": "2026-10-11T10:59:54.371Z"
+    },
+    {
+      "id": "object-or-content",
+      "label": "Object or content",
+      "prompt": "How is the actual subject, artifact, data, or workflow made visible?",
+      "status": "complete",
+      "winner": "official-film-material",
+      "decision": "Use real films and licensed official images; label all sample dates",
+      "evidence": [
+        {
+          "ref": "RESEARCH.md",
+          "kind": "artifact-or-check",
+          "exists": true
+        },
+        {
+          "ref": "DESIGN.md",
+          "kind": "artifact-or-check",
+          "exists": true
+        },
+        {
+          "ref": "PROOF.md",
+          "kind": "artifact-or-check",
+          "exists": true
+        }
+      ],
+      "recordedAt": "2026-10-11T10:59:54.371Z"
+    },
+    {
+      "id": "composition-and-rhythm",
+      "label": "Composition and rhythm",
+      "prompt": "Which alignment, scale, spacing, crop, and counterweight relationships create the silhouette?",
+      "status": "complete",
+      "winner": "cineville",
+      "decision": "Change image and prose reading measures without inventing repeated chapter boxes",
+      "evidence": [
+        {
+          "ref": "RESEARCH.md",
+          "kind": "artifact-or-check",
+          "exists": true
+        },
+        {
+          "ref": "DESIGN.md",
+          "kind": "artifact-or-check",
+          "exists": true
+        },
+        {
+          "ref": "PROOF.md",
+          "kind": "artifact-or-check",
+          "exists": true
+        }
+      ],
+      "recordedAt": "2026-10-11T10:59:54.372Z"
+    },
+    {
+      "id": "responsive",
+      "label": "Responsive re-staging",
+      "prompt": "What changes on narrow screens, touch input, and long content?",
+      "status": "complete",
+      "winner": "cineville",
+      "decision": "Separate film imagery and copy on mobile; keep useful programme controls directly available",
+      "evidence": [
+        {
+          "ref": "RESEARCH.md",
+          "kind": "artifact-or-check",
+          "exists": true
+        },
+        {
+          "ref": "DESIGN.md",
+          "kind": "artifact-or-check",
+          "exists": true
+        },
+        {
+          "ref": "PROOF.md",
+          "kind": "artifact-or-check",
+          "exists": true
+        }
+      ],
+      "recordedAt": "2026-10-11T10:59:54.372Z"
+    },
+    {
+      "id": "states-and-interaction",
+      "label": "States and interaction",
+      "prompt": "How do controls, feedback, empty/error/success states, and recovery read?",
+      "status": "complete",
+      "winner": "local-trial",
+      "decision": "Preserve film identity and visible recovery; pending final state checks stay explicit",
+      "evidence": [
+        {
+          "ref": "RESEARCH.md",
+          "kind": "artifact-or-check",
+          "exists": true
+        },
+        {
+          "ref": "DESIGN.md",
+          "kind": "artifact-or-check",
+          "exists": true
+        },
+        {
+          "ref": "PROOF.md",
+          "kind": "artifact-or-check",
+          "exists": true
+        }
+      ],
+      "recordedAt": "2026-10-11T10:59:54.373Z"
+    },
+    {
+      "id": "motion",
+      "label": "Motion language",
+      "prompt": "Which changes need motion, and what are the cleanup, reduced-motion, and static final states?",
+      "status": "complete",
+      "winner": "transitions-dev",
+      "decision": "Adapt the useful modal relation with reduced motion and cleanup",
+      "evidence": [
+        {
+          "ref": "RESEARCH.md",
+          "kind": "artifact-or-check",
+          "exists": true
+        },
+        {
+          "ref": "DESIGN.md",
+          "kind": "artifact-or-check",
+          "exists": true
+        },
+        {
+          "ref": "PROOF.md",
+          "kind": "artifact-or-check",
+          "exists": true
+        }
+      ],
+      "recordedAt": "2026-10-11T10:59:54.373Z"
+    },
+    {
+      "id": "assets-and-material",
+      "label": "Assets and material",
+      "prompt": "Which image, video, texture, type, color, and surface choices carry the subject?",
+      "status": "complete",
+      "winner": "official-film-material",
+      "decision": "Retain image truth and source-specific credits; reject weak candidates",
+      "evidence": [
+        {
+          "ref": "RESEARCH.md",
+          "kind": "artifact-or-check",
+          "exists": true
+        },
+        {
+          "ref": "DESIGN.md",
+          "kind": "artifact-or-check",
+          "exists": true
+        },
+        {
+          "ref": "PROOF.md",
+          "kind": "artifact-or-check",
+          "exists": true
+        }
+      ],
+      "recordedAt": "2026-10-11T10:59:54.373Z"
+    },
+    {
+      "id": "ending",
+      "label": "Ending and continuation",
+      "prompt": "How does the surface resolve, hand off, or make the next action legible?",
+      "status": "complete",
+      "winner": "local-trial",
+      "decision": "End with the actual club note and credits plus direct programme continuation",
+      "evidence": [
+        {
+          "ref": "RESEARCH.md",
+          "kind": "artifact-or-check",
+          "exists": true
+        },
+        {
+          "ref": "DESIGN.md",
+          "kind": "artifact-or-check",
+          "exists": true
+        },
+        {
+          "ref": "PROOF.md",
+          "kind": "artifact-or-check",
+          "exists": true
+        }
+      ],
+      "recordedAt": "2026-10-11T10:59:54.373Z"
+    }
+  ],
+  "synthesis": {
+    "status": "complete",
+    "direction": "An edited city film-club programme with an open typographic identity and real films",
+    "visualLanguage": "White field; dark green literal mark; distinct film colours; curatorial serif and quiet utility sans",
+    "composition": "Centered short masthead; bounded film stage; start-aligned programme; independently measured reading and credits",
+    "type": "Newsreader identity and curatorial roles; Sora prose and controls; short mono dates; readable notes tested in screenshots",
+    "material": "Continuous paper and one quiet reading field; local image corners and programme dividers; no framed chapters",
+    "motion": "Pinned modal recipe translated into native dialog; reduced motion observed; explicit Tab-wrap recheck pending",
+    "assets": "Licensed official Tears of Steel and Sintel images; sample programme; source credits; failed generation is not an image proposal",
+    "templateRisk": "A green serif masthead alone is interchangeable; judge the film-programme-reading relationship and preserve open alternatives",
+    "gaps": [
+      "final keyboard wrap; unavailable storage; film length metadata; unprimed visual critique"
+    ],
+    "rejectedDefaults": [
+      "copied page skin; equal poster wall; repeated promotional bands; fake bookings; image substitutes; forced cinema profile"
+    ]
+  },
+  "skills": {
+    "selected": [],
+    "unavailable": []
+  },
+  "history": [
+    {
+      "type": "reference",
+      "id": "metrograph",
+      "status": "selected",
+      "at": "2026-10-11T10:59:54.368Z"
+    },
+    {
+      "type": "reference",
+      "id": "cineville",
+      "status": "selected",
+      "at": "2026-10-11T10:59:54.368Z"
+    },
+    {
+      "type": "reference",
+      "id": "official-film-material",
+      "status": "selected",
+      "at": "2026-10-11T10:59:54.368Z"
+    },
+    {
+      "type": "reference",
+      "id": "transitions-dev",
+      "status": "selected",
+      "at": "2026-10-11T10:59:54.369Z"
+    },
+    {
+      "type": "reference",
+      "id": "local-trial",
+      "status": "inspected",
+      "at": "2026-10-11T10:59:54.370Z"
+    },
+    {
+      "type": "reference",
+      "id": "5point",
+      "status": "candidate",
+      "at": "2026-10-11T10:59:54.370Z"
+    },
+    {
+      "type": "section",
+      "section": "navigation",
+      "status": "complete",
+      "winner": "metrograph",
+      "at": "2026-10-11T10:59:54.370Z"
+    },
+    {
+      "type": "section",
+      "section": "first-viewport",
+      "status": "complete",
+      "winner": "cineville",
+      "at": "2026-10-11T10:59:54.371Z"
+    },
+    {
+      "type": "section",
+      "section": "object-or-content",
+      "status": "complete",
+      "winner": "official-film-material",
+      "at": "2026-10-11T10:59:54.371Z"
+    },
+    {
+      "type": "section",
+      "section": "composition-and-rhythm",
+      "status": "complete",
+      "winner": "cineville",
+      "at": "2026-10-11T10:59:54.372Z"
+    },
+    {
+      "type": "section",
+      "section": "responsive",
+      "status": "complete",
+      "winner": "cineville",
+      "at": "2026-10-11T10:59:54.372Z"
+    },
+    {
+      "type": "section",
+      "section": "states-and-interaction",
+      "status": "complete",
+      "winner": "local-trial",
+      "at": "2026-10-11T10:59:54.373Z"
+    },
+    {
+      "type": "section",
+      "section": "motion",
+      "status": "complete",
+      "winner": "transitions-dev",
+      "at": "2026-10-11T10:59:54.373Z"
+    },
+    {
+      "type": "section",
+      "section": "assets-and-material",
+      "status": "complete",
+      "winner": "official-film-material",
+      "at": "2026-10-11T10:59:54.373Z"
+    },
+    {
+      "type": "section",
+      "section": "ending",
+      "status": "complete",
+      "winner": "local-trial",
+      "at": "2026-10-11T10:59:54.373Z"
+    },
+    {
+      "type": "synthesis",
+      "at": "2026-10-11T10:59:54.374Z"
+    }
+  ],
+  "completedAt": "2026-10-11T10:59:54.374Z",
+  "qualityBar": {
+    "selectedReferences": [
+      "metrograph",
+      "cineville",
+      "official-film-material",
+      "transitions-dev",
+      "local-trial"
+    ],
+    "sectionWinners": {
+      "navigation": "metrograph",
+      "first-viewport": "cineville",
+      "object-or-content": "official-film-material",
+      "composition-and-rhythm": "cineville",
+      "responsive": "cineville",
+      "states-and-interaction": "local-trial",
+      "motion": "transitions-dev",
+      "assets-and-material": "official-film-material",
+      "ending": "local-trial"
+    },
+    "templateRisk": "A green serif masthead alone is interchangeable; judge the film-programme-reading relationship and preserve open alternatives"
+  }
+}

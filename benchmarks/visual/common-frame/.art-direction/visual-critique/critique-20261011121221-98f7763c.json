@@ -1,0 +1,158 @@
+{
+  "protocol": "frontend-art-direction/visual-critique-v1",
+  "version": 1,
+  "id": "critique-20261011121221-98f7763c",
+  "status": "complete",
+  "createdAt": "2026-10-11T12:12:21.453Z",
+  "updatedAt": "2026-10-11T12:13:48.509Z",
+  "projectRoot": "/Users/daiyudai/code/frontend-art-direction/benchmarks/visual/common-frame",
+  "query": "follow-up screenshot-first review after the subject-native opening mark",
+  "reviewer": {
+    "mode": "deliberately-reset-implementing-agent-self-review",
+    "implementationHistory": "read-before-review; screenshot-first reset applied; residual reviewer bias remains explicit"
+  },
+  "target": {
+    "capture": {
+      "ref": "artifacts/mark-test-1440.jpg",
+      "kind": "capture-or-media",
+      "exists": true,
+      "size": 295703,
+      "valid": true
+    },
+    "reference": {
+      "ref": "artifacts/5point-current-1440.jpg",
+      "kind": "capture-or-media",
+      "exists": true,
+      "size": 254105,
+      "valid": true
+    },
+    "viewport": "1440x900",
+    "state": "default",
+    "round": 20
+  },
+  "findings": [
+    {
+      "id": "opening-mark",
+      "severity": "P2",
+      "region": "lead image / desktop and mobile first read",
+      "observation": "The 01 of 02 open-movie mark gives the lead image a concrete programme role and adds a subject-native cue without covering the characters.",
+      "consequence": "The opening is more identifiable at thumbnail size while the image remains the dominant object.",
+      "evidence": [
+        {
+          "ref": "artifacts/mark-test-1440.jpg",
+          "kind": "capture-or-media",
+          "exists": true,
+          "size": 295703,
+          "valid": true
+        },
+        {
+          "ref": "artifacts/mark-test-390.jpg",
+          "kind": "capture-or-media",
+          "exists": true,
+          "size": 195777,
+          "valid": true
+        }
+      ],
+      "repair": "Keep the mark only while it remains legible at narrow widths and does not become a reusable decorative badge.",
+      "confidence": "render-certain",
+      "status": "resolved",
+      "recordedAt": "2026-10-11T12:13:48.293Z"
+    },
+    {
+      "id": "programme-pause-followup",
+      "severity": "P2",
+      "region": "programme / desktop 1440x900",
+      "observation": "The reversed second screening still leaves a large white interval; the image and end date make the reversal legible, but the pause is quieter than the reference composition.",
+      "consequence": "The interval may read as empty layout space for some subjects even though it is comfortable for this small programme.",
+      "evidence": [
+        {
+          "ref": "artifacts/mark-test-1440.jpg",
+          "kind": "capture-or-media",
+          "exists": true,
+          "size": 295703,
+          "valid": true
+        },
+        {
+          "ref": "artifacts/mark-test-390.jpg",
+          "kind": "capture-or-media",
+          "exists": true,
+          "size": 195777,
+          "valid": true
+        },
+        {
+          "ref": "artifacts/5point-current-1440.jpg",
+          "kind": "capture-or-media",
+          "exists": true,
+          "size": 254105,
+          "valid": true
+        }
+      ],
+      "repair": "Keep this as a content-dependent option in the skill: use a cue only when the subject provides one, otherwise let the pause remain open rather than filling it with generic cards.",
+      "confidence": "aesthetic-judgment",
+      "status": "open",
+      "recordedAt": "2026-10-11T12:13:48.377Z"
+    }
+  ],
+  "verdict": "CURRENT WINS",
+  "largestGap": "The opening mark resolves the first-read specificity gap; the remaining wide-screen pause needs a subject-specific decision rather than a universal density rule.",
+  "nextOperation": "Carry the mark and subject-material check into the Skill, then use a different one-sentence benchmark to test whether the rule adapts without forcing a film layout.",
+  "regressionCheck": "Check 390x844, 320x740, actual detail/save/filter flows, and clean console logs after any future opening change.",
+  "contract": {
+    "protocol": "frontend-art-direction/visual-critique-v1",
+    "status": "ready",
+    "purpose": "Provide a fresh, severity-ranked visual judgment before a meaningful round is accepted.",
+    "reviewer": {
+      "mode": "deliberately-reset-implementing-agent-self-review",
+      "implementationHistory": "read-before-review; screenshot-first reset applied; residual reviewer bias remains explicit"
+    },
+    "target": {
+      "query": "follow-up screenshot-first review after the subject-native opening mark",
+      "capture": "artifacts/mark-test-1440.jpg",
+      "reference": "artifacts/5point-current-1440.jpg",
+      "viewport": "1440x900",
+      "state": "default"
+    },
+    "reviewOrder": [
+      "thumbnail and first glance",
+      "subject and truth",
+      "composition and hierarchy",
+      "type and density",
+      "material and geometry",
+      "interaction and states",
+      "responsive re-staging",
+      "originality and template risk"
+    ],
+    "findingContract": [
+      "severity",
+      "region",
+      "observation",
+      "consequence",
+      "evidence",
+      "repair",
+      "confidence"
+    ],
+    "verdicts": [
+      "CURRENT WINS",
+      "REFERENCE WINS",
+      "INCONCLUSIVE"
+    ],
+    "hardRules": [
+      "a clean anti-pattern scan cannot certify taste or originality",
+      "CURRENT WINS cannot leave an open P0 or P1 finding",
+      "a critique journal is review evidence, not implementation proof"
+    ]
+  },
+  "decidedAt": "2026-10-11T12:13:48.446Z",
+  "proof": {
+    "capture": {
+      "ref": "artifacts/mark-test-1440.jpg",
+      "kind": "capture-or-media",
+      "exists": true,
+      "size": 295703,
+      "valid": true
+    },
+    "findingCount": 2,
+    "verdict": "CURRENT WINS"
+  },
+  "completedAt": "2026-10-11T12:13:48.508Z"
+}

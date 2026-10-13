@@ -4,6 +4,7 @@ import { resolve } from "node:path";
 import { asNumber, isMainModule, loadDataset, meaningfulTokens, option, parseArgs, writeOutput } from "./lib.mjs";
 import { scanProject } from "./inspect-project.mjs";
 import { selectReferenceComposition } from "./reference-composition.mjs";
+import { renderDesignMethods } from "./design-methods.mjs";
 import { selectVisualDirection } from "./visual-direction.mjs";
 import { renderAuthorityMarkdown } from "./authority.mjs";
 import { applyAuthoredBuild, readAuthoredDirection, renderCreativeProcess } from "./creative-process.mjs";
@@ -36,6 +37,44 @@ Options:
 
 const GENERIC_REFERENCE_TOKENS = new Set(["http", "https", "www", "com", "dev", "io", "ui"]);
 const REFERENCE_SIGNAL = /https?:\/\/|like\s+|similar\s+to|inspired\s+by|based\s+on|\b(?:rare\s+ui|beautiful\s+ui|beui|magic\s+ui|react\s+bits|aceternity|obsidian\s+ui|bencho|design\s+spells|transitions|shadcn)\b|像|类似|参考|仿照|复刻/i;
+
+function buildResponsiveCompositionPlan(base, compositionPlan) {
+  const regions = [
+    ...(compositionPlan?.regions ?? []),
+    ...(compositionPlan?.optionalRegions ?? []).map((region) => ({ ...region, candidate: "optional" })),
+  ];
+  return {
+    ...(base ?? {}),
+    compositionRules: {
+      wide: "Use extra width to reveal relationships and useful silence. Cap readable text, let the subject keep its natural measure, and allow a counterfield instead of stretching every region edge to edge.",
+      intermediate: "Change the relationship before the content becomes cramped: collapse optional rails, regroup controls, change alignment or crop locally, and preserve the dominant object in the reading order.",
+      narrow: "Recompose for touch and reading. Remove vacant rail indentation, move attached actions below the object when needed, keep short titles free to center, and keep prose start-aligned unless the subject gives it a reason to change.",
+      principle: "Responsive design is a change of relationships, not a smaller desktop. These are advisory decisions that yield to the subject, project authority, accessibility, and inspected reference evidence.",
+      budget: compositionPlan?.guardrails ?? null,
+      spatialBudget: compositionPlan?.spatialBudget ?? null,
+      spaceChoreography: compositionPlan?.spaceChoreography ?? null,
+    },
+    regionRules: regions.map((region) => ({
+      region: region.region,
+      scope: region.scope ?? "authored",
+      candidate: region.candidate ?? (region.scope === "optional" ? "optional" : "core"),
+      occupancy: region.occupancy ?? "preserve the chosen measure",
+      field: region.field ?? "keep the viewport field visible around the region",
+      surface: region.surface ?? "use the smallest surface that carries a semantic job",
+      pause: region.pause ?? region.space ?? "preserve the chosen pause",
+      geometry: region.geometry ?? {
+        anchor: region.textAlignment ?? "local-start",
+        measure: "chosen-measure",
+        field: "chosen-field",
+        density: "chosen-density",
+        mobile: "re-stage for touch and reading",
+      },
+      wide: region.wide ?? "preserve the chosen measure and relationship",
+      intermediate: region.intermediate ?? "regroup around the region's local edge before shrinking its content",
+      narrow: region.narrow ?? "reorder or regroup for reading and touch",
+    })),
+  };
+}
 
 export function hasReferenceBuildSignal(query) {
   return REFERENCE_SIGNAL.test(positiveRoutingText(query));
@@ -560,7 +599,7 @@ export function buildReferenceBuild({
   const resolved = explicit ?? productResolved ?? seeded ?? inferred;
   const primary = resolved?.reference ?? null;
   const selectionLimit = Math.min(Math.max(Number(limit) || 4, 1), 4);
-  const composition = selectReferenceComposition(`${selectionQuery} ${primary?.label ?? ""}`, {
+  const composition = selectReferenceComposition([selectionQuery, primary?.label, explicitInput].filter(Boolean).join(" "), {
     profile,
     style,
     motion: `${motion} ${primary?.label ?? ""}`,
@@ -626,6 +665,8 @@ export function buildReferenceBuild({
     resolvedBuild.firstViewport.dominant = request.signalFields["primary-object"];
     resolvedBuild.firstViewport.mustShow = [...new Set([request.signalFields["primary-object"], ...resolvedBuild.firstViewport.mustShow])];
   }
+  resolvedBuild.compositionPlan = visualDirection.compositionPlan;
+  resolvedBuild.responsivePlan = buildResponsiveCompositionPlan(resolvedBuild.responsivePlan, visualDirection.compositionPlan);
   const productSignal = buildProductSignal({
     query: selectionQuery,
     profile: signalProfile,
@@ -663,6 +704,7 @@ export function buildReferenceBuild({
       match: resolved?.hits ?? [],
     },
     selectedReferences: selected,
+    designMethods: composition.designMethods,
     visualDirection,
     productSignal,
     completionContract,
@@ -690,6 +732,7 @@ export function buildReferenceBuild({
       urls: primary.urls ?? (primary.url ? [primary.url] : []),
     } : null,
     firstViewport: resolvedBuild.firstViewport,
+    compositionPlan: resolvedBuild.compositionPlan,
     pagePlan: resolvedBuild.pagePlan,
     componentGrammar: resolvedBuild.componentGrammar,
     tokenSeed: resolvedBuild.tokenSeed,
@@ -723,6 +766,7 @@ export function buildReferenceBuild({
     source: {
       lenses: "data/reference-lenses.json",
       recipes: "data/reference-recipes.json",
+      designMethods: composition.designMethods.source,
       selectionMode: allowInferred ? "named, scouted product, supporting, or inferred reference" : "named/scouted/supporting reference only; otherwise adaptive contract",
     },
   };
@@ -742,6 +786,21 @@ export function renderReferenceBuild(contract) {
 - Layout: ${section.layout}
 - Content: ${section.content}
 - Components: ${section.components.join(", ")}`).join("\n\n");
+  const compositionPlan = contract.compositionPlan ?? contract.visualDirection?.compositionPlan;
+  const coreRegions = compositionPlan?.regions ?? [];
+  const optionalRegions = compositionPlan?.optionalRegions ?? [];
+  const renderRegion = (region, candidate = "core") => `- **${region.region}** (${candidate}): placement ${region.placement ?? "not recorded"}; text ${region.textAlignment ?? "not recorded"}; measure ${region.measure ?? "not recorded"}; occupancy ${region.occupancy ?? "not recorded"}; field ${region.field ?? "not recorded"}; surface ${region.surface ?? "not recorded"}; pause ${region.pause ?? region.space ?? "not recorded"}; geometry ${region.geometry ? JSON.stringify(region.geometry) : "not recorded"}; wide ${region.wide ?? "not recorded"}; intermediate ${region.intermediate ?? "not recorded"}; narrow ${region.narrow ?? "not recorded"}`;
+  const compositionRegions = [
+    ...coreRegions.map((region) => renderRegion(region)),
+    ...(optionalRegions.length > 0 ? ["\nOptional candidates; implement only when the content earns them:", ...optionalRegions.map((region) => renderRegion(region, "optional"))] : []),
+  ].join("\n") || "- No regional composition recorded.";
+  const compositionBudget = compositionPlan?.guardrails;
+  const spatialBudget = compositionPlan?.spatialBudget;
+  const compositionHypotheses = compositionPlan?.hypotheses?.map((hypothesis) => {
+    const regionMap = hypothesis.regions?.map((region) => `${region.region}:${region.textAlignment}/${region.geometry?.field ?? "field?"}/${region.geometry?.measure ?? "measure?"}`).join(" · ");
+    const optionalMap = hypothesis.optionalRegions?.map((region) => `${region.region}:${region.textAlignment}/${region.geometry?.field ?? "field?"}/${region.geometry?.measure ?? "measure?"}`).join(" · ");
+    return `- **${hypothesis.label}** (${hypothesis.id})${hypothesis.selected ? " · selected" : " · alternative"}: ${hypothesis.thesis} Best for: ${hypothesis.bestFor} Tradeoff: ${hypothesis.tradeoff} Mix: ${hypothesis.alignmentMix?.join(", ") || "not recorded"}; fields: ${hypothesis.geometryMix?.join(", ") || "not recorded"}; measures: ${hypothesis.measureMix?.join(", ") || "not recorded"}. Core: ${regionMap || "not recorded"}. Optional: ${optionalMap || "none"}. Alignment sequence: ${hypothesis.guardrails?.alignmentSequence?.join(" -> ") || "not recorded"}; field sequence: ${hypothesis.guardrails?.fieldSequence?.join(" -> ") || "not recorded"}`;
+  }).join("\n") || "- No structural alternatives recorded.";
   const components = contract.componentGrammar.map((component) => `- **${component.id}**: ${component.shape}; states: ${component.states.join(", ")}; behavior: ${component.behavior}`).join("\n");
   const tokenSeed = Object.entries(contract.tokenSeed ?? {})
     .filter(([key]) => key !== "note")
@@ -766,6 +825,8 @@ ${contract.productContext ? renderProductContextStatus(contract.productContext) 
 ${selected}
 ${sourceEvidence}
 
+${renderDesignMethods(contract.designMethods)}
+
 ## Visual Genome
 
 - Family: ${contract.visualGenome.family}
@@ -786,7 +847,7 @@ ${sourceEvidence}
 - Signature device: ${contract.visualDirection.visualTreatment?.signatureDevice ?? "not recorded"}
 - Expression budget: ${contract.visualDirection.visualTreatment?.expressionBudget ?? "not recorded"}
 - First viewport: ${contract.visualDirection.firstViewport.layout}
-- Alignment: ${contract.visualDirection.firstViewport.alignmentAxis}
+- Local alignment suggestion: ${contract.visualDirection.firstViewport.alignmentAxis} Decide the remaining regions separately.
 - Card budget: ${contract.visualDirection.surfaceRules.cardBudget}
 - Edge character: ${contract.visualDirection.geometryRules.edgeCharacter}
 - Corner hierarchy: ${contract.visualDirection.geometryRules.cornerHierarchy}
@@ -827,6 +888,42 @@ ${list(contract.visualDirection.advisoryChecks?.map((item) => `${item.source}: $
 
 ${sections}
 
+## Regional Composition And Density
+
+- Status: **${compositionPlan?.status ?? "not recorded"}**
+- Selection evidence: **${compositionPlan?.hypothesisSelection?.status ?? "authored"}**; ${compositionPlan?.hypothesisSelection?.basis ?? "Preserve the authored regional decisions."}
+- Selected structural hypothesis: **${compositionPlan?.selectedHypothesis ?? "not recorded"}**
+- Alignment mix: ${compositionPlan?.alignmentMix?.join(", ") || "not recorded"}
+- Placement mix: ${compositionPlan?.placementMix?.join(", ") || "not recorded"}
+- Geometry fields: ${compositionPlan?.geometryMix?.join(", ") || "not recorded"}; measures: ${compositionPlan?.measureMix?.join(", ") || "not recorded"}; density: ${compositionPlan?.densityMix?.join(", ") || "not recorded"}
+- Policy: ${compositionPlan?.policy ?? "Choose each region from the subject and verify the rendered silhouette."}
+- Composition budget: ${compositionBudget ? `alignment ${compositionBudget.alignmentSequence?.join(" -> ") || "not recorded"}; measures ${compositionBudget.measureSequence?.join(" -> ") || "not recorded"}; fields ${compositionBudget.fieldSequence?.join(" -> ") || "not recorded"}` : "not recorded"}
+- Wide: ${compositionBudget?.wide ?? "not recorded"}
+- Intermediate: ${compositionBudget?.intermediate ?? "not recorded"}
+- Narrow: ${compositionBudget?.narrow ?? "not recorded"}
+- Full-bleed policy: ${compositionBudget?.fullBleedPolicy ?? "not recorded"}
+- Counterfield: ${compositionBudget?.counterfield ?? "not recorded"}
+- Creative override: ${compositionBudget?.override ?? "not recorded"}
+- Spatial budget: ${spatialBudget?.wide ?? "not recorded"}
+- Intermediate space rule: ${spatialBudget?.intermediate ?? "not recorded"}
+- Narrow space rule: ${spatialBudget?.narrow ?? "not recorded"}
+- Full-bleed limit: ${spatialBudget?.fullBleedLimit ?? "not recorded"}
+- Counterfield budget: ${spatialBudget?.counterfield ?? "not recorded"}
+- Occupancy by region: ${(spatialBudget?.occupancy ?? []).join("; ") || "not recorded"}
+- Spatial checks: ${(spatialBudget?.checks ?? []).join("; ") || "not recorded"}
+- Spatial override: ${spatialBudget?.override ?? "not recorded"}
+- Space choreography: ${compositionPlan?.spaceChoreography?.sequence?.map((step) => `${step.region}:${step.anchor}/${step.measure}/${step.field}/${step.density}`).join(" -> ") || "not recorded"}
+- Spatial score (wide): ${compositionPlan?.spaceChoreography?.wide ?? "not recorded"}
+- Spatial score (intermediate): ${compositionPlan?.spaceChoreography?.intermediate ?? "not recorded"}
+- Spatial score (narrow): ${compositionPlan?.spaceChoreography?.narrow ?? "not recorded"}
+- Choreography counterfield: ${compositionPlan?.spaceChoreography?.counterfield ?? "not recorded"}
+- Choreography checks: ${(compositionPlan?.spaceChoreography?.checks ?? []).join("; ") || "not recorded"}
+- Choreography override: ${compositionPlan?.spaceChoreography?.override ?? "not recorded"}
+\n### Structural Alternatives\n\n${compositionHypotheses}
+${compositionRegions}
+- Use only the core relationships by default; optional relationships need a real content or interaction job.
+- Never stretch every band to the viewport edge merely to make the page feel complete.
+
 ## Component Grammar
 
 ${components}
@@ -852,6 +949,9 @@ _${contract.tokenSeed?.note ?? "Use these as starting values and tune against th
 - Desktop: ${contract.responsivePlan.desktop}
 - Tablet: ${contract.responsivePlan.tablet}
 - Mobile: ${contract.responsivePlan.mobile}
+- Wide / intermediate / narrow composition rules: ${contract.responsivePlan.compositionRules?.wide ?? "not recorded"} / ${contract.responsivePlan.compositionRules?.intermediate ?? "not recorded"} / ${contract.responsivePlan.compositionRules?.narrow ?? "not recorded"}
+- Responsive principle: ${contract.responsivePlan.compositionRules?.principle ?? "not recorded"}
+- Spatial budget carried into implementation: ${contract.responsivePlan.compositionRules?.spatialBudget?.status ?? "not recorded"}
 
 ## Asset Strategy
 

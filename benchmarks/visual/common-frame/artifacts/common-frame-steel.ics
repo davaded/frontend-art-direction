@@ -1,0 +1,14 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Common Frame//Sample Programme//EN
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:steel-202611@common-frame.example
+DTSTAMP:20261011T103554Z
+DTSTART:20261106T190000
+DTEND:20261106T200000
+SUMMARY:Common Frame: Tears of Steel (sample screening)
+DESCRIPTION:Sample film-club programme. This calendar entry is a personal p
+ lan; no seat is reserved.
+END:VEVENT
+END:VCALENDAR

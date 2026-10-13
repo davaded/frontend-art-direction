@@ -2,7 +2,7 @@
 
 import { existsSync, readFileSync, writeFileSync } from "node:fs";
 import { basename, resolve } from "node:path";
-import { chooseRecord, isMainModule, isUnderspecifiedRequest, loadDataset, meaningfulTokens, option, parseArgs, writeOutput } from "./lib.mjs";
+import { chooseRecord, isMainModule, isUnderspecifiedRequest, loadDataset, option, parseArgs, writeOutput } from "./lib.mjs";
 import { classifySurfaceMode } from "./surface-mode.mjs";
 
 export const PRODUCT_CONTEXT_FIELDS = [
@@ -83,31 +83,68 @@ export function readProductContext(projectRoot) {
 }
 
 const ROUTING_FIELDS = ["product-audience", "primary-workflow", "primary-object", "primary-job", "visible-result"];
-const GENERIC_PROFILE_WORDS = new Set(["design", "creative", "mobile", "touch", "general", "neutral", "evidence", "website", "site", "page", "ui", "ux", "设计", "创作", "通用", "适配", "中性"]);
+const PROFILE_CONTEXT_FIELDS = ["product-audience", "primary-workflow", "primary-job"];
+const GENERIC_PROFILE_WORDS = new Set(["design", "creative", "mobile", "touch", "general", "neutral", "evidence", "website", "site", "page", "ui", "ux", "landing", "brand", "marketing", "campaign", "官网", "品牌", "发布", "宣传", "设计", "创作", "通用", "适配", "中性"]);
+const OPERATING_PROFILES = new Set(["productive-app", "creative-editor", "command-tool", "data-workbench", "commerce-flow", "media-experience", "component-workbench"]);
+const CREATION_REQUEST = /\b(?:build|create|develop|design|make)\s+(?:(?:me|us)\s+)?(?:a|an|new|another)\b|(?:做|创建|制作|开发|设计|生成)(?:一个|一款|一套|一页|个|新的|另一个)/iu;
 
 export function positiveRoutingText(text = "") {
   // Keep common negative clauses out of keyword routing, while preserving the raw request elsewhere.
   return String(text).replace(/(?:\b(?:not|no|without)\s+(?!only\b|just\b)|不是|不要|无需|不做|不需要)(?:(?!\bbut\b|\binstead\b|而是|但是|但)[^,;.!?\n，；。！？])*/giu, " ").trim();
 }
 
+function chooseProductProfile(profiles, text, preferredId) {
+  if (profiles.some((record) => record.id === preferredId)) {
+    return chooseRecord(profiles, [], preferredId, "adaptive-surface", ["keywords"]);
+  }
+  const normalize = (value) => String(value).toLocaleLowerCase().replace(/[^\p{L}\p{N}]+/gu, " ").trim();
+  const query = normalize(text);
+  const ranked = profiles.map((record) => {
+    // Profile evidence needs the whole keyword; shared CJK fragments can name unrelated subjects.
+    const hits = [...new Set(record.keywords.map(normalize))].filter((keyword) => {
+      if (!keyword || GENERIC_PROFILE_WORDS.has(keyword)) return false;
+      return /\p{Script=Han}/u.test(keyword)
+        ? query.includes(keyword)
+        : new RegExp(`\\b${keyword.replace(/[.*+?^${}()|[\]\\]/gu, "\\$&")}\\b`, "u").test(query);
+    });
+    return { record, score: hits.length, hits };
+  }).sort((left, right) => right.score - left.score || left.record.id.localeCompare(right.record.id));
+  const best = ranked[0]?.score > 0
+    ? ranked[0]
+    : { record: profiles.find((record) => record.id === "adaptive-surface") ?? profiles[0], score: 0, hits: [] };
+  return {
+    ...best,
+    confidence: best.score >= 4 ? "high" : best.score >= 2 ? "medium" : "low",
+    candidates: ranked.slice(0, 3).map(({ record, score, hits }) => ({ id: record.id, score, hits })),
+  };
+}
+
 export function resolveProductRequest(query = "", context = null, { profile = "", surfaceMode = "" } = {}) {
   const profiles = loadDataset("profiles.json").profiles;
-  const tokens = (text) => meaningfulTokens(text).filter((token) => !GENERIC_PROFILE_WORDS.has(token));
   const affirmative = positiveRoutingText(query);
-  const routingQuery = isUnderspecifiedRequest(affirmative) ? "" : affirmative;
-  const current = chooseRecord(profiles, tokens(routingQuery), profile, "adaptive-surface", ["keywords"]);
+  const underspecified = isUnderspecifiedRequest(affirmative);
+  const routingQuery = underspecified ? "" : affirmative;
+  const current = chooseProductProfile(profiles, routingQuery, profile);
   const usedFields = ROUTING_FIELDS.filter((id) => context?.fields?.[id]);
   const background = usedFields.map((id) => positiveRoutingText(context.fields[id])).join("\n").trim();
-  const inherited = chooseRecord(profiles, tokens(background), undefined, "adaptive-surface", ["keywords"]);
+  // Objects/results provide signal content, not a page genre from words such as image or table.
+  const profileBackground = PROFILE_CONTEXT_FIELDS.map((id) => positiveRoutingText(context?.fields?.[id])).join("\n");
+  const inherited = chooseProductProfile(profiles, profileBackground);
   const currentMode = classifySurfaceMode(routingQuery, { explicit: surfaceMode });
   // Background fills an unresolved request; it never replaces a specified page job.
-  const useBackground = !profile && current.score === 0 && currentMode.mode === "adaptive" && Boolean(background);
-  const selection = useBackground ? inherited : current;
+  const concreteCreation = !underspecified && CREATION_REQUEST.test(affirmative);
+  const useBackground = !profile && !concreteCreation && current.score === 0 && currentMode.mode === "adaptive" && Boolean(background);
+  const subjectSelection = useBackground ? inherited : current;
   const visitorMode = useBackground ? classifySurfaceMode(background) : currentMode;
+  // The topic may be a tool; the requested surface can still be its public website.
+  const selection = !profile && visitorMode.mode === "persuade" && OPERATING_PROFILES.has(subjectSelection.record.id)
+    ? { ...subjectSelection, record: profiles.find((item) => item.id === "editorial-marketing") }
+    : subjectSelection;
   if (useBackground && visitorMode.mode !== "adaptive") visitorMode.evidence.source = context.path;
   return {
     profile: selection,
-    source: profile ? "explicit" : current.score > 0 || currentMode.mode !== "adaptive" ? "current-request" : useBackground ? context.path : "open",
+    subjectProfile: subjectSelection.record.id,
+    source: profile ? "explicit" : current.score > 0 || currentMode.mode !== "adaptive" || concreteCreation ? "current-request" : useBackground ? context.path : "open",
     routingQuery,
     selectionQuery: useBackground ? `${routingQuery}\n${background}`.trim() : routingQuery,
     surfaceMode: visitorMode,

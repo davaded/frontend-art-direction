@@ -8,8 +8,8 @@
       "keywords": ["adaptive", "general", "neutral", "website", "web", "site", "通用", "网站", "网页", "官网"],
       "signature": "one offset primary object or task with a visible counterweight and a deliberate next-step reveal",
       "firstViewport": {
-        "layout": "asymmetric two-region composition; dominant object/work surface gets 55-65% of the visual weight and the supporting rail gets the rest",
-        "alignmentAxis": "one strong left or right edge; title, object, and action share an axis instead of floating in a centered stack",
+        "layout": "one dominant object or task with a counterweight; choose a centered, offset, edge-attached, or open field from the subject instead of a fixed split",
+        "alignmentAxis": "choose local edges, baselines, or centers per region; continuity comes from relationships, not a site-wide axis",
         "dominant": "the real object, content, or task supplied by the brief",
         "counterweight": "short specific title, one action, and one proof/state cue",
         "belowFoldPeek": "one next proof relationship enters the viewport; never a row of identical cards"
@@ -31,7 +31,7 @@
         "rhythm": "4/8/12/20/32/48/72px base rhythm",
         "container": "max-width 1180-1280px with 24-32px mobile-safe gutters",
         "section": "64-120px vertical sections, adjusted by content proof rather than empty theater",
-        "alignment": "repeat one axis across title, object, caption, and action; break it once deliberately"
+        "alignment": "repeat an edge only where it clarifies continuity; allow deliberate changes between start, center, and end when the content changes job"
       },
       "surfaceRules": {
         "cardBudget": "0-2 framed cards per viewport; repeated content uses rows, open sections, or a single frame",
@@ -261,7 +261,7 @@
       "id": "stateful-instrument",
       "label": "Stateful Instrument",
       "profileIds": ["media-experience"],
-      "keywords": ["ai", "agent", "assistant", "streaming", "thinking", "audio", "video", "realtime", "player", "voice", "代理", "流式", "实时", "播放"],
+      "keywords": ["ai", "agent", "assistant", "streaming", "thinking", "audio", "video", "realtime", "player", "voice", "sound", "soundscape", "recording", "music", "声音", "声场", "录音", "音乐", "音频", "代理", "流式", "实时", "播放"],
       "signature": "process state is the product object; the interface makes waiting, change, and recovery legible",
       "firstViewport": {
         "layout": "one live state surface with a compact context rail and visible next action; no generic hero before the process object",
@@ -389,7 +389,7 @@
       "id": "narrative-chapters",
       "label": "Narrative Chapters",
       "profileIds": ["editorial-marketing"],
-      "keywords": ["landing", "launch", "marketing", "campaign", "story", "brand", "官网", "发布", "宣传", "故事"],
+      "keywords": ["landing", "launch", "marketing", "campaign", "story", "stories", "brand", "editorial", "publication", "journal", "magazine", "essay", "narrative", "blog", "film", "films", "cinema", "archive", "archives", "官网", "发布", "宣传", "故事", "出版", "刊物", "杂志", "文章", "叙事", "章节", "博客", "电影", "影像", "影评"],
       "signature": "a controlled sequence of claims, proof, and breathing space; every chapter changes the reading relationship",
       "firstViewport": {
         "layout": "one strong claim paired with real proof media and a visible continuation cue; avoid an empty centered hero",
@@ -415,7 +415,7 @@
         "rhythm": "8/16/32/64/96/144px narrative rhythm",
         "container": "1200-1440px for media with 60-72ch text measure",
         "section": "112-180px only when a new proof chapter earns the space",
-        "alignment": "repeat one editorial edge, then break it once for emphasis"
+        "alignment": "let each chapter choose the edge, center, baseline, or offset that serves its proof; repeat a relationship only when continuity is useful"
       },
       "surfaceRules": {
         "cardBudget": "0-3 cards; use image fields, rules, captions, and open bands instead",

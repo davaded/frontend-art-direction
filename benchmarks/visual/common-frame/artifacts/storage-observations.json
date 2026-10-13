@@ -1,0 +1,49 @@
+{
+  "failureCondition": "sandbox iframe without allow-same-origin; real localStorage SecurityError",
+  "before": [
+    {
+      "state": "startup",
+      "status": "Stored programme could not be read. You can still save a plan for this visit."
+    },
+    {
+      "state": "saved-in-visit",
+      "status": "Tears of Steel saved. Storage is unavailable; this plan lasts for this visit.",
+      "label": "My programme, 1 saved screenings"
+    },
+    {
+      "state": "saved-view",
+      "status": "1 saved screening.",
+      "visibleFilms": 1
+    }
+  ],
+  "after": [
+    {
+      "state": "startup",
+      "status": "This plan is kept for this visit only."
+    },
+    {
+      "state": "saved-in-visit",
+      "status": "Tears of Steel saved. This plan is kept for this visit only."
+    },
+    {
+      "state": "saved-view",
+      "status": "1 saved screening. This plan is kept for this visit only.",
+      "visibleFilms": 1
+    },
+    {
+      "state": "detail",
+      "status": "This plan is kept for this visit only.",
+      "length": "Live action + visual effects / 2012 / 12 min"
+    },
+    {
+      "state": "dismissed",
+      "status": "1 saved screening. This plan is kept for this visit only."
+    },
+    {
+      "state": "reload",
+      "status": "This plan is kept for this visit only.",
+      "savedLabel": "My programme, 0 saved screenings"
+    }
+  ],
+  "visualBoundary": "Opaque-origin font loading is not normal-app visual proof."
+}

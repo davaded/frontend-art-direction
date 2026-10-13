@@ -2,6 +2,35 @@
 
 ## Unreleased
 
+- Added 24 graphic/motion source records and 13 composable design methods to the reference, brief, build and audit pipeline, preserving source-inspection limits, creative authority, narrow-screen guidance and static/failure states.
+- Verified the fresh trial's film-length metadata, keyboard edge wrapping and actual unavailable-storage path; repaired visit-only feedback disappearing after filtering and captured the current implementation at nine viewport sizes.
+- Added subject-specific process material and a restrained opening index to the Common Frame visual trial; concrete hardware requests now route into the official reference pool instead of losing to generic page words.
+- Fixed generated subject-led compositions that misclassified an opening title rail as the object itself; product contracts now preserve local alignment changes such as opening start edge -> centered object -> compact ending.
+- Made an underspecified brief prefer a subject-led exploratory tie-breaker instead of the alphabetic utility hypothesis; added a wide-prose geometry warning so full-bleed media can coexist with bounded text measures.
+- Recorded the adaptive fallback alignment evidence and separated prose measurement from media measurement in the layout audit.
+- Re-staged Night Shift's overview into a start-aligned reading field with a right-hand fact record, then regrouped that relationship at intermediate and narrow widths.
+- Added a fresh, uncatalogued film-club trial with licensed official imagery and actual save/filter/calendar/detail workflows; responsive repairs include short-height composition, readable notes, stable state labels, and visible focus return after removal.
+- Refined screenshot verification to check hidden-opener focus recovery, empty-state continuation, longest ordinary action labels, and settled overlay states; reading-distance and short-height opening reviews remain subject-specific decisions.
+- Match product profiles with complete keyword evidence so subjects such as independent film do not inherit a developer-tool workflow through shared Chinese fragments; explicit profile choices remain authoritative.
+- Preserve concrete creation requests outside the local profile catalogue instead of importing an unrelated genre from PRODUCT.md; contextual refinement requests still inherit the existing subject.
+- Reworked Night Shift's inset chapter stack into independent reading measures, an open orientation/source field, and a paper note band; intermediate widths regroup the note and source records before prose or captions touch their boundaries.
+- Added connected-browser snapshot input to `layout-audit`, kept absent runtime logs unrecorded, and exposed local painted-surface text-inset risks that viewport gutters alone conceal.
+- Separated product topic from requested surface: developer-tool, AI-tool, and analytics homepages no longer inherit an internal workbench by default; editor/builder requests retain operational contracts and authored directions remain replaceable.
+- Fixed layout auditing to distinguish computed line alignment from block placement, preserving mixed headings/prose and logical RTL alignment without treating consistent prose as a page-wide composition mandate.
+- Re-staged Common Ground's field note at intermediate widths after the 768px screenshot exposed a squeezed reading column; title, prose, and detail image now use independent local anchors.
+- Extended `layout-audit` with local field anchors, width-rhythm checks, repeated viewport-band detection, and narrow text-gutter checks; these remain evidence prompts with explicit creative overrides.
+- Added executable `spaceChoreography` to composition and reference-build contracts so local anchors, natural measures, fields, density, pauses, counterfields, and mobile restaging survive into implementation without becoming a fixed page template.
+- Added developer-tool subject signals while keeping the requested page job independent from the subject's internal command/builder interface.
+- Added regional composition and density output to `reference-build`: core/optional relationships, local alignment, executable geometry tokens, natural measures, named empty-space purpose, and per-region wide/intermediate/narrow regrouping now travel with the implementation contract.
+- Generated composition contracts now expose three replaceable structural hypotheses, plus per-region occupancy, viewport field, surface boundary, and pause purpose; the selected candidate is explicitly render-pending so a packed first render triggers a structural change.
+- Updated the Night Shift and Monet trials so ordinary desktop widths expose the page field around bounded shells; mobile keeps only subject media full-width where the content earns it.
+- Added a reference synthesis layer from current Apple layout guidance, Siteinspire, Mobbin, and Rare UI research; workflow requests now keep responsive discovery alongside workflow/component discovery instead of choosing one.
+- Added per-region composition decisions with independent placement, text alignment, measures, neighbor relationships, and wide/narrow staging; authored decisions survive direction resolution without a site-wide axis mandate.
+- Added job-based discovery channels and open discovery for subjects outside the hardware catalog; generic quality/design words no longer select hardware references for unrelated work.
+- Fixed meaningful uncatalogued briefs being mistaken for a completely empty request; real subjects now keep signal-led routing and activate open reference discovery, while "make a website" remains adaptive.
+- Expanded content-medium signals for editorial, publication, film, blog, sound, and recording work, preserving alternative structural hypotheses instead of forcing one page genre.
+- Reworked the M51 and Monet visual trials around bounded and varied reading distances, with fresh full-page responsive captures and comparison evidence.
+
 - Fixed authored-direction Markdown output and partial first-viewport overrides; made experience build plans independent of functional controls and kept explicit tasks ahead of brand/style routing.
 - Added actual screenshot repair/recapture and screenshot-to-image-to-code workflows, full-scope comparison, and an iteration ledger; CLI plans remain explicitly unexecuted and generated revisions cannot substitute for runtime evidence.
 - Added a scope-aware Completion Contract and first-viewport-only/unfinished-surface checks so generated work finishes its declared regions, states, responsive paths, destinations, assets, and endings.

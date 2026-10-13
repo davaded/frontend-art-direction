@@ -1,0 +1,382 @@
+{
+  "version": 1,
+  "sources": [
+    {
+      "id": "swissted",
+      "label": "FEVR / Swissted",
+      "url": "https://wearefevr.com/swissted-posters-motion-graphics",
+      "kind": "studio-case",
+      "aliases": ["swissted", "瑞士国际主义"],
+      "evidence": { "status": "case-description-read", "checkedOn": "2026-10-12", "note": "Studio describes Swiss poster geometry and typography translated into music-led motion; full animation timing has not been measured." }
+    },
+    {
+      "id": "claude-editorial-study",
+      "label": "Fudge / Claude.com design study",
+      "url": "https://fudge.design/share/claude.com-design",
+      "kind": "captured-design-study",
+      "aliases": ["fudge", "claude.com-design"],
+      "evidence": { "status": "case-description-read", "checkedOn": "2026-10-12", "note": "The accessible study covers four dark editorial marketing captures with paper accents, not a verified light newspaper system. Unseen states and smaller breakpoints need original-site inspection." }
+    },
+    {
+      "id": "quicktake",
+      "label": "Bloomberg QuickTake / identity interview",
+      "url": "https://www.designboom.com/design/bloomberg-quicktake-creative-director-disrupting-the-traditional-tv-news-model-04-27-2021/",
+      "kind": "creator-interview",
+      "aliases": ["quicktake", "bloomberg quicktake"],
+      "evidence": { "status": "indexed-description-read", "checkedOn": "2026-10-12", "note": "Indexed interview explains simultaneous graphic/motion design and identity that follows users across contexts. Direct fetch failed; complete motion remains unviewed." }
+    },
+    {
+      "id": "netflix-kinetic",
+      "label": "Ultratype / Netflix Upfronts",
+      "url": "https://www.ultratype.tv/netflix-upfronts-kinetic-typography",
+      "kind": "studio-case",
+      "aliases": ["netflix upfronts", "ultratype"],
+      "evidence": { "status": "case-description-read", "checkedOn": "2026-10-12", "note": "Studio describes typography as the main storytelling medium across event formats; this is not a tested website recipe or measured easing curve." }
+    },
+    {
+      "id": "goca-patterns",
+      "label": "GOCA / identity and pattern candidate",
+      "url": "https://visie.io/media/goca-brand-identity-halftone-motion-graphics-animation-588622",
+      "kind": "gallery-candidate",
+      "aliases": ["goca", "visie"],
+      "supportingUrl": "https://www.itsnicethat.com/articles/athletics-goca-graphic-design-project-020425",
+      "evidence": { "status": "fetch-blocked", "checkedOn": "2026-10-12", "note": "Original gallery is inaccessible. A separate indexed Athletics interview describes generative wordmark-derived patterns; it does not verify this candidate's halftone technique." }
+    },
+    {
+      "id": "hanzi-motion",
+      "label": "Ting-An Ho / Motion Type Project",
+      "url": "https://tinganho.info/Motion-Type-Project",
+      "kind": "artist-case",
+      "aliases": ["tinganho", "motion type project", "何庭安"],
+      "evidence": { "status": "page-and-frame-read", "checkedOn": "2026-10-12", "note": "Artist's explanation and browser frames inspected. Project examines Hanzi strokes, balance and structure; complete sequences and responsive behavior remain unmeasured." }
+    },
+    {
+      "id": "think-different-type",
+      "label": "Mat Voyce / Think Different",
+      "url": "https://abduzeedo.com/mat-voyces-think-different-kinetic-typography-mass/",
+      "kind": "case-article",
+      "aliases": ["mat voyce", "think different"],
+      "evidence": { "status": "case-description-read", "checkedOn": "2026-10-12", "note": "Article describes grain and typographic mass/inertia. It is a personal type-motion exercise, not a universal cinematic opening or reusable physics implementation." }
+    },
+    {
+      "id": "neubrutalism",
+      "label": "SVGator / Neubrutalism",
+      "url": "https://www.svgator.com/blog/what-is-the-neubrutalism/",
+      "kind": "article-candidate",
+      "aliases": ["neubrutalism", "新粗野主义"],
+      "evidence": { "status": "fetch-blocked", "checkedOn": "2026-10-12", "note": "Article could not be retrieved; inspect original examples before attributing specific decisions to this source." }
+    },
+    {
+      "id": "bauhaus-reverberada",
+      "label": "Bauhaus Reverberada / kinetic typography",
+      "url": "https://www.behance.net/gallery/98618597/Bauhaus-Reverberada-Kinetic-Typography",
+      "kind": "artist-candidate",
+      "aliases": ["bauhaus reverberada", "bauhaus", "包豪斯"],
+      "evidence": { "status": "fetch-blocked", "checkedOn": "2026-10-12", "note": "Behance returned 403. The supplied title is a discovery lead, not proof of its actual animation or layout." }
+    },
+    {
+      "id": "brutus-editorial",
+      "label": "BRUTUS / editors on print and video",
+      "url": "https://dentsu-ho.com/en/articles/9308",
+      "kind": "creator-interview",
+      "aliases": ["brutus", "日系杂志"],
+      "evidence": { "status": "case-description-read", "checkedOn": "2026-10-12", "note": "Interview concerns editorial concepts and print/video collaboration; magazine page geometry must be inspected separately." }
+    },
+    {
+      "id": "apple-materials",
+      "label": "Apple HIG / Materials",
+      "url": "https://developer.apple.com/design/human-interface-guidelines/materials",
+      "kind": "official-documentation",
+      "aliases": ["apple materials", "apple hig materials", "liquid glass"],
+      "evidence": { "status": "javascript-required", "checkedOn": "2026-10-12", "note": "Text fetch returned a JavaScript shell. Read current official content in a browser before citing exact platform rules or implementation APIs." }
+    },
+    {
+      "id": "stripe-sessions",
+      "label": "ESTUDI-IMAGE / Stripe Sessions 2024",
+      "url": "https://estudi-image.com/projects/stripe-sessions-2024/",
+      "kind": "studio-case",
+      "aliases": ["stripe sessions", "estudi-image"],
+      "evidence": { "status": "case-description-read", "checkedOn": "2026-10-12", "note": "Studio describes an ever-flowing metallic gradient wave across event and website assets; generic mesh blobs are not an equivalent source decision." }
+    },
+    {
+      "id": "de-stijl",
+      "label": "Studio van Onna / Mondrian & De Stijl",
+      "url": "https://studiovanonna.nl/100-years-mondrian-de-stijl/",
+      "kind": "studio-case",
+      "aliases": ["de stijl", "mondrian", "荷兰风格派", "蒙德里安"],
+      "evidence": { "status": "case-description-read", "checkedOn": "2026-10-12", "note": "Studio describes a hybrid museum/event identity and lists print and animated applications; screen captures and motion timing remain open." }
+    },
+    {
+      "id": "cnn-insert-graphics",
+      "label": "CNN / insert graphics update",
+      "url": "https://www.newscaststudio.com/2023/08/15/cnn-graphics-update-august-2023/",
+      "kind": "case-article",
+      "aliases": ["cnn", "lower-third", "lower third", "新闻台"],
+      "evidence": { "status": "page-retrieved", "checkedOn": "2026-10-12", "note": "Article retrieved; transition timing and complete broadcast footage have not been inspected. Treat lower-third behavior as a research question, not a measured recipe." }
+    },
+    {
+      "id": "apple-typography",
+      "label": "Apple WWDC 2016 / Typography and Fonts",
+      "url": "https://devstreaming-cdn.apple.com/videos/wwdc/2016/803z7m1ln9vmbpg35x9/803/803_typography_and_fonts.pdf",
+      "kind": "official-course",
+      "aliases": ["apple keynote", "apple typography", "typography and fonts"],
+      "evidence": { "status": "document-text-read", "checkedOn": "2026-10-12", "note": "This is Session 803, a 2016 typography/font course, not a current keynote visual template. Font terminology is historical context; platform API guidance needs current documentation." }
+    },
+    {
+      "id": "notion-launch",
+      "label": "Notion 3.0 / launch-motion breakdown",
+      "url": "https://impractical.ai/launch-videos/notion-3",
+      "kind": "motion-breakdown",
+      "aliases": ["notion 3", "notion 更新片", "linear/notion", "impractical"],
+      "evidence": { "status": "case-description-read", "checkedOn": "2026-10-12", "note": "Third-party breakdown discusses input cadence, staggered construction and focus changes. This link supplies a Notion example; it does not verify a Linear launch film." }
+    },
+    {
+      "id": "spotify-wrapped",
+      "label": "Spotify Wrapped 2024 / design interview",
+      "url": "https://www.itsnicethat.com/features/spotify-wrapped-2024-graphic-design-041224",
+      "kind": "creator-interview",
+      "aliases": ["spotify wrapped", "wrapped 数据卡"],
+      "evidence": { "status": "case-description-read", "checkedOn": "2026-10-12", "note": "Designers discuss a personalized recap, typography as a graphic element and transformation. Actual app flow, timings and data-card states need separate inspection." }
+    },
+    {
+      "id": "vox-borders",
+      "label": "Vox Borders / production notes",
+      "url": "https://www.vox.com/a/borders/how-we-made-this",
+      "kind": "production-notes",
+      "aliases": ["vox", "vox borders", "单题信息图"],
+      "evidence": { "status": "case-description-read", "checkedOn": "2026-10-12", "note": "Notes explain story selection, visual evidence and research. Follow the linked actual stories to inspect maps/graphics; this page alone is not a single-topic infographic recipe." }
+    },
+    {
+      "id": "cyber-neon",
+      "label": "Cyber neon / user-supplied video candidate",
+      "url": "https://www.youtube.com/watch?v=OifiVCnFKzM",
+      "kind": "video-candidate",
+      "aliases": ["赛博霓虹", "cyber neon"],
+      "evidence": { "status": "video-unviewed", "checkedOn": "2026-10-12", "note": "Video fetch failed. Style label comes from the user; creator, exact content and motion need verification." }
+    },
+    {
+      "id": "vaporwave",
+      "label": "Boutique / Verkkokauppa vaporwave film",
+      "url": "https://www.stashmedia.tv/boutiques-very-vaporwave-vehicle-for-verkkokauppa-com/",
+      "kind": "creator-interview",
+      "aliases": ["vaporwave", "蒸汽波", "verkkokauppa"],
+      "evidence": { "status": "case-description-read", "checkedOn": "2026-10-12", "note": "Production interview describes a shared 3D neon scene and camera variations; it does not establish CRT distortion as the defining technique." }
+    },
+    {
+      "id": "nansen-isometric",
+      "label": "Kasra Design / Nansen",
+      "url": "https://www.kasradesign.com/case-study/nansen/",
+      "kind": "studio-case",
+      "aliases": ["nansen", "kasra"],
+      "evidence": { "status": "case-description-read", "checkedOn": "2026-10-12", "note": "Studio records style sheet, sketch/vector storyboards and 2.5D/3D visual metaphors; inspect the actual process before borrowing an illustration." }
+    },
+    {
+      "id": "wimbledon-paper",
+      "label": "A+C / Wimbledon 2025 opening",
+      "url": "https://aplusc.tv/video/wimbledon-2025-opening-title/",
+      "kind": "studio-case",
+      "aliases": ["wimbledon", "温网", "aplusc", "纸艺 stop-motion"],
+      "evidence": { "status": "case-description-read", "checkedOn": "2026-10-12", "note": "Studio identifies real papercraft and stop-motion and links behind-the-scenes footage; complete film timing remains unviewed." }
+    },
+    {
+      "id": "gatsby-deco",
+      "label": "Like Minded Studio / The Great Gatsby",
+      "url": "https://likemindedstudio.com/the-great-gatsby",
+      "kind": "studio-candidate",
+      "aliases": ["great gatsby", "likeminded", "like minded studio"],
+      "evidence": { "status": "fetch-blocked", "checkedOn": "2026-10-12", "note": "Original project was not retrievable; inspect its typography and ornament before attributing a specific Art Deco system." }
+    },
+    {
+      "id": "futurist-diagonal",
+      "label": "Futurist diagonal / user-supplied video candidate",
+      "url": "https://www.youtube.com/watch?v=HYrdMqrHi5k",
+      "kind": "video-candidate",
+      "aliases": ["未来主义斜排", "futurist diagonal"],
+      "evidence": { "status": "video-unviewed", "checkedOn": "2026-10-12", "note": "Video could not be retrieved; supplied category is a lead, not evidence of this video's composition or animation." }
+    }
+  ],
+  "methods": [
+    {
+      "id": "typographic-order",
+      "label": "Typographic order and negative space",
+      "signals": ["swiss", "瑞士", "国际主义", "包豪斯", "网格", "grid", "冷静秩序", "de stijl", "风格派", "排版基础"],
+      "sourceIds": ["swissted", "bauhaus-reverberada", "de-stijl", "apple-typography"],
+      "purpose": "Give heterogeneous content a coherent reading order through proportion, alignment and negative space.",
+      "translate": ["Choose a dominant type/image relationship and a few shared baselines; the grid can remain invisible.", "Let headings, captions and prose occupy their own natural measures; use unused columns as counterspace, not filler."],
+      "implementation": "Derive tracks and spacing from actual content. Test long titles and captions; choose new local anchors when narrow screens change the relationship.",
+      "motion": "A geometric reveal may follow an existing edge or baseline; motion is optional and the resting composition carries the identity.",
+      "narrow": "Regroup the reading order rather than shrinking a poster or preserving every column.",
+      "fallback": "A complete static composition with the same hierarchy and meaningful empty space.",
+      "watchFor": ["Visible grid lines mistaken for hierarchy", "Equal occupancy and repeated full-width bands"],
+      "renderQuestions": ["Does the thumbnail have a dominant relationship?", "Do actual prose and images retain different measures at intermediate widths?"]
+    },
+    {
+      "id": "editorial-rhythm",
+      "label": "Editorial selection and reading rhythm",
+      "signals": ["editorial", "warm paper", "刊物", "晨报", "杂志", "暖纸", "阅读节奏", "图文主次"],
+      "sourceIds": ["claude-editorial-study", "brutus-editorial"],
+      "purpose": "Make content feel edited through selection, pacing and type/image relationships.",
+      "translate": ["Separate the display voice, reading voice and metadata; a paper tint alone supplies no editorial point of view.", "Alternate concentrated evidence with a useful pause according to content; choose what each medium expresses best."],
+      "implementation": "Build with finished headlines, real images, captions and body passages. Own the type system instead of copying proprietary fonts or measured values.",
+      "motion": "Reveal a relevant caption or reading state without moving the passage the visitor is currently reading.",
+      "narrow": "Preserve content priority and legible passages; recompose the image/title relationship independently.",
+      "fallback": "Normal document flow with complete text, media credits and destinations.",
+      "watchFor": ["A beige skin used as a substitute for editing", "Decorative headings with interchangeable content"],
+      "renderQuestions": ["Can the reader tell what matters before reading every paragraph?", "Does the full page vary its reading distance without filler sections?"]
+    },
+    {
+      "id": "kinetic-type",
+      "label": "Typography as a moving image",
+      "signals": ["kinetic typography", "纯字", "字就是画面", "动能排版", "动态字体", "动字", "字的惯性"],
+      "sourceIds": ["netflix-kinetic", "think-different-type"],
+      "purpose": "Let words carry the subject, emphasis and temporal composition.",
+      "translate": ["Choreograph semantic word groups with contrasting scale, weight, mask and position; each pause should hold as a designed frame.", "Choose motion that expresses the phrase rather than applying one entrance effect to every letter."],
+      "implementation": "Load and measure real fonts before captures. Keep a readable semantic text layer; reserve authored outlines or media for expression that live text cannot reproduce.",
+      "motion": "Specify readable hold, transition and final state for the target phrase. Use mass or anticipation only when the meaning benefits; no universal easing or duration is inferred from the cases.",
+      "narrow": "Recompose word groups for actual line lengths; do not scale a wide title sequence into tiny type.",
+      "fallback": "The final or selected static typographic frame retains the complete message.",
+      "watchFor": ["Animation required to discover the message", "Clipped text or endless replay preventing reading"],
+      "renderQuestions": ["Is a still frame intentional and readable?", "Do the start, transition and settled states preserve the whole phrase?"]
+    },
+    {
+      "id": "hanzi-structure",
+      "label": "Hanzi structure and motion",
+      "signals": ["汉字", "中文动字", "中文排版", "书法结构", "笔势", "笔画", "hanzi", "chinese typography"],
+      "sourceIds": ["hanzi-motion"],
+      "purpose": "Author Chinese typography from strokes, balance and character structure.",
+      "translate": ["Inspect the selected glyph's horizontal/vertical rhythm, internal space and center of gravity before deciding motion.", "Choose whole-character or semantic phrase movement when stroke-level authorship is unavailable; do not simulate calligraphy by spreading Latin-style letter spacing."],
+      "implementation": "Use actual licensed Chinese glyphs. Stroke reveals need deliberately authored contours or high-quality original media, not guessed stroke paths; keep the full text accessible.",
+      "motion": "Let reveal direction or transformation follow an evidenced glyph relationship; preserve recognition through the expressive moment.",
+      "narrow": "Test punctuation, mixed scripts and the longest real phrase; permit a new arrangement with its own optical balance.",
+      "fallback": "A recognizable complete character or phrase in a balanced static composition.",
+      "watchFor": ["Latin animation transplanted without examining the glyph", "Broken recognition or incorrect invented strokes"],
+      "renderQuestions": ["Do characters remain recognizable at their actual viewing size?", "Does the phrase retain its meaning with animation disabled?"]
+    },
+    {
+      "id": "information-choreography",
+      "label": "Information choreography and focus",
+      "signals": ["快切", "信息替换", "lower third", "lower-third", "更新片", "launch video", "产品演示", "状态编排", "焦点引导"],
+      "sourceIds": ["quicktake", "cnn-insert-graphics", "notion-launch"],
+      "purpose": "Guide attention through information and state changes without losing context.",
+      "translate": ["Separate the important new fact, supporting context and persistent identity; preserve the subject while information changes.", "Translate film editing into user-controlled steps, a meaningful live state or a bounded demonstration; playback cadence does not dictate reading speed."],
+      "implementation": "Name trigger, old/new information, focus target and settled result. Show actual product behavior or label a simulation; never fake real work with animated UI blocks.",
+      "motion": "Use stagger, replacement or a focus shift for a named relationship. Replay and interruption must settle cleanly without hiding controls.",
+      "narrow": "Give the important information normal readable width; borrow broadcast hierarchy without inheriting tiny text in a narrow strip.",
+      "fallback": "Persistent context and the complete current/final information remain reachable without playback.",
+      "watchFor": ["Automatic cuts while the visitor reads", "Focus moving away from the changed result"],
+      "renderQuestions": ["Can the user identify what changed?", "Does interruption leave a usable, truthful state?"]
+    },
+    {
+      "id": "print-material",
+      "label": "Print grain and halftone material",
+      "signals": ["半调", "网点", "halftone", "印刷", "报纸物质感", "print grain"],
+      "sourceIds": ["goca-patterns", "think-different-type"],
+      "purpose": "Use controlled image/material treatment to give content a physical character.",
+      "translate": ["Choose dot size, contrast and grain scale at the intended viewing size; inspect the source before attributing its exact technique.", "Let a pattern derive from the subject or identity; keep the featured work distinguishable from its supporting material."],
+      "implementation": "Create or source high-quality texture/processed imagery. Treat the media layer separately from semantic text; check pattern artifacts at actual device pixel ratios.",
+      "motion": "A material reveal may expose a specific image or detail; constant texture flicker is not required.",
+      "narrow": "Retune texture scale and inspect moire, subject recognition and text contrast.",
+      "fallback": "A clean static subject image or stable printed treatment with all content intact.",
+      "watchFor": ["Noise over small text", "Low-quality image hidden behind a filter"],
+      "renderQuestions": ["Does the subject remain clear?", "Is the material convincing at actual size rather than only in a mockup?"]
+    },
+    {
+      "id": "paper-assembly",
+      "label": "Papercraft depth and assembly",
+      "signals": ["纸艺", "papercraft", "stop motion", "stop-motion", "逐帧", "纸张层次"],
+      "sourceIds": ["wimbledon-paper"],
+      "purpose": "Build subject-specific physical depth through layered material and deliberate assembly.",
+      "translate": ["Observe cut edges, contact shadows, thickness and physical movement as related properties.", "Use an original paper object or scene to express the subject; a generic drop shadow is not papercraft."],
+      "implementation": "Use provided material, real production assets, or deliberately generated original imagery inspected at delivery size. Video/frame sequences need a good poster and loading/failure behavior.",
+      "motion": "Assembly or replacement can follow physical pieces; use deliberate frame timing only where it supports the material.",
+      "narrow": "Reframe the actual scene so its important pieces remain inspectable; do not shrink them into decorative thumbnails.",
+      "fallback": "A high-quality finished-scene still with the same subject and meaning.",
+      "watchFor": ["Artificial texture and implausible lighting", "Heavy media with a weak or missing static frame"],
+      "renderQuestions": ["Do shadows and edges imply the same material?", "Does the original subject remain legible in the fallback?"]
+    },
+    {
+      "id": "evidence-narrative",
+      "label": "Evidence and data as a narrative",
+      "signals": ["信息图", "infographic", "数据故事", "data story", "年度回顾", "个人回顾", "等距", "isometric", "解释流程"],
+      "sourceIds": ["vox-borders", "spotify-wrapped", "nansen-isometric"],
+      "purpose": "Turn real evidence, a process or personal data into an understandable sequence.",
+      "translate": ["Choose a concrete question and the evidence that answers it; let each view establish a fact or relationship.", "Let illustration explain the actual process and data carry meaning; do not replace facts with attractive metaphors or generic stat cards."],
+      "implementation": "Use attributable content, honest data, units and comparable scales. Sketch the explanatory sequence before polishing a chart or illustration; label sample data clearly.",
+      "motion": "Reveal a comparison or process change at a pace the user can inspect; preserve the underlying evidence.",
+      "narrow": "Reorder the explanation and annotations for the small canvas; retain units, context and access to detail.",
+      "fallback": "The same findings are available as static graphics and readable text or data.",
+      "watchFor": ["Invented achievements or statistics", "Illustration that says nothing about the actual process"],
+      "renderQuestions": ["Can the viewer explain the relationship afterward?", "Is every visible claim supported by real or explicitly sample evidence?"]
+    },
+    {
+      "id": "optical-depth",
+      "label": "Optical material and continuous fields",
+      "signals": ["玻璃", "glassmorphism", "透光", "mesh", "渐变流体", "金属渐变", "流体背景"],
+      "sourceIds": ["apple-materials", "stripe-sessions"],
+      "purpose": "Establish depth or a coherent identity through light, material and continuous movement.",
+      "translate": ["Define foreground, background and an actual material relationship before choosing blur, reflection or a wave.", "Keep the subject and information hierarchy visible; a supplied or authored direction can choose an expressive field without making it a universal skin."],
+      "implementation": "Inspect the relevant official guidance or original asset. Validate contrast against actual background states; use a lightweight compatible implementation with a solid/static substitute.",
+      "motion": "A continuous field should have a clear identity or spatial purpose; its movement must not obscure controls or reading.",
+      "narrow": "Check cropping, layer legibility and low-power behavior; simplify the expensive material where necessary.",
+      "fallback": "A solid material or good static field preserves depth cues and readable content.",
+      "watchFor": ["All regions becoming glass panels", "Generic mesh blobs substituted for an inspected source's material"],
+      "renderQuestions": ["Is depth still understandable without animation or blur?", "Does contrast hold across the changing background?"]
+    },
+    {
+      "id": "graphic-contrast",
+      "label": "Assertive graphic contrast",
+      "signals": ["neubrutalism", "新粗野", "强对比", "硬边图形", "大胆几何"],
+      "sourceIds": ["neubrutalism", "de-stijl", "bauhaus-reverberada"],
+      "purpose": "Create a deliberate graphic hierarchy through weight, color, geometry and tension.",
+      "translate": ["Decide which object owns the contrast; let unequal areas, type weight or offset geometry create a specific relationship.", "Hard edges may be an authored choice; distinguish that choice from mechanically outlining every section."],
+      "implementation": "Compose actual content before adding thick borders or offset shadows. Let project/reference authority override advisory soft-shape preferences when supported by the render.",
+      "motion": "An offset, collision or geometric change may acknowledge a meaningful action; stable control geometry still matters.",
+      "narrow": "Rebalance contrast and spatial tension for the available area; keep text and actions reachable.",
+      "fallback": "The static graphic hierarchy retains its emphasis and usable controls.",
+      "watchFor": ["Every region competing at maximum contrast", "A border treatment standing in for a composition"],
+      "renderQuestions": ["Does one relationship lead?", "Is the strong geometry purposeful in the target content?"]
+    },
+    {
+      "id": "ornamental-rhythm",
+      "label": "Ornament derived from type and structure",
+      "signals": ["art deco", "装饰艺术", "deco", "几何装饰", "放射纹样"],
+      "sourceIds": ["gatsby-deco"],
+      "purpose": "Give a subject a distinctive ornamental rhythm tied to its structure and typography.",
+      "translate": ["Derive repeated proportions, terminals or motifs from the chosen title or subject.", "A coherent ornamental system can use many palettes; black and gold alone do not establish Art Deco."],
+      "implementation": "Inspect the actual source and create original lettering or artwork when needed; keep operational labels and body passages readable.",
+      "motion": "A motif can unfold or frame a meaningful title/detail without requiring every passage to animate.",
+      "narrow": "Retain the important motif relationship with enough space for the actual title; recompose dense ornament.",
+      "fallback": "A complete static title or motif retains the identity.",
+      "watchFor": ["Stock gold decoration unrelated to the subject", "Ornament reducing legibility"],
+      "renderQuestions": ["Does the motif belong to this work?", "Does its type/ornament relationship survive small sizes?"]
+    },
+    {
+      "id": "directional-tension",
+      "label": "Directional and diagonal tension",
+      "signals": ["未来主义", "futurist", "斜排", "斜向", "diagonal", "directional tension"],
+      "sourceIds": ["futurist-diagonal", "bauhaus-reverberada"],
+      "purpose": "Use directional relationships to express movement or tension in the subject.",
+      "translate": ["Choose a dominant vector and counterweight through crop, type grouping or spatial movement.", "Express direction in the authored object while keeping long passages and repeated controls convenient to read."],
+      "implementation": "Inspect the source, compose the actual phrase/object and test its bounds. Avoid page-wide transforms that accidentally crop content or change control hit areas.",
+      "motion": "The entry or state change can follow the chosen vector and settle into a readable composition.",
+      "narrow": "Rechoose direction and line grouping when the original diagonal no longer fits.",
+      "fallback": "A stable directional still with full content and predictable controls.",
+      "watchFor": ["Rotation mistaken for a point of view", "Clipping, overflow or awkward target geometry"],
+      "renderQuestions": ["Does the direction express the target subject?", "Are all words and controls reachable at narrow widths?"]
+    },
+    {
+      "id": "retro-light",
+      "label": "Authored light and retro signal",
+      "signals": ["赛博", "cyberpunk", "霓虹", "neon", "蒸汽波", "vaporwave", "crt", "复古屏幕"],
+      "sourceIds": ["cyber-neon", "vaporwave"],
+      "purpose": "Give a specific scene or interface a coherent light/signal language.",
+      "translate": ["Choose what emits light, what receives it and which signal belongs to the subject.", "Build a consistent scene or original asset rather than stacking unrelated glows, chromatic offsets and scanlines."],
+      "implementation": "Use high-quality original media or a meaningful rendered scene. Keep texture/distortion separate from operational text and provide explicit playback control where appropriate.",
+      "motion": "Light or signal changes can follow an actual scene event/state; continuous flicker is not required for the identity.",
+      "narrow": "Reframe the important object and inspect dark detail, luminous contrast and texture at actual device size.",
+      "fallback": "A clear still scene or stable signal state with all content intact.",
+      "watchFor": ["Unreadable small text behind CRT effects", "Generic neon atmosphere with no inspectable subject"],
+      "renderQuestions": ["Are the light sources and material response coherent?", "Can the subject and current state be understood without moving effects?"]
+    }
+  ]
+}

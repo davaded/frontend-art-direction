@@ -1,0 +1,545 @@
+{
+  "protocol": "frontend-art-direction/research-atlas-v1",
+  "version": 1,
+  "id": "atlas-20261011022425-4c9a98da",
+  "status": "complete",
+  "mode": "reference-led",
+  "createdAt": "2026-10-11T02:24:25.170Z",
+  "updatedAt": "2026-10-11T03:19:46.913Z",
+  "projectRoot": "/Users/daiyudai/code/frontend-art-direction/benchmarks/visual",
+  "query": "Improve regional composition, readable measures, whitespace and wide/narrow staging without prescribing a page genre",
+  "policy": {
+    "userReferencesFirst": true,
+    "sectionWinnersMayComeFromDifferentSources": true,
+    "referenceIsEvidenceOnlyAfterInspection": true,
+    "noReferenceFallback": "Use subject, local evidence, and authored direction; do not invent a skin from the catalog."
+  },
+  "references": [
+    {
+      "id": "apple-macbook-air",
+      "label": "Apple MacBook Air",
+      "url": "https://www.apple.com/macbook-air/",
+      "kind": "discovered",
+      "status": "selected",
+      "role": "composition",
+      "evidence": [
+        {
+          "ref": "artifacts/layout-study/apple-opening.png",
+          "kind": "capture-or-media",
+          "exists": true
+        },
+        {
+          "ref": "artifacts/layout-study/apple-design.png",
+          "kind": "capture-or-media",
+          "exists": true
+        }
+      ],
+      "strengths": [
+        "centered object stage",
+        "independent opening and chapter measures"
+      ],
+      "weaknesses": [
+        "brand and commerce context do not transfer"
+      ],
+      "borrow": [
+        "separate field",
+        "object stage",
+        "heading placement",
+        "and prose measure"
+      ],
+      "reject": [
+        "copying product framing or exact media ratios"
+      ],
+      "observations": [
+        "wide opening centers the hardware while the Design chapter narrows the heading and lets the image extend wider"
+      ],
+      "updatedAt": "2026-10-11T03:04:49.588Z",
+      "selectedAt": "2026-10-11T03:05:38.933Z"
+    },
+    {
+      "id": "kinfolk",
+      "label": "Kinfolk",
+      "url": "https://www.kinfolk.com/",
+      "kind": "discovered",
+      "status": "selected",
+      "role": "composition",
+      "evidence": [
+        {
+          "ref": "artifacts/layout-study/kinfolk-opening.png",
+          "kind": "capture-or-media",
+          "exists": true
+        },
+        {
+          "ref": "artifacts/layout-study/kinfolk-stories.png",
+          "kind": "capture-or-media",
+          "exists": true
+        }
+      ],
+      "strengths": [
+        "compact centered opening",
+        "clear shift to start-aligned story list"
+      ],
+      "weaknesses": [
+        "magazine identity and subscription context are specific to Kinfolk"
+      ],
+      "borrow": [
+        "change reading distance and local alignment with content"
+      ],
+      "reject": [
+        "literal magazine shell and whitespace ratios"
+      ],
+      "observations": [
+        "a compact cover and short title sit in a broad field",
+        "then stories use a start edge with an end-positioned collection action"
+      ],
+      "updatedAt": "2026-10-11T03:04:49.689Z",
+      "selectedAt": "2026-10-11T03:05:38.870Z"
+    },
+    {
+      "id": "night-shift-local",
+      "label": "Night Shift field guide",
+      "url": "http://127.0.0.1:4181/night-shift/",
+      "kind": "local",
+      "status": "selected",
+      "role": "responsive-composition",
+      "evidence": [
+        {
+          "ref": "artifacts/layout-study/night-after-1920.png",
+          "kind": "capture-or-media",
+          "exists": true
+        },
+        {
+          "ref": "artifacts/layout-study/night-after-768.png",
+          "kind": "capture-or-media",
+          "exists": true
+        },
+        {
+          "ref": "artifacts/layout-study/night-after-390.png",
+          "kind": "capture-or-media",
+          "exists": true
+        },
+        {
+          "ref": "artifacts/layout-study/night-core-reduced-320.png",
+          "kind": "capture-or-media",
+          "exists": true
+        },
+        {
+          "ref": "artifacts/layout-study/night-failure-320.png",
+          "kind": "capture-or-media",
+          "exists": true
+        }
+      ],
+      "strengths": [
+        "bounded reading distances",
+        "source continuity",
+        "desktop/mobile/state proof"
+      ],
+      "weaknesses": [
+        "sample-specific subject and imagery"
+      ],
+      "borrow": [
+        "centered overview",
+        "bounded working instrument",
+        "close image-note relationship"
+      ],
+      "reject": [
+        "treating every future page as a field guide"
+      ],
+      "observations": [
+        "wide field",
+        "centered orientation",
+        "bounded pair instrument",
+        "and narrower field note use different measures"
+      ],
+      "updatedAt": "2026-10-11T03:04:49.758Z",
+      "selectedAt": "2026-10-11T03:05:39.227Z"
+    },
+    {
+      "id": "monet-local",
+      "label": "Monet painting essay",
+      "url": "http://127.0.0.1:4181/monet/",
+      "kind": "local",
+      "status": "selected",
+      "role": "responsive-composition",
+      "evidence": [
+        {
+          "ref": "artifacts/layout-study/monet-after-1920.png",
+          "kind": "capture-or-media",
+          "exists": true
+        },
+        {
+          "ref": "artifacts/layout-study/monet-after-768.png",
+          "kind": "capture-or-media",
+          "exists": true
+        },
+        {
+          "ref": "artifacts/layout-study/monet-after-390.png",
+          "kind": "capture-or-media",
+          "exists": true
+        },
+        {
+          "ref": "artifacts/layout-study/monet-viewer-detail-320.png",
+          "kind": "capture-or-media",
+          "exists": true
+        }
+      ],
+      "strengths": [
+        "natural artwork measures",
+        "chapter-specific alignment",
+        "and viewer state proof"
+      ],
+      "weaknesses": [
+        "art essay subject does not establish an app layout"
+      ],
+      "borrow": [
+        "wide field",
+        "near-square artwork",
+        "asymmetric water chapter",
+        "compact ending index"
+      ],
+      "reject": [
+        "repeating one image-text ratio across chapters"
+      ],
+      "observations": [
+        "the coast opens wide",
+        "wheat holds a bounded centered stage",
+        "water changes the left-right relationship",
+        "and the ending returns to a compact collection"
+      ],
+      "updatedAt": "2026-10-11T03:04:49.818Z",
+      "selectedAt": "2026-10-11T03:05:39.342Z"
+    }
+  ],
+  "sections": [
+    {
+      "id": "navigation",
+      "label": "Navigation and entry",
+      "prompt": "Does the entry structure establish the product and invite the right first action?",
+      "status": "complete",
+      "winner": "kinfolk",
+      "decision": "Keep identity and entry compact; let the start edge and the primary object establish the first datum, then attach utilities to their local region.",
+      "evidence": [
+        {
+          "ref": "artifacts/layout-study/kinfolk-opening.png",
+          "kind": "capture-or-media",
+          "exists": true
+        }
+      ],
+      "recordedAt": "2026-10-11T03:05:38.870Z"
+    },
+    {
+      "id": "first-viewport",
+      "label": "First viewport",
+      "prompt": "What leads the eye, what is dominant, and what peeks into the next chapter?",
+      "status": "complete",
+      "winner": "apple-macbook-air",
+      "decision": "Separate the viewport field, object stage, title measure, and action placement; the opening may center the subject while copy uses another local edge.",
+      "evidence": [
+        {
+          "ref": "artifacts/layout-study/apple-opening.png",
+          "kind": "capture-or-media",
+          "exists": true
+        },
+        {
+          "ref": "artifacts/layout-study/apple-design.png",
+          "kind": "capture-or-media",
+          "exists": true
+        }
+      ],
+      "recordedAt": "2026-10-11T03:05:38.933Z"
+    },
+    {
+      "id": "object-or-content",
+      "label": "Object or content",
+      "prompt": "How is the actual subject, artifact, data, or workflow made visible?",
+      "status": "complete",
+      "winner": "monet-local",
+      "decision": "Let each actual object keep its natural measure and crop; a wide painting, portrait work, and near-square water image do not share one media ratio.",
+      "evidence": [
+        {
+          "ref": "artifacts/layout-study/monet-after-1920.png",
+          "kind": "capture-or-media",
+          "exists": true
+        },
+        {
+          "ref": "artifacts/layout-study/monet-after-390.png",
+          "kind": "capture-or-media",
+          "exists": true
+        }
+      ],
+      "recordedAt": "2026-10-11T03:05:38.994Z"
+    },
+    {
+      "id": "composition-and-rhythm",
+      "label": "Composition and rhythm",
+      "prompt": "Which alignment, scale, spacing, crop, and counterweight relationships create the silhouette?",
+      "status": "complete",
+      "winner": "night-shift-local",
+      "decision": "Use changing reading distance as the rhythm: centered orientation, bounded instrument, close field note, then a compact source record.",
+      "evidence": [
+        {
+          "ref": "artifacts/layout-study/night-after-1920.png",
+          "kind": "capture-or-media",
+          "exists": true
+        },
+        {
+          "ref": "artifacts/layout-study/night-after-768.png",
+          "kind": "capture-or-media",
+          "exists": true
+        }
+      ],
+      "recordedAt": "2026-10-11T03:05:39.053Z"
+    },
+    {
+      "id": "responsive",
+      "label": "Responsive re-staging",
+      "prompt": "What changes on narrow screens, touch input, and long content?",
+      "status": "complete",
+      "winner": "monet-local",
+      "decision": "At intermediate and narrow widths, regroup the relationship and preserve the artwork or subject before shrinking type; mobile can change order and alignment.",
+      "evidence": [
+        {
+          "ref": "artifacts/layout-study/monet-after-768.png",
+          "kind": "capture-or-media",
+          "exists": true
+        },
+        {
+          "ref": "artifacts/layout-study/monet-after-320.png",
+          "kind": "capture-or-media",
+          "exists": true
+        }
+      ],
+      "recordedAt": "2026-10-11T03:05:39.111Z"
+    },
+    {
+      "id": "states-and-interaction",
+      "label": "States and interaction",
+      "prompt": "How do controls, feedback, empty/error/success states, and recovery read?",
+      "status": "complete",
+      "winner": "night-shift-local",
+      "decision": "Keep source switching, reduced-motion, and media failure in the same hierarchy as the ready state; the changed result stays close to its controls.",
+      "evidence": [
+        {
+          "ref": "artifacts/layout-study/night-core-reduced-320.png",
+          "kind": "capture-or-media",
+          "exists": true
+        },
+        {
+          "ref": "artifacts/layout-study/night-failure-320.png",
+          "kind": "capture-or-media",
+          "exists": true
+        }
+      ],
+      "recordedAt": "2026-10-11T03:05:39.168Z"
+    },
+    {
+      "id": "motion",
+      "label": "Motion language",
+      "prompt": "Which changes need motion, and what are the cleanup, reduced-motion, and static final states?",
+      "status": "complete",
+      "winner": "night-shift-local",
+      "decision": "Use motion only for state continuity or inspection; the final reading state and fallback remain complete without travel or looping.",
+      "evidence": [
+        {
+          "ref": "artifacts/layout-study/night-core-reduced-320.png",
+          "kind": "capture-or-media",
+          "exists": true
+        },
+        {
+          "ref": "artifacts/motion-after.json",
+          "kind": "artifact-or-check",
+          "exists": true
+        }
+      ],
+      "recordedAt": "2026-10-11T03:05:39.227Z"
+    },
+    {
+      "id": "assets-and-material",
+      "label": "Assets and material",
+      "prompt": "Which image, video, texture, type, color, and surface choices carry the subject?",
+      "status": "complete",
+      "winner": "monet-local",
+      "decision": "Use real, attributable painting assets and preserve their natural subject scale; material and crop carry identity before decorative effects.",
+      "evidence": [
+        {
+          "ref": "artifacts/layout-study/monet-after-1920.png",
+          "kind": "capture-or-media",
+          "exists": true
+        },
+        {
+          "ref": "artifacts/layout-study/monet-viewer-detail-320.png",
+          "kind": "capture-or-media",
+          "exists": true
+        }
+      ],
+      "recordedAt": "2026-10-11T03:05:39.284Z"
+    },
+    {
+      "id": "ending",
+      "label": "Ending and continuation",
+      "prompt": "How does the surface resolve, hand off, or make the next action legible?",
+      "status": "complete",
+      "winner": "monet-local",
+      "decision": "End with a compact return to the collection and source records; a short page does not need invented cards or a stretched final band.",
+      "evidence": [
+        {
+          "ref": "artifacts/layout-study/monet-after-1920.png",
+          "kind": "capture-or-media",
+          "exists": true
+        }
+      ],
+      "recordedAt": "2026-10-11T03:05:39.342Z"
+    }
+  ],
+  "synthesis": {
+    "status": "complete",
+    "direction": "Content-led regional composition with local alignment decisions and explicit responsive re-staging",
+    "visualLanguage": "Use the subject, material, and reading path to author the surface; open field, soft contour, measured contrast, and one repeatable index or caption device are available, but no universal skin is required.",
+    "composition": "Separate viewport field, content shell, object stage, and reading measure. Choose placement and text alignment per actual region. Let centered overview, start-aligned prose, end-attached utility, and asymmetric object relationships coexist when their neighbors justify them. Wide screens grow fields before prose; intermediate widths regroup; narrow screens change order and crop.",
+    "type": "One readable UI/body family plus an earned display or data role; set type ceiling by content and viewing distance, and inspect line endings with real copy.",
+    "material": "Use user-owned, official, attributable, or deliberately generated subject media. Let crop, tone, texture, and object scale carry identity before effects; no placeholders or weak filler.",
+    "motion": "Review each state relationship, apply the lightest local mechanism, then polish cleanup, interruption, reduced-motion, and static final state. Static is valid when motion has no job.",
+    "assets": "Preserve real assets and provenance; when a visual thesis is unresolved, use image generation as a proposal and translate the selected delta into usable code and assets before acceptance.",
+    "templateRisk": "The main risk is turning local examples into a fixed template: no site-wide alignment axis, no repeated 50/50 splits, no filler sections, no default commerce or dashboard genre, and no component catalog skin without a named job.",
+    "gaps": [
+      "Fresh browser authentication is unavailable in this session; future briefs still need their own live reference inspection and rendered proof."
+    ],
+    "rejectedDefaults": [
+      "fill every track",
+      "center every heading",
+      "repeat one media ratio",
+      "add effects before hierarchy",
+      "infer hardware from quality words"
+    ]
+  },
+  "skills": {
+    "selected": [
+      {
+        "id": "transitions-internal-bridge",
+        "reason": "Use the internal adapter for Review -> Apply -> Polish; keep cleanup, reduced-motion, and static fallback without asking the user to install the upstream skill.",
+        "at": "2026-10-11T03:06:11.919Z"
+      }
+    ],
+    "unavailable": []
+  },
+  "history": [
+    {
+      "type": "reference",
+      "id": "apple-macbook-air",
+      "status": "inspected",
+      "at": "2026-10-11T03:04:49.589Z"
+    },
+    {
+      "type": "reference",
+      "id": "kinfolk",
+      "status": "inspected",
+      "at": "2026-10-11T03:04:49.690Z"
+    },
+    {
+      "type": "reference",
+      "id": "night-shift-local",
+      "status": "selected",
+      "at": "2026-10-11T03:04:49.759Z"
+    },
+    {
+      "type": "reference",
+      "id": "monet-local",
+      "status": "selected",
+      "at": "2026-10-11T03:04:49.818Z"
+    },
+    {
+      "type": "section",
+      "section": "navigation",
+      "status": "complete",
+      "winner": "kinfolk",
+      "at": "2026-10-11T03:05:38.870Z"
+    },
+    {
+      "type": "section",
+      "section": "first-viewport",
+      "status": "complete",
+      "winner": "apple-macbook-air",
+      "at": "2026-10-11T03:05:38.933Z"
+    },
+    {
+      "type": "section",
+      "section": "object-or-content",
+      "status": "complete",
+      "winner": "monet-local",
+      "at": "2026-10-11T03:05:38.995Z"
+    },
+    {
+      "type": "section",
+      "section": "composition-and-rhythm",
+      "status": "complete",
+      "winner": "night-shift-local",
+      "at": "2026-10-11T03:05:39.053Z"
+    },
+    {
+      "type": "section",
+      "section": "responsive",
+      "status": "complete",
+      "winner": "monet-local",
+      "at": "2026-10-11T03:05:39.112Z"
+    },
+    {
+      "type": "section",
+      "section": "states-and-interaction",
+      "status": "complete",
+      "winner": "night-shift-local",
+      "at": "2026-10-11T03:05:39.169Z"
+    },
+    {
+      "type": "section",
+      "section": "motion",
+      "status": "complete",
+      "winner": "night-shift-local",
+      "at": "2026-10-11T03:05:39.227Z"
+    },
+    {
+      "type": "section",
+      "section": "assets-and-material",
+      "status": "complete",
+      "winner": "monet-local",
+      "at": "2026-10-11T03:05:39.284Z"
+    },
+    {
+      "type": "section",
+      "section": "ending",
+      "status": "complete",
+      "winner": "monet-local",
+      "at": "2026-10-11T03:05:39.342Z"
+    },
+    {
+      "type": "synthesis",
+      "at": "2026-10-11T03:06:11.856Z"
+    },
+    {
+      "type": "skill",
+      "id": "transitions-internal-bridge",
+      "status": "selected",
+      "at": "2026-10-11T03:06:11.919Z"
+    }
+  ],
+  "completedAt": "2026-10-11T03:19:46.912Z",
+  "qualityBar": {
+    "selectedReferences": [
+      "apple-macbook-air",
+      "kinfolk",
+      "night-shift-local",
+      "monet-local"
+    ],
+    "sectionWinners": {
+      "navigation": "kinfolk",
+      "first-viewport": "apple-macbook-air",
+      "object-or-content": "monet-local",
+      "composition-and-rhythm": "night-shift-local",
+      "responsive": "monet-local",
+      "states-and-interaction": "night-shift-local",
+      "motion": "night-shift-local",
+      "assets-and-material": "monet-local",
+      "ending": "monet-local"
+    },
+    "templateRisk": "The main risk is turning local examples into a fixed template: no site-wide alignment axis, no repeated 50/50 splits, no filler sections, no default commerce or dashboard genre, and no component catalog skin without a named job."
+  }
+}

@@ -112,8 +112,15 @@
       "id": "visual-direction",
       "label": "Visual direction",
       "keywords": ["layout", "composition", "typography", "hierarchy", "spacing", "alignment", "visual", "排版", "构图", "层级", "间距", "视觉"],
-      "passWhen": "The build names a composition grammar, alignment axis, dominant/counterweight, type ceiling, spacing rhythm, and surface/card budget before decorative styling.",
-      "evidence": "Visual Direction Contract plus grayscale desktop/mobile render, thumbnail silhouette check, and explicit AI-default rejection list."
+      "passWhen": "The build names a composition grammar, local region relationships, dominant/counterweight, type ceiling, spacing rhythm, and surface/card budget before decorative styling.",
+      "evidence": "Visual Direction Contract plus grayscale desktop/mobile render, thumbnail silhouette check, regional alignment/measure decisions, and explicit AI-default rejection list."
+    },
+    {
+      "id": "composition-breathing",
+      "label": "Composition breathing",
+      "keywords": ["composition", "whitespace", "negative space", "measure", "density", "breathing", "留白", "密度", "构图", "呼吸"],
+      "passWhen": "Occupied width, reading measure, local anchor, field, density, and pauses are chosen per region. Empty space has a named framing, separation, balance, or delay job, the dominant stage has a natural measure, and the page does not fill every available track by default.",
+      "evidence": "Regional composition and spatial budgets plus wide, ordinary, intermediate, and narrow renders showing bounded measures, counterfields, deliberate pauses, local alignment changes, and a readable full-page silhouette."
     },
     {
       "id": "geometry-language",
@@ -143,7 +150,7 @@
       "label": "Centered hero template",
       "signals": ["centered", "hero", "headline", "cta", "three-column", "居中", "首屏", "标题"],
       "rejectWhen": "The first viewport defaults to a centered eyebrow, giant heading, button, and equal feature row without a product-specific reason.",
-      "repair": "Choose a dominant object, a counterweight, and one alignment axis; let the next proof relationship enter the viewport."
+      "repair": "Choose a dominant object, a counterweight, and useful local relationships; let the next proof relationship enter the viewport without imposing one page-wide axis."
     },
     {
       "id": "pill-everything",
@@ -179,6 +186,13 @@
       "signals": ["grid", "columns", "tiles", "均分", "网格", "卡片"],
       "rejectWhen": "Every region has equal weight, so the user cannot tell what to inspect or do first.",
       "repair": "Promote one dominant region, use a rail or open section for context, and reserve equal grids for genuine comparison."
+    },
+    {
+      "id": "packed-composition",
+      "label": "Packed composition",
+      "signals": ["packed", "dense", "full", "fill", "section", "space", "whitespace", "密集", "填满", "留白", "排版"],
+      "rejectWhen": "Every viewport band, grid track, or region is filled to its container edge, leaving no useful pause and making wide screens feel stretched or narrow screens feel crowded.",
+      "repair": "Remove sections that do not carry a job, bound text and object measures independently, reserve a named pause, and re-stage the next relationship instead of shrinking the whole composition."
     },
     {
       "id": "default-library-skin",
@@ -273,7 +287,8 @@
     "Primary assets have a recorded source or generation path, survive desktop/mobile crop, and are not placeholders or low-quality filler.",
     "A premium finish pass checks grayscale hierarchy, optical alignment, type ceiling, material layers, copy specificity, and the effects deliberately removed.",
     "A named reference has three visible fidelity anchors in the rendered target: composition, material/type, and interaction cadence.",
-    "The Visual Direction Contract names composition, alignment axis, dominant/counterweight, type roles, spacing rhythm, and card/radius/elevation budget.",
+    "The Visual Direction Contract names composition, local region relationships, dominant/counterweight, type roles, spacing rhythm, and card/radius/elevation budget.",
+    "Each substantial region has an implementation-facing anchor, measure role, field relationship, density, and mobile reflow decision; a single global alignment or container is not accepted as the whole composition.",
     "The Geometry Contract names edge character, corner hierarchy, separation strategy, line policy, and any justified sharp exception.",
     "The first viewport is checked as a thumbnail, grayscale silhouette, and blurred hierarchy before decorative effects are accepted.",
     "The first viewport has no more than three dominant text levels and no accidental orphan line in the target mobile width.",

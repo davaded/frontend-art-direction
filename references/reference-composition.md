@@ -11,6 +11,8 @@
 3. **Motion/state**：状态关系、连续性、反馈和动效治理。
 4. **Domain specimen**：AI 状态、数据图表、媒体对象或其他真正属于产品的展示对象。
 
+对于有明确主题但没有命名案例的请求，额外的构图职责由 `visual-language`、`composition-reference` 和 `responsive-reference` 承担。Siteinspire、Awwwards、MUUUUU、Behance、Dribbble、Mobbin 会按缺失决策进入候选；它们是发现入口和关系样本，不是默认皮肤。纯粹的“做一个网站”没有主题证据时才保持 `selected: []`。
+
 当用户明确说“微交互、hover、cursor、细节打磨”时，可以把 `micro-interaction` 作为 motion/state 的窄职责；它不能替代产品层级或基础可访问性。
 
 不要因为参考很多就扩大组合。重复承担同一职责只会把目标产品做成拼贴。每个被选中的参考都必须记录：
@@ -32,14 +34,16 @@ node <skill-root>/scripts/reference-composition.mjs \
 
 `brief` 和 `audit` 会自动调用同一个选择器。默认最多四个，且不会要求用户安装参考网站的运行时或依赖。
 
+图形、字体与动态案例另以 `designMethods` 提供可组合的方法候选，详见 [design-methods.md](design-methods.md)。`reference`、`brief`、`reference-build` 和 `audit` 会按当前请求带出实现、动效、窄屏与静止态建议，并保留来源核实状态。这些方法不占用组件 lens 的职责，不把视频案例变成网页模板，也不自动改变已有的构图或设计权威。未命中时可以依据真实内容和截图主动提出或发现新方法。
+
 ## No-Reference Mode
 
-如果用户只说“做一个网站”或只给出一个产品类型，没有给出案例或 URL，系统不会把某个外部网站当成默认皮肤。流程是：
+如果用户只说“做一个网站”或只给出一个产品类型，没有给出案例或 URL，系统不会把某个外部网站当成默认皮肤。给出具体主题、受众或内容类型时，仍然要启动构图和响应式发现；流程是：
 
 1. 从产品类型、任务对象、内容密度和输入方式推断一个候选 profile；
 2. 从 profile 推导 style、type、palette、motion，并给每项标注置信度；
-3. 只有在确实识别出组件、数据、AI 状态或动效等职责时，才选择对应的支撑 lens；
-4. 没有职责信号时保持 `selected: []`，把缺失信息列为 open evidence，等待真实内容和渲染结果验证。
+3. 主题明确时，至少选择一个整页构图 lens 和一个响应式/工作流 lens；组件、数据、AI 状态或动效 lens 作为支撑；
+4. 没有任何主题或职责信号时保持 `selected: []`，把缺失信息列为 open evidence，等待真实内容和渲染结果验证。
 
 这条路径生成的是 **direction assumption**，不是“已经确定的视觉风格”。用户明确说“像某个网站”或给出 URL 后，才切换到 `reference-build`，生成视觉基因、首屏结构、组件语法、动效合同和验收条件。
 
@@ -128,7 +132,7 @@ Design Spells 更像 **interaction pattern gallery**，用于建立微交互词�
 
 ### Transitions.dev
 
-Transitions.dev 是动效治理参考，不是视觉主题。沿用它的 `Review -> Apply -> Refine -> Polish` 顺序：先确认动效目的和状态关系，再实现，再校正节奏，最后处理细节。每个动效还要有 cleanup、reduced-motion 和静态最终态 fallback。
+Transitions.dev 是动效治理参考，不是视觉主题。沿用它的 `Review -> Apply -> Polish` 顺序：先确认动效目的和状态关系，再实现，最后校正节奏和细节。每个动效还要有 cleanup、reduced-motion 和静态最终态 fallback。
 
 ### shadcn/ui
 
@@ -158,6 +162,7 @@ Borrowed decisions:
 Rejected decisions:
 Target product object:
 Layout and density:
+Composition budget: local alignment sequence / natural measures / field sequence / counterfield / full-bleed reason:
 Type and semantic color:
 State matrix:
 Motion trigger / purpose:

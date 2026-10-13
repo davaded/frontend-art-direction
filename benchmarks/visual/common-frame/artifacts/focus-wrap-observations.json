@@ -1,0 +1,20 @@
+[
+  {
+    "direction": "reverse",
+    "inside": true,
+    "label": "Original film",
+    "tag": "A"
+  },
+  {
+    "direction": "forward",
+    "inside": true,
+    "label": "Close film details",
+    "tag": "BUTTON"
+  },
+  {
+    "bodyOverflow": "visible",
+    "direction": "dismissal",
+    "label": "Into the film",
+    "open": false
+  }
+]

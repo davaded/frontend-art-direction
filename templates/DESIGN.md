@@ -42,6 +42,17 @@ Use this file as project-specific visual memory. Keep it true to the shipped pro
 - Hard invariants preserved:
 - Render proof reviewed at desktop / mobile / non-default / reduced-motion:
 
+## Composition And Reading Distance
+
+- Structural hypotheses to compare before polishing:
+- Selected hypothesis and why it fits the subject:
+- Per-region placement / text alignment / measure / occupancy / field / surface / pause / geometry tokens / neighbor relationship:
+- Viewport field / content shell / object stage / reading measure:
+- Useful empty space and its job:
+- Changes of width, density, and pause across the full page:
+- Wide screen limits / intermediate regrouping / narrow re-staging:
+- Actual widths and states inspected; remaining composition defects:
+
 ## Type
 
 - UI/body:

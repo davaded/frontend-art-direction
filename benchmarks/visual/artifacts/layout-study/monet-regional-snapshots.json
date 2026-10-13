@@ -1,0 +1,2224 @@
+{
+  "snapshots": [
+    {
+      "capturedAt": "2026-10-11T14:25:08.722Z",
+      "documentWidth": 601,
+      "regions": [
+        {
+          "contentGutter": 36,
+          "contentLeft": 36,
+          "contentRight": 565,
+          "contentSpan": 529,
+          "contentSpanRatio": 0.88,
+          "contentWidth": 104,
+          "contentWidthRatio": 0.173,
+          "counterfield": 0,
+          "cssTextAlign": "start",
+          "fieldAnchor": "full-field",
+          "gutter": 0,
+          "hasMedia": true,
+          "hasText": true,
+          "height": 80,
+          "heightRatio": 0.089,
+          "index": 0,
+          "label": "IN THE LIGHTA PAINTING ESSAYPaintings 01 - 03Sources",
+          "left": 0,
+          "localContentInset": 36,
+          "maxWidth": "none",
+          "paintedSurface": false,
+          "proseGutter": 0,
+          "proseWidth": 0,
+          "proseWidthRatio": 0,
+          "right": 601,
+          "tag": "header",
+          "textAlignmentEvidence": [
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            }
+          ],
+          "width": 601,
+          "widthRatio": 1
+        },
+        {
+          "contentGutter": 52,
+          "contentLeft": 52,
+          "contentRight": 457,
+          "contentSpan": 405,
+          "contentSpanRatio": 0.674,
+          "contentWidth": 405,
+          "contentWidthRatio": 0.674,
+          "counterfield": 24,
+          "cssTextAlign": "start",
+          "fieldAnchor": "center-field",
+          "gutter": 24,
+          "hasMedia": true,
+          "hasText": true,
+          "height": 600,
+          "heightRatio": 0.667,
+          "index": 1,
+          "label": "ClaudeMonet",
+          "left": 24,
+          "localContentInset": 28,
+          "maxWidth": "none",
+          "paintedSurface": true,
+          "proseGutter": 52,
+          "proseWidth": 405,
+          "proseWidthRatio": 0.674,
+          "right": 577,
+          "tag": "section",
+          "textAlignmentEvidence": [
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            }
+          ],
+          "width": 553,
+          "widthRatio": 0.92
+        },
+        {
+          "contentGutter": 56,
+          "contentLeft": 56,
+          "contentRight": 545,
+          "contentSpan": 489,
+          "contentSpanRatio": 0.814,
+          "contentWidth": 489,
+          "contentWidthRatio": 0.814,
+          "counterfield": 24,
+          "cssTextAlign": "start",
+          "fieldAnchor": "center-field",
+          "gutter": 24,
+          "hasMedia": true,
+          "hasText": true,
+          "height": 552,
+          "heightRatio": 0.613,
+          "index": 2,
+          "label": "A landscape is never one colour.",
+          "left": 24,
+          "localContentInset": 32,
+          "maxWidth": "940px",
+          "paintedSurface": false,
+          "proseGutter": 56,
+          "proseWidth": 489,
+          "proseWidthRatio": 0.814,
+          "right": 577,
+          "tag": "section",
+          "textAlignmentEvidence": [
+            {
+              "align": "center",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "left",
+              "direction": "ltr"
+            }
+          ],
+          "width": 553,
+          "widthRatio": 0.92
+        },
+        {
+          "contentGutter": 52,
+          "contentLeft": 52,
+          "contentRight": 549,
+          "contentSpan": 497,
+          "contentSpanRatio": 0.827,
+          "contentWidth": 497,
+          "contentWidthRatio": 0.827,
+          "counterfield": 24,
+          "cssTextAlign": "start",
+          "fieldAnchor": "center-field",
+          "gutter": 24,
+          "hasMedia": true,
+          "hasText": true,
+          "height": 731,
+          "heightRatio": 0.812,
+          "index": 3,
+          "label": "The colour of a shadow.",
+          "left": 24,
+          "localContentInset": 28,
+          "maxWidth": "1244px",
+          "paintedSurface": false,
+          "proseGutter": 52,
+          "proseWidth": 497,
+          "proseWidthRatio": 0.827,
+          "right": 577,
+          "tag": "section",
+          "textAlignmentEvidence": [
+            {
+              "align": "center",
+              "direction": "ltr"
+            },
+            {
+              "align": "center",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "left",
+              "direction": "ltr"
+            }
+          ],
+          "width": 553,
+          "widthRatio": 0.92
+        },
+        {
+          "contentGutter": 72,
+          "contentLeft": 72,
+          "contentRight": 529,
+          "contentSpan": 457,
+          "contentSpanRatio": 0.76,
+          "contentWidth": 420,
+          "contentWidthRatio": 0.699,
+          "counterfield": 24,
+          "cssTextAlign": "start",
+          "fieldAnchor": "center-field",
+          "gutter": 24,
+          "hasMedia": true,
+          "hasText": true,
+          "height": 1046,
+          "heightRatio": 1.162,
+          "index": 4,
+          "label": "The sky,withouta horizon.",
+          "left": 24,
+          "localContentInset": 48,
+          "maxWidth": "none",
+          "paintedSurface": true,
+          "proseGutter": 72,
+          "proseWidth": 420,
+          "proseWidthRatio": 0.699,
+          "right": 577,
+          "tag": "section",
+          "textAlignmentEvidence": [
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "left",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            }
+          ],
+          "width": 553,
+          "widthRatio": 0.92
+        },
+        {
+          "contentGutter": 56,
+          "contentLeft": 56,
+          "contentRight": 545,
+          "contentSpan": 489,
+          "contentSpanRatio": 0.814,
+          "contentWidth": 489,
+          "contentWidthRatio": 0.814,
+          "counterfield": 24,
+          "cssTextAlign": "center",
+          "fieldAnchor": "center-field",
+          "gutter": 24,
+          "hasMedia": true,
+          "hasText": true,
+          "height": 591,
+          "heightRatio": 0.657,
+          "index": 5,
+          "label": "Light leavesnothing still.",
+          "left": 24,
+          "localContentInset": 32,
+          "maxWidth": "none",
+          "paintedSurface": true,
+          "proseGutter": 56,
+          "proseWidth": 489,
+          "proseWidthRatio": 0.814,
+          "right": 577,
+          "tag": "section",
+          "textAlignmentEvidence": [
+            {
+              "align": "center",
+              "direction": "ltr"
+            },
+            {
+              "align": "center",
+              "direction": "ltr"
+            },
+            {
+              "align": "center",
+              "direction": "ltr"
+            },
+            {
+              "align": "left",
+              "direction": "ltr"
+            },
+            {
+              "align": "left",
+              "direction": "ltr"
+            },
+            {
+              "align": "left",
+              "direction": "ltr"
+            }
+          ],
+          "width": 553,
+          "widthRatio": 0.92
+        },
+        {
+          "contentGutter": 56,
+          "contentLeft": 56,
+          "contentRight": 517,
+          "contentSpan": 461,
+          "contentSpanRatio": 0.767,
+          "contentWidth": 226,
+          "contentWidthRatio": 0.376,
+          "counterfield": 24,
+          "cssTextAlign": "start",
+          "fieldAnchor": "center-field",
+          "gutter": 24,
+          "hasMedia": true,
+          "hasText": true,
+          "height": 399,
+          "heightRatio": 0.443,
+          "index": 6,
+          "label": "The paintings.",
+          "left": 24,
+          "localContentInset": 32,
+          "maxWidth": "none",
+          "paintedSurface": false,
+          "proseGutter": 56,
+          "proseWidth": 226,
+          "proseWidthRatio": 0.376,
+          "right": 577,
+          "tag": "section",
+          "textAlignmentEvidence": [
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            }
+          ],
+          "width": 553,
+          "widthRatio": 0.92
+        },
+        {
+          "contentGutter": 32,
+          "contentLeft": 32,
+          "contentRight": 120,
+          "contentSpan": 88,
+          "contentSpanRatio": 0.146,
+          "contentWidth": 88,
+          "contentWidthRatio": 0.146,
+          "counterfield": 0,
+          "cssTextAlign": "start",
+          "fieldAnchor": "full-field",
+          "gutter": 0,
+          "hasMedia": true,
+          "hasText": true,
+          "height": 100,
+          "heightRatio": 0.111,
+          "index": 7,
+          "label": "IN THE LIGHTTHREE PAINTINGS / CLAUDE MONET",
+          "left": 0,
+          "localContentInset": 32,
+          "maxWidth": "none",
+          "paintedSurface": false,
+          "proseGutter": 0,
+          "proseWidth": 0,
+          "proseWidthRatio": 0,
+          "right": 601,
+          "tag": "footer",
+          "textAlignmentEvidence": [
+            {
+              "align": "start",
+              "direction": "ltr"
+            }
+          ],
+          "width": 601,
+          "widthRatio": 1
+        }
+      ],
+      "scrollWidth": 601,
+      "url": "http://127.0.0.1:4175/benchmarks/visual/monet/",
+      "viewport": {
+        "height": 900,
+        "width": 601
+      }
+    },
+    {
+      "capturedAt": "2026-10-11T14:25:09.890Z",
+      "documentWidth": 768,
+      "regions": [
+        {
+          "contentGutter": 36,
+          "contentLeft": 36,
+          "contentRight": 732,
+          "contentSpan": 696,
+          "contentSpanRatio": 0.906,
+          "contentWidth": 104,
+          "contentWidthRatio": 0.135,
+          "counterfield": 0,
+          "cssTextAlign": "start",
+          "fieldAnchor": "full-field",
+          "gutter": 0,
+          "hasMedia": true,
+          "hasText": true,
+          "height": 80,
+          "heightRatio": 0.089,
+          "index": 0,
+          "label": "IN THE LIGHTA PAINTING ESSAYPaintings 01 - 03Sources",
+          "left": 0,
+          "localContentInset": 36,
+          "maxWidth": "none",
+          "paintedSurface": false,
+          "proseGutter": 0,
+          "proseWidth": 0,
+          "proseWidthRatio": 0,
+          "right": 768,
+          "tag": "header",
+          "textAlignmentEvidence": [
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            }
+          ],
+          "width": 768,
+          "widthRatio": 1
+        },
+        {
+          "contentGutter": 52,
+          "contentLeft": 52,
+          "contentRight": 457,
+          "contentSpan": 405,
+          "contentSpanRatio": 0.527,
+          "contentWidth": 405,
+          "contentWidthRatio": 0.527,
+          "counterfield": 24,
+          "cssTextAlign": "start",
+          "fieldAnchor": "center-field",
+          "gutter": 24,
+          "hasMedia": true,
+          "hasText": true,
+          "height": 600,
+          "heightRatio": 0.667,
+          "index": 1,
+          "label": "ClaudeMonet",
+          "left": 24,
+          "localContentInset": 28,
+          "maxWidth": "none",
+          "paintedSurface": true,
+          "proseGutter": 52,
+          "proseWidth": 405,
+          "proseWidthRatio": 0.527,
+          "right": 744,
+          "tag": "section",
+          "textAlignmentEvidence": [
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            }
+          ],
+          "width": 720,
+          "widthRatio": 0.938
+        },
+        {
+          "contentGutter": 56,
+          "contentLeft": 56,
+          "contentRight": 712,
+          "contentSpan": 656,
+          "contentSpanRatio": 0.854,
+          "contentWidth": 656,
+          "contentWidthRatio": 0.854,
+          "counterfield": 24,
+          "cssTextAlign": "start",
+          "fieldAnchor": "center-field",
+          "gutter": 24,
+          "hasMedia": true,
+          "hasText": true,
+          "height": 481,
+          "heightRatio": 0.534,
+          "index": 2,
+          "label": "A landscape is never one colour.",
+          "left": 24,
+          "localContentInset": 32,
+          "maxWidth": "940px",
+          "paintedSurface": false,
+          "proseGutter": 56,
+          "proseWidth": 656,
+          "proseWidthRatio": 0.854,
+          "right": 744,
+          "tag": "section",
+          "textAlignmentEvidence": [
+            {
+              "align": "center",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "left",
+              "direction": "ltr"
+            }
+          ],
+          "width": 720,
+          "widthRatio": 0.938
+        },
+        {
+          "contentGutter": 52,
+          "contentLeft": 52,
+          "contentRight": 716,
+          "contentSpan": 664,
+          "contentSpanRatio": 0.865,
+          "contentWidth": 664,
+          "contentWidthRatio": 0.865,
+          "counterfield": 24,
+          "cssTextAlign": "start",
+          "fieldAnchor": "center-field",
+          "gutter": 24,
+          "hasMedia": true,
+          "hasText": true,
+          "height": 804,
+          "heightRatio": 0.894,
+          "index": 3,
+          "label": "The colour of a shadow.",
+          "left": 24,
+          "localContentInset": 28,
+          "maxWidth": "1244px",
+          "paintedSurface": false,
+          "proseGutter": 52,
+          "proseWidth": 664,
+          "proseWidthRatio": 0.865,
+          "right": 744,
+          "tag": "section",
+          "textAlignmentEvidence": [
+            {
+              "align": "center",
+              "direction": "ltr"
+            },
+            {
+              "align": "center",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "left",
+              "direction": "ltr"
+            }
+          ],
+          "width": 720,
+          "widthRatio": 0.938
+        },
+        {
+          "contentGutter": 72,
+          "contentLeft": 72,
+          "contentRight": 696,
+          "contentSpan": 624,
+          "contentSpanRatio": 0.813,
+          "contentWidth": 420,
+          "contentWidthRatio": 0.547,
+          "counterfield": 24,
+          "cssTextAlign": "start",
+          "fieldAnchor": "center-field",
+          "gutter": 24,
+          "hasMedia": true,
+          "hasText": true,
+          "height": 1068,
+          "heightRatio": 1.187,
+          "index": 4,
+          "label": "The sky,withouta horizon.",
+          "left": 24,
+          "localContentInset": 48,
+          "maxWidth": "none",
+          "paintedSurface": true,
+          "proseGutter": 72,
+          "proseWidth": 420,
+          "proseWidthRatio": 0.547,
+          "right": 744,
+          "tag": "section",
+          "textAlignmentEvidence": [
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "left",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            }
+          ],
+          "width": 720,
+          "widthRatio": 0.938
+        },
+        {
+          "contentGutter": 56,
+          "contentLeft": 56,
+          "contentRight": 712,
+          "contentSpan": 656,
+          "contentSpanRatio": 0.854,
+          "contentWidth": 656,
+          "contentWidthRatio": 0.854,
+          "counterfield": 24,
+          "cssTextAlign": "center",
+          "fieldAnchor": "center-field",
+          "gutter": 24,
+          "hasMedia": true,
+          "hasText": true,
+          "height": 640,
+          "heightRatio": 0.711,
+          "index": 5,
+          "label": "Light leavesnothing still.",
+          "left": 24,
+          "localContentInset": 32,
+          "maxWidth": "none",
+          "paintedSurface": true,
+          "proseGutter": 56,
+          "proseWidth": 656,
+          "proseWidthRatio": 0.854,
+          "right": 744,
+          "tag": "section",
+          "textAlignmentEvidence": [
+            {
+              "align": "center",
+              "direction": "ltr"
+            },
+            {
+              "align": "center",
+              "direction": "ltr"
+            },
+            {
+              "align": "center",
+              "direction": "ltr"
+            },
+            {
+              "align": "left",
+              "direction": "ltr"
+            },
+            {
+              "align": "left",
+              "direction": "ltr"
+            },
+            {
+              "align": "left",
+              "direction": "ltr"
+            }
+          ],
+          "width": 720,
+          "widthRatio": 0.938
+        },
+        {
+          "contentGutter": 56,
+          "contentLeft": 56,
+          "contentRight": 684,
+          "contentSpan": 628,
+          "contentSpanRatio": 0.818,
+          "contentWidth": 320,
+          "contentWidthRatio": 0.417,
+          "counterfield": 24,
+          "cssTextAlign": "start",
+          "fieldAnchor": "center-field",
+          "gutter": 24,
+          "hasMedia": true,
+          "hasText": true,
+          "height": 376,
+          "heightRatio": 0.418,
+          "index": 6,
+          "label": "The paintings.",
+          "left": 24,
+          "localContentInset": 32,
+          "maxWidth": "none",
+          "paintedSurface": false,
+          "proseGutter": 56,
+          "proseWidth": 320,
+          "proseWidthRatio": 0.417,
+          "right": 744,
+          "tag": "section",
+          "textAlignmentEvidence": [
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            }
+          ],
+          "width": 720,
+          "widthRatio": 0.938
+        },
+        {
+          "contentGutter": 32,
+          "contentLeft": 32,
+          "contentRight": 120,
+          "contentSpan": 88,
+          "contentSpanRatio": 0.114,
+          "contentWidth": 88,
+          "contentWidthRatio": 0.114,
+          "counterfield": 0,
+          "cssTextAlign": "start",
+          "fieldAnchor": "full-field",
+          "gutter": 0,
+          "hasMedia": true,
+          "hasText": true,
+          "height": 100,
+          "heightRatio": 0.111,
+          "index": 7,
+          "label": "IN THE LIGHTTHREE PAINTINGS / CLAUDE MONET",
+          "left": 0,
+          "localContentInset": 32,
+          "maxWidth": "none",
+          "paintedSurface": false,
+          "proseGutter": 0,
+          "proseWidth": 0,
+          "proseWidthRatio": 0,
+          "right": 768,
+          "tag": "footer",
+          "textAlignmentEvidence": [
+            {
+              "align": "start",
+              "direction": "ltr"
+            }
+          ],
+          "width": 768,
+          "widthRatio": 1
+        }
+      ],
+      "scrollWidth": 768,
+      "url": "http://127.0.0.1:4175/benchmarks/visual/monet/",
+      "viewport": {
+        "height": 900,
+        "width": 768
+      }
+    },
+    {
+      "capturedAt": "2026-10-11T14:25:10.999Z",
+      "documentWidth": 900,
+      "regions": [
+        {
+          "contentGutter": 36,
+          "contentLeft": 36,
+          "contentRight": 864,
+          "contentSpan": 828,
+          "contentSpanRatio": 0.92,
+          "contentWidth": 104,
+          "contentWidthRatio": 0.115,
+          "counterfield": 0,
+          "cssTextAlign": "start",
+          "fieldAnchor": "full-field",
+          "gutter": 0,
+          "hasMedia": true,
+          "hasText": true,
+          "height": 80,
+          "heightRatio": 0.089,
+          "index": 0,
+          "label": "IN THE LIGHTA PAINTING ESSAYPaintings 01 - 03Sources",
+          "left": 0,
+          "localContentInset": 36,
+          "maxWidth": "none",
+          "paintedSurface": false,
+          "proseGutter": 0,
+          "proseWidth": 0,
+          "proseWidthRatio": 0,
+          "right": 900,
+          "tag": "header",
+          "textAlignmentEvidence": [
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            }
+          ],
+          "width": 900,
+          "widthRatio": 1
+        },
+        {
+          "contentGutter": 52,
+          "contentLeft": 52,
+          "contentRight": 457,
+          "contentSpan": 405,
+          "contentSpanRatio": 0.45,
+          "contentWidth": 405,
+          "contentWidthRatio": 0.45,
+          "counterfield": 24,
+          "cssTextAlign": "start",
+          "fieldAnchor": "center-field",
+          "gutter": 24,
+          "hasMedia": true,
+          "hasText": true,
+          "height": 600,
+          "heightRatio": 0.667,
+          "index": 1,
+          "label": "ClaudeMonet",
+          "left": 24,
+          "localContentInset": 28,
+          "maxWidth": "none",
+          "paintedSurface": true,
+          "proseGutter": 52,
+          "proseWidth": 405,
+          "proseWidthRatio": 0.45,
+          "right": 876,
+          "tag": "section",
+          "textAlignmentEvidence": [
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            }
+          ],
+          "width": 852,
+          "widthRatio": 0.947
+        },
+        {
+          "contentGutter": 56,
+          "contentLeft": 56,
+          "contentRight": 844,
+          "contentSpan": 788,
+          "contentSpanRatio": 0.876,
+          "contentWidth": 788,
+          "contentWidthRatio": 0.876,
+          "counterfield": 24,
+          "cssTextAlign": "start",
+          "fieldAnchor": "center-field",
+          "gutter": 24,
+          "hasMedia": true,
+          "hasText": true,
+          "height": 457,
+          "heightRatio": 0.508,
+          "index": 2,
+          "label": "A landscape is never one colour.",
+          "left": 24,
+          "localContentInset": 32,
+          "maxWidth": "940px",
+          "paintedSurface": false,
+          "proseGutter": 56,
+          "proseWidth": 788,
+          "proseWidthRatio": 0.876,
+          "right": 876,
+          "tag": "section",
+          "textAlignmentEvidence": [
+            {
+              "align": "center",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "left",
+              "direction": "ltr"
+            }
+          ],
+          "width": 852,
+          "widthRatio": 0.947
+        },
+        {
+          "contentGutter": 52,
+          "contentLeft": 52,
+          "contentRight": 848,
+          "contentSpan": 796,
+          "contentSpanRatio": 0.884,
+          "contentWidth": 796,
+          "contentWidthRatio": 0.884,
+          "counterfield": 24,
+          "cssTextAlign": "start",
+          "fieldAnchor": "center-field",
+          "gutter": 24,
+          "hasMedia": true,
+          "hasText": true,
+          "height": 883,
+          "heightRatio": 0.981,
+          "index": 3,
+          "label": "The colour of a shadow.",
+          "left": 24,
+          "localContentInset": 28,
+          "maxWidth": "1244px",
+          "paintedSurface": false,
+          "proseGutter": 52,
+          "proseWidth": 796,
+          "proseWidthRatio": 0.884,
+          "right": 876,
+          "tag": "section",
+          "textAlignmentEvidence": [
+            {
+              "align": "center",
+              "direction": "ltr"
+            },
+            {
+              "align": "center",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "left",
+              "direction": "ltr"
+            }
+          ],
+          "width": 852,
+          "widthRatio": 0.947
+        },
+        {
+          "contentGutter": 72,
+          "contentLeft": 72,
+          "contentRight": 828,
+          "contentSpan": 756,
+          "contentSpanRatio": 0.84,
+          "contentWidth": 420,
+          "contentWidthRatio": 0.467,
+          "counterfield": 24,
+          "cssTextAlign": "start",
+          "fieldAnchor": "center-field",
+          "gutter": 24,
+          "hasMedia": true,
+          "hasText": true,
+          "height": 1068,
+          "heightRatio": 1.187,
+          "index": 4,
+          "label": "The sky,withouta horizon.",
+          "left": 24,
+          "localContentInset": 48,
+          "maxWidth": "none",
+          "paintedSurface": true,
+          "proseGutter": 72,
+          "proseWidth": 420,
+          "proseWidthRatio": 0.467,
+          "right": 876,
+          "tag": "section",
+          "textAlignmentEvidence": [
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "left",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            }
+          ],
+          "width": 852,
+          "widthRatio": 0.947
+        },
+        {
+          "contentGutter": 56,
+          "contentLeft": 56,
+          "contentRight": 844,
+          "contentSpan": 788,
+          "contentSpanRatio": 0.876,
+          "contentWidth": 788,
+          "contentWidthRatio": 0.876,
+          "counterfield": 24,
+          "cssTextAlign": "center",
+          "fieldAnchor": "center-field",
+          "gutter": 24,
+          "hasMedia": true,
+          "hasText": true,
+          "height": 679,
+          "heightRatio": 0.754,
+          "index": 5,
+          "label": "Light leavesnothing still.",
+          "left": 24,
+          "localContentInset": 32,
+          "maxWidth": "none",
+          "paintedSurface": true,
+          "proseGutter": 56,
+          "proseWidth": 788,
+          "proseWidthRatio": 0.876,
+          "right": 876,
+          "tag": "section",
+          "textAlignmentEvidence": [
+            {
+              "align": "center",
+              "direction": "ltr"
+            },
+            {
+              "align": "center",
+              "direction": "ltr"
+            },
+            {
+              "align": "center",
+              "direction": "ltr"
+            },
+            {
+              "align": "left",
+              "direction": "ltr"
+            },
+            {
+              "align": "left",
+              "direction": "ltr"
+            },
+            {
+              "align": "left",
+              "direction": "ltr"
+            }
+          ],
+          "width": 852,
+          "widthRatio": 0.947
+        },
+        {
+          "contentGutter": 56,
+          "contentLeft": 56,
+          "contentRight": 816,
+          "contentSpan": 760,
+          "contentSpanRatio": 0.844,
+          "contentWidth": 395,
+          "contentWidthRatio": 0.439,
+          "counterfield": 24,
+          "cssTextAlign": "start",
+          "fieldAnchor": "center-field",
+          "gutter": 24,
+          "hasMedia": true,
+          "hasText": true,
+          "height": 376,
+          "heightRatio": 0.418,
+          "index": 6,
+          "label": "The paintings.",
+          "left": 24,
+          "localContentInset": 32,
+          "maxWidth": "none",
+          "paintedSurface": false,
+          "proseGutter": 56,
+          "proseWidth": 395,
+          "proseWidthRatio": 0.439,
+          "right": 876,
+          "tag": "section",
+          "textAlignmentEvidence": [
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            }
+          ],
+          "width": 852,
+          "widthRatio": 0.947
+        },
+        {
+          "contentGutter": 32,
+          "contentLeft": 32,
+          "contentRight": 120,
+          "contentSpan": 88,
+          "contentSpanRatio": 0.098,
+          "contentWidth": 88,
+          "contentWidthRatio": 0.098,
+          "counterfield": 0,
+          "cssTextAlign": "start",
+          "fieldAnchor": "full-field",
+          "gutter": 0,
+          "hasMedia": true,
+          "hasText": true,
+          "height": 100,
+          "heightRatio": 0.111,
+          "index": 7,
+          "label": "IN THE LIGHTTHREE PAINTINGS / CLAUDE MONET",
+          "left": 0,
+          "localContentInset": 32,
+          "maxWidth": "none",
+          "paintedSurface": false,
+          "proseGutter": 0,
+          "proseWidth": 0,
+          "proseWidthRatio": 0,
+          "right": 900,
+          "tag": "footer",
+          "textAlignmentEvidence": [
+            {
+              "align": "start",
+              "direction": "ltr"
+            }
+          ],
+          "width": 900,
+          "widthRatio": 1
+        }
+      ],
+      "scrollWidth": 900,
+      "url": "http://127.0.0.1:4175/benchmarks/visual/monet/",
+      "viewport": {
+        "height": 900,
+        "width": 900
+      }
+    },
+    {
+      "capturedAt": "2026-10-11T14:25:12.115Z",
+      "documentWidth": 1440,
+      "regions": [
+        {
+          "contentGutter": 80,
+          "contentLeft": 80,
+          "contentRight": 1360,
+          "contentSpan": 1280,
+          "contentSpanRatio": 0.889,
+          "contentWidth": 104,
+          "contentWidthRatio": 0.072,
+          "counterfield": 0,
+          "cssTextAlign": "start",
+          "fieldAnchor": "full-field",
+          "gutter": 0,
+          "hasMedia": true,
+          "hasText": true,
+          "height": 80,
+          "heightRatio": 0.089,
+          "index": 0,
+          "label": "IN THE LIGHTA PAINTING ESSAYPaintings 01 - 03Sources",
+          "left": 0,
+          "localContentInset": 80,
+          "maxWidth": "none",
+          "paintedSurface": false,
+          "proseGutter": 0,
+          "proseWidth": 0,
+          "proseWidthRatio": 0,
+          "right": 1440,
+          "tag": "header",
+          "textAlignmentEvidence": [
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            }
+          ],
+          "width": 1440,
+          "widthRatio": 1
+        },
+        {
+          "contentGutter": 80,
+          "contentLeft": 80,
+          "contentRight": 485,
+          "contentSpan": 405,
+          "contentSpanRatio": 0.281,
+          "contentWidth": 405,
+          "contentWidthRatio": 0.281,
+          "counterfield": 32,
+          "cssTextAlign": "start",
+          "fieldAnchor": "center-field",
+          "gutter": 32,
+          "hasMedia": true,
+          "hasText": true,
+          "height": 600,
+          "heightRatio": 0.667,
+          "index": 1,
+          "label": "ClaudeMonet",
+          "left": 32,
+          "localContentInset": 48,
+          "maxWidth": "none",
+          "paintedSurface": true,
+          "proseGutter": 80,
+          "proseWidth": 405,
+          "proseWidthRatio": 0.281,
+          "right": 1408,
+          "tag": "section",
+          "textAlignmentEvidence": [
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            }
+          ],
+          "width": 1376,
+          "widthRatio": 0.956
+        },
+        {
+          "contentGutter": 282,
+          "contentLeft": 282,
+          "contentRight": 1158,
+          "contentSpan": 876,
+          "contentSpanRatio": 0.608,
+          "contentWidth": 876,
+          "contentWidthRatio": 0.608,
+          "counterfield": 250,
+          "cssTextAlign": "start",
+          "fieldAnchor": "center-field",
+          "gutter": 250,
+          "hasMedia": true,
+          "hasText": true,
+          "height": 433,
+          "heightRatio": 0.481,
+          "index": 2,
+          "label": "A landscape is never one colour.",
+          "left": 250,
+          "localContentInset": 32,
+          "maxWidth": "940px",
+          "paintedSurface": false,
+          "proseGutter": 282,
+          "proseWidth": 876,
+          "proseWidthRatio": 0.608,
+          "right": 1190,
+          "tag": "section",
+          "textAlignmentEvidence": [
+            {
+              "align": "center",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "left",
+              "direction": "ltr"
+            }
+          ],
+          "width": 940,
+          "widthRatio": 0.653
+        },
+        {
+          "contentGutter": 170,
+          "contentLeft": 170,
+          "contentRight": 1270,
+          "contentSpan": 1100,
+          "contentSpanRatio": 0.764,
+          "contentWidth": 1100,
+          "contentWidthRatio": 0.764,
+          "counterfield": 98,
+          "cssTextAlign": "start",
+          "fieldAnchor": "center-field",
+          "gutter": 98,
+          "hasMedia": true,
+          "hasText": true,
+          "height": 1063,
+          "heightRatio": 1.181,
+          "index": 3,
+          "label": "The colour of a shadow.",
+          "left": 98,
+          "localContentInset": 72,
+          "maxWidth": "1244px",
+          "paintedSurface": false,
+          "proseGutter": 170,
+          "proseWidth": 1100,
+          "proseWidthRatio": 0.764,
+          "right": 1342,
+          "tag": "section",
+          "textAlignmentEvidence": [
+            {
+              "align": "center",
+              "direction": "ltr"
+            },
+            {
+              "align": "center",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "left",
+              "direction": "ltr"
+            }
+          ],
+          "width": 1244,
+          "widthRatio": 0.864
+        },
+        {
+          "contentGutter": 260,
+          "contentLeft": 260,
+          "contentRight": 1180,
+          "contentSpan": 920,
+          "contentSpanRatio": 0.639,
+          "contentWidth": 350,
+          "contentWidthRatio": 0.243,
+          "counterfield": 80,
+          "cssTextAlign": "start",
+          "fieldAnchor": "center-field",
+          "gutter": 80,
+          "hasMedia": true,
+          "hasText": true,
+          "height": 716,
+          "heightRatio": 0.796,
+          "index": 4,
+          "label": "The sky,withouta horizon.",
+          "left": 80,
+          "localContentInset": 180,
+          "maxWidth": "none",
+          "paintedSurface": true,
+          "proseGutter": 260,
+          "proseWidth": 350,
+          "proseWidthRatio": 0.243,
+          "right": 1360,
+          "tag": "section",
+          "textAlignmentEvidence": [
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "left",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            }
+          ],
+          "width": 1280,
+          "widthRatio": 0.889
+        },
+        {
+          "contentGutter": 112,
+          "contentLeft": 112,
+          "contentRight": 1328,
+          "contentSpan": 1216,
+          "contentSpanRatio": 0.844,
+          "contentWidth": 1216,
+          "contentWidthRatio": 0.844,
+          "counterfield": 80,
+          "cssTextAlign": "center",
+          "fieldAnchor": "center-field",
+          "gutter": 80,
+          "hasMedia": true,
+          "hasText": true,
+          "height": 705,
+          "heightRatio": 0.783,
+          "index": 5,
+          "label": "Light leavesnothing still.",
+          "left": 80,
+          "localContentInset": 32,
+          "maxWidth": "none",
+          "paintedSurface": true,
+          "proseGutter": 112,
+          "proseWidth": 1216,
+          "proseWidthRatio": 0.844,
+          "right": 1360,
+          "tag": "section",
+          "textAlignmentEvidence": [
+            {
+              "align": "center",
+              "direction": "ltr"
+            },
+            {
+              "align": "center",
+              "direction": "ltr"
+            },
+            {
+              "align": "center",
+              "direction": "ltr"
+            },
+            {
+              "align": "left",
+              "direction": "ltr"
+            },
+            {
+              "align": "left",
+              "direction": "ltr"
+            },
+            {
+              "align": "left",
+              "direction": "ltr"
+            }
+          ],
+          "width": 1280,
+          "widthRatio": 0.889
+        },
+        {
+          "contentGutter": 330,
+          "contentLeft": 330,
+          "contentRight": 1082,
+          "contentSpan": 752,
+          "contentSpanRatio": 0.522,
+          "contentWidth": 372,
+          "contentWidthRatio": 0.258,
+          "counterfield": 130,
+          "cssTextAlign": "start",
+          "fieldAnchor": "center-field",
+          "gutter": 130,
+          "hasMedia": true,
+          "hasText": true,
+          "height": 376,
+          "heightRatio": 0.418,
+          "index": 6,
+          "label": "The paintings.",
+          "left": 130,
+          "localContentInset": 200,
+          "maxWidth": "none",
+          "paintedSurface": false,
+          "proseGutter": 330,
+          "proseWidth": 372,
+          "proseWidthRatio": 0.258,
+          "right": 1310,
+          "tag": "section",
+          "textAlignmentEvidence": [
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            }
+          ],
+          "width": 1180,
+          "widthRatio": 0.819
+        },
+        {
+          "contentGutter": 80,
+          "contentLeft": 80,
+          "contentRight": 168,
+          "contentSpan": 88,
+          "contentSpanRatio": 0.061,
+          "contentWidth": 88,
+          "contentWidthRatio": 0.061,
+          "counterfield": 0,
+          "cssTextAlign": "start",
+          "fieldAnchor": "full-field",
+          "gutter": 0,
+          "hasMedia": true,
+          "hasText": true,
+          "height": 100,
+          "heightRatio": 0.111,
+          "index": 7,
+          "label": "IN THE LIGHTTHREE PAINTINGS / CLAUDE MONET",
+          "left": 0,
+          "localContentInset": 80,
+          "maxWidth": "none",
+          "paintedSurface": false,
+          "proseGutter": 0,
+          "proseWidth": 0,
+          "proseWidthRatio": 0,
+          "right": 1440,
+          "tag": "footer",
+          "textAlignmentEvidence": [
+            {
+              "align": "start",
+              "direction": "ltr"
+            }
+          ],
+          "width": 1440,
+          "widthRatio": 1
+        }
+      ],
+      "scrollWidth": 1440,
+      "url": "http://127.0.0.1:4175/benchmarks/visual/monet/",
+      "viewport": {
+        "height": 900,
+        "width": 1440
+      }
+    },
+    {
+      "capturedAt": "2026-10-11T14:25:13.230Z",
+      "documentWidth": 390,
+      "regions": [
+        {
+          "contentGutter": 20,
+          "contentLeft": 20,
+          "contentRight": 370,
+          "contentSpan": 350,
+          "contentSpanRatio": 0.897,
+          "contentWidth": 87,
+          "contentWidthRatio": 0.222,
+          "counterfield": 0,
+          "cssTextAlign": "start",
+          "fieldAnchor": "full-field",
+          "gutter": 0,
+          "hasMedia": true,
+          "hasText": true,
+          "height": 76,
+          "heightRatio": 0.09,
+          "index": 0,
+          "label": "IN THE LIGHTA PAINTING ESSAYPaintings 01 - 03Sources",
+          "left": 0,
+          "localContentInset": 20,
+          "maxWidth": "none",
+          "paintedSurface": false,
+          "proseGutter": 0,
+          "proseWidth": 0,
+          "proseWidthRatio": 0,
+          "right": 390,
+          "tag": "header",
+          "textAlignmentEvidence": [
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            }
+          ],
+          "width": 390,
+          "widthRatio": 1
+        },
+        {
+          "contentGutter": 20,
+          "contentLeft": 20,
+          "contentRight": 230,
+          "contentSpan": 210,
+          "contentSpanRatio": 0.538,
+          "contentWidth": 210,
+          "contentWidthRatio": 0.538,
+          "counterfield": 0,
+          "cssTextAlign": "start",
+          "fieldAnchor": "full-field",
+          "gutter": 0,
+          "hasMedia": true,
+          "hasText": true,
+          "height": 460,
+          "heightRatio": 0.545,
+          "index": 1,
+          "label": "ClaudeMonet",
+          "left": 0,
+          "localContentInset": 20,
+          "maxWidth": "none",
+          "paintedSurface": true,
+          "proseGutter": 20,
+          "proseWidth": 210,
+          "proseWidthRatio": 0.538,
+          "right": 390,
+          "tag": "section",
+          "textAlignmentEvidence": [
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            }
+          ],
+          "width": 390,
+          "widthRatio": 1
+        },
+        {
+          "contentGutter": 24,
+          "contentLeft": 24,
+          "contentRight": 366,
+          "contentSpan": 342,
+          "contentSpanRatio": 0.877,
+          "contentWidth": 342,
+          "contentWidthRatio": 0.877,
+          "counterfield": 0,
+          "cssTextAlign": "start",
+          "fieldAnchor": "full-field",
+          "gutter": 0,
+          "hasMedia": true,
+          "hasText": true,
+          "height": 475,
+          "heightRatio": 0.562,
+          "index": 2,
+          "label": "A landscape is never one colour.",
+          "left": 0,
+          "localContentInset": 24,
+          "maxWidth": "940px",
+          "paintedSurface": false,
+          "proseGutter": 24,
+          "proseWidth": 342,
+          "proseWidthRatio": 0.877,
+          "right": 390,
+          "tag": "section",
+          "textAlignmentEvidence": [
+            {
+              "align": "center",
+              "direction": "ltr"
+            },
+            {
+              "align": "center",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "left",
+              "direction": "ltr"
+            }
+          ],
+          "width": 390,
+          "widthRatio": 1
+        },
+        {
+          "contentGutter": 24,
+          "contentLeft": 24,
+          "contentRight": 366,
+          "contentSpan": 342,
+          "contentSpanRatio": 0.877,
+          "contentWidth": 342,
+          "contentWidthRatio": 0.877,
+          "counterfield": 0,
+          "cssTextAlign": "start",
+          "fieldAnchor": "full-field",
+          "gutter": 0,
+          "hasMedia": true,
+          "hasText": true,
+          "height": 666,
+          "heightRatio": 0.79,
+          "index": 3,
+          "label": "The colour of a shadow.",
+          "left": 0,
+          "localContentInset": 24,
+          "maxWidth": "1244px",
+          "paintedSurface": false,
+          "proseGutter": 24,
+          "proseWidth": 342,
+          "proseWidthRatio": 0.877,
+          "right": 390,
+          "tag": "section",
+          "textAlignmentEvidence": [
+            {
+              "align": "center",
+              "direction": "ltr"
+            },
+            {
+              "align": "center",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "left",
+              "direction": "ltr"
+            }
+          ],
+          "width": 390,
+          "widthRatio": 1
+        },
+        {
+          "contentGutter": 24,
+          "contentLeft": 24,
+          "contentRight": 366,
+          "contentSpan": 342,
+          "contentSpanRatio": 0.877,
+          "contentWidth": 342,
+          "contentWidthRatio": 0.877,
+          "counterfield": 0,
+          "cssTextAlign": "start",
+          "fieldAnchor": "full-field",
+          "gutter": 0,
+          "hasMedia": true,
+          "hasText": true,
+          "height": 886,
+          "heightRatio": 1.049,
+          "index": 4,
+          "label": "The sky,withouta horizon.",
+          "left": 0,
+          "localContentInset": 24,
+          "maxWidth": "none",
+          "paintedSurface": true,
+          "proseGutter": 24,
+          "proseWidth": 342,
+          "proseWidthRatio": 0.877,
+          "right": 390,
+          "tag": "section",
+          "textAlignmentEvidence": [
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "left",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            }
+          ],
+          "width": 390,
+          "widthRatio": 1
+        },
+        {
+          "contentGutter": 24,
+          "contentLeft": 24,
+          "contentRight": 366,
+          "contentSpan": 342,
+          "contentSpanRatio": 0.877,
+          "contentWidth": 342,
+          "contentWidthRatio": 0.877,
+          "counterfield": 0,
+          "cssTextAlign": "center",
+          "fieldAnchor": "full-field",
+          "gutter": 0,
+          "hasMedia": true,
+          "hasText": true,
+          "height": 485,
+          "heightRatio": 0.574,
+          "index": 5,
+          "label": "Light leavesnothing still.",
+          "left": 0,
+          "localContentInset": 24,
+          "maxWidth": "none",
+          "paintedSurface": true,
+          "proseGutter": 24,
+          "proseWidth": 342,
+          "proseWidthRatio": 0.877,
+          "right": 390,
+          "tag": "section",
+          "textAlignmentEvidence": [
+            {
+              "align": "center",
+              "direction": "ltr"
+            },
+            {
+              "align": "center",
+              "direction": "ltr"
+            },
+            {
+              "align": "center",
+              "direction": "ltr"
+            },
+            {
+              "align": "left",
+              "direction": "ltr"
+            },
+            {
+              "align": "left",
+              "direction": "ltr"
+            },
+            {
+              "align": "left",
+              "direction": "ltr"
+            }
+          ],
+          "width": 390,
+          "widthRatio": 1
+        },
+        {
+          "contentGutter": 24,
+          "contentLeft": 24,
+          "contentRight": 366,
+          "contentSpan": 342,
+          "contentSpanRatio": 0.877,
+          "contentWidth": 342,
+          "contentWidthRatio": 0.877,
+          "counterfield": 0,
+          "cssTextAlign": "start",
+          "fieldAnchor": "full-field",
+          "gutter": 0,
+          "hasMedia": true,
+          "hasText": true,
+          "height": 525,
+          "heightRatio": 0.622,
+          "index": 6,
+          "label": "The paintings.",
+          "left": 0,
+          "localContentInset": 24,
+          "maxWidth": "none",
+          "paintedSurface": false,
+          "proseGutter": 24,
+          "proseWidth": 342,
+          "proseWidthRatio": 0.877,
+          "right": 390,
+          "tag": "section",
+          "textAlignmentEvidence": [
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            },
+            {
+              "align": "start",
+              "direction": "ltr"
+            }
+          ],
+          "width": 390,
+          "widthRatio": 1
+        },
+        {
+          "contentGutter": 20,
+          "contentLeft": 20,
+          "contentRight": 108,
+          "contentSpan": 88,
+          "contentSpanRatio": 0.225,
+          "contentWidth": 88,
+          "contentWidthRatio": 0.225,
+          "counterfield": 0,
+          "cssTextAlign": "start",
+          "fieldAnchor": "full-field",
+          "gutter": 0,
+          "hasMedia": true,
+          "hasText": true,
+          "height": 115,
+          "heightRatio": 0.136,
+          "index": 7,
+          "label": "IN THE LIGHTTHREE PAINTINGS / CLAUDE MONET",
+          "left": 0,
+          "localContentInset": 20,
+          "maxWidth": "none",
+          "paintedSurface": false,
+          "proseGutter": 0,
+          "proseWidth": 0,
+          "proseWidthRatio": 0,
+          "right": 390,
+          "tag": "footer",
+          "textAlignmentEvidence": [
+            {
+              "align": "start",
+              "direction": "ltr"
+            }
+          ],
+          "width": 390,
+          "widthRatio": 1
+        }
+      ],
+      "scrollWidth": 390,
+      "url": "http://127.0.0.1:4175/benchmarks/visual/monet/",
+      "viewport": {
+        "height": 844,
+        "width": 390
+      }
+    }
+  ]
+}

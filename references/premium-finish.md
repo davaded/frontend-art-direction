@@ -13,7 +13,7 @@ One authored visual idea:
 Type hierarchy and ceiling:
 Surface/material logic:
 Edge character, separation, and line policy:
-Spacing rhythm and alignment axis:
+Spacing rhythm, per-region alignment relationships, and readable measures:
 Asset provenance and crop:
 State feedback and motion purpose:
 What was deliberately removed:
@@ -30,6 +30,8 @@ The first screen shows the actual product, work object, data relationship, or au
 ### 2. Optical hierarchy
 
 Typography, spacing, alignment, and contrast are tuned by eye after the mechanical grid is in place. Use one primary type family unless a second family has a real editorial job. Keep display type earned, not merely large. Inspect the actual glyphs over the actual image crop at each relevant width: a foreground color can be correct in the palette and still disappear on a photograph. Repair the type/media relationship before adding an overlay. For instruments, distinguish expressive artwork type from control text; making labels microscopic to keep the artwork large weakens the product.
+
+Judge prose at its intended reading distance, separately from dates, credits, and compact controls. If a narrow reading region feels compressed, regroup neighboring content or increase its line rhythm before shrinking the copy to preserve a desktop silhouette. Borrow the reference's relationship between image and reading, then choose type for the target's actual text; its pixel values are not a universal scale.
 
 ### 3. Material discipline
 

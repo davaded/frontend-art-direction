@@ -1,11 +1,11 @@
 {
   "version": 1,
-  "reviewedOn": "2026-09-21",
+  "reviewedOn": "2026-10-11",
   "selectionPolicy": {
     "principles": [
       "Match the product job and visual quality before matching geography, popularity, or market proximity.",
-      "Official product pages are stronger sources for product storytelling than generic inspiration galleries.",
-      "Use one source for object and brand narrative, another for feature proof or workflow, and a third only when it adds a distinct material, technical, or commerce lens.",
+      "Use galleries to discover strong work, then inspect the original site or complete project for composition, responsive behavior, and intent fit.",
+      "Select by the missing decision: whole-page composition, reading, workflow, material, or interaction. A category absent from the catalog remains open for live discovery.",
       "A source is a candidate until its live page is inspected; the catalog never proves that a site is current or good for the target product."
     ],
     "tiers": [
@@ -19,7 +19,7 @@
     {
       "id": "hardware-product",
       "label": "Hardware Product Story",
-      "keywords": ["hardware", "device", "laptop", "computer", "phone", "monitor", "camera", "audio", "speaker", "headphone", "peripheral", "keyboard", "mouse", "外设", "硬件", "设备", "电脑", "手机", "显示器", "键盘", "鼠标", "耳机", "音箱"],
+      "keywords": ["hardware", "device", "laptop", "computer", "phone", "monitor", "camera", "audio", "audio interface", "interface", "recording", "studio", "speaker", "headphone", "peripheral", "keyboard", "mouse", "外设", "硬件", "设备", "电脑", "手机", "显示器", "键盘", "鼠标", "耳机", "音箱", "音频", "接口", "声卡", "音频接口", "桌面音频", "录音", "工作室"],
       "jobs": ["product-object", "material-story", "feature-proof", "comparison-path"],
       "searchQueries": ["official hardware product page object first feature proof", "premium computer peripheral product page material performance", "official product comparison and buy flow hardware"]
     },
@@ -33,14 +33,14 @@
     {
       "id": "premium-consumer",
       "label": "Premium Consumer Product",
-      "keywords": ["premium", "luxury", "design", "material", "finish", "craft", "高端", "材质", "工艺", "设计", "质感"],
+      "keywords": ["premium consumer", "luxury product", "consumer hardware", "消费硬件"],
       "jobs": ["product-object", "material-story", "lifestyle-proof", "commerce-path"],
       "searchQueries": ["official premium consumer hardware product story material lifestyle", "high end product website product object editorial proof"]
     },
     {
       "id": "gaming-hardware",
       "label": "Gaming Hardware",
-      "keywords": ["gaming", "esports", "rgb", "performance", "latency", "fps", "游戏", "电竞", "性能", "灯效"],
+      "keywords": ["gaming", "esports", "rgb", "latency", "fps", "电竞", "游戏外设", "灯效"],
       "jobs": ["performance-proof", "product-object", "configuration", "commerce-path"],
       "searchQueries": ["official gaming peripheral product page performance proof", "gaming hardware configuration product website"]
     },
@@ -51,6 +51,18 @@
       "jobs": ["product-object", "feature-proof", "comparison-path"],
       "searchQueries": ["official product website product object feature proof comparison"]
     }
+  ],
+  "discoveryChannels": [
+    {"id": "siteinspire", "label": "Siteinspire", "url": "https://www.siteinspire.com/", "roles": ["composition", "responsive"], "use": "Find structural and typographic candidates through style/type filters; follow the original site.", "limit": "A listing is not proof that the current live page works."},
+    {"id": "awwwards", "label": "Awwwards", "url": "https://www.awwwards.com/websites/", "roles": ["composition", "interaction"], "use": "Discover distinctive full websites and interaction ideas; inspect their actual pages.", "limit": "Awards do not establish task fit, loading performance, or mobile usability."},
+    {"id": "muuuuu", "label": "MUUUUU.ORG", "url": "https://muuuuu.org/zh/", "roles": ["composition", "responsive"], "use": "Use layout/style/industry filters to find complete websites; follow the original URL.", "limit": "A screenshot or locale is not a quality guarantee."},
+    {"id": "behance", "label": "Behance", "url": "https://www.behance.net/", "roles": ["composition", "material", "artwork"], "use": "Inspect complete visual projects and their type/image relationships.", "limit": "A presentation board may not have a live implementation; verify its scope."},
+    {"id": "dribbble", "label": "Dribbble", "url": "https://dribbble.com/", "roles": ["component", "interaction", "artwork"], "use": "Study a focused component, state, or micro-interaction specimen.", "limit": "A polished shot does not establish a complete product or responsive flow."},
+    {"id": "mobbin", "label": "Mobbin", "url": "https://mobbin.com/", "roles": ["workflow", "responsive", "component"], "use": "Study real screen sequences, information hierarchy, and action/result continuity.", "limit": "Screenshots establish captured states; inspect current behavior when needed. Respect access limits."},
+    {"id": "pinterest", "label": "Pinterest", "url": "https://www.pinterest.com/", "roles": ["material", "artwork"], "use": "Collect a small moodboard of image, texture, and type relationships; trace each original.", "limit": "Pins do not establish authorship, reuse rights, or working behavior."},
+    {"id": "huaban", "label": "Huaban", "url": "https://huaban.com/", "roles": ["material", "artwork"], "use": "Find visual or material directions and follow original sources.", "limit": "Collections are inspiration; verify original attribution and reuse rights."},
+    {"id": "muzli", "label": "Muzli", "url": "https://muz.li/", "roles": ["composition", "interaction", "material"], "use": "Discover fresh work, then follow the creator or live project for evidence.", "limit": "Aggregation and popularity are not visual or runtime acceptance."},
+    {"id": "eagle", "label": "Eagle Blog", "url": "https://cn.eagle.cool/blog/post/best-websites-designers-love-for-finding-design-inspirations", "roles": ["directory"], "use": "Find additional discovery channels when the current pool misses the brief.", "limit": "A directory is navigation, not a primary design reference or required software dependency."}
   ],
   "sources": [
     {
@@ -77,7 +89,7 @@
       "urls": ["https://teenage.engineering/products"],
       "categories": ["hardware-product", "peripheral", "premium-consumer", "creator-hardware"],
       "roles": ["product-object", "industrial-character", "material-story", "creator-workflow"],
-      "keywords": ["teenage engineering", "hardware", "synth", "computer", "creator", "industrial", "playful", "object", "产品", "硬件", "创作者"],
+      "keywords": ["teenage engineering", "hardware", "synth", "computer", "creator", "industrial", "playful", "object", "audio", "sound", "产品", "硬件", "创作者", "音频", "声音", "合成器", "乐器"],
       "visualSignals": ["strong industrial character", "product object carries brand identity", "compact copy with unusual but deliberate rhythm", "color and form are treated as product facts"],
       "borrow": ["give the physical object a recognizable silhouette", "use a small set of product-specific visual rules", "let material, color, and interaction carry personality"],
       "reject": ["do not add novelty color or playful copy without a real product character", "do not trade technical clarity for art direction"],
@@ -122,7 +134,7 @@
       "urls": ["https://www.bang-olufsen.com/en/us"],
       "categories": ["hardware-product", "premium-consumer", "audio"],
       "roles": ["product-object", "material-story", "lifestyle-proof", "commerce-path"],
-      "keywords": ["bang olufsen", "audio", "speaker", "headphone", "material", "craft", "premium", "耳机", "音箱", "材质"],
+      "keywords": ["bang olufsen", "audio", "speaker", "headphone", "material", "craft", "premium", "音频", "声音", "耳机", "音箱", "材质"],
       "visualSignals": ["material and finish are treated as primary product content", "quiet editorial pacing", "lifestyle context supports the physical object", "commerce remains available without dominating the story"],
       "borrow": ["use close material proof when material is a product differentiator", "make finish and object identity part of navigation", "keep commerce visible but subordinate to product understanding"],
       "reject": ["do not use luxury whitespace when the product lacks material evidence", "do not replace specs or compatibility with atmosphere"],

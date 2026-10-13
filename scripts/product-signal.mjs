@@ -1,3 +1,5 @@
+import { classifySurfaceMode } from "./surface-mode.mjs";
+
 const PROFILE_SIGNALS = {
   "productive-app": {
     object: "the active work item, record, document, or selected detail",
@@ -116,7 +118,8 @@ const TASK_TERMS = /\b(?:app|dashboard|editor|tool|workflow|form|settings|builde
 
 function inferSignalMode(query, profileId, profile) {
   const text = String(query).toLocaleLowerCase();
-  // Explicit tasks outrank style words; a medium alone can still carry authored work.
+  if (classifySurfaceMode(query).mode === "persuade") return "authored-experience";
+  // Explicit tasks outrank style words; product topic and surface job are separate.
   if (TASK_TERMS.test(text)) return "product";
   if (AUTHORING_TERMS.test(text)) return "authored-experience";
   if (FUNCTIONAL_PROFILES.has(profileId)) return "product";
