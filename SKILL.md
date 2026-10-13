@@ -152,7 +152,7 @@ Pause for a direction lock only when the direction is genuinely ambiguous and ex
 
 Read [references/implementation.md](references/implementation.md) for substantial work. Build the composition and interaction model before decorative styling:
 
-- Apply [references/product-prototype.md](references/product-prototype.md) first: choose the evidence mode that belongs to the work. Functional products need a usable vertical slice; narrative, art-directed, and experimental work needs a subject, thesis, attention path, authored proof, and deliberate ending. No page genre is prescribed.
+- Apply [references/product-prototype.md](references/product-prototype.md) first: choose the evidence mode that belongs to the work. Functional products need a usable vertical slice; narrative, art-directed, and experimental work needs a subject, thesis, attention path, authored proof, and deliberate ending. When a concrete request returns `needs-target-proposal` or generic purpose fields, internally author its `productSignal`, visual thesis and complete scope through [references/creative-direction.md](references/creative-direction.md), then implement it. Do not ask the user to complete the schema or stop at the proposal. No page genre is prescribed.
 - Declare the full completion scope before polishing. The first viewport is the acceptance anchor, never the definition of done; finish every intended region, state, responsive path, asset, destination, and ending.
 
 - first read, primary action, information hierarchy, and responsive re-staging

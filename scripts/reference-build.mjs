@@ -406,6 +406,57 @@ function recipeFor(reference, recipes) {
   return recipes.find((recipe) => recipe.referenceId === reference.id) ?? genericLensRecipe(reference);
 }
 
+function recipeForProduct(recipe, direction, signal) {
+  const regions = direction.compositionPlan?.regions ?? [];
+  return {
+    ...recipe,
+    firstViewport: {
+      ...direction.firstViewport,
+      mustShow: [...new Set([signal.object, signal.primaryAction, ...signal.firstViewportProof].filter(Boolean))],
+    },
+    sections: regions.map((region) => ({
+      id: region.region.replace(/\s+/g, "-"),
+      region: region.region,
+      purpose: region.relation ?? `Support the target task: ${signal.userJob}`,
+      layout: `${region.placement ?? "preserve authored region placement"}; ${region.measure ?? "use the natural readable or object measure"}; ${region.space ?? "preserve useful separation and counterfield"}`,
+      content: `${signal.concreteData}; this region belongs to the target workflow, not the reference's demo collection`,
+      components: region.priority === "dominant" ? [signal.object, signal.primaryAction] : [region.region],
+    })),
+    componentGrammar: [{
+      id: "target-work-object",
+      shape: "use the chosen target composition and inspected reference material around the real work object; no demo preview frame is required",
+      states: signal.stateMatrix,
+      behavior: signal.coreLoop,
+    }, {
+      id: "target-primary-action",
+      shape: "an accessible action attached to the work object with visible result or recovery",
+      states: ["idle", "focus", "active", "disabled", "error", "success"],
+      behavior: `${signal.primaryAction}; ${signal.visibleResult}`,
+    }],
+    motionContract: {
+      ...recipe.motionContract,
+      triggers: [signal.primaryAction],
+      review: `Name the continuity or feedback needed by the target loop: ${signal.coreLoop}`,
+      apply: "animate the target object or its state only when it clarifies the action; preserve identity and local geometry",
+      polish: "test repeated actions, interruption, recovery and cleanup against the target workflow",
+      reducedMotion: "perform the same target action and show its complete result without travel or looping",
+      fallback: "the actual work object, primary action and recovery remain usable without animation",
+    },
+    responsive: {
+      desktop: direction.compositionPlan?.guardrails?.wide ?? "preserve the chosen target object, measures and attached controls",
+      tablet: direction.compositionPlan?.guardrails?.intermediate ?? "regroup the target workflow before controls or content become cramped",
+      mobile: direction.compositionPlan?.guardrails?.narrow ?? "re-stage the same target object, actions and recovery for reading and touch",
+    },
+    assetStrategy: {
+      hero: "show the real target work object and content; use high-quality target assets only where the workflow calls for them",
+      specimens: "use actual target records, media or deterministic states; reference demo copy and placeholder artwork cannot supply product evidence",
+      fallback: "keep the object, state and recovery clear when media, data or motion is unavailable",
+    },
+    buildOrder: ["the target object and primary action", "visible result and recovery", ...regions.map((region) => region.region), "responsive target workflow", "purposeful motion and actual rendered iteration"],
+    acceptance: ["the target work object leads the opening", "the target primary action produces its visible result", "every intended region supports the target workflow with real content", "keyboard, touch, recovery and reduced motion preserve the same task", "borrowed visual decisions are verified on actual target renders"],
+  };
+}
+
 function recipeForExperience(recipe) {
   return {
     ...recipe,
@@ -431,6 +482,7 @@ function recipeForExperience(recipe) {
       ...recipe.motionContract,
       triggers: ["a reveal, reframe, or continuity relationship when the chosen work uses one"],
       review: "name the purpose in the chosen piece; a deliberate static composition is valid",
+      apply: "implement the chosen reveal, reframe or continuity in its own medium; no specimen or grid animation is prescribed",
       polish: "inspect the complete attention path and ending at desktop/mobile; test interruption and replay where motion is used",
       reducedMotion: "preserve the full material, reading order, and ending without travel or looping",
       fallback: "the complete chosen work remains legible in a static final composition",
@@ -480,6 +532,7 @@ function recipeForReading(recipe) {
       ...recipe.motionContract,
       triggers: ["reading navigation or example inspection when continuity benefits from motion"],
       review: "preserve reading location and content visibility; a static document is valid",
+      apply: "use local reading-navigation or example continuity only when it helps; keep the actual passage and source available throughout",
       polish: "test navigation, return, interruption and reduced motion without obscuring the passage",
       reducedMotion: "reach the same material and retain current-location cues without travel",
       fallback: "the complete reading material and its destinations remain usable without motion",
@@ -579,7 +632,7 @@ export function buildReferenceBuild({
   const project = projectRoot ? scanProject(resolve(projectRoot)) : null;
   const request = productRequest ?? resolveProductRequest(query, project?.productContext, { profile: typeof profile === "object" ? profile.id : String(profile).split(/\s+/)[0] });
   const selectionQuery = request.selectionQuery;
-  if (!profile) profile = request.profile.record;
+  if (!profile || (typeof profile === "string" && profile.split(/\s+/)[0] === request.profile.record.id)) profile = request.profile.record;
   const references = loadDataset("reference-lenses.json").references;
   const recipes = loadDataset("reference-recipes.json").recipes;
   const scouted = productReferenceFromScout(productReference);
@@ -624,7 +677,10 @@ export function buildReferenceBuild({
   const signalProfile = typeof profile === "object" ? profile : { id: profile || "adaptive-surface", anchor: visualDirection.firstViewport.dominant };
   const initialSignal = buildProductSignal({ query: selectionQuery, profile: signalProfile, visualDirection, referenceMode: mode, contextFields: request.signalFields, surfaceMode: request.surfaceMode.mode });
   const baseRecipe = chosen ? recipeFor(chosen, recipes) : ADAPTIVE_RECIPE;
+  const matchedComponentJob = request.profile.record.id === "component-workbench" && !authoredDirection && visualDirection.constraintAuthority.mode === "reference-led";
+  const targetWorkflow = initialSignal.mode === "product" && request.surfaceMode.mode !== "read" && !matchedComponentJob;
   const recipe = request.surfaceMode.mode === "read" ? recipeForReading(baseRecipe)
+    : targetWorkflow ? recipeForProduct(baseRecipe, visualDirection, initialSignal)
     : initialSignal.mode === "product" ? baseRecipe : recipeForExperience(baseRecipe);
   const visual = chosen?.visual ?? {
     family: "evidence-led adaptive surface",
@@ -651,6 +707,7 @@ export function buildReferenceBuild({
     ...resolvedBuild.firstViewport,
     mustShow: resolvedBuild.firstViewport.mustShow ?? [...new Set([
       resolvedBuild.firstViewport.dominant ?? firstViewport.dominant,
+      initialSignal.primaryAction,
       ...initialSignal.firstViewportProof,
     ].filter(Boolean))],
   };
@@ -713,7 +770,9 @@ export function buildReferenceBuild({
       motion: visual.motion,
     },
     fidelityAnchors: {
-      composition: visual.layout,
+      composition: targetWorkflow
+        ? `${resolvedBuild.firstViewport.layout}; translate the source's relative emphasis and stage-to-content relationship around this task; the source's original demo sequence is evidence, not the target scope`
+        : visual.layout,
       geometry: `${visualDirection.geometryRules.edgeCharacter}; ${visualDirection.geometryRules.separation}; ${visualDirection.geometryRules.linePolicy}`,
       material: visual.surfaces,
       type: visual.typography,

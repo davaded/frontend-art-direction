@@ -47,6 +47,8 @@ The current visitor job controls the construction contract. A documentation or k
 
 A component gallery or workbench is also a visitor job, independent of the components' topic. For matching Rare UI and Rewamp UI requests, previously recorded reference regions now feed the opening, spatial budget, local corner roles and wide/intermediate/narrow regrouping across all decision entrypoints. They remain `reference-hypothesis-render-pending`, with prior-recipe provenance and current-inspection status kept separate. A named reference does not force its gallery structure onto documentation, a public homepage or an unrelated data workspace; explicit direction, project-owned design and authored composition remain authoritative. References without a recorded regional map require inspection rather than an invented source layout.
 
+For other functional products, the target's opening, work object, action, state feedback and regional composition supply the build scope. A component reference may suggest material, type, corner hierarchy or motion, but its install buttons, preview collection and source panels do not become the target workflow. The target map is still a replaceable candidate; authored build fields win. Reference URLs stay in the reference/authority input while their paths and query parameters are excluded from product-purpose selection. Resolve an explicit URL by source domain before matching descriptive tokens, so an unknown `/components` path remains an unknown reference.
+
 ## Build Sequence
 
 ### 1. Inspect The Reference

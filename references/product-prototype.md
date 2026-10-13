@@ -34,6 +34,8 @@ Transition or ending:
 
 The subject may be a record, document, image, hardware object, project, chapter, media item, component specimen, place, person, atmosphere, abstract idea, or another real or deliberately authored material. A strong direction may choose its own object, medium, interaction, or lack of interaction.
 
+When the local vocabulary does not resolve a concrete request, the agent forms the actual signal internally rather than asking the user to select a category. Record it as `productSignal` in the authored direction file described in [creative-direction.md](creative-direction.md), alongside its own visual and full-scope decisions. A named itinerary, actual editing operation or authored attention path then travels unchanged through the decision entrypoints. The proposal remains unverified until it matches the request and the target's complete behavior and rendered surface have been inspected.
+
 ## Functional Draft Floor
 
 A functional product draft passes the floor when the first viewport contains:

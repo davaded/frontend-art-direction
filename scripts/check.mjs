@@ -29,6 +29,7 @@ import { selectDesignMethods } from "./design-methods.mjs";
 import { initProductContext, parseProductContext, readProductContext, renderProductContextMarkdown, resolveProductRequest } from "./product-context.mjs";
 import { buildMotionPlan } from "./transitions-adapter.mjs";
 import { buildCompositionPlan } from "./creative-process.mjs";
+import { buildProductSignal, validateProductSignalProposal } from "./product-signal.mjs";
 
 const root = REPO_ROOT;
 const errors = [];
@@ -629,7 +630,8 @@ async function checkSmoke() {
     if (!poetryScout.active || poetryScout.category.id !== "open-discovery" || poetryScout.selected.length !== 0 || !poetryScout.liveSearchPlan.some((query) => query.includes("诗歌朗读档案"))) fail("an uncatalogued subject did not keep its own open discovery plan");
     if (artScout.category.id !== "open-discovery" || artScout.selected.length !== 0) fail("generic quality/design words forced an artist into a hardware reference");
     if (!workflowScout.discoveryPlan.channels.some((channel) => channel.id === "mobbin")) fail("workflow discovery did not include real screen sequences");
-    if (poetryScout.discoveryPlan.channelInventory.length !== 10 || genericScout.discoveryPlan.channels.length !== 0) fail("discovery inventory or underspecified routing lost its boundary");
+    const discoveryIds = new Set(poetryScout.discoveryPlan.channelInventory.map((channel) => channel.id));
+    if (!discoveryIds.size || discoveryIds.size !== poetryScout.discoveryPlan.channelInventory.length || poetryScout.discoveryPlan.channels.some((channel) => !discoveryIds.has(channel.id)) || genericScout.discoveryPlan.channels.length !== 0) fail("discovery inventory or underspecified routing lost its boundary");
     if (authoredDirection.compositionPlan?.regions[0]?.textAlignment !== "center" || authoredDirection.compositionPlan?.regions[1]?.placement !== "centered block" || authoredDirection.compositionPlan?.regions[1]?.textAlignment !== "start" || authoredDirection.creativeProcess.compositionPlan.regions[2]?.textAlignment !== "end") fail("authored per-region placement and mixed alignment did not survive direction resolution");
     if (!hardwareScout.active || !hardwareScout.selected.some((item) => item.id === "apple-product")) fail("hardware reference scout did not return a global official benchmark");
     if (hardwareBrief.recommendation.profile.id !== "hardware-product-story" || hardwareBrief.recommendation.style.id !== "premium-industrial") fail("hardware request did not resolve the hardware product direction");
@@ -1101,6 +1103,156 @@ async function checkComponentReferenceRequests() {
   }
 }
 
+async function checkAuthoredProductSignals() {
+  const fixture = mkdtempSync(join(tmpdir(), "frontend-art-direction-signal-"));
+  try {
+    const query = "Build a travel planning tool inspired by Beautiful UI";
+    const signal = {
+      mode: "product", object: "A day-by-day itinerary with actual stops",
+      userJob: "Arrange a usable trip without losing timing conflicts",
+      coreLoop: "Select a day, add a stop, reorder, inspect timing, undo and save",
+      primaryAction: "Move the selected stop to another day",
+      visibleResult: "The stop moves, travel estimates update and any overlap is visible",
+      concreteData: "A three-day sample itinerary with named stops and clearly estimated travel times",
+      prototypeInteraction: "Move a stop, resolve its overlap, undo the move and save the itinerary",
+      stateMatrix: ["no-trip", "day-selected", "adding-stop", "stop-selected", "moving-stop", "timing-conflict", "conflict-resolved", "undo-ready", "saving", "saved", "save-failed", "storage-unavailable"],
+      firstViewportProof: ["The selected day's real stops", "The stop's destination day", "The resulting timing conflict"],
+    };
+    const authored = {
+      label: "Continuous itinerary", signature: "The day sequence is the working surface",
+      rationale: "Keep the actual stops and their timing relationships ahead of decorative explanation",
+      firstViewport: { layout: "A continuous day sequence with attached stop controls", dominant: signal.object },
+      compositionPlan: { regions: [{ region: "itinerary", textAlignment: "start", priority: "dominant" }, { region: "conflict-resolution", textAlignment: "start" }] },
+      productSignal: signal,
+    };
+    const directionFile = join(fixture, "direction.json");
+    writeFileSync(directionFile, JSON.stringify(authored));
+    const direction = selectVisualDirection(query, { authoredDirection: authored });
+    const brief = buildBrief({ query, projectRoot: fixture, authoredDirection: authored });
+    const build = buildReferenceBuild({ query, projectRoot: fixture, authoredDirection: authored });
+    const audit = await buildAudit({ query, projectRoot: fixture, directionFile, motion: false, offline: true });
+    for (const result of [direction, brief, build, audit, audit.referenceBuild]) {
+      if (result.productRequest.profile.record.id !== "adaptive-surface") fail("authored target signals invented a fixed travel profile");
+      for (const product of [result.productSignal, result.visualDirection?.productSignal].filter(Boolean)) {
+        if (product.status !== "authored-proposal" || product.source !== "authored-product-signal" || product.evidenceStatus !== "proposed-not-verified" || !product.openEvidence.length) fail("authored target proposal claimed acceptance or retained unresolved generic status");
+        for (const [field, value] of Object.entries(signal)) {
+          if (JSON.stringify(product[field]) !== JSON.stringify(value)) fail(`authored product field changed across entrypoints: ${field}`);
+        }
+      }
+    }
+    if (!build.firstViewport.mustShow.includes(signal.primaryAction) || build.primaryReference.id !== "beautiful-ui" || JSON.stringify(build.componentGrammar[0].states) !== JSON.stringify(signal.stateMatrix) || build.motionContract.triggers[0] !== signal.primaryAction) fail("authored action, full state matrix or reference failed to reach the build workflow");
+    if (build.completionContract.evidenceStatus !== "planned-not-verified" || !build.completionContract.openEvidence.length) fail("authored signal replaced completion evidence");
+    const partial = buildReferenceBuild({ query, authoredDirection: { ...authored, productSignal: { object: signal.object, primaryAction: signal.primaryAction } } });
+    if (partial.productSignal.status !== "needs-target-proposal") fail("a partial unknown workflow concealed remaining proposal decisions");
+    const experience = { subject: "A field recording at dusk", audienceIntent: "Notice how the place changes as voices disappear", attentionPath: "Listen, inspect the sound source, then reach a quiet ending", creativeThesis: "The recording determines the reading distance", proof: "An attributed recording and its actual transcript", transition: "A deliberate silent ending preserves the full transcript" };
+    const art = { ...authored, productSignal: { mode: "authored-experience", experience } };
+    const artBuild = buildReferenceBuild({ query: "An experimental sound journey inspired by Inspora", authoredDirection: art });
+    if (JSON.stringify(artBuild.productSignal.experience) !== JSON.stringify(experience) || artBuild.productSignal.primaryAction !== null || artBuild.productSignal.stateMatrix.length || artBuild.completionContract.mode !== "authored-experience") fail("authored experience lost its attention path or inherited functional controls");
+    const inferredThesis = buildReferenceBuild({ query: "An experimental sound journey", authoredDirection: { ...authored, productSignal: undefined } });
+    if (inferredThesis.visualDirection.productSignal.experience.creativeThesis !== authored.signature || inferredThesis.productSignal.experience.creativeThesis !== authored.signature) fail("internal and final signals lost an authored visual thesis");
+    for (const [name, request, proposal] of [["product", query, authored], ["experience", "An experimental sound journey inspired by Inspora", art]]) {
+      writeFileSync(directionFile, JSON.stringify(proposal));
+      for (const command of ["direction", "brief", "reference-build", "audit"]) {
+        const args = [join(root, "bin", "frontend-art-direction.js"), command, "--query", request, "--direction-file", directionFile, "--project", fixture];
+        if (command === "audit") args.push("--no-motion", "--offline");
+        const output = JSON.parse(execFileSync(process.execPath, [...args, "--format", "json"], { encoding: "utf8", timeout: 30000, maxBuffer: 8 * 1024 * 1024 }));
+        if (output.productSignal.evidenceStatus !== "proposed-not-verified" || (name === "product" ? output.productSignal.primaryAction !== signal.primaryAction : JSON.stringify(output.productSignal.experience) !== JSON.stringify(experience))) fail(`${command} JSON lost the authored ${name} signal`);
+        const markdown = execFileSync(process.execPath, [...args, "--format", "md"], { encoding: "utf8", timeout: 30000, maxBuffer: 8 * 1024 * 1024 });
+        if (!markdown.includes("proposed-not-verified") || !markdown.includes(name === "product" ? signal.primaryAction : experience.attentionPath)) fail(`${command} Markdown omitted the authored ${name} signal`);
+      }
+    }
+    for (const invalid of [{ status: "accepted" }, { runtimeProof: "verified" }, { evidenceStatus: "accepted" }, { stateMatrix: [] }, { object: " " }, { mode: "ecommerce" }, { experience: { accepted: "yes" } }]) {
+      let rejected = false;
+      try { validateProductSignalProposal(invalid); } catch { rejected = true; }
+      if (!rejected) fail(`authored signal accepted invalid or proof-owning fields: ${JSON.stringify(invalid)}`);
+    }
+  } finally {
+    rmSync(fixture, { recursive: true, force: true });
+  }
+}
+
+function checkNewMotionResources() {
+  for (const [query, stack, id] of [["Rive RML data binding", "vanilla", "rive-cli-rml"], ["React loading spinner", "react", "loading-dev"], ["Inspora visual inspiration", "", "inspora-discovery"], ["MotionSites design prompt", "", "motionsites-design-research"]]) {
+    const result = queryResources(query, { stack, limit: 1 });
+    if (result.candidates[0]?.id !== id || !result.candidates[0]?.verifyBeforeUse.length) fail(`resource selection lost the requested source or its adoption boundary: ${query}`);
+  }
+  for (const [query, id] of [["Inspora motion illustration", "inspora"], ["MotionSites website interaction", "motionsites"]]) {
+    const scout = scoutReferences(query, { limit: 1 });
+    if (scout.discoveryPlan.channels[0]?.id !== id || scout.discoveryPlan.status !== "live-inspection-required" || scout.selected.length) fail(`named discovery source became unreachable or a selected visual authority: ${query}`);
+  }
+}
+
+async function checkReferenceTargetSeparation() {
+  const fixture = mkdtempSync(join(tmpdir(), "frontend-art-direction-reference-target-"));
+  try {
+    for (const query of ["an analytics dashboard like Rare UI", "a photo editor like Rare UI", "an AI coding tool like Rewamp UI"]) {
+      const build = buildReferenceBuild({ query });
+      if (build.productSignal.mode !== "product" || build.firstViewport.layout !== build.visualDirection.firstViewport.layout || !build.firstViewport.mustShow.includes(build.productSignal.object) || !build.firstViewport.mustShow.includes(build.productSignal.primaryAction)) fail(`reference shell displaced the target opening or action: ${query}`);
+      if (build.pagePlan.some((section) => /hero|specimen|component-index|implementation-proof/u.test(section.id)) || build.componentGrammar.some((component) => /specimen|preview-frame|component-index/u.test(component.id))) fail(`reference demo collection replaced the target workflow: ${query}`);
+      if (build.compositionPlan.regions.some((region) => !build.pagePlan.some((section) => section.region === region.region)) || !build.completionContract.plannedRegions.includes(build.pagePlan[0].id)) fail(`target scope lost its regional decisions: ${query}`);
+      if (!build.primaryReference.explicit || build.visualGenome.family.includes("unknown") || build.productSignal.primaryAction.includes("implementation")) fail(`target translation lost its reference or retained a source-copy task: ${query}`);
+      if (!build.fidelityAnchors.composition.includes(build.firstViewport.layout)) fail(`fidelity anchor still required the source workflow instead of its target translation: ${query}`);
+      const audit = await buildAudit({ query, projectRoot: fixture, motion: false, offline: true });
+      if (audit.referenceBuild.firstViewport.layout !== build.firstViewport.layout || JSON.stringify(audit.referenceBuild.pagePlan) !== JSON.stringify(build.pagePlan)) fail(`audit lost the target workflow translation: ${query}`);
+    }
+    const target = "一个画廊预约网站";
+    const baseline = resolveProductRequest(target);
+    for (const url of ["https://www.rewampui.com/components", "https://uncatalogued.test/docs/editor?component=table", "https://uncatalogued.test/components?source=https://www.rareui.com/"]) {
+      const query = `${target}，参考 ${url}`;
+      const brief = buildBrief({ query });
+      const direction = selectVisualDirection(query);
+      const build = buildReferenceBuild({ query });
+      for (const result of [brief, direction, build]) {
+        if (result.productRequest.subjectProfile !== baseline.subjectProfile || result.productRequest.surfaceMode.mode !== baseline.surfaceMode.mode || result.productSignal.primaryAction?.includes("implementation")) fail(`URL path or query became the target product: ${query}`);
+        if (result.productRequest.selectionQuery.includes(url) || !result.productRequest.routingQuery.includes(url)) fail(`reference intent was lost or mixed into product selection: ${query}`);
+      }
+      if (build.query !== query || (new URL(url).hostname === "uncatalogued.test" && (!build.primaryReference.id.startsWith("external-") || build.visualGenome.family !== "unknown until live inspection" || build.primaryReference.url !== url))) fail(`an unknown source was replaced by a matching path token or embedded URL: ${query}`);
+      const signal = buildProductSignal({ query });
+      if (signal.mode !== buildProductSignal({ query: target }).mode || signal.primaryAction?.includes("implementation")) fail(`standalone product signal leaked URL semantics: ${query}`);
+    }
+    const rawReference = buildReferenceBuild({ query: "https://www.rewampui.com/components" });
+    if (rawReference.primaryReference.id !== "rewamp-ui" || rawReference.productRequest.selectionQuery || rawReference.productRequest.surfaceMode.mode !== "adaptive") fail("reference-only input lost its source or invented a product job from its path");
+    const prefixed = buildReferenceBuild({ query: "参考 https://www.rewampui.com/components，给分析 SDK 做一个组件画廊" });
+    if (prefixed.productRequest.profile.record.id !== "component-workbench" || prefixed.primaryReference.id !== "rewamp-ui") fail("reference URL consumed the following Chinese product request");
+    const authored = {
+      id: "authored-tool", label: "Authored tool", signature: "One continuous edited object",
+      rationale: "The edited object is the workspace, without a surrounding preview catalogue",
+      firstViewport: { layout: "One continuous edited object", dominant: "The actual edited image" },
+      compositionPlan: { regions: [{ region: "edited-image", textAlignment: "start" }] },
+      build: { pagePlan: [{ id: "edited-image", purpose: "Edit the image", layout: "Continuous work field", content: "The real image and edit state", components: ["image", "adjustment"] }] },
+    };
+    const authoredBuild = buildReferenceBuild({ query: "a photo editor like Rare UI", authoredDirection: authored });
+    if (authoredBuild.firstViewport.layout !== authored.firstViewport.layout || JSON.stringify(authoredBuild.pagePlan) !== JSON.stringify(authored.build.pagePlan) || renderReferenceBuild(authoredBuild).includes("undefined")) fail("target translation replaced an authored workspace or mishandled sparse region fields");
+    const styledDirection = selectVisualDirection("a website", { style: "quiet-luxury" });
+    if (styledDirection.mode === "adaptive" || !styledDirection.visualTreatment.matched.includes("quiet")) fail("task/style separation discarded an explicitly requested visual stance");
+    for (const query of ["a photo editor like Rare UI", "照片编辑器", "给我做一个用来修照片的网页，参考 https://www.rewampui.com/components"]) {
+      const build = buildReferenceBuild({ query });
+      if (build.productRequest.profile.record.id !== "creative-editor" || build.productSignal.surfaceMode !== "operate" || !/image|photo/u.test(build.productSignal.object) || /command|implementation/u.test(build.productSignal.primaryAction)) fail(`generic editor vocabulary replaced the image-editing task: ${query}`);
+    }
+    const reading = buildReferenceBuild({ query: "我要一个安静的个人阅读网站，像 Rare UI" });
+    if (reading.productSignal.surfaceMode !== "read" || reading.pagePlan[0].id !== "reading-surface" || /specimen|grid/u.test(reading.motionContract.apply)) fail("personal reading lost material and wayfinding or retained source-demo motion");
+    const unknownTool = buildReferenceBuild({ query: "Build a travel planning tool inspired by Beautiful UI" });
+    if (unknownTool.productRequest.profile.record.id !== "adaptive-surface" || unknownTool.productSignal.surfaceMode !== "operate" || unknownTool.productSignal.status !== "needs-target-proposal" || !unknownTool.productSignal.openEvidence.length || /command|copy/u.test(unknownTool.productSignal.primaryAction)) fail("an uncatalogued tool received a specialist workflow or concealed its unresolved target proposal");
+    for (const query of ["a developer tool", "a code editor", "an AI coding tool"]) {
+      if (buildBrief({ query }).productRequest.profile.record.id !== "command-tool") fail(`specific development evidence was discarded with generic tool nouns: ${query}`);
+    }
+    for (const build of [reading, unknownTool, authoredBuild]) {
+      if (build.completionContract.evidenceStatus !== "planned-not-verified" || !build.completionContract.openEvidence.length) fail("a scoped contract concealed intent or runtime verification gaps");
+    }
+    for (const file of ["design-brief.mjs", "visual-direction.mjs", "reference-build.mjs", "audit.mjs"]) {
+      const query = `${target}，参考 https://uncatalogued.test/components?source=https://www.rareui.com/`;
+      const args = [join(root, "scripts", file), "--query", query, "--format", "json"];
+      if (file === "audit.mjs") args.push("--project", fixture, "--no-motion", "--offline");
+      const output = JSON.parse(execFileSync(process.execPath, args, { encoding: "utf8", timeout: 30000, maxBuffer: 6 * 1024 * 1024 }));
+      if (output.productRequest.subjectProfile !== baseline.subjectProfile || output.productSignal.primaryAction?.includes("implementation")) fail(`${file} CLI attributed reference URL semantics to the target`);
+      const build = output.pagePlan ? output : output.proof?.referenceBuild;
+      if (build && !build.primaryReference.id.startsWith("external-")) fail(`${file} CLI replaced an explicit unknown URL with a saved source`);
+    }
+  } finally {
+    rmSync(fixture, { recursive: true, force: true });
+  }
+}
+
 async function checkMotionIntentRegressions() {
   const fixture = mkdtempSync(join(tmpdir(), "frontend-art-direction-motion-intent-"));
   try {
@@ -1173,6 +1325,9 @@ async function main() {
   await checkProductContext();
   await checkReadingRequests();
   await checkComponentReferenceRequests();
+  await checkReferenceTargetSeparation();
+  await checkAuthoredProductSignals();
+  checkNewMotionResources();
   await checkMotionIntentRegressions();
   await checkDesignMethodRegressions();
 

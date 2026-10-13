@@ -35,6 +35,10 @@ Never install a library because its demo looks polished. Its state model and fai
 | High-impact landing block | Aceternity UI, Magic UI | one bounded visual anchor with real media and normal-flow fallback | glow, gradient, parallax, or 3D is standing in for product proof |
 | Authored timeline or scroll | GSAP / ScrollTrigger | sequence, scrub, pin, controlled choreography | CSS or native scroll behavior is enough |
 | State illustration | Rive or Lottie | authored state machine and fallback | the animation has no product state |
+| Agent-authored animation asset | Rive CLI / RML | editable scene source, input/data bindings, compile/inspect/frame checks | ordinary CSS feedback suffices or host runtime delivery is unproven |
+| Pending feedback | local status, loading.dev | one indicator tied to real work, stable geometry, ready/error recovery | React is incompatible or progress would be invented |
+| Cross-medium visual research | Inspora | type, material, rhythm and sequence from original projects | gallery imagery is being treated as reusable code or assets |
+| Website/section prompt research | MotionSites AI | inspectable composition and prompt decision structure | a hero/prompt replaces complete target scope or licensed content would be redistributed |
 | 3D inspection | model-viewer, Three.js, React Three Fiber, Spline | camera, object, loading, interaction | a photo or static preview explains the object better |
 | Media/audio state | native media, Web Audio, wavesurfer.js | playback, buffering, permission, seek | a waveform is only decoration |
 
@@ -78,3 +82,7 @@ These are starting points, not endorsements for every project:
 - [GSAP](https://gsap.com/) for authored timelines and ScrollTrigger scenes that simpler tools cannot express cleanly.
 - [model-viewer](https://modelviewer.dev/) for a bounded model-inspection surface before reaching for a custom scene.
 - [TanStack Table](https://tanstack.com/table) for table behavior, with local visual and accessibility ownership.
+- [Inspora](https://www.inspora.design/) for cross-medium discovery; inspect original works rather than assuming a reusable effect implementation.
+- [MotionSites AI](https://motionsites.ai/) for website/section and prompt research; its [terms](https://motionsites.ai/terms) distinguish licensed project use from redistribution of the prompt/code collection.
+- [loading.dev](https://loading.dev/llms.txt) for React loading indicators; current maintainer docs require React 19 or later. Preserve real status, errors and cancellation in the host.
+- [Rive CLI / RML](https://rive.app/docs/cli/overview) for agent-authored stateful scenes. Follow the [motion guide](motion.md#agent-authored-rive-assets) when this medium fits; the agent owns authoring and checks rather than asking the user to operate another tool.

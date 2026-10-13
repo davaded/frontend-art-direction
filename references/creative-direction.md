@@ -95,4 +95,27 @@ Use `--direction-file` when the model, user, or designer already has a stronger 
 
 An authored file is a design proposal, not visual proof. Run the target, compare desktop and mobile, test one non-default state, and revise the thesis when the render is interchangeable with another product.
 
+The optional `productSignal` replaces generic purpose fields as well as the visual layout. The agent writes this proposal from the one-sentence request and known facts; the user does not need to fill in a schema or choose a local product category. For a functional surface it can supply `mode`, `object`, `userJob`, `coreLoop`, `primaryAction`, `visibleResult`, `concreteData`, `prototypeInteraction`, `stateMatrix`, and `firstViewportProof`. A complete uncatalogued functional proposal supplies all seven text fields and a non-empty state matrix; partial proposals keep `needs-target-proposal` until their remaining task decisions are resolved. State names are arbitrary and are preserved without the local candidate's ten-state limit.
+
+For narrative or art-directed work, use `mode: "authored-experience"` or `"open-experience"` and an `experience` object with `subject`, `audienceIntent`, `attentionPath`, `creativeThesis`, `proof`, and `transition`. These are statements about the actual piece, not a requirement to add controls, sections or a CTA. The mode expresses the chosen evidence model; check it against the requested visitor job and known facts. Omitted values remain candidates. A proposal cannot set acceptance, status, source or runtime-proof fields; its output stays `proposed-not-verified`, and the completion contract still requires intent review and actual target evidence.
+
+For example, this functional fragment can live alongside the same file's own visual thesis, first viewport, regional map and build plan:
+
+```json
+"productSignal": {
+  "mode": "product",
+  "object": "The selected day's itinerary and route",
+  "userJob": "Arrange stops into a feasible day",
+  "coreLoop": "Choose day -> add stop -> reorder -> inspect timing -> save",
+  "primaryAction": "Move a stop within the selected day",
+  "visibleResult": "The route and timing update together, with conflicts attached to the affected stop",
+  "concreteData": "Named stops, dates, durations and clearly labelled sample travel estimates",
+  "prototypeInteraction": "Move a stop, inspect a conflict, undo the change and save the itinerary",
+  "stateMatrix": ["empty-day", "selected-day", "editing", "timing-conflict", "saved", "storage-unavailable"],
+  "firstViewportProof": ["the selected day", "its actual stops and route", "a reachable edit action"]
+}
+```
+
+Pass the internally authored file through the existing `--direction-file` option for `direction`, `brief`, `reference-build`, and `audit`. Continue into the target's complete implementation and actual rendered iteration after recording the proposal; a successful contract command is not the requested website.
+
 An optional `compositionPlan` records arbitrary real regions without a shared alignment mandate. Each region requires only its `region` name; supplied `placement`, `textAlignment`, `measure`, `relation`, `space`, `priority`, `scope`, `wide`, `intermediate`, `narrow`, `occupancy`, `field`, `surface`, `pause`, and optional `geometry` are preserved. `geometry` records `anchor`, `measure`, `field`, `density`, and `mobile` as implementation-facing tokens. `guardrails` can record the alignment sequence, natural measure sequence, field sequence, counterfield, full-bleed policy, responsive advice, and an explicit creative override. The derived `spaceChoreography` turns those decisions into a region-by-region sequence with local anchors, measures, fields, density, pauses, mobile actions, and counterfield evidence; it is an execution aid and can be replaced by authored direction or stronger inspected evidence. A centered overview, centered block of start-aligned prose, and edge-attached end-aligned index can coexist. A generated plan also carries three replaceable structural hypotheses and a selected render candidate; the alternatives exist to force a composition decision, not to create three mandatory page sections. Generated plans expose `regions` as core relationships and `optionalRegions` as discardable candidates. If no authored plan is supplied, the resolver emits a direction-specific provisional plan with the same fields so the first implementation has a real hypothesis to render and challenge. This field records a decision or hypothesis; it does not prescribe a minimum number of regions, mixed alignment, proportions, or page types. Use the region map in [visual-composition.md](visual-composition.md) and verify the actual result.

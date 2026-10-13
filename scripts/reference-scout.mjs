@@ -168,7 +168,11 @@ export function scoutReferences(query = "", { profile = "", category: requestedC
       status: active ? "live-inspection-required" : "brief-needed",
       jobs: active ? jobs : [],
       channels: active ? (dataset.discoveryChannels ?? [])
-        .map((channel, index) => ({ ...channel, score: channel.roles.filter((role) => jobs.includes(role)).length, index }))
+        .map((channel, index) => {
+          const names = new Set(meaningfulTokens(`${channel.id} ${channel.label}`));
+          const namedHits = tokens.filter((token) => names.has(token)).length;
+          return { ...channel, score: channel.roles.filter((role) => jobs.includes(role)).length + namedHits * 3, index };
+        })
         .filter((channel) => channel.score > 0)
         .sort((left, right) => right.score - left.score || left.index - right.index)
         .slice(0, Math.min(Math.max(Number(limit) || 4, 1), 6))

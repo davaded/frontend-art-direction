@@ -67,6 +67,7 @@ export function buildCompletionContract({
     id: "surface-completeness",
     mode,
     status: sections.length > 0 || buildOrder.length > 0 ? "scoped" : "scope-open",
+    evidenceStatus: "planned-not-verified",
     scope,
     query,
     plannedRegions: planned,
@@ -78,9 +79,12 @@ export function buildCompletionContract({
       : isAuthored
         ? "The piece has a deliberate opening, development, and ending or stable final state, with its subject and thesis intact at desktop and mobile."
         : "The chosen experience has a complete scope, coherent attention path, real material, and a deliberate transition or ending at desktop and mobile.",
-    openEvidence: sections.length === 0
-      ? ["Declare the intended full scope before implementation; do not use the first viewport as a substitute for a finished surface."]
-      : [],
+    openEvidence: [
+      ...(sections.length === 0 ? ["Declare the intended full scope before implementation; do not use the first viewport as a substitute for a finished surface."] : []),
+      ...(productSignal.openEvidence ?? []),
+      "Verify that the proposed subject, task and content match the actual request; structural scope alone does not establish intent alignment.",
+      "Collect actual target-render and complete-path evidence; this generated contract has not verified a running or visually accepted surface.",
+    ],
     responsivePlan: responsivePlan ? Object.values(responsivePlan).filter(Boolean) : [],
     componentCount: componentGrammar.length,
   };
@@ -93,6 +97,7 @@ export function renderCompletionContract(contract) {
 - Scope: **${contract.scope}**
 - Mode: **${contract.mode}**
 - Status: **${contract.status}**
+- Evidence: **${contract.evidenceStatus}**
 - Planned regions: ${contract.plannedRegions}
 - Done when: ${contract.doneWhen}
 
@@ -105,7 +110,7 @@ ${list(contract.forbidden)}
 Proof required:
 ${list(contract.proof)}
 ${contract.openEvidence.length > 0 ? `
-Open scope decision:
+Open evidence:
 ${list(contract.openEvidence)}
 ` : ""}`;
 }

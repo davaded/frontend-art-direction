@@ -4,6 +4,7 @@ import { existsSync, readFileSync, writeFileSync } from "node:fs";
 import { basename, resolve } from "node:path";
 import { chooseRecord, isMainModule, isUnderspecifiedRequest, loadDataset, option, parseArgs, positiveRoutingText, writeOutput } from "./lib.mjs";
 import { classifySurfaceMode } from "./surface-mode.mjs";
+import { hasReferenceBuildSignal, withoutReferenceUrls } from "./reference-resolution.mjs";
 
 export { positiveRoutingText } from "./lib.mjs";
 
@@ -86,7 +87,7 @@ export function readProductContext(projectRoot) {
 
 const ROUTING_FIELDS = ["product-audience", "primary-workflow", "primary-object", "primary-job", "visible-result"];
 const PROFILE_CONTEXT_FIELDS = ["product-audience", "primary-workflow", "primary-job"];
-const GENERIC_PROFILE_WORDS = new Set(["design", "creative", "mobile", "touch", "general", "neutral", "evidence", "website", "site", "page", "ui", "ux", "landing", "brand", "marketing", "campaign", "官网", "品牌", "发布", "宣传", "设计", "创作", "通用", "适配", "中性"]);
+const GENERIC_PROFILE_WORDS = new Set(["design", "creative", "mobile", "touch", "general", "neutral", "evidence", "website", "site", "page", "ui", "ux", "landing", "brand", "marketing", "campaign", "tool", "editor", "builder", "canvas", "inspector", "官网", "品牌", "发布", "宣传", "设计", "创作", "通用", "适配", "中性", "工具", "编辑器", "生成器", "搭建器"]);
 const OPERATING_PROFILES = new Set(["productive-app", "creative-editor", "command-tool", "data-workbench", "commerce-flow", "media-experience", "component-workbench"]);
 const CREATION_REQUEST = /\b(?:build|create|develop|design|make)\s+(?:(?:me|us)\s+)?(?:a|an|new|another)\b|(?:做|创建|制作|开发|设计|生成)(?:一个|一款|一套|一页|个|新的|另一个)/iu;
 
@@ -119,17 +120,19 @@ function chooseProductProfile(profiles, text, preferredId) {
 export function resolveProductRequest(query = "", context = null, { profile = "", surfaceMode = "" } = {}) {
   const profiles = loadDataset("profiles.json").profiles;
   const affirmative = positiveRoutingText(query);
-  const underspecified = isUnderspecifiedRequest(affirmative);
-  const routingQuery = underspecified ? "" : affirmative;
-  const current = chooseProductProfile(profiles, routingQuery, profile);
+  const intent = withoutReferenceUrls(affirmative);
+  const underspecified = isUnderspecifiedRequest(intent);
+  const routingQuery = underspecified && !hasReferenceBuildSignal(affirmative) ? "" : affirmative;
+  const intentQuery = underspecified ? "" : intent;
+  const current = chooseProductProfile(profiles, intentQuery, profile);
   const usedFields = ROUTING_FIELDS.filter((id) => context?.fields?.[id]);
   const background = usedFields.map((id) => positiveRoutingText(context.fields[id])).join("\n").trim();
   // Objects/results provide signal content, not a page genre from words such as image or table.
   const profileBackground = PROFILE_CONTEXT_FIELDS.map((id) => positiveRoutingText(context?.fields?.[id])).join("\n");
   const inherited = chooseProductProfile(profiles, profileBackground);
-  const currentMode = classifySurfaceMode(routingQuery, { explicit: surfaceMode });
+  const currentMode = classifySurfaceMode(intentQuery, { explicit: surfaceMode });
   // Background fills an unresolved request; it never replaces a specified page job.
-  const concreteCreation = !underspecified && CREATION_REQUEST.test(affirmative);
+  const concreteCreation = !underspecified && CREATION_REQUEST.test(intent);
   const useBackground = !profile && !concreteCreation && current.score === 0 && currentMode.mode === "adaptive" && Boolean(background);
   const subjectSelection = useBackground ? inherited : current;
   const visitorMode = useBackground ? classifySurfaceMode(background) : currentMode;
@@ -147,7 +150,7 @@ export function resolveProductRequest(query = "", context = null, { profile = ""
     subjectProfile: subjectSelection.record.id,
     source: profile ? "explicit" : current.score > 0 || currentMode.mode !== "adaptive" || concreteCreation ? "current-request" : useBackground ? context.path : "open",
     routingQuery,
-    selectionQuery: useBackground ? `${routingQuery}\n${background}`.trim() : routingQuery,
+    selectionQuery: useBackground ? `${intentQuery}\n${background}`.trim() : intentQuery,
     surfaceMode: visitorMode,
     usedFields: useBackground ? usedFields : [],
     signalFields: useBackground ? Object.fromEntries(usedFields.map((id) => [id, context.fields[id]])) : {},

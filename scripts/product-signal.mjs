@@ -1,4 +1,5 @@
 import { classifySurfaceMode } from "./surface-mode.mjs";
+import { withoutReferenceUrls } from "./reference-resolution.mjs";
 
 const PROFILE_SIGNALS = {
   "reading-surface": {
@@ -156,6 +157,33 @@ function first(values, fallback) {
   return values.find((value) => typeof value === "string" && value.trim()) ?? fallback;
 }
 
+const SIGNAL_TEXT_FIELDS = ["object", "userJob", "coreLoop", "primaryAction", "visibleResult", "concreteData", "prototypeInteraction"];
+const SIGNAL_LIST_FIELDS = ["stateMatrix", "firstViewportProof"];
+const EXPERIENCE_FIELDS = ["subject", "audienceIntent", "attentionPath", "creativeThesis", "proof", "transition"];
+
+export function validateProductSignalProposal(proposal) {
+  const object = (value) => value !== null && typeof value === "object" && !Array.isArray(value);
+  const text = (value) => typeof value === "string" && Boolean(value.trim());
+  if (!object(proposal)) throw new Error("productSignal must be an object");
+  for (const [key, value] of Object.entries(proposal)) {
+    if (SIGNAL_TEXT_FIELDS.includes(key)) {
+      if (!text(value)) throw new Error(`productSignal.${key} must be non-empty text`);
+    } else if (SIGNAL_LIST_FIELDS.includes(key)) {
+      if (!Array.isArray(value) || !value.length || value.some((item) => !text(item))) throw new Error(`productSignal.${key} must be a non-empty array of text`);
+    } else if (key === "mode") {
+      if (!["product", "authored-experience", "open-experience"].includes(value)) throw new Error("productSignal.mode must name a supported evidence mode");
+    } else if (key === "experience") {
+      if (!object(value)) throw new Error("productSignal.experience must be an object");
+      for (const [field, content] of Object.entries(value)) {
+        if (!EXPERIENCE_FIELDS.includes(field) || !text(content)) throw new Error(`Unsupported or empty productSignal.experience.${field}`);
+      }
+    } else {
+      throw new Error(`Unsupported productSignal field: ${key}`);
+    }
+  }
+  return proposal;
+}
+
 export function buildProductSignal({
   query = "",
   profile = {},
@@ -165,22 +193,27 @@ export function buildProductSignal({
   referenceMode = "adaptive-no-reference",
   contextFields = {},
   surfaceMode = "",
+  authored = null,
 } = {}) {
-  const visitorMode = surfaceMode || classifySurfaceMode(query).mode;
+  const proposal = authored ?? visualDirection?.authoredProductSignal ?? null;
+  if (proposal) validateProductSignalProposal(proposal);
+  const intentQuery = withoutReferenceUrls(query);
+  const visitorMode = surfaceMode || classifySurfaceMode(intentQuery).mode;
   const readingMode = visitorMode === "read";
   const requestedProfileId = String(profile.id ?? "adaptive-surface").split(/\s+/)[0];
-  const profileId = readingMode ? "reading-surface" : inferProfileId(query, requestedProfileId);
+  const profileId = readingMode ? "reading-surface" : inferProfileId(intentQuery, requestedProfileId);
   const defaults = PROFILE_SIGNALS[profileId] ?? PROFILE_SIGNALS["adaptive-surface"];
-  const mode = inferSignalMode(query, profileId, profile, visitorMode);
-  const dominant = first(readingMode ? [
+  const mode = proposal?.mode ?? inferSignalMode(intentQuery, profileId, profile, visitorMode);
+  const dominant = proposal?.object ?? first(readingMode ? [
     contextFields["primary-object"],
     visualDirection?.selectionStatus === "authored-proposal" ? visualDirection.firstViewport?.dominant : null,
     firstViewport?.mustShow?.[0],
   ] : [
     contextFields["primary-object"],
+    visualDirection?.selectionStatus === "authored-proposal" ? visualDirection.firstViewport?.dominant : null,
+    profile.anchor,
     visualDirection?.firstViewport?.dominant,
     firstViewport?.mustShow?.[0],
-    profile.anchor,
   ], defaults.object);
   const states = [...new Set([
     ...(profile.states ?? []),
@@ -188,33 +221,38 @@ export function buildProductSignal({
   ])].slice(0, 10);
   const productMode = mode === "product";
   const authoredMode = mode === "authored-experience";
+  const completeProposal = proposal && SIGNAL_TEXT_FIELDS.every((field) => proposal[field]) && proposal.stateMatrix?.length;
+  const needsTargetProposal = productMode && profileId === "adaptive-surface" && !contextFields["primary-workflow"] && !completeProposal;
   const provisional = mode === "open-experience" || !query.trim();
   const experience = {
     subject: dominant || "the subject, material, or world of the piece",
     audienceIntent: contextFields["primary-job"] ?? "decide what should be noticed, felt, understood, or remembered",
     attentionPath: "choose an authored reading, looking, listening, or spatial path",
-    creativeThesis: "make one deliberate formal claim about the subject instead of averaging familiar website patterns",
+    creativeThesis: visualDirection?.selectionStatus === "authored-proposal" ? visualDirection.signature : "make one deliberate formal claim about the subject instead of averaging familiar website patterns",
     proof: "use specific media, text, artifact, object, or interaction that belongs to the chosen world",
     transition: "give one meaningful reveal, reframe, sequence, or state change; it may be atmospheric rather than transactional",
+    ...(proposal?.experience ?? {}),
   };
   return {
     mode,
     surfaceMode: visitorMode,
-    status: productMode ? "draft-ready" : authoredMode ? "authored-direction" : "open-thesis",
+    status: needsTargetProposal ? "needs-target-proposal" : proposal ? "authored-proposal" : productMode ? "draft-ready" : authoredMode ? "authored-direction" : "open-thesis",
+    source: proposal ? "authored-product-signal" : "request-and-profile-candidates",
+    evidenceStatus: proposal ? "proposed-not-verified" : "planned-not-verified",
     query,
     object: dominant,
-    userJob: productMode ? contextFields["primary-job"] ?? defaults.userJob : null,
-    coreLoop: productMode ? contextFields["primary-workflow"] ?? defaults.coreLoop : null,
-    primaryAction: productMode ? defaults.primaryAction : null,
-    visibleResult: productMode ? contextFields["visible-result"] ?? defaults.visibleResult : null,
-    stateMatrix: productMode ? (states.length > 0 ? states : ["idle", "loading", "empty", "error", "success"]) : [],
-    concreteData: productMode ? defaults.concreteData : null,
-    firstViewportProof: readingMode
+    userJob: productMode ? proposal?.userJob ?? contextFields["primary-job"] ?? defaults.userJob : null,
+    coreLoop: productMode ? proposal?.coreLoop ?? contextFields["primary-workflow"] ?? defaults.coreLoop : null,
+    primaryAction: productMode ? proposal?.primaryAction ?? defaults.primaryAction : null,
+    visibleResult: productMode ? proposal?.visibleResult ?? contextFields["visible-result"] ?? defaults.visibleResult : null,
+    stateMatrix: productMode ? proposal?.stateMatrix ?? (states.length > 0 ? states : ["idle", "loading", "empty", "error", "success"]) : [],
+    concreteData: productMode ? proposal?.concreteData ?? defaults.concreteData : null,
+    firstViewportProof: proposal?.firstViewportProof ?? (readingMode
       ? ["the requested material is readable at its intended measure", "its identity and current location are clear", "relevant examples, sources, and continuation have real destinations"]
       : productMode
       ? ["the actual product object or work surface", "the primary action attached to that object", "the next proof, result, or state change entering the viewport"]
-      : ["the subject or world is legible", "the chosen point of view is visible", "the next moment, proof, or spatial relationship is intentionally introduced"],
-    prototypeInteraction: productMode ? defaults.prototypeInteraction : null,
+      : ["the subject or world is legible", "the chosen point of view is visible", "the next moment, proof, or spatial relationship is intentionally introduced"]),
+    prototypeInteraction: productMode ? proposal?.prototypeInteraction ?? defaults.prototypeInteraction : null,
     experience,
     draftFloor: productMode
       ? [
@@ -245,9 +283,14 @@ export function buildProductSignal({
     antiShell: productMode
       ? "Reject a hero, slogan, CTA, decorative image, and generic feature grid when no product object, task, result, or state feedback is visible."
       : "A presentation surface is valid when it is the deliberate medium of the work; reject only an unintentional template with no subject, thesis, attention path, or authored proof.",
-    openEvidence: provisional
+    openEvidence: [
+      ...(needsTargetProposal
+      ? ["Define the actual target object, primary task, visible result and complete workflow from the request before implementation; generic placeholders are not a resolved product proposal."]
+      : provisional
       ? ["Choose the experience's subject and formal thesis before implementation; no product type, layout, or interaction genre is prescribed."]
-      : [],
+      : []),
+      ...(proposal ? ["Compare the authored object, mode, task or attention path with the actual request and known facts; this proposal does not establish runtime or visual acceptance."] : []),
+    ],
   };
 }
 
@@ -258,6 +301,7 @@ export function renderProductSignal(signal) {
 
 - Mode: **${signal.mode}**
 - Status: **${signal.status}**
+- Source: **${signal.source}**; evidence: **${signal.evidenceStatus}**
 - Subject or world: ${signal.experience.subject}
 - Audience intent: ${signal.experience.audienceIntent}
 - Attention path: ${signal.experience.attentionPath}
@@ -280,6 +324,7 @@ ${list(signal.openEvidence)}
   return `## Product Signal Contract
 
 - Status: **${signal.status}**
+- Source: **${signal.source}**; evidence: **${signal.evidenceStatus}**
 - Product object: ${signal.object}
 - User and job: ${signal.userJob}
 - Core loop: ${signal.coreLoop}

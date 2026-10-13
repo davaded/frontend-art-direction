@@ -2,6 +2,12 @@
 
 ## Unreleased
 
+- Added Inspora and MotionSites discovery channels, loading.dev and Rive CLI/RML implementation candidates, concrete scroll/pointer contracts and an agent-owned Rive author/inspect/host-runtime verification workflow.
+- Added authored product and experience signals to direction files so model or designer proposals carry their own object, task, result, complete state names and attention path through every decision entrypoint, without adding a product genre or allowing self-declared acceptance.
+- Preserved concrete photo-editing and personal-reading intent over generic tool nouns, kept uncatalogued functional requests open for a target-specific proposal, and separated planned scope from intent and runtime verification evidence.
+- Normalized profile records across decision entrypoints and kept visual-stance labels out of task ranking; reading and authored-experience motion instructions now describe the target medium instead of leaking source-demo animation.
+- Separated functional target workflows from reference-site demo collections; work objects, primary actions, regional scope and responsive states now drive non-gallery product builds while named references retain their visual role.
+- Excluded reference URL paths and query parameters from product-purpose inference and resolved explicit URLs by domain, preserving unknown sources instead of misidentifying them through generic component tokens.
 - Kept named component-reference openings, regional maps, corner roles and responsive regrouping consistent across brief, direction, build and audit; Rare UI and Rewamp UI candidates remain replaceable and render-pending, while documented topics no longer turn component galleries into data workbenches.
 - Restored direct mobile access to Common Frame's reading and club destinations through a native disclosure; current source repairs are recorded separately from prior screenshot evidence.
 - Separated reading destinations from their documented product topics across brief, direction, build and audit; reading contracts retain material, sources and wayfinding under a named visual reference, while documentation editors keep operational contracts and explicit creative choices remain authoritative.

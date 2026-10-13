@@ -89,7 +89,7 @@
     {
       "id": "command-tool",
       "label": "Command / Builder Tool",
-      "keywords": ["developer", "developer tool", "tool", "editor", "builder", "ide", "command", "canvas", "inspector", "devtool", "代码", "编辑器", "命令", "工具", "开发者工具", "独立开发者"],
+      "keywords": ["developer", "developer tool", "coding", "code editor", "ide", "command", "devtool", "代码", "命令", "开发者工具", "独立开发者"],
       "surfaceMode": "Productive UI",
       "stance": "instrument-panel",
       "type": "system-utility",

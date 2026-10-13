@@ -1,4 +1,5 @@
 import { readFileSync } from "node:fs";
+import { validateProductSignalProposal } from "./product-signal.mjs";
 
 const DIRECTION_FIELDS = [
   "id", "label", "signature", "firstViewport", "layoutRules", "typeRules",
@@ -22,13 +23,14 @@ function requireText(value, path) {
 export function validateAuthoredDirection(value) {
   if (!isObject(value)) throw new Error("authored direction must be a JSON object");
   for (const key of Object.keys(value)) {
-    if (![...DIRECTION_FIELDS, "rationale", "build"].includes(key)) throw new Error(`Unsupported authored direction field: ${key}`);
+    if (![...DIRECTION_FIELDS, "rationale", "build", "productSignal"].includes(key)) throw new Error(`Unsupported authored direction field: ${key}`);
   }
   for (const key of ["label", "signature", "rationale"]) requireText(value[key], `authoredDirection.${key}`);
   if (!isObject(value.firstViewport)) throw new Error("authoredDirection.firstViewport must describe the chosen composition");
   requireText(value.firstViewport.layout, "authoredDirection.firstViewport.layout");
   requireText(value.firstViewport.dominant, "authoredDirection.firstViewport.dominant");
   if (value.compositionPlan !== undefined) validateCompositionPlan(value.compositionPlan);
+  if (value.productSignal !== undefined) validateProductSignalProposal(value.productSignal);
   if (value.build !== undefined) {
     if (!isObject(value.build)) throw new Error("authoredDirection.build must be an object");
     for (const key of Object.keys(value.build)) {
@@ -83,6 +85,7 @@ export function applyAuthoredDirection(candidate, authored) {
       ? buildCompositionPlan(authored.compositionPlan)
       : candidate.compositionPlan ?? buildCompositionPlan(),
     authoredBuild: authored.build ?? null,
+    authoredProductSignal: authored.productSignal ?? null,
   };
 }
 

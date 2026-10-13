@@ -22,6 +22,8 @@ Read root `PRODUCT.md` when present. It records durable product facts: audience,
 
 Keep the topic separate from the page job. Documentation for an editor is reading material about an editor; a documentation editor is an operating tool. The resolver retains `subjectProfile` and the original request while selecting reading defaults for the former. These defaults describe material, wayfinding and evidence, not a required sidebar, palette or chapter format; authored directions remain authoritative.
 
+Generic tool, editor, builder, canvas and inspector nouns establish a possible task, not a developer-tool domain. Prefer concrete subject evidence such as photos or coding. An uncatalogued functional request stays open and reports `needs-target-proposal`: define its actual object, task, result and workflow from the request rather than implementing generic placeholders. A visual stance shapes treatment without becoming another task vote. Scoped completion output remains `planned-not-verified` until the target intent and actual full-path/render evidence are checked.
+
 Use the file's actual prose as well as the structured fields. The CLI is a lightweight candidate selector, not a semantic design judge: ambiguous or unsupported wording still needs inspection. Useful partial facts can inform the next decision; optional fields do not block implementation.
 
 When several screens need shared background, inspect the project and original request first, then create context from known facts:

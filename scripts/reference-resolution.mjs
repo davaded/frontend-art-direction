@@ -2,13 +2,20 @@ import { loadDataset, meaningfulTokens, positiveRoutingText } from "./lib.mjs";
 
 const GENERIC_REFERENCE_TOKENS = new Set(["http", "https", "www", "com", "dev", "io", "ui"]);
 const REFERENCE_SIGNAL = /https?:\/\/|like\s+|similar\s+to|inspired\s+by|based\s+on|\b(?:rare\s+ui|beautiful\s+ui|beui|magic\s+ui|react\s+bits|aceternity|obsidian\s+ui|bencho|design\s+spells|transitions|shadcn)\b|像|类似|参考|仿照|复刻/i;
+const URL_PATTERN = /https?:\/\/[^\s<>"'()[\]，；。！？“”]+/gi;
 
 export function hasReferenceBuildSignal(query) {
   return REFERENCE_SIGNAL.test(positiveRoutingText(query));
 }
 
+export function withoutReferenceUrls(input) {
+  return String(input ?? "").replace(URL_PATTERN, (value) => {
+    try { new URL(value); return " "; } catch { return value; }
+  }).trim();
+}
+
 function extractUrl(input) {
-  const match = String(input ?? "").match(/https?:\/\/[^\s<>"')]+/i);
+  const match = String(input ?? "").match(URL_PATTERN);
   return match?.[0]?.replace(/[.,;:]+$/, "") ?? "";
 }
 
@@ -51,11 +58,14 @@ function referenceMatchScore(reference, input) {
 }
 
 export function resolveReference(input, references = loadDataset("reference-lenses.json").references) {
-  const ranked = references.map((reference) => ({
+  const url = extractUrl(input);
+  const hostname = url ? new URL(url).hostname.replace(/^www\./, "") : "";
+  const candidates = hostname ? references.filter((reference) => new URL(reference.url).hostname.replace(/^www\./, "") === hostname) : references;
+  if (hostname && candidates.length === 0) return { reference: externalReference(url), score: 1, hits: [url], external: true };
+  const ranked = candidates.map((reference) => ({
     reference,
-    ...referenceMatchScore(reference, input),
+    ...referenceMatchScore(reference, url || input),
   })).sort((left, right) => right.score - left.score || left.reference.id.localeCompare(right.reference.id));
   if (ranked[0]?.score > 0) return ranked[0];
-  const url = extractUrl(input);
   return url ? { reference: externalReference(url), score: 1, hits: [url], external: true } : null;
 }

@@ -333,7 +333,7 @@ export function selectVisualDirection(query = "frontend interface", {
   const request = productRequest ?? resolveProductRequest(query, project?.productContext, { profile: typeof profile === "object" ? profile.id : String(profile).split(/\s+/)[0] });
   const authorityQuery = request.routingQuery;
   query = request.selectionQuery;
-  if (!profile && request.profile.record.id !== "adaptive-surface") profile = request.profile.record;
+  if ((!profile && request.profile.record.id !== "adaptive-surface") || (typeof profile === "string" && profile.split(/\s+/)[0] === request.profile.record.id)) profile = request.profile.record;
   const directions = loadDataset("visual-directions.json").directions;
   const treatments = loadDataset("visual-treatments.json").treatments;
   const profileId = idOf(profile);
@@ -341,8 +341,9 @@ export function selectVisualDirection(query = "frontend interface", {
     ? resolveReference(idOf(reference))?.reference
     : hasReferenceBuildSignal(authorityQuery) ? resolveReference(authorityQuery)?.reference : null;
   const referenceId = namedReference?.id ?? idOf(reference);
-  const context = `${textOf(profile)} ${textOf(style)} ${textOf(reference)}`.trim();
-  const underspecified = adaptiveDefault || (isUnderspecifiedRequest(query) && !context);
+  // A visual stance shapes treatment; its label must not cast another task vote.
+  const context = `${textOf(profile)} ${textOf(namedReference ?? reference)}`.trim();
+  const underspecified = adaptiveDefault || (isUnderspecifiedRequest(query) && !context && !textOf(style));
   const queryTokens = underspecified ? [] : meaningfulTokens(query);
   const contextTokens = underspecified ? [] : meaningfulTokens(context);
   const explicit = requestedDirection ? directions.find((item) => item.id === requestedDirection) : null;
@@ -422,6 +423,8 @@ export function selectVisualDirection(query = "frontend interface", {
     },
   } : selected;
   const resolved = applyAuthoredDirection({ ...referenceCandidate, visualTreatment: candidateTreatment, compositionPlan }, authoredDirection);
+  const selectionStatus = authoredDirection ? "authored-proposal" : requestedConcept ? "accepted-concept" : underspecified ? "provisional-concept-fallback" : "candidate";
+  resolved.selectionStatus = selectionStatus;
   if (!authoredDirection && constraintAuthority.mode === "adaptive-default" && request.signalFields["primary-object"]) {
     resolved.firstViewport = { ...resolved.firstViewport, dominant: request.signalFields["primary-object"] };
   }
@@ -465,7 +468,7 @@ export function selectVisualDirection(query = "frontend interface", {
     label: resolved.label,
     confidence: authoredDirection ? "proposed" : confidence(selectedScore, Boolean(explicit)),
     mode: authoredDirection ? "authored" : underspecified ? "adaptive" : "signal-led",
-    selectionStatus: authoredDirection ? "authored-proposal" : requestedConcept ? "accepted-concept" : underspecified ? "provisional-concept-fallback" : "candidate",
+    selectionStatus,
     matched: [...new Set([...(selectedMatch?.queryHits ?? []), ...(selectedMatch?.contextHits ?? [])])],
     directionLock,
     firstViewport: resolved.firstViewport,
@@ -481,6 +484,7 @@ export function selectVisualDirection(query = "frontend interface", {
     renderChecks: resolved.renderChecks,
     signature: resolved.signature,
     authoredBuild: resolved.authoredBuild,
+    authoredProductSignal: resolved.authoredProductSignal,
     creativeProcess,
     productSignal,
     productContext: project?.productContext ?? null,

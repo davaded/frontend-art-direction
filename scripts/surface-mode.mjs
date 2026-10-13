@@ -9,6 +9,7 @@ import {
   positiveRoutingText,
   writeOutput,
 } from "./lib.mjs";
+import { withoutReferenceUrls } from "./reference-resolution.mjs";
 
 const SURFACE_MODES = [
   {
@@ -26,7 +27,7 @@ const SURFACE_MODES = [
     label: "Operate",
     question: "What must the visitor do, and what state proves it worked?",
     jobs: ["apps", "editors", "dashboards", "forms", "configuration", "component workbenches"],
-    terms: ["app", "dashboard", "editor", "tool", "workflow", "form", "settings", "builder", "configure", "component", "操作", "后台", "工作台", "编辑器", "表单", "设置", "配置", "控件"],
+    terms: ["app", "dashboard", "editor", "tool", "workflow", "form", "settings", "builder", "configure", "component", "edit photos", "photo editing", "retouch", "操作", "后台", "工作台", "编辑器", "修图", "修照片", "表单", "设置", "配置", "控件"],
     strongTerms: ["app", "dashboard", "editor", "workflow", "后台", "工作台", "编辑器"],
     proof: "a real object, a primary action, and a visible result or recovery state",
     avoid: "a presentation shell that hides the active work behind decorative panels",
@@ -36,8 +37,8 @@ const SURFACE_MODES = [
     label: "Read",
     question: "What should the visitor understand, compare, or remember?",
     jobs: ["documentation", "reports", "editorial pages", "knowledge surfaces", "case studies"],
-    terms: ["docs", "documentation", "article", "report", "essay", "knowledge", "manual", "case study", "read", "文档", "文章", "报告", "知识库", "说明", "案例"],
-    strongTerms: ["docs", "documentation", "report", "knowledge", "文档", "知识库"],
+    terms: ["docs", "documentation", "article", "report", "essay", "knowledge", "manual", "case study", "read", "reading site", "reading website", "reading page", "reader", "文档", "文章", "报告", "知识库", "说明", "案例", "阅读网站", "阅读页面", "阅读器"],
+    strongTerms: ["docs", "documentation", "report", "knowledge", "reading site", "reading website", "reading page", "文档", "知识库", "阅读网站", "阅读页面", "阅读器"],
     proof: "a legible reading order, evidence relationships, and a stable wayfinding path",
     avoid: "forcing every content page into a marketing hero or card grid",
   },
@@ -90,7 +91,7 @@ export function classifySurfaceMode(query = "", { explicit = "" } = {}) {
       mode: explicit,
       label: mode.label,
       confidence: "explicit",
-      evidence: { hits: [], source: "user", componentSurface: explicit === "operate" && COMPONENT_SURFACE_PATTERN.test(positiveRoutingText(query).toLowerCase()) },
+      evidence: { hits: [], source: "user", componentSurface: explicit === "operate" && COMPONENT_SURFACE_PATTERN.test(withoutReferenceUrls(positiveRoutingText(query)).toLowerCase()) },
       candidates: SURFACE_MODES.map((item) => item.id),
       decision: mode.question,
       proof: mode.proof,
@@ -99,7 +100,7 @@ export function classifySurfaceMode(query = "", { explicit = "" } = {}) {
     };
   }
 
-  const affirmative = positiveRoutingText(query);
+  const affirmative = withoutReferenceUrls(positiveRoutingText(query));
   const ranked = SURFACE_MODES
     .map((mode) => ({ mode, ...scoreMode(affirmative, mode) }))
     .sort((left, right) => right.score - left.score || left.mode.id.localeCompare(right.mode.id));
