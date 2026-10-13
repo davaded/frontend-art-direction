@@ -324,7 +324,7 @@
     {
       "id": "specimen-catalog",
       "label": "Specimen Catalog",
-      "profileIds": [],
+      "profileIds": ["component-workbench"],
       "keywords": ["component", "gallery", "showcase", "catalog", "demo", "library", "组件", "展示", "画廊", "目录"],
       "signature": "the working specimen is the content; browsing structure stays quiet and the examples keep stable geometry",
       "firstViewport": {
@@ -388,7 +388,7 @@
     {
       "id": "narrative-chapters",
       "label": "Narrative Chapters",
-      "profileIds": ["editorial-marketing"],
+      "profileIds": ["editorial-marketing", "reading-surface"],
       "keywords": ["landing", "launch", "marketing", "campaign", "story", "stories", "brand", "editorial", "publication", "journal", "magazine", "essay", "narrative", "blog", "film", "films", "cinema", "archive", "archives", "官网", "发布", "宣传", "故事", "出版", "刊物", "杂志", "文章", "叙事", "章节", "博客", "电影", "影像", "影评"],
       "signature": "a controlled sequence of claims, proof, and breathing space; every chapter changes the reading relationship",
       "firstViewport": {

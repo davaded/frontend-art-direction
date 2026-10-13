@@ -7,6 +7,7 @@ import { buildProductSignal, renderProductSignal } from "./product-signal.mjs";
 import { buildCompletionContract, renderCompletionContract } from "./completion-contract.mjs";
 import { renderProductContextStatus, resolveProductRequest } from "./product-context.mjs";
 import { scanProject } from "./inspect-project.mjs";
+import { hasReferenceBuildSignal, resolveReference } from "./reference-resolution.mjs";
 
 const HELP = `visual-direction.mjs [options]
 
@@ -246,9 +247,9 @@ function scoreDirection(direction, queryTokens, contextTokens, { profileId, refe
     : [];
   if (signalBoost && signalHits.length > 0) score += signalBoost.boost;
   if (profileId && direction.profileIds?.includes(profileId)) score += 24;
-  const operatingProfiles = ["productive-app", "command-tool", "creative-editor", "data-workbench", "media-experience"];
-  if (surfaceMode === "persuade" && direction.profileIds?.length > 0 && direction.profileIds.every((id) => operatingProfiles.includes(id))) score -= 40;
-  if (referenceId && ["rare-ui", "rewamp-ui", "magic-ui", "react-bits", "aceternity-ui", "obsidian-ui"].includes(referenceId) && direction.id === "specimen-catalog") score += 22;
+  const operatingProfiles = ["productive-app", "command-tool", "creative-editor", "data-workbench", "media-experience", "component-workbench"];
+  if (["persuade", "read"].includes(surfaceMode) && direction.profileIds?.length > 0 && direction.profileIds.every((id) => operatingProfiles.includes(id))) score -= 40;
+  if (!["persuade", "read"].includes(surfaceMode) && referenceId && ["rare-ui", "rewamp-ui", "magic-ui", "react-bits", "aceternity-ui", "obsidian-ui"].includes(referenceId) && direction.id === "specimen-catalog") score += 22;
   if (referenceId && ["apple-product", "bang-olufsen", "teenage-engineering", "logitech-mx", "elgato-creator-hardware", "framework-computer"].includes(referenceId) && direction.id === "object-led-editorial") score += 22;
   return {
     score,
@@ -336,7 +337,10 @@ export function selectVisualDirection(query = "frontend interface", {
   const directions = loadDataset("visual-directions.json").directions;
   const treatments = loadDataset("visual-treatments.json").treatments;
   const profileId = idOf(profile);
-  const referenceId = idOf(reference);
+  const namedReference = reference
+    ? resolveReference(idOf(reference))?.reference
+    : hasReferenceBuildSignal(authorityQuery) ? resolveReference(authorityQuery)?.reference : null;
+  const referenceId = namedReference?.id ?? idOf(reference);
   const context = `${textOf(profile)} ${textOf(style)} ${textOf(reference)}`.trim();
   const underspecified = adaptiveDefault || (isUnderspecifiedRequest(query) && !context);
   const queryTokens = underspecified ? [] : meaningfulTokens(query);
@@ -377,13 +381,47 @@ export function selectVisualDirection(query = "frontend interface", {
     requestedDirection,
     overrides,
   });
-  const compositionPlan = buildCompositionPlan(null, {
+  const referenceRecipe = profileId === "component-workbench" && request.surfaceMode.mode === "operate"
+    && constraintAuthority.mode === "reference-led" && !authoredDirection && !explicit && !requestedConcept
+    ? loadDataset("reference-recipes.json").recipes.find((recipe) => recipe.referenceId === referenceId && recipe.compositionPlan)
+    : null;
+  const compositionPlan = buildCompositionPlan(referenceRecipe?.compositionPlan ?? null, {
     direction: selected,
-    generate: true,
+    generate: !referenceRecipe,
     query,
     productRequest: request,
   });
-  const resolved = applyAuthoredDirection({ ...selected, visualTreatment: candidateTreatment, compositionPlan }, authoredDirection);
+  if (referenceRecipe) {
+    compositionPlan.status = "reference-hypothesis-render-pending";
+    compositionPlan.hypothesisSelection = {
+      status: "reference-candidate",
+      basis: `Previously recorded ${namedReference.label} relationships replace the generic regional candidate; current inspection and target rendering remain required.`,
+    };
+    compositionPlan.source = { referenceId, url: namedReference.url, evidence: "previously-recorded-recipe", currentInspection: constraintAuthority.evidenceStatus };
+  }
+  const referenceCandidate = referenceRecipe ? {
+    ...selected,
+    firstViewport: {
+      ...selected.firstViewport,
+      ...referenceRecipe.firstViewport,
+      dominant: request.profile.record.anchor,
+      alignmentAxis: "Use the recorded local region anchors; centered object placement does not require centered navigation, captions or prose.",
+    },
+    spacingRules: {
+      ...selected.spacingRules,
+      container: referenceRecipe.tokenSeed.container,
+      section: `${referenceRecipe.tokenSeed.spacing.section} candidate spacing; use the recorded region relationships before tuning gaps.`,
+    },
+    surfaceRules: {
+      ...selected.surfaceRules,
+      radius: `Reference candidates: ${Object.entries(referenceRecipe.tokenSeed.radius).map(([role, value]) => `${role} ${value}`).join(", ")}; target-owned tokens and inspection may replace them.`,
+    },
+    geometryRules: {
+      ...selected.geometryRules,
+      cornerHierarchy: `Use the reference's candidate roles: ${Object.entries(referenceRecipe.tokenSeed.radius).map(([role, value]) => `${role} ${value}`).join(", ")}; component-local geometry remains independent.`,
+    },
+  } : selected;
+  const resolved = applyAuthoredDirection({ ...referenceCandidate, visualTreatment: candidateTreatment, compositionPlan }, authoredDirection);
   if (!authoredDirection && constraintAuthority.mode === "adaptive-default" && request.signalFields["primary-object"]) {
     resolved.firstViewport = { ...resolved.firstViewport, dominant: request.signalFields["primary-object"] };
   }
@@ -408,6 +446,7 @@ export function selectVisualDirection(query = "frontend interface", {
     query,
     profile: typeof profile === "object" ? profile : { id: idOf(profile), anchor: resolved.firstViewport.dominant },
     visualDirection: resolved,
+    surfaceMode: request.surfaceMode.mode,
     contextFields: request.signalFields,
   });
   const completionContract = buildCompletionContract({

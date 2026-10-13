@@ -43,6 +43,10 @@ The command selects a named reference when it appears in the sentence or URL, th
 
 Every full audit also creates this contract when no site is named. In that case it is an adaptive, evidence-first contract rather than a forced visual skin. The complete reference inventory is still considered, and any selected supporting lens must earn its place through a distinct job.
 
+The current visitor job controls the construction contract. A documentation or knowledge page keeps complete reading material, examples, sources, wayfinding and a return path even when its subject is an editor, analytics SDK or AI tool. A named visual reference still supplies type, material, rhythm and motion ideas; its gallery or promotional sections do not become the target's workflow. A tool for editing documentation retains its operating contract. Authored build fields can replace the suggested structure.
+
+A component gallery or workbench is also a visitor job, independent of the components' topic. For matching Rare UI and Rewamp UI requests, previously recorded reference regions now feed the opening, spatial budget, local corner roles and wide/intermediate/narrow regrouping across all decision entrypoints. They remain `reference-hypothesis-render-pending`, with prior-recipe provenance and current-inspection status kept separate. A named reference does not force its gallery structure onto documentation, a public homepage or an unrelated data workspace; explicit direction, project-owned design and authored composition remain authoritative. References without a recorded regional map require inspection rather than an invented source layout.
+
 ## Build Sequence
 
 ### 1. Inspect The Reference

@@ -28,6 +28,10 @@ Generation produced no proposal: the configured image provider rejected gpt-imag
 
 ## Open work
 
+Independent forward evaluation on 2026-10-13 adds a narrow-navigation gap and a product-completion boundary: actual city/venue/participation information is absent. See [the saved-capture review](artifacts/forward-evaluation-2026-10-13.md). It is independent static/capture evidence, not a new runtime pass or final sign-off.
+
+The narrow-navigation repair is implemented with a native More disclosure and the actual Reading room / The club anchors. Source inspection and JavaScript syntax checking do not prove its width fit, focus return, destination scroll, no-JavaScript behaviour or touch use; those require a fresh permitted runtime pass. Existing screenshots predate this repair.
+
 1. Decide whether the wide reversed-row pause is a useful editorial pause or needs one more subject-specific transition; do not solve it with a generic divider or card grid.
 2. Run final scope/accessibility/sign-off only after that visual decision and its regression checks.
 3. The image-driven iteration path still needs a working image provider. No proposal was produced by the failed attempt.

@@ -58,6 +58,11 @@ export function readJson(path) {
   return JSON.parse(readFileSync(path, "utf8"));
 }
 
+export function positiveRoutingText(text = "") {
+  // Keep common negative clauses out of keyword routing, while preserving the raw request elsewhere.
+  return String(text).replace(/(?:\b(?:not|no|without)\s+(?!only\b|just\b)|不是|不要|无需|不做|不需要)(?:(?!\bbut\b|\binstead\b|而是|但是|但)[^,;.!?\n，；。！？])*/giu, " ").trim();
+}
+
 export function tokenize(value) {
   const chunks = String(value ?? "")
     .toLocaleLowerCase()

@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 
-import { asNumber, isMainModule, isUnderspecifiedRequest, loadDataset, meaningfulTokens, option, parseArgs, writeOutput } from "./lib.mjs";
+import { asNumber, isMainModule, isUnderspecifiedRequest, loadDataset, meaningfulTokens, option, parseArgs, positiveRoutingText, writeOutput } from "./lib.mjs";
+import { classifySurfaceMode } from "./surface-mode.mjs";
 
 const HELP = `reference-scout.mjs [options]
 
@@ -115,7 +116,9 @@ function selectCandidates(sources, tokens, category, limit) {
 
 function discoveryJobs(query) {
   const jobs = ["composition", "responsive"];
-  if (/dashboard|editor|app\b|workflow|settings|form|工作流|编辑器|表单|后台|任务/u.test(query.toLowerCase())) jobs.push("workflow", "component");
+  const mode = classifySurfaceMode(query).mode;
+  if (mode === "read") jobs.push("workflow");
+  if (mode === "operate" || (mode === "adaptive" && /dashboard|editor|app\b|workflow|settings|form|工作流|编辑器|表单|后台|任务/u.test(query.toLowerCase()))) jobs.push("workflow", "component");
   if (/motion|animation|interaction|动效|动画|交互/u.test(query.toLowerCase())) jobs.push("interaction");
   if (/illustration|texture|photograph|artwork|moodboard|插画|摄影|材质|拼贴/u.test(query.toLowerCase())) jobs.push("material", "artwork");
   return unique(jobs);
@@ -124,7 +127,7 @@ function discoveryJobs(query) {
 export function scoutReferences(query = "", { profile = "", category: requestedCategory = "", limit = 4 } = {}) {
   const dataset = loadDataset("reference-sources.json");
   // An inferred profile must not turn an unrelated subject into hardware.
-  const combined = query.trim() || profile.trim();
+  const combined = positiveRoutingText(query.trim() || profile.trim());
   const adaptiveDefault = !requestedCategory && isUnderspecifiedRequest(combined);
   const tokens = meaningfulTokens(combined).filter((token) => !GENERIC_SOURCE_TOKENS.has(token));
   const resolved = resolveCategory(dataset.categories, combined, requestedCategory);

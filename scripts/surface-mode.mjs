@@ -6,6 +6,7 @@ import {
   meaningfulTokens,
   option,
   parseArgs,
+  positiveRoutingText,
   writeOutput,
 } from "./lib.mjs";
 
@@ -53,6 +54,7 @@ const SURFACE_MODES = [
 ];
 
 const MODE_BY_ID = new Map(SURFACE_MODES.map((mode) => [mode.id, mode]));
+const COMPONENT_SURFACE_PATTERN = /\bcomponent\s+(?:gallery|catalog(?:ue)?|workbench|playground)\b|\b(?:gallery|catalog(?:ue)?|playground)\s+(?:of|for)\s+(?:ui\s+)?components\b|组件(?:画廊|展示库|目录|工作台|演示)/u;
 
 function scoreMode(query, mode) {
   const text = String(query ?? "").toLocaleLowerCase();
@@ -60,13 +62,19 @@ function scoreMode(query, mode) {
     const normalized = term.toLocaleLowerCase();
     if (/^\p{Script=Han}+$/u.test(normalized)) return text.includes(normalized);
     const escaped = normalized.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
-    return new RegExp(`(?:^|\\s)${escaped}(?:$|\\s)`, "u").test(text);
+    return new RegExp(`(?:^|[^\\p{L}\\p{N}_])${escaped}(?:$|[^\\p{L}\\p{N}_])`, "u").test(text);
   };
   const hits = mode.terms.filter(contains);
   const strongHits = (mode.strongTerms ?? []).filter(contains);
   const editsMarketingSurface = /\b(?:homepage|landing(?:\s+page)?|website)\s+(?:editor|builder)\b|(?:官网|落地页|网站)(?:生成器|编辑器|搭建器|后台)/u.test(text);
   const namesMarketingSurface = /\b(?:homepage|official website|product website|landing page)\b|官网|宣传页|产品介绍页/u.test(text);
+  const editsReadingSurface = /\b(?:docs?|documentation|manual|report|knowledge base)(?:\s+(?:site|page|portal|website))?\s+(?:editor|builder|manager|dashboard|workspace)\b|(?:文档|知识库|报告)(?:编辑器|生成器|管理|后台|工作台)/u.test(text);
+  const namesReadingSurface = /\b(?:docs?|documentation|manual|knowledge base)\b|文档|知识库/u.test(text);
+  const namesComponentSurface = COMPONENT_SURFACE_PATTERN.test(text);
   const surfaceScore = editsMarketingSurface && mode.id === "operate" ? 6
+    : editsReadingSurface && mode.id === "operate" ? 6
+    : namesReadingSurface && !editsReadingSurface && mode.id === "read" ? 3
+    : namesComponentSurface && !namesMarketingSurface && !namesReadingSurface && mode.id === "operate" ? 6
     : namesMarketingSurface && !editsMarketingSurface && mode.id === "persuade" ? 3 : 0;
   return { score: hits.length + strongHits.length * 2 + surfaceScore, hits: [...new Set(hits)] };
 }
@@ -82,7 +90,7 @@ export function classifySurfaceMode(query = "", { explicit = "" } = {}) {
       mode: explicit,
       label: mode.label,
       confidence: "explicit",
-      evidence: { hits: [], source: "user" },
+      evidence: { hits: [], source: "user", componentSurface: explicit === "operate" && COMPONENT_SURFACE_PATTERN.test(positiveRoutingText(query).toLowerCase()) },
       candidates: SURFACE_MODES.map((item) => item.id),
       decision: mode.question,
       proof: mode.proof,
@@ -91,12 +99,13 @@ export function classifySurfaceMode(query = "", { explicit = "" } = {}) {
     };
   }
 
+  const affirmative = positiveRoutingText(query);
   const ranked = SURFACE_MODES
-    .map((mode) => ({ mode, ...scoreMode(query, mode) }))
+    .map((mode) => ({ mode, ...scoreMode(affirmative, mode) }))
     .sort((left, right) => right.score - left.score || left.mode.id.localeCompare(right.mode.id));
   const top = ranked[0];
   const runnerUp = ranked[1];
-  const underspecified = isUnderspecifiedRequest(query);
+  const underspecified = isUnderspecifiedRequest(affirmative);
   const unresolved = underspecified || !top || top.score === 0 || top.score === runnerUp.score;
   const selected = unresolved ? null : top.mode;
 
@@ -107,6 +116,7 @@ export function classifySurfaceMode(query = "", { explicit = "" } = {}) {
     evidence: {
       hits: selected ? top.hits : [],
       source: selected ? "query" : "awaiting surface evidence",
+      componentSurface: selected?.id === "operate" && COMPONENT_SURFACE_PATTERN.test(affirmative.toLowerCase()),
     },
     candidates: ranked.filter((item) => item.score > 0).map((item) => item.mode.id).slice(0, 3),
     decision: selected?.question ?? "Choose the visitor's primary job before fixing the page genre or interaction model.",

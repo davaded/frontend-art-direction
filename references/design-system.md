@@ -20,6 +20,8 @@ Read root `PRODUCT.md` when present. It records durable product facts: audience,
 
 `inspect`, `brief`, `direction --project`, `reference-build`, and `audit` read the context automatically. Their keyword routing uses positive product facts to fill an unresolved request. Frameworks, filenames, constraints, and non-goals are not positive genre evidence. An explicit current task or profile pin wins; a component candidate cannot become visual authority by being selected automatically.
 
+Keep the topic separate from the page job. Documentation for an editor is reading material about an editor; a documentation editor is an operating tool. The resolver retains `subjectProfile` and the original request while selecting reading defaults for the former. These defaults describe material, wayfinding and evidence, not a required sidebar, palette or chapter format; authored directions remain authoritative.
+
 Use the file's actual prose as well as the structured fields. The CLI is a lightweight candidate selector, not a semantic design judge: ambiguous or unsupported wording still needs inspection. Useful partial facts can inform the next decision; optional fields do not block implementation.
 
 When several screens need shared background, inspect the project and original request first, then create context from known facts:

@@ -1,6 +1,15 @@
 import { classifySurfaceMode } from "./surface-mode.mjs";
 
 const PROFILE_SIGNALS = {
+  "reading-surface": {
+    object: "the actual document, passage, example, or evidence being read",
+    userJob: "understand the requested material and reach its relevant example or source",
+    coreLoop: "find material -> read in context -> inspect an example or source -> continue or return",
+    primaryAction: "open the relevant passage, example, or source",
+    visibleResult: "the requested material is visible with its identity, location, and source intact",
+    concreteData: "specific headings, complete passages, real examples, source labels, and truthful versions or dates when relevant",
+    prototypeInteraction: "follow one reading destination, inspect its material, and return without losing the reader's location",
+  },
   "productive-app": {
     object: "the active work item, record, document, or selected detail",
     userJob: "complete one operational task with enough context to trust the result",
@@ -116,9 +125,10 @@ const AUTHORING_TERMS = /\b(?:editorial|portfolio|landing|marketing|brand|campai
 const FUNCTIONAL_TERMS = /\b(?:app|dashboard|editor|tool|workflow|form|settings|builder|command|analytics|data|table|chart|monitoring|player|audio|video|component|specimen|sdk|checkout|payment|interaction)s?\b|应用|后台|工作台|工具|流程|表单|设置|编辑器|分析|数据|表格|图表|监控|播放器|组件|控件|支付|交互/;
 const TASK_TERMS = /\b(?:app|dashboard|editor|tool|workflow|form|settings|builder|command|analytics|monitoring|player|component|specimen|sdk|checkout|payment|configurator|viewer)s?\b|应用|后台|工作台|工具|流程|表单|设置|编辑器|分析|监控|播放器|组件|控件|支付|配置器|查看器/;
 
-function inferSignalMode(query, profileId, profile) {
+function inferSignalMode(query, profileId, profile, surfaceMode) {
   const text = String(query).toLocaleLowerCase();
-  if (classifySurfaceMode(query).mode === "persuade") return "authored-experience";
+  if (surfaceMode === "read") return "product";
+  if (surfaceMode === "persuade") return "authored-experience";
   // Explicit tasks outrank style words; product topic and surface job are separate.
   if (TASK_TERMS.test(text)) return "product";
   if (AUTHORING_TERMS.test(text)) return "authored-experience";
@@ -154,12 +164,19 @@ export function buildProductSignal({
   componentGrammar = [],
   referenceMode = "adaptive-no-reference",
   contextFields = {},
+  surfaceMode = "",
 } = {}) {
+  const visitorMode = surfaceMode || classifySurfaceMode(query).mode;
+  const readingMode = visitorMode === "read";
   const requestedProfileId = String(profile.id ?? "adaptive-surface").split(/\s+/)[0];
-  const profileId = inferProfileId(query, requestedProfileId);
+  const profileId = readingMode ? "reading-surface" : inferProfileId(query, requestedProfileId);
   const defaults = PROFILE_SIGNALS[profileId] ?? PROFILE_SIGNALS["adaptive-surface"];
-  const mode = inferSignalMode(query, profileId, profile);
-  const dominant = first([
+  const mode = inferSignalMode(query, profileId, profile, visitorMode);
+  const dominant = first(readingMode ? [
+    contextFields["primary-object"],
+    visualDirection?.selectionStatus === "authored-proposal" ? visualDirection.firstViewport?.dominant : null,
+    firstViewport?.mustShow?.[0],
+  ] : [
     contextFields["primary-object"],
     visualDirection?.firstViewport?.dominant,
     firstViewport?.mustShow?.[0],
@@ -182,6 +199,7 @@ export function buildProductSignal({
   };
   return {
     mode,
+    surfaceMode: visitorMode,
     status: productMode ? "draft-ready" : authoredMode ? "authored-direction" : "open-thesis",
     query,
     object: dominant,
@@ -191,7 +209,9 @@ export function buildProductSignal({
     visibleResult: productMode ? contextFields["visible-result"] ?? defaults.visibleResult : null,
     stateMatrix: productMode ? (states.length > 0 ? states : ["idle", "loading", "empty", "error", "success"]) : [],
     concreteData: productMode ? defaults.concreteData : null,
-    firstViewportProof: productMode
+    firstViewportProof: readingMode
+      ? ["the requested material is readable at its intended measure", "its identity and current location are clear", "relevant examples, sources, and continuation have real destinations"]
+      : productMode
       ? ["the actual product object or work surface", "the primary action attached to that object", "the next proof, result, or state change entering the viewport"]
       : ["the subject or world is legible", "the chosen point of view is visible", "the next moment, proof, or spatial relationship is intentionally introduced"],
     prototypeInteraction: productMode ? defaults.prototypeInteraction : null,

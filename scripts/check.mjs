@@ -28,6 +28,7 @@ import { summarizeLayout, summarizeSnapshots, summarizeTextAlignment } from "./l
 import { selectDesignMethods } from "./design-methods.mjs";
 import { initProductContext, parseProductContext, readProductContext, renderProductContextMarkdown, resolveProductRequest } from "./product-context.mjs";
 import { buildMotionPlan } from "./transitions-adapter.mjs";
+import { buildCompositionPlan } from "./creative-process.mjs";
 
 const root = REPO_ROOT;
 const errors = [];
@@ -142,6 +143,15 @@ function checkData() {
     if (!recipe.archetype || !recipe.firstViewport || !Array.isArray(recipe.sections) || recipe.sections.length === 0) fail(`recipe ${recipe.referenceId} is incomplete`);
     if (!recipe.motionContract?.review || !recipe.motionContract?.fallback) fail(`recipe ${recipe.referenceId} has incomplete motion contract`);
     if (!recipe.tokenSeed?.canvas || !recipe.tokenSeed?.radius || !recipe.tokenSeed?.spacing || !recipe.tokenSeed?.type) fail(`recipe ${recipe.referenceId} has incomplete token seed`);
+    if (recipe.compositionPlan) {
+      try {
+        const plan = buildCompositionPlan(recipe.compositionPlan);
+        const sectionIds = new Set(recipe.sections.map((section) => section.id));
+        if ([...plan.regions, ...plan.optionalRegions].some((region) => !sectionIds.has(region.region) || !region.geometry || !region.intermediate || !region.narrow)) fail(`recipe ${recipe.referenceId} has an incomplete or disconnected regional map`);
+      } catch (error) {
+        fail(`recipe ${recipe.referenceId} has an invalid regional map: ${error.message}`);
+      }
+    }
   }
   for (const source of datasets["reference-sources.json"]?.sources ?? []) {
     if (!source.sourceType || !Number.isFinite(source.qualityTier)) fail(`reference source ${source.id} has incomplete provenance`);
@@ -641,7 +651,7 @@ async function checkSmoke() {
     if (soundPublicationBrief.directionMode === "adaptive-default" || !soundPublicationBrief.referenceScout.active || soundPublicationBrief.referenceScout.category.id !== "open-discovery" || soundPublicationBrief.visualDirection.id !== "narrative-chapters") fail("a meaningful uncatalogued brief incorrectly disabled open discovery");
     if (filmBlogBrief.directionMode === "adaptive-default" || filmBlogBrief.visualDirection.id !== "narrative-chapters" || !filmBlogBrief.referenceScout.active || filmArchiveDirection.id !== "narrative-chapters" || !filmArchiveDirection.matched.includes("films")) fail("content medium signals did not route an uncatalogued film publication into open discovery");
     if (authoredDirection.id !== "folded-field" || authoredDirection.selectionStatus !== "authored-proposal" || authoredDirection.constraintAuthority?.mode !== "model-proposed" || authoredDirection.firstViewport.layout.includes("55-65%")) fail("authored direction did not replace the local composition candidate");
-    const compositionDirections = [soundPublicationDirection, hardwareDirection, analyticsDirection, agentDirection, galleryDirection];
+    const compositionDirections = [soundPublicationDirection, hardwareDirection, analyticsDirection, agentDirection, selectVisualDirection("component gallery")];
     const hypothesisMapSignature = (hypothesis) => [...(hypothesis.regions ?? []), ...(hypothesis.optionalRegions ?? [])].map((region) => `${region.region}:${region.textAlignment}/${region.geometry?.field}/${region.geometry?.measure}`).join("|");
     const compositionPlanComplete = (direction) => {
       const plan = direction.compositionPlan;
@@ -970,6 +980,127 @@ async function checkProductContext() {
   }
 }
 
+async function checkReadingRequests() {
+  const fixture = mkdtempSync(join(tmpdir(), "frontend-art-direction-reading-"));
+  try {
+    const readingRequests = [
+      "build a documentation page for a photo editor",
+      "Build a documentation site for an analytics SDK",
+      "docs, for an AI coding tool",
+      "a documentation page for a research report",
+      "给照片编辑器做一个文档网站",
+    ];
+    for (const query of readingRequests) {
+      const brief = buildBrief({ query });
+      const direction = selectVisualDirection(query);
+      const build = buildReferenceBuild({ query, reference: "https://www.rareui.com/" });
+      const audit = await buildAudit({ query, projectRoot: fixture, motion: false, offline: true });
+      for (const result of [brief, direction, build, audit]) {
+        if (result.productRequest.surfaceMode.mode !== "read" || result.productRequest.profile.record.id !== "reading-surface" || result.productSignal.surfaceMode !== "read") fail(`a decision entrypoint lost the reading job: ${query}`);
+        if (!/document|passage|example|evidence/u.test(result.productSignal.object) || ["rail-canvas-workbench", "data-detail-workbench", "stateful-instrument"].includes((result.visualDirection ?? result).id)) fail(`the documented topic became the active workbench: ${query}`);
+      }
+      if (build.query !== query || build.productRequest.subjectProfile !== brief.productRequest.subjectProfile) fail(`reading routing lost the original request or topic: ${query}`);
+      if (build.primaryReference.id !== "rare-ui" || build.pagePlan.some((section) => /hero|specimen|mosaic/u.test(section.id)) || !build.componentGrammar.some((component) => component.id === "reading-wayfinding")) fail(`a named reference replaced the target reading path: ${query}`);
+      const scout = scoutReferences(query);
+      if (!scout.discoveryPlan.jobs.includes("workflow") || !scout.discoveryPlan.jobs.includes("responsive")) fail(`reading discovery omitted wayfinding or responsive evidence: ${query}`);
+    }
+    for (const query of ["a documentation editor for an analytics SDK", "a knowledge base editor", "a report editor", "知识库编辑器", "文档管理后台", "not documentation, but a photo editor", "不是文档网站，而是照片编辑器"]) {
+      const brief = buildBrief({ query });
+      if (brief.surfaceMode.mode !== "operate" || brief.productSignal.mode !== "product" || brief.recommendation.profile.id === "reading-surface") fail(`a tool that edits reading material lost its operational contract: ${query}`);
+      if (!scoutReferences(query).discoveryPlan.jobs.includes("component")) fail(`tool discovery lost its component job through a negated reading term: ${query}`);
+    }
+    const query = readingRequests[0];
+    if (selectVisualDirection(query, { direction: "spatial-inspection" }).id !== "spatial-inspection") fail("reading defaults displaced an explicit visual direction");
+    if (buildBrief({ query, overrides: { surfaceMode: "operate", profile: "creative-editor" } }).productSignal.surfaceMode !== "operate") fail("reading inference overrode an explicitly chosen visitor job");
+    if (scoutReferences("a homepage for a photo editor").discoveryPlan.jobs.includes("workflow")) fail("the documented tool's workflow leaked into public-homepage discovery");
+    const authored = {
+      id: "authored-reading",
+      label: "Authored reading",
+      signature: "Annotations share a continuous content field",
+      rationale: "The source and marginal notes supply the reading relationship",
+      firstViewport: { layout: "A continuous annotation field", dominant: "A specific annotated source document" },
+      build: {
+        firstViewport: { mustShow: ["A specific annotated source document"] },
+        pagePlan: [{ id: "annotated-source", purpose: "Read the source", layout: "Continuous annotated text", content: "The full source and authored marginal notes", components: ["annotated source"] }],
+      },
+    };
+    const authoredBuild = buildReferenceBuild({ query, reference: "https://www.rareui.com/", authoredDirection: authored });
+    if (authoredBuild.firstViewport.layout !== authored.firstViewport.layout || authoredBuild.productSignal.object !== authored.firstViewport.dominant || JSON.stringify(authoredBuild.pagePlan) !== JSON.stringify(authored.build.pagePlan)) fail("reading defaults replaced an authored opening, subject or content structure");
+    const options = { encoding: "utf8", timeout: 30000, maxBuffer: 6 * 1024 * 1024 };
+    for (const file of ["design-brief.mjs", "visual-direction.mjs", "reference-build.mjs", "audit.mjs"]) {
+      const args = [join(root, "scripts", file), "--query", query, "--format", "json"];
+      if (file === "audit.mjs") args.push("--project", fixture, "--no-motion", "--offline");
+      const output = JSON.parse(execFileSync(process.execPath, args, options));
+      if (output.productSignal?.surfaceMode !== "read" || output.productRequest?.surfaceMode.mode !== "read") fail(`${file} CLI lost the reading job`);
+    }
+  } finally {
+    rmSync(fixture, { recursive: true, force: true });
+  }
+}
+
+async function checkComponentReferenceRequests() {
+  const fixture = mkdtempSync(join(tmpdir(), "frontend-art-direction-components-"));
+  const cases = [
+    { id: "rare-ui", name: "Rare UI", url: "https://www.rareui.com/", regions: ["hero", "specimen-mosaic"] },
+    { id: "rewamp-ui", name: "Rewamp UI", url: "https://www.rewampui.com/components", regions: ["component-index", "preview-stage", "specimen-tools"] },
+  ];
+  const assertReferencePlan = (result, source, query) => {
+    const direction = result.visualDirection ?? result.proof?.direction?.visualDirection ?? result;
+    const plan = direction.compositionPlan;
+    if (result.productRequest.profile.record.id !== "component-workbench" || result.productSignal.surfaceMode !== "operate" || direction.id !== "specimen-catalog") fail(`component purpose lost to its data topic: ${query}`);
+    if (plan.status !== "reference-hypothesis-render-pending" || plan.source?.referenceId !== source.id || JSON.stringify(plan.regions.map((region) => region.region)) !== JSON.stringify(source.regions)) fail(`reference regions lost their source or page purpose: ${query}`);
+    if (JSON.stringify(direction.creativeProcess.compositionPlan) !== JSON.stringify(plan) || !plan.spaceChoreography.sequence.length || !plan.guardrails.narrow || direction.constraintAuthority.evidenceStatus !== "pending-inspection") fail(`reference candidate became disconnected or falsely accepted: ${query}`);
+    const build = result.pagePlan ? result : result.referenceBuild ?? result.proof?.referenceBuild;
+    if (build && (build.firstViewport.layout !== direction.firstViewport.layout || plan.regions.some((region) => !build.pagePlan.some((section) => section.id === region.region)))) fail(`first viewport, regions and page plan disagree: ${query}`);
+  };
+  try {
+    for (const source of cases) {
+      const query = `Build a component gallery for our analytics SDK like ${source.name}`;
+      const brief = buildBrief({ query });
+      const direction = selectVisualDirection(query);
+      const build = buildReferenceBuild({ query });
+      const audit = await buildAudit({ query, projectRoot: fixture, motion: false, offline: true });
+      for (const result of [brief, direction, build, audit]) assertReferencePlan(result, source, query);
+      if (build.productRequest.subjectProfile !== "data-workbench" || build.primaryReference.id !== source.id) fail(`component routing lost its original subject or named reference: ${query}`);
+      for (const reference of [source.id, source.url]) {
+        assertReferencePlan(selectVisualDirection("a component gallery for our analytics SDK", { reference }), source, reference);
+        assertReferencePlan(buildReferenceBuild({ query: "a component gallery for our analytics SDK", reference }), source, reference);
+      }
+      for (const file of ["design-brief.mjs", "visual-direction.mjs", "reference-build.mjs", "audit.mjs"]) {
+        const args = [join(root, "scripts", file), "--query", query, "--format", "json"];
+        if (file === "audit.mjs") args.push("--project", fixture, "--no-motion", "--offline");
+        const output = JSON.parse(execFileSync(process.execPath, args, { encoding: "utf8", timeout: 30000, maxBuffer: 6 * 1024 * 1024 }));
+        assertReferencePlan(output, source, `${file}: ${query}`);
+      }
+    }
+    for (const query of ["component gallery for our analytics SDK", "给分析 SDK 做一个组件画廊"]) {
+      const direction = selectVisualDirection(query);
+      if (direction.productRequest.profile.record.id !== "component-workbench" || direction.id !== "specimen-catalog" || direction.compositionPlan.status !== "generated-hypothesis-render-pending") fail(`unnamed component surface inherited a reference layout: ${query}`);
+    }
+    for (const query of ["a documentation site for a component gallery like Rare UI", "a homepage for a component workbench like Rare UI", "an analytics dashboard like Rare UI", "not a component gallery, but an analytics dashboard like Rare UI"]) {
+      const direction = selectVisualDirection(query);
+      if (direction.productRequest.profile.record.id === "component-workbench" || direction.compositionPlan.status === "reference-hypothesis-render-pending") fail(`component reference replaced a different or negated visitor job: ${query}`);
+      if (["read", "persuade"].includes(direction.productSignal.surfaceMode) && direction.id === "specimen-catalog") fail(`a named component reference displaced the reading or public-site direction: ${query}`);
+    }
+    const query = "a component gallery like Rare UI";
+    const authored = {
+      id: "continuous-specimen-field", label: "Continuous specimen field", signature: "One continuous shared state field",
+      rationale: "The components share a state instead of occupying independent frames",
+      firstViewport: { layout: "One continuous shared state field", dominant: "The actual components sharing one visible state" },
+      compositionPlan: { regions: [{ region: "shared-field", placement: "one continuous field", textAlignment: "start" }] },
+    };
+    const authoredDirection = selectVisualDirection(query, { authoredDirection: authored });
+    if (authoredDirection.compositionPlan.regions[0].region !== "shared-field" || authoredDirection.compositionPlan.status !== "authored-plan-render-pending") fail("reference regions displaced an authored design");
+    for (const options of [{ direction: "spatial-inspection" }, { creativeDirection: "a continuous letterpress field" }, { project: { designAuthority: { exists: true, path: "DESIGN.md", authority: "project-owned", hasDirectionContract: true } } }]) {
+      if (selectVisualDirection(query, options).compositionPlan.status === "reference-hypothesis-render-pending") fail("reference regions displaced a user pin or project-owned direction");
+    }
+    const unknown = selectVisualDirection("a component gallery like https://uncatalogued-example.test/");
+    if (unknown.compositionPlan.status === "reference-hypothesis-render-pending" || unknown.constraintAuthority.evidenceStatus !== "pending-inspection") fail("an unknown reference invented an inspected regional plan");
+  } finally {
+    rmSync(fixture, { recursive: true, force: true });
+  }
+}
+
 async function checkMotionIntentRegressions() {
   const fixture = mkdtempSync(join(tmpdir(), "frontend-art-direction-motion-intent-"));
   try {
@@ -1040,6 +1171,8 @@ async function main() {
   await checkSmoke();
   await checkIntentRegressions();
   await checkProductContext();
+  await checkReadingRequests();
+  await checkComponentReferenceRequests();
   await checkMotionIntentRegressions();
   await checkDesignMethodRegressions();
 

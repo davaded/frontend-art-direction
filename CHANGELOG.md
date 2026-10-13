@@ -2,6 +2,9 @@
 
 ## Unreleased
 
+- Kept named component-reference openings, regional maps, corner roles and responsive regrouping consistent across brief, direction, build and audit; Rare UI and Rewamp UI candidates remain replaceable and render-pending, while documented topics no longer turn component galleries into data workbenches.
+- Restored direct mobile access to Common Frame's reading and club destinations through a native disclosure; current source repairs are recorded separately from prior screenshot evidence.
+- Separated reading destinations from their documented product topics across brief, direction, build and audit; reading contracts retain material, sources and wayfinding under a named visual reference, while documentation editors keep operational contracts and explicit creative choices remain authoritative.
 - Added 24 graphic/motion source records and 13 composable design methods to the reference, brief, build and audit pipeline, preserving source-inspection limits, creative authority, narrow-screen guidance and static/failure states.
 - Verified the fresh trial's film-length metadata, keyboard edge wrapping and actual unavailable-storage path; repaired visit-only feedback disappearing after filtering and captured the current implementation at nine viewport sizes.
 - Added subject-specific process material and a restrained opening index to the Common Frame visual trial; concrete hardware requests now route into the official reference pool instead of losing to generic page words.

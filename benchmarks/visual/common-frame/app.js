@@ -6,6 +6,26 @@ const storageKey = "common-frame-programme-v1";
 const dialog = document.querySelector(".film-dialog");
 const filters = [...document.querySelectorAll("[data-filter]")];
 const reduce = matchMedia("(prefers-reduced-motion: reduce)");
+const moreNavigation = document.querySelector(".more-navigation");
+const moreTrigger = moreNavigation.querySelector("summary");
+moreNavigation.querySelectorAll("a").forEach((link) => link.addEventListener("click", () => {
+  moreNavigation.open = false;
+  const heading = document.querySelector(link.hash)?.querySelector("h2");
+  if (heading) { heading.tabIndex = -1; heading.focus({ preventScroll:true }); }
+}));
+moreNavigation.addEventListener("keydown", (event) => {
+  if (event.key !== "Escape" || !moreNavigation.open) return;
+  event.preventDefault(); moreNavigation.open = false; moreTrigger.focus();
+});
+document.addEventListener("pointerdown", (event) => {
+  if (moreNavigation.open && !moreNavigation.contains(event.target)) moreNavigation.open = false;
+});
+matchMedia("(min-width:801px)").addEventListener("change", (event) => {
+  if (!event.matches) return;
+  const focused = moreNavigation.contains(document.activeElement);
+  moreNavigation.open = false;
+  if (focused) document.querySelector("nav>a").focus({ preventScroll:true });
+});
 let saved = new Set();
 let persistent = true;
 let view = "all";

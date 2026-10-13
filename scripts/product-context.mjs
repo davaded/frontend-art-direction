@@ -2,8 +2,10 @@
 
 import { existsSync, readFileSync, writeFileSync } from "node:fs";
 import { basename, resolve } from "node:path";
-import { chooseRecord, isMainModule, isUnderspecifiedRequest, loadDataset, option, parseArgs, writeOutput } from "./lib.mjs";
+import { chooseRecord, isMainModule, isUnderspecifiedRequest, loadDataset, option, parseArgs, positiveRoutingText, writeOutput } from "./lib.mjs";
 import { classifySurfaceMode } from "./surface-mode.mjs";
+
+export { positiveRoutingText } from "./lib.mjs";
 
 export const PRODUCT_CONTEXT_FIELDS = [
   ["product-audience", "Product / audience"],
@@ -88,11 +90,6 @@ const GENERIC_PROFILE_WORDS = new Set(["design", "creative", "mobile", "touch", 
 const OPERATING_PROFILES = new Set(["productive-app", "creative-editor", "command-tool", "data-workbench", "commerce-flow", "media-experience", "component-workbench"]);
 const CREATION_REQUEST = /\b(?:build|create|develop|design|make)\s+(?:(?:me|us)\s+)?(?:a|an|new|another)\b|(?:做|创建|制作|开发|设计|生成)(?:一个|一款|一套|一页|个|新的|另一个)/iu;
 
-export function positiveRoutingText(text = "") {
-  // Keep common negative clauses out of keyword routing, while preserving the raw request elsewhere.
-  return String(text).replace(/(?:\b(?:not|no|without)\s+(?!only\b|just\b)|不是|不要|无需|不做|不需要)(?:(?!\bbut\b|\binstead\b|而是|但是|但)[^,;.!?\n，；。！？])*/giu, " ").trim();
-}
-
 function chooseProductProfile(profiles, text, preferredId) {
   if (profiles.some((record) => record.id === preferredId)) {
     return chooseRecord(profiles, [], preferredId, "adaptive-surface", ["keywords"]);
@@ -137,7 +134,11 @@ export function resolveProductRequest(query = "", context = null, { profile = ""
   const subjectSelection = useBackground ? inherited : current;
   const visitorMode = useBackground ? classifySurfaceMode(background) : currentMode;
   // The topic may be a tool; the requested surface can still be its public website.
-  const selection = !profile && visitorMode.mode === "persuade" && OPERATING_PROFILES.has(subjectSelection.record.id)
+  const selection = !profile && visitorMode.mode === "read"
+    ? { ...subjectSelection, record: profiles.find((item) => item.id === "reading-surface") }
+    : !profile && visitorMode.evidence.componentSurface
+    ? { ...subjectSelection, record: profiles.find((item) => item.id === "component-workbench") }
+    : !profile && visitorMode.mode === "persuade" && OPERATING_PROFILES.has(subjectSelection.record.id)
     ? { ...subjectSelection, record: profiles.find((item) => item.id === "editorial-marketing") }
     : subjectSelection;
   if (useBackground && visitorMode.mode !== "adaptive") visitorMode.evidence.source = context.path;

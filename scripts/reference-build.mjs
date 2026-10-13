@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 import { resolve } from "node:path";
-import { asNumber, isMainModule, loadDataset, meaningfulTokens, option, parseArgs, writeOutput } from "./lib.mjs";
+import { asNumber, isMainModule, loadDataset, option, parseArgs, writeOutput } from "./lib.mjs";
 import { scanProject } from "./inspect-project.mjs";
 import { selectReferenceComposition } from "./reference-composition.mjs";
 import { renderDesignMethods } from "./design-methods.mjs";
@@ -10,7 +10,10 @@ import { renderAuthorityMarkdown } from "./authority.mjs";
 import { applyAuthoredBuild, readAuthoredDirection, renderCreativeProcess } from "./creative-process.mjs";
 import { buildProductSignal, renderProductSignal } from "./product-signal.mjs";
 import { buildCompletionContract, renderCompletionContract } from "./completion-contract.mjs";
-import { positiveRoutingText, renderProductContextStatus, resolveProductRequest } from "./product-context.mjs";
+import { renderProductContextStatus, resolveProductRequest } from "./product-context.mjs";
+import { hasReferenceBuildSignal, resolveReference } from "./reference-resolution.mjs";
+
+export { hasReferenceBuildSignal, resolveReference } from "./reference-resolution.mjs";
 
 const HELP = `reference-build.mjs [options]
 
@@ -34,9 +37,6 @@ Options:
   --format md|json       Output format (default: md)
   --output <path>        Write the contract instead of stdout
 `;
-
-const GENERIC_REFERENCE_TOKENS = new Set(["http", "https", "www", "com", "dev", "io", "ui"]);
-const REFERENCE_SIGNAL = /https?:\/\/|like\s+|similar\s+to|inspired\s+by|based\s+on|\b(?:rare\s+ui|beautiful\s+ui|beui|magic\s+ui|react\s+bits|aceternity|obsidian\s+ui|bencho|design\s+spells|transitions|shadcn)\b|像|类似|参考|仿照|复刻/i;
 
 function buildResponsiveCompositionPlan(base, compositionPlan) {
   const regions = [
@@ -74,10 +74,6 @@ function buildResponsiveCompositionPlan(base, compositionPlan) {
       narrow: region.narrow ?? "reorder or regroup for reading and touch",
     })),
   };
-}
-
-export function hasReferenceBuildSignal(query) {
-  return REFERENCE_SIGNAL.test(positiveRoutingText(query));
 }
 
 const EXTERNAL_RECIPE = {
@@ -299,33 +295,6 @@ const PRODUCT_RECIPE = {
   acceptance: ["the target product object is identifiable immediately", "at least three source-derived decisions are visible without copying the brand", "feature or material proof is concrete", "desktop/mobile and reduced-motion paths preserve the decision flow", "no placeholder or low-quality filler remains"],
 };
 
-function extractUrl(input) {
-  const match = String(input ?? "").match(/https?:\/\/[^\s<>"')]+/i);
-  return match?.[0]?.replace(/[.,;:]+$/, "") ?? "";
-}
-
-function externalReference(url) {
-  const hostname = new URL(url).hostname.replace(/^www\./, "");
-  const id = `external-${hostname.replace(/[^a-z0-9]+/gi, "-").replace(/^-|-$/g, "") || "reference"}`;
-  return {
-    id,
-    label: `External reference: ${hostname}`,
-    url,
-    sourceType: "user-supplied-live-site",
-    roles: ["visual-language", "quality-reference"],
-    borrow: ["inspect and translate the visible hierarchy, material, rhythm, and interaction purpose"],
-    reject: ["do not copy brand identity, source code, exact copy, or proprietary assets"],
-    visual: {
-      family: "unknown until live inspection",
-      palette: "measure from the live reference",
-      typography: "measure roles and density from the live reference",
-      layout: "map the observed first viewport and section rhythm",
-      surfaces: "inspect borders, radius, shadow, texture, and contrast",
-      motion: "inspect only meaningful state relationships",
-    },
-  };
-}
-
 function productReferenceFromScout(source) {
   if (!source) return null;
   if (source.scouted) return source;
@@ -353,32 +322,6 @@ function productReferenceFromScout(source) {
       motion: "object continuity, feature reveal, and configuration feedback only when they clarify the product",
     },
   };
-}
-
-function referenceMatchScore(reference, input) {
-  const needle = String(input ?? "").toLocaleLowerCase();
-  if (!needle) return { score: 0, hits: [] };
-  const exactValues = [reference.id, reference.label, reference.url, new URL(reference.url).hostname]
-    .filter(Boolean)
-    .map((value) => String(value).toLocaleLowerCase());
-  const exactHits = exactValues.filter((value) => needle.includes(value));
-  const queryTokens = meaningfulTokens(needle);
-  const referenceTokens = meaningfulTokens(`${reference.id} ${reference.label} ${reference.url}`);
-  const tokenHits = referenceTokens.filter((token) => queryTokens.includes(token) && !GENERIC_REFERENCE_TOKENS.has(token));
-  return {
-    score: exactHits.length * 30 + new Set(tokenHits).size * 8,
-    hits: [...new Set([...exactHits, ...tokenHits])],
-  };
-}
-
-export function resolveReference(input, references = loadDataset("reference-lenses.json").references) {
-  const ranked = references.map((reference) => ({
-    reference,
-    ...referenceMatchScore(reference, input),
-  })).sort((left, right) => right.score - left.score || left.reference.id.localeCompare(right.reference.id));
-  if (ranked[0]?.score > 0) return ranked[0];
-  const url = extractUrl(input);
-  return url ? { reference: externalReference(url), score: 1, hits: [url], external: true } : null;
 }
 
 function genericLensRecipe(reference) {
@@ -507,6 +450,55 @@ function recipeForExperience(recipe) {
   };
 }
 
+function recipeForReading(recipe) {
+  return {
+    ...recipe,
+    firstViewport: {
+      layout: "lead with the requested material and its location; translate reference type, material and rhythm around the reading path",
+      mustShow: ["the actual document, passage, example, or evidence being read", "its title and current location", "a relevant continuation, example or source"],
+      belowFoldPeek: "continue the material in its chosen order rather than inserting a promotional or specimen opening",
+    },
+    sections: [{
+      id: "reading-surface",
+      purpose: "complete the requested material and its navigation, evidence and continuation",
+      layout: "derive local reading measures, wayfinding and example placement from the actual content; no sidebar, card grid or chapter count is prescribed",
+      content: "complete passages, specific headings, real examples or evidence, truthful source/version labels when relevant, and a deliberate continuation or ending",
+      components: ["reading material", "wayfinding and continuation", "examples or sources where relevant"],
+    }],
+    componentGrammar: [{
+      id: "reading-material",
+      shape: "content-led type hierarchy and bounded reading measures; reference expression supports the text and evidence",
+      states: ["ready", "fallback"],
+      behavior: "preserve readable material and source identity across viewport changes and reduced motion",
+    }, {
+      id: "reading-wayfinding",
+      shape: "choose the lightest navigation that fits the material, including inline destinations; no persistent rail is required",
+      states: ["current-section", "focus", "unavailable-source"],
+      behavior: "reach the relevant material or source and return with location preserved; provide a useful unavailable-source path",
+    }],
+    motionContract: {
+      ...recipe.motionContract,
+      triggers: ["reading navigation or example inspection when continuity benefits from motion"],
+      review: "preserve reading location and content visibility; a static document is valid",
+      polish: "test navigation, return, interruption and reduced motion without obscuring the passage",
+      reducedMotion: "reach the same material and retain current-location cues without travel",
+      fallback: "the complete reading material and its destinations remain usable without motion",
+    },
+    responsive: {
+      desktop: "keep prose at its readable measure; give examples and evidence their own natural widths",
+      tablet: "regroup attached navigation and evidence before text or control travel becomes uncomfortable",
+      mobile: "retain equally direct reading destinations, examples, sources and return paths; avoid squeezed rails or horizontally clipped prose",
+    },
+    assetStrategy: {
+      hero: "use the requested reading material as the opening; add actual media only where it explains or proves the subject",
+      specimens: "use real target examples, diagrams or source records when relevant; no component gallery is required",
+      fallback: "retain readable text, source labels and meaningful unavailable-media feedback",
+    },
+    buildOrder: ["declare complete reading scope", "real material and evidence", "wayfinding and continuation", "source or example return path", "responsive reading measures", "fallback and rendered iteration"],
+    acceptance: ["the requested material appears before promotional scaffolding", "all declared content and destinations are complete", "readers can inspect and return from a relevant example or source", "desktop/mobile retain readable measures and direct navigation", "static or reduced-motion reading remains complete"],
+  };
+}
+
 function projectEvidence(project) {
   if (!project) return {
     status: "not-scanned",
@@ -630,9 +622,10 @@ export function buildReferenceBuild({
     ? (explicit ? "named-reference" : productResolved ? "scouted-reference" : seeded ? "supporting-reference" : "inferred-reference")
     : "adaptive-no-reference";
   const signalProfile = typeof profile === "object" ? profile : { id: profile || "adaptive-surface", anchor: visualDirection.firstViewport.dominant };
-  const initialSignal = buildProductSignal({ query: selectionQuery, profile: signalProfile, visualDirection, referenceMode: mode, contextFields: request.signalFields });
+  const initialSignal = buildProductSignal({ query: selectionQuery, profile: signalProfile, visualDirection, referenceMode: mode, contextFields: request.signalFields, surfaceMode: request.surfaceMode.mode });
   const baseRecipe = chosen ? recipeFor(chosen, recipes) : ADAPTIVE_RECIPE;
-  const recipe = initialSignal.mode === "product" ? baseRecipe : recipeForExperience(baseRecipe);
+  const recipe = request.surfaceMode.mode === "read" ? recipeForReading(baseRecipe)
+    : initialSignal.mode === "product" ? baseRecipe : recipeForExperience(baseRecipe);
   const visual = chosen?.visual ?? {
     family: "evidence-led adaptive surface",
     palette: "derive from local tokens, real content, and semantic roles",
@@ -675,6 +668,7 @@ export function buildReferenceBuild({
     componentGrammar: resolvedBuild.componentGrammar,
     referenceMode: mode,
     contextFields: request.signalFields,
+    surfaceMode: request.surfaceMode.mode,
   });
   const completionContract = buildCompletionContract({
     query,

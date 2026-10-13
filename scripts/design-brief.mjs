@@ -182,6 +182,7 @@ export function buildBrief({ query, projectRoot, overrides = {}, authoredDirecti
     profile: profile.record,
     visualDirection,
     contextFields: productRequest.signalFields,
+    surfaceMode: productRequest.surfaceMode.mode,
   });
   const surfaceMode = productRequest.surfaceMode;
   const designOperation = resolveDesignOperation(query, { mode: surfaceMode.mode === "adaptive" ? "" : surfaceMode.mode });
